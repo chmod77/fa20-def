@@ -89,6 +89,32 @@ for p in sorted(glob.glob(f'{ROOT}/cdump/*.c')):
             sx = S.get('0x' + x.lstrip('0'))
             if sx and sx.get('status') == 'identified' and sx.get('data') and '0x' + y.lstrip('0') not in S:
                 rows.append((y, fn, 'T:' + x, sx['name'], sx['data']['units'], sx['data']['expr'], c.group(0).replace('\t', ' ')))
+# additive: A +/- v  or  v + A where A is a proven variable -> v is a delta in A's unit (scale of A's expression, offset dropped)
+def _scale(expr):
+    try:
+        f = lambda x: eval(expr, {}, {'x': x})
+        return f(1.0) - f(0.0)
+    except Exception:
+        return None
+for p in sorted(glob.glob(f'{ROOT}/cdump/*.c')):
+    fn = os.path.basename(p)[:-2]; s = open(p).read()
+    for m in re.finditer(r'(\w+)\s*=\s*(?:\(\w+\)\s*)?LK_[0-9A-F]+\(\(uint\)&T_([0-9A-F]{6})', s):
+        v, d = m.group(1), m.group(2)
+        if '0x' + d.lstrip('0') in S or any(r[0] == d for r in rows):
+            continue
+        tail = s[m.end():]
+        ra = re.search(r'\b' + re.escape(v) + r'\s*=[^=]', tail); tail = tail[:ra.start()] if ra else tail
+        V = r'\(?(?:\(\w+\s*\**\)\s*)*\(?' + re.escape(v) + r'(?:\s*&\s*0xff(?:ff)?)?\)?'
+        for c in re.finditer(OPND + r'\s*[-+]\s*' + V + r'|' + V + r'\s*\+\s*' + OPND, tail):
+            tok = c.group(1) or c.group(2)
+            if tok == v:
+                continue
+            a = resolve(fn, tok, s)
+            if a in known:
+                k = _scale(known[a][2])
+                if k and k > 0:
+                    rows.append((d, fn, f'{a:08X}', known[a][0] + ' (delta)', known[a][1], f'x*{k!r}', c.group(0).replace('\t', ' ')))
+                    break
 with open(f'{ROOT}/evidence/table-compare.tsv', 'w') as f:
     f.write('descriptor\tfunction\tvar\tvar_name\tunits\texpr\tcontext\n')
     for r in rows:

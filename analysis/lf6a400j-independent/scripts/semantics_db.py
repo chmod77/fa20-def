@@ -506,6 +506,12 @@ add(0x2D070, 'Open Loop Fuel Enrichment Ramp-In Rate (RPM)', 'Fueling - Open Loo
     ('enrichment counts/step', 'x/256', 'x*256', '0.000'))
 
 
+# ---------------------------------------------------------------- misfire detection timing interpolation (0xDEBC8 from 0xDCE34)
+# w = (Ignition Total Timing FFFF046C - T_02F034) / (T_02F028 - T_02F034) -> FFFF106E; both tables are timing values in 046C's unit (deg = x/2).
+for d, nm in ((0x2F034, 'Misfire Detection Timing Interpolation Point A (RPM)'), (0x2F028, 'Misfire Detection Timing Interpolation Point B (RPM)')):
+    add(d, nm, 'Misfire Detection', '0xDEBC8 (from 0xDCE34; inputs FFFF2ADA rpm, FFFF046C): weight FFFF106E = (046C - T_02F034)/(T_02F028 - T_02F034), '
+        'so both tables are in the unit of Ignition Total Timing FFFF046C (SSM 0x11, deg = x/2); the weight blends T_02F040/T_02F054.', DEG2)
+
 # ---------------------------------------------------------------- thresholds proven by comparison (scripts/table_compare.py)
 # The lookup result is compared directly with a proven variable (or a parameter every call site passes as that variable), so the
 # table output is in that variable's unit.  Names state only what is proven: a threshold on that variable, used by that function.

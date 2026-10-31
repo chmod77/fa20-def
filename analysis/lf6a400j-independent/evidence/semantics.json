@@ -3152,6 +3152,32 @@
    }
   }
  },
+ "0x2F028": {
+  "status": "identified",
+  "name": "Misfire Detection Timing Interpolation Point B (RPM)",
+  "category": "Misfire Detection",
+  "evidence": "0xDEBC8 (from 0xDCE34; inputs FFFF2ADA rpm, FFFF046C): weight FFFF106E = (046C - T_02F034)/(T_02F028 - T_02F034), so both tables are in the unit of Ignition Total Timing FFFF046C (SSM 0x11, deg = x/2); the weight blends T_02F040/T_02F054.",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "x/2",
+   "to_byte": "x*2",
+   "format": "0.0"
+  }
+ },
+ "0x2F034": {
+  "status": "identified",
+  "name": "Misfire Detection Timing Interpolation Point A (RPM)",
+  "category": "Misfire Detection",
+  "evidence": "0xDEBC8 (from 0xDCE34; inputs FFFF2ADA rpm, FFFF046C): weight FFFF106E = (046C - T_02F034)/(T_02F028 - T_02F034), so both tables are in the unit of Ignition Total Timing FFFF046C (SSM 0x11, deg = x/2); the weight blends T_02F040/T_02F054.",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "x/2",
+   "to_byte": "x*2",
+   "format": "0.0"
+  }
+ },
  "0x2F104": {
   "status": "identified",
   "name": "Alternator Duty Base, Mode 3 (FFFF3950)",

@@ -7152,15 +7152,15 @@
         <scaling units="rpm" expression="x*50" to_byte="x/50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02F028] (Engine Speed (OBD copy))" category="Unidentified - Misfire Detection" storageaddress="2A016" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2F028. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
-      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="29FD6" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Misfire Detection Timing Interpolation Point B (RPM)" category="Misfire Detection" storageaddress="2A016" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2F028. Evidence: 0xDEBC8 (from 0xDCE34; inputs FFFF2ADA rpm, FFFF046C): weight FFFF106E = (046C - T_02F034)/(T_02F028 - T_02F034), so both tables are in the unit of Ignition Total Timing FFFF046C (SSM 0x11, deg = x/2); the weight blends T_02F040/T_02F054." sizey="16">
+      <scaling units="deg" expression="x/2" to_byte="x*2" format="0.0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
+      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="29FD6" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02F034] (Engine Speed (OBD copy))" category="Unidentified - Misfire Detection" storageaddress="2A026" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2F034. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
-      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="29FF6" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Misfire Detection Timing Interpolation Point A (RPM)" category="Misfire Detection" storageaddress="2A026" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2F034. Evidence: 0xDEBC8 (from 0xDCE34; inputs FFFF2ADA rpm, FFFF046C): weight FFFF106E = (046C - T_02F034)/(T_02F028 - T_02F034), so both tables are in the unit of Ignition Total Timing FFFF046C (SSM 0x11, deg = x/2); the weight blends T_02F040/T_02F054." sizey="16">
+      <scaling units="deg" expression="x/2" to_byte="x*2" format="0.0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
+      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="29FF6" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
