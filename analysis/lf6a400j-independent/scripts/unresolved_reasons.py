@@ -49,12 +49,17 @@ def classify(fn, s, v, start, depth=0):
     if not cands: return 'lookup result not used in a resolvable form'
     return min(cands)[1]
 reasons = {}
+# functions whose tables depend on CAN-received signals (scaling defined by the sending module, not in this ROM)
+_CAN = ('index FFFF0554 is a 4-bit state code built from CAN-received flags FFFEF081 bits 4..7 (0xC3364); the outputs are compared with '
+        'FFFF12C2 = filtered T_02FC98(0554, FFFF0F42), and 0F42 is a copy (0xCBA28) of FFFEF31C, a 16-bit value assembled from CAN '
+        'receive bytes FFFF26B3/26B4 (0x52D0A). The scaling of that CAN signal is defined by the sending module, not in this ROM')
+CANFN = {'00103bb4', '00103c00', '00104698', '001066e8', '00106738', '001067b4', '00106830', '00106880', '001068d0'}
 src = {os.path.basename(p)[:-2]: open(p).read() for p in glob.glob(f'{ROOT}/cdump/*.c')}
 for fn, s in src.items():
     for m in re.finditer(r'(\w+)\s*=\s*(?:\(\w+\)\s*)?LK_[0-9A-F]+\(\(uint\)&T_([0-9A-F]{6})', s):
         key = '0x' + m.group(2).lstrip('0')
         if S.get(key, {}).get('status') == 'identified' or key in reasons: continue
-        reasons[key] = f'0x{int(fn,16):X}: ' + classify(fn, s, m.group(1), m.end())
+        reasons[key] = f'0x{int(fn,16):X}: ' + (_CAN if fn in CANFN else classify(fn, s, m.group(1), m.end()))
     for m in re.finditer(r'(\w+)\s*=\s*(?:\(\w+\)\s*)?FUN_[0-9a-f]{8}\(\s*&(?:DAT|UNK|PTR_DAT)_0*([0-9a-f]+)\s*,', s):
         key = '0x' + m.group(2).upper()
         if key not in HT or S.get(key, {}).get('status') == 'identified' or key in reasons: continue
