@@ -498,6 +498,32 @@ for n, d in RAMP.items():
         '0xAB3C4 -> FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target '
         'idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE.', ('rpm/step', 'x*25/512', 'x*512/25', '0.00'))
 
+add(0x2D070, 'Open Loop Fuel Enrichment Ramp-In Rate (RPM)', 'Fueling - Open Loop & Enrichment',
+    _ol + '0x8F9C0: FFFEBD38 (enrichment*256) rises by T(rpm FFFF2994) per execution up to target<<8; FFFF03F2 = FFFEBD38>>8 is the '
+    'ramped enrichment term (same (phi-1)*256 units as FFFF0401), so T is enrichment counts*256 per execution.',
+    ('enrichment counts/step', 'x/256', 'x*256', '0.000'))
+
+
+# ---------------------------------------------------------------- thresholds proven by comparison (scripts/table_compare.py)
+# The lookup result is compared directly with a proven variable (or a parameter every call site passes as that variable), so the
+# table output is in that variable's unit.  Names state only what is proven: a threshold on that variable, used by that function.
+import csv as _csv
+_seen = set()
+if os.path.exists(f'{ROOT}/evidence/table-compare.tsv'):
+    for _r in _csv.DictReader(open(f'{ROOT}/evidence/table-compare.tsv'), delimiter='\t'):
+        _d = int(_r['descriptor'], 16)
+        if _d in S or _d in _seen:
+            continue
+        _seen.add(_d)
+        _tb = {'x': 'x', 'x*25/128': 'x*128/25', 'x*5/2048-40': '(x+40)*2048/5', 'x*639630/1048576': 'x*1048576/639630',
+               'x*100/65280': 'x*65280/100', 'x*625/2048000': 'x*2048000/625'}.get(_r['expr'])
+        if _tb is None:
+            continue
+        add(_d, f"{_r['var_name']} Threshold (0x{int(_r['function'], 16):X})", 'Thresholds - ' + _r['var_name'],
+            f"0x{int(_r['function'], 16):X}: lookup result compared with {_r['var_name']} (FFFF{_r['var'][4:]}): \"{_r['context']}\"; "
+            'a comparison requires the same unit, so the output carries that scaling.',
+            (_r['units'], _r['expr'], _tb, '0.00'))
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

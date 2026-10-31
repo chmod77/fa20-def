@@ -211,6 +211,11 @@ def build(rid, path, sha):
                             userlevel='1', description=desc)
         scaling(tab, st_, sc['units'], sc['expr'], sc['to_byte'], '0.00')
         stats['scalars'] += 1
+    # RomRaider keys tables by name: make every top-level name unique (append the storage address on collision)
+    seen = collections.Counter(t.get('name') for t in rom.findall('table'))
+    for t in rom.findall('table'):
+        if seen[t.get('name')] > 1:
+            t.set('name', f"{t.get('name')} @{t.get('storageaddress')}")
     ET.indent(root, space='  ')
     out = f'{ROOT}/RR_{rid}_FA20DIT.xml'
     ET.ElementTree(root).write(out, encoding='utf-8', xml_declaration=True)

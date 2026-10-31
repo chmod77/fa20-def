@@ -788,6 +788,19 @@
    "format": "0.00"
   }
  },
+ "0x2CCE4": {
+  "status": "identified",
+  "name": "Engine Load Threshold (0x8BB84)",
+  "category": "Thresholds - Engine Load",
+  "evidence": "0x8BB84: lookup result compared with Engine Load (FFFF03A0): \"(param_3 & 0xff) <= (uVar1 & 0xff)\"; a comparison requires the same unit, so the output carries that scaling.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x",
+   "to_byte": "x",
+   "format": "0.00"
+  }
+ },
  "0x2CE08": {
   "status": "identified",
   "name": "Fuel Enrichment (Coolant >= 100 C)",
@@ -885,6 +898,19 @@
    "expr": "x",
    "to_byte": "x",
    "format": "0"
+  }
+ },
+ "0x2D070": {
+  "status": "identified",
+  "name": "Open Loop Fuel Enrichment Ramp-In Rate (RPM)",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "OBD PID44 (0x10C32C) commanded lambda = 256/(256 + FFFF0B84 + FFFF0401 + FFFF0B42); 0x8F9C0: FFFEBD38 (enrichment*256) rises by T(rpm FFFF2994) per execution up to target<<8; FFFF03F2 = FFFEBD38>>8 is the ramped enrichment term (same (phi-1)*256 units as FFFF0401), so T is enrichment counts*256 per execution.",
+  "description": "",
+  "data": {
+   "units": "enrichment counts/step",
+   "expr": "x/256",
+   "to_byte": "x*256",
+   "format": "0.000"
   }
  },
  "0x2D07C": {
@@ -1937,6 +1963,19 @@
    "format": "0.00"
   }
  },
+ "0x2DAD8": {
+  "status": "identified",
+  "name": "Engine Speed (OBD copy) Threshold (0xA3118)",
+  "category": "Thresholds - Engine Speed (OBD copy)",
+  "evidence": "0xA3118: lookup result compared with Engine Speed (OBD copy) (FFFF2ADA): \"param_1 <= uVar1\"; a comparison requires the same unit, so the output carries that scaling.",
+  "description": "",
+  "data": {
+   "units": "rpm",
+   "expr": "x*25/128",
+   "to_byte": "x*128/25",
+   "format": "0.00"
+  }
+ },
  "0x2DDF8": {
   "status": "identified",
   "name": "Target Idle Speed Ramp Rate (transition index 2)",
@@ -2223,6 +2262,19 @@
    "format": "0.00"
   }
  },
+ "0x2DF30": {
+  "status": "identified",
+  "name": "Coolant Temperature (filtered, word) Threshold (0xAC870)",
+  "category": "Thresholds - Coolant Temperature (filtered, word)",
+  "evidence": "0xAC870: lookup result compared with Coolant Temperature (filtered, word) (FFFFEEDE): \"(uVar6 & 0xffff) <= (param_3 & 0xffff)\"; a comparison requires the same unit, so the output carries that scaling.",
+  "description": "",
+  "data": {
+   "units": "C",
+   "expr": "x*5/2048-40",
+   "to_byte": "(x+40)*2048/5",
+   "format": "0.00"
+  }
+ },
  "0x2E588": {
   "status": "identified",
   "name": "Wastegate Duty Initial",
@@ -2364,6 +2416,71 @@
    "format": "0.0"
   }
  },
+ "0x2E7BC": {
+  "status": "identified",
+  "name": "Fuel Rail Pressure (gauge) Threshold (0xC0150)",
+  "category": "Thresholds - Fuel Rail Pressure (gauge)",
+  "evidence": "0xC0150: lookup result compared with Fuel Rail Pressure (gauge) (FFFFED16): \"(param_3 & 0xffff) < (uVar3 & 0xffff)\"; a comparison requires the same unit, so the output carries that scaling.",
+  "description": "",
+  "data": {
+   "units": "kPa",
+   "expr": "x*639630/1048576",
+   "to_byte": "x*1048576/639630",
+   "format": "0.00"
+  }
+ },
+ "0x2E924": {
+  "status": "identified",
+  "name": "Accelerator Pedal Angle Threshold (0xC34CC)",
+  "category": "Thresholds - Accelerator Pedal Angle",
+  "evidence": "0xC34CC: lookup result compared with Accelerator Pedal Angle (FFFFEEF8): \"((param_3 & 0xffff) < (uVar1 & 0xffff)\"; a comparison requires the same unit, so the output carries that scaling.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/65280",
+   "to_byte": "x*65280/100",
+   "format": "0.00"
+  }
+ },
+ "0x2E948": {
+  "status": "identified",
+  "name": "Accelerator Pedal Angle Threshold (0xC36D0)",
+  "category": "Thresholds - Accelerator Pedal Angle",
+  "evidence": "0xC36D0: lookup result compared with Accelerator Pedal Angle (FFFFEEF8): \"((param_3 & 0xffff) < (uVar1 & 0xffff)\"; a comparison requires the same unit, so the output carries that scaling.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/65280",
+   "to_byte": "x*65280/100",
+   "format": "0.00"
+  }
+ },
+ "0x2EB28": {
+  "status": "identified",
+  "name": "Accelerator Pedal Angle Threshold (0xCC0D0)",
+  "category": "Thresholds - Accelerator Pedal Angle",
+  "evidence": "0xCC0D0: lookup result compared with Accelerator Pedal Angle (FFFFEEF8): \"((param_3 & 0xffff) < (uVar3 & 0xffff)\"; a comparison requires the same unit, so the output carries that scaling.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/65280",
+   "to_byte": "x*65280/100",
+   "format": "0.00"
+  }
+ },
+ "0x2EB34": {
+  "status": "identified",
+  "name": "Accelerator Pedal Angle Threshold (0xCC1A0)",
+  "category": "Thresholds - Accelerator Pedal Angle",
+  "evidence": "0xCC1A0: lookup result compared with Accelerator Pedal Angle (FFFFEEF8): \"((param_3 & 0xffff) < (uVar3 & 0xffff)\"; a comparison requires the same unit, so the output carries that scaling.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/65280",
+   "to_byte": "x*65280/100",
+   "format": "0.00"
+  }
+ },
  "0x2ECE0": {
   "status": "identified",
   "name": "Throttle Flow Correction (vs FFFF05BB)",
@@ -2442,6 +2559,45 @@
    "units": "%",
    "expr": "x*100/32768",
    "to_byte": "x*32768/100",
+   "format": "0.00"
+  }
+ },
+ "0x2EE18": {
+  "status": "identified",
+  "name": "Engine Speed (OBD copy) Threshold (0xD9378)",
+  "category": "Thresholds - Engine Speed (OBD copy)",
+  "evidence": "0xD9378: lookup result compared with Engine Speed (OBD copy) (FFFF2ADA): \"((uVar4 & 0xffff) <= param_2\"; a comparison requires the same unit, so the output carries that scaling.",
+  "description": "",
+  "data": {
+   "units": "rpm",
+   "expr": "x*25/128",
+   "to_byte": "x*128/25",
+   "format": "0.00"
+  }
+ },
+ "0x2EE30": {
+  "status": "identified",
+  "name": "Engine Speed (OBD copy) Threshold (0xD9378)",
+  "category": "Thresholds - Engine Speed (OBD copy)",
+  "evidence": "0xD9378: lookup result compared with Engine Speed (OBD copy) (FFFF2ADA): \"((uVar6 & 0xffff) <= param_2\"; a comparison requires the same unit, so the output carries that scaling.",
+  "description": "",
+  "data": {
+   "units": "rpm",
+   "expr": "x*25/128",
+   "to_byte": "x*128/25",
+   "format": "0.00"
+  }
+ },
+ "0x2EE48": {
+  "status": "identified",
+  "name": "Engine Speed (OBD copy) Threshold (0xD9378)",
+  "category": "Thresholds - Engine Speed (OBD copy)",
+  "evidence": "0xD9378: lookup result compared with Engine Speed (OBD copy) (FFFF2ADA): \"(uVar7 & 0xffff) <= param_2\"; a comparison requires the same unit, so the output carries that scaling.",
+  "description": "",
+  "data": {
+   "units": "rpm",
+   "expr": "x*25/128",
+   "to_byte": "x*128/25",
    "format": "0.00"
   }
  },
@@ -2603,6 +2759,32 @@
     "expr": "x",
     "to_byte": "x"
    }
+  }
+ },
+ "0x2F17C": {
+  "status": "identified",
+  "name": "Control Module Voltage Threshold (0xE3AF0)",
+  "category": "Thresholds - Control Module Voltage",
+  "evidence": "0xE3AF0: lookup result compared with Control Module Voltage (FFFFEF18): \"(param_3 & 0xffff) < (uVar3 & 0xffff)\"; a comparison requires the same unit, so the output carries that scaling.",
+  "description": "",
+  "data": {
+   "units": "V",
+   "expr": "x*625/2048000",
+   "to_byte": "x*2048000/625",
+   "format": "0.00"
+  }
+ },
+ "0x2F1C0": {
+  "status": "identified",
+  "name": "Engine Load Threshold (0xE4CC4)",
+  "category": "Thresholds - Engine Load",
+  "evidence": "0xE4CC4: lookup result compared with Engine Load (FFFF03A0): \"(param_3 <= (uVar4 & 0xff)\"; a comparison requires the same unit, so the output carries that scaling.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x",
+   "to_byte": "x",
+   "format": "0.00"
   }
  },
  "0x2F37C": {

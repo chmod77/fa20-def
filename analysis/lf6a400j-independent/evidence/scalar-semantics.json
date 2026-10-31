@@ -65,6 +65,17 @@
   "function": "093044",
   "context": "(param_3 < 0x8ccd"
  },
+ "00BA92": {
+  "width": 2,
+  "value": 3279,
+  "var": "FFFF1276",
+  "var_name": "Target Fuel Rail Pressure",
+  "units": "kPa",
+  "expr": "x*1250/2048",
+  "to_byte": "x*2048/1250",
+  "function": "08f250",
+  "context": "(param_11 < 0xccf"
+ },
  "00DA8E": {
   "width": 2,
   "value": 19215,
