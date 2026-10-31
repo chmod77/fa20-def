@@ -672,6 +672,14 @@ add(0x2D86C, 'Ignition Timing (Coolant), Engine State < 3 [0x9B27C -> 0489]', IG
     _ev9 + 'When FFFEE6AF < 3, FFFF0489 = T(coolant FFFEEEDE) directly (same 0.5 deg unit as the other branch).', DEG2)
 add(0x2D878, 'Ignition Retard vs FFFF03D7 [0x9B27C -> 0489]', IGN, _ev9, DEG2)
 
+_ev49c = ('0x9DAC8 (from 0x9BDF4, engine state FFFEE6AF = 3): FFFF049C = FFFF0487 + T(coolant FFFEEEDE) - 128 (T_02D99C when FFFF299C rpm/25 >= '
+          '200/192 hysteresis, else T_02D9A8); 0x86758 adds FFFF049C to base timing FFFF03D1 (0.5 deg) -> FFFF046C. ')
+_ev487 = ('0x9B058 (from 0x9BDF4; rpm FFFF2994 x load FFFF09B4): FFFF0487 = 128 + (T_02D838*(1-w) + T_02D84C*w - 128) * T_02D860/255 * '
+          'FFFF0D5E/256 (w = FFFF0E90/65536; disasm 0x9B180..0x9B204), and 0487 - 128 enters 049C -> base timing 03D1 in 0.5 deg. ')
+add(0x2D838, 'Ignition Timing Adder Map (weight 1-w, w=FFFF0E90) [-> 0487]', IGN, _ev487, ('deg', '(x-128)/2', 'x*2+128', '0.0'))
+add(0x2D84C, 'Ignition Timing Adder Map (weight w=FFFF0E90) [-> 0487]', IGN, _ev487, ('deg', '(x-128)/2', 'x*2+128', '0.0'))
+add(0x2D860, 'Ignition Timing Adder Map Factor (Coolant) [-> 0487]', IGN, _ev487 + 'Input coolant FFFEEEDE.', ('factor', 'x/255', 'x*255', '0.000'))
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

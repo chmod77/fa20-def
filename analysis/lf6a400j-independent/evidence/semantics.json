@@ -1937,6 +1937,45 @@
    "format": "0.0"
   }
  },
+ "0x2D838": {
+  "status": "identified",
+  "name": "Ignition Timing Adder Map (weight 1-w, w=FFFF0E90) [-> 0487]",
+  "category": "Ignition Timing",
+  "evidence": "0x9B058 (from 0x9BDF4; rpm FFFF2994 x load FFFF09B4): FFFF0487 = 128 + (T_02D838*(1-w) + T_02D84C*w - 128) * T_02D860/255 * FFFF0D5E/256 (w = FFFF0E90/65536; disasm 0x9B180..0x9B204), and 0487 - 128 enters 049C -> base timing 03D1 in 0.5 deg. ",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "(x-128)/2",
+   "to_byte": "x*2+128",
+   "format": "0.0"
+  }
+ },
+ "0x2D84C": {
+  "status": "identified",
+  "name": "Ignition Timing Adder Map (weight w=FFFF0E90) [-> 0487]",
+  "category": "Ignition Timing",
+  "evidence": "0x9B058 (from 0x9BDF4; rpm FFFF2994 x load FFFF09B4): FFFF0487 = 128 + (T_02D838*(1-w) + T_02D84C*w - 128) * T_02D860/255 * FFFF0D5E/256 (w = FFFF0E90/65536; disasm 0x9B180..0x9B204), and 0487 - 128 enters 049C -> base timing 03D1 in 0.5 deg. ",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "(x-128)/2",
+   "to_byte": "x*2+128",
+   "format": "0.0"
+  }
+ },
+ "0x2D860": {
+  "status": "identified",
+  "name": "Ignition Timing Adder Map Factor (Coolant) [-> 0487]",
+  "category": "Ignition Timing",
+  "evidence": "0x9B058 (from 0x9BDF4; rpm FFFF2994 x load FFFF09B4): FFFF0487 = 128 + (T_02D838*(1-w) + T_02D84C*w - 128) * T_02D860/255 * FFFF0D5E/256 (w = FFFF0E90/65536; disasm 0x9B180..0x9B204), and 0487 - 128 enters 049C -> base timing 03D1 in 0.5 deg. Input coolant FFFEEEDE.",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  }
+ },
  "0x2D86C": {
   "status": "identified",
   "name": "Ignition Timing (Coolant), Engine State < 3 [0x9B27C -> 0489]",
