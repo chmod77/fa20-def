@@ -723,6 +723,27 @@
    "format": "0.0"
   }
  },
+ "0x2C838": {
+  "status": "identified",
+  "name": "Reference (Maximum) Torque vs RPM [0x84484]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x84484 (from 0x82FA0): ratio = (Requested Torque FFFF0A62 - 16000)*255/(T(rpm FFFF2994) - 16000), clamped 0..255; both operands use the 16000-offset torque type, so T is a torque in that type (the requested torque is normalised by it). Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range).",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed",
+    "units": "rpm",
+    "expr": "x*25/128",
+    "to_byte": "x*128/25"
+   }
+  }
+ },
  "0x2C998": {
   "status": "identified",
   "name": "Base Ignition Timing (flags 04F4.7=1, 054A.4=0)",

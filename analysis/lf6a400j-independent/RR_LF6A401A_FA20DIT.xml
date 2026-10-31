@@ -1170,9 +1170,9 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02C838] (Engine Speed)" category="Unidentified - Driver Demand / Torque Request" storageaddress="E260" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C838. Lookup result stored to: 00084484:*param_9. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="E240" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Reference (Maximum) Torque vs RPM [0x84484]" category="Driver Demand / Torque Request" storageaddress="E260" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C838. Evidence: 0x84484 (from 0x82FA0): ratio = (Requested Torque FFFF0A62 - 16000)*255/(T(rpm FFFF2994) - 16000), clamped 0..255; both operands use the 16000-offset torque type, so T is a torque in that type (the requested torque is normalised by it). Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW-&gt;Nm via 60000/2pi, stored *80+16000, clamps = u16 range). Lookup result stored to: 00084484:*param_9." sizey="16">
+      <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="E240" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>

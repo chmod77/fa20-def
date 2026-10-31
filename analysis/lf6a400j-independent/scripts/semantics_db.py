@@ -838,6 +838,11 @@ LOFF = ('lambda offset', 'x/43194', 'x*43194', '0.0000')
 add(0x2FD58, 'Target Lambda Learning Offset Adder [0x11BF14 -> 1358]', 'Fueling - Target Lambda', _evfd + '0x11BF14: FFFF1358 = 39F6 + T.', LOFF)
 add(0x2FD64, 'Target Lambda Learning Offset Subtractor [0x11BF64 -> 135A]', 'Fueling - Target Lambda', _evfd + '0x11BF64: FFFF135A = 39F6 - T.', LOFF)
 
+add(0x2C838, 'Reference (Maximum) Torque vs RPM [0x84484]', 'Driver Demand / Torque Request',
+    '0x84484 (from 0x82FA0): ratio = (Requested Torque FFFF0A62 - 16000)*255/(T(rpm FFFF2994) - 16000), clamped 0..255; both operands use the '
+    '16000-offset torque type, so T is a torque in that type (the requested torque is normalised by it).' + TQEV,
+    ('Nm', '(x-16000)/80', 'x*80+16000', '0.0'), axes={'0': dict(name='Engine Speed', units='rpm', expr='x*25/128', to_byte='x*128/25')})
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
