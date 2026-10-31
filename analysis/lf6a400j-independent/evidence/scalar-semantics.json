@@ -625,5 +625,89 @@
   "to_byte": "(x+40)*2048/5",
   "function": "04d23a",
   "context": "(_DAT_fffeeede < 0x8000"
+ },
+ "0087BA": {
+  "units": "rpm",
+  "expr": "x*25/128",
+  "to_byte": "x*128/25",
+  "var": "FFFF2994",
+  "var_name": "Engine Speed",
+  "width": 2,
+  "value": 31232,
+  "function": "085b74",
+  "name": "Rev Limit (Fuel Cut), FFFEF3FC.5/.7 or FFFEF32E.2",
+  "context": "0x85B74: limit = 0x87BA when FFFEF3FC.5|FFFEF3FC.7|FFFEF32E.2; rpm FFFF2994 >= limit -> cut level FFFF03CF = 4 -> 0x86B80 FFFF03D4 -> fuel cut FFFF03E4.7 (0x917EC base pulse = 0)"
+ },
+ "0087BC": {
+  "units": "rpm",
+  "expr": "x*25/128",
+  "to_byte": "x*128/25",
+  "var": "FFFF2994",
+  "var_name": "Engine Speed",
+  "width": 2,
+  "value": 31232,
+  "function": "085b74",
+  "name": "Rev Limit (Fuel Cut), FFFEF498.1",
+  "context": "0x85B74: limit = 0x87BC when FFFEF498.1 (param_8, r11); same cut chain"
+ },
+ "0087BE": {
+  "units": "rpm",
+  "expr": "x*25/128",
+  "to_byte": "x*128/25",
+  "var": "FFFF2994",
+  "var_name": "Engine Speed",
+  "width": 2,
+  "value": 31232,
+  "function": "085b74",
+  "name": "Rev Limit (Fuel Cut), FFFEF498.2",
+  "context": "0x85B74: limit = 0x87BE when FFFEF498.2 (param_9, r13); same cut chain"
+ },
+ "0087B8": {
+  "units": "rpm",
+  "expr": "x*25/128",
+  "to_byte": "x*128/25",
+  "var": "FFFF2994",
+  "var_name": "Engine Speed",
+  "width": 2,
+  "value": 1024,
+  "function": "085b74",
+  "name": "Rev Limit Minimum Margin above FFFF0D06",
+  "context": "0x85B74: limit >= FFFF0D06 + 0x87B8 (rpm units, FFFF0D06 rpm = x*25/128)"
+ },
+ "00E666": {
+  "units": "rpm",
+  "expr": "x*25/128",
+  "to_byte": "x*128/25",
+  "var": "FFFF2994",
+  "var_name": "Engine Speed",
+  "width": 2,
+  "value": 31232,
+  "function": "082c50",
+  "name": "Engine Speed Limit, Torque Mode 0x0B (enter)",
+  "context": "0x82C50 (driver demand 0x82FA0): FFFF2994 > 0x7A00 (latch FFFEBB28 clear) -> mode FFFF03C6 = 0x0B"
+ },
+ "00E668": {
+  "units": "rpm",
+  "expr": "x*25/128",
+  "to_byte": "x*128/25",
+  "var": "FFFF2994",
+  "var_name": "Engine Speed",
+  "width": 2,
+  "value": 30720,
+  "function": "082c50",
+  "name": "Engine Speed Limit, Torque Mode 0x0B (exit)",
+  "context": "0x82C50: threshold 0x7800 while latch FFFEBB28 set (hysteresis)"
+ },
+ "0087B6": {
+  "units": "rpm",
+  "expr": "x*25/128",
+  "to_byte": "x*128/25",
+  "var": "FFFF2994",
+  "var_name": "Engine Speed",
+  "width": 2,
+  "value": 512,
+  "function": "085b74",
+  "name": "Rev Limit Hysteresis",
+  "context": "0x85B74: once cut, limit is lowered by 0x87B6 until rpm drops below"
  }
 }

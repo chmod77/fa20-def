@@ -203,7 +203,7 @@ def build(rid, path, sha):
     sp = f'{ROOT}/evidence/scalar-semantics.json'
     for addr, sc in (sorted(json.load(open(sp)).items()) if os.path.exists(sp) else []):
         st_ = {1: 'uint8', 2: 'uint16', 4: 'uint32'}[sc['width']]
-        nm = f"{sc['var_name']} Threshold [0x{addr}] (0x{int(sc['function'], 16):X})"
+        nm = sc.get('name') or f"{sc['var_name']} Threshold [0x{addr}] (0x{int(sc['function'], 16):X})"
         cat = 'Scalars - ' + subsystems.category(HROOT.get(sc['function'].zfill(8), set()) or set())
         desc = (f"Scalar at 0x{addr} read by 0x{int(sc['function'], 16):X} and compared with {sc['var_name']} (FFFF{sc['var'][4:]}): "
                 f"\"{sc['context']}\" (ROM value folded by the decompiler). Scaling is that of the compared variable.")

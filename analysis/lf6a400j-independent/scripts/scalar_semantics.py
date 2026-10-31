@@ -93,6 +93,26 @@ for f, lst in reads.items():
                 out.setdefault(f'{a:06X}', dict(width=w, value=v, var=f'{addr:08X}', var_name=nm, units=u, expr=ex, to_byte=tb,
                                                 function=f, context=m.group(0)))
                 break
+# hand-proven scalars (disassembly checked; see context strings)
+RPM = dict(units='rpm', expr='x*25/128', to_byte='x*128/25', var='FFFF2994', var_name='Engine Speed')
+MANUAL = {
+ '0087BA': dict(RPM, width=2, value=0x7A00, function='085b74', name='Rev Limit (Fuel Cut), FFFEF3FC.5/.7 or FFFEF32E.2',
+                context='0x85B74: limit = 0x87BA when FFFEF3FC.5|FFFEF3FC.7|FFFEF32E.2; rpm FFFF2994 >= limit -> cut level FFFF03CF = 4 -> 0x86B80 FFFF03D4 -> fuel cut FFFF03E4.7 (0x917EC base pulse = 0)'),
+ '0087BC': dict(RPM, width=2, value=0x7A00, function='085b74', name='Rev Limit (Fuel Cut), FFFEF498.1',
+                context='0x85B74: limit = 0x87BC when FFFEF498.1 (param_8, r11); same cut chain'),
+ '0087BE': dict(RPM, width=2, value=0x7A00, function='085b74', name='Rev Limit (Fuel Cut), FFFEF498.2',
+                context='0x85B74: limit = 0x87BE when FFFEF498.2 (param_9, r13); same cut chain'),
+ '0087B8': dict(RPM, width=2, value=0x400, function='085b74', name='Rev Limit Minimum Margin above FFFF0D06',
+                context='0x85B74: limit >= FFFF0D06 + 0x87B8 (rpm units, FFFF0D06 rpm = x*25/128)'),
+ '00E666': dict(RPM, width=2, value=0x7A00, function='082c50', name='Engine Speed Limit, Torque Mode 0x0B (enter)',
+                context='0x82C50 (driver demand 0x82FA0): FFFF2994 > 0x7A00 (latch FFFEBB28 clear) -> mode FFFF03C6 = 0x0B'),
+ '00E668': dict(RPM, width=2, value=0x7800, function='082c50', name='Engine Speed Limit, Torque Mode 0x0B (exit)',
+                context='0x82C50: threshold 0x7800 while latch FFFEBB28 set (hysteresis)'),
+ '0087B6': dict(RPM, width=2, value=0x200, function='085b74', name='Rev Limit Hysteresis',
+                context='0x85B74: once cut, limit is lowered by 0x87B6 until rpm drops below'),
+}
+for k, v in MANUAL.items():
+    out[k] = v
 json.dump(out, open(f'{ROOT}/evidence/scalar-semantics.json', 'w'), indent=1)
 print('proven scalars', len(out))
 for k, v in list(out.items())[:40]:
