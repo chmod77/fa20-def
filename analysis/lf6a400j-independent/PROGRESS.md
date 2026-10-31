@@ -166,6 +166,9 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
   alternate target idle speed (rpm = x*12.5). Coverage 545 of 1271.
 - 0x80EF4 torque limits T_02C394/3A0(unreachable)/3AC -> 0A30 -> 0A76; 0xC1DDC torque thresholds (6) + IAT threshold T_02E894;
   0x85580 torque correction tables (all 0 Nm). Coverage 557 of 1271.
+- Filter-gain scanner (scripts/filter_gains.py, run by validate.sh) also handles gain << 8: T_02C1AC, T_02C1B8, T_02CC44,
+  T_02CC80, T_02CC94 (x/256). Task 7 (0x152A40/0x49E70): execution counter FFFF1B28 has no reader; period still unproven.
+  Coverage 562 of 1271.
 - Dead ends this session (documented so they are not repeated):
   * FFFF12C2 (axis of the pedal-limit T1 tables, compared with 12BE in the torque monitor): only a read literal (0xC50D0); writer not
     found by literal, GBR (+70 from 127C) or r0-offset searches.

@@ -554,6 +554,32 @@
    "109.5"
   ]
  },
+ "0x2C1AC": {
+  "status": "identified",
+  "name": "Filter Gain FFFF19A2 [0x7EFC0]",
+  "category": "Filters",
+  "evidence": "0x7EFC0: FUN_0016b4d8(&FFFF19A2, target, gain) with 0x16B4D8: y += (x-y)*k/65536; the lookup result is the gain argument shifted left (x256), so the table is a fraction per execution with 256 = 1.0.",
+  "description": "",
+  "data": {
+   "units": "fraction/step",
+   "expr": "x/256",
+   "to_byte": "x*256",
+   "format": "0.000"
+  }
+ },
+ "0x2C1B8": {
+  "status": "identified",
+  "name": "Filter Gain FFFF19A4 [0x7F0F0]",
+  "category": "Filters",
+  "evidence": "0x7F0F0: FUN_0016b4d8(&FFFF19A4, target, gain) with 0x16B4D8: y += (x-y)*k/65536; the lookup result is the gain argument shifted left (x256), so the table is a fraction per execution with 256 = 1.0.",
+  "description": "",
+  "data": {
+   "units": "fraction/step",
+   "expr": "x/256",
+   "to_byte": "x*256",
+   "format": "0.000"
+  }
+ },
  "0x2C360": {
   "status": "identified",
   "name": "Speed Feedback Torque Correction vs RPM Error [-> 0A18]",
@@ -2502,6 +2528,45 @@
    "expr": "x/65536",
    "to_byte": "x*65536",
    "format": "0.0000"
+  }
+ },
+ "0x2CC44": {
+  "status": "identified",
+  "name": "Filter Gain FFFF19B2 [0x8B98C]",
+  "category": "Filters",
+  "evidence": "0x8B98C: FUN_0016b4d8(&FFFF19B2, target, gain) with 0x16B4D8: y += (x-y)*k/65536; the lookup result is the gain argument shifted left (x256), so the table is a fraction per execution with 256 = 1.0.",
+  "description": "",
+  "data": {
+   "units": "fraction/step",
+   "expr": "x/256",
+   "to_byte": "x*256",
+   "format": "0.000"
+  }
+ },
+ "0x2CC80": {
+  "status": "identified",
+  "name": "Filter Gain FFFF19B4 (RPM x Load) [0x8B9F0]",
+  "category": "Filters",
+  "evidence": "0x8B9F0 (from 0x8A584; p1 rpm FFFF2994, p2 load FFFF03A0): FUN_0016B4D8(&FFFF19B4, target, g << 8) with 0x16B4D8: y += (x-y)*k/65536, so the gain g is a fraction per execution with 256 = 1.0. g = T_02CC80(rpm, load), or T_02CC94(rpm, load) while the input p7 is falling (with latch). ",
+  "description": "",
+  "data": {
+   "units": "fraction/step",
+   "expr": "x/256",
+   "to_byte": "x*256",
+   "format": "0.000"
+  }
+ },
+ "0x2CC94": {
+  "status": "identified",
+  "name": "Filter Gain FFFF19B4, falling input (RPM x Load) [0x8B9F0]",
+  "category": "Filters",
+  "evidence": "0x8B9F0 (from 0x8A584; p1 rpm FFFF2994, p2 load FFFF03A0): FUN_0016B4D8(&FFFF19B4, target, g << 8) with 0x16B4D8: y += (x-y)*k/65536, so the gain g is a fraction per execution with 256 = 1.0. g = T_02CC80(rpm, load), or T_02CC94(rpm, load) while the input p7 is falling (with latch). ",
+  "description": "",
+  "data": {
+   "units": "fraction/step",
+   "expr": "x/256",
+   "to_byte": "x*256",
+   "format": "0.000"
   }
  },
  "0x2CCE4": {

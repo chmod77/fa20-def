@@ -1089,6 +1089,27 @@ for d, nm in ((0x2E84C, 'Low, default'), (0x2E87C, 'Low, mode 3 / flag'), (0x2E8
 add(0x2E894, 'Intake Air Temperature Threshold vs Vehicle Speed [0xC1DDC]', 'Driver Demand / Torque Request', _c1d,
     ('C', 'x*5/2048-40', '(x+40)*2048/5', '0.0'))
 
+_fg19b4 = ('0x8B9F0 (from 0x8A584; p1 rpm FFFF2994, p2 load FFFF03A0): FUN_0016B4D8(&FFFF19B4, target, g << 8) with 0x16B4D8: y += (x-y)*k/65536, '
+           'so the gain g is a fraction per execution with 256 = 1.0. g = T_02CC80(rpm, load), or T_02CC94(rpm, load) while the input '
+           'p7 is falling (with latch). ')
+add(0x2CC80, 'Filter Gain FFFF19B4 (RPM x Load) [0x8B9F0]', 'Filters', _fg19b4, ('fraction/step', 'x/256', 'x*256', '0.000'))
+add(0x2CC94, 'Filter Gain FFFF19B4, falling input (RPM x Load) [0x8B9F0]', 'Filters', _fg19b4, ('fraction/step', 'x/256', 'x*256', '0.000'))
+
+# ---- filter gains proven by the first-order filter helpers (scripts/filter_gains.py -> evidence/filter-gains.tsv)
+_FH = {'0016b4d8': 'y += (x-y)*k/65536', '0016b55c': 'y += (x-y)*k/65536', '0016b520': 'y += (x-y)*k/65536 (signed)',
+       '0016b44c': 'y += (x-y)*k/256 (8-bit)', '0016b49c': 'y += (x-y)*k/256 (8-bit signed)'}
+_fgp = f'{ROOT}/evidence/filter-gains.tsv'
+if os.path.exists(_fgp):
+    for _l in list(open(_fgp))[1:]:
+        _d, _fn, _h, _tg, _sc = _l.split('\t'); _sc = int(_sc); _dd = int(_d, 16)
+        if _dd in S:
+            continue
+        _tgt = _tg.replace('&DAT_', '').replace('&', '').upper()
+        add(_dd, f'Filter Gain {_tgt} [0x{int(_fn,16):X}]', 'Filters',
+            f'0x{int(_fn,16):X}: FUN_{_h}(&{_tgt}, target, gain) with 0x{int(_h,16):X}: {_FH[_h]}; the lookup result is the gain argument'
+            f'{" shifted left (x256)" if _sc == 256 else ""}, so the table is a fraction per execution with {_sc} = 1.0.',
+            ('fraction/step', f'x/{_sc}', f'x*{_sc}', '0.000' if _sc == 256 else '0.0000'))
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

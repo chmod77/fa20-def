@@ -15,7 +15,10 @@ for p in sorted(glob.glob(f'{ROOT}/cdump/*.c')):
         args = [a.strip() for a in re.split(r',(?![^()]*\))', m.group(2))]
         if len(args) < 3:
             continue
-        a3 = re.sub(r'^\((?:u?int|short|ushort|char|byte)\)\s*', '', args[2])
+        a3 = args[2]; sh = 0
+        ms = re.fullmatch(r'\(*\s*(.*?)\s*\)*\s*<<\s*(\d+)\s*\)*', a3)
+        if ms: a3, sh = ms.group(1), int(ms.group(2))
+        a3 = re.sub(r'^\((?:u?int|short|ushort|char|byte)\)\s*', '', a3)
         a3 = re.sub(r'\s*&\s*0xff(ff)?$', '', a3).strip('() ')
         d = None
         mm = re.fullmatch(r'LK_[0-9A-F]+\(\(uint\)&T_([0-9A-F]{6}).*', a3)
@@ -30,7 +33,7 @@ for p in sorted(glob.glob(f'{ROOT}/cdump/*.c')):
                 if len(re.findall(r'\b' + re.escape(a3) + r'\s*=[^=]', between)) == 1:
                     d = dd
         if d:
-            rows.append((d, fn, m.group(1), args[0], HELP[m.group(1)]))
+            rows.append((d, fn, m.group(1), args[0], HELP[m.group(1)] >> sh))
 seen = set()
 with open(f'{ROOT}/evidence/filter-gains.tsv', 'w') as f:
     f.write('descriptor\tfunction\thelper\ttarget\tscale\n')

@@ -2,6 +2,7 @@
 # Rebuild semantics + definitions and validate both with RomRaider's parser (needs Xvfb for RomRaider's Settings).
 set -euo pipefail
 cd "$(dirname "$0")/.."
+python3 scripts/filter_gains.py >/dev/null
 python3 scripts/semantics_db.py
 python3 scripts/table_sinks.py
 python3 scripts/build_named_definition.py
