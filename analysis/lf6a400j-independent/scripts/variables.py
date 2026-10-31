@@ -176,3 +176,7 @@ V2.update({
 V2.update({
  0xFFFF1276:('Target Fuel Rail Pressure','kPa','x*1250/2048','x*2048/1250','OBD PID 0x6D bytes B-C (commanded FRP A, 10 kPa/bit) via 0x10C408 x*125/2048 -> 12F6 -> 39D2 (handler 0x71C92)'),
 })
+V2.update({
+ 0xFFFF0CFE:('Target Idle Speed (final)','rpm','x*25/128','x*128/25','0xAB09C out (stack slot 0x8C = FFFF0CEA, +20; disasm 0xA884A..0xA8C44) = 0D0A/4 + adjustment'),
+ 0xFFFF0D0C:('Target Idle Speed Ramp Step','rpm/step','x*25/512','x*512/25','0xAB3C4; 0xAB2FC rate limit on FFFF0D0A'),
+})

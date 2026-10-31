@@ -1937,6 +1937,292 @@
    "format": "0.00"
   }
  },
+ "0x2DDF8": {
+  "status": "identified",
+  "name": "Target Idle Speed Ramp Rate (transition index 2)",
+  "category": "Idle Speed Control - Target",
+  "evidence": "0xAB3C4 -> FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE.",
+  "description": "",
+  "data": {
+   "units": "rpm/step",
+   "expr": "x*25/512",
+   "to_byte": "x*512/25",
+   "format": "0.00"
+  }
+ },
+ "0x2DE04": {
+  "status": "identified",
+  "name": "Target Idle Speed Ramp Rate (transition index 3)",
+  "category": "Idle Speed Control - Target",
+  "evidence": "0xAB3C4 -> FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE.",
+  "description": "",
+  "data": {
+   "units": "rpm/step",
+   "expr": "x*25/512",
+   "to_byte": "x*512/25",
+   "format": "0.00"
+  }
+ },
+ "0x2DE10": {
+  "status": "identified",
+  "name": "Target Idle Speed Ramp Rate (transition index 12)",
+  "category": "Idle Speed Control - Target",
+  "evidence": "0xAB3C4 -> FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE.",
+  "description": "",
+  "data": {
+   "units": "rpm/step",
+   "expr": "x*25/512",
+   "to_byte": "x*512/25",
+   "format": "0.00"
+  }
+ },
+ "0x2DE1C": {
+  "status": "identified",
+  "name": "Target Idle Speed Ramp Rate (transition index 13)",
+  "category": "Idle Speed Control - Target",
+  "evidence": "0xAB3C4 -> FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE.",
+  "description": "",
+  "data": {
+   "units": "rpm/step",
+   "expr": "x*25/512",
+   "to_byte": "x*512/25",
+   "format": "0.00"
+  }
+ },
+ "0x2DE28": {
+  "status": "identified",
+  "name": "Target Idle Speed Ramp Rate (transition index 14)",
+  "category": "Idle Speed Control - Target",
+  "evidence": "0xAB3C4 -> FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE.",
+  "description": "",
+  "data": {
+   "units": "rpm/step",
+   "expr": "x*25/512",
+   "to_byte": "x*512/25",
+   "format": "0.00"
+  }
+ },
+ "0x2DE34": {
+  "status": "identified",
+  "name": "Target Idle Speed Ramp Rate (transition index 15)",
+  "category": "Idle Speed Control - Target",
+  "evidence": "0xAB3C4 -> FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE.",
+  "description": "",
+  "data": {
+   "units": "rpm/step",
+   "expr": "x*25/512",
+   "to_byte": "x*512/25",
+   "format": "0.00"
+  }
+ },
+ "0x2DE40": {
+  "status": "identified",
+  "name": "Target Idle Speed Ramp Rate (transition index 16)",
+  "category": "Idle Speed Control - Target",
+  "evidence": "0xAB3C4 -> FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE.",
+  "description": "",
+  "data": {
+   "units": "rpm/step",
+   "expr": "x*25/512",
+   "to_byte": "x*512/25",
+   "format": "0.00"
+  }
+ },
+ "0x2DE4C": {
+  "status": "identified",
+  "name": "Target Idle Speed Ramp Rate (transition index 17)",
+  "category": "Idle Speed Control - Target",
+  "evidence": "0xAB3C4 -> FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE.",
+  "description": "",
+  "data": {
+   "units": "rpm/step",
+   "expr": "x*25/512",
+   "to_byte": "x*512/25",
+   "format": "0.00"
+  }
+ },
+ "0x2DE58": {
+  "status": "identified",
+  "name": "Target Idle Speed Ramp Rate (transition index 18)",
+  "category": "Idle Speed Control - Target",
+  "evidence": "0xAB3C4 -> FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE.",
+  "description": "",
+  "data": {
+   "units": "rpm/step",
+   "expr": "x*25/512",
+   "to_byte": "x*512/25",
+   "format": "0.00"
+  }
+ },
+ "0x2DE64": {
+  "status": "identified",
+  "name": "Target Idle Speed Ramp Rate (transition index 19)",
+  "category": "Idle Speed Control - Target",
+  "evidence": "0xAB3C4 -> FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE.",
+  "description": "",
+  "data": {
+   "units": "rpm/step",
+   "expr": "x*25/512",
+   "to_byte": "x*512/25",
+   "format": "0.00"
+  }
+ },
+ "0x2DE70": {
+  "status": "identified",
+  "name": "Target Idle Speed Ramp Rate (transition index 20)",
+  "category": "Idle Speed Control - Target",
+  "evidence": "0xAB3C4 -> FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE.",
+  "description": "",
+  "data": {
+   "units": "rpm/step",
+   "expr": "x*25/512",
+   "to_byte": "x*512/25",
+   "format": "0.00"
+  }
+ },
+ "0x2DE7C": {
+  "status": "identified",
+  "name": "Target Idle Speed Ramp Rate (transition index 21)",
+  "category": "Idle Speed Control - Target",
+  "evidence": "0xAB3C4 -> FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE.",
+  "description": "",
+  "data": {
+   "units": "rpm/step",
+   "expr": "x*25/512",
+   "to_byte": "x*512/25",
+   "format": "0.00"
+  }
+ },
+ "0x2DE88": {
+  "status": "identified",
+  "name": "Target Idle Speed Ramp Rate (transition index 4)",
+  "category": "Idle Speed Control - Target",
+  "evidence": "0xAB3C4 -> FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE.",
+  "description": "",
+  "data": {
+   "units": "rpm/step",
+   "expr": "x*25/512",
+   "to_byte": "x*512/25",
+   "format": "0.00"
+  }
+ },
+ "0x2DE94": {
+  "status": "identified",
+  "name": "Target Idle Speed Ramp Rate (transition index 22)",
+  "category": "Idle Speed Control - Target",
+  "evidence": "0xAB3C4 -> FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE.",
+  "description": "",
+  "data": {
+   "units": "rpm/step",
+   "expr": "x*25/512",
+   "to_byte": "x*512/25",
+   "format": "0.00"
+  }
+ },
+ "0x2DEA0": {
+  "status": "identified",
+  "name": "Target Idle Speed Ramp Rate (transition index 23)",
+  "category": "Idle Speed Control - Target",
+  "evidence": "0xAB3C4 -> FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE.",
+  "description": "",
+  "data": {
+   "units": "rpm/step",
+   "expr": "x*25/512",
+   "to_byte": "x*512/25",
+   "format": "0.00"
+  }
+ },
+ "0x2DEAC": {
+  "status": "identified",
+  "name": "Target Idle Speed Ramp Rate (transition index 5)",
+  "category": "Idle Speed Control - Target",
+  "evidence": "0xAB3C4 -> FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE.",
+  "description": "",
+  "data": {
+   "units": "rpm/step",
+   "expr": "x*25/512",
+   "to_byte": "x*512/25",
+   "format": "0.00"
+  }
+ },
+ "0x2DEB8": {
+  "status": "identified",
+  "name": "Target Idle Speed Ramp Rate (transition index 6)",
+  "category": "Idle Speed Control - Target",
+  "evidence": "0xAB3C4 -> FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE.",
+  "description": "",
+  "data": {
+   "units": "rpm/step",
+   "expr": "x*25/512",
+   "to_byte": "x*512/25",
+   "format": "0.00"
+  }
+ },
+ "0x2DEC4": {
+  "status": "identified",
+  "name": "Target Idle Speed Ramp Rate (transition index 7)",
+  "category": "Idle Speed Control - Target",
+  "evidence": "0xAB3C4 -> FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE.",
+  "description": "",
+  "data": {
+   "units": "rpm/step",
+   "expr": "x*25/512",
+   "to_byte": "x*512/25",
+   "format": "0.00"
+  }
+ },
+ "0x2DED0": {
+  "status": "identified",
+  "name": "Target Idle Speed Ramp Rate (transition index 8)",
+  "category": "Idle Speed Control - Target",
+  "evidence": "0xAB3C4 -> FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE.",
+  "description": "",
+  "data": {
+   "units": "rpm/step",
+   "expr": "x*25/512",
+   "to_byte": "x*512/25",
+   "format": "0.00"
+  }
+ },
+ "0x2DEDC": {
+  "status": "identified",
+  "name": "Target Idle Speed Ramp Rate (transition index 9)",
+  "category": "Idle Speed Control - Target",
+  "evidence": "0xAB3C4 -> FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE.",
+  "description": "",
+  "data": {
+   "units": "rpm/step",
+   "expr": "x*25/512",
+   "to_byte": "x*512/25",
+   "format": "0.00"
+  }
+ },
+ "0x2DEE8": {
+  "status": "identified",
+  "name": "Target Idle Speed Ramp Rate (transition index 10)",
+  "category": "Idle Speed Control - Target",
+  "evidence": "0xAB3C4 -> FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE.",
+  "description": "",
+  "data": {
+   "units": "rpm/step",
+   "expr": "x*25/512",
+   "to_byte": "x*512/25",
+   "format": "0.00"
+  }
+ },
+ "0x2DEF4": {
+  "status": "identified",
+  "name": "Target Idle Speed Ramp Rate (transition index 11)",
+  "category": "Idle Speed Control - Target",
+  "evidence": "0xAB3C4 -> FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE.",
+  "description": "",
+  "data": {
+   "units": "rpm/step",
+   "expr": "x*25/512",
+   "to_byte": "x*512/25",
+   "format": "0.00"
+  }
+ },
  "0x2E588": {
   "status": "identified",
   "name": "Wastegate Duty Initial",

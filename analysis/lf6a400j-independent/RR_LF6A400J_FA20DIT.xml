@@ -2265,135 +2265,135 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02DDF8] (Coolant Temperature (filtered, word))" category="Unidentified - Idle Speed Control" storageaddress="1356C" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DDF8. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Target Idle Speed Ramp Rate (transition index 2)" category="Idle Speed Control - Target" storageaddress="1356C" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DDF8. Evidence: 0xAB3C4 -&gt; FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE." sizey="16">
+      <scaling units="rpm/step" expression="x*25/512" to_byte="x*512/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02DE04] (Coolant Temperature (filtered, word))" category="Unidentified - Idle Speed Control" storageaddress="1358C" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DE04. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Target Idle Speed Ramp Rate (transition index 3)" category="Idle Speed Control - Target" storageaddress="1358C" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DE04. Evidence: 0xAB3C4 -&gt; FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE." sizey="16">
+      <scaling units="rpm/step" expression="x*25/512" to_byte="x*512/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02DE88] (Coolant Temperature (filtered, word))" category="Unidentified - Idle Speed Control" storageaddress="135AC" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DE88. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Target Idle Speed Ramp Rate (transition index 4)" category="Idle Speed Control - Target" storageaddress="135AC" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DE88. Evidence: 0xAB3C4 -&gt; FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE." sizey="16">
+      <scaling units="rpm/step" expression="x*25/512" to_byte="x*512/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02DEAC] (Coolant Temperature (filtered, word))" category="Unidentified - Idle Speed Control" storageaddress="135CC" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DEAC. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Target Idle Speed Ramp Rate (transition index 5)" category="Idle Speed Control - Target" storageaddress="135CC" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DEAC. Evidence: 0xAB3C4 -&gt; FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE." sizey="16">
+      <scaling units="rpm/step" expression="x*25/512" to_byte="x*512/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02DEB8] (Coolant Temperature (filtered, word))" category="Unidentified - Idle Speed Control" storageaddress="135EC" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DEB8. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Target Idle Speed Ramp Rate (transition index 6)" category="Idle Speed Control - Target" storageaddress="135EC" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DEB8. Evidence: 0xAB3C4 -&gt; FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE." sizey="16">
+      <scaling units="rpm/step" expression="x*25/512" to_byte="x*512/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02DEC4] (Coolant Temperature (filtered, word))" category="Unidentified - Idle Speed Control" storageaddress="1360C" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DEC4. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Target Idle Speed Ramp Rate (transition index 7)" category="Idle Speed Control - Target" storageaddress="1360C" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DEC4. Evidence: 0xAB3C4 -&gt; FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE." sizey="16">
+      <scaling units="rpm/step" expression="x*25/512" to_byte="x*512/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02DED0] (Coolant Temperature (filtered, word))" category="Unidentified - Idle Speed Control" storageaddress="1362C" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DED0. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Target Idle Speed Ramp Rate (transition index 8)" category="Idle Speed Control - Target" storageaddress="1362C" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DED0. Evidence: 0xAB3C4 -&gt; FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE." sizey="16">
+      <scaling units="rpm/step" expression="x*25/512" to_byte="x*512/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02DEDC] (Coolant Temperature (filtered, word))" category="Unidentified - Idle Speed Control" storageaddress="1364C" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DEDC. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Target Idle Speed Ramp Rate (transition index 9)" category="Idle Speed Control - Target" storageaddress="1364C" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DEDC. Evidence: 0xAB3C4 -&gt; FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE." sizey="16">
+      <scaling units="rpm/step" expression="x*25/512" to_byte="x*512/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02DEE8] (Coolant Temperature (filtered, word))" category="Unidentified - Idle Speed Control" storageaddress="1366C" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DEE8. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Target Idle Speed Ramp Rate (transition index 10)" category="Idle Speed Control - Target" storageaddress="1366C" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DEE8. Evidence: 0xAB3C4 -&gt; FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE." sizey="16">
+      <scaling units="rpm/step" expression="x*25/512" to_byte="x*512/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02DEF4] (Coolant Temperature (filtered, word))" category="Unidentified - Idle Speed Control" storageaddress="1368C" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DEF4. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Target Idle Speed Ramp Rate (transition index 11)" category="Idle Speed Control - Target" storageaddress="1368C" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DEF4. Evidence: 0xAB3C4 -&gt; FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE." sizey="16">
+      <scaling units="rpm/step" expression="x*25/512" to_byte="x*512/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02DE10] (Coolant Temperature (filtered, word))" category="Unidentified - Idle Speed Control" storageaddress="136AC" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DE10. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Target Idle Speed Ramp Rate (transition index 12)" category="Idle Speed Control - Target" storageaddress="136AC" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DE10. Evidence: 0xAB3C4 -&gt; FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE." sizey="16">
+      <scaling units="rpm/step" expression="x*25/512" to_byte="x*512/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02DE1C] (Coolant Temperature (filtered, word))" category="Unidentified - Idle Speed Control" storageaddress="136CC" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DE1C. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Target Idle Speed Ramp Rate (transition index 13)" category="Idle Speed Control - Target" storageaddress="136CC" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DE1C. Evidence: 0xAB3C4 -&gt; FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE." sizey="16">
+      <scaling units="rpm/step" expression="x*25/512" to_byte="x*512/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02DE28] (Coolant Temperature (filtered, word))" category="Unidentified - Idle Speed Control" storageaddress="136EC" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DE28. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Target Idle Speed Ramp Rate (transition index 14)" category="Idle Speed Control - Target" storageaddress="136EC" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DE28. Evidence: 0xAB3C4 -&gt; FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE." sizey="16">
+      <scaling units="rpm/step" expression="x*25/512" to_byte="x*512/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02DE34] (Coolant Temperature (filtered, word))" category="Unidentified - Idle Speed Control" storageaddress="1370C" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DE34. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Target Idle Speed Ramp Rate (transition index 15)" category="Idle Speed Control - Target" storageaddress="1370C" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DE34. Evidence: 0xAB3C4 -&gt; FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE." sizey="16">
+      <scaling units="rpm/step" expression="x*25/512" to_byte="x*512/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02DE40] (Coolant Temperature (filtered, word))" category="Unidentified - Idle Speed Control" storageaddress="1372C" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DE40. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Target Idle Speed Ramp Rate (transition index 16)" category="Idle Speed Control - Target" storageaddress="1372C" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DE40. Evidence: 0xAB3C4 -&gt; FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE." sizey="16">
+      <scaling units="rpm/step" expression="x*25/512" to_byte="x*512/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02DE4C] (Coolant Temperature (filtered, word))" category="Unidentified - Idle Speed Control" storageaddress="1374C" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DE4C. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Target Idle Speed Ramp Rate (transition index 17)" category="Idle Speed Control - Target" storageaddress="1374C" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DE4C. Evidence: 0xAB3C4 -&gt; FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE." sizey="16">
+      <scaling units="rpm/step" expression="x*25/512" to_byte="x*512/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02DE58] (Coolant Temperature (filtered, word))" category="Unidentified - Idle Speed Control" storageaddress="1376C" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DE58. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Target Idle Speed Ramp Rate (transition index 18)" category="Idle Speed Control - Target" storageaddress="1376C" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DE58. Evidence: 0xAB3C4 -&gt; FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE." sizey="16">
+      <scaling units="rpm/step" expression="x*25/512" to_byte="x*512/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02DE64] (Coolant Temperature (filtered, word))" category="Unidentified - Idle Speed Control" storageaddress="1378C" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DE64. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Target Idle Speed Ramp Rate (transition index 19)" category="Idle Speed Control - Target" storageaddress="1378C" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DE64. Evidence: 0xAB3C4 -&gt; FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE." sizey="16">
+      <scaling units="rpm/step" expression="x*25/512" to_byte="x*512/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02DE70] (Coolant Temperature (filtered, word))" category="Unidentified - Idle Speed Control" storageaddress="137AC" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DE70. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Target Idle Speed Ramp Rate (transition index 20)" category="Idle Speed Control - Target" storageaddress="137AC" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DE70. Evidence: 0xAB3C4 -&gt; FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE." sizey="16">
+      <scaling units="rpm/step" expression="x*25/512" to_byte="x*512/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02DE7C] (Coolant Temperature (filtered, word))" category="Unidentified - Idle Speed Control" storageaddress="137CC" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DE7C. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Target Idle Speed Ramp Rate (transition index 21)" category="Idle Speed Control - Target" storageaddress="137CC" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DE7C. Evidence: 0xAB3C4 -&gt; FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE." sizey="16">
+      <scaling units="rpm/step" expression="x*25/512" to_byte="x*512/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02DE94] (Coolant Temperature (filtered, word))" category="Unidentified - Idle Speed Control" storageaddress="137EC" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DE94. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Target Idle Speed Ramp Rate (transition index 22)" category="Idle Speed Control - Target" storageaddress="137EC" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DE94. Evidence: 0xAB3C4 -&gt; FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE." sizey="16">
+      <scaling units="rpm/step" expression="x*25/512" to_byte="x*512/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02DEA0] (Coolant Temperature (filtered, word))" category="Unidentified - Idle Speed Control" storageaddress="1380C" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DEA0. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Target Idle Speed Ramp Rate (transition index 23)" category="Idle Speed Control - Target" storageaddress="1380C" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2DEA0. Evidence: 0xAB3C4 -&gt; FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE." sizey="16">
+      <scaling units="rpm/step" expression="x*25/512" to_byte="x*512/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>

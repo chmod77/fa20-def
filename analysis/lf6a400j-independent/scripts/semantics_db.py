@@ -488,6 +488,16 @@ add(0x2F928, 'Target Fuel Rail Pressure (Mode 1)', FRP, evf + 'FFFF0541 = 1 (vs 
 add(0x2F940, 'Target Fuel Rail Pressure (Mode 3)', FRP, evf + 'FFFF0541 = 3, FFFEF152.5 clear (vs coolant).', FRP16)
 add(0x2F934, 'Target Fuel Rail Pressure (Mode 3, FFFEF152.5)', FRP, evf + 'FFFF0541 = 3, FFFEF152.5 set (vs coolant).', FRP16)
 
+# 0xAB3C4 (FFFF04D7 mode, coolant FFFEEEDE -> FFFF0D0C): transition index n (from previous mode FFFEC4A9 -> new mode, held in FFFEC4A8)
+#   selects a coolant table; 0xAB2FC limits the change of FFFF0D0A per execution to FFFF0D0C (0D0A units, rpm = x*25/512).
+RAMP = {2: 0x2DDF8, 3: 0x2DE04, 4: 0x2DE88, 5: 0x2DEAC, 6: 0x2DEB8, 7: 0x2DEC4, 8: 0x2DED0, 9: 0x2DEDC, 10: 0x2DEE8, 11: 0x2DEF4,
+        12: 0x2DE10, 13: 0x2DE1C, 14: 0x2DE28, 15: 0x2DE34, 16: 0x2DE40, 17: 0x2DE4C, 18: 0x2DE58, 19: 0x2DE64, 20: 0x2DE70,
+        21: 0x2DE7C, 22: 0x2DE94, 23: 0x2DEA0}
+for n, d in RAMP.items():
+    add(d, f'Target Idle Speed Ramp Rate (transition index {n})', IDL,
+        '0xAB3C4 -> FFFF0D0C (index = transition code from previous to new idle mode FFFF04D7); 0xAB2FC limits the change of target '
+        'idle FFFF0D0A (rpm = x*25/512) per execution to FFFF0D0C. Input coolant FFFEEEDE.', ('rpm/step', 'x*25/512', 'x*512/25', '0.00'))
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
