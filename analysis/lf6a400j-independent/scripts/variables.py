@@ -141,3 +141,8 @@ V2.update({
  0xFFFF299C:('Engine Speed (byte, 25 rpm)','rpm','x*25','x/25','0x143640: FFFF1A3A = 48e6/period (-> FFFF2994 rpm, x*25/128, copied at 0x154C8C/0x157038/0x15824E) and FFFF1A3C = ((3e6/period)+4)>>3 = FFFF1A3A/128 (rounded); FFFF299C = FFFF1A3C (0x154C9A/0x157042/0x15825A) => rpm = x*128*25/128 = x*25'),
  0xFFFF1A3C:('Engine Speed (byte, 25 rpm, source)','rpm','x*25','x/25','0x143640, see FFFF299C'),
 })
+
+V2.update({
+ 0xFFFEF0A6:('Battery Temperature (control)','C','x-50','x+50','0x3D1B2: same table 0x163904 as SSM battery temperature FFFEF0D2 (SSM 0x273, C=x-50), input FFFEF0D0'),
+ 0xFFFEED18:('Fuel Rail Pressure (filtered)','kPa','x*639630/1048576','x*1048576/639630','0x3DE28: same signal uVar4 as OBD FRP FFFEED16 (PID23) with a different filter constant'),
+})

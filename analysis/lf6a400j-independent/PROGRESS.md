@@ -14,10 +14,10 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
 ## Coverage (2026-10-31, session 2)
 | measure | value |
 |---|---|
-| distinct table views | 1044 (1181 descriptors) |
-| identified (name and output scaling proven) | 35 |
+| table views in XML | 1165 (1044 descriptor views of 1181 descriptors + 121 helper-routine tables) |
+| identified (name and output scaling proven) | 67 |
 | partial (role proven, units unresolved) | 1 |
-| axes with a proven physical scaling | 607 / 1390 |
+| axes with a proven physical scaling / name | 657 / 1443 (incl. 68 static axes) |
 | lookup inputs resolved to a RAM variable (`evidence/c-input-origins.tsv`) | 971 / 1556 |
 | proven RAM variables (`scripts/variables.py` V and V2) | about 110 |
 
@@ -33,6 +33,19 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
 - `scripts/subsystems.py`: assigns each table to a task root.
 - `scripts/ssm_join.py` and `scripts/ssm_anchor_derive.py`: map SSM addresses through the ECU table at 0x15F9D8, the formatter and the public SSM conversions.
 - `scripts/semantics_db.py`: every identification and its evidence. It generates `evidence/semantics.json`.
+
+## Session 2 additions (later)
+- Secondary tables: 121 tables read by runtime helpers in 0x16B0AC..0x16BCEC (struct and fixed-step formats) are in
+  `evidence/helper-tables.json` and in the XML. The sensor scalings are identified: MAF g/s = x/76800 (0x4C53C, OBD PID10);
+  IAT, IAT2, ECT, oil, battery temperature and fuel level.
+- Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8. It converts kW to Nm with 60000/2π, stores Nm*80+16000, and clamps
+  at exactly the u16 range. The requested-torque pedal maps are identified, and FFFF0A62 is the Requested Torque X axis of the boost maps.
+- FFFF299C = engine speed / 25 (0x143640, from the crank period). Target throttle T_02CA14 (FFFF0AF4, SSM 0x15).
+- DTC table at 0x1B2D8: 291 codes, P/C/B/U in the top 2 bits. Reporter 0x5FBFE(index). The dispatchers call each monitor and then
+  report its indices (subsystems.dtc_map). Few table-bearing tasks sit under these dispatchers, so the diagnostic tables
+  (tasks 0xF6B24, 0xB42AC, 0x1011EC, 0x11F134 and others) still need monitor-flag tracing.
+- Known blind spot: knock retard FFFF04AD and injector pulse width FFFF2B4E are written by code Ghidra did not discover
+  (for example the region around 0x154C60 that writes FFFF2994/FFFF299C). Next: create functions in 0x150000-0x15A000 and re-export.
 
 ## Key proven chains
 - **Ignition.** `0x98FAC`: total timing `FFFF046C` (SSM 0x11, deg = x/2) is the sum of components in 0.5° units. The base comes from four 22x16 maps (`0x86758`), selected by `FFFF04F4.7` and `FFFF054A.4`.
