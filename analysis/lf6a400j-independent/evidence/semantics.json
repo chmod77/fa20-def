@@ -6029,6 +6029,71 @@
    "format": "0.00"
   }
  },
+ "0x2F250": {
+  "status": "identified",
+  "name": "Engine Speed Change Threshold vs IAT (gear 1, inactive: 0x17F4A=1)",
+  "category": "Misfire / Roughness Detection",
+  "evidence": "0xE541C (from 0xE4728; p1 FFFEF192, p2 FFFF2B0C, p3 FFFF2B0E, p4 IAT FFFEEEE2, p5 Gear FFFF03AC, p6 FFFF0D70). Disassembly 0xE543C..0xE54DE: when calibration byte 0x17F4A == 0, flag FED314.2 = (T_gear(IAT) <= |FFFEF192|) (gear 1-4 own tables, 5/6 T_02F280). 0x4D04C: FFFEF192 = sat16(FFFF2ADA - previous FFFF2ADA) = change of Engine Speed (OBD copy, rpm = x*25/128) per execution, so T is rpm change per execution. In this ROM 0x17F4A = 1 (branch 2 with FFFF2B0C is used; Ghidra dropped this branch as unreachable), so these tables are inactive. ",
+  "description": "",
+  "data": {
+   "units": "rpm/step",
+   "expr": "x*25/128",
+   "to_byte": "x*128/25",
+   "format": "0.0"
+  }
+ },
+ "0x2F25C": {
+  "status": "identified",
+  "name": "Engine Speed Change Threshold vs IAT (gear 2, inactive: 0x17F4A=1)",
+  "category": "Misfire / Roughness Detection",
+  "evidence": "0xE541C (from 0xE4728; p1 FFFEF192, p2 FFFF2B0C, p3 FFFF2B0E, p4 IAT FFFEEEE2, p5 Gear FFFF03AC, p6 FFFF0D70). Disassembly 0xE543C..0xE54DE: when calibration byte 0x17F4A == 0, flag FED314.2 = (T_gear(IAT) <= |FFFEF192|) (gear 1-4 own tables, 5/6 T_02F280). 0x4D04C: FFFEF192 = sat16(FFFF2ADA - previous FFFF2ADA) = change of Engine Speed (OBD copy, rpm = x*25/128) per execution, so T is rpm change per execution. In this ROM 0x17F4A = 1 (branch 2 with FFFF2B0C is used; Ghidra dropped this branch as unreachable), so these tables are inactive. ",
+  "description": "",
+  "data": {
+   "units": "rpm/step",
+   "expr": "x*25/128",
+   "to_byte": "x*128/25",
+   "format": "0.0"
+  }
+ },
+ "0x2F268": {
+  "status": "identified",
+  "name": "Engine Speed Change Threshold vs IAT (gear 3, inactive: 0x17F4A=1)",
+  "category": "Misfire / Roughness Detection",
+  "evidence": "0xE541C (from 0xE4728; p1 FFFEF192, p2 FFFF2B0C, p3 FFFF2B0E, p4 IAT FFFEEEE2, p5 Gear FFFF03AC, p6 FFFF0D70). Disassembly 0xE543C..0xE54DE: when calibration byte 0x17F4A == 0, flag FED314.2 = (T_gear(IAT) <= |FFFEF192|) (gear 1-4 own tables, 5/6 T_02F280). 0x4D04C: FFFEF192 = sat16(FFFF2ADA - previous FFFF2ADA) = change of Engine Speed (OBD copy, rpm = x*25/128) per execution, so T is rpm change per execution. In this ROM 0x17F4A = 1 (branch 2 with FFFF2B0C is used; Ghidra dropped this branch as unreachable), so these tables are inactive. ",
+  "description": "",
+  "data": {
+   "units": "rpm/step",
+   "expr": "x*25/128",
+   "to_byte": "x*128/25",
+   "format": "0.0"
+  }
+ },
+ "0x2F274": {
+  "status": "identified",
+  "name": "Engine Speed Change Threshold vs IAT (gear 4, inactive: 0x17F4A=1)",
+  "category": "Misfire / Roughness Detection",
+  "evidence": "0xE541C (from 0xE4728; p1 FFFEF192, p2 FFFF2B0C, p3 FFFF2B0E, p4 IAT FFFEEEE2, p5 Gear FFFF03AC, p6 FFFF0D70). Disassembly 0xE543C..0xE54DE: when calibration byte 0x17F4A == 0, flag FED314.2 = (T_gear(IAT) <= |FFFEF192|) (gear 1-4 own tables, 5/6 T_02F280). 0x4D04C: FFFEF192 = sat16(FFFF2ADA - previous FFFF2ADA) = change of Engine Speed (OBD copy, rpm = x*25/128) per execution, so T is rpm change per execution. In this ROM 0x17F4A = 1 (branch 2 with FFFF2B0C is used; Ghidra dropped this branch as unreachable), so these tables are inactive. ",
+  "description": "",
+  "data": {
+   "units": "rpm/step",
+   "expr": "x*25/128",
+   "to_byte": "x*128/25",
+   "format": "0.0"
+  }
+ },
+ "0x2F280": {
+  "status": "identified",
+  "name": "Engine Speed Change Threshold vs IAT (gear 5-6, inactive: 0x17F4A=1)",
+  "category": "Misfire / Roughness Detection",
+  "evidence": "0xE541C (from 0xE4728; p1 FFFEF192, p2 FFFF2B0C, p3 FFFF2B0E, p4 IAT FFFEEEE2, p5 Gear FFFF03AC, p6 FFFF0D70). Disassembly 0xE543C..0xE54DE: when calibration byte 0x17F4A == 0, flag FED314.2 = (T_gear(IAT) <= |FFFEF192|) (gear 1-4 own tables, 5/6 T_02F280). 0x4D04C: FFFEF192 = sat16(FFFF2ADA - previous FFFF2ADA) = change of Engine Speed (OBD copy, rpm = x*25/128) per execution, so T is rpm change per execution. In this ROM 0x17F4A = 1 (branch 2 with FFFF2B0C is used; Ghidra dropped this branch as unreachable), so these tables are inactive. ",
+  "description": "",
+  "data": {
+   "units": "rpm/step",
+   "expr": "x*25/128",
+   "to_byte": "x*128/25",
+   "format": "0.0"
+  }
+ },
  "0x2F28C": {
   "status": "identified",
   "name": "Time Threshold [0xE6908]",

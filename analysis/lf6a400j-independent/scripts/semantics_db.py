@@ -998,6 +998,17 @@ for d, nm, v in ((0x2E648, 'RPM x Coolant', 'A'), (0x2E670, 'FFFF0542 x Coolant'
     add(d, f'Ignition Timing Term 0532 ({nm}, set {v})', IGN, _532, DEG2)
 
 
+# ---- engine speed fluctuation thresholds 0xE541C, branch selected by calibration byte 0x17F4A (session 4)
+_esf = ('0xE541C (from 0xE4728; p1 FFFEF192, p2 FFFF2B0C, p3 FFFF2B0E, p4 IAT FFFEEEE2, p5 Gear FFFF03AC, p6 FFFF0D70). Disassembly '
+        '0xE543C..0xE54DE: when calibration byte 0x17F4A == 0, flag FED314.2 = (T_gear(IAT) <= |FFFEF192|) (gear 1-4 own tables, 5/6 '
+        'T_02F280). 0x4D04C: FFFEF192 = sat16(FFFF2ADA - previous FFFF2ADA) = change of Engine Speed (OBD copy, rpm = x*25/128) per '
+        'execution, so T is rpm change per execution. In this ROM 0x17F4A = 1 (branch 2 with FFFF2B0C is used; Ghidra dropped this '
+        'branch as unreachable), so these tables are inactive. ')
+for d, g in ((0x2F250, '1'), (0x2F25C, '2'), (0x2F268, '3'), (0x2F274, '4'), (0x2F280, '5-6')):
+    add(d, f'Engine Speed Change Threshold vs IAT (gear {g}, inactive: 0x17F4A=1)', 'Misfire / Roughness Detection', _esf,
+        ('rpm/step', 'x*25/128', 'x*128/25', '0.0'))
+
+
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
     print(len(S), 'entries')
