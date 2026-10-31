@@ -4305,9 +4305,9 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02E04C] (Coolant Temperature)" category="Unidentified - Task 0xAEBE8" storageaddress="1BBA0" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E04C. Lookup result stored to: FFFEC5C2. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature" storageaddress="1E46C" elements="16" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Injection Time Offset Lower Limit vs Coolant [0xAEFF4 -&gt; 1654]" category="Fuel Injection" storageaddress="1BBA0" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E04C. Evidence: 0x917EC (from 0x8A670, p6 = &amp;FFFF1644): u = 0x8000 + f*(1644 - 0x8000)/256 with f = 256 - FFFF041F (0xFF when 041F = 0); base pulse FFFF1544 (0.8 us units, -&gt; injection time FFFF1564, SSM 0x20) = 1.25*(3.2*(u - 32768) + ...), i.e. 3.2 us per count of (u - 32768). 0xAE80C: 1644[i] = 1654[i] + 164C[i] - 0x8000 (offset-32768 sum), so 1654 and 164C are injection time offsets: us = (x-32768)*3.2 (times f/256). 0xAEFF4 (from 0xAEBE8, p6 Coolant FFFF29A5, C = x-50): 1654[i] = max(T_02E04C(coolant), history[i] + step). Lookup result stored to: FFFEC5C2." sizey="16">
+      <scaling units="us" expression="(x-32768)*3.2" to_byte="x/3.2+32768" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature" storageaddress="1E46C" elements="16" storagetype="uint8" endian="big">
         <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
@@ -4380,15 +4380,15 @@
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02E028] (Coolant Temperature (filtered, word))" category="Unidentified - Task 0xAEBE8" storageaddress="1BCBA" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2E028. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Injection Time Offset Upper Limit vs Coolant [0xAE9B4 -&gt; 164C]" category="Fuel Injection" storageaddress="1BCBA" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2E028. Evidence: 0x917EC (from 0x8A670, p6 = &amp;FFFF1644): u = 0x8000 + f*(1644 - 0x8000)/256 with f = 256 - FFFF041F (0xFF when 041F = 0); base pulse FFFF1544 (0.8 us units, -&gt; injection time FFFF1564, SSM 0x20) = 1.25*(3.2*(u - 32768) + ...), i.e. 3.2 us per count of (u - 32768). 0xAE80C: 1644[i] = 1654[i] + 164C[i] - 0x8000 (offset-32768 sum), so 1654 and 164C are injection time offsets: us = (x-32768)*3.2 (times f/256). 0xAE9B4: see T_02E01C (upper clamp)." sizey="16">
+      <scaling units="us" expression="(x-32768)*3.2" to_byte="x/3.2+32768" format="0.0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02E01C] (Coolant Temperature (filtered, word))" category="Unidentified - Task 0xAEBE8" storageaddress="1BCDA" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2E01C. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Injection Time Offset Lower Limit vs Coolant [0xAE9B4 -&gt; 164C]" category="Fuel Injection" storageaddress="1BCDA" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2E01C. Evidence: 0x917EC (from 0x8A670, p6 = &amp;FFFF1644): u = 0x8000 + f*(1644 - 0x8000)/256 with f = 256 - FFFF041F (0xFF when 041F = 0); base pulse FFFF1544 (0.8 us units, -&gt; injection time FFFF1564, SSM 0x20) = 1.25*(3.2*(u - 32768) + ...), i.e. 3.2 us per count of (u - 32768). 0xAE80C: 1644[i] = 1654[i] + 164C[i] - 0x8000 (offset-32768 sum), so 1654 and 164C are injection time offsets: us = (x-32768)*3.2 (times f/256). 0xAE9B4 (from 0xAEBE8, p5 Coolant FFFEEEDE): 164C[i] = min(max(0x8000 + g*(163C[i] - 0x8000)/2048, T_02E01C), T_02E028)." sizey="16">
+      <scaling units="us" expression="(x-32768)*3.2" to_byte="x/3.2+32768" format="0.0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>

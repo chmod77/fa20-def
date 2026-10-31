@@ -1173,6 +1173,22 @@ for d, cond in ((0x2E0CC, 'default'), (0x2E0D8, 'FFFF04E8.5 set'), (0x2E0E4, 'FF
 add(0x2E0C0, 'Radiator Fan Duty vs FFFEF067 (inactive) [-> 0D3C]', 'Radiator Fan', _fan +
     '0xAF97C (p2 FFFEF067): 0D3C = 0 below 0x44 (0x36 with hysteresis), 0xFFFF at/above 0xFC (0xB8), else T(F067). Input FFFEF067 unresolved.', _FAN)
 
+# ---- per-cylinder injection time offsets (task 0xAEBE8)
+_ito = ('0x917EC (from 0x8A670, p6 = &FFFF1644): u = 0x8000 + f*(1644 - 0x8000)/256 with f = 256 - FFFF041F (0xFF when 041F = 0); base pulse '
+        'FFFF1544 (0.8 us units, -> injection time FFFF1564, SSM 0x20) = 1.25*(3.2*(u - 32768) + ...), i.e. 3.2 us per count of (u - 32768). '
+        '0xAE80C: 1644[i] = 1654[i] + 164C[i] - 0x8000 (offset-32768 sum), so 1654 and 164C are injection time offsets: us = (x-32768)*3.2 '
+        '(times f/256). ')
+_ITO = ('us', '(x-32768)*3.2', 'x/3.2+32768', '0.0')
+add(0x2E01C, 'Injection Time Offset Lower Limit vs Coolant [0xAE9B4 -> 164C]', INJ, _ito +
+    '0xAE9B4 (from 0xAEBE8, p5 Coolant FFFEEEDE): 164C[i] = min(max(0x8000 + g*(163C[i] - 0x8000)/2048, T_02E01C), T_02E028).', _ITO,
+    axes={'0': dict(name='Coolant Temperature (filtered, word)', units='C', expr='x*5/2048-40', to_byte='(x+40)*2048/5')})
+add(0x2E028, 'Injection Time Offset Upper Limit vs Coolant [0xAE9B4 -> 164C]', INJ, _ito +
+    '0xAE9B4: see T_02E01C (upper clamp).', _ITO,
+    axes={'0': dict(name='Coolant Temperature (filtered, word)', units='C', expr='x*5/2048-40', to_byte='(x+40)*2048/5')})
+add(0x2E04C, 'Injection Time Offset Lower Limit vs Coolant [0xAEFF4 -> 1654]', INJ, _ito +
+    '0xAEFF4 (from 0xAEBE8, p6 Coolant FFFF29A5, C = x-50): 1654[i] = max(T_02E04C(coolant), history[i] + step).', _ITO,
+    axes={'0': dict(name='Coolant Temperature', units='C', expr='x-50', to_byte='x+50')})
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

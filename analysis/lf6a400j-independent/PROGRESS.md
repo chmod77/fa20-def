@@ -182,6 +182,9 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
   so it is fan duty, not fuel level. 0xB0234 builds it from 0D48 (0xB0EF8: duty vs coolant T_02E0CC/0D8/0E4) and 0D3C (0xAF97C: T_02E0C0).
   0xAFDC0 calls these with enable p1 = 0, so they are labelled inactive. Task 0xAEBE8 writes 4-element per-cylinder arrays
   FFFF163C/1644/164C/1654 read by fuel code (0x8A670, 0x940E8 via pointers): next lead for its 29 tables. Coverage 577 of 1284.
+- Per-cylinder injection time offsets: 0x917EC makes base pulse 1544 = 1.25*(3.2*(u-32768) + ...) with u from FFFF1644[0], so
+  1644 = 1654 + 164C - 0x8000 (0xAE80C) are injection time offsets us = (x-32768)*3.2. Proven clamps T_02E01C/T_02E028 (0xAE9B4) and
+  T_02E04C (0xAEFF4); the gains in 0xAE9B4/0xAEFF4 are products of 3 tables (not separable). Coverage 580 of 1284.
 - Dead ends this session (documented so they are not repeated):
   * FFFF12C2 (axis of the pedal-limit T1 tables, compared with 12BE in the torque monitor): only a read literal (0xC50D0); writer not
     found by literal, GBR (+70 from 127C) or r0-offset searches.
