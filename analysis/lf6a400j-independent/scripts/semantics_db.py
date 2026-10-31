@@ -1008,6 +1008,19 @@ for d, g in ((0x2F250, '1'), (0x2F25C, '2'), (0x2F268, '3'), (0x2F274, '4'), (0x
     add(d, f'Engine Speed Change Threshold vs IAT (gear {g}, inactive: 0x17F4A=1)', 'Misfire / Roughness Detection', _esf,
         ('rpm/step', 'x*25/128', 'x*128/25', '0.0'))
 
+add(0x2CA34, 'Torque Filter Coefficient (RPM) [0x86D9C -> FFFF19AC]', 'Filters',
+    '0x86D9C (from 0x87478; p4 = rpm FFFF2994): FUN_0016B4D8(&FFFF19AC, FFFF0F56, T(rpm)) with 0x16B4D8: y += (x - y)*k/65536, so T is a '
+    'first-order filter gain (fraction per execution, 65536 = 1.0).', ('fraction/step', 'x/65536', 'x*65536', '0.0000'),
+    axes={'0': dict(name='Engine Speed', units='rpm', expr='x*25/128', to_byte='x*128/25')})
+
+_thl = ('0x88054 (from 0x87478; p1 Throttle Opening Angle target FFFF0AF4 (SSM 0x15, % = x/256), p2 rpm FFFF2994; output p15 = '
+        'FFFF09B4+0x166 = FFFF0B1A): u = min(max(0AF4*0xE60B/32768 + 10, 10), 0xB3C3); each active table T(rpm) replaces u when T < u '
+        '(direct comparison/assignment), so T is in u units: % = (x - 10)*128/58891. ')
+for d, cond in ((0x2CA9C, 'FFFF0675.2 set'), (0x2CAC0, 'FFFEF498.3 set'), (0x2CAB4, 'FFFEF32E.2 or .4 set'), (0x2CAA8, 'FFFEF498.2 set (final)')):
+    add(d, f'Throttle Opening Limit vs RPM ({cond})', 'Throttle', _thl + f'This table applies when {cond}.',
+        ('%', '(x-10)*128/58891', 'x*58891/128+10', '0.0'),
+        axes={'0': dict(name='Engine Speed', units='rpm', expr='x*25/128', to_byte='x*128/25')})
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

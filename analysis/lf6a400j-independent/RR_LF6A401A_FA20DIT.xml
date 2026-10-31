@@ -69,21 +69,21 @@
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02CAA8] (Engine Speed)" category="Unidentified - Ignition Timing - Base &amp; Torque Model / Task 0x12367C" storageaddress="8756" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CAA8, 0x30044. Lookup result stored to: 00088054:*param_15, FFFF141E. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="13176" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Throttle Opening Limit vs RPM (FFFEF498.2 set (final))" category="Throttle" storageaddress="8756" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CAA8, 0x30044. Evidence: 0x88054 (from 0x87478; p1 Throttle Opening Angle target FFFF0AF4 (SSM 0x15, % = x/256), p2 rpm FFFF2994; output p15 = FFFF09B4+0x166 = FFFF0B1A): u = min(max(0AF4*0xE60B/32768 + 10, 10), 0xB3C3); each active table T(rpm) replaces u when T &lt; u (direct comparison/assignment), so T is in u units: % = (x - 10)*128/58891. This table applies when FFFEF498.2 set (final). Lookup result stored to: 00088054:*param_15, FFFF141E." sizey="16">
+      <scaling units="%" expression="(x-10)*128/58891" to_byte="x*58891/128+10" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="13176" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02CAB4] (Engine Speed)" category="Unidentified - Ignition Timing - Base &amp; Torque Model / Task 0x12367C" storageaddress="8776" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CAB4, 0x30038. Lookup result stored to: 00088054:*param_15, FFFF141E. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="13176" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Throttle Opening Limit vs RPM (FFFEF32E.2 or .4 set)" category="Throttle" storageaddress="8776" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CAB4, 0x30038. Evidence: 0x88054 (from 0x87478; p1 Throttle Opening Angle target FFFF0AF4 (SSM 0x15, % = x/256), p2 rpm FFFF2994; output p15 = FFFF09B4+0x166 = FFFF0B1A): u = min(max(0AF4*0xE60B/32768 + 10, 10), 0xB3C3); each active table T(rpm) replaces u when T &lt; u (direct comparison/assignment), so T is in u units: % = (x - 10)*128/58891. This table applies when FFFEF32E.2 or .4 set. Lookup result stored to: 00088054:*param_15, FFFF141E." sizey="16">
+      <scaling units="%" expression="(x-10)*128/58891" to_byte="x*58891/128+10" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="13176" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02CAC0] (Engine Speed)" category="Unidentified - Ignition Timing - Base &amp; Torque Model / Task 0x12367C" storageaddress="8796" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CAC0, 0x3002C. Lookup result stored to: 00088054:*param_15, FFFF141E. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="13176" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Throttle Opening Limit vs RPM (FFFEF498.3 set)" category="Throttle" storageaddress="8796" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CAC0, 0x3002C. Evidence: 0x88054 (from 0x87478; p1 Throttle Opening Angle target FFFF0AF4 (SSM 0x15, % = x/256), p2 rpm FFFF2994; output p15 = FFFF09B4+0x166 = FFFF0B1A): u = min(max(0AF4*0xE60B/32768 + 10, 10), 0xB3C3); each active table T(rpm) replaces u when T &lt; u (direct comparison/assignment), so T is in u units: % = (x - 10)*128/58891. This table applies when FFFEF498.3 set. Lookup result stored to: 00088054:*param_15, FFFF141E." sizey="16">
+      <scaling units="%" expression="(x-10)*128/58891" to_byte="x*58891/128+10" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="13176" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -2148,15 +2148,15 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02CA34] (Engine Speed)" category="Unidentified - Ignition Timing - Base &amp; Torque Model" storageaddress="13150" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CA34. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="122F2" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Torque Filter Coefficient (RPM) [0x86D9C -&gt; FFFF19AC]" category="Filters" storageaddress="13150" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CA34. Evidence: 0x86D9C (from 0x87478; p4 = rpm FFFF2994): FUN_0016B4D8(&amp;FFFF19AC, FFFF0F56, T(rpm)) with 0x16B4D8: y += (x - y)*k/65536, so T is a first-order filter gain (fraction per execution, 65536 = 1.0)." sizey="16">
+      <scaling units="fraction/step" expression="x/65536" to_byte="x*65536" format="0.0000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="122F2" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02CA9C] (Engine Speed)" category="Unidentified - Ignition Timing - Base &amp; Torque Model / Task 0x12367C" storageaddress="13196" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CA9C, 0x30050. Lookup result stored to: 00088054:*param_15, FFFF141E. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="13176" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Throttle Opening Limit vs RPM (FFFF0675.2 set)" category="Throttle" storageaddress="13196" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CA9C, 0x30050. Evidence: 0x88054 (from 0x87478; p1 Throttle Opening Angle target FFFF0AF4 (SSM 0x15, % = x/256), p2 rpm FFFF2994; output p15 = FFFF09B4+0x166 = FFFF0B1A): u = min(max(0AF4*0xE60B/32768 + 10, 10), 0xB3C3); each active table T(rpm) replaces u when T &lt; u (direct comparison/assignment), so T is in u units: % = (x - 10)*128/58891. This table applies when FFFF0675.2 set. Lookup result stored to: 00088054:*param_15, FFFF141E." sizey="16">
+      <scaling units="%" expression="(x-10)*128/58891" to_byte="x*58891/128+10" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="13176" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
