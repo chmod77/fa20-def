@@ -5370,57 +5370,57 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x16 [D02F3A0] (Engine Speed (OBD copy) x ?)" category="Unidentified - Task 0x15307C" storageaddress="1F428" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2F3A0. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="1F3A8" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Intake AVCS Target Add A (weight 1-w, w=FFFF0E90)" category="AVCS - Target" storageaddress="1F428" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2F3A0. Evidence: 0xF8EE0: Intake AVCS target T = Tbase*Tect/128 + TA*(1-w) + TB*w, w = FFFF0E90/65536, deg = x*180/65536 (0xF92CC -&gt; FFFF11C0/11C4 vs measured FFFEF2AC/2AE). TA." sizex="16" sizey="16">
+      <scaling units="deg" expression="x*180/65536" to_byte="x*65536/180" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="1F3A8" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="1F398" elements="16" storagetype="uint8" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="X Axis" name="Engine Load" storageaddress="1F398" elements="16" storagetype="uint8" endian="big">
+        <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x16 [D02F3B4] (Engine Speed (OBD copy) x ?)" category="Unidentified - Task 0x15307C" storageaddress="1F628" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2F3B4. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="1F3D8" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Intake AVCS Target Add B (weight w=FFFF0E90, FFFF056C.7 clear)" category="AVCS - Target" storageaddress="1F628" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2F3B4. Evidence: 0xF8EE0: Intake AVCS target T = Tbase*Tect/128 + TA*(1-w) + TB*w, w = FFFF0E90/65536, deg = x*180/65536 (0xF92CC -&gt; FFFF11C0/11C4 vs measured FFFEF2AC/2AE). TB when FFFF056C bit 7 clear." sizex="16" sizey="16">
+      <scaling units="deg" expression="x*180/65536" to_byte="x*65536/180" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="1F3D8" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="1F3C8" elements="16" storagetype="uint8" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="X Axis" name="Engine Load" storageaddress="1F3C8" elements="16" storagetype="uint8" endian="big">
+        <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x16 [D02F3C8] (Engine Speed (OBD copy) x ?)" category="Unidentified - Task 0x15307C" storageaddress="1F828" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2F3C8. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="1F3D8" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Intake AVCS Target Add B (weight w=FFFF0E90, FFFF056C.7 set)" category="AVCS - Target" storageaddress="1F828" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2F3C8. Evidence: 0xF8EE0: Intake AVCS target T = Tbase*Tect/128 + TA*(1-w) + TB*w, w = FFFF0E90/65536, deg = x*180/65536 (0xF92CC -&gt; FFFF11C0/11C4 vs measured FFFEF2AC/2AE). TB when FFFF056C bit 7 set." sizex="16" sizey="16">
+      <scaling units="deg" expression="x*180/65536" to_byte="x*65536/180" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="1F3D8" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="1F3C8" elements="16" storagetype="uint8" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="X Axis" name="Engine Load" storageaddress="1F3C8" elements="16" storagetype="uint8" endian="big">
+        <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x16 [D02F3DC] (Engine Speed (OBD copy) x ?)" category="Unidentified - Task 0x15307C" storageaddress="1FA28" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2F3DC. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="1F408" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Intake AVCS Target Base" category="AVCS - Target" storageaddress="1FA28" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2F3DC. Evidence: 0xF8EE0: Intake AVCS target T = Tbase*Tect/128 + TA*(1-w) + TB*w, w = FFFF0E90/65536, deg = x*180/65536 (0xF92CC -&gt; FFFF11C0/11C4 vs measured FFFEF2AC/2AE). Tbase." sizex="16" sizey="16">
+      <scaling units="deg" expression="x*180/65536" to_byte="x*65536/180" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="1F408" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="1F3F8" elements="16" storagetype="uint8" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="X Axis" name="Engine Load" storageaddress="1F3F8" elements="16" storagetype="uint8" endian="big">
+        <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02F394] (Coolant Temperature (filtered, word))" category="Unidentified - Task 0x15307C" storageaddress="1FC28" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F394. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Intake AVCS Target Base Coolant Multiplier" category="AVCS - Target" storageaddress="1FC28" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F394. Evidence: 0xF8EE0: Intake AVCS target T = Tbase*Tect/128 + TA*(1-w) + TB*w, w = FFFF0E90/65536, deg = x*180/65536 (0xF92CC -&gt; FFFF11C0/11C4 vs measured FFFEF2AC/2AE). Tect: u8 multiplier, (u8*s16)*2^25&gt;&gt;32 = /128." sizey="16">
+      <scaling units="multiplier" expression="x/128" to_byte="x*128" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02F37C] (Coolant Temperature (filtered, word))" category="Unidentified - Task 0x15307C" storageaddress="1FC38" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2F37C. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Intake AVCS Target, Alternate Mode (FFFEF152.5), FFFF076C.3 set" category="AVCS - Target" storageaddress="1FC38" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2F37C. Evidence: 0xF8EE0: Intake AVCS target T = Tbase*Tect/128 + TA*(1-w) + TB*w, w = FFFF0E90/65536, deg = x*180/65536 (0xF92CC -&gt; FFFF11C0/11C4 vs measured FFFEF2AC/2AE). Replaces T when FFFEF152 bit 5 set; rate-limited 0x1D counts/step." sizey="16">
+      <scaling units="deg" expression="x*180/65536" to_byte="x*65536/180" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02F388] (Coolant Temperature (filtered, word))" category="Unidentified - Task 0x15307C" storageaddress="1FC58" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2F388. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Intake AVCS Target, Alternate Mode (FFFEF152.5), FFFF076C.3 clear" category="AVCS - Target" storageaddress="1FC58" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2F388. Evidence: 0xF8EE0: Intake AVCS target T = Tbase*Tect/128 + TA*(1-w) + TB*w, w = FFFF0E90/65536, deg = x*180/65536 (0xF92CC -&gt; FFFF11C0/11C4 vs measured FFFEF2AC/2AE). Replaces T when FFFEF152 bit 5 set; rate-limited 0x1D counts/step." sizey="16">
+      <scaling units="deg" expression="x*180/65536" to_byte="x*65536/180" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -5577,57 +5577,57 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x16 [D02F62C] (Engine Speed (OBD copy) x ?)" category="Unidentified - Task 0x15307C" storageaddress="20320" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2F62C. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="202A0" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Exhaust AVCS Target Add A (weight 1-w, w=FFFF0E90)" category="AVCS - Target" storageaddress="20320" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2F62C. Evidence: 0xFC52C: Exhaust AVCS target T = Tbase*Tect/128 + TA*(1-w) + TB*w, w = FFFF0E90/65536, deg = x*180/65536 (0xFC918 -&gt; vs measured FFFEF2B8/2BA (SSM 0x118/0x119)). TA." sizex="16" sizey="16">
+      <scaling units="deg" expression="x*180/65536" to_byte="x*65536/180" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="202A0" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="20290" elements="16" storagetype="uint8" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="X Axis" name="Engine Load" storageaddress="20290" elements="16" storagetype="uint8" endian="big">
+        <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x16 [D02F640] (Engine Speed (OBD copy) x ?)" category="Unidentified - Task 0x15307C" storageaddress="20520" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2F640. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="202D0" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Exhaust AVCS Target Add B (weight w=FFFF0E90, FFFF056C.7 clear)" category="AVCS - Target" storageaddress="20520" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2F640. Evidence: 0xFC52C: Exhaust AVCS target T = Tbase*Tect/128 + TA*(1-w) + TB*w, w = FFFF0E90/65536, deg = x*180/65536 (0xFC918 -&gt; vs measured FFFEF2B8/2BA (SSM 0x118/0x119)). TB when FFFF056C bit 7 clear." sizex="16" sizey="16">
+      <scaling units="deg" expression="x*180/65536" to_byte="x*65536/180" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="202D0" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="202C0" elements="16" storagetype="uint8" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="X Axis" name="Engine Load" storageaddress="202C0" elements="16" storagetype="uint8" endian="big">
+        <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x16 [D02F654] (Engine Speed (OBD copy) x ?)" category="Unidentified - Task 0x15307C" storageaddress="20720" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2F654. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="202D0" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Exhaust AVCS Target Add B (weight w=FFFF0E90, FFFF056C.7 set)" category="AVCS - Target" storageaddress="20720" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2F654. Evidence: 0xFC52C: Exhaust AVCS target T = Tbase*Tect/128 + TA*(1-w) + TB*w, w = FFFF0E90/65536, deg = x*180/65536 (0xFC918 -&gt; vs measured FFFEF2B8/2BA (SSM 0x118/0x119)). TB when FFFF056C bit 7 set." sizex="16" sizey="16">
+      <scaling units="deg" expression="x*180/65536" to_byte="x*65536/180" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="202D0" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="202C0" elements="16" storagetype="uint8" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="X Axis" name="Engine Load" storageaddress="202C0" elements="16" storagetype="uint8" endian="big">
+        <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x16 [D02F668] (Engine Speed (OBD copy) x ?)" category="Unidentified - Task 0x15307C" storageaddress="20920" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2F668. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="20300" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Exhaust AVCS Target Base" category="AVCS - Target" storageaddress="20920" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2F668. Evidence: 0xFC52C: Exhaust AVCS target T = Tbase*Tect/128 + TA*(1-w) + TB*w, w = FFFF0E90/65536, deg = x*180/65536 (0xFC918 -&gt; vs measured FFFEF2B8/2BA (SSM 0x118/0x119)). Tbase." sizex="16" sizey="16">
+      <scaling units="deg" expression="x*180/65536" to_byte="x*65536/180" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="20300" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="202F0" elements="16" storagetype="uint8" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="X Axis" name="Engine Load" storageaddress="202F0" elements="16" storagetype="uint8" endian="big">
+        <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02F608] (Coolant Temperature (filtered, word))" category="Unidentified - Task 0x15307C" storageaddress="20B20" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2F608. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Exhaust AVCS Target, Alternate Mode (FFFEF152.5), FFFF076C.3 set" category="AVCS - Target" storageaddress="20B20" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2F608. Evidence: 0xFC52C: Exhaust AVCS target T = Tbase*Tect/128 + TA*(1-w) + TB*w, w = FFFF0E90/65536, deg = x*180/65536 (0xFC918 -&gt; vs measured FFFEF2B8/2BA (SSM 0x118/0x119)). Replaces T when FFFEF152 bit 5 set; rate-limited 0x1D counts/step." sizey="16">
+      <scaling units="deg" expression="x*180/65536" to_byte="x*65536/180" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02F614] (Coolant Temperature (filtered, word))" category="Unidentified - Task 0x15307C" storageaddress="20B40" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2F614. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Exhaust AVCS Target, Alternate Mode (FFFEF152.5), FFFF076C.3 clear" category="AVCS - Target" storageaddress="20B40" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2F614. Evidence: 0xFC52C: Exhaust AVCS target T = Tbase*Tect/128 + TA*(1-w) + TB*w, w = FFFF0E90/65536, deg = x*180/65536 (0xFC918 -&gt; vs measured FFFEF2B8/2BA (SSM 0x118/0x119)). Replaces T when FFFEF152 bit 5 set; rate-limited 0x1D counts/step." sizey="16">
+      <scaling units="deg" expression="x*180/65536" to_byte="x*65536/180" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02F620] (Coolant Temperature (filtered, word))" category="Unidentified - Task 0x15307C" storageaddress="20B60" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F620. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Exhaust AVCS Target Base Coolant Multiplier" category="AVCS - Target" storageaddress="20B60" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F620. Evidence: 0xFC52C: Exhaust AVCS target T = Tbase*Tect/128 + TA*(1-w) + TB*w, w = FFFF0E90/65536, deg = x*180/65536 (0xFC918 -&gt; vs measured FFFEF2B8/2BA (SSM 0x118/0x119)). Tect: u8 multiplier, (u8*s16)*2^25&gt;&gt;32 = /128." sizey="16">
+      <scaling units="multiplier" expression="x/128" to_byte="x*128" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>

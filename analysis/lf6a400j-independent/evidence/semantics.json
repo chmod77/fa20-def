@@ -1240,6 +1240,129 @@
    "format": "0.00"
   }
  },
+ "0x2F37C": {
+  "status": "identified",
+  "name": "Intake AVCS Target, Alternate Mode (FFFEF152.5), FFFF076C.3 set",
+  "category": "AVCS - Target",
+  "evidence": "0xF8EE0: Intake AVCS target T = Tbase*Tect/128 + TA*(1-w) + TB*w, w = FFFF0E90/65536, deg = x*180/65536 (0xF92CC -> FFFF11C0/11C4 vs measured FFFEF2AC/2AE). Replaces T when FFFEF152 bit 5 set; rate-limited 0x1D counts/step.",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "x*180/65536",
+   "to_byte": "x*65536/180",
+   "format": "0.00"
+  }
+ },
+ "0x2F388": {
+  "status": "identified",
+  "name": "Intake AVCS Target, Alternate Mode (FFFEF152.5), FFFF076C.3 clear",
+  "category": "AVCS - Target",
+  "evidence": "0xF8EE0: Intake AVCS target T = Tbase*Tect/128 + TA*(1-w) + TB*w, w = FFFF0E90/65536, deg = x*180/65536 (0xF92CC -> FFFF11C0/11C4 vs measured FFFEF2AC/2AE). Replaces T when FFFEF152 bit 5 set; rate-limited 0x1D counts/step.",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "x*180/65536",
+   "to_byte": "x*65536/180",
+   "format": "0.00"
+  }
+ },
+ "0x2F394": {
+  "status": "identified",
+  "name": "Intake AVCS Target Base Coolant Multiplier",
+  "category": "AVCS - Target",
+  "evidence": "0xF8EE0: Intake AVCS target T = Tbase*Tect/128 + TA*(1-w) + TB*w, w = FFFF0E90/65536, deg = x*180/65536 (0xF92CC -> FFFF11C0/11C4 vs measured FFFEF2AC/2AE). Tect: u8 multiplier, (u8*s16)*2^25>>32 = /128.",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x/128",
+   "to_byte": "x*128",
+   "format": "0.000"
+  }
+ },
+ "0x2F3A0": {
+  "status": "identified",
+  "name": "Intake AVCS Target Add A (weight 1-w, w=FFFF0E90)",
+  "category": "AVCS - Target",
+  "evidence": "0xF8EE0: Intake AVCS target T = Tbase*Tect/128 + TA*(1-w) + TB*w, w = FFFF0E90/65536, deg = x*180/65536 (0xF92CC -> FFFF11C0/11C4 vs measured FFFEF2AC/2AE). TA.",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "x*180/65536",
+   "to_byte": "x*65536/180",
+   "format": "0.00"
+  },
+  "axes": {
+   "1": {
+    "name": "Engine Load",
+    "units": "%",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x2F3B4": {
+  "status": "identified",
+  "name": "Intake AVCS Target Add B (weight w=FFFF0E90, FFFF056C.7 clear)",
+  "category": "AVCS - Target",
+  "evidence": "0xF8EE0: Intake AVCS target T = Tbase*Tect/128 + TA*(1-w) + TB*w, w = FFFF0E90/65536, deg = x*180/65536 (0xF92CC -> FFFF11C0/11C4 vs measured FFFEF2AC/2AE). TB when FFFF056C bit 7 clear.",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "x*180/65536",
+   "to_byte": "x*65536/180",
+   "format": "0.00"
+  },
+  "axes": {
+   "1": {
+    "name": "Engine Load",
+    "units": "%",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x2F3C8": {
+  "status": "identified",
+  "name": "Intake AVCS Target Add B (weight w=FFFF0E90, FFFF056C.7 set)",
+  "category": "AVCS - Target",
+  "evidence": "0xF8EE0: Intake AVCS target T = Tbase*Tect/128 + TA*(1-w) + TB*w, w = FFFF0E90/65536, deg = x*180/65536 (0xF92CC -> FFFF11C0/11C4 vs measured FFFEF2AC/2AE). TB when FFFF056C bit 7 set.",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "x*180/65536",
+   "to_byte": "x*65536/180",
+   "format": "0.00"
+  },
+  "axes": {
+   "1": {
+    "name": "Engine Load",
+    "units": "%",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x2F3DC": {
+  "status": "identified",
+  "name": "Intake AVCS Target Base",
+  "category": "AVCS - Target",
+  "evidence": "0xF8EE0: Intake AVCS target T = Tbase*Tect/128 + TA*(1-w) + TB*w, w = FFFF0E90/65536, deg = x*180/65536 (0xF92CC -> FFFF11C0/11C4 vs measured FFFEF2AC/2AE). Tbase.",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "x*180/65536",
+   "to_byte": "x*65536/180",
+   "format": "0.00"
+  },
+  "axes": {
+   "1": {
+    "name": "Engine Load",
+    "units": "%",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
  "0x2F3FC": {
   "status": "identified",
   "name": "Intake Right AVCS OCV Feedback A Gain (vs FFFF11B6)",
@@ -1649,6 +1772,129 @@
     "units": "A",
     "expr": "x/26214.4",
     "to_byte": "x*26214.4"
+   }
+  }
+ },
+ "0x2F608": {
+  "status": "identified",
+  "name": "Exhaust AVCS Target, Alternate Mode (FFFEF152.5), FFFF076C.3 set",
+  "category": "AVCS - Target",
+  "evidence": "0xFC52C: Exhaust AVCS target T = Tbase*Tect/128 + TA*(1-w) + TB*w, w = FFFF0E90/65536, deg = x*180/65536 (0xFC918 -> vs measured FFFEF2B8/2BA (SSM 0x118/0x119)). Replaces T when FFFEF152 bit 5 set; rate-limited 0x1D counts/step.",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "x*180/65536",
+   "to_byte": "x*65536/180",
+   "format": "0.00"
+  }
+ },
+ "0x2F614": {
+  "status": "identified",
+  "name": "Exhaust AVCS Target, Alternate Mode (FFFEF152.5), FFFF076C.3 clear",
+  "category": "AVCS - Target",
+  "evidence": "0xFC52C: Exhaust AVCS target T = Tbase*Tect/128 + TA*(1-w) + TB*w, w = FFFF0E90/65536, deg = x*180/65536 (0xFC918 -> vs measured FFFEF2B8/2BA (SSM 0x118/0x119)). Replaces T when FFFEF152 bit 5 set; rate-limited 0x1D counts/step.",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "x*180/65536",
+   "to_byte": "x*65536/180",
+   "format": "0.00"
+  }
+ },
+ "0x2F620": {
+  "status": "identified",
+  "name": "Exhaust AVCS Target Base Coolant Multiplier",
+  "category": "AVCS - Target",
+  "evidence": "0xFC52C: Exhaust AVCS target T = Tbase*Tect/128 + TA*(1-w) + TB*w, w = FFFF0E90/65536, deg = x*180/65536 (0xFC918 -> vs measured FFFEF2B8/2BA (SSM 0x118/0x119)). Tect: u8 multiplier, (u8*s16)*2^25>>32 = /128.",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x/128",
+   "to_byte": "x*128",
+   "format": "0.000"
+  }
+ },
+ "0x2F62C": {
+  "status": "identified",
+  "name": "Exhaust AVCS Target Add A (weight 1-w, w=FFFF0E90)",
+  "category": "AVCS - Target",
+  "evidence": "0xFC52C: Exhaust AVCS target T = Tbase*Tect/128 + TA*(1-w) + TB*w, w = FFFF0E90/65536, deg = x*180/65536 (0xFC918 -> vs measured FFFEF2B8/2BA (SSM 0x118/0x119)). TA.",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "x*180/65536",
+   "to_byte": "x*65536/180",
+   "format": "0.00"
+  },
+  "axes": {
+   "1": {
+    "name": "Engine Load",
+    "units": "%",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x2F640": {
+  "status": "identified",
+  "name": "Exhaust AVCS Target Add B (weight w=FFFF0E90, FFFF056C.7 clear)",
+  "category": "AVCS - Target",
+  "evidence": "0xFC52C: Exhaust AVCS target T = Tbase*Tect/128 + TA*(1-w) + TB*w, w = FFFF0E90/65536, deg = x*180/65536 (0xFC918 -> vs measured FFFEF2B8/2BA (SSM 0x118/0x119)). TB when FFFF056C bit 7 clear.",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "x*180/65536",
+   "to_byte": "x*65536/180",
+   "format": "0.00"
+  },
+  "axes": {
+   "1": {
+    "name": "Engine Load",
+    "units": "%",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x2F654": {
+  "status": "identified",
+  "name": "Exhaust AVCS Target Add B (weight w=FFFF0E90, FFFF056C.7 set)",
+  "category": "AVCS - Target",
+  "evidence": "0xFC52C: Exhaust AVCS target T = Tbase*Tect/128 + TA*(1-w) + TB*w, w = FFFF0E90/65536, deg = x*180/65536 (0xFC918 -> vs measured FFFEF2B8/2BA (SSM 0x118/0x119)). TB when FFFF056C bit 7 set.",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "x*180/65536",
+   "to_byte": "x*65536/180",
+   "format": "0.00"
+  },
+  "axes": {
+   "1": {
+    "name": "Engine Load",
+    "units": "%",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x2F668": {
+  "status": "identified",
+  "name": "Exhaust AVCS Target Base",
+  "category": "AVCS - Target",
+  "evidence": "0xFC52C: Exhaust AVCS target T = Tbase*Tect/128 + TA*(1-w) + TB*w, w = FFFF0E90/65536, deg = x*180/65536 (0xFC918 -> vs measured FFFEF2B8/2BA (SSM 0x118/0x119)). Tbase.",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "x*180/65536",
+   "to_byte": "x*65536/180",
+   "format": "0.00"
+  },
+  "axes": {
+   "1": {
+    "name": "Engine Load",
+    "units": "%",
+    "expr": "x",
+    "to_byte": "x"
    }
   }
  },

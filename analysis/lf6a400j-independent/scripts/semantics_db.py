@@ -331,6 +331,35 @@ for cname, fn, T in (('Intake Right', '0xFB3D4', (0x2F504, 0x2F528, 0x2F51C, 0x2
         ('gain/step', 'x/32768', 'x*32768', '0.00000'), axes=CURAX)
 
 
+# ---------------------------------------------------------------- AVCS target angle (task 0xF6B24)
+# 0xF8EE0 (intake) / 0xFC52C (exhaust), called from 0xF6B24 with Y = FFFF2ADA engine speed, X = FFFF03A0 engine load (u8, %),
+# coolant FFFEEEDE, w = FFFF0E90 (u16, w/65536).  Target (0xF8EE0 param_13 -> FFFF11B8, param_16 -> FFFF11BE):
+#   T = Tbase(rpm,load) * Tect(coolant)/128 + TA(rpm,load) * (1 - w/65536) + TB(rpm,load) * w/65536   (TB / TB' by flag FFFF056C.7)
+#   clamped >= -0x2666 (intake) / >= 0 (exhaust).  Alternate mode (FFFEF152.5 set): rate-limited (0x1D/step) Tcool(coolant),
+#   map pair selected by FFFF076C.3.
+# Unit: 0xF92CC (intake) takes FFFF11B8 as x*0.0027465818 (=180/65536) deg, clamps to [-90, 89.997] deg, writes x*364.08887 to
+#   FFFF11C0/FFFF11C4 (right/left targets); 0xB9BAC compares them with the measured cam angles FFFEF2AC/FFFEF2AE (0x59602, from
+#   cam edge FFFF39B8/39BA; FFFF39B8 also feeds SSM 0x3C via x*180>>16).  Exhaust: 0xFC918 converts FFFF1208 the same way and
+#   0xBBE98 compares with FFFEF2B8/FFFEF2BA = SSM 0x118/0x119 Exhaust AVCS Advance Angle (deg = x*45/16384 = x*180/65536).
+DEG16 = ('deg', 'x*180/65536', 'x*65536/180', '0.00')
+LOADX = {'1': dict(name='Engine Load', units='%', expr='x', to_byte='x')}
+AVT = 'AVCS - Target'
+for cam, fn, base, ect, ta, tb, tb2, c0, c1, filt in (
+        ('Intake', '0xF8EE0', 0x2F3DC, 0x2F394, 0x2F3A0, 0x2F3B4, 0x2F3C8, 0x2F388, 0x2F37C, '0xF92CC -> FFFF11C0/11C4 vs measured FFFEF2AC/2AE'),
+        ('Exhaust', '0xFC52C', 0x2F668, 0x2F620, 0x2F62C, 0x2F640, 0x2F654, 0x2F614, 0x2F608, '0xFC918 -> vs measured FFFEF2B8/2BA (SSM 0x118/0x119)')):
+    ev = f'{fn}: {cam} AVCS target T = Tbase*Tect/128 + TA*(1-w) + TB*w, w = FFFF0E90/65536, deg = x*180/65536 ({filt}). '
+    add(base, f'{cam} AVCS Target Base', AVT, ev + 'Tbase.', DEG16, axes=LOADX)
+    add(ect, f'{cam} AVCS Target Base Coolant Multiplier', AVT, ev + 'Tect: u8 multiplier, (u8*s16)*2^25>>32 = /128.',
+        ('multiplier', 'x/128', 'x*128', '0.000'))
+    add(ta, f'{cam} AVCS Target Add A (weight 1-w, w=FFFF0E90)', AVT, ev + 'TA.', DEG16, axes=LOADX)
+    add(tb, f'{cam} AVCS Target Add B (weight w=FFFF0E90, FFFF056C.7 clear)', AVT, ev + 'TB when FFFF056C bit 7 clear.', DEG16, axes=LOADX)
+    add(tb2, f'{cam} AVCS Target Add B (weight w=FFFF0E90, FFFF056C.7 set)', AVT, ev + 'TB when FFFF056C bit 7 set.', DEG16, axes=LOADX)
+    add(c0, f'{cam} AVCS Target, Alternate Mode (FFFEF152.5), FFFF076C.3 clear', AVT,
+        ev + 'Replaces T when FFFEF152 bit 5 set; rate-limited 0x1D counts/step.', DEG16)
+    add(c1, f'{cam} AVCS Target, Alternate Mode (FFFEF152.5), FFFF076C.3 set', AVT,
+        ev + 'Replaces T when FFFEF152 bit 5 set; rate-limited 0x1D counts/step.', DEG16)
+
+
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
     print(len(S), 'entries')
