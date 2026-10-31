@@ -875,6 +875,10 @@ add(0x2E918, 'Torque Ratio Filter Coefficient (RPM) [0xC2D6C]', 'Driver Demand /
     'torque-type value in the same function. T is a first-order filter gain (fraction per execution). Input FFFF2ADA rpm.',
     ('fraction/step', 'x/255', 'x*255', '0.000'), axes={'0': dict(name='Engine Speed', units='rpm', expr='x*25/128', to_byte='x*128/25')})
 
+add(0x2FCAC, 'Filter Coefficient [0x1068D0 -> FFFF19E4]', 'Filters',
+    '0x1068D0 (task 0x1011EC): FUN_0016B4D8(&FFFF19E4, target, T) with 0x16B4D8: y += (x - y)*k/65536, so T is a first-order filter gain '
+    '(fraction per execution, 65536 = 1.0).', ('fraction/step', 'x/65536', 'x*65536', '0.0000'))
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
