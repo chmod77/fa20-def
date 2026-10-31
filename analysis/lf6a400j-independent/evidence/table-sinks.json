@@ -611,7 +611,6 @@
 "00095188:*param_9"
 ],
 "0x2D3E0": [
-"FFFF042C",
 "FFFF0442",
 "FFFF0BE2"
 ],
@@ -619,8 +618,7 @@
 "FFFF042C"
 ],
 "0x2D400": [
-"FFFF0442",
-"FFFF0BE2"
+"FFFF0442"
 ],
 "0x2D414": [
 "FFFF0446"
@@ -965,11 +963,11 @@
 ],
 "0x2E1E0": [
 "FFFEC6DC",
-"FFFF0D74"
+"FFFF0D7A"
 ],
 "0x2E1EC": [
-"000b2f30:*param_28",
-"FFFEC6DA"
+"FFFEC6DA",
+"FFFF0D74"
 ],
 "0x2E1F8": [
 "000b34bc:*param_10"

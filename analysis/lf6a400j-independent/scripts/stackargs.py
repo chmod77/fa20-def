@@ -92,6 +92,7 @@ for fa, size in fns:
                 d = int(ops[0][1:], 0); sp -= d
                 k = d // 4
                 if k > 0: pushes = pushes[:-k] if k <= len(pushes) else []
+                elif d < 0 and d % 4 == 0: pushes += [None] * (-d // 4)   # stack space reserved for an argument
                 raise _Next
             if m == 'add' and ops[0].startswith('#') and ops[1] in R:
                 if isinstance(R[ops[1]], int): R[ops[1]] = u32(R[ops[1]] + int(ops[0][1:], 0))
@@ -113,6 +114,8 @@ for fa, size in fns:
                 if mm and G is not None: ad = G + int(mm.group(1), 0)
                 if ad is not None and u32(ad) >= 0xFFFE0000:
                     R[ops[1]] = f'V{w}:{u32(ad):08X}'; raise _Next
+            if m == 'mov.l' and len(ops) == 2 and ops[1] == '@r15' and REG.match(ops[0]) and pushes:
+                pushes[-1] = R.get(ops[0]); slots[sp] = R.get(ops[0]); raise _Next
             if m == 'mov.l' and len(ops) == 2 and ops[1] == '@-r15' and REG.match(ops[0]):
                 sp += 4; pushes.append(R.get(ops[0])); slots[sp] = R.get(ops[0]); raise _Next
             if m == 'mov.l' and len(ops) == 2 and REG.match(ops[0]):
