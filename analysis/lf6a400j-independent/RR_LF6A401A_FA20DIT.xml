@@ -627,27 +627,27 @@
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02CB74] (Coolant Temperature (sampled))" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="AFDA" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CB74. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (sampled)" storageaddress="1E46C" elements="16" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Start Fuel Decay Factor per Execution, Channel 2 (FFFF054A.2 set, FFFF3653.7 clear)" category="Fueling - Open Loop &amp; Enrichment" storageaddress="AFDA" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CB74. Evidence: 0x8B178 (twin of 0x8B5B4, from 0x888C0, output FFFF0B22): after cranking the start fuel is multiplied by T(FFFF29A7 coolant)/65536 every execution; FFFF0B22 feeds the fuel quantity in 0x91310 (modes 1/2). T/65536 is the per-execution decay multiplier." sizey="16">
+      <scaling units="multiplier" expression="x/65536" to_byte="x*65536" format="0.0000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (sampled)" storageaddress="1E46C" elements="16" storagetype="uint8" endian="big">
         <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02CB80] (Coolant Temperature (sampled))" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="AFFA" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CB80. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (sampled)" storageaddress="1E46C" elements="16" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Start Fuel Decay Factor per Execution, Channel 2 (FFFF054A.2 set, FFFF3653.7 set)" category="Fueling - Open Loop &amp; Enrichment" storageaddress="AFFA" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CB80. Evidence: 0x8B178 (twin of 0x8B5B4, from 0x888C0, output FFFF0B22): after cranking the start fuel is multiplied by T(FFFF29A7 coolant)/65536 every execution; FFFF0B22 feeds the fuel quantity in 0x91310 (modes 1/2). T/65536 is the per-execution decay multiplier." sizey="16">
+      <scaling units="multiplier" expression="x/65536" to_byte="x*65536" format="0.0000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (sampled)" storageaddress="1E46C" elements="16" storagetype="uint8" endian="big">
         <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02CB8C] (Coolant Temperature (sampled))" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="B01A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CB8C. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (sampled)" storageaddress="1E46C" elements="16" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Start Fuel Decay Factor per Execution, Channel 2 (FFFF054A.2 clear, FFFF3653.7 clear)" category="Fueling - Open Loop &amp; Enrichment" storageaddress="B01A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CB8C. Evidence: 0x8B178 (twin of 0x8B5B4, from 0x888C0, output FFFF0B22): after cranking the start fuel is multiplied by T(FFFF29A7 coolant)/65536 every execution; FFFF0B22 feeds the fuel quantity in 0x91310 (modes 1/2). T/65536 is the per-execution decay multiplier." sizey="16">
+      <scaling units="multiplier" expression="x/65536" to_byte="x*65536" format="0.0000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (sampled)" storageaddress="1E46C" elements="16" storagetype="uint8" endian="big">
         <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02CB98] (Coolant Temperature (sampled))" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="B03A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CB98. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (sampled)" storageaddress="1E46C" elements="16" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Start Fuel Decay Factor per Execution, Channel 2 (FFFF054A.2 clear, FFFF3653.7 set)" category="Fueling - Open Loop &amp; Enrichment" storageaddress="B03A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CB98. Evidence: 0x8B178 (twin of 0x8B5B4, from 0x888C0, output FFFF0B22): after cranking the start fuel is multiplied by T(FFFF29A7 coolant)/65536 every execution; FFFF0B22 feeds the fuel quantity in 0x91310 (modes 1/2). T/65536 is the per-execution decay multiplier." sizey="16">
+      <scaling units="multiplier" expression="x/65536" to_byte="x*65536" format="0.0000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (sampled)" storageaddress="1E46C" elements="16" storagetype="uint8" endian="big">
         <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>

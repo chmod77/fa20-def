@@ -761,6 +761,13 @@ for d, nm in ((0x2CC2C, 'FFFF054A.2 clear, FFFF3653.7 clear'), (0x2CC38, 'FFFF05
         'afterwards it is multiplied by T(FFFF29A7 coolant)/65536 every execution, then FFFF0B24 = FFFEBC40/8 (0x91310: fuel quantity '
         'FFFF1534 = 0B24*10 in modes 2/3). T/65536 is the per-execution decay multiplier.', ('multiplier', 'x/65536', 'x*65536', '0.0000'))
 
+for d, nm in ((0x2CB8C, 'FFFF054A.2 clear, FFFF3653.7 clear'), (0x2CB98, 'FFFF054A.2 clear, FFFF3653.7 set'),
+              (0x2CB74, 'FFFF054A.2 set, FFFF3653.7 clear'), (0x2CB80, 'FFFF054A.2 set, FFFF3653.7 set')):
+    add(d, f'Start Fuel Decay Factor per Execution, Channel 2 ({nm})', FE,
+        '0x8B178 (twin of 0x8B5B4, from 0x888C0, output FFFF0B22): after cranking the start fuel is multiplied by T(FFFF29A7 coolant)/65536 '
+        'every execution; FFFF0B22 feeds the fuel quantity in 0x91310 (modes 1/2). T/65536 is the per-execution decay multiplier.',
+        ('multiplier', 'x/65536', 'x*65536', '0.0000'))
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

@@ -809,6 +809,58 @@
    "format": "0.00"
   }
  },
+ "0x2CB74": {
+  "status": "identified",
+  "name": "Start Fuel Decay Factor per Execution, Channel 2 (FFFF054A.2 set, FFFF3653.7 clear)",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x8B178 (twin of 0x8B5B4, from 0x888C0, output FFFF0B22): after cranking the start fuel is multiplied by T(FFFF29A7 coolant)/65536 every execution; FFFF0B22 feeds the fuel quantity in 0x91310 (modes 1/2). T/65536 is the per-execution decay multiplier.",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x/65536",
+   "to_byte": "x*65536",
+   "format": "0.0000"
+  }
+ },
+ "0x2CB80": {
+  "status": "identified",
+  "name": "Start Fuel Decay Factor per Execution, Channel 2 (FFFF054A.2 set, FFFF3653.7 set)",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x8B178 (twin of 0x8B5B4, from 0x888C0, output FFFF0B22): after cranking the start fuel is multiplied by T(FFFF29A7 coolant)/65536 every execution; FFFF0B22 feeds the fuel quantity in 0x91310 (modes 1/2). T/65536 is the per-execution decay multiplier.",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x/65536",
+   "to_byte": "x*65536",
+   "format": "0.0000"
+  }
+ },
+ "0x2CB8C": {
+  "status": "identified",
+  "name": "Start Fuel Decay Factor per Execution, Channel 2 (FFFF054A.2 clear, FFFF3653.7 clear)",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x8B178 (twin of 0x8B5B4, from 0x888C0, output FFFF0B22): after cranking the start fuel is multiplied by T(FFFF29A7 coolant)/65536 every execution; FFFF0B22 feeds the fuel quantity in 0x91310 (modes 1/2). T/65536 is the per-execution decay multiplier.",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x/65536",
+   "to_byte": "x*65536",
+   "format": "0.0000"
+  }
+ },
+ "0x2CB98": {
+  "status": "identified",
+  "name": "Start Fuel Decay Factor per Execution, Channel 2 (FFFF054A.2 clear, FFFF3653.7 set)",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x8B178 (twin of 0x8B5B4, from 0x888C0, output FFFF0B22): after cranking the start fuel is multiplied by T(FFFF29A7 coolant)/65536 every execution; FFFF0B22 feeds the fuel quantity in 0x91310 (modes 1/2). T/65536 is the per-execution decay multiplier.",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x/65536",
+   "to_byte": "x*65536",
+   "format": "0.0000"
+  }
+ },
  "0x2CC14": {
   "status": "identified",
   "name": "Start Fuel Decay Factor per Execution (FFFF054A.2 set, FFFF3653.7 clear)",
