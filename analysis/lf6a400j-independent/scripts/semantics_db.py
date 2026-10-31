@@ -768,6 +768,12 @@ for d, nm in ((0x2CB8C, 'FFFF054A.2 clear, FFFF3653.7 clear'), (0x2CB98, 'FFFF05
         'every execution; FFFF0B22 feeds the fuel quantity in 0x91310 (modes 1/2). T/65536 is the per-execution decay multiplier.',
         ('multiplier', 'x/65536', 'x*65536', '0.0000'))
 
+_ev72 = ('0x8F6EC (from 0x888C0, input coolant FFFF29A5): when triggered FFFF0B72 = T_02D004*32 for the first T_02D01C executions, then decays '
+         'by 2*T_02D010 per execution to 0; FFFF0B72 is a fuel-quantity fraction term in 0x910D8 (base*(0.5 + ... + 0B72/65536)). ')
+add(0x2D004, 'Fuel Enrichment (0B72) Amount (Coolant)', FE, _ev72, ('%', 'x*3200/65536', 'x*65536/3200', '0.00'))
+add(0x2D010, 'Fuel Enrichment (0B72) Decay Step (Coolant)', FE, _ev72, ('%/step', 'x*200/65536', 'x*65536/200', '0.000'))
+add(0x2D01C, 'Fuel Enrichment (0B72) Hold Count (Coolant)', FE, _ev72 + 'Executions of task 0x152A40 (event-driven).', ('executions', 'x', 'x', '0'))
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

@@ -1311,6 +1311,45 @@
    "format": "0"
   }
  },
+ "0x2D004": {
+  "status": "identified",
+  "name": "Fuel Enrichment (0B72) Amount (Coolant)",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x8F6EC (from 0x888C0, input coolant FFFF29A5): when triggered FFFF0B72 = T_02D004*32 for the first T_02D01C executions, then decays by 2*T_02D010 per execution to 0; FFFF0B72 is a fuel-quantity fraction term in 0x910D8 (base*(0.5 + ... + 0B72/65536)). ",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*3200/65536",
+   "to_byte": "x*65536/3200",
+   "format": "0.00"
+  }
+ },
+ "0x2D010": {
+  "status": "identified",
+  "name": "Fuel Enrichment (0B72) Decay Step (Coolant)",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x8F6EC (from 0x888C0, input coolant FFFF29A5): when triggered FFFF0B72 = T_02D004*32 for the first T_02D01C executions, then decays by 2*T_02D010 per execution to 0; FFFF0B72 is a fuel-quantity fraction term in 0x910D8 (base*(0.5 + ... + 0B72/65536)). ",
+  "description": "",
+  "data": {
+   "units": "%/step",
+   "expr": "x*200/65536",
+   "to_byte": "x*65536/200",
+   "format": "0.000"
+  }
+ },
+ "0x2D01C": {
+  "status": "identified",
+  "name": "Fuel Enrichment (0B72) Hold Count (Coolant)",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x8F6EC (from 0x888C0, input coolant FFFF29A5): when triggered FFFF0B72 = T_02D004*32 for the first T_02D01C executions, then decays by 2*T_02D010 per execution to 0; FFFF0B72 is a fuel-quantity fraction term in 0x910D8 (base*(0.5 + ... + 0B72/65536)). Executions of task 0x152A40 (event-driven).",
+  "description": "",
+  "data": {
+   "units": "executions",
+   "expr": "x",
+   "to_byte": "x",
+   "format": "0"
+  }
+ },
  "0x2D028": {
   "status": "identified",
   "name": "Primary Open Loop Fueling",

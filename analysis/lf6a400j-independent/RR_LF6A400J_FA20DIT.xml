@@ -5052,21 +5052,21 @@
         <scaling units="kPa" expression="x*639630/1048576" to_byte="x*1048576/639630" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02D004]" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="1E7A0" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D004. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="1E46C" elements="16" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Fuel Enrichment (0B72) Amount (Coolant)" category="Fueling - Open Loop &amp; Enrichment" storageaddress="1E7A0" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D004. Evidence: 0x8F6EC (from 0x888C0, input coolant FFFF29A5): when triggered FFFF0B72 = T_02D004*32 for the first T_02D01C executions, then decays by 2*T_02D010 per execution to 0; FFFF0B72 is a fuel-quantity fraction term in 0x910D8 (base*(0.5 + ... + 0B72/65536)). " sizey="16">
+      <scaling units="%" expression="x*3200/65536" to_byte="x*65536/3200" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="1E46C" elements="16" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02D01C]" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="1E7B0" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D01C. Lookup result stored to: FFFEBD26, FFFEBD28. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="1E46C" elements="16" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Fuel Enrichment (0B72) Hold Count (Coolant)" category="Fueling - Open Loop &amp; Enrichment" storageaddress="1E7B0" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D01C. Evidence: 0x8F6EC (from 0x888C0, input coolant FFFF29A5): when triggered FFFF0B72 = T_02D004*32 for the first T_02D01C executions, then decays by 2*T_02D010 per execution to 0; FFFF0B72 is a fuel-quantity fraction term in 0x910D8 (base*(0.5 + ... + 0B72/65536)). Executions of task 0x152A40 (event-driven). Lookup result stored to: FFFEBD26, FFFEBD28." sizey="16">
+      <scaling units="executions" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="1E46C" elements="16" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02D010]" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="1E7C0" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D010. Lookup result stored to: FFFEBD29. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="1E46C" elements="16" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Fuel Enrichment (0B72) Decay Step (Coolant)" category="Fueling - Open Loop &amp; Enrichment" storageaddress="1E7C0" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D010. Evidence: 0x8F6EC (from 0x888C0, input coolant FFFF29A5): when triggered FFFF0B72 = T_02D004*32 for the first T_02D01C executions, then decays by 2*T_02D010 per execution to 0; FFFF0B72 is a fuel-quantity fraction term in 0x910D8 (base*(0.5 + ... + 0B72/65536)).  Lookup result stored to: FFFEBD29." sizey="16">
+      <scaling units="%/step" expression="x*200/65536" to_byte="x*65536/200" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="1E46C" elements="16" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
