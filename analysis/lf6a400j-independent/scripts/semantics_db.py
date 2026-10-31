@@ -865,6 +865,11 @@ add(0x2C374, 'Reference Torque vs RPM [0x80968]', 'Driver Demand / Torque Reques
     '0x80968: ratio = (FFFF0ABC - 16000)*256/(T(rpm FFFF2ADA) - 16000) -> T in the torque type.' + TQEV, TQ,
     axes={'0': dict(name='Engine Speed', units='rpm', expr='x*25/128', to_byte='x*128/25')})
 
+add(0x2FB14, 'Torque Offset (FFFF299C rpm/25) [0x105ACC]', 'Driver Demand / Torque Request',
+    '0x105ACC (torque monitor, from 0x101A90): x = T(FFFF299C) + FFFF0A1E, then x < 16000 -> 0 else x - 16000: the torque-type addition with '
+    'FFFF0A1E (0ADC - 0ADA + 16000, torque type), so T is in the torque type.' + TQEV, TQ,
+    axes={'0': dict(name='Engine Speed', units='rpm', expr='x*25', to_byte='x/25')})
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

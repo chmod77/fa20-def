@@ -112,7 +112,11 @@ for p in sorted(glob.glob(f'{ROOT}/cdump/*.c')):
             a = resolve(fn, tok, s)
             if a in known:
                 k = _scale(known[a][2])
-                if k and k > 0:
+                try:
+                    off = eval(known[a][2], {}, {'x': 0.0})
+                except Exception:
+                    off = None
+                if k and k > 0 and off == 0:   # offset units (e.g. torque type x-16000) need the offset-aware form: handled by hand
                     rows.append((d, fn, f'{a:08X}', known[a][0] + ' (delta)', known[a][1], f'x*{k!r}', c.group(0).replace('\t', ' ')))
                     break
 with open(f'{ROOT}/evidence/table-compare.tsv', 'w') as f:

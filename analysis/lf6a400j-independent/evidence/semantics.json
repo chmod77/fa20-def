@@ -5919,6 +5919,27 @@
    "format": "0.000"
   }
  },
+ "0x2FB14": {
+  "status": "identified",
+  "name": "Torque Offset (FFFF299C rpm/25) [0x105ACC]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x105ACC (torque monitor, from 0x101A90): x = T(FFFF299C) + FFFF0A1E, then x < 16000 -> 0 else x - 16000: the torque-type addition with FFFF0A1E (0ADC - 0ADA + 16000, torque type), so T is in the torque type. Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range).",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed",
+    "units": "rpm",
+    "expr": "x*25",
+    "to_byte": "x/25"
+   }
+  }
+ },
  "0x2FBC0": {
   "status": "identified",
   "name": "Torque Limit Offset (RPM) [0x10641C]",
