@@ -300,3 +300,6 @@ V2.update({
 V2.update({
  0xFFFF0B9A:('Open Loop Enrichment (phi-1)','%','x*100/32768','x*32768/100','0xB5B38 target AFR = (...)*14.5/43194 - 14.5*0B9A/(32768+0B9A): 0B9A = (phi-1)*32768, lambda = 32768/(32768+x)'),
 })
+V2.update({
+ 0xFFFF0A8E:('Accelerator Pedal Angle (limited, 0A8E)','%','x*100/65280','x*65280/100','0x82C34 (emulation: EmuFindWriter 0x82FA0 -> write at 0x82C4A): 0A8E = 1282 (pedal limit) when FFFF03C6 == 0x18 and pedal <= 1282, else Accelerator Pedal Angle FFFEEEF8 (SSM 0x29)'),
+})

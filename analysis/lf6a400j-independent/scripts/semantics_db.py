@@ -953,9 +953,9 @@ for d, m, c in ((0x2C634, '2', 1), (0x2C648, '3', 1), (0x2C6AC, '4', 1), (0x2C65
         _rmp + 'This table is the base of s2 (torque delta per execution before G*M/65025 scaling).' + TQEV,
         ('Nm/step', '(x-16000)/80', 'x*80+16000', '0.0'), axes=_GR)
 for d, ph in ((0x2C774, 1), (0x2C780, 2)):
-    add(d, f'Torque Ramp Step Multiplier Phase {ph} [vs FFFF0A8E]', 'Driver Demand / Torque Request',
+    add(d, f'Torque Ramp Step Multiplier Phase {ph} (vs Accelerator Pedal Angle)', 'Driver Demand / Torque Request',
         _rmp + f'This table is M for phase {ph}: the step is scaled by G*M/65025 with G an integer multiple of 255 (255 = x1), so M/255 is '
-        'the multiplier. Input FFFF0A8E unresolved.', ('multiplier', 'x/255', 'x*255', '0.00'))
+        'the multiplier. Input FFFF0A8E = accelerator pedal angle (limited), written by 0x82C34.', ('multiplier', 'x/255', 'x*255', '0.00'))
 
 
 # ---- torque ramp-down limiter 0x8117C (session 4)
