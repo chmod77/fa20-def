@@ -63,11 +63,39 @@ for root, per in PERIOD.items():
             ra = re.search(r'\b' + re.escape(v) + r'\s*=[^=]', tail); tail = tail[:ra.start()] if ra else tail
             V = r'\(?(?:\(\w+\s*\**\)\s*)*\(?' + re.escape(v) + r'(?:\s*&\s*0xff(?:ff)?)?\)?'
             for c in ctrs:
-                Cp = r'\(?(?:\(\w+\s*\**\)\s*)*\(?_?' + c + r'(?:\s*&\s*0xff(?:ff)?)?\)?'
+                alias = [c] + [a for a in set(re.findall(r'\b([a-z]\w*Var\d+|uStack_\w+|sStack_\w+)\s*=\s*(?:\(\w+\)\s*)?_?' + c + r'\s*;', s))
+                               if len(re.findall(r'\b' + a + r'\s*=[^=]', s)) == 1]
+                Cp = r'\(?(?:\(\w+\s*\**\)\s*)*\(?_?(?:' + '|'.join(map(re.escape, alias)) + r')(?:\s*&\s*0xff(?:ff)?)?\)?'
                 cm = re.search(V + r'\s*(<=?|>=?)\s*' + Cp + '|' + Cp + r'\s*(<=?|>=?)\s*' + V, tail)
                 if cm and counter_ok(c, fn):
                     rows.append((d, fn, root, per, 'FFFF' + c[-4:].upper() if c.startswith('DAT_ffff') else c[4:].upper(), cm.group(0)))
                     break
+# countdown timers: C = v (lookup result) and C - 1 elsewhere in the same function; every C write in cdump/ is in F
+# and is a constant, v, C - 1, or a single-assignment local holding C - 1
+for root, per in PERIOD.items():
+    for fn in sorted(tree(root)):
+        s = src[fn]
+        for m in re.finditer(r'(\w+)\s*=\s*(?:\(\w+\)\s*)?LK_[0-9A-F]+\(\(uint\)&T_([0-9A-F]{6})', s):
+            v, d = m.group(1), m.group(2)
+            if len(re.findall(r'\b' + re.escape(v) + r'\s*=[^=]', s)) != 1:
+                continue
+            for c in set(re.findall(r'_?(DAT_f{3}[0-9a-f]{5})\s*=\s*(?:\(\w+\)\s*)?' + re.escape(v) + r'\s*;', s)):
+                if not re.search(r'_?' + c + r'\s*-\s*1\b', s):
+                    continue
+                ok = True
+                for f2, rhs in asg[c]:
+                    rr = re.sub(r'\s+', '', rhs)
+                    if re.fullmatch(r'-?(0x[0-9a-f]+|\d+)', rr):
+                        continue
+                    if f2 != fn:
+                        ok = False; break
+                    if re.fullmatch(r'(\(\w+\))?' + re.escape(v), rr) or re.fullmatch(r'(\(\w+\))?_?' + c + r'-1', rr):
+                        continue
+                    if re.fullmatch(r'[a-z]\w*', rr) and len(re.findall(r'\b' + rr + r'\s*=[^=]', s)) <= 2:
+                        continue
+                    ok = False; break
+                if ok:
+                    rows.append((d, fn, root, per, c[4:].upper(), f'{c} = {v} (countdown, {c} - 1 per execution)'))
 seen = set()
 with open(f'{ROOT}/evidence/timer-tables.tsv', 'w') as f:
     f.write('descriptor\tfunction\ttask\tperiod\tcounter\tcontext\n')

@@ -120,6 +120,9 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
   alarms 12-17 -> tasks 0x19-0x1E, and alarms 24-29 -> tasks 0x34-0x39. 0x1526AC (called from the background loop 0x49E70) cancels set A and
   activates task 18 (0x153568, the OBD/SSM formatter task). The 80 ms figure for 0x153568 comes from the PID 0x31 arithmetic and its
   activation pattern needs checking. Task 10 (body 0x15188E -> 0x153800) = 80 ms runs misfire 0xDCE34, 0x8A274 and others.
+  0x152A40 = task 7 (body 0x1517A4 -> stub 0x6F86C). Its only alarm (9) is never set: SetRelAlarm 0x13CD28 is called only with
+  alarms 1,2,4,6,7,10,12-17,24-29, SetAbsAlarm 0x13CD24 is unreferenced, and ActivateTask 0x13C6E4 is called only from startup/shutdown.
+  So 0x152A40 is not timer-driven (most likely crank-event driven), and its counters are not proven to be time.
   `scripts/timers.py` accepts timer tables only under strict checks (direct comparison with a +1 counter) -> `evidence/timer-tables.tsv`.
 - OS structure: the task control blocks at 0x169780 are 16-byte records {entry, flags, priority, stack}. The task bodies (0x151748..)
   call their functions, increment FFFF1B2x (execution count) and jump to 0x13CF00 (terminate). Priorities do not follow the
