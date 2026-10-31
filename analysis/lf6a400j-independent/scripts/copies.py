@@ -27,6 +27,23 @@ for p in glob.glob(f'{ROOT}/cdump/*.c'):
             asg[x].append((fn, m.group(2).strip()))
 
 
+# trivial copy helpers: body is exactly  *param_2 = param_1;  -> FUN_x(SRC, &DST) is an assignment DST = SRC
+COPYFN = set()
+for _p in glob.glob(f'{ROOT}/cdump/*.c'):
+    _b = re.sub(r'/\*.*?\*/', '', open(_p).read(), flags=re.S)
+    if re.search(r'\{\s*\*param_2\s*=\s*(?:\(\w+\)\s*)?param_1\s*;\s*return;\s*\}', _b):
+        COPYFN.add(os.path.basename(_p)[:-2])
+for p in glob.glob(f'{ROOT}/cdump/*.c'):
+    fn = os.path.basename(p)[:-2]; s_ = open(p).read()
+    for m in re.finditer(r'FUN_([0-9a-f]{8})\(\s*([^,;()]*(?:\([^()]*\))?[^,;]*?)\s*,\s*&' + TOK + r'\s*\)\s*;', s_):
+        if m.group(1) not in COPYFN: continue
+        t = m.group(3)
+        x = int(t[4:], 16) if t.startswith('DAT_') else lab.get(t)
+        if x is None: continue
+        rhs = re.sub(r'^\(int\)\s*', '', m.group(2).strip())
+        asg[x].append((fn, rhs))
+        writers[x].add(fn)
+
 def _a(t):
     return int(t[4:], 16) if t.startswith('DAT_') else lab.get(t)
 

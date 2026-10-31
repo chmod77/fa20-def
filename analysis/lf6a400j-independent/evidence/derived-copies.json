@@ -1,4 +1,11 @@
 {
+ "FFFF2B02": [
+  "Engine Speed (170 deg segment, misfire) (copy)",
+  "rpm",
+  "x*25/128",
+  "x*128/25",
+  "('id',) of FFFF2B00 in 0004dff2"
+ ],
  "FFFEEEE6": [
   "Mass Airflow (copy)",
   "g/s",
@@ -12,6 +19,13 @@
   "x*75/16384",
   "x*16384/75",
   "('id',) of FFFEEEE4 in 0004c53c"
+ ],
+ "FFFF2AFA": [
+  "Crank Period (180 deg CA) (copy)",
+  "ms",
+  "x*0.0032",
+  "x/0.0032",
+  "('id',) of FFFF2986 in 0004dd98"
  ],
  "FFFF00A2": [
   "Main Accelerator Sensor (scaled)",
@@ -34,6 +48,27 @@
   "x*65535/100",
   "('id',) of FFFF00BA in 00066c52"
  ],
+ "FFFF09B6": [
+  "Throttle Opening Angle (target/commanded) (copy)",
+  "%",
+  "x/256",
+  "x*256",
+  "('id',) of FFFF0AF4 in 0007e298"
+ ],
+ "FFFF13FA": [
+  "Torque 0ABC (delayed) (copy)",
+  "Nm",
+  "(x-16000)/80",
+  "x*80+16000",
+  "('id',) of FFFF0ABC in 001234d4"
+ ],
+ "FFFF39F4": [
+  "Target Lambda Learning Offset (copy)",
+  "lambda offset",
+  "x/43194",
+  "x*43194",
+  "('id',) of FFFF38F8 in 0011bfb4"
+ ],
  "FFFEF354": [
   "Engine Speed (filtered OBD copy) (copy)",
   "rpm",
@@ -47,6 +82,76 @@
   "x*25/128",
   "x*128/25",
   "('id',) of FFFF2ADA in 0004d04c"
+ ],
+ "FFFF0A0E": [
+  "Torque 0A76 (copy)",
+  "Nm",
+  "(x-16000)/80",
+  "x*80+16000",
+  "('id',) of FFFF0A76 in 00082fa0"
+ ],
+ "FFFF0A70": [
+  "Torque 0A76 (copy)",
+  "Nm",
+  "(x-16000)/80",
+  "x*80+16000",
+  "('id',) of FFFF0A76 in 00082fa0"
+ ],
+ "FFFF0A74": [
+  "Torque 0A76 (copy)",
+  "Nm",
+  "(x-16000)/80",
+  "x*80+16000",
+  "('id',) of FFFF0A76 in 00082fa0"
+ ],
+ "FFFF0A98": [
+  "Torque 0A76 (copy)",
+  "Nm",
+  "(x-16000)/80",
+  "x*80+16000",
+  "('id',) of FFFF0A76 in 00082fa0"
+ ],
+ "FFFF05FB": [
+  "Engine Load (Relative) (copy)",
+  "%",
+  "x*100/255",
+  "x*255/100",
+  "('id',) of FFFEE6FE in 000d17f0"
+ ],
+ "FFFF0625": [
+  "Battery Voltage (copy)",
+  "V",
+  "x*8/100",
+  "x*100/8",
+  "('id',) of FFFFAB41 in 000d17f0"
+ ],
+ "FFFF0626": [
+  "Vehicle Speed (byte) (copy)",
+  "km/h",
+  "x",
+  "x",
+  "('id',) of FFFF65A1 in 000d17f0"
+ ],
+ "FFFEF340": [
+  "Crank Period (180 deg CA) (copy)",
+  "ms",
+  "x*0.0032",
+  "x/0.0032",
+  "('id',) of FFFF2986 in 0004eaaa"
+ ],
+ "FFFF03CE": [
+  "Ignition Total Timing (copy)",
+  "deg BTDC",
+  "x/2",
+  "x*2",
+  "('id',) of FFFF046C in 00087478"
+ ],
+ "FFFF152C": [
+  "Mass Airflow (sensor curve, 32-bit) (copy)",
+  "g/s",
+  "x/76800",
+  "x*76800",
+  "('id',) of FFFEECB0 in 00087478"
  ],
  "FFFEED02": [
   "Accelerator Pedal Angle (copy)",
@@ -83,6 +188,20 @@
   "(x+40)*2048/5",
   "('id',) of FFFEF322 in 0004e6d4,0004eb32"
  ],
+ "FFFF12A8": [
+  "Engine Speed (OBD copy) (copy)",
+  "rpm",
+  "x*25/128",
+  "x*128/25",
+  "('id',) of FFFF2ADA in 001037a0"
+ ],
+ "FFFF12B2": [
+  "Torque 12B0 (copy)",
+  "Nm",
+  "(x-16000)/80",
+  "x*80+16000",
+  "('id',) of FFFF12B0 in 001037a0"
+ ],
  "FFFEEF4E": [
   "Mass Airflow (sensor curve, 32-bit) (scaled)",
   "g/s",
@@ -96,6 +215,13 @@
   "x*25/128",
   "x*128/25",
   "('id',) of FFFF2AF0 in 0004d080"
+ ],
+ "FFFEF184": [
+  "Air Charge Rate (VE*density*rpm, 0F56) (copy)",
+  "g/L*rpm",
+  "x/5",
+  "x*5",
+  "('id',) of FFFF0F56 in 00069754"
  ],
  "FFFEF19C": [
   "Engine Speed (OBD copy) (copy)",
@@ -132,6 +258,20 @@
   "x*256",
   "('id',) of FFFEE6F8 in 0003ddc8"
  ],
+ "FFFF0592": [
+  "Battery Voltage (copy)",
+  "V",
+  "x*8/100",
+  "x*100/8",
+  "('id',) of FFFFAB41 in 000c5934"
+ ],
+ "FFFF0F10": [
+  "Torque (0ADC - 0ADA, 0A1E) (copy)",
+  "Nm",
+  "(x-16000)/80",
+  "x*80+16000",
+  "('id',) of FFFF0A1E in 000c5934"
+ ],
  "FFFF2FDA": [
   "Coolant Temperature (copy)",
   "C",
@@ -145,6 +285,13 @@
   "x-50",
   "x+50",
   "('id',) of FFFF29A7 in 0003c578"
+ ],
+ "FFFF2AFC": [
+  "Crank Period (180 deg CA) (copy)",
+  "ms",
+  "x*0.0032",
+  "x/0.0032",
+  "('id',) of FFFF2986 in 0004ddaa"
  ],
  "FFFEE7C6": [
   "Rear O2 Heater Current (copy)",
@@ -216,6 +363,27 @@
   "x*2048/1250",
   "('id',) of FFFF1276 in 00044544"
  ],
+ "FFFF144A": [
+  "Requested Torque D (pedal) (copy)",
+  "Nm",
+  "(x-16000)/80",
+  "x*80+16000",
+  "('id',) of FFFF0A56 in 00125420"
+ ],
+ "FFFF1452": [
+  "Torque Ramp Previous (0A5E) (copy)",
+  "Nm",
+  "(x-16000)/80",
+  "x*80+16000",
+  "('id',) of FFFF0A5E in 00125420"
+ ],
+ "FFFF2B04": [
+  "Engine Speed (170 deg segment, misfire) (copy) (copy)",
+  "rpm",
+  "x*25/128",
+  "x*128/25",
+  "('id',) of FFFF2B02 in 0004dff2"
+ ],
  "FFFEF14C": [
   "Accelerator Pedal Angle (copy) (copy)",
   "%",
@@ -258,6 +426,13 @@
   "x/25",
   "('id',) of FFFF2AD3 in 0003bf24"
  ],
+ "FFFF2B06": [
+  "Engine Speed (170 deg segment, misfire) (copy) (copy) (copy)",
+  "rpm",
+  "x*25/128",
+  "x*128/25",
+  "('id',) of FFFF2B04 in 0004dff2"
+ ],
  "FFFEF148": [
   "Accelerator Pedal Angle (copy) (copy) (copy)",
   "%",
@@ -285,6 +460,13 @@
   "x*25",
   "x/25",
   "('id',) of FFFF299D in 0003bf24"
+ ],
+ "FFFF2B08": [
+  "Engine Speed (170 deg segment, misfire) (copy) (copy) (copy) (copy)",
+  "rpm",
+  "x*25/128",
+  "x*128/25",
+  "('id',) of FFFF2B06 in 0004dff2"
  ],
  "FFFEF1A2": [
   "Engine Speed (OBD copy) (copy) (copy) (copy) (copy)",
