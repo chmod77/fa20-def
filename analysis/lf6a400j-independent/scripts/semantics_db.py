@@ -1189,6 +1189,20 @@ add(0x2E04C, 'Injection Time Offset Lower Limit vs Coolant [0xAEFF4 -> 1654]', I
     '0xAEFF4 (from 0xAEBE8, p6 Coolant FFFF29A5, C = x-50): 1654[i] = max(T_02E04C(coolant), history[i] + step).', _ITO,
     axes={'0': dict(name='Coolant Temperature', units='C', expr='x-50', to_byte='x+50')})
 
+_d2e = ('0x92410/0x92700/0x929F0/0x92CE0 (from 0x89A78, p12 = FFFF0D2E): with mode FFFF0541 == 4, injection time FFFF1568.. = 1.25*(0D2E*FFFF0B44*0.0125 '
+        '+ latency FFFF0BC8*0.8) in 0.8 us units, i.e. us = 0D2E*3.2*(0B44/256) + 0BC8*0.8 (0B44/256 = Injector Pulse Multiplier), so 0D2E is a base '
+        'pulse in 3.2 us units. 0xAE058 (from 0xAEBE8; active when FFFF66B0 == 3, rpm FFFF299C < 0x50 (2000 rpm) and 0541 == 4): 0D2E = '
+        'min(0xFFFF, min(0xFFFF, min(0xFFFF, b*T_coolant >> 6)*T_rpm >> 7)*T_29C2 >> 7) with b from FFFF2986 (time per 90 deg CA) and '
+        'FFFF09CA. Each factor is applied with its own shift and saturated in the 0D2E container, and the neutral values present in the '
+        'data (T_02DF8C all 128, coolant tables max 64) are 1.0, so the tables are multipliers. ')
+add(0x2DF98, 'Start Injection Multiplier vs Coolant (FFFEEF76.6 clear) [0xAE058 -> 0D2E]', INJ, _d2e, ('multiplier', 'x/64', 'x*64', '0.000'),
+    axes={'0': dict(name='Coolant Temperature (filtered, word)', units='C', expr='x*5/2048-40', to_byte='(x+40)*2048/5')})
+add(0x2DFA4, 'Start Injection Multiplier vs Coolant (FFFEEF76.6 set) [0xAE058 -> 0D2E]', INJ, _d2e, ('multiplier', 'x/64', 'x*64', '0.000'),
+    axes={'0': dict(name='Coolant Temperature (filtered, word)', units='C', expr='x*5/2048-40', to_byte='(x+40)*2048/5')})
+add(0x2DF80, 'Start Injection Multiplier vs RPM [0xAE058 -> 0D2E]', INJ, _d2e, ('multiplier', 'x/128', 'x*128', '0.000'),
+    axes={'0': dict(name='Engine Speed (byte, 25 rpm)', units='rpm', expr='x*25', to_byte='x/25')})
+add(0x2DF8C, 'Start Injection Multiplier vs FFFF29C2 [0xAE058 -> 0D2E]', INJ, _d2e + 'Input FFFF29C2 unresolved.', ('multiplier', 'x/128', 'x*128', '0.000'))
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

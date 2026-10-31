@@ -185,6 +185,9 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
 - Per-cylinder injection time offsets: 0x917EC makes base pulse 1544 = 1.25*(3.2*(u-32768) + ...) with u from FFFF1644[0], so
   1644 = 1654 + 164C - 0x8000 (0xAE80C) are injection time offsets us = (x-32768)*3.2. Proven clamps T_02E01C/T_02E028 (0xAE9B4) and
   T_02E04C (0xAEFF4); the gains in 0xAE9B4/0xAEFF4 are products of 3 tables (not separable). Coverage 580 of 1284.
+- 0D2E (0xAE058) is a start-injection base pulse in 3.2 us units (0x92410 family: us = 0D2E*3.2*(0B44/256) + latency). Its four
+  tables are applied one by one with own shift and 0xFFFF saturation; neutral values in the data (128, 64) -> multipliers x/128, x/64.
+  Products evaluated in one expression (0xAE9B4, 0xAEFF4, 0x8B178) stay locked. Coverage 584 of 1284.
 - Dead ends this session (documented so they are not repeated):
   * FFFF12C2 (axis of the pedal-limit T1 tables, compared with 12BE in the torque monitor): only a read literal (0xC50D0); writer not
     found by literal, GBR (+70 from 127C) or r0-offset searches.

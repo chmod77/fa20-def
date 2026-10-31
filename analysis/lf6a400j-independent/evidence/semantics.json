@@ -5260,6 +5260,82 @@
    "format": "0.00"
   }
  },
+ "0x2DF80": {
+  "status": "identified",
+  "name": "Start Injection Multiplier vs RPM [0xAE058 -> 0D2E]",
+  "category": "Fuel Injection",
+  "evidence": "0x92410/0x92700/0x929F0/0x92CE0 (from 0x89A78, p12 = FFFF0D2E): with mode FFFF0541 == 4, injection time FFFF1568.. = 1.25*(0D2E*FFFF0B44*0.0125 + latency FFFF0BC8*0.8) in 0.8 us units, i.e. us = 0D2E*3.2*(0B44/256) + 0BC8*0.8 (0B44/256 = Injector Pulse Multiplier), so 0D2E is a base pulse in 3.2 us units. 0xAE058 (from 0xAEBE8; active when FFFF66B0 == 3, rpm FFFF299C < 0x50 (2000 rpm) and 0541 == 4): 0D2E = min(0xFFFF, min(0xFFFF, min(0xFFFF, b*T_coolant >> 6)*T_rpm >> 7)*T_29C2 >> 7) with b from FFFF2986 (time per 90 deg CA) and FFFF09CA. Each factor is applied with its own shift and saturated in the 0D2E container, and the neutral values present in the data (T_02DF8C all 128, coolant tables max 64) are 1.0, so the tables are multipliers. ",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x/128",
+   "to_byte": "x*128",
+   "format": "0.000"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed (byte, 25 rpm)",
+    "units": "rpm",
+    "expr": "x*25",
+    "to_byte": "x/25"
+   }
+  }
+ },
+ "0x2DF8C": {
+  "status": "identified",
+  "name": "Start Injection Multiplier vs FFFF29C2 [0xAE058 -> 0D2E]",
+  "category": "Fuel Injection",
+  "evidence": "0x92410/0x92700/0x929F0/0x92CE0 (from 0x89A78, p12 = FFFF0D2E): with mode FFFF0541 == 4, injection time FFFF1568.. = 1.25*(0D2E*FFFF0B44*0.0125 + latency FFFF0BC8*0.8) in 0.8 us units, i.e. us = 0D2E*3.2*(0B44/256) + 0BC8*0.8 (0B44/256 = Injector Pulse Multiplier), so 0D2E is a base pulse in 3.2 us units. 0xAE058 (from 0xAEBE8; active when FFFF66B0 == 3, rpm FFFF299C < 0x50 (2000 rpm) and 0541 == 4): 0D2E = min(0xFFFF, min(0xFFFF, min(0xFFFF, b*T_coolant >> 6)*T_rpm >> 7)*T_29C2 >> 7) with b from FFFF2986 (time per 90 deg CA) and FFFF09CA. Each factor is applied with its own shift and saturated in the 0D2E container, and the neutral values present in the data (T_02DF8C all 128, coolant tables max 64) are 1.0, so the tables are multipliers. Input FFFF29C2 unresolved.",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x/128",
+   "to_byte": "x*128",
+   "format": "0.000"
+  }
+ },
+ "0x2DF98": {
+  "status": "identified",
+  "name": "Start Injection Multiplier vs Coolant (FFFEEF76.6 clear) [0xAE058 -> 0D2E]",
+  "category": "Fuel Injection",
+  "evidence": "0x92410/0x92700/0x929F0/0x92CE0 (from 0x89A78, p12 = FFFF0D2E): with mode FFFF0541 == 4, injection time FFFF1568.. = 1.25*(0D2E*FFFF0B44*0.0125 + latency FFFF0BC8*0.8) in 0.8 us units, i.e. us = 0D2E*3.2*(0B44/256) + 0BC8*0.8 (0B44/256 = Injector Pulse Multiplier), so 0D2E is a base pulse in 3.2 us units. 0xAE058 (from 0xAEBE8; active when FFFF66B0 == 3, rpm FFFF299C < 0x50 (2000 rpm) and 0541 == 4): 0D2E = min(0xFFFF, min(0xFFFF, min(0xFFFF, b*T_coolant >> 6)*T_rpm >> 7)*T_29C2 >> 7) with b from FFFF2986 (time per 90 deg CA) and FFFF09CA. Each factor is applied with its own shift and saturated in the 0D2E container, and the neutral values present in the data (T_02DF8C all 128, coolant tables max 64) are 1.0, so the tables are multipliers. ",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x/64",
+   "to_byte": "x*64",
+   "format": "0.000"
+  },
+  "axes": {
+   "0": {
+    "name": "Coolant Temperature (filtered, word)",
+    "units": "C",
+    "expr": "x*5/2048-40",
+    "to_byte": "(x+40)*2048/5"
+   }
+  }
+ },
+ "0x2DFA4": {
+  "status": "identified",
+  "name": "Start Injection Multiplier vs Coolant (FFFEEF76.6 set) [0xAE058 -> 0D2E]",
+  "category": "Fuel Injection",
+  "evidence": "0x92410/0x92700/0x929F0/0x92CE0 (from 0x89A78, p12 = FFFF0D2E): with mode FFFF0541 == 4, injection time FFFF1568.. = 1.25*(0D2E*FFFF0B44*0.0125 + latency FFFF0BC8*0.8) in 0.8 us units, i.e. us = 0D2E*3.2*(0B44/256) + 0BC8*0.8 (0B44/256 = Injector Pulse Multiplier), so 0D2E is a base pulse in 3.2 us units. 0xAE058 (from 0xAEBE8; active when FFFF66B0 == 3, rpm FFFF299C < 0x50 (2000 rpm) and 0541 == 4): 0D2E = min(0xFFFF, min(0xFFFF, min(0xFFFF, b*T_coolant >> 6)*T_rpm >> 7)*T_29C2 >> 7) with b from FFFF2986 (time per 90 deg CA) and FFFF09CA. Each factor is applied with its own shift and saturated in the 0D2E container, and the neutral values present in the data (T_02DF8C all 128, coolant tables max 64) are 1.0, so the tables are multipliers. ",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x/64",
+   "to_byte": "x*64",
+   "format": "0.000"
+  },
+  "axes": {
+   "0": {
+    "name": "Coolant Temperature (filtered, word)",
+    "units": "C",
+    "expr": "x*5/2048-40",
+    "to_byte": "(x+40)*2048/5"
+   }
+  }
+ },
  "0x2E01C": {
   "status": "identified",
   "name": "Injection Time Offset Lower Limit vs Coolant [0xAE9B4 -> 164C]",
