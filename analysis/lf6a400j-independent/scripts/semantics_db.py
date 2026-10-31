@@ -656,6 +656,11 @@ add(0x2D9B4, 'Ignition Timing Adder (Coolant) [0x9DBF8]', IGN,
     'FFFF045C + FFFF049D + FFFF049B - 32 with 045C (046C = 045C - 32, 0.5 deg) and 049B (added to base timing 03D1, 0.5 deg), '
     'so T is 0.5 deg. Input coolant FFFEEEDE.', DEG2)
 
+add(0x2D9F8, 'Ignition Timing Base, Override Path (RPM x Load)', IGN,
+    '0x9DFD0 (from 0x9BDF4): FFFF049F = T(rpm FFFF2994, load FFFF09B4); 0x98FAC: (FFFF049F + FFFF0486 - 160) is the total-timing value '
+    '(0.5 deg) on its override path, with 0486 offset 128 (0x9AE9C), so T is 0.5 deg with offset 32 (param_8 is passed as 0 in this ROM).',
+    ('deg', '(x-32)/2', 'x*2+32', '0.0'))
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

@@ -981,12 +981,12 @@
         <scaling units="multiplier" expression="x/16" to_byte="x*16" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 22x16 [D02D9F8] (Engine Speed x Engine Load)" category="Unidentified - Ignition Timing - Corrections" storageaddress="C854" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D9F8. Lookup result stored to: FFFF049F. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="22">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="D69A" elements="22" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Ignition Timing Base, Override Path (RPM x Load)" category="Ignition Timing" storageaddress="C854" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D9F8. Evidence: 0x9DFD0 (from 0x9BDF4): FFFF049F = T(rpm FFFF2994, load FFFF09B4); 0x98FAC: (FFFF049F + FFFF0486 - 160) is the total-timing value (0.5 deg) on its override path, with 0486 offset 128 (0x9AE9C), so T is 0.5 deg with offset 32 (param_8 is passed as 0 in this ROM). Lookup result stored to: FFFF049F." sizex="16" sizey="22">
+      <scaling units="deg" expression="(x-32)/2" to_byte="x*2+32" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="D69A" elements="22" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Load" storageaddress="D6C6" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Engine Load" storageaddress="D6C6" elements="16" storagetype="uint16" endian="big">
         <scaling units="%" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
