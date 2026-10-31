@@ -847,6 +847,12 @@ add(0x2C7E8, 'Torque Offset Multiplier (RPM x FFFF0A6E) [0x826D4]', 'Driver Dema
     '0x826D4 (from 0x82FA0): FFFF0A7A = 16000 + (FFFF0ADC - 16000)*T/32768, scaling the torque-type value 0ADC (proven via 0x8267C with '
     'Requested Torque 0A62), so T is a multiplier with 32768 = 1.0. Inputs FFFF2994 rpm, FFFF0A6E.', ('multiplier', 'x/32768', 'x*32768', '0.000'))
 
+for d, fn, out in ((0x2FBC0, '0x10641C', 'FFFF12B0'), (0x30568, '0x126410', 'FFFF147C')):
+    add(d, f'Torque Limit Offset (RPM) [{fn}]', 'Driver Demand / Torque Request',
+        f'{fn}: limit = min(T(FFFF299C rpm/25) + FFFF0A1E - 16000, ratio term) -> {out}; FFFF0A1E is torque type (0x80D54: 0ADC - 0ADA + 16000), '
+        'and a + b - 16000 is the torque-type addition, so T is in the torque type.' + TQEV,
+        ('Nm', '(x-16000)/80', 'x*80+16000', '0.0'), axes={'0': dict(name='Engine Speed', units='rpm', expr='x*25', to_byte='x/25')})
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

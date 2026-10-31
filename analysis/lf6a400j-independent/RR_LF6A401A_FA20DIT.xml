@@ -6042,9 +6042,9 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02FB14] (Engine Speed (byte, 25 rpm))" category="Unidentified - Task 0x100CB4 / Task 0x126050 / Task 0x15307C" storageaddress="22C72" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FB14, 0x2FBC0, 0x30568. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed (byte, 25 rpm)" storageaddress="1E45C" elements="16" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Torque Limit Offset (RPM) [0x10641C]" category="Driver Demand / Torque Request" storageaddress="22C72" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FB14, 0x2FBC0, 0x30568. Evidence: 0x10641C: limit = min(T(FFFF299C rpm/25) + FFFF0A1E - 16000, ratio term) -&gt; FFFF12B0; FFFF0A1E is torque type (0x80D54: 0ADC - 0ADA + 16000), and a + b - 16000 is the torque-type addition, so T is in the torque type. Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW-&gt;Nm via 60000/2pi, stored *80+16000, clamps = u16 range)." sizey="16">
+      <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="1E45C" elements="16" storagetype="uint8" endian="big">
         <scaling units="rpm" expression="x*25" to_byte="x/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
