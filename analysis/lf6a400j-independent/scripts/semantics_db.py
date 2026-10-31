@@ -971,6 +971,20 @@ for d, nm, v in ((0x2EC08, 'Rise Threshold', 'A'), (0x2EC14, 'Rise Threshold', '
         ('kPa', 'x/256', 'x*256', '0.00'), axes=_MAPX)
 
 
+# ---- accelerator pedal angle limit 0x103CF4 (session 4)
+_pl = ('0x103CF4 (from 0x100CB4; p1 FFFEF3EA.6 enable, p2 Torque 12B0, p3 rpm FFFF2994, p4 mode FFFF0585, p5 FFFF056F.4 = B, p6 FFFF12C2, '
+       'p7 FFFF0569.6): FFFF1282 = min(previous + 26 per execution (rate limit), T1(12C2), T2(12B0 torque, rpm)). 0x82C34 (0x82FA0): '
+       'when FFFF03C6 == 0x18 and Accelerator Pedal Angle FFFEEEF8 <= 1282 the pedal value is replaced by 1282, so 1282 and the '
+       'tables are pedal angle (SSM 0x29: % = x*100/65280). 12B0 is torque type: 0x81394 compares it with 0A5C/0A5E. ')
+_PCT = ('%', 'x*100/65280', 'x*65280/100', '0.0')
+for d, v in ((0x2FA78, 'mode other, B=0'), (0x2FA84, 'mode 2, B=0'), (0x2FA90, 'mode 3, B=0'), (0x2FA9C, 'mode other, B=1'),
+             (0x2FAA8, 'mode 2, B=1'), (0x2FAB4, 'mode 3, B=1')):
+    add(d, f'Accelerator Pedal Angle Limit vs FFFF12C2 ({v})', 'Driver Demand / Torque Request', _pl + 'This table is T1 (input FFFF12C2 unresolved).', _PCT)
+for d, v in ((0x2FA00, 'mode other, B=0'), (0x2FA14, 'mode 2, B=0'), (0x2FA28, 'mode 3, B=0'), (0x2FA3C, 'mode other, B=1'),
+             (0x2FA50, 'mode 2, B=1'), (0x2FA64, 'mode 3, B=1')):
+    add(d, f'Accelerator Pedal Angle Limit (Torque x RPM, {v})', 'Driver Demand / Torque Request', _pl + 'This table is T2.', _PCT)
+
+
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
     print(len(S), 'entries')

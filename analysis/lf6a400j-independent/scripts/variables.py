@@ -234,3 +234,7 @@ V2.update({
  0xFFFF0A58:('Torque Ramp Output (0A58)','Nm','(x-16000)/80','x*80+16000','0x8208C: 0A5E = max(0A42, 0A58); 0x815F0 0A58 = min(0A5C, ramp)'+_TQ),
  0xFFFF0A42:('Torque Term 0A42','Nm','(x-16000)/80','x*80+16000','0x8208C: 0A5E = max(0A42, 0A58)'+_TQ),
 })
+V2.update({
+ 0xFFFF12B0:('Torque 12B0','Nm','(x-16000)/80','x*80+16000','0x81394 (call 0x840B0): p2=12B0 replaced by p8=0A5C (Torque Ramp Target) when smaller, then compared with 0A5E'+_TQ),
+ 0xFFFF1282:('Accelerator Pedal Angle Limit','%','x*100/65280','x*65280/100','0x82C34: when FFFF03C6==0x18 and pedal FFFEEEF8 <= 1282, output = 1282 (else pedal): same unit as SSM 0x29 pedal'),
+})

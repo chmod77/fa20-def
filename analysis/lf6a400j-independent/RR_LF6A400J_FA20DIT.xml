@@ -5928,93 +5928,93 @@
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x16 [D02FA64] (? x Engine Speed)" category="Unidentified - Task 0x100CB4" storageaddress="21F8A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FA64. Lookup result stored to: FFFED9E0. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF12B0)" storageaddress="21DAA" elements="16" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    <table type="3D" name="Accelerator Pedal Angle Limit (Torque x RPM, mode 3, B=1)" category="Driver Demand / Torque Request" storageaddress="21F8A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FA64. Evidence: 0x103CF4 (from 0x100CB4; p1 FFFEF3EA.6 enable, p2 Torque 12B0, p3 rpm FFFF2994, p4 mode FFFF0585, p5 FFFF056F.4 = B, p6 FFFF12C2, p7 FFFF0569.6): FFFF1282 = min(previous + 26 per execution (rate limit), T1(12C2), T2(12B0 torque, rpm)). 0x82C34 (0x82FA0): when FFFF03C6 == 0x18 and Accelerator Pedal Angle FFFEEEF8 &lt;= 1282 the pedal value is replaced by 1282, so 1282 and the tables are pedal angle (SSM 0x29: % = x*100/65280). 12B0 is torque type: 0x81394 compares it with 0A5C/0A5E. This table is T2. Lookup result stored to: FFFED9E0." sizex="16" sizey="16">
+      <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Torque 12B0" storageaddress="21DAA" elements="16" storagetype="uint16" endian="big">
+        <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Speed" storageaddress="21DCA" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Engine Speed" storageaddress="21DCA" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x16 [D02FA28] (? x Engine Speed)" category="Unidentified - Task 0x100CB4" storageaddress="2218A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FA28. Lookup result stored to: FFFED9E0. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF12B0)" storageaddress="21DEA" elements="16" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    <table type="3D" name="Accelerator Pedal Angle Limit (Torque x RPM, mode 3, B=0)" category="Driver Demand / Torque Request" storageaddress="2218A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FA28. Evidence: 0x103CF4 (from 0x100CB4; p1 FFFEF3EA.6 enable, p2 Torque 12B0, p3 rpm FFFF2994, p4 mode FFFF0585, p5 FFFF056F.4 = B, p6 FFFF12C2, p7 FFFF0569.6): FFFF1282 = min(previous + 26 per execution (rate limit), T1(12C2), T2(12B0 torque, rpm)). 0x82C34 (0x82FA0): when FFFF03C6 == 0x18 and Accelerator Pedal Angle FFFEEEF8 &lt;= 1282 the pedal value is replaced by 1282, so 1282 and the tables are pedal angle (SSM 0x29: % = x*100/65280). 12B0 is torque type: 0x81394 compares it with 0A5C/0A5E. This table is T2. Lookup result stored to: FFFED9E0." sizex="16" sizey="16">
+      <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Torque 12B0" storageaddress="21DEA" elements="16" storagetype="uint16" endian="big">
+        <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Speed" storageaddress="21E0A" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Engine Speed" storageaddress="21E0A" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x16 [D02FA3C] (? x Engine Speed)" category="Unidentified - Task 0x100CB4" storageaddress="2238A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FA3C. Lookup result stored to: FFFED9E0. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF12B0)" storageaddress="21E2A" elements="16" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    <table type="3D" name="Accelerator Pedal Angle Limit (Torque x RPM, mode other, B=1)" category="Driver Demand / Torque Request" storageaddress="2238A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FA3C. Evidence: 0x103CF4 (from 0x100CB4; p1 FFFEF3EA.6 enable, p2 Torque 12B0, p3 rpm FFFF2994, p4 mode FFFF0585, p5 FFFF056F.4 = B, p6 FFFF12C2, p7 FFFF0569.6): FFFF1282 = min(previous + 26 per execution (rate limit), T1(12C2), T2(12B0 torque, rpm)). 0x82C34 (0x82FA0): when FFFF03C6 == 0x18 and Accelerator Pedal Angle FFFEEEF8 &lt;= 1282 the pedal value is replaced by 1282, so 1282 and the tables are pedal angle (SSM 0x29: % = x*100/65280). 12B0 is torque type: 0x81394 compares it with 0A5C/0A5E. This table is T2. Lookup result stored to: FFFED9E0." sizex="16" sizey="16">
+      <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Torque 12B0" storageaddress="21E2A" elements="16" storagetype="uint16" endian="big">
+        <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Speed" storageaddress="21E4A" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Engine Speed" storageaddress="21E4A" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x16 [D02FA00] (? x Engine Speed)" category="Unidentified - Task 0x100CB4" storageaddress="2258A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FA00. Lookup result stored to: FFFED9E0. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF12B0)" storageaddress="21E6A" elements="16" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    <table type="3D" name="Accelerator Pedal Angle Limit (Torque x RPM, mode other, B=0)" category="Driver Demand / Torque Request" storageaddress="2258A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FA00. Evidence: 0x103CF4 (from 0x100CB4; p1 FFFEF3EA.6 enable, p2 Torque 12B0, p3 rpm FFFF2994, p4 mode FFFF0585, p5 FFFF056F.4 = B, p6 FFFF12C2, p7 FFFF0569.6): FFFF1282 = min(previous + 26 per execution (rate limit), T1(12C2), T2(12B0 torque, rpm)). 0x82C34 (0x82FA0): when FFFF03C6 == 0x18 and Accelerator Pedal Angle FFFEEEF8 &lt;= 1282 the pedal value is replaced by 1282, so 1282 and the tables are pedal angle (SSM 0x29: % = x*100/65280). 12B0 is torque type: 0x81394 compares it with 0A5C/0A5E. This table is T2. Lookup result stored to: FFFED9E0." sizex="16" sizey="16">
+      <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Torque 12B0" storageaddress="21E6A" elements="16" storagetype="uint16" endian="big">
+        <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Speed" storageaddress="21E8A" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Engine Speed" storageaddress="21E8A" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x16 [D02FA50] (? x Engine Speed)" category="Unidentified - Task 0x100CB4" storageaddress="2278A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FA50. Lookup result stored to: FFFED9E0. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF12B0)" storageaddress="21EAA" elements="16" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    <table type="3D" name="Accelerator Pedal Angle Limit (Torque x RPM, mode 2, B=1)" category="Driver Demand / Torque Request" storageaddress="2278A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FA50. Evidence: 0x103CF4 (from 0x100CB4; p1 FFFEF3EA.6 enable, p2 Torque 12B0, p3 rpm FFFF2994, p4 mode FFFF0585, p5 FFFF056F.4 = B, p6 FFFF12C2, p7 FFFF0569.6): FFFF1282 = min(previous + 26 per execution (rate limit), T1(12C2), T2(12B0 torque, rpm)). 0x82C34 (0x82FA0): when FFFF03C6 == 0x18 and Accelerator Pedal Angle FFFEEEF8 &lt;= 1282 the pedal value is replaced by 1282, so 1282 and the tables are pedal angle (SSM 0x29: % = x*100/65280). 12B0 is torque type: 0x81394 compares it with 0A5C/0A5E. This table is T2. Lookup result stored to: FFFED9E0." sizex="16" sizey="16">
+      <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Torque 12B0" storageaddress="21EAA" elements="16" storagetype="uint16" endian="big">
+        <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Speed" storageaddress="21ECA" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Engine Speed" storageaddress="21ECA" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x16 [D02FA14] (? x Engine Speed)" category="Unidentified - Task 0x100CB4" storageaddress="2298A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FA14. Lookup result stored to: FFFED9E0. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF12B0)" storageaddress="21EEA" elements="16" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    <table type="3D" name="Accelerator Pedal Angle Limit (Torque x RPM, mode 2, B=0)" category="Driver Demand / Torque Request" storageaddress="2298A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FA14. Evidence: 0x103CF4 (from 0x100CB4; p1 FFFEF3EA.6 enable, p2 Torque 12B0, p3 rpm FFFF2994, p4 mode FFFF0585, p5 FFFF056F.4 = B, p6 FFFF12C2, p7 FFFF0569.6): FFFF1282 = min(previous + 26 per execution (rate limit), T1(12C2), T2(12B0 torque, rpm)). 0x82C34 (0x82FA0): when FFFF03C6 == 0x18 and Accelerator Pedal Angle FFFEEEF8 &lt;= 1282 the pedal value is replaced by 1282, so 1282 and the tables are pedal angle (SSM 0x29: % = x*100/65280). 12B0 is torque type: 0x81394 compares it with 0A5C/0A5E. This table is T2. Lookup result stored to: FFFED9E0." sizex="16" sizey="16">
+      <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Torque 12B0" storageaddress="21EEA" elements="16" storagetype="uint16" endian="big">
+        <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Speed" storageaddress="21F0A" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Engine Speed" storageaddress="21F0A" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02FAB4]" category="Unidentified - Task 0x100CB4" storageaddress="22B8A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FAB4. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF12C2)" storageaddress="21F2A" elements="8" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Accelerator Pedal Angle Limit vs FFFF12C2 (mode 3, B=1)" category="Driver Demand / Torque Request" storageaddress="22B8A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FAB4. Evidence: 0x103CF4 (from 0x100CB4; p1 FFFEF3EA.6 enable, p2 Torque 12B0, p3 rpm FFFF2994, p4 mode FFFF0585, p5 FFFF056F.4 = B, p6 FFFF12C2, p7 FFFF0569.6): FFFF1282 = min(previous + 26 per execution (rate limit), T1(12C2), T2(12B0 torque, rpm)). 0x82C34 (0x82FA0): when FFFF03C6 == 0x18 and Accelerator Pedal Angle FFFEEEF8 &lt;= 1282 the pedal value is replaced by 1282, so 1282 and the tables are pedal angle (SSM 0x29: % = x*100/65280). 12B0 is torque type: 0x81394 compares it with 0A5C/0A5E. This table is T1 (input FFFF12C2 unresolved)." sizey="8">
+      <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF12C2)" storageaddress="21F2A" elements="8" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02FA90]" category="Unidentified - Task 0x100CB4" storageaddress="22B9A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FA90. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF12C2)" storageaddress="21F3A" elements="8" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Accelerator Pedal Angle Limit vs FFFF12C2 (mode 3, B=0)" category="Driver Demand / Torque Request" storageaddress="22B9A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FA90. Evidence: 0x103CF4 (from 0x100CB4; p1 FFFEF3EA.6 enable, p2 Torque 12B0, p3 rpm FFFF2994, p4 mode FFFF0585, p5 FFFF056F.4 = B, p6 FFFF12C2, p7 FFFF0569.6): FFFF1282 = min(previous + 26 per execution (rate limit), T1(12C2), T2(12B0 torque, rpm)). 0x82C34 (0x82FA0): when FFFF03C6 == 0x18 and Accelerator Pedal Angle FFFEEEF8 &lt;= 1282 the pedal value is replaced by 1282, so 1282 and the tables are pedal angle (SSM 0x29: % = x*100/65280). 12B0 is torque type: 0x81394 compares it with 0A5C/0A5E. This table is T1 (input FFFF12C2 unresolved)." sizey="8">
+      <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF12C2)" storageaddress="21F3A" elements="8" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02FA9C]" category="Unidentified - Task 0x100CB4" storageaddress="22BAA" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FA9C. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF12C2)" storageaddress="21F4A" elements="8" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Accelerator Pedal Angle Limit vs FFFF12C2 (mode other, B=1)" category="Driver Demand / Torque Request" storageaddress="22BAA" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FA9C. Evidence: 0x103CF4 (from 0x100CB4; p1 FFFEF3EA.6 enable, p2 Torque 12B0, p3 rpm FFFF2994, p4 mode FFFF0585, p5 FFFF056F.4 = B, p6 FFFF12C2, p7 FFFF0569.6): FFFF1282 = min(previous + 26 per execution (rate limit), T1(12C2), T2(12B0 torque, rpm)). 0x82C34 (0x82FA0): when FFFF03C6 == 0x18 and Accelerator Pedal Angle FFFEEEF8 &lt;= 1282 the pedal value is replaced by 1282, so 1282 and the tables are pedal angle (SSM 0x29: % = x*100/65280). 12B0 is torque type: 0x81394 compares it with 0A5C/0A5E. This table is T1 (input FFFF12C2 unresolved)." sizey="8">
+      <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF12C2)" storageaddress="21F4A" elements="8" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02FA78]" category="Unidentified - Task 0x100CB4" storageaddress="22BBA" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FA78. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF12C2)" storageaddress="21F5A" elements="8" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Accelerator Pedal Angle Limit vs FFFF12C2 (mode other, B=0)" category="Driver Demand / Torque Request" storageaddress="22BBA" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FA78. Evidence: 0x103CF4 (from 0x100CB4; p1 FFFEF3EA.6 enable, p2 Torque 12B0, p3 rpm FFFF2994, p4 mode FFFF0585, p5 FFFF056F.4 = B, p6 FFFF12C2, p7 FFFF0569.6): FFFF1282 = min(previous + 26 per execution (rate limit), T1(12C2), T2(12B0 torque, rpm)). 0x82C34 (0x82FA0): when FFFF03C6 == 0x18 and Accelerator Pedal Angle FFFEEEF8 &lt;= 1282 the pedal value is replaced by 1282, so 1282 and the tables are pedal angle (SSM 0x29: % = x*100/65280). 12B0 is torque type: 0x81394 compares it with 0A5C/0A5E. This table is T1 (input FFFF12C2 unresolved)." sizey="8">
+      <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF12C2)" storageaddress="21F5A" elements="8" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02FAA8]" category="Unidentified - Task 0x100CB4" storageaddress="22BCA" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FAA8. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF12C2)" storageaddress="21F6A" elements="8" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Accelerator Pedal Angle Limit vs FFFF12C2 (mode 2, B=1)" category="Driver Demand / Torque Request" storageaddress="22BCA" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FAA8. Evidence: 0x103CF4 (from 0x100CB4; p1 FFFEF3EA.6 enable, p2 Torque 12B0, p3 rpm FFFF2994, p4 mode FFFF0585, p5 FFFF056F.4 = B, p6 FFFF12C2, p7 FFFF0569.6): FFFF1282 = min(previous + 26 per execution (rate limit), T1(12C2), T2(12B0 torque, rpm)). 0x82C34 (0x82FA0): when FFFF03C6 == 0x18 and Accelerator Pedal Angle FFFEEEF8 &lt;= 1282 the pedal value is replaced by 1282, so 1282 and the tables are pedal angle (SSM 0x29: % = x*100/65280). 12B0 is torque type: 0x81394 compares it with 0A5C/0A5E. This table is T1 (input FFFF12C2 unresolved)." sizey="8">
+      <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF12C2)" storageaddress="21F6A" elements="8" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02FA84]" category="Unidentified - Task 0x100CB4" storageaddress="22BDA" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FA84. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF12C2)" storageaddress="21F7A" elements="8" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Accelerator Pedal Angle Limit vs FFFF12C2 (mode 2, B=0)" category="Driver Demand / Torque Request" storageaddress="22BDA" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FA84. Evidence: 0x103CF4 (from 0x100CB4; p1 FFFEF3EA.6 enable, p2 Torque 12B0, p3 rpm FFFF2994, p4 mode FFFF0585, p5 FFFF056F.4 = B, p6 FFFF12C2, p7 FFFF0569.6): FFFF1282 = min(previous + 26 per execution (rate limit), T1(12C2), T2(12B0 torque, rpm)). 0x82C34 (0x82FA0): when FFFF03C6 == 0x18 and Accelerator Pedal Angle FFFEEEF8 &lt;= 1282 the pedal value is replaced by 1282, so 1282 and the tables are pedal angle (SSM 0x29: % = x*100/65280). 12B0 is torque type: 0x81394 compares it with 0A5C/0A5E. This table is T1 (input FFFF12C2 unresolved)." sizey="8">
+      <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF12C2)" storageaddress="21F7A" elements="8" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
