@@ -325,3 +325,12 @@ V2.update({
  0xFFFF0F1A:('Torque 0F1A (0.1 Nm)','Nm','(x-10000)/10','x*10+10000','0x820A0 / 0x124E28: limit = 0F1A*8 - 64000 compared with Torque 0A44 / 1438 (torque type, Nm = (y-16000)/80) => Nm = (8x-80000)/80 = (x-10000)/10'),
  0xFFFF0F0E:('Torque 0F0E (0.1 Nm)','Nm','(x-10000)/10','x*10+10000','0xAA4C0 (idle, call 0xA9C56): ratio = (0F0E*8 - 64000 - 16000)*32768/(Torque 0ADC - 16000), same 8x-64000 torque encoding as 0F1A in 0x820A0'),
 })
+V2.update({
+ 0xFFFF1452:('Torque 1452 (copy of 0A5E)','Nm','(x-16000)/80','x*80+16000','0x125420: copy helper 0x124E24(Torque 0A5E, &1452); only other writer 0x123D4C init 16000'),
+ 0xFFFF1436:('Torque Limit 1436','Nm','(x-16000)/80','x*80+16000','0x123FE0: = FFFF1452 - T + 16000 (torque-type difference) limited, or FFFF144C'),
+ 0xFFFF1450:('Torque Limit 1450','Nm','(x-16000)/80','x*80+16000','0x124E10: max(FFFF1436, FFFF144C)'),
+})
+V2.update({
+ 0xFFFEF14A:('Accelerator Pedal Angle Change (per sample)','%','x*100/65280','x*65280/100','0x68B96: clamp16(Accelerator Pedal Angle FFFEEEF8 - previous sample FFFEF14E); 0x6825A: FFFEF14E = FFFEEEF8'),
+ 0xFFFEF146:('Accelerator Pedal Angle Change (2 samples)','%','x*100/65280','x*65280/100','0x68B96: clamp16(Accelerator Pedal Angle FFFEEEF8 - FFFEF150), FFFEF150 = previous FFFEF14E (0x6825A)'),
+})

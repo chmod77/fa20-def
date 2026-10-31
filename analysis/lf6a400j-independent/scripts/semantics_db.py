@@ -1315,6 +1315,78 @@ for _d, _fn, _c in ((0x2E424, '0xB692C', 'FEC792'), (0x2FD70, '0x11C49C', 'FEE07
         ('s', 'x*0.02', 'x/0.02', '0.00'))
 
 
+# 0x123FE0 (called from 0x12560C, 40 ms): param_1 = FFFF1452, a torque-type copy of Torque 0A5E (writers: 0x123D4C init 16000,
+# 0x125420 via copy helper 0x124E24).  r = 1452 - T + 16000 is the torque-type difference form (offset removed by the subtraction and
+# re-added), so T is in the torque type; r is then compared with/limited by the other tables, which therefore share the unit.
+# Output FFFF1436.  Inputs: gear FFFF03AC, engine speed FFFF2994; set chosen by vehicle speed byte FFFF65A1 < 4 and FFFF064A.7.
+_C123 = 'Driver Demand / Torque Request'
+_E123 = ('0x123FE0 (call from 0x12560C): r1 = FFFF1452 - T_A + 16000 (FFFF1452 = copy of Torque 0A5E, torque type); if r1 < T_L: '
+         'r2 = FFFF1452 - T_B + 16000, out = min(r2, T_L); else out = min(r1, T_U); FFFF1436 = out when FFFF144C < T_U and the four '
+         'inhibit flags are clear, else FFFF144C.  The subtraction re-adds 16000, so T_A/T_B are torque-type values and T_L/T_U are '
+         'compared with torque-type results.')
+for _sel, _a, _l, _u, _b in (('set 1 (vehicle speed byte < 4)', 0x30164, 0x300B0, 0x300C4, 0x30150),
+                             ('set 2 (flag clear)', 0x300EC, 0x30100, 0x30114, 0x300D8),
+                             ('set 3 (flag set)', 0x3013C, 0x30178, 0x3018C, 0x30128)):
+    for _d, _r in ((_a, 'Reduction A'), (_b, 'Reduction B'), (_l, 'Switch Threshold / Lower Limit'), (_u, 'Upper Limit')):
+        S.pop(_d, None); AUTO.discard(_d)
+        add(_d, f'Torque Limit 1436 {_r}, {_sel} (Gear x RPM)', _C123, _E123 + ' Selection: param_11 = vehicle speed byte FFFF65A1 < 4 -> set 1; '
+            'else FFFF064A.7 (or FFFF0958.6 when FFFF0957.2 clear) chooses set 2/3.' + TQEV, RAWTQ)
+
+
+# 0xCEF4C (only caller 0xCF4B4; every reaching root is the 10 ms task 0x152A40): cVar13 = FFFECD3A - 1 when FFFECD3A != 0 (else 0);
+# when FFFECD3A == 0 (and the change/inhibit conditions hold) cVar13 = T_02EC68 / T_02EC7C (FFFEEF76.6 clear/set); FFFECD3A = cVar13.
+# A countdown of one per execution -> duration = T * 10 ms.  Axes: engine speed FFFF2994, filtered MAP FFFF09B8 (param_6).
+for _d, _sel in ((0x2EC68, 'FFFEEF76.6 = 0'), (0x2EC7C, 'FFFEEF76.6 = 1')):
+    S.pop(_d, None); AUTO.discard(_d)
+    add(_d, f'MAP Transient Hold Time [0xCEF4C] ({_sel})', 'Timers',
+        '0xCEF4C: FFFECD3A is reloaded with this table when it has counted down to 0 and the transient condition is active, '
+        'otherwise decremented by 1 per execution (cVar13 = FFFECD3A - 1; FFFECD3A = cVar13); while it is non-zero the output '
+        'FFFF05B4 takes the hold value T_02EC90/T_02ECA4.  ' + _PEREV['00152a40'] + ' (0xCEF4C reached only from it, via 0xCF4B4).',
+        ('s', 'x*0.01', 'x/0.01', '0.00'))
+
+
+# 0xC3654 (only caller 0xC49E0; every reaching root is the 10 ms task 0x152A40).  param_2 = FFFEF14A = clamp16(Accelerator Pedal
+# Angle FFFEEEF8 - previous sample FFFEF14E) (0x68B96 / 0x6825A), param_3 = pedal angle (axis), param_1 = FFFF056D.0, output FFFF0EB8.
+# 0xC3670..0xC367C: r6 = ((d << 16) - d) >> 16 (= d*65535/65536, signed) compared (cmp/ge) with T_02E930; while r6 >= T the counter
+# FFFECA60 is reloaded with T_02E93C, otherwise it is decremented by 1 per execution.
+_EC36 = ('0xC3654: d = FFFEF14A = clamp16(Accelerator Pedal Angle FFFEEEF8 - previous sample FFFEF14E) (0x68B96), pedal % = x*100/65280; '
+         'if d*65535/65536 >= T_02E930 then FFFECA60 = T_02E93C else FFFECA60 = max(FFFECA60 - 1, 0); FFFF0EB8 = FFFECA60 '
+         '(0 when FFFF056D.0 clear).  ')
+for _d in (0x2E930, 0x2E93C):
+    S.pop(_d, None); AUTO.discard(_d)
+add(0x2E930, 'Accelerator Pedal Rise Threshold (per sample) [0xC3654]', 'Driver Demand / Torque Request',
+    _EC36 + 'T is compared with the pedal-angle change d*65535/65536, so pedal-change % = x*65536/65535*100/65280.',
+    ('%', 'x*6553600/(65535*65280)', 'x*65535*65280/6553600', '0.00'))
+add(0x2E93C, 'Accelerator Pedal Rise Hold Time [0xC3654]', 'Timers',
+    _EC36 + 'Countdown of one per execution; ' + _PEREV['00152a40'] + ' (0xC3654 reached only from it, via 0xC49E0).',
+    ('s', 'x*0.01', 'x/0.01', '0.00'))
+
+
+# 0xE25A8 / 0xE2674 (only caller 0xE0CE8; every reaching root is the 20 ms task 0x15307C).  On-counter p1 (FFFED250 / FFFED25A):
+# +1 per execution while the flag is set (saturating at 0xFFFF), held after release; off-counter (FFFED252 / FFFED258): reset to 0
+# while the flag is set, +1 per execution after.  The output flag (FFFED256 / FFFED25E) sets once T(on-time) <= off-time.
+for _d, _f, _fl, _on, _off in ((0x2F0EC, '0xE25A8', 'FFFF03D8.1', 'FFFED250', 'FFFED252'), (0x2F0F8, '0xE2674', 'FFFEF152.5', 'FFFED25A', 'FFFED258')):
+    S.pop(_d, None); AUTO.discard(_d)
+    add(_d, f'Flag {_fl} Release Delay vs Set Duration [{_f}]', 'Timers',
+        f'{_f}: off-time counter {_off} (reset while {_fl} is set, +1 per execution after release) is compared with T(on-time counter '
+        f'{_on}, +1 per execution while {_fl} is set); the output flag sets when T <= off-time.  Both counters count executions of '
+        + _PEREV['0015307c'] + f' ({_f} reached only from it, via 0xE0CE8).',
+        ('s', 'x*0.02', 'x/0.02', '0.00'),
+        axes={'0': dict(name=f'{_fl} Set Duration ({_on})', units='s', expr='x*0.02', to_byte='x/0.02')})
+
+
+# 0x8BF1C (only caller 0x888C0; every reaching root is the 10 ms task 0x152A40).  Byte counters written only here:
+# FFFEBC7F = 0 while state FFFEBC75 is clear, else +1 per execution (saturating 0xFF); FFFEBC82 = 0 unless (FFFEBC75 set and
+# FFFEBC7F >= T_02CD04), else +1 per execution; FFFEBC78 / FFFEBC83 are the same pair for state FFFEBC77 with T_02CD10 / T_02CD64.
+_E8BF = ' Counters are cleared or incremented by 1 per execution only in 0x8BF1C; ' + _PEREV['00152a40'] + ' (0x8BF1C reached only from it, via 0x888C0).'
+for _d, _n, _e in ((0x2CD04, 'State FFFEBC75 Delay [0x8BF1C]', '0x8BF1C: FFFEBC7F (time in state FFFEBC75) < T(Air Charge Rate 0F56) keeps the second-stage counter FFFEBC82 cleared.'),
+                   (0x2CD10, 'State FFFEBC77 Delay [0x8BF1C]', '0x8BF1C: FFFEBC78 (time in state FFFEBC77) < T(Air Charge Rate 0F56) keeps the second-stage counter FFFEBC83 cleared.'),
+                   (0x2CD58, 'State FFFEBC75 Active Window [0x8BF1C]', '0x8BF1C: after the delay T_02CD04, FFFEBC82 counts executions; while FFFEBC82 < T the correction term sStack_30 is applied.'),
+                   (0x2CD64, 'State FFFEBC77 Active Window [0x8BF1C]', '0x8BF1C: after the delay T_02CD10, FFFEBC83 counts executions; while FFFEBC83 < T the correction term sStack_2c is applied.')):
+    S.pop(_d, None); AUTO.discard(_d)
+    add(_d, _n, 'Timers', _e + _E8BF, ('s', 'x*0.01', 'x/0.01', '0.00'))
+
+
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
     print(len(S), 'entries')

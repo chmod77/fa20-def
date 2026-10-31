@@ -3072,6 +3072,32 @@
    "format": "0.000"
   }
  },
+ "0x2CD04": {
+  "status": "identified",
+  "name": "State FFFEBC75 Delay [0x8BF1C]",
+  "category": "Timers",
+  "evidence": "0x8BF1C: FFFEBC7F (time in state FFFEBC75) < T(Air Charge Rate 0F56) keeps the second-stage counter FFFEBC82 cleared. Counters are cleared or incremented by 1 per execution only in 0x8BF1C; task 0x152A40 = 10 ms (OS: TCB 0x169768 + 16*id; startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 4 -> task 8 (0x1517A4 -> 0x152A40) cycle 10, alarm 6 -> task 9 (0x1517D2 -> 0x15307C) cycle 20, alarm 7 -> task 10 (0x1517FA -> 0x153248) cycle 40, alarm 2 -> task 4 (-> 0x1528A2) cycle 4, alarm 1 -> task 3 (-> 0x152882) cycle 2; 0x153248 = 40 ms (OBD PID 0x1F/0x4E) -> 1 ms tick; 0x49E70 called unconditionally at 0x152BC6) (0x8BF1C reached only from it, via 0x888C0).",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.01",
+   "to_byte": "x/0.01",
+   "format": "0.00"
+  }
+ },
+ "0x2CD10": {
+  "status": "identified",
+  "name": "State FFFEBC77 Delay [0x8BF1C]",
+  "category": "Timers",
+  "evidence": "0x8BF1C: FFFEBC78 (time in state FFFEBC77) < T(Air Charge Rate 0F56) keeps the second-stage counter FFFEBC83 cleared. Counters are cleared or incremented by 1 per execution only in 0x8BF1C; task 0x152A40 = 10 ms (OS: TCB 0x169768 + 16*id; startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 4 -> task 8 (0x1517A4 -> 0x152A40) cycle 10, alarm 6 -> task 9 (0x1517D2 -> 0x15307C) cycle 20, alarm 7 -> task 10 (0x1517FA -> 0x153248) cycle 40, alarm 2 -> task 4 (-> 0x1528A2) cycle 4, alarm 1 -> task 3 (-> 0x152882) cycle 2; 0x153248 = 40 ms (OBD PID 0x1F/0x4E) -> 1 ms tick; 0x49E70 called unconditionally at 0x152BC6) (0x8BF1C reached only from it, via 0x888C0).",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.01",
+   "to_byte": "x/0.01",
+   "format": "0.00"
+  }
+ },
  "0x2CD1C": {
   "status": "identified",
   "name": "Transient Fuel (0B38) Multiplier",
@@ -3135,6 +3161,32 @@
    "expr": "x*100/65536",
    "to_byte": "x*65536/100",
    "format": "0.0000"
+  }
+ },
+ "0x2CD58": {
+  "status": "identified",
+  "name": "State FFFEBC75 Active Window [0x8BF1C]",
+  "category": "Timers",
+  "evidence": "0x8BF1C: after the delay T_02CD04, FFFEBC82 counts executions; while FFFEBC82 < T the correction term sStack_30 is applied. Counters are cleared or incremented by 1 per execution only in 0x8BF1C; task 0x152A40 = 10 ms (OS: TCB 0x169768 + 16*id; startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 4 -> task 8 (0x1517A4 -> 0x152A40) cycle 10, alarm 6 -> task 9 (0x1517D2 -> 0x15307C) cycle 20, alarm 7 -> task 10 (0x1517FA -> 0x153248) cycle 40, alarm 2 -> task 4 (-> 0x1528A2) cycle 4, alarm 1 -> task 3 (-> 0x152882) cycle 2; 0x153248 = 40 ms (OBD PID 0x1F/0x4E) -> 1 ms tick; 0x49E70 called unconditionally at 0x152BC6) (0x8BF1C reached only from it, via 0x888C0).",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.01",
+   "to_byte": "x/0.01",
+   "format": "0.00"
+  }
+ },
+ "0x2CD64": {
+  "status": "identified",
+  "name": "State FFFEBC77 Active Window [0x8BF1C]",
+  "category": "Timers",
+  "evidence": "0x8BF1C: after the delay T_02CD10, FFFEBC83 counts executions; while FFFEBC83 < T the correction term sStack_2c is applied. Counters are cleared or incremented by 1 per execution only in 0x8BF1C; task 0x152A40 = 10 ms (OS: TCB 0x169768 + 16*id; startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 4 -> task 8 (0x1517A4 -> 0x152A40) cycle 10, alarm 6 -> task 9 (0x1517D2 -> 0x15307C) cycle 20, alarm 7 -> task 10 (0x1517FA -> 0x153248) cycle 40, alarm 2 -> task 4 (-> 0x1528A2) cycle 4, alarm 1 -> task 3 (-> 0x152882) cycle 2; 0x153248 = 40 ms (OBD PID 0x1F/0x4E) -> 1 ms tick; 0x49E70 called unconditionally at 0x152BC6) (0x8BF1C reached only from it, via 0x888C0).",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.01",
+   "to_byte": "x/0.01",
+   "format": "0.00"
   }
  },
  "0x2CD70": {
@@ -6871,6 +6923,32 @@
    "format": "0.00"
   }
  },
+ "0x2E930": {
+  "status": "identified",
+  "name": "Accelerator Pedal Rise Threshold (per sample) [0xC3654]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0xC3654: d = FFFEF14A = clamp16(Accelerator Pedal Angle FFFEEEF8 - previous sample FFFEF14E) (0x68B96), pedal % = x*100/65280; if d*65535/65536 >= T_02E930 then FFFECA60 = T_02E93C else FFFECA60 = max(FFFECA60 - 1, 0); FFFF0EB8 = FFFECA60 (0 when FFFF056D.0 clear).  T is compared with the pedal-angle change d*65535/65536, so pedal-change % = x*65536/65535*100/65280.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*6553600/(65535*65280)",
+   "to_byte": "x*65535*65280/6553600",
+   "format": "0.00"
+  }
+ },
+ "0x2E93C": {
+  "status": "identified",
+  "name": "Accelerator Pedal Rise Hold Time [0xC3654]",
+  "category": "Timers",
+  "evidence": "0xC3654: d = FFFEF14A = clamp16(Accelerator Pedal Angle FFFEEEF8 - previous sample FFFEF14E) (0x68B96), pedal % = x*100/65280; if d*65535/65536 >= T_02E930 then FFFECA60 = T_02E93C else FFFECA60 = max(FFFECA60 - 1, 0); FFFF0EB8 = FFFECA60 (0 when FFFF056D.0 clear).  Countdown of one per execution; task 0x152A40 = 10 ms (OS: TCB 0x169768 + 16*id; startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 4 -> task 8 (0x1517A4 -> 0x152A40) cycle 10, alarm 6 -> task 9 (0x1517D2 -> 0x15307C) cycle 20, alarm 7 -> task 10 (0x1517FA -> 0x153248) cycle 40, alarm 2 -> task 4 (-> 0x1528A2) cycle 4, alarm 1 -> task 3 (-> 0x152882) cycle 2; 0x153248 = 40 ms (OBD PID 0x1F/0x4E) -> 1 ms tick; 0x49E70 called unconditionally at 0x152BC6) (0xC3654 reached only from it, via 0xC49E0).",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.01",
+   "to_byte": "x/0.01",
+   "format": "0.00"
+  }
+ },
  "0x2E948": {
   "status": "identified",
   "name": "Accelerator Pedal Angle Threshold (0xC36D0)",
@@ -7186,6 +7264,32 @@
     "expr": "x/256",
     "to_byte": "x*256"
    }
+  }
+ },
+ "0x2EC68": {
+  "status": "identified",
+  "name": "MAP Transient Hold Time [0xCEF4C] (FFFEEF76.6 = 0)",
+  "category": "Timers",
+  "evidence": "0xCEF4C: FFFECD3A is reloaded with this table when it has counted down to 0 and the transient condition is active, otherwise decremented by 1 per execution (cVar13 = FFFECD3A - 1; FFFECD3A = cVar13); while it is non-zero the output FFFF05B4 takes the hold value T_02EC90/T_02ECA4.  task 0x152A40 = 10 ms (OS: TCB 0x169768 + 16*id; startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 4 -> task 8 (0x1517A4 -> 0x152A40) cycle 10, alarm 6 -> task 9 (0x1517D2 -> 0x15307C) cycle 20, alarm 7 -> task 10 (0x1517FA -> 0x153248) cycle 40, alarm 2 -> task 4 (-> 0x1528A2) cycle 4, alarm 1 -> task 3 (-> 0x152882) cycle 2; 0x153248 = 40 ms (OBD PID 0x1F/0x4E) -> 1 ms tick; 0x49E70 called unconditionally at 0x152BC6) (0xCEF4C reached only from it, via 0xCF4B4).",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.01",
+   "to_byte": "x/0.01",
+   "format": "0.00"
+  }
+ },
+ "0x2EC7C": {
+  "status": "identified",
+  "name": "MAP Transient Hold Time [0xCEF4C] (FFFEEF76.6 = 1)",
+  "category": "Timers",
+  "evidence": "0xCEF4C: FFFECD3A is reloaded with this table when it has counted down to 0 and the transient condition is active, otherwise decremented by 1 per execution (cVar13 = FFFECD3A - 1; FFFECD3A = cVar13); while it is non-zero the output FFFF05B4 takes the hold value T_02EC90/T_02ECA4.  task 0x152A40 = 10 ms (OS: TCB 0x169768 + 16*id; startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 4 -> task 8 (0x1517A4 -> 0x152A40) cycle 10, alarm 6 -> task 9 (0x1517D2 -> 0x15307C) cycle 20, alarm 7 -> task 10 (0x1517FA -> 0x153248) cycle 40, alarm 2 -> task 4 (-> 0x1528A2) cycle 4, alarm 1 -> task 3 (-> 0x152882) cycle 2; 0x153248 = 40 ms (OBD PID 0x1F/0x4E) -> 1 ms tick; 0x49E70 called unconditionally at 0x152BC6) (0xCEF4C reached only from it, via 0xCF4B4).",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.01",
+   "to_byte": "x/0.01",
+   "format": "0.00"
   }
  },
  "0x2ECE0": {
@@ -7570,6 +7674,48 @@
    "expr": "x/2",
    "to_byte": "x*2",
    "format": "0.0"
+  }
+ },
+ "0x2F0EC": {
+  "status": "identified",
+  "name": "Flag FFFF03D8.1 Release Delay vs Set Duration [0xE25A8]",
+  "category": "Timers",
+  "evidence": "0xE25A8: off-time counter FFFED252 (reset while FFFF03D8.1 is set, +1 per execution after release) is compared with T(on-time counter FFFED250, +1 per execution while FFFF03D8.1 is set); the output flag sets when T <= off-time.  Both counters count executions of task 0x15307C = 20 ms (OS: TCB 0x169768 + 16*id; startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 4 -> task 8 (0x1517A4 -> 0x152A40) cycle 10, alarm 6 -> task 9 (0x1517D2 -> 0x15307C) cycle 20, alarm 7 -> task 10 (0x1517FA -> 0x153248) cycle 40, alarm 2 -> task 4 (-> 0x1528A2) cycle 4, alarm 1 -> task 3 (-> 0x152882) cycle 2; 0x153248 = 40 ms (OBD PID 0x1F/0x4E) -> 1 ms tick) (0xE25A8 reached only from it, via 0xE0CE8).",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.02",
+   "to_byte": "x/0.02",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "FFFF03D8.1 Set Duration (FFFED250)",
+    "units": "s",
+    "expr": "x*0.02",
+    "to_byte": "x/0.02"
+   }
+  }
+ },
+ "0x2F0F8": {
+  "status": "identified",
+  "name": "Flag FFFEF152.5 Release Delay vs Set Duration [0xE2674]",
+  "category": "Timers",
+  "evidence": "0xE2674: off-time counter FFFED258 (reset while FFFEF152.5 is set, +1 per execution after release) is compared with T(on-time counter FFFED25A, +1 per execution while FFFEF152.5 is set); the output flag sets when T <= off-time.  Both counters count executions of task 0x15307C = 20 ms (OS: TCB 0x169768 + 16*id; startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 4 -> task 8 (0x1517A4 -> 0x152A40) cycle 10, alarm 6 -> task 9 (0x1517D2 -> 0x15307C) cycle 20, alarm 7 -> task 10 (0x1517FA -> 0x153248) cycle 40, alarm 2 -> task 4 (-> 0x1528A2) cycle 4, alarm 1 -> task 3 (-> 0x152882) cycle 2; 0x153248 = 40 ms (OBD PID 0x1F/0x4E) -> 1 ms tick) (0xE2674 reached only from it, via 0xE0CE8).",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.02",
+   "to_byte": "x/0.02",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "FFFEF152.5 Set Duration (FFFED25A)",
+    "units": "s",
+    "expr": "x*0.02",
+    "to_byte": "x/0.02"
+   }
   }
  },
  "0x2F104": {
@@ -9567,6 +9713,162 @@
    "expr": "(x-16000)/80",
    "to_byte": "x*80+16000",
    "format": "0.00"
+  }
+ },
+ "0x300B0": {
+  "status": "identified",
+  "name": "Torque Limit 1436 Switch Threshold / Lower Limit, set 1 (vehicle speed byte < 4) (Gear x RPM)",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x123FE0 (call from 0x12560C): r1 = FFFF1452 - T_A + 16000 (FFFF1452 = copy of Torque 0A5E, torque type); if r1 < T_L: r2 = FFFF1452 - T_B + 16000, out = min(r2, T_L); else out = min(r1, T_U); FFFF1436 = out when FFFF144C < T_U and the four inhibit flags are clear, else FFFF144C.  The subtraction re-adds 16000, so T_A/T_B are torque-type values and T_L/T_U are compared with torque-type results. Selection: param_11 = vehicle speed byte FFFF65A1 < 4 -> set 1; else FFFF064A.7 (or FFFF0958.6 when FFFF0957.2 clear) chooses set 2/3. Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range).",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
+  }
+ },
+ "0x300C4": {
+  "status": "identified",
+  "name": "Torque Limit 1436 Upper Limit, set 1 (vehicle speed byte < 4) (Gear x RPM)",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x123FE0 (call from 0x12560C): r1 = FFFF1452 - T_A + 16000 (FFFF1452 = copy of Torque 0A5E, torque type); if r1 < T_L: r2 = FFFF1452 - T_B + 16000, out = min(r2, T_L); else out = min(r1, T_U); FFFF1436 = out when FFFF144C < T_U and the four inhibit flags are clear, else FFFF144C.  The subtraction re-adds 16000, so T_A/T_B are torque-type values and T_L/T_U are compared with torque-type results. Selection: param_11 = vehicle speed byte FFFF65A1 < 4 -> set 1; else FFFF064A.7 (or FFFF0958.6 when FFFF0957.2 clear) chooses set 2/3. Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range).",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
+  }
+ },
+ "0x300D8": {
+  "status": "identified",
+  "name": "Torque Limit 1436 Reduction B, set 2 (flag clear) (Gear x RPM)",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x123FE0 (call from 0x12560C): r1 = FFFF1452 - T_A + 16000 (FFFF1452 = copy of Torque 0A5E, torque type); if r1 < T_L: r2 = FFFF1452 - T_B + 16000, out = min(r2, T_L); else out = min(r1, T_U); FFFF1436 = out when FFFF144C < T_U and the four inhibit flags are clear, else FFFF144C.  The subtraction re-adds 16000, so T_A/T_B are torque-type values and T_L/T_U are compared with torque-type results. Selection: param_11 = vehicle speed byte FFFF65A1 < 4 -> set 1; else FFFF064A.7 (or FFFF0958.6 when FFFF0957.2 clear) chooses set 2/3. Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range).",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
+  }
+ },
+ "0x300EC": {
+  "status": "identified",
+  "name": "Torque Limit 1436 Reduction A, set 2 (flag clear) (Gear x RPM)",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x123FE0 (call from 0x12560C): r1 = FFFF1452 - T_A + 16000 (FFFF1452 = copy of Torque 0A5E, torque type); if r1 < T_L: r2 = FFFF1452 - T_B + 16000, out = min(r2, T_L); else out = min(r1, T_U); FFFF1436 = out when FFFF144C < T_U and the four inhibit flags are clear, else FFFF144C.  The subtraction re-adds 16000, so T_A/T_B are torque-type values and T_L/T_U are compared with torque-type results. Selection: param_11 = vehicle speed byte FFFF65A1 < 4 -> set 1; else FFFF064A.7 (or FFFF0958.6 when FFFF0957.2 clear) chooses set 2/3. Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range).",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
+  }
+ },
+ "0x30100": {
+  "status": "identified",
+  "name": "Torque Limit 1436 Switch Threshold / Lower Limit, set 2 (flag clear) (Gear x RPM)",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x123FE0 (call from 0x12560C): r1 = FFFF1452 - T_A + 16000 (FFFF1452 = copy of Torque 0A5E, torque type); if r1 < T_L: r2 = FFFF1452 - T_B + 16000, out = min(r2, T_L); else out = min(r1, T_U); FFFF1436 = out when FFFF144C < T_U and the four inhibit flags are clear, else FFFF144C.  The subtraction re-adds 16000, so T_A/T_B are torque-type values and T_L/T_U are compared with torque-type results. Selection: param_11 = vehicle speed byte FFFF65A1 < 4 -> set 1; else FFFF064A.7 (or FFFF0958.6 when FFFF0957.2 clear) chooses set 2/3. Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range).",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
+  }
+ },
+ "0x30114": {
+  "status": "identified",
+  "name": "Torque Limit 1436 Upper Limit, set 2 (flag clear) (Gear x RPM)",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x123FE0 (call from 0x12560C): r1 = FFFF1452 - T_A + 16000 (FFFF1452 = copy of Torque 0A5E, torque type); if r1 < T_L: r2 = FFFF1452 - T_B + 16000, out = min(r2, T_L); else out = min(r1, T_U); FFFF1436 = out when FFFF144C < T_U and the four inhibit flags are clear, else FFFF144C.  The subtraction re-adds 16000, so T_A/T_B are torque-type values and T_L/T_U are compared with torque-type results. Selection: param_11 = vehicle speed byte FFFF65A1 < 4 -> set 1; else FFFF064A.7 (or FFFF0958.6 when FFFF0957.2 clear) chooses set 2/3. Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range).",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
+  }
+ },
+ "0x30128": {
+  "status": "identified",
+  "name": "Torque Limit 1436 Reduction B, set 3 (flag set) (Gear x RPM)",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x123FE0 (call from 0x12560C): r1 = FFFF1452 - T_A + 16000 (FFFF1452 = copy of Torque 0A5E, torque type); if r1 < T_L: r2 = FFFF1452 - T_B + 16000, out = min(r2, T_L); else out = min(r1, T_U); FFFF1436 = out when FFFF144C < T_U and the four inhibit flags are clear, else FFFF144C.  The subtraction re-adds 16000, so T_A/T_B are torque-type values and T_L/T_U are compared with torque-type results. Selection: param_11 = vehicle speed byte FFFF65A1 < 4 -> set 1; else FFFF064A.7 (or FFFF0958.6 when FFFF0957.2 clear) chooses set 2/3. Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range).",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
+  }
+ },
+ "0x3013C": {
+  "status": "identified",
+  "name": "Torque Limit 1436 Reduction A, set 3 (flag set) (Gear x RPM)",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x123FE0 (call from 0x12560C): r1 = FFFF1452 - T_A + 16000 (FFFF1452 = copy of Torque 0A5E, torque type); if r1 < T_L: r2 = FFFF1452 - T_B + 16000, out = min(r2, T_L); else out = min(r1, T_U); FFFF1436 = out when FFFF144C < T_U and the four inhibit flags are clear, else FFFF144C.  The subtraction re-adds 16000, so T_A/T_B are torque-type values and T_L/T_U are compared with torque-type results. Selection: param_11 = vehicle speed byte FFFF65A1 < 4 -> set 1; else FFFF064A.7 (or FFFF0958.6 when FFFF0957.2 clear) chooses set 2/3. Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range).",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
+  }
+ },
+ "0x30150": {
+  "status": "identified",
+  "name": "Torque Limit 1436 Reduction B, set 1 (vehicle speed byte < 4) (Gear x RPM)",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x123FE0 (call from 0x12560C): r1 = FFFF1452 - T_A + 16000 (FFFF1452 = copy of Torque 0A5E, torque type); if r1 < T_L: r2 = FFFF1452 - T_B + 16000, out = min(r2, T_L); else out = min(r1, T_U); FFFF1436 = out when FFFF144C < T_U and the four inhibit flags are clear, else FFFF144C.  The subtraction re-adds 16000, so T_A/T_B are torque-type values and T_L/T_U are compared with torque-type results. Selection: param_11 = vehicle speed byte FFFF65A1 < 4 -> set 1; else FFFF064A.7 (or FFFF0958.6 when FFFF0957.2 clear) chooses set 2/3. Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range).",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
+  }
+ },
+ "0x30164": {
+  "status": "identified",
+  "name": "Torque Limit 1436 Reduction A, set 1 (vehicle speed byte < 4) (Gear x RPM)",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x123FE0 (call from 0x12560C): r1 = FFFF1452 - T_A + 16000 (FFFF1452 = copy of Torque 0A5E, torque type); if r1 < T_L: r2 = FFFF1452 - T_B + 16000, out = min(r2, T_L); else out = min(r1, T_U); FFFF1436 = out when FFFF144C < T_U and the four inhibit flags are clear, else FFFF144C.  The subtraction re-adds 16000, so T_A/T_B are torque-type values and T_L/T_U are compared with torque-type results. Selection: param_11 = vehicle speed byte FFFF65A1 < 4 -> set 1; else FFFF064A.7 (or FFFF0958.6 when FFFF0957.2 clear) chooses set 2/3. Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range).",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
+  }
+ },
+ "0x30178": {
+  "status": "identified",
+  "name": "Torque Limit 1436 Switch Threshold / Lower Limit, set 3 (flag set) (Gear x RPM)",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x123FE0 (call from 0x12560C): r1 = FFFF1452 - T_A + 16000 (FFFF1452 = copy of Torque 0A5E, torque type); if r1 < T_L: r2 = FFFF1452 - T_B + 16000, out = min(r2, T_L); else out = min(r1, T_U); FFFF1436 = out when FFFF144C < T_U and the four inhibit flags are clear, else FFFF144C.  The subtraction re-adds 16000, so T_A/T_B are torque-type values and T_L/T_U are compared with torque-type results. Selection: param_11 = vehicle speed byte FFFF65A1 < 4 -> set 1; else FFFF064A.7 (or FFFF0958.6 when FFFF0957.2 clear) chooses set 2/3. Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range).",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
+  }
+ },
+ "0x3018C": {
+  "status": "identified",
+  "name": "Torque Limit 1436 Upper Limit, set 3 (flag set) (Gear x RPM)",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x123FE0 (call from 0x12560C): r1 = FFFF1452 - T_A + 16000 (FFFF1452 = copy of Torque 0A5E, torque type); if r1 < T_L: r2 = FFFF1452 - T_B + 16000, out = min(r2, T_L); else out = min(r1, T_U); FFFF1436 = out when FFFF144C < T_U and the four inhibit flags are clear, else FFFF144C.  The subtraction re-adds 16000, so T_A/T_B are torque-type values and T_L/T_U are compared with torque-type results. Selection: param_11 = vehicle speed byte FFFF65A1 < 4 -> set 1; else FFFF064A.7 (or FFFF0958.6 when FFFF0957.2 clear) chooses set 2/3. Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range).",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
   }
  },
  "0x30568": {
