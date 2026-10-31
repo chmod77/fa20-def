@@ -91,6 +91,17 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
 - Catalyst temperature model (OBD PID 3C, 0xD9D40): steady-state and initial maps (C = 4x-40) and rate factors.
 - Ignition final-sum inputs: IAT adder T_02D614, restore step tables, post-event limit T_02D5F0, retard hold count T_02D494.
 
+## Session 3, continued
+- Coverage: 1254 table views; 249 tables + 64 scalars unlocked (313). Both ROMs PASS.
+- Target lambda maps (0xB5B38): AFR = (T + ...)*14.5/43194, stored as AFR*65536/22. 43194 = lambda 1.0, the same value as the A/F sensor #1 scaling.
+  FFFF0D80 (SSM 0xD1) is NOT a proof here: 0xB53D4 overwrites it in the same task.
+- Injector: FFFF1544 (base pulse) uses the same 0.8 us packing as FFFF1564, so T_02CE90 is a pulse multiplier x/256 (about 1/sqrt(FRP)).
+  T_02D2C8 is a fuel-quantity multiplier x/128. Upstream, the fuel quantity is FFFF09BE x trims (09BE unit still unproven).
+- Engine-speed limit: 0x85B74 limit = 6100 rpm scalars (0x87BA/BC/BE) only when FFFEF3FC/FFFEF498/FFFEF32E flags are set (otherwise none),
+  with minimum margin 0x87B8 above FFFF0D06 and hysteresis 0x87B6. rpm >= limit -> FFFF03CF = 4 -> FFFF03D8.1. The injector fuel-cut
+  bit FFFF03E4.7 comes from FFFF03D4 (0x86B80: FFFF0AF2 > 100/200), not from this limit. Torque mode 0x0B is entered at 6100 rpm and
+  left at 6000 rpm (0x82C50, scalars 0xE666/0xE668).
+
 ## Next steps (session 3)
 - A/F Learning #3 FFFF0D80 (SSM 0xD1, multiplier 1.0 = 43194) = clamp(FFFF0DBA + FFFF38F8) (0xB3260, task 0xB42AC): trace 0DBA/38F8 to the tables.
 - Idle: 0xAAB08 (11 tables) and the ISC feedback that uses the final target FFFF0CFE.
