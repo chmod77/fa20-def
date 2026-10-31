@@ -169,6 +169,8 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
 - Filter-gain scanner (scripts/filter_gains.py, run by validate.sh) also handles gain << 8: T_02C1AC, T_02C1B8, T_02CC44,
   T_02CC80, T_02CC94 (x/256). Task 7 (0x152A40/0x49E70): execution counter FFFF1B28 has no reader; period still unproven.
   Coverage 562 of 1271.
+- scripts/helper_compare.py: comparison prover for secondary (helper) tables. Proved rear O2 heater current limits
+  (0x163A20/0x163A2C/0x168BA4 vs battery V), load threshold 0x163A9C, FRP threshold 0x158FE. Coverage 567 of 1271.
 - Dead ends this session (documented so they are not repeated):
   * FFFF12C2 (axis of the pedal-limit T1 tables, compared with 12BE in the torque monitor): only a read literal (0xC50D0); writer not
     found by literal, GBR (+70 from 127C) or r0-offset searches.

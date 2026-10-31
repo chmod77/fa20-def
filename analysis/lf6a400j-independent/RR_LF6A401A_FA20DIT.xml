@@ -8487,25 +8487,25 @@
         <data>109.5</data>
       </table>
     </table>
-    <table type="2D" name="Unidentified secondary 16 @0x0158FE [H0158FE]" category="Unidentified - Task 0xBE0E8" storageaddress="158FE" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x158FE); call sites: 000c02d4. Function/output scaling not yet proven from the binary; locked." locked="true">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
-        <data>0</data>
-        <data>4096</data>
-        <data>8192</data>
-        <data>12288</data>
-        <data>16384</data>
-        <data>20480</data>
-        <data>24576</data>
-        <data>28672</data>
-        <data>32768</data>
-        <data>36864</data>
-        <data>40960</data>
-        <data>45056</data>
-        <data>49152</data>
-        <data>53248</data>
-        <data>57344</data>
-        <data>61440</data>
+    <table type="2D" name="Fuel Rail Pressure Threshold vs Coolant [0xC02D4]" category="Fuel System - High Pressure" storageaddress="158FE" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x158FE); call sites: 000c02d4. Evidence: 0xC02D4 (from 0xBE0E8; p3 Fuel Rail Pressure (gauge) FFFEED16, p4 Coolant FFFEEEDE): t = helper 0x16BC68(0x158FE, coolant); flag set when t &lt;= FRP (direct comparison), so the table is FRP gauge kPa = x*639630/1048576. Static breakpoints are the coolant word.">
+      <scaling units="kPa" expression="x*639630/1048576" to_byte="x*1048576/639630" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Coolant Temperature (filtered, word)" sizey="16">
+        <data>-40.0</data>
+        <data>-30.0</data>
+        <data>-20.0</data>
+        <data>-10.0</data>
+        <data>0.0</data>
+        <data>10.0</data>
+        <data>20.0</data>
+        <data>30.0</data>
+        <data>40.0</data>
+        <data>50.0</data>
+        <data>60.0</data>
+        <data>70.0</data>
+        <data>80.0</data>
+        <data>90.0</data>
+        <data>100.0</data>
+        <data>110.0</data>
       </table>
     </table>
     <table type="2D" name="Unidentified secondary 16 @0x0167BA [H0167BA]" category="Unidentified - Airflow Model (Speed Density)" storageaddress="167BA" storagetype="uint8" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BA04 (structure/array at 0x167BA); call sites: 000d0048. Function/output scaling not yet proven from the binary; locked." locked="true">
@@ -9009,10 +9009,10 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified secondary 8 @0x02ABBA [H168BA4]" category="Unidentified - Task 0x153248 / Task 0x153B80" storageaddress="2ABBA" storagetype="uint8" endian="big" userlevel="1" sizey="8" description="Secondary table read by helper 0x16B9A4 (structure/array at 0x168BA4); call sites: 0006a444. Function/output scaling not yet proven from the binary; locked." locked="true">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2AB7B" elements="8" storagetype="uint8" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+    <table type="2D" name="Rear O2 Heater Current Threshold vs Battery Voltage [0x6A444]" category="Diagnostics - O2 Heater" storageaddress="2ABBA" storagetype="uint8" endian="big" userlevel="1" sizey="8" description="Secondary table read by helper 0x16B9A4 (structure/array at 0x168BA4); call sites: 0006a444. Evidence: 0x6A444: FFFF2ABA = helper 0x16B9A4(0x168BA4, Battery Voltage FFFFAB41); compared directly with FFFEE6D0 (Rear O2 Heater Current, SSM 0x2C).">
+      <scaling units="A" expression="x*179*1004/6553600" to_byte="x*6553600/(179*1004)" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Battery Voltage" storageaddress="2AB7B" elements="8" storagetype="uint8" endian="big">
+        <scaling units="V" expression="x*8/100" to_byte="x*100/8" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
     <table type="2D" name="Unidentified secondary 16 @0x02ABC6 [H16388C]" category="Unidentified - Task 0x3AEA8" storageaddress="2ABC6" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BAE4 (structure/array at 0x16388C); call sites: 0003aea8. Function/output scaling not yet proven from the binary; locked." locked="true">
@@ -9183,16 +9183,16 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified secondary 8 @0x02B8CE [H163A20]" category="Unidentified - Task 0x153248" storageaddress="2B8CE" storagetype="uint8" endian="big" userlevel="1" sizey="8" description="Secondary table read by helper 0x16B9A4 (structure/array at 0x163A20); call sites: 000493ec. Function/output scaling not yet proven from the binary; locked." locked="true">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2B8DE" elements="8" storagetype="uint8" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+    <table type="2D" name="Rear O2 Heater Current Low Limit vs Battery Voltage" category="Diagnostics - O2 Heater" storageaddress="2B8CE" storagetype="uint8" endian="big" userlevel="1" sizey="8" description="Secondary table read by helper 0x16B9A4 (structure/array at 0x163A20); call sites: 000493ec. Evidence: 0x493EC: FFFEFA22 = helper 0x16B9A4(0x163A20, Battery Voltage FFFFAB41); fault counter FEFA20 += 1 when Rear O2 Heater Current FFFEE6D0 (SSM 0x2C) &lt; FA22 or &gt; FA23 (direct byte comparisons), so the table is in the SSM 0x2C current unit.">
+      <scaling units="A" expression="x*179*1004/6553600" to_byte="x*6553600/(179*1004)" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Battery Voltage" storageaddress="2B8DE" elements="8" storagetype="uint8" endian="big">
+        <scaling units="V" expression="x*8/100" to_byte="x*100/8" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified secondary 8 @0x02B8D6 [H163A2C]" category="Unidentified - Task 0x153248" storageaddress="2B8D6" storagetype="uint8" endian="big" userlevel="1" sizey="8" description="Secondary table read by helper 0x16B9A4 (structure/array at 0x163A2C); call sites: 000493ec. Function/output scaling not yet proven from the binary; locked." locked="true">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2B8DE" elements="8" storagetype="uint8" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+    <table type="2D" name="Rear O2 Heater Current High Limit vs Battery Voltage" category="Diagnostics - O2 Heater" storageaddress="2B8D6" storagetype="uint8" endian="big" userlevel="1" sizey="8" description="Secondary table read by helper 0x16B9A4 (structure/array at 0x163A2C); call sites: 000493ec. Evidence: 0x493EC: FFFEFA23 = helper 0x16B9A4(0x163A2C, Battery Voltage FFFFAB41); see 0x163A20 (window check on FFFEE6D0, SSM 0x2C).">
+      <scaling units="A" expression="x*179*1004/6553600" to_byte="x*6553600/(179*1004)" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Battery Voltage" storageaddress="2B8DE" elements="8" storagetype="uint8" endian="big">
+        <scaling units="V" expression="x*8/100" to_byte="x*100/8" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
     <table type="2D" name="Unidentified secondary 4 @0x02B9AE [H168B8C]" category="Unidentified - Task 0x152A40 / Task 0x153B4E" storageaddress="2B9AE" storagetype="uint8" endian="big" userlevel="1" sizey="4" description="Secondary table read by helper 0x16BA80 (structure/array at 0x168B8C); call sites: 0006825a. Function/output scaling not yet proven from the binary; locked." locked="true">
@@ -9363,10 +9363,10 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified secondary 16 @0x02BF92 [H163A9C]" category="Unidentified - Task 0x152A40 / Task 0x153CE0" storageaddress="2BF92" storagetype="uint8" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BA80 (structure/array at 0x163A9C); call sites: 0005036c. Function/output scaling not yet proven from the binary; locked." locked="true">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2BFA2" elements="16" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    <table type="2D" name="Engine Load Threshold vs Coolant [0x5036C]" category="Diagnostics" storageaddress="2BF92" storagetype="uint8" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BA80 (structure/array at 0x163A9C); call sites: 0005036c. Evidence: 0x5036C: b = helper 0x16BA80(0x163A9C, Coolant FFFEEEDE); condition b &lt; Engine Load FFFF03A0 (% = x) is a direct comparison, so the table is load % (255 = never).">
+      <scaling units="%" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="2BFA2" elements="16" storagetype="uint16" endian="big">
+        <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
     <table type="2D" name="Unidentified secondary 16 @0x02BFC2 [H163AC0]" category="Unidentified - Task 0x152A40 / Task 0x153CE0" storageaddress="2BFC2" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC08 (structure/array at 0x163AC0); call sites: 0005036c. Function/output scaling not yet proven from the binary; locked." locked="true">

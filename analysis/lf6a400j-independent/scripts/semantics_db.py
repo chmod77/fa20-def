@@ -1110,6 +1110,28 @@ if os.path.exists(_fgp):
             f'{" shifted left (x256)" if _sc == 256 else ""}, so the table is a fraction per execution with {_sc} = 1.0.',
             ('fraction/step', f'x/{_sc}', f'x*{_sc}', '0.000' if _sc == 256 else '0.0000'))
 
+# ---- secondary (helper) tables proven by comparison (scripts/helper_compare.py -> evidence/helper-compare.tsv)
+_BATT = {'0': dict(name='Battery Voltage', units='V', expr='x*8/100', to_byte='x*100/8')}
+_O2HC = ('A', 'x*179*1004/6553600', 'x*6553600/(179*1004)', '0.000')
+add(0x163A20, 'Rear O2 Heater Current Low Limit vs Battery Voltage', 'Diagnostics - O2 Heater',
+    '0x493EC: FFFEFA22 = helper 0x16B9A4(0x163A20, Battery Voltage FFFFAB41); fault counter FEFA20 += 1 when Rear O2 Heater Current '
+    'FFFEE6D0 (SSM 0x2C) < FA22 or > FA23 (direct byte comparisons), so the table is in the SSM 0x2C current unit.', _O2HC, axes=_BATT)
+add(0x163A2C, 'Rear O2 Heater Current High Limit vs Battery Voltage', 'Diagnostics - O2 Heater',
+    '0x493EC: FFFEFA23 = helper 0x16B9A4(0x163A2C, Battery Voltage FFFFAB41); see 0x163A20 (window check on FFFEE6D0, SSM 0x2C).', _O2HC, axes=_BATT)
+add(0x168BA4, 'Rear O2 Heater Current Threshold vs Battery Voltage [0x6A444]', 'Diagnostics - O2 Heater',
+    '0x6A444: FFFF2ABA = helper 0x16B9A4(0x168BA4, Battery Voltage FFFFAB41); compared directly with FFFEE6D0 (Rear O2 Heater Current, '
+    'SSM 0x2C).', _O2HC, axes=_BATT)
+add(0x163A9C, 'Engine Load Threshold vs Coolant [0x5036C]', 'Diagnostics',
+    '0x5036C: b = helper 0x16BA80(0x163A9C, Coolant FFFEEEDE); condition b < Engine Load FFFF03A0 (% = x) is a direct comparison, '
+    'so the table is load % (255 = never).', ('%', 'x', 'x', '0'),
+    axes={'0': dict(name='Coolant Temperature (filtered, word)', units='C', expr='x*5/2048-40', to_byte='(x+40)*2048/5')})
+add(0x158FE, 'Fuel Rail Pressure Threshold vs Coolant [0xC02D4]', 'Fuel System - High Pressure',
+    '0xC02D4 (from 0xBE0E8; p3 Fuel Rail Pressure (gauge) FFFEED16, p4 Coolant FFFEEEDE): t = helper 0x16BC68(0x158FE, coolant); flag '
+    'set when t <= FRP (direct comparison), so the table is FRP gauge kPa = x*639630/1048576. Static breakpoints are the coolant word.',
+    ('kPa', 'x*639630/1048576', 'x*1048576/639630', '0'),
+    axes={'0': dict(name='Coolant Temperature (filtered, word)', units='C', expr='x*5/2048-40', to_byte='(x+40)*2048/5')},
+    static_values=[f'{v*5/2048-40:.1f}' for v in range(0, 65536, 4096)])
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

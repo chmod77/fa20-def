@@ -554,6 +554,45 @@
    "109.5"
   ]
  },
+ "0x158FE": {
+  "status": "identified",
+  "name": "Fuel Rail Pressure Threshold vs Coolant [0xC02D4]",
+  "category": "Fuel System - High Pressure",
+  "evidence": "0xC02D4 (from 0xBE0E8; p3 Fuel Rail Pressure (gauge) FFFEED16, p4 Coolant FFFEEEDE): t = helper 0x16BC68(0x158FE, coolant); flag set when t <= FRP (direct comparison), so the table is FRP gauge kPa = x*639630/1048576. Static breakpoints are the coolant word.",
+  "description": "",
+  "data": {
+   "units": "kPa",
+   "expr": "x*639630/1048576",
+   "to_byte": "x*1048576/639630",
+   "format": "0"
+  },
+  "axes": {
+   "0": {
+    "name": "Coolant Temperature (filtered, word)",
+    "units": "C",
+    "expr": "x*5/2048-40",
+    "to_byte": "(x+40)*2048/5"
+   }
+  },
+  "static_values": [
+   "-40.0",
+   "-30.0",
+   "-20.0",
+   "-10.0",
+   "0.0",
+   "10.0",
+   "20.0",
+   "30.0",
+   "40.0",
+   "50.0",
+   "60.0",
+   "70.0",
+   "80.0",
+   "90.0",
+   "100.0",
+   "110.0"
+  ]
+ },
  "0x2C1AC": {
   "status": "identified",
   "name": "Filter Gain FFFF19A2 [0x7EFC0]",
@@ -8417,6 +8456,48 @@
    }
   }
  },
+ "0x163A20": {
+  "status": "identified",
+  "name": "Rear O2 Heater Current Low Limit vs Battery Voltage",
+  "category": "Diagnostics - O2 Heater",
+  "evidence": "0x493EC: FFFEFA22 = helper 0x16B9A4(0x163A20, Battery Voltage FFFFAB41); fault counter FEFA20 += 1 when Rear O2 Heater Current FFFEE6D0 (SSM 0x2C) < FA22 or > FA23 (direct byte comparisons), so the table is in the SSM 0x2C current unit.",
+  "description": "",
+  "data": {
+   "units": "A",
+   "expr": "x*179*1004/6553600",
+   "to_byte": "x*6553600/(179*1004)",
+   "format": "0.000"
+  },
+  "axes": {
+   "0": {
+    "name": "Battery Voltage",
+    "units": "V",
+    "expr": "x*8/100",
+    "to_byte": "x*100/8"
+   }
+  }
+ },
+ "0x163A2C": {
+  "status": "identified",
+  "name": "Rear O2 Heater Current High Limit vs Battery Voltage",
+  "category": "Diagnostics - O2 Heater",
+  "evidence": "0x493EC: FFFEFA23 = helper 0x16B9A4(0x163A2C, Battery Voltage FFFFAB41); see 0x163A20 (window check on FFFEE6D0, SSM 0x2C).",
+  "description": "",
+  "data": {
+   "units": "A",
+   "expr": "x*179*1004/6553600",
+   "to_byte": "x*6553600/(179*1004)",
+   "format": "0.000"
+  },
+  "axes": {
+   "0": {
+    "name": "Battery Voltage",
+    "units": "V",
+    "expr": "x*8/100",
+    "to_byte": "x*100/8"
+   }
+  }
+ },
  "0x163A78": {
   "status": "identified",
   "name": "Engine Speed Filter Coefficient (RPM)",
@@ -8435,6 +8516,27 @@
     "units": "rpm",
     "expr": "x*25/128",
     "to_byte": "x*128/25"
+   }
+  }
+ },
+ "0x163A9C": {
+  "status": "identified",
+  "name": "Engine Load Threshold vs Coolant [0x5036C]",
+  "category": "Diagnostics",
+  "evidence": "0x5036C: b = helper 0x16BA80(0x163A9C, Coolant FFFEEEDE); condition b < Engine Load FFFF03A0 (% = x) is a direct comparison, so the table is load % (255 = never).",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x",
+   "to_byte": "x",
+   "format": "0"
+  },
+  "axes": {
+   "0": {
+    "name": "Coolant Temperature (filtered, word)",
+    "units": "C",
+    "expr": "x*5/2048-40",
+    "to_byte": "(x+40)*2048/5"
    }
   }
  },
@@ -8477,6 +8579,27 @@
     "units": "raw",
     "expr": "x",
     "to_byte": "x"
+   }
+  }
+ },
+ "0x168BA4": {
+  "status": "identified",
+  "name": "Rear O2 Heater Current Threshold vs Battery Voltage [0x6A444]",
+  "category": "Diagnostics - O2 Heater",
+  "evidence": "0x6A444: FFFF2ABA = helper 0x16B9A4(0x168BA4, Battery Voltage FFFFAB41); compared directly with FFFEE6D0 (Rear O2 Heater Current, SSM 0x2C).",
+  "description": "",
+  "data": {
+   "units": "A",
+   "expr": "x*179*1004/6553600",
+   "to_byte": "x*6553600/(179*1004)",
+   "format": "0.000"
+  },
+  "axes": {
+   "0": {
+    "name": "Battery Voltage",
+    "units": "V",
+    "expr": "x*8/100",
+    "to_byte": "x*100/8"
    }
   }
  }
