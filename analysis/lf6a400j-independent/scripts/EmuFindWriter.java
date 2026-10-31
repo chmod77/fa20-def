@@ -1,5 +1,5 @@
 // Emulate a function and report the instruction that first changes a target RAM word (seeded with a sentinel).
-// args: <entry hex> <target hex> [max steps]
+// args: <entry hex> <target hex> [max steps] [addr=hexvalue:bytes ...]  (seed RAM, e.g. ffff66b0=03:1)
 import ghidra.app.script.GhidraScript;
 import ghidra.app.emulator.EmulatorHelper;
 import ghidra.program.model.address.Address;
@@ -14,6 +14,13 @@ public class EmuFindWriter extends GhidraScript {
       emu.writeRegister("r15", BigInteger.valueOf(0xFFFFB000L));
       emu.writeRegister("pc", BigInteger.valueOf(entry.getOffset()));
       emu.writeRegister("pr", BigInteger.valueOf(0x4L));
+      for (int i = 3; i < a.length; i++) {
+        String[] kv = a[i].split("[=:]");
+        long v = Long.parseLong(kv[1], 16); int n = Integer.parseInt(kv[2]);
+        byte[] b = new byte[n];
+        for (int j = 0; j < n; j++) b[j] = (byte)(v >> (8 * (n - 1 - j)));
+        emu.writeMemory(toAddr(Long.parseLong(kv[0], 16)), b);
+      }
       byte[] seed = new byte[]{(byte)0xA5,(byte)0x5A};
       emu.writeMemory(tgt, seed);
       int steps = 0; int hits = 0;

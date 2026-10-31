@@ -215,6 +215,10 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
   0x1011EC in the 20 ms task) = filtered T_02FC98(FFFF0554, FFFF0F42), default 0x500 - unit still open (0554/0F42 unproven).
   Next: use EmuFindWriter on the other pointer-written variables (0D02, 0A8E, 0F42, 0554, 0DA6 producer) and EmuCallArgs on calls
   whose stack-args rows are missing.
+- A/F Correction #1 chain via emulation: 0xB34BC writes 0D92 (SSM 0x09) = 0DA4 [+ coolant offset T_02E1F8/204 in mode 04FF >= 10];
+  0xB538C 0DA4 = min(max(0DAE, 0D9A), +35 %); 0xB5A24 0DAE = T_02E30C(coolant) lower limit. 0A8E = limited pedal angle (0x82C34);
+  0D02 writer 0xAB150. EmuFindWriter accepts seeds (addr=value:bytes) for engine-running state. Coverage 639 of 1284.
+  Next: 0D9A producer (0xB5088 copies @(24,0D86) = 0D9E) -> the integrator 0DA6/0D86 gets the % unit -> step tables in 0xB53D4.
 - Dead ends this session (documented so they are not repeated):
   * FFFF12C2 (axis of the pedal-limit T1 tables, compared with 12BE in the torque monitor): only a read literal (0xC50D0); writer not
     found by literal, GBR (+70 from 127C) or r0-offset searches.

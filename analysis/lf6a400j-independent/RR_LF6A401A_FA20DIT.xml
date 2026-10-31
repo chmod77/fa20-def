@@ -6873,15 +6873,15 @@
         <scaling units="km/h" expression="x*9/160" to_byte="x*160/9" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02E1F8] (Coolant Temperature (filtered, word))" category="Unidentified - Task 0x15307C" storageaddress="29052" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E1F8. Lookup result stored to: 000b34bc:*param_10. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="A/F Correction #1 Offset (Coolant, FFFEE710.5 set)" category="Fueling - Closed Loop" storageaddress="29052" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E1F8. Evidence: A/F Correction #1 chain (writers found with scripts/EmuFindWriter.java, call arguments with EmuCallArgs.java): 0xB34BC (call 0xB4FC4) writes FFFF0D92 = A/F Correction #1 (SSM 0x09, % = x/327.68 - 100) = 0DA4 + uVar (uVar = T_02E1F8 / T_02E204 (coolant FFFEEEDE; FFFEE710.5 selects 1F8) only when mode FFFF04FF &gt;= 10, else 0). 0xB538C: 0DA4 = min(max(0DAE, 0D9A), 0xACCD (+35 %)); 0xB5A24 writes 0DAE = T_02E30C(coolant) or 0x3333 (-60 %) when FFFEE710.5 set, vehicle speed &gt; 20 and FFFFAB40.5 clear. This table is the additive offset (mode 10). Lookup result stored to: 000b34bc:*param_10." sizey="16">
+      <scaling units="%" expression="x*100/32768" to_byte="x*32768/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02E204] (Coolant Temperature (filtered, word))" category="Unidentified - Task 0x15307C" storageaddress="29072" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E204. Lookup result stored to: 000b34bc:*param_11. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="A/F Correction #1 Offset (Coolant, FFFEE710.5 clear)" category="Fueling - Closed Loop" storageaddress="29072" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E204. Evidence: A/F Correction #1 chain (writers found with scripts/EmuFindWriter.java, call arguments with EmuCallArgs.java): 0xB34BC (call 0xB4FC4) writes FFFF0D92 = A/F Correction #1 (SSM 0x09, % = x/327.68 - 100) = 0DA4 + uVar (uVar = T_02E1F8 / T_02E204 (coolant FFFEEEDE; FFFEE710.5 selects 1F8) only when mode FFFF04FF &gt;= 10, else 0). 0xB538C: 0DA4 = min(max(0DAE, 0D9A), 0xACCD (+35 %)); 0xB5A24 writes 0DAE = T_02E30C(coolant) or 0x3333 (-60 %) when FFFEE710.5 set, vehicle speed &gt; 20 and FFFFAB40.5 clear. This table is the additive offset (mode 10). Lookup result stored to: 000b34bc:*param_11." sizey="16">
+      <scaling units="%" expression="x*100/32768" to_byte="x*32768/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -6987,9 +6987,9 @@
         <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02E30C] (Coolant Temperature (filtered, word))" category="Unidentified - Task 0x15307C" storageaddress="29364" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E30C. Lookup result stored to: FFFF0DAE. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="29354" elements="8" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="A/F Correction #1 Lower Limit (Coolant)" category="Fueling - Closed Loop" storageaddress="29364" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E30C. Evidence: A/F Correction #1 chain (writers found with scripts/EmuFindWriter.java, call arguments with EmuCallArgs.java): 0xB34BC (call 0xB4FC4) writes FFFF0D92 = A/F Correction #1 (SSM 0x09, % = x/327.68 - 100) = 0DA4 + uVar (uVar = T_02E1F8 / T_02E204 (coolant FFFEEEDE; FFFEE710.5 selects 1F8) only when mode FFFF04FF &gt;= 10, else 0). 0xB538C: 0DA4 = min(max(0DAE, 0D9A), 0xACCD (+35 %)); 0xB5A24 writes 0DAE = T_02E30C(coolant) or 0x3333 (-60 %) when FFFEE710.5 set, vehicle speed &gt; 20 and FFFFAB40.5 clear. T_02E30C is the lower limit. Lookup result stored to: FFFF0DAE (A/F Correction #1 Lower Limit (0DAE))." sizey="8">
+      <scaling units="%" expression="x/327.68-100" to_byte="(x+100)*327.68" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="29354" elements="8" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>

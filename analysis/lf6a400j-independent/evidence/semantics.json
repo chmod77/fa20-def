@@ -6085,6 +6085,48 @@
    "format": "0.00"
   }
  },
+ "0x2E1F8": {
+  "status": "identified",
+  "name": "A/F Correction #1 Offset (Coolant, FFFEE710.5 set)",
+  "category": "Fueling - Closed Loop",
+  "evidence": "A/F Correction #1 chain (writers found with scripts/EmuFindWriter.java, call arguments with EmuCallArgs.java): 0xB34BC (call 0xB4FC4) writes FFFF0D92 = A/F Correction #1 (SSM 0x09, % = x/327.68 - 100) = 0DA4 + uVar (uVar = T_02E1F8 / T_02E204 (coolant FFFEEEDE; FFFEE710.5 selects 1F8) only when mode FFFF04FF >= 10, else 0). 0xB538C: 0DA4 = min(max(0DAE, 0D9A), 0xACCD (+35 %)); 0xB5A24 writes 0DAE = T_02E30C(coolant) or 0x3333 (-60 %) when FFFEE710.5 set, vehicle speed > 20 and FFFFAB40.5 clear. This table is the additive offset (mode 10).",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/32768",
+   "to_byte": "x*32768/100",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Coolant Temperature (filtered, word)",
+    "units": "C",
+    "expr": "x*5/2048-40",
+    "to_byte": "(x+40)*2048/5"
+   }
+  }
+ },
+ "0x2E204": {
+  "status": "identified",
+  "name": "A/F Correction #1 Offset (Coolant, FFFEE710.5 clear)",
+  "category": "Fueling - Closed Loop",
+  "evidence": "A/F Correction #1 chain (writers found with scripts/EmuFindWriter.java, call arguments with EmuCallArgs.java): 0xB34BC (call 0xB4FC4) writes FFFF0D92 = A/F Correction #1 (SSM 0x09, % = x/327.68 - 100) = 0DA4 + uVar (uVar = T_02E1F8 / T_02E204 (coolant FFFEEEDE; FFFEE710.5 selects 1F8) only when mode FFFF04FF >= 10, else 0). 0xB538C: 0DA4 = min(max(0DAE, 0D9A), 0xACCD (+35 %)); 0xB5A24 writes 0DAE = T_02E30C(coolant) or 0x3333 (-60 %) when FFFEE710.5 set, vehicle speed > 20 and FFFFAB40.5 clear. This table is the additive offset (mode 10).",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/32768",
+   "to_byte": "x*32768/100",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Coolant Temperature (filtered, word)",
+    "units": "C",
+    "expr": "x*5/2048-40",
+    "to_byte": "(x+40)*2048/5"
+   }
+  }
+ },
  "0x2E240": {
   "status": "identified",
   "name": "Fuel Quantity Term (RPM x Load) [-> 0507]",
@@ -6109,6 +6151,27 @@
    "expr": "(x+128)/256",
    "to_byte": "x*256-128",
    "format": "0.000"
+  }
+ },
+ "0x2E30C": {
+  "status": "identified",
+  "name": "A/F Correction #1 Lower Limit (Coolant)",
+  "category": "Fueling - Closed Loop",
+  "evidence": "A/F Correction #1 chain (writers found with scripts/EmuFindWriter.java, call arguments with EmuCallArgs.java): 0xB34BC (call 0xB4FC4) writes FFFF0D92 = A/F Correction #1 (SSM 0x09, % = x/327.68 - 100) = 0DA4 + uVar (uVar = T_02E1F8 / T_02E204 (coolant FFFEEEDE; FFFEE710.5 selects 1F8) only when mode FFFF04FF >= 10, else 0). 0xB538C: 0DA4 = min(max(0DAE, 0D9A), 0xACCD (+35 %)); 0xB5A24 writes 0DAE = T_02E30C(coolant) or 0x3333 (-60 %) when FFFEE710.5 set, vehicle speed > 20 and FFFFAB40.5 clear. T_02E30C is the lower limit.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x/327.68-100",
+   "to_byte": "(x+100)*327.68",
+   "format": "0.0"
+  },
+  "axes": {
+   "0": {
+    "name": "Coolant Temperature (filtered, word)",
+    "units": "C",
+    "expr": "x*5/2048-40",
+    "to_byte": "(x+40)*2048/5"
+   }
   }
  },
  "0x2E32C": {

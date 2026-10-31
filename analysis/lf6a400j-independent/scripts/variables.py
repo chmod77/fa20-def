@@ -306,3 +306,8 @@ V2.update({
 V2.update({
  0xFFFF0D12:('Target Idle Speed (0D12)','rpm','x*25/128','x*128/25','0xAB150 (call 0xA8F36; writer of 0D02 found by emulation): 0D02 = min(0D12, (0D08>>6)<<6) with 0D08 Target Idle Speed (base) rpm'),
 })
+V2.update({
+ 0xFFFF0DA4:('A/F Correction #1 (before offset, 0DA4)','%','x/327.68-100','(x+100)*327.68','0xB34BC (emulated call 0xB4FC4: p5 = @(30,0D86) = 0DA4, p7 = 0D92): A/F Correction #1 FFFF0D92 (SSM 0x09) = 0DA4 [+ coolant offset in mode 10]'),
+ 0xFFFF0DAE:('A/F Correction #1 Lower Limit (0DAE)','%','x/327.68-100','(x+100)*327.68','0xB538C: 0DA4 = min(max(0DAE, 0D9A), 0xACCD); 0xB5A24 writes 0DAE (emulation)'),
+ 0xFFFF0D9A:('A/F Correction #1 (unclamped, 0D9A)','%','x/327.68-100','(x+100)*327.68','0xB538C: 0DA4 = min(max(0DAE, 0D9A), 0xACCD); 0xB5088 copies it (emulation)'),
+})

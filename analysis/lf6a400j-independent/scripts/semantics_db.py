@@ -1285,6 +1285,18 @@ add(0x2E3EC, 'Open Loop Enrichment Adder (RPM x Load) [0xB6044 -> 0DD0]', FE,
     'enrichment (phi-1)*32768 (0xB5B38 target AFR uses 14.5*0B9A/(32768+0B9A)), so T is an additive enrichment in the same unit: '
     '% = x*100/32768.', ('%', 'x*100/32768', 'x*32768/100', '0.00'))
 
+_afc = ('A/F Correction #1 chain (writers found with scripts/EmuFindWriter.java, call arguments with EmuCallArgs.java): 0xB34BC (call 0xB4FC4) '
+        'writes FFFF0D92 = A/F Correction #1 (SSM 0x09, % = x/327.68 - 100) = 0DA4 + uVar (uVar = T_02E1F8 / T_02E204 (coolant FFFEEEDE; '
+        'FFFEE710.5 selects 1F8) only when mode FFFF04FF >= 10, else 0). 0xB538C: 0DA4 = min(max(0DAE, 0D9A), 0xACCD (+35 %)); 0xB5A24 writes '
+        '0DAE = T_02E30C(coolant) or 0x3333 (-60 %) when FFFEE710.5 set, vehicle speed > 20 and FFFFAB40.5 clear. ')
+add(0x2E30C, 'A/F Correction #1 Lower Limit (Coolant)', 'Fueling - Closed Loop', _afc + 'T_02E30C is the lower limit.',
+    ('%', 'x/327.68-100', '(x+100)*327.68', '0.0'),
+    axes={'0': dict(name='Coolant Temperature (filtered, word)', units='C', expr='x*5/2048-40', to_byte='(x+40)*2048/5')})
+for _d, _c in ((0x2E1F8, 'FFFEE710.5 set'), (0x2E204, 'FFFEE710.5 clear')):
+    add(_d, f'A/F Correction #1 Offset (Coolant, {_c})', 'Fueling - Closed Loop', _afc + 'This table is the additive offset (mode 10).',
+        ('%', 'x*100/32768', 'x*32768/100', '0.00'),
+        axes={'0': dict(name='Coolant Temperature (filtered, word)', units='C', expr='x*5/2048-40', to_byte='(x+40)*2048/5')})
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
