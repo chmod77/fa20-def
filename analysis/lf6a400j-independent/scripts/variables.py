@@ -294,3 +294,6 @@ V2.update({
  0xFFFF13AC:('Time While FFFF0935.6 Set','s','x*0.01','x/0.01','0x11EE38 (from 0x11F134, called unconditionally by the 10 ms task 0x152A40): counter +1 per call while the flag is set, else 0; output FFFF13A6+6'),
  0xFFFF13B2:('Time While FFFF0935.5 Set','s','x*0.01','x/0.01','0x11EF0C (from 0x11F134, 10 ms): counter +1 per call while the flag is set, else 0; output FFFF13B0+2'),
 })
+V2.update({
+ 0xFFFF03D7:('Required Torque Efficiency','ratio','x/256','x*256','0x870FC: 03D7 = (FFFF0AA8 * r/32768) >> 7 with 0AA8 = Torque Efficiency vs Ignition Retard (T_02C8DC, 32768 = efficiency at zero retard) and r a torque ratio (32768 = 1.0); 0x9B384 uses 03D7<<7 as the T_02D890 input'),
+})

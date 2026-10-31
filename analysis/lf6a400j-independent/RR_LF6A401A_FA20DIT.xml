@@ -3051,9 +3051,9 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02E734]" category="Unidentified - Task 0xBE0E8" storageaddress="16282" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2E734. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Required Torque Efficiency Threshold (0xBEEA8)" category="Thresholds - Required Torque Efficiency" storageaddress="16282" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2E734. Evidence: 0xBEEA8: lookup result compared with Required Torque Efficiency (FFFF03D7): &quot;((param_8 &amp; 0xff) &lt; (uVar7 &amp; 0xff)&quot;; a comparison requires the same unit, so the output carries that scaling." sizey="16">
+      <scaling units="ratio" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>

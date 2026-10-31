@@ -6486,6 +6486,19 @@
    "format": "0.0"
   }
  },
+ "0x2E734": {
+  "status": "identified",
+  "name": "Required Torque Efficiency Threshold (0xBEEA8)",
+  "category": "Thresholds - Required Torque Efficiency",
+  "evidence": "0xBEEA8: lookup result compared with Required Torque Efficiency (FFFF03D7): \"((param_8 & 0xff) < (uVar7 & 0xff)\"; a comparison requires the same unit, so the output carries that scaling.",
+  "description": "",
+  "data": {
+   "units": "ratio",
+   "expr": "x/256",
+   "to_byte": "x*256",
+   "format": "0.00"
+  }
+ },
  "0x2E758": {
   "status": "identified",
   "name": "Time Threshold [0xBEEA8]",

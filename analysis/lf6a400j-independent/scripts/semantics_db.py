@@ -7,8 +7,10 @@ H = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(H)
 S = {}
 
 
+AUTO = set()   # descriptors added by the generic comparison/timer blocks; a later specific entry replaces them
 def add(desc, name, category, evidence, data=None, status='identified', description='', axes=None, static_values=None):
-    assert desc not in S, hex(desc)
+    assert desc not in S or desc in AUTO, hex(desc)
+    AUTO.discard(desc)
     S[desc] = dict(status=status, name=name, category=category, evidence=evidence, description=description)
     if data:
         u, e, t, *f = data
@@ -553,12 +555,15 @@ if os.path.exists(f'{ROOT}/evidence/table-compare.tsv'):
                'x*100/65280': 'x*65280/100', 'x*625/2048000': 'x*2048000/625'}.get(_r['expr'])
         if _tb is None and re.fullmatch(r'x\*[0-9.]+', _r['expr']):
             _tb = 'x/' + _r['expr'][2:]
+        if _tb is None and re.fullmatch(r'x/[0-9.]+', _r['expr']):
+            _tb = 'x*' + _r['expr'][2:]
         if _tb is None:
             continue
         add(_d, f"{_r['var_name']} Threshold (0x{int(_r['function'], 16):X})", 'Thresholds - ' + _r['var_name'],
             f"0x{int(_r['function'], 16):X}: lookup result compared with {_r['var_name']} (FFFF{_r['var'][4:]}): \"{_r['context']}\"; "
             'a comparison requires the same unit, so the output carries that scaling.',
             (_r['units'], _r['expr'], _tb, '0.00'))
+        AUTO.add(_d)
 
 for d, nm, how in ((0x2E954, 'Torque Limit Upper (RPM) [0xC3FA8]', 'min(torque, T)'), (0x2E960, 'Torque Limit Lower (RPM) [0xC3FA8]', 'max(.., T)'),
                    (0x2E96C, 'Torque Limit Upper (RPM) [0xC4124]', 'min(torque, T)'), (0x2E978, 'Torque Limit Lower (RPM) [0xC4124]', 'max(.., T)')):
