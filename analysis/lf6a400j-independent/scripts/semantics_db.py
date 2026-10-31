@@ -271,6 +271,16 @@ add(0x2D488, 'Ignition Timing Retard (vs FFFF058A, not selected)', IGN,
     '0x96DA0: retard FFFF0454 (subtracted from total timing in half-degrees, 0x98FAC) = T(FFFF058A) only when param_2 != 0; caller 0x9CBF8 '
     'passes constant 0, so FFFF0454 = 6 (3 deg) while active and this table is not used in this ROM.', DEG2)
 
+# ---------------------------------------------------------------- throttle airflow (compressible orifice) model 0xCFC88
+_thr = ('0xCFC88: pressure ratio r = min(FFFF1688/FFFF168C, ...) clamped below at 0.53 (critical ratio of air) and above at 1.0; '
+        'flow = (FFFF168C/101325) * T_02ECEC(r) * FFFF09C2 * 2.98e-15 * k(T_02ECE0) * 60000, then blended with the previous value '
+        'by w = T_02ECF8(r)/65536. Axis input u32 = r*2^32 - 2^31.')
+PRAX = {'0': dict(name='Pressure Ratio (downstream/upstream)', units='ratio', expr='(x+2147483648)/4294967296', to_byte='x*4294967296-2147483648')}
+add(0x2ECEC, 'Throttle Flow Function (Pressure Ratio)', 'Airflow - Throttle Model', _thr, ('raw', 'x', 'x', '0'), status='partial', axes=PRAX)
+add(0x2ECF8, 'Throttle Flow Model Blend Weight (Pressure Ratio)', 'Airflow - Throttle Model', _thr, ('fraction', 'x/65536', 'x*65536', '0.0000'), axes=PRAX)
+add(0x2ECE0, 'Throttle Flow Correction (vs FFFF05BB)', 'Airflow - Throttle Model', _thr + ' k = 0.75 + T_02ECE0/131072.',
+    ('multiplier', '0.75+x/131072', '(x-0.75)*131072', '0.0000'))
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
