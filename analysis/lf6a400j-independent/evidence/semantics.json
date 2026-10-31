@@ -2400,6 +2400,19 @@
    "format": "0.00"
   }
  },
+ "0x2E1E0": {
+  "status": "identified",
+  "name": "Time Threshold [0xB2F30]",
+  "category": "Timers",
+  "evidence": "0xB2F30: lookup result compared with counter FFFEC6D8 (\"(uint)_DAT_fffec6d8 < (uVar4 & 0xffff)\"), which is only reset or incremented by 1 per execution; task 0x15307C = 20 ms (OS alarm table 0x168FD0: alarm 4 -> task 8 cycle 10 ticks; tick 2 ms from alarm 6 -> task 9 0x153248 cycle 20 = proven 40 ms).",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.02",
+   "to_byte": "x/0.02",
+   "format": "0.00"
+  }
+ },
  "0x2E32C": {
   "status": "identified",
   "name": "Target Lambda (param_5 set, FFFF0D70 < 1000)",
@@ -2950,6 +2963,19 @@
    "units": "%",
    "expr": "x",
    "to_byte": "x",
+   "format": "0.00"
+  }
+ },
+ "0x2EDF4": {
+  "status": "identified",
+  "name": "Time Threshold [0xD82E0]",
+  "category": "Timers",
+  "evidence": "0xD82E0: lookup result compared with counter FFFECF4C (\"(uint)_DAT_fffecf4c < (uVar3 & 0xffff)\"), which is only reset or incremented by 1 per execution; task 0x15307C = 20 ms (OS alarm table 0x168FD0: alarm 4 -> task 8 cycle 10 ticks; tick 2 ms from alarm 6 -> task 9 0x153248 cycle 20 = proven 40 ms).",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.02",
+   "to_byte": "x/0.02",
    "format": "0.00"
   }
  },
@@ -3909,6 +3935,32 @@
    }
   }
  },
+ "0x2F5AC": {
+  "status": "identified",
+  "name": "Time Threshold [0xFBB84]",
+  "category": "Timers",
+  "evidence": "0xFBB84: lookup result compared with counter FFFED8C0 (\"(uVar4 & 0xffff) <= (uint)_DAT_fffed8c0\"), which is only reset or incremented by 1 per execution; task 0x15307C = 20 ms (OS alarm table 0x168FD0: alarm 4 -> task 8 cycle 10 ticks; tick 2 ms from alarm 6 -> task 9 0x153248 cycle 20 = proven 40 ms).",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.02",
+   "to_byte": "x/0.02",
+   "format": "0.00"
+  }
+ },
+ "0x2F5D0": {
+  "status": "identified",
+  "name": "Time Threshold [0xFBC88]",
+  "category": "Timers",
+  "evidence": "0xFBC88: lookup result compared with counter FFFED8C4 (\"(uVar4 & 0xffff) <= (uint)_DAT_fffed8c4\"), which is only reset or incremented by 1 per execution; task 0x15307C = 20 ms (OS alarm table 0x168FD0: alarm 4 -> task 8 cycle 10 ticks; tick 2 ms from alarm 6 -> task 9 0x153248 cycle 20 = proven 40 ms).",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.02",
+   "to_byte": "x/0.02",
+   "format": "0.00"
+  }
+ },
  "0x2F608": {
   "status": "identified",
   "name": "Exhaust AVCS Target, Alternate Mode (FFFEF152.5), FFFF076C.3 set",
@@ -4442,6 +4494,32 @@
     "expr": "x/26214.4",
     "to_byte": "x*26214.4"
    }
+  }
+ },
+ "0x2F838": {
+  "status": "identified",
+  "name": "Time Threshold [0xFF334]",
+  "category": "Timers",
+  "evidence": "0xFF334: lookup result compared with counter FFFED998 (\"(uVar4 & 0xffff) <= (uint)_DAT_fffed998\"), which is only reset or incremented by 1 per execution; task 0x15307C = 20 ms (OS alarm table 0x168FD0: alarm 4 -> task 8 cycle 10 ticks; tick 2 ms from alarm 6 -> task 9 0x153248 cycle 20 = proven 40 ms).",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.02",
+   "to_byte": "x/0.02",
+   "format": "0.00"
+  }
+ },
+ "0x2F85C": {
+  "status": "identified",
+  "name": "Time Threshold [0xFF438]",
+  "category": "Timers",
+  "evidence": "0xFF438: lookup result compared with counter FFFED99C (\"(uVar4 & 0xffff) <= (uint)_DAT_fffed99c\"), which is only reset or incremented by 1 per execution; task 0x15307C = 20 ms (OS alarm table 0x168FD0: alarm 4 -> task 8 cycle 10 ticks; tick 2 ms from alarm 6 -> task 9 0x153248 cycle 20 = proven 40 ms).",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.02",
+   "to_byte": "x/0.02",
+   "format": "0.00"
   }
  },
  "0x2F900": {

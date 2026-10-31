@@ -3657,9 +3657,9 @@
         <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02E1E0] (Engine Speed (high byte))" category="Unidentified - Task 0x15307C" storageaddress="190FC" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E1E0. Lookup result stored to: FFFEC6DC, FFFF0D7A. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed (high byte)" storageaddress="1911C" elements="8" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Time Threshold [0xB2F30]" category="Timers" storageaddress="190FC" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E1E0. Evidence: 0xB2F30: lookup result compared with counter FFFEC6D8 (&quot;(uint)_DAT_fffec6d8 &lt; (uVar4 &amp; 0xffff)&quot;), which is only reset or incremented by 1 per execution; task 0x15307C = 20 ms (OS alarm table 0x168FD0: alarm 4 -&gt; task 8 cycle 10 ticks; tick 2 ms from alarm 6 -&gt; task 9 0x153248 cycle 20 = proven 40 ms). Lookup result stored to: FFFEC6DC, FFFF0D7A." sizey="8">
+      <scaling units="s" expression="x*0.02" to_byte="x/0.02" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed (high byte)" storageaddress="1911C" elements="8" storagetype="uint8" endian="big">
         <scaling units="rpm" expression="x*50" to_byte="x/50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
@@ -5166,9 +5166,9 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02EDF4] (Engine Speed)" category="Unidentified - Fuel Pump Control" storageaddress="1ED66" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2EDF4. Lookup result stored to: FFFF0FE2. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="1ED46" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Time Threshold [0xD82E0]" category="Timers" storageaddress="1ED66" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2EDF4. Evidence: 0xD82E0: lookup result compared with counter FFFECF4C (&quot;(uint)_DAT_fffecf4c &lt; (uVar3 &amp; 0xffff)&quot;), which is only reset or incremented by 1 per execution; task 0x15307C = 20 ms (OS alarm table 0x168FD0: alarm 4 -&gt; task 8 cycle 10 ticks; tick 2 ms from alarm 6 -&gt; task 9 0x153248 cycle 20 = proven 40 ms). Lookup result stored to: FFFF0FE2." sizey="16">
+      <scaling units="s" expression="x*0.02" to_byte="x/0.02" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="1ED46" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -5562,9 +5562,9 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02F5AC]" category="Unidentified - AVCS (Cam Timing) Control" storageaddress="201D2" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F5AC, 0x2F5D0, 0x2F838, 0x2F85C. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF11B6)" storageaddress="20172" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Time Threshold [0xFBB84]" category="Timers" storageaddress="201D2" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F5AC, 0x2F5D0, 0x2F838, 0x2F85C. Evidence: 0xFBB84: lookup result compared with counter FFFED8C0 (&quot;(uVar4 &amp; 0xffff) &lt;= (uint)_DAT_fffed8c0&quot;), which is only reset or incremented by 1 per execution; task 0x15307C = 20 ms (OS alarm table 0x168FD0: alarm 4 -&gt; task 8 cycle 10 ticks; tick 2 ms from alarm 6 -&gt; task 9 0x153248 cycle 20 = proven 40 ms)." sizey="16">
+      <scaling units="s" expression="x*0.02" to_byte="x/0.02" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF11B6)" storageaddress="20172" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>

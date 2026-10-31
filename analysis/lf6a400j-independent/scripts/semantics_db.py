@@ -512,6 +512,21 @@ for d, nm in ((0x2F034, 'Misfire Detection Timing Interpolation Point A (RPM)'),
     add(d, nm, 'Misfire Detection', '0xDEBC8 (from 0xDCE34; inputs FFFF2ADA rpm, FFFF046C): weight FFFF106E = (046C - T_02F034)/(T_02F028 - T_02F034), '
         'so both tables are in the unit of Ignition Total Timing FFFF046C (SSM 0x11, deg = x/2); the weight blends T_02F040/T_02F054.', DEG2)
 
+# ---------------------------------------------------------------- timer thresholds (scripts/timers.py)
+_PEREV = {'0015307c': 'task 0x15307C = 20 ms (OS alarm table 0x168FD0: alarm 4 -> task 8 cycle 10 ticks; tick 2 ms from alarm 6 -> task 9 '
+          '0x153248 cycle 20 = proven 40 ms)', '00153248': 'task 0x153248 = 40 ms (OBD PID 0x1F/0x4E prescalers)',
+          '00153568': 'task 0x153568 = 80 ms (OBD PID 0x31 distance integration)'}
+if os.path.exists(f'{ROOT}/evidence/timer-tables.tsv'):
+    import csv as _csv2
+    for _r in _csv2.DictReader(open(f'{ROOT}/evidence/timer-tables.tsv'), delimiter='\t'):
+        _d = int(_r['descriptor'], 16)
+        if _d in S:
+            continue
+        _p = float(_r['period'])
+        add(_d, f"Time Threshold [0x{int(_r['function'], 16):X}]", 'Timers',
+            f"0x{int(_r['function'], 16):X}: lookup result compared with counter {_r['counter']} (\"{_r['context']}\"), which is only reset or "
+            f"incremented by 1 per execution; {_PEREV[_r['task']]}.", ('s', f'x*{_p}', f'x/{_p}', '0.00'))
+
 # ---------------------------------------------------------------- thresholds proven by comparison (scripts/table_compare.py)
 # The lookup result is compared directly with a proven variable (or a parameter every call site passes as that variable), so the
 # table output is in that variable's unit.  Names state only what is proven: a threshold on that variable, used by that function.

@@ -111,6 +111,12 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
   (km/h = x*9/160) to an accumulator each call and counts 1 km at 800000 (feeds OBD PID 0x31, km since codes cleared).
   That gives dt = 0.08 s, so this task runs every 80 ms. Periods of 0x1528A2, 0x152A40 (idle, ignition, fuel, misfire, torque) and
   0x15307C (AVCS, target lambda) are still unknown; the OS table order hints at 5/10/20 ms, but this is unproven.
+- OS alarms: startup 0x1513BC calls SetRelAlarm 0x13CD28(alarm, offset, cycle) with (10,1,1), (1,2,2), (2,3,4), (4,6,10), (6,11,20), (7,21,40).
+  The alarm table at 0x168FD0 has 16-byte records, and word 0 is the task ID. Task IDs index the TCBs at 0x169780:
+  task 3 = 0x1528A2, 8 = 0x15307C, 9 = 0x153248, 10 = 0x153800, 18 = 0x153568.
+  Alarm 6 -> task 9 (cycle 20) with 0x153248 proven 40 ms gives a 2 ms tick, so 0x1528A2 = 4 ms, 0x15307C = 20 ms, 0x153800 = 80 ms.
+  Caveat: this relies on reading word 0 as the task ID. 0x152A40 (task 7, alarm 9) is not set at startup; it is probably event-driven.
+  `scripts/timers.py` accepts timer tables only under strict checks (direct comparison with a +1 counter) -> `evidence/timer-tables.tsv`.
 - OS structure: the task control blocks at 0x169780 are 16-byte records {entry, flags, priority, stack}. The task bodies (0x151748..)
   call their functions, increment FFFF1B2x (execution count) and jump to 0x13CF00 (terminate). Priorities do not follow the
   periods: the 80 ms task 0x153568 has a higher priority than the 40 ms task 0x153248. Alarm/period configuration not located yet.

@@ -1,0 +1,7 @@
+descriptor	function	task	period	counter	context
+02E1E0	000b2f30	0015307c	0.02	FFFEC6D8	(uint)_DAT_fffec6d8 < (uVar4 & 0xffff)
+02EDF4	000d82e0	0015307c	0.02	FFFECF4C	(uint)_DAT_fffecf4c < (uVar3 & 0xffff)
+02F5AC	000fbb84	0015307c	0.02	FFFED8C0	(uVar4 & 0xffff) <= (uint)_DAT_fffed8c0
+02F5D0	000fbc88	0015307c	0.02	FFFED8C4	(uVar4 & 0xffff) <= (uint)_DAT_fffed8c4
+02F838	000ff334	0015307c	0.02	FFFED998	(uVar4 & 0xffff) <= (uint)_DAT_fffed998
+02F85C	000ff438	0015307c	0.02	FFFED99C	(uVar4 & 0xffff) <= (uint)_DAT_fffed99c
