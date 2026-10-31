@@ -828,16 +828,16 @@
   }
  },
  "0x2CE90": {
-  "status": "partial",
-  "name": "Injector Flow Scaling (Fuel Rail Pressure)",
+  "status": "identified",
+  "name": "Injector Pulse Multiplier (Fuel Rail Pressure)",
   "category": "Fuel Injection",
-  "evidence": "0x1569D6: SSM injector PW FFFF2B4E[cyl] = FFFF1564[cyl]>>2 (pointer table 0x168EAC) => FFFF1564 in 0.8 us; 0x922F4 (via 0x89A78): FFFF1564 = 1.25*(FFFF0BC8*0.8 + FFFF1544*FFFF0B44*0.003125) => injection time us = FFFF0BC8*0.8 + q*k*0.003125. 0x8DDA8: FFFF0B44 = T(FRP FFFEED18) multiplies fuel quantity FFFF1544 (time contribution = q*x*0.003125 us); unit of q not yet anchored.",
+  "evidence": "0x1569D6: SSM injector PW FFFF2B4E[cyl] = FFFF1564[cyl]>>2 (pointer table 0x168EAC) => FFFF1564 in 0.8 us; 0x922F4 (via 0x89A78): FFFF1564 = 1.25*(FFFF0BC8*0.8 + FFFF1544*FFFF0B44*0.003125) => injection time us = FFFF0BC8*0.8 + q*k*0.003125. 0x8DDA8: FFFF0B44 = T(FRP FFFEED18). 0x917EC: FFFF1544 = 1.25*((FFFF1644-0x8000)*3.2 + FFFF1534*(256-FFFF041F)*0.003125), the same float->0.8 us packing (x1.25, clamp 13421772) as FFFF1564, so FFFF1544 is a base pulse time in 0.8 us; its contribution to FFFF1564 is 1544*0.8*k/256 us, i.e. k/256 is a pure multiplier (256 = 1.0 at the lowest pressure, falling roughly as 1/sqrt(FRP)).",
   "description": "",
   "data": {
-   "units": "raw (us per 320 q)",
-   "expr": "x",
-   "to_byte": "x",
-   "format": "0"
+   "units": "multiplier",
+   "expr": "x/256",
+   "to_byte": "x*256",
+   "format": "0.000"
   },
   "axes": {
    "0": {

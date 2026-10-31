@@ -249,8 +249,10 @@ add(0x2D324, 'Injector Latency (Fuel Rail Pressure)', INJ, _inj + '0x92EB4: FFFF
     ('us', 'x*0.8', 'x/0.8', '0.0'), axes=FRPAX)
 add(0x2D330, 'Injector Latency Adder (Fuel Rail Pressure, flag FFFEF498.1)', INJ, _inj + '0x92EB4: added to Injector Latency when FFFEF498.1 set.',
     ('us', 'x*0.8', 'x/0.8', '0.0'), axes=FRPAX)
-add(0x2CE90, 'Injector Flow Scaling (Fuel Rail Pressure)', INJ, _inj + '0x8DDA8: FFFF0B44 = T(FRP FFFEED18) multiplies fuel quantity FFFF1544 '
-    '(time contribution = q*x*0.003125 us); unit of q not yet anchored.', ('raw (us per 320 q)', 'x', 'x', '0'), status='partial', axes=FRPAX)
+add(0x2CE90, 'Injector Pulse Multiplier (Fuel Rail Pressure)', INJ, _inj + '0x8DDA8: FFFF0B44 = T(FRP FFFEED18). 0x917EC: FFFF1544 = '
+    '1.25*((FFFF1644-0x8000)*3.2 + FFFF1534*(256-FFFF041F)*0.003125), the same float->0.8 us packing (x1.25, clamp 13421772) as FFFF1564, '
+    'so FFFF1544 is a base pulse time in 0.8 us; its contribution to FFFF1564 is 1544*0.8*k/256 us, i.e. k/256 is a pure multiplier '
+    '(256 = 1.0 at the lowest pressure, falling roughly as 1/sqrt(FRP)).', ('multiplier', 'x/256', 'x*256', '0.000'), axes=FRPAX)
 
 add(0x2D4D4, 'Ignition Timing Override (Engine Speed, FFFF04C1 = 1/2)', IGN,
     '0x972C0: FFFF045C = T(FFFF299C rpm/25) when FFFF04C1 is 1 or 2; 0x98FAC: Ignition Total Timing FFFF046C = FFFF045C - 32 (half-degrees) '
