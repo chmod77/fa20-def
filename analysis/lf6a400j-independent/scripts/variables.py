@@ -208,9 +208,9 @@ V2.update({
  0xFFFF0B38:('Fuel Quantity Fraction Term 0B38','%','x*100/65536','x*65536/100','additive term'+_FQ),
 })
 V2.update({
- # UNDER REVIEW (angle unit, see PROGRESS.md) 0xFFFF0B8E:('Injection Angle A','deg CA','x','x','0x44EAC: (0B8E - 0B90 + 720)*FFFF2986/90 vs injection time; 2986<<3 = 720 deg'),
- # UNDER REVIEW 0xFFFF0B8A:('Injection Angle B','deg CA','x','x','0x8DEA0 treats with 0B8E/0B90 as crank angles (/360, 720/1080 limits)'),
- # UNDER REVIEW 0xFFFF0B90:('Injection Angle C','deg CA','x','x','0x44EAC: 0B90 - 0B8E angle difference'),
+ 0xFFFF0B8E:('Injection Angle A','deg CA','x/2','x*2','0x44EAC: (0B8E - 0B90 + 720)*FFFF2986/90 vs injection time; 2986<<3 = 720 deg'),
+ 0xFFFF0B8A:('Injection Angle B','deg CA','x/2','x*2','0x8DEA0 treats with 0B8E/0B90 as crank angles (/360, 720/1080 limits)'),
+ 0xFFFF0B90:('Injection Angle C','deg CA','x/2','x*2','0x44EAC: 0B90 - 0B8E angle difference'),
 })
 V2.update({
  0xFFFF38F8:('Target Lambda Learning Offset','lambda offset','x/43194','x*43194','0xB3260: 0D80 = 0DBA + 38F8 with 0DBA = lambda*43194'),
@@ -272,4 +272,12 @@ V2.update({
  0xFFFF0D44:('Radiator Fan Control','%','x*100/65536','x*65536/100','SSM 0x2F (P92 Radiator Fan Control %) via converter 0xD0E40 (byte = x*25>>14); 0xB0234 sets it to mode constants 0xFFFF/0x8000/0xB333 = 100/50/70 %'),
  0xFFFF0D48:('Radiator Fan Duty Request 0D48','%','x*100/65536','x*65536/100','0xB0234 (call 0xB0076): 0D44 = 0D48 in mode 1 and max(0D3C, 0D48) in mode 7'),
  0xFFFF0D3C:('Radiator Fan Duty Request 0D3C','%','x*100/65536','x*65536/100','0xB0234: in mode 7 0D44 = 0D3C (min 0x8000) compared with 0D48'),
+})
+V2.update({
+ 0xFFFF2986:('Crank Period (180 deg CA)','ms','x*0.0032','x/0.0032','0x1426AA: = 2B6C = (ticks of the 10 MHz counter per 180 deg CA)/32; rpm (OBD) = 48e6/2B6C*25/128'),
+ 0xFFFF2B00:('Engine Speed (170 deg segment, misfire)','rpm','x*25/128','x*128/25','0x4DFF2: = 272e6*16/3/2F3C with 2F3C = 10 MHz ticks over 170 deg CA (0x15A822 tooth window) => 3e8*(170/180)... = rpm*128/25'),
+})
+V2.update({
+ 0xFFFF2B0C:('Engine Speed Fluctuation (2nd difference, 2B0C)','rpm','x*25/128','x*128/25','0x4E098: sat16((2B02-2B00)-(2B06-2B04)), segment speeds 2B00.. (rpm x*25/128)'),
+ 0xFFFF2B0E:('Engine Speed Fluctuation (2nd difference, 2B0E)','rpm','x*25/128','x*128/25','0x4E0C6: sat16((2B02-2B00)-(2B0A-2B08))'),
 })

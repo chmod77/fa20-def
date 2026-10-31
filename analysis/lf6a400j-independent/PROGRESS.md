@@ -200,13 +200,13 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
 - With the 10 ms period: 0x7FB7C staged timer thresholds (15 tables, s = x*0.01) and idle phase timers T_02DD00/T_02DD3C (0xAAB08).
   timers.py accepts functions also reachable from application mode 2 (task 55 -> 0x153B4E, 20 ms) and notes it. Coverage 608 of 1284.
   Next: convert the remaining counter tables in 0x152A40's tree by hand (idle 0xA5E18/0xA6A3C/0xA7970/0xA7260, misfire, torque).
-- **Open consistency issue (crank timer / injection angles).** Free-running counter @(20,0xFFFFF420) = 0xFFFFF434 timestamps crank
-  positions (0x1432DE -> FFFF2B84; misfire 0x15A822 -> FFFF2F18 array). 0x143640: 2B98 = t(pos 70) - t(pos 10's previous), 2B94 = t(pos
-  10) - t(pos 70), 2B90 = 2B94 + 2B98 (one full 72-position cycle), 2B6C = (2B94>>5) + (2B98>>5) = cycle/32; FFFF2986 = 2B6C (0x1426AA).
-  rpm (x*25/128, OBD) = 48e6/2B6C *25/128 => rpm = 3e8/cycle_ticks: F434 = 2.5 MHz if the 72-position cycle is 720 deg CA, 5 MHz if 360.
-  Under either reading 2986 is NOT time per 90 deg CA in the sense used for the injection-angle labels (0x44EAC: (0B8E-0B90+720)*2986/90,
-  2986<<3 compared with FFFF1564 + 0xA67). The Injection Angle 1 deg CA labels (0B8E/0B8A/0B90 and tables in 0x909BC/0x907CC) need
-  re-checking before they are relied on; misfire metrics 2B00/2B0C (272e6*16/3/2F3C) remain unscaled until this is settled.
+- **Crank timer resolved (session 4).** Crank position table 0x161FC0 = angles 20,10,0,170..30 deg (10 deg teeth, gap) per cylinder
+  segment (FFFF1A59 = cylinder) -> 0x143640 2B90 = counter ticks per 180 deg CA (counter @(20,0xFFFFF420) = 0xFFFFF434), 2B6C = 2B90/32.
+  rpm (OBD, x*25/128) = 48e6/2B6C*25/128 = 3e8/2B90 => counter 10 MHz; FFFF2986 = 2B6C = time per 180 deg CA in 3.2 us. Check: 0x44EAC
+  compares injection time 1564 (0.8 us) with 2986<<3 = 360 deg (consistent). Angle term diff*(2986/90) => injection angles are
+  **0.5 deg CA** (deg = x/2; the earlier 1 deg labels were wrong by 2 and are corrected). Misfire: 0x15A822 times a 17-tooth (170 deg)
+  window -> 2F3C; 0x4DFF2 2B00 = 272e6*16/3/2F3C = rpm*128/25 (same unit as 2994); 2B0C/2B0E = second differences -> 0xE541C
+  fluctuation thresholds (10 tables, rpm). 2B34..2B44 (0x4DAC8/0x4DC22) are quadratic metrics: unscaled. Coverage 625 of 1284.
 - Dead ends this session (documented so they are not repeated):
   * FFFF12C2 (axis of the pedal-limit T1 tables, compared with 12BE in the torque monitor): only a read literal (0xC50D0); writer not
     found by literal, GBR (+70 from 127C) or r0-offset searches.

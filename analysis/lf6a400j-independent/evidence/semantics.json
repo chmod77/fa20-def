@@ -3822,68 +3822,68 @@
   }
  },
  "0x2D198": {
-  "status": "unresolved",
+  "status": "identified",
   "name": "Injection Angle D (Coolant x RPM) [-> 0B88]",
   "category": "Fuel Injection",
-  "evidence": "UNDER REVIEW: the 1 deg CA unit relied on FFFF2986 being the time per 90 deg CA (0x44EAC). The crank timer trace (0x143640: 2986 = 2B6C = (72-position cycle ticks)/32, rpm = 3e8/cycle_ticks) contradicts that reading, so the angle unit is not proven. The 1080..1439 clamp and the 720 wrap fit 1 deg units but also other units. Locked until resolved; see PROGRESS.md. Previous evidence: 0x90758 (from 0x888C0): FFFF0B88 = T(coolant FFFEEEDE, rpm FFFF2996) clamped 1080..1439 while running; 0x8DEA0 compares FFFF0B88 with 1080 next to the proven crank-angle values 0B8A/0B8E (1 deg CA).",
+  "evidence": "UNIT CORRECTED: crank position table 0x161FC0 gives crank angles 20,10,0,170..30 deg (10 deg teeth, missing-tooth gap) per cylinder segment (FFFF1A59 = cylinder), so 0x143640 2B90 = t(10)-t(70)+t(70)-t(10) is counter ticks per 180 deg CA (counter @(20,0xFFFFF420)); 2B6C = 2B90/32. rpm (OBD PID 0C, x*25/128) = 48e6/2B6C*25/128 = 3e8/2B90 => counter = 10 MHz and FFFF2986 = 2B6C = time per 180 deg CA in 3.2 us units. Check: 0x44EAC compares Injection Time FFFF1564 (0.8 us units, SSM 0x20) with 2986<<3 = 4*2986*2 in 0.8 us = 360 deg CA (consistent). The angle term (angle diff)*(2986/90) is then time in 0.8 us units per 0.5 deg CA, so the injection angles are 0.5 deg CA units: deg = x/2 (720 units = 360 deg; clamp 1080..1439 = 540..719.5 deg). Previous evidence (unit was 1 deg): 0x90758 (from 0x888C0): FFFF0B88 = T(coolant FFFEEEDE, rpm FFFF2996) clamped 1080..1439 while running; 0x8DEA0 compares FFFF0B88 with 1080 next to the proven crank-angle values 0B8A/0B8E (1 deg CA).",
   "description": "",
   "data": {
    "units": "deg CA",
-   "expr": "x",
-   "to_byte": "x",
-   "format": "0"
+   "expr": "x/2",
+   "to_byte": "x*2",
+   "format": "0.0"
   }
  },
  "0x2D1AC": {
-  "status": "unresolved",
+  "status": "identified",
   "name": "Injection Angle B, Flag Mode (RPM x Load) [-> 0B8A]",
   "category": "Fuel Injection",
-  "evidence": "UNDER REVIEW: the 1 deg CA unit relied on FFFF2986 being the time per 90 deg CA (0x44EAC). The crank timer trace (0x143640: 2986 = 2B6C = (72-position cycle ticks)/32, rpm = 3e8/cycle_ticks) contradicts that reading, so the angle unit is not proven. The 1080..1439 clamp and the 720 wrap fit 1 deg units but also other units. Locked until resolved; see PROGRESS.md. Previous evidence: 0x907CC (from 0x888C0): FFFF0B8A = T_02D1D4(rpm FFFF2994, load FFFF03A0) + T_02D1C0(rpm, load)*T_02D1FC(FFFEEF33, IAT FFFEE6A5)/255; 0x8DEA0 handles the injection angles together (compared with 720/1080 and divided by 360 deg), and 0B8E is proven 1 deg CA (0x44EAC), so 0B8A is a crank angle in 1 deg units. Replaces the 0B8A value directly when param_10 is set.",
+  "evidence": "UNIT CORRECTED: crank position table 0x161FC0 gives crank angles 20,10,0,170..30 deg (10 deg teeth, missing-tooth gap) per cylinder segment (FFFF1A59 = cylinder), so 0x143640 2B90 = t(10)-t(70)+t(70)-t(10) is counter ticks per 180 deg CA (counter @(20,0xFFFFF420)); 2B6C = 2B90/32. rpm (OBD PID 0C, x*25/128) = 48e6/2B6C*25/128 = 3e8/2B90 => counter = 10 MHz and FFFF2986 = 2B6C = time per 180 deg CA in 3.2 us units. Check: 0x44EAC compares Injection Time FFFF1564 (0.8 us units, SSM 0x20) with 2986<<3 = 4*2986*2 in 0.8 us = 360 deg CA (consistent). The angle term (angle diff)*(2986/90) is then time in 0.8 us units per 0.5 deg CA, so the injection angles are 0.5 deg CA units: deg = x/2 (720 units = 360 deg; clamp 1080..1439 = 540..719.5 deg). Previous evidence (unit was 1 deg): 0x907CC (from 0x888C0): FFFF0B8A = T_02D1D4(rpm FFFF2994, load FFFF03A0) + T_02D1C0(rpm, load)*T_02D1FC(FFFEEF33, IAT FFFEE6A5)/255; 0x8DEA0 handles the injection angles together (compared with 720/1080 and divided by 360 deg), and 0B8E is proven 1 deg CA (0x44EAC), so 0B8A is a crank angle in 1 deg units. Replaces the 0B8A value directly when param_10 is set.",
   "description": "",
   "data": {
    "units": "deg CA",
-   "expr": "x",
-   "to_byte": "x",
-   "format": "0"
+   "expr": "x/2",
+   "to_byte": "x*2",
+   "format": "0.0"
   }
  },
  "0x2D1C0": {
-  "status": "unresolved",
+  "status": "identified",
   "name": "Injection Angle B Adder (RPM x Load) [-> 0B8A]",
   "category": "Fuel Injection",
-  "evidence": "UNDER REVIEW: the 1 deg CA unit relied on FFFF2986 being the time per 90 deg CA (0x44EAC). The crank timer trace (0x143640: 2986 = 2B6C = (72-position cycle ticks)/32, rpm = 3e8/cycle_ticks) contradicts that reading, so the angle unit is not proven. The 1080..1439 clamp and the 720 wrap fit 1 deg units but also other units. Locked until resolved; see PROGRESS.md. Previous evidence: 0x907CC (from 0x888C0): FFFF0B8A = T_02D1D4(rpm FFFF2994, load FFFF03A0) + T_02D1C0(rpm, load)*T_02D1FC(FFFEEF33, IAT FFFEE6A5)/255; 0x8DEA0 handles the injection angles together (compared with 720/1080 and divided by 360 deg), and 0B8E is proven 1 deg CA (0x44EAC), so 0B8A is a crank angle in 1 deg units. ",
+  "evidence": "UNIT CORRECTED: crank position table 0x161FC0 gives crank angles 20,10,0,170..30 deg (10 deg teeth, missing-tooth gap) per cylinder segment (FFFF1A59 = cylinder), so 0x143640 2B90 = t(10)-t(70)+t(70)-t(10) is counter ticks per 180 deg CA (counter @(20,0xFFFFF420)); 2B6C = 2B90/32. rpm (OBD PID 0C, x*25/128) = 48e6/2B6C*25/128 = 3e8/2B90 => counter = 10 MHz and FFFF2986 = 2B6C = time per 180 deg CA in 3.2 us units. Check: 0x44EAC compares Injection Time FFFF1564 (0.8 us units, SSM 0x20) with 2986<<3 = 4*2986*2 in 0.8 us = 360 deg CA (consistent). The angle term (angle diff)*(2986/90) is then time in 0.8 us units per 0.5 deg CA, so the injection angles are 0.5 deg CA units: deg = x/2 (720 units = 360 deg; clamp 1080..1439 = 540..719.5 deg). Previous evidence (unit was 1 deg): 0x907CC (from 0x888C0): FFFF0B8A = T_02D1D4(rpm FFFF2994, load FFFF03A0) + T_02D1C0(rpm, load)*T_02D1FC(FFFEEF33, IAT FFFEE6A5)/255; 0x8DEA0 handles the injection angles together (compared with 720/1080 and divided by 360 deg), and 0B8E is proven 1 deg CA (0x44EAC), so 0B8A is a crank angle in 1 deg units. ",
   "description": "",
   "data": {
    "units": "deg CA",
-   "expr": "x",
-   "to_byte": "x",
-   "format": "0"
+   "expr": "x/2",
+   "to_byte": "x*2",
+   "format": "0.0"
   }
  },
  "0x2D1D4": {
-  "status": "unresolved",
+  "status": "identified",
   "name": "Injection Angle B Base (RPM x Load) [-> 0B8A]",
   "category": "Fuel Injection",
-  "evidence": "UNDER REVIEW: the 1 deg CA unit relied on FFFF2986 being the time per 90 deg CA (0x44EAC). The crank timer trace (0x143640: 2986 = 2B6C = (72-position cycle ticks)/32, rpm = 3e8/cycle_ticks) contradicts that reading, so the angle unit is not proven. The 1080..1439 clamp and the 720 wrap fit 1 deg units but also other units. Locked until resolved; see PROGRESS.md. Previous evidence: 0x907CC (from 0x888C0): FFFF0B8A = T_02D1D4(rpm FFFF2994, load FFFF03A0) + T_02D1C0(rpm, load)*T_02D1FC(FFFEEF33, IAT FFFEE6A5)/255; 0x8DEA0 handles the injection angles together (compared with 720/1080 and divided by 360 deg), and 0B8E is proven 1 deg CA (0x44EAC), so 0B8A is a crank angle in 1 deg units. ",
+  "evidence": "UNIT CORRECTED: crank position table 0x161FC0 gives crank angles 20,10,0,170..30 deg (10 deg teeth, missing-tooth gap) per cylinder segment (FFFF1A59 = cylinder), so 0x143640 2B90 = t(10)-t(70)+t(70)-t(10) is counter ticks per 180 deg CA (counter @(20,0xFFFFF420)); 2B6C = 2B90/32. rpm (OBD PID 0C, x*25/128) = 48e6/2B6C*25/128 = 3e8/2B90 => counter = 10 MHz and FFFF2986 = 2B6C = time per 180 deg CA in 3.2 us units. Check: 0x44EAC compares Injection Time FFFF1564 (0.8 us units, SSM 0x20) with 2986<<3 = 4*2986*2 in 0.8 us = 360 deg CA (consistent). The angle term (angle diff)*(2986/90) is then time in 0.8 us units per 0.5 deg CA, so the injection angles are 0.5 deg CA units: deg = x/2 (720 units = 360 deg; clamp 1080..1439 = 540..719.5 deg). Previous evidence (unit was 1 deg): 0x907CC (from 0x888C0): FFFF0B8A = T_02D1D4(rpm FFFF2994, load FFFF03A0) + T_02D1C0(rpm, load)*T_02D1FC(FFFEEF33, IAT FFFEE6A5)/255; 0x8DEA0 handles the injection angles together (compared with 720/1080 and divided by 360 deg), and 0B8E is proven 1 deg CA (0x44EAC), so 0B8A is a crank angle in 1 deg units. ",
   "description": "",
   "data": {
    "units": "deg CA",
-   "expr": "x",
-   "to_byte": "x",
-   "format": "0"
+   "expr": "x/2",
+   "to_byte": "x*2",
+   "format": "0.0"
   }
  },
  "0x2D1E8": {
-  "status": "unresolved",
+  "status": "identified",
   "name": "Injection Angle B, Start/Alternate Mode (RPM x Coolant) [-> 0B8A]",
   "category": "Fuel Injection",
-  "evidence": "UNDER REVIEW: the 1 deg CA unit relied on FFFF2986 being the time per 90 deg CA (0x44EAC). The crank timer trace (0x143640: 2986 = 2B6C = (72-position cycle ticks)/32, rpm = 3e8/cycle_ticks) contradicts that reading, so the angle unit is not proven. The 1080..1439 clamp and the 720 wrap fit 1 deg units but also other units. Locked until resolved; see PROGRESS.md. Previous evidence: 0x907CC (from 0x888C0): FFFF0B8A = T_02D1D4(rpm FFFF2994, load FFFF03A0) + T_02D1C0(rpm, load)*T_02D1FC(FFFEEF33, IAT FFFEE6A5)/255; 0x8DEA0 handles the injection angles together (compared with 720/1080 and divided by 360 deg), and 0B8E is proven 1 deg CA (0x44EAC), so 0B8A is a crank angle in 1 deg units. Replaces the 0B8A value directly in the engine-state branch of 0x907CC.",
+  "evidence": "UNIT CORRECTED: crank position table 0x161FC0 gives crank angles 20,10,0,170..30 deg (10 deg teeth, missing-tooth gap) per cylinder segment (FFFF1A59 = cylinder), so 0x143640 2B90 = t(10)-t(70)+t(70)-t(10) is counter ticks per 180 deg CA (counter @(20,0xFFFFF420)); 2B6C = 2B90/32. rpm (OBD PID 0C, x*25/128) = 48e6/2B6C*25/128 = 3e8/2B90 => counter = 10 MHz and FFFF2986 = 2B6C = time per 180 deg CA in 3.2 us units. Check: 0x44EAC compares Injection Time FFFF1564 (0.8 us units, SSM 0x20) with 2986<<3 = 4*2986*2 in 0.8 us = 360 deg CA (consistent). The angle term (angle diff)*(2986/90) is then time in 0.8 us units per 0.5 deg CA, so the injection angles are 0.5 deg CA units: deg = x/2 (720 units = 360 deg; clamp 1080..1439 = 540..719.5 deg). Previous evidence (unit was 1 deg): 0x907CC (from 0x888C0): FFFF0B8A = T_02D1D4(rpm FFFF2994, load FFFF03A0) + T_02D1C0(rpm, load)*T_02D1FC(FFFEEF33, IAT FFFEE6A5)/255; 0x8DEA0 handles the injection angles together (compared with 720/1080 and divided by 360 deg), and 0B8E is proven 1 deg CA (0x44EAC), so 0B8A is a crank angle in 1 deg units. Replaces the 0B8A value directly in the engine-state branch of 0x907CC.",
   "description": "",
   "data": {
    "units": "deg CA",
-   "expr": "x",
-   "to_byte": "x",
-   "format": "0"
+   "expr": "x/2",
+   "to_byte": "x*2",
+   "format": "0.0"
   }
  },
  "0x2D1FC": {
@@ -3900,16 +3900,16 @@
   }
  },
  "0x2D210": {
-  "status": "unresolved",
+  "status": "identified",
   "name": "Injection Angle Adder (RPM x Load) [-> 0B8E]",
   "category": "Fuel Injection",
-  "evidence": "UNDER REVIEW: the 1 deg CA unit relied on FFFF2986 being the time per 90 deg CA (0x44EAC). The crank timer trace (0x143640: 2986 = 2B6C = (72-position cycle ticks)/32, rpm = 3e8/cycle_ticks) contradicts that reading, so the angle unit is not proven. The 1080..1439 clamp and the 720 wrap fit 1 deg units but also other units. Locked until resolved; see PROGRESS.md. Previous evidence: 0x909BC (from 0x888C0): FFFF0B8E = T_02D238(rpm FFFF2994, coolant FFFEEEDE) + T_02D210(rpm, load FFFF03A0)*T_02D224(IAT FFFEE6A5, ..)/255, clamped 720..1080 while running. 0x44EAC compares (0B8E - 0B90 + 720)*FFFF2986/90 with injection time, and FFFF2986<<3 with the same time for a 720 deg cycle (FFFF2986 = time per 90 deg crank), so 0B8E is a crank angle in 1 deg units. ",
+  "evidence": "UNIT CORRECTED: crank position table 0x161FC0 gives crank angles 20,10,0,170..30 deg (10 deg teeth, missing-tooth gap) per cylinder segment (FFFF1A59 = cylinder), so 0x143640 2B90 = t(10)-t(70)+t(70)-t(10) is counter ticks per 180 deg CA (counter @(20,0xFFFFF420)); 2B6C = 2B90/32. rpm (OBD PID 0C, x*25/128) = 48e6/2B6C*25/128 = 3e8/2B90 => counter = 10 MHz and FFFF2986 = 2B6C = time per 180 deg CA in 3.2 us units. Check: 0x44EAC compares Injection Time FFFF1564 (0.8 us units, SSM 0x20) with 2986<<3 = 4*2986*2 in 0.8 us = 360 deg CA (consistent). The angle term (angle diff)*(2986/90) is then time in 0.8 us units per 0.5 deg CA, so the injection angles are 0.5 deg CA units: deg = x/2 (720 units = 360 deg; clamp 1080..1439 = 540..719.5 deg). Previous evidence (unit was 1 deg): 0x909BC (from 0x888C0): FFFF0B8E = T_02D238(rpm FFFF2994, coolant FFFEEEDE) + T_02D210(rpm, load FFFF03A0)*T_02D224(IAT FFFEE6A5, ..)/255, clamped 720..1080 while running. 0x44EAC compares (0B8E - 0B90 + 720)*FFFF2986/90 with injection time, and FFFF2986<<3 with the same time for a 720 deg cycle (FFFF2986 = time per 90 deg crank), so 0B8E is a crank angle in 1 deg units. ",
   "description": "",
   "data": {
    "units": "deg CA",
-   "expr": "x",
-   "to_byte": "x",
-   "format": "0"
+   "expr": "x/2",
+   "to_byte": "x*2",
+   "format": "0.0"
   }
  },
  "0x2D224": {
@@ -3926,42 +3926,42 @@
   }
  },
  "0x2D238": {
-  "status": "unresolved",
+  "status": "identified",
   "name": "Injection Angle Base (RPM x Coolant) [-> 0B8E]",
   "category": "Fuel Injection",
-  "evidence": "UNDER REVIEW: the 1 deg CA unit relied on FFFF2986 being the time per 90 deg CA (0x44EAC). The crank timer trace (0x143640: 2986 = 2B6C = (72-position cycle ticks)/32, rpm = 3e8/cycle_ticks) contradicts that reading, so the angle unit is not proven. The 1080..1439 clamp and the 720 wrap fit 1 deg units but also other units. Locked until resolved; see PROGRESS.md. Previous evidence: 0x909BC (from 0x888C0): FFFF0B8E = T_02D238(rpm FFFF2994, coolant FFFEEEDE) + T_02D210(rpm, load FFFF03A0)*T_02D224(IAT FFFEE6A5, ..)/255, clamped 720..1080 while running. 0x44EAC compares (0B8E - 0B90 + 720)*FFFF2986/90 with injection time, and FFFF2986<<3 with the same time for a 720 deg cycle (FFFF2986 = time per 90 deg crank), so 0B8E is a crank angle in 1 deg units. ",
+  "evidence": "UNIT CORRECTED: crank position table 0x161FC0 gives crank angles 20,10,0,170..30 deg (10 deg teeth, missing-tooth gap) per cylinder segment (FFFF1A59 = cylinder), so 0x143640 2B90 = t(10)-t(70)+t(70)-t(10) is counter ticks per 180 deg CA (counter @(20,0xFFFFF420)); 2B6C = 2B90/32. rpm (OBD PID 0C, x*25/128) = 48e6/2B6C*25/128 = 3e8/2B90 => counter = 10 MHz and FFFF2986 = 2B6C = time per 180 deg CA in 3.2 us units. Check: 0x44EAC compares Injection Time FFFF1564 (0.8 us units, SSM 0x20) with 2986<<3 = 4*2986*2 in 0.8 us = 360 deg CA (consistent). The angle term (angle diff)*(2986/90) is then time in 0.8 us units per 0.5 deg CA, so the injection angles are 0.5 deg CA units: deg = x/2 (720 units = 360 deg; clamp 1080..1439 = 540..719.5 deg). Previous evidence (unit was 1 deg): 0x909BC (from 0x888C0): FFFF0B8E = T_02D238(rpm FFFF2994, coolant FFFEEEDE) + T_02D210(rpm, load FFFF03A0)*T_02D224(IAT FFFEE6A5, ..)/255, clamped 720..1080 while running. 0x44EAC compares (0B8E - 0B90 + 720)*FFFF2986/90 with injection time, and FFFF2986<<3 with the same time for a 720 deg cycle (FFFF2986 = time per 90 deg crank), so 0B8E is a crank angle in 1 deg units. ",
   "description": "",
   "data": {
    "units": "deg CA",
-   "expr": "x",
-   "to_byte": "x",
-   "format": "0"
+   "expr": "x/2",
+   "to_byte": "x*2",
+   "format": "0.0"
   }
  },
  "0x2D24C": {
-  "status": "unresolved",
+  "status": "identified",
   "name": "Injection Angle C Adder [-> 0B90]",
   "category": "Fuel Injection",
-  "evidence": "UNDER REVIEW: the 1 deg CA unit relied on FFFF2986 being the time per 90 deg CA (0x44EAC). The crank timer trace (0x143640: 2986 = 2B6C = (72-position cycle ticks)/32, rpm = 3e8/cycle_ticks) contradicts that reading, so the angle unit is not proven. The 1080..1439 clamp and the 720 wrap fit 1 deg units but also other units. Locked until resolved; see PROGRESS.md. Previous evidence: 0x90AF0 (from 0x888C0): FFFF0B90 = T_02D260(rpm FFFF2996, FFFF0489) + T_02D24C(rpm, 0489)*T_02D274(FFFEEF33, IAT FFFEE6A5)/255, clamped 1080..1439 while running; 0x44EAC uses (0B90 - 0B8E) and (0B8E - 0B90 + 720) with FFFF2986 (time per 90 deg) -> 1 deg CA. ",
+  "evidence": "UNIT CORRECTED: crank position table 0x161FC0 gives crank angles 20,10,0,170..30 deg (10 deg teeth, missing-tooth gap) per cylinder segment (FFFF1A59 = cylinder), so 0x143640 2B90 = t(10)-t(70)+t(70)-t(10) is counter ticks per 180 deg CA (counter @(20,0xFFFFF420)); 2B6C = 2B90/32. rpm (OBD PID 0C, x*25/128) = 48e6/2B6C*25/128 = 3e8/2B90 => counter = 10 MHz and FFFF2986 = 2B6C = time per 180 deg CA in 3.2 us units. Check: 0x44EAC compares Injection Time FFFF1564 (0.8 us units, SSM 0x20) with 2986<<3 = 4*2986*2 in 0.8 us = 360 deg CA (consistent). The angle term (angle diff)*(2986/90) is then time in 0.8 us units per 0.5 deg CA, so the injection angles are 0.5 deg CA units: deg = x/2 (720 units = 360 deg; clamp 1080..1439 = 540..719.5 deg). Previous evidence (unit was 1 deg): 0x90AF0 (from 0x888C0): FFFF0B90 = T_02D260(rpm FFFF2996, FFFF0489) + T_02D24C(rpm, 0489)*T_02D274(FFFEEF33, IAT FFFEE6A5)/255, clamped 1080..1439 while running; 0x44EAC uses (0B90 - 0B8E) and (0B8E - 0B90 + 720) with FFFF2986 (time per 90 deg) -> 1 deg CA. ",
   "description": "",
   "data": {
    "units": "deg CA",
-   "expr": "x",
-   "to_byte": "x",
-   "format": "0"
+   "expr": "x/2",
+   "to_byte": "x*2",
+   "format": "0.0"
   }
  },
  "0x2D260": {
-  "status": "unresolved",
+  "status": "identified",
   "name": "Injection Angle C Base [-> 0B90]",
   "category": "Fuel Injection",
-  "evidence": "UNDER REVIEW: the 1 deg CA unit relied on FFFF2986 being the time per 90 deg CA (0x44EAC). The crank timer trace (0x143640: 2986 = 2B6C = (72-position cycle ticks)/32, rpm = 3e8/cycle_ticks) contradicts that reading, so the angle unit is not proven. The 1080..1439 clamp and the 720 wrap fit 1 deg units but also other units. Locked until resolved; see PROGRESS.md. Previous evidence: 0x90AF0 (from 0x888C0): FFFF0B90 = T_02D260(rpm FFFF2996, FFFF0489) + T_02D24C(rpm, 0489)*T_02D274(FFFEEF33, IAT FFFEE6A5)/255, clamped 1080..1439 while running; 0x44EAC uses (0B90 - 0B8E) and (0B8E - 0B90 + 720) with FFFF2986 (time per 90 deg) -> 1 deg CA. ",
+  "evidence": "UNIT CORRECTED: crank position table 0x161FC0 gives crank angles 20,10,0,170..30 deg (10 deg teeth, missing-tooth gap) per cylinder segment (FFFF1A59 = cylinder), so 0x143640 2B90 = t(10)-t(70)+t(70)-t(10) is counter ticks per 180 deg CA (counter @(20,0xFFFFF420)); 2B6C = 2B90/32. rpm (OBD PID 0C, x*25/128) = 48e6/2B6C*25/128 = 3e8/2B90 => counter = 10 MHz and FFFF2986 = 2B6C = time per 180 deg CA in 3.2 us units. Check: 0x44EAC compares Injection Time FFFF1564 (0.8 us units, SSM 0x20) with 2986<<3 = 4*2986*2 in 0.8 us = 360 deg CA (consistent). The angle term (angle diff)*(2986/90) is then time in 0.8 us units per 0.5 deg CA, so the injection angles are 0.5 deg CA units: deg = x/2 (720 units = 360 deg; clamp 1080..1439 = 540..719.5 deg). Previous evidence (unit was 1 deg): 0x90AF0 (from 0x888C0): FFFF0B90 = T_02D260(rpm FFFF2996, FFFF0489) + T_02D24C(rpm, 0489)*T_02D274(FFFEEF33, IAT FFFEE6A5)/255, clamped 1080..1439 while running; 0x44EAC uses (0B90 - 0B8E) and (0B8E - 0B90 + 720) with FFFF2986 (time per 90 deg) -> 1 deg CA. ",
   "description": "",
   "data": {
    "units": "deg CA",
-   "expr": "x",
-   "to_byte": "x",
-   "format": "0"
+   "expr": "x/2",
+   "to_byte": "x*2",
+   "format": "0.0"
   }
  },
  "0x2D274": {
@@ -7541,6 +7541,136 @@
    "expr": "x",
    "to_byte": "x",
    "format": "0.00"
+  }
+ },
+ "0x2F1D8": {
+  "status": "identified",
+  "name": "Engine Speed Fluctuation Threshold vs IAT (gear 1)",
+  "category": "Misfire / Roughness Detection",
+  "evidence": "0xE541C (from 0xE4728; p2 = FFFF2B0C, p3 = FFFF2B0E, p4 IAT FFFEEEE2, p5 Gear FFFF03AC). FFFF2B00.. are engine speeds over 170 deg CA segments (0x4DFF2: 272e6*16/3/2F3C, 2F3C = 10 MHz counter ticks across the 17-tooth window of 0x15A822 -> rpm*128/25, same unit as FFFF2994); 2B0C/2B0E are second differences of those speeds (0x4E098/0x4E0C6). Flag FED314 = T_gear(IAT) <= |2B0C| (calibration 0x17F4A == 1, active in this ROM) or |2B0E| (0x17F4A == 2, inactive). So the tables are rpm deltas: rpm = x*25/128. ",
+  "description": "",
+  "data": {
+   "units": "rpm",
+   "expr": "x*25/128",
+   "to_byte": "x*128/25",
+   "format": "0.0"
+  }
+ },
+ "0x2F1E4": {
+  "status": "identified",
+  "name": "Engine Speed Fluctuation Threshold vs IAT (gear 2)",
+  "category": "Misfire / Roughness Detection",
+  "evidence": "0xE541C (from 0xE4728; p2 = FFFF2B0C, p3 = FFFF2B0E, p4 IAT FFFEEEE2, p5 Gear FFFF03AC). FFFF2B00.. are engine speeds over 170 deg CA segments (0x4DFF2: 272e6*16/3/2F3C, 2F3C = 10 MHz counter ticks across the 17-tooth window of 0x15A822 -> rpm*128/25, same unit as FFFF2994); 2B0C/2B0E are second differences of those speeds (0x4E098/0x4E0C6). Flag FED314 = T_gear(IAT) <= |2B0C| (calibration 0x17F4A == 1, active in this ROM) or |2B0E| (0x17F4A == 2, inactive). So the tables are rpm deltas: rpm = x*25/128. ",
+  "description": "",
+  "data": {
+   "units": "rpm",
+   "expr": "x*25/128",
+   "to_byte": "x*128/25",
+   "format": "0.0"
+  }
+ },
+ "0x2F1F0": {
+  "status": "identified",
+  "name": "Engine Speed Fluctuation Threshold vs IAT (gear 3)",
+  "category": "Misfire / Roughness Detection",
+  "evidence": "0xE541C (from 0xE4728; p2 = FFFF2B0C, p3 = FFFF2B0E, p4 IAT FFFEEEE2, p5 Gear FFFF03AC). FFFF2B00.. are engine speeds over 170 deg CA segments (0x4DFF2: 272e6*16/3/2F3C, 2F3C = 10 MHz counter ticks across the 17-tooth window of 0x15A822 -> rpm*128/25, same unit as FFFF2994); 2B0C/2B0E are second differences of those speeds (0x4E098/0x4E0C6). Flag FED314 = T_gear(IAT) <= |2B0C| (calibration 0x17F4A == 1, active in this ROM) or |2B0E| (0x17F4A == 2, inactive). So the tables are rpm deltas: rpm = x*25/128. ",
+  "description": "",
+  "data": {
+   "units": "rpm",
+   "expr": "x*25/128",
+   "to_byte": "x*128/25",
+   "format": "0.0"
+  }
+ },
+ "0x2F1FC": {
+  "status": "identified",
+  "name": "Engine Speed Fluctuation Threshold vs IAT (gear 4)",
+  "category": "Misfire / Roughness Detection",
+  "evidence": "0xE541C (from 0xE4728; p2 = FFFF2B0C, p3 = FFFF2B0E, p4 IAT FFFEEEE2, p5 Gear FFFF03AC). FFFF2B00.. are engine speeds over 170 deg CA segments (0x4DFF2: 272e6*16/3/2F3C, 2F3C = 10 MHz counter ticks across the 17-tooth window of 0x15A822 -> rpm*128/25, same unit as FFFF2994); 2B0C/2B0E are second differences of those speeds (0x4E098/0x4E0C6). Flag FED314 = T_gear(IAT) <= |2B0C| (calibration 0x17F4A == 1, active in this ROM) or |2B0E| (0x17F4A == 2, inactive). So the tables are rpm deltas: rpm = x*25/128. ",
+  "description": "",
+  "data": {
+   "units": "rpm",
+   "expr": "x*25/128",
+   "to_byte": "x*128/25",
+   "format": "0.0"
+  }
+ },
+ "0x2F208": {
+  "status": "identified",
+  "name": "Engine Speed Fluctuation Threshold vs IAT (gear 5-6)",
+  "category": "Misfire / Roughness Detection",
+  "evidence": "0xE541C (from 0xE4728; p2 = FFFF2B0C, p3 = FFFF2B0E, p4 IAT FFFEEEE2, p5 Gear FFFF03AC). FFFF2B00.. are engine speeds over 170 deg CA segments (0x4DFF2: 272e6*16/3/2F3C, 2F3C = 10 MHz counter ticks across the 17-tooth window of 0x15A822 -> rpm*128/25, same unit as FFFF2994); 2B0C/2B0E are second differences of those speeds (0x4E098/0x4E0C6). Flag FED314 = T_gear(IAT) <= |2B0C| (calibration 0x17F4A == 1, active in this ROM) or |2B0E| (0x17F4A == 2, inactive). So the tables are rpm deltas: rpm = x*25/128. ",
+  "description": "",
+  "data": {
+   "units": "rpm",
+   "expr": "x*25/128",
+   "to_byte": "x*128/25",
+   "format": "0.0"
+  }
+ },
+ "0x2F214": {
+  "status": "identified",
+  "name": "Engine Speed Fluctuation Threshold vs IAT (gear 1, inactive: 0x17F4A=1)",
+  "category": "Misfire / Roughness Detection",
+  "evidence": "0xE541C (from 0xE4728; p2 = FFFF2B0C, p3 = FFFF2B0E, p4 IAT FFFEEEE2, p5 Gear FFFF03AC). FFFF2B00.. are engine speeds over 170 deg CA segments (0x4DFF2: 272e6*16/3/2F3C, 2F3C = 10 MHz counter ticks across the 17-tooth window of 0x15A822 -> rpm*128/25, same unit as FFFF2994); 2B0C/2B0E are second differences of those speeds (0x4E098/0x4E0C6). Flag FED314 = T_gear(IAT) <= |2B0C| (calibration 0x17F4A == 1, active in this ROM) or |2B0E| (0x17F4A == 2, inactive). So the tables are rpm deltas: rpm = x*25/128. ",
+  "description": "",
+  "data": {
+   "units": "rpm",
+   "expr": "x*25/128",
+   "to_byte": "x*128/25",
+   "format": "0.0"
+  }
+ },
+ "0x2F220": {
+  "status": "identified",
+  "name": "Engine Speed Fluctuation Threshold vs IAT (gear 2, inactive: 0x17F4A=1)",
+  "category": "Misfire / Roughness Detection",
+  "evidence": "0xE541C (from 0xE4728; p2 = FFFF2B0C, p3 = FFFF2B0E, p4 IAT FFFEEEE2, p5 Gear FFFF03AC). FFFF2B00.. are engine speeds over 170 deg CA segments (0x4DFF2: 272e6*16/3/2F3C, 2F3C = 10 MHz counter ticks across the 17-tooth window of 0x15A822 -> rpm*128/25, same unit as FFFF2994); 2B0C/2B0E are second differences of those speeds (0x4E098/0x4E0C6). Flag FED314 = T_gear(IAT) <= |2B0C| (calibration 0x17F4A == 1, active in this ROM) or |2B0E| (0x17F4A == 2, inactive). So the tables are rpm deltas: rpm = x*25/128. ",
+  "description": "",
+  "data": {
+   "units": "rpm",
+   "expr": "x*25/128",
+   "to_byte": "x*128/25",
+   "format": "0.0"
+  }
+ },
+ "0x2F22C": {
+  "status": "identified",
+  "name": "Engine Speed Fluctuation Threshold vs IAT (gear 3, inactive: 0x17F4A=1)",
+  "category": "Misfire / Roughness Detection",
+  "evidence": "0xE541C (from 0xE4728; p2 = FFFF2B0C, p3 = FFFF2B0E, p4 IAT FFFEEEE2, p5 Gear FFFF03AC). FFFF2B00.. are engine speeds over 170 deg CA segments (0x4DFF2: 272e6*16/3/2F3C, 2F3C = 10 MHz counter ticks across the 17-tooth window of 0x15A822 -> rpm*128/25, same unit as FFFF2994); 2B0C/2B0E are second differences of those speeds (0x4E098/0x4E0C6). Flag FED314 = T_gear(IAT) <= |2B0C| (calibration 0x17F4A == 1, active in this ROM) or |2B0E| (0x17F4A == 2, inactive). So the tables are rpm deltas: rpm = x*25/128. ",
+  "description": "",
+  "data": {
+   "units": "rpm",
+   "expr": "x*25/128",
+   "to_byte": "x*128/25",
+   "format": "0.0"
+  }
+ },
+ "0x2F238": {
+  "status": "identified",
+  "name": "Engine Speed Fluctuation Threshold vs IAT (gear 4, inactive: 0x17F4A=1)",
+  "category": "Misfire / Roughness Detection",
+  "evidence": "0xE541C (from 0xE4728; p2 = FFFF2B0C, p3 = FFFF2B0E, p4 IAT FFFEEEE2, p5 Gear FFFF03AC). FFFF2B00.. are engine speeds over 170 deg CA segments (0x4DFF2: 272e6*16/3/2F3C, 2F3C = 10 MHz counter ticks across the 17-tooth window of 0x15A822 -> rpm*128/25, same unit as FFFF2994); 2B0C/2B0E are second differences of those speeds (0x4E098/0x4E0C6). Flag FED314 = T_gear(IAT) <= |2B0C| (calibration 0x17F4A == 1, active in this ROM) or |2B0E| (0x17F4A == 2, inactive). So the tables are rpm deltas: rpm = x*25/128. ",
+  "description": "",
+  "data": {
+   "units": "rpm",
+   "expr": "x*25/128",
+   "to_byte": "x*128/25",
+   "format": "0.0"
+  }
+ },
+ "0x2F244": {
+  "status": "identified",
+  "name": "Engine Speed Fluctuation Threshold vs IAT (gear 5-6, inactive: 0x17F4A=1)",
+  "category": "Misfire / Roughness Detection",
+  "evidence": "0xE541C (from 0xE4728; p2 = FFFF2B0C, p3 = FFFF2B0E, p4 IAT FFFEEEE2, p5 Gear FFFF03AC). FFFF2B00.. are engine speeds over 170 deg CA segments (0x4DFF2: 272e6*16/3/2F3C, 2F3C = 10 MHz counter ticks across the 17-tooth window of 0x15A822 -> rpm*128/25, same unit as FFFF2994); 2B0C/2B0E are second differences of those speeds (0x4E098/0x4E0C6). Flag FED314 = T_gear(IAT) <= |2B0C| (calibration 0x17F4A == 1, active in this ROM) or |2B0E| (0x17F4A == 2, inactive). So the tables are rpm deltas: rpm = x*25/128. ",
+  "description": "",
+  "data": {
+   "units": "rpm",
+   "expr": "x*25/128",
+   "to_byte": "x*128/25",
+   "format": "0.0"
   }
  },
  "0x2F250": {

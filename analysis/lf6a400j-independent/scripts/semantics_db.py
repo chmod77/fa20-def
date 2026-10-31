@@ -1252,13 +1252,26 @@ for _d, _c, _st in ((0x2DB38, 'FEC37D', 2), (0x2DB20, 'FEC37F', 2), (0x2DB14, 'F
         '); application mode 2 also runs it every 20 ms via 0x153B4E. s = x*0.01.', ('s', 'x*0.01', 'x/0.01', '0.00'),
         axes={'0': dict(name='Coolant Temperature (filtered, word)', units='C', expr='x*5/2048-40', to_byte='(x+40)*2048/5')})
 
-# ---- injection angle unit under review (session 4): demote the angle-valued tables until the 2986 / crank-timer inconsistency is resolved
-_INJ_REVIEW = ('UNDER REVIEW: the 1 deg CA unit relied on FFFF2986 being the time per 90 deg CA (0x44EAC). The crank timer trace (0x143640: '
-               '2986 = 2B6C = (72-position cycle ticks)/32, rpm = 3e8/cycle_ticks) contradicts that reading, so the angle unit is not proven. '
-               'The 1080..1439 clamp and the 720 wrap fit 1 deg units but also other units. Locked until resolved; see PROGRESS.md.')
+# ---- injection angle unit corrected (session 4): 0.5 deg CA, not 1 deg
+_INJ_FIX = ('UNIT CORRECTED: crank position table 0x161FC0 gives crank angles 20,10,0,170..30 deg (10 deg teeth, missing-tooth gap) per '
+            'cylinder segment (FFFF1A59 = cylinder), so 0x143640 2B90 = t(10)-t(70)+t(70)-t(10) is counter ticks per 180 deg CA (counter '
+            '@(20,0xFFFFF420)); 2B6C = 2B90/32. rpm (OBD PID 0C, x*25/128) = 48e6/2B6C*25/128 = 3e8/2B90 => counter = 10 MHz and FFFF2986 '
+            '= 2B6C = time per 180 deg CA in 3.2 us units. Check: 0x44EAC compares Injection Time FFFF1564 (0.8 us units, SSM 0x20) with '
+            '2986<<3 = 4*2986*2 in 0.8 us = 360 deg CA (consistent). The angle term (angle diff)*(2986/90) is then time in 0.8 us units per '
+            '0.5 deg CA, so the injection angles are 0.5 deg CA units: deg = x/2 (720 units = 360 deg; clamp 1080..1439 = 540..719.5 deg). ')
+CA2 = ('deg CA', 'x/2', 'x*2', '0.0')
 for _d in (0x2D238, 0x2D210, 0x2D1D4, 0x2D1C0, 0x2D1E8, 0x2D1AC, 0x2D198, 0x2D260, 0x2D24C):
-    S[_d]['status'] = 'unresolved'
-    S[_d]['evidence'] = _INJ_REVIEW + ' Previous evidence: ' + S[_d]['evidence']
+    S[_d]['evidence'] = _INJ_FIX + 'Previous evidence (unit was 1 deg): ' + S[_d]['evidence']
+    S[_d]['data'] = dict(units='deg CA', expr='x/2', to_byte='x*2', format='0.0')
+
+_esf2 = ('0xE541C (from 0xE4728; p2 = FFFF2B0C, p3 = FFFF2B0E, p4 IAT FFFEEEE2, p5 Gear FFFF03AC). FFFF2B00.. are engine speeds over 170 deg CA '
+         'segments (0x4DFF2: 272e6*16/3/2F3C, 2F3C = 10 MHz counter ticks across the 17-tooth window of 0x15A822 -> rpm*128/25, same unit as '
+         'FFFF2994); 2B0C/2B0E are second differences of those speeds (0x4E098/0x4E0C6). Flag FED314 = T_gear(IAT) <= |2B0C| (calibration '
+         '0x17F4A == 1, active in this ROM) or |2B0E| (0x17F4A == 2, inactive). So the tables are rpm deltas: rpm = x*25/128. ')
+for d, g in ((0x2F1D8, '1'), (0x2F1E4, '2'), (0x2F1F0, '3'), (0x2F1FC, '4'), (0x2F208, '5-6')):
+    add(d, f'Engine Speed Fluctuation Threshold vs IAT (gear {g})', 'Misfire / Roughness Detection', _esf2, ('rpm', 'x*25/128', 'x*128/25', '0.0'))
+for d, g in ((0x2F214, '1'), (0x2F220, '2'), (0x2F22C, '3'), (0x2F238, '4'), (0x2F244, '5-6')):
+    add(d, f'Engine Speed Fluctuation Threshold vs IAT (gear {g}, inactive: 0x17F4A=1)', 'Misfire / Roughness Detection', _esf2, ('rpm', 'x*25/128', 'x*128/25', '0.0'))
 
 
 if __name__ == '__main__':
