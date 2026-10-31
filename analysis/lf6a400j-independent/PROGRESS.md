@@ -102,6 +102,12 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
   bit FFFF03E4.7 comes from FFFF03D4 (0x86B80: FFFF0AF2 > 100/200), not from this limit. Torque mode 0x0B is entered at 6100 rpm and
   left at 6000 rpm (0x82C50, scalars 0xE666/0xE668).
 
+- Task timing anchor: OBD PID 0x1F (run time, s) = FFFEF35E (0x10BE50 copy -> 12E0 -> 39C4, handler 0x718AA). 0x4EDAE
+  increments it once every 25 executions, so 0x4EDAE's task 0x153248 (also called from 0x153D20) runs every 40 ms. Counters
+  incremented once per execution in that task are therefore in 40 ms units. Next: find counter-vs-table comparisons in the 0x153248 tree.
+- Fixed: scanners now bound functions by the next function start. Ghidra sizes truncated large functions, e.g. 0x9CBF8 missed its
+  0x98FAC call.
+
 ## Next steps (session 3)
 - A/F Learning #3 FFFF0D80 (SSM 0xD1, multiplier 1.0 = 43194) = clamp(FFFF0DBA + FFFF38F8) (0xB3260, task 0xB42AC): trace 0DBA/38F8 to the tables.
 - Idle: 0xAAB08 (11 tables) and the ISC feedback that uses the final target FFFF0CFE.
