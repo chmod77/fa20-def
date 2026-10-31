@@ -1041,6 +1041,27 @@
    "format": "0.00"
   }
  },
+ "0x163898": {
+  "status": "identified",
+  "name": "Manifold Pressure Filter Coefficient (RPM)",
+  "category": "Sensors",
+  "evidence": "0x3B634: FFFEF59E = filter(FFFEF59E, MAP FFFEE6F8, T(rpm FFFF2ADA)). Filter helper 0x16B4D8: new = old + (in - old)*coef/65536 (assembly: mul.l, +rounding, swap.w), so coefficient fraction = x/65536 (65535 = no filtering).",
+  "description": "",
+  "data": {
+   "units": "fraction",
+   "expr": "x/65536",
+   "to_byte": "x*65536",
+   "format": "0.0000"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed",
+    "units": "rpm",
+    "expr": "x*25/128",
+    "to_byte": "x*128/25"
+   }
+  }
+ },
  "0x1638A4": {
   "status": "identified",
   "name": "Intake Air Temperature Sensor Scaling",
@@ -1206,6 +1227,27 @@
     "units": "raw",
     "expr": "x",
     "to_byte": "x"
+   }
+  }
+ },
+ "0x163A78": {
+  "status": "identified",
+  "name": "Engine Speed Filter Coefficient (RPM)",
+  "category": "Sensors",
+  "evidence": "0x4DD16: FFFF2AF0 = filter(FFFF2AF0, rpm FFFF2ADA, T(rpm FFFF2ADA)) when FFFEEEC6.0 clear. Filter helper 0x16B4D8: new = old + (in - old)*coef/65536 (assembly: mul.l, +rounding, swap.w), so coefficient fraction = x/65536 (65535 = no filtering).",
+  "description": "",
+  "data": {
+   "units": "fraction",
+   "expr": "x/65536",
+   "to_byte": "x*65536",
+   "format": "0.0000"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed",
+    "units": "rpm",
+    "expr": "x*25/128",
+    "to_byte": "x*128/25"
    }
   }
  },

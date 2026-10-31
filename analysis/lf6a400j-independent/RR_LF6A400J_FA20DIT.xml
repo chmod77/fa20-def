@@ -2166,13 +2166,13 @@
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 8x8 [D02D3C0]" category="Unidentified - Task 0x153568" storageaddress="13200" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D3C0. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="8" sizey="8">
+    <table type="3D" name="Unidentified 8x8 [D02D3C0] (? x Manifold Vacuum (Atmospheric - MAP))" category="Unidentified - Task 0x153568" storageaddress="13200" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D3C0. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="8" sizey="8">
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0BEA)" storageaddress="131E0" elements="8" storagetype="uint16" endian="big" locked="true">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2 (RAM 0xFFFF2A3C)" storageaddress="131F0" elements="8" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="X Axis" name="Manifold Vacuum (Atmospheric - MAP)" storageaddress="131F0" elements="8" storagetype="uint16" endian="big" locked="true">
+        <scaling units="kPa" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
     <table type="2D" name="Unidentified 4 [D02D3D4] (Engine Load)" category="Unidentified - Task 0x153568" storageaddress="13245" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D3D4. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="4">
@@ -2235,10 +2235,10 @@
         <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02D3E0]" category="Unidentified - Task 0x153568" storageaddress="1341C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2D3E0. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
+    <table type="2D" name="Unidentified 8 [D02D3E0] (Manifold Vacuum (Atmospheric - MAP))" category="Unidentified - Task 0x153568" storageaddress="1341C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2D3E0. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF2A3C)" storageaddress="1340C" elements="8" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Manifold Vacuum (Atmospheric - MAP)" storageaddress="1340C" elements="8" storagetype="uint16" endian="big" locked="true">
+        <scaling units="kPa" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
     <table type="2D" name="Unidentified 8 [D02D44C] (Fuel Rail Pressure (filtered))" category="Unidentified - Task 0x153568" storageaddress="1343E" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D44C. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
@@ -4938,13 +4938,13 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 4x8 [D02D414] (Battery Voltage x ?)" category="Unidentified - Task 0x153568" storageaddress="1E01C" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D414. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="8" sizey="4">
+    <table type="3D" name="Unidentified 4x8 [D02D414] (Battery Voltage x Manifold Vacuum (Atmospheric - MAP))" category="Unidentified - Task 0x153568" storageaddress="1E01C" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D414. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="8" sizey="4">
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       <table type="Y Axis" name="Battery Voltage" storageaddress="1E007" elements="4" storagetype="uint8" endian="big" locked="true">
         <scaling units="V" expression="x*8/100" to_byte="x*100/8" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2 (RAM 0xFFFF2A3C)" storageaddress="1E00C" elements="8" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="X Axis" name="Manifold Vacuum (Atmospheric - MAP)" storageaddress="1E00C" elements="8" storagetype="uint16" endian="big" locked="true">
+        <scaling units="kPa" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
     <table type="2D" name="Unidentified 8 [D02D458] (Engine Speed (byte, 25 rpm))" category="Unidentified - Task 0x153568" storageaddress="1E07C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2D458. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
@@ -8943,10 +8943,10 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified secondary 10 @0x02B638 [H163A78]" category="Unidentified - Task 0x158F04" storageaddress="2B638" storagetype="uint16" endian="big" userlevel="1" sizey="10" description="Secondary table read by helper 0x16BC08 (structure/array at 0x163A78); call sites: 0004dd16. Function/output scaling not yet proven from the binary; locked." locked="true">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2B624" elements="10" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    <table type="2D" name="Engine Speed Filter Coefficient (RPM)" category="Sensors" storageaddress="2B638" storagetype="uint16" endian="big" userlevel="1" sizey="10" description="Secondary table read by helper 0x16BC08 (structure/array at 0x163A78); call sites: 0004dd16. Evidence: 0x4DD16: FFFF2AF0 = filter(FFFF2AF0, rpm FFFF2ADA, T(rpm FFFF2ADA)) when FFFEEEC6.0 clear. Filter helper 0x16B4D8: new = old + (in - old)*coef/65536 (assembly: mul.l, +rounding, swap.w), so coefficient fraction = x/65536 (65535 = no filtering).">
+      <scaling units="fraction" expression="x/65536" to_byte="x*65536" format="0.0000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="2B624" elements="10" storagetype="uint16" endian="big">
+        <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
     <table type="2D" name="Unidentified secondary 8 @0x02B682 [H16391C]" category="Unidentified - Task 0x1528A2" storageaddress="2B682" storagetype="uint8" endian="big" userlevel="1" sizey="8" description="Secondary table read by helper 0x16B9A4 (structure/array at 0x16391C); call sites: 0003d5b0. Function/output scaling not yet proven from the binary; locked." locked="true">
@@ -9135,10 +9135,10 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified secondary 8 @0x02BE5C [H163898]" category="Unidentified - Task 0x3B634" storageaddress="2BE5C" storagetype="uint16" endian="big" userlevel="1" sizey="8" description="Secondary table read by helper 0x16BC08 (structure/array at 0x163898); call sites: 0003b634. Function/output scaling not yet proven from the binary; locked." locked="true">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2BE4C" elements="8" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    <table type="2D" name="Manifold Pressure Filter Coefficient (RPM)" category="Sensors" storageaddress="2BE5C" storagetype="uint16" endian="big" userlevel="1" sizey="8" description="Secondary table read by helper 0x16BC08 (structure/array at 0x163898); call sites: 0003b634. Evidence: 0x3B634: FFFEF59E = filter(FFFEF59E, MAP FFFEE6F8, T(rpm FFFF2ADA)). Filter helper 0x16B4D8: new = old + (in - old)*coef/65536 (assembly: mul.l, +rounding, swap.w), so coefficient fraction = x/65536 (65535 = no filtering).">
+      <scaling units="fraction" expression="x/65536" to_byte="x*65536" format="0.0000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="2BE4C" elements="8" storagetype="uint16" endian="big">
+        <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
     <table type="2D" name="Unidentified secondary 16 @0x02BE86 [H168AE4]" category="Unidentified - Task 0x152882 / Task 0x153B2C / Task 0x153CCC" storageaddress="2BE86" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC08 (structure/array at 0x168AE4); call sites: 00065644. Function/output scaling not yet proven from the binary; locked." locked="true">

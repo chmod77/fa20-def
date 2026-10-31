@@ -229,6 +229,14 @@ add(0x168B20, 'Accelerator Pedal Position Scaling (Sensor 1)', 'Electronic Throt
 add(0x168B2C, 'Accelerator Pedal Position Scaling (Sensor 2)', 'Electronic Throttle - Pedal', _ped, ('%', 'x*100/65280', 'x*65280/100', '0.00'),
     axes={'0': dict(name='Accelerator Pedal Sensor 2 Signal (FFFEF140, raw)', units='raw', expr='x', to_byte='x')})
 
+_flt = ' Filter helper 0x16B4D8: new = old + (in - old)*coef/65536 (assembly: mul.l, +rounding, swap.w), so coefficient fraction = x/65536 (65535 = no filtering).'
+add(0x163898, 'Manifold Pressure Filter Coefficient (RPM)', SENS,
+    '0x3B634: FFFEF59E = filter(FFFEF59E, MAP FFFEE6F8, T(rpm FFFF2ADA)).' + _flt, ('fraction', 'x/65536', 'x*65536', '0.0000'),
+    axes={'0': dict(name='Engine Speed', units='rpm', expr='x*25/128', to_byte='x*128/25')})
+add(0x163A78, 'Engine Speed Filter Coefficient (RPM)', SENS,
+    '0x4DD16: FFFF2AF0 = filter(FFFF2AF0, rpm FFFF2ADA, T(rpm FFFF2ADA)) when FFFEEEC6.0 clear.' + _flt, ('fraction', 'x/65536', 'x*65536', '0.0000'),
+    axes={'0': dict(name='Engine Speed', units='rpm', expr='x*25/128', to_byte='x*128/25')})
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

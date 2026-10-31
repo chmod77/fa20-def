@@ -146,3 +146,8 @@ V2.update({
  0xFFFEF0A6:('Battery Temperature (control)','C','x-50','x+50','0x3D1B2: same table 0x163904 as SSM battery temperature FFFEF0D2 (SSM 0x273, C=x-50), input FFFEF0D0'),
  0xFFFEED18:('Fuel Rail Pressure (filtered)','kPa','x*639630/1048576','x*1048576/639630','0x3DE28: same signal uVar4 as OBD FRP FFFEED16 (PID23) with a different filter constant'),
 })
+
+V2.update({
+ 0xFFFF2A3C:('Manifold Vacuum (Atmospheric - MAP)','kPa','x/256','x*256','0x3B634: x = max(FFFEE6AA atmospheric - FFFF09B8 filtered MAP, 0), both kPa = x/256'),
+ 0xFFFF2AF0:('Engine Speed (filtered)','rpm','x*25/128','x*128/25','0x4DD16: first-order filter of FFFF2ADA'),
+})
