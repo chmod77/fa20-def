@@ -694,6 +694,22 @@ add(0x2C9E8, 'Torque Offset Base (RPM) [-> 0ADC]', 'Driver Demand / Torque Reque
     '0x8267C forms (Requested Torque 0A62 + 0ADA - 16000) - 0ADC + 16000, so 0ADC and T are in the torque type.' + TQEV,
     ('Nm', '(x-16000)/80', 'x*80+16000', '0.0'), axes={'0': dict(name='Engine Speed', units='rpm', expr='x*25/128', to_byte='x*128/25')})
 
+add(0x2E254, 'Fuel Quantity Multiplier (RPM x Load) [-> 0508]', INJ,
+    '0xB4234 (task 0xB42AC): FFFF0508 = T(rpm FFFF2996, load FFFF03A0); 0x911FC: FFFF0BA8 = FFFF0BA0*(0508+128)/256*FFFF0E6C/256, '
+    'a fuel quantity used by 0x91310 (FFFF0BA6/0BA8/0BAA) -> base pulse -> injection time, so (T+128)/256 is a multiplier (128 = 1.0).',
+    ('multiplier', '(x+128)/256', 'x*256-128', '0.000'))
+add(0x2E240, 'Fuel Quantity Term (RPM x Load) [-> 0507]', INJ,
+    '0xB4210 (task 0xB42AC): FFFF0507 = T(rpm FFFF2996, load FFFF03A0); 0x9106C/0x910D8: fuel quantity FFFF0BA2/0BA4 = base * (0.5 + '
+    '(0507 + 0B62 + 0B80 [+ 0407 + 03EC + ...])/256), so with the other terms at 0 the multiplier is (T+128)/256 (128 = 1.0).',
+    ('multiplier', '(x+128)/256', 'x*256-128', '0.000'))
+
+_ev407 = ('0x8FDC0 (from 0x89E04, task 0x152A40): while active, FFFF0407 = T_02D0AC * (1 - n/(8*T_02D0B8)) with n +1 per execution '
+          '(reset at activation); FFFF0407 is an additive fuel-quantity term in 0x910D8 (base*(0.5 + (... + 0407 + ...)/256)). ')
+add(0x2D0AC, 'Fuel Enrichment (Decaying, 0407) Initial Amount', 'Fueling - Open Loop & Enrichment', _ev407 + 'Initial fraction of base fuel quantity.',
+    ('%', 'x*100/256', 'x*256/100', '0.0'))
+add(0x2D0B8, 'Fuel Enrichment (Decaying, 0407) Decay Length', 'Fueling - Open Loop & Enrichment', _ev407 +
+    'Decay length in units of 8 executions of task 0x152A40 (event-driven; time base not proven).', ('executions', 'x*8', 'x/8', '0'))
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

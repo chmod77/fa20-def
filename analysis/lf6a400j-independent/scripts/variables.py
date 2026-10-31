@@ -198,3 +198,12 @@ V2.update({
  0xFFFF0ADC:('Torque (loss/offset term, 0ADC)','Nm','(x-16000)/80','x*80+16000','0x8267C: (FFFF0A62 + 0ADA - 16000) - 0ADC + 16000 with Requested Torque 0A62 (torque type) -> same type'+_TQ),
  0xFFFF0ADA:('Torque (adder term, 0ADA)','Nm','(x-16000)/80','x*80+16000','0x8267C: FFFF0A62 + 0ADA - 16000 (torque-type addition)'+_TQ),
 })
+_FQ = ' 0x910D8: fuel quantity FFFF0BA4 = base*(0.5 + (0507 + 0B62 + 0407 + 03EC + p3)/256 + (0B72 + 0B38)/65536).'
+V2.update({
+ 0xFFFF0B62:('Fuel Quantity Fraction Term 0B62','%','x*100/256','x*256/100','additive term'+_FQ),
+ 0xFFFF0B80:('Fuel Quantity Fraction Term 0B80','%','x*100/256','x*256/100','0x9106C additive term'+_FQ),
+ 0xFFFF0407:('Fuel Quantity Fraction Term 0407','%','x*100/256','x*256/100','additive term'+_FQ),
+ 0xFFFF03EC:('Fuel Quantity Fraction Term 03EC','%','x*100/256','x*256/100','additive term'+_FQ),
+ 0xFFFF0B72:('Fuel Quantity Fraction Term 0B72','%','x*100/65536','x*65536/100','additive term'+_FQ),
+ 0xFFFF0B38:('Fuel Quantity Fraction Term 0B38','%','x*100/65536','x*65536/100','additive term'+_FQ),
+})
