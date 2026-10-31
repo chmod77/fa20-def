@@ -151,3 +151,8 @@ V2.update({
  0xFFFF2A3C:('Manifold Vacuum (Atmospheric - MAP)','kPa','x/256','x*256','0x3B634: x = max(FFFEE6AA atmospheric - FFFF09B8 filtered MAP, 0), both kPa = x/256'),
  0xFFFF2AF0:('Engine Speed (filtered)','rpm','x*25/128','x*128/25','0x4DD16: first-order filter of FFFF2ADA'),
 })
+
+V2.update({
+ 0xFFFF1564:('Injection Time Cylinder 1','us','x*0.8','x/0.8','0x1569D6: SSM 0x20 PW FFFF2B4E (ms=x*0.0032) = this>>2 (pointer table 0x168EAC)'),
+ 0xFFFF0BC8:('Injector Latency','us','x*0.8','x/0.8','0x922F4: injection time FFFF1564 = 1.25*(this*0.8 + ...) in 0.8us units'),
+})

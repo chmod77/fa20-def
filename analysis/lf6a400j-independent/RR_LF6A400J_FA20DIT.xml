@@ -729,9 +729,9 @@
         <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02D330] (Fuel Rail Pressure (filtered))" category="Unidentified - Task 0x152882" storageaddress="B554" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2D330. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Fuel Rail Pressure (filtered)" storageaddress="1E75C" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Injector Latency Adder (Fuel Rail Pressure, flag FFFEF498.1)" category="Fuel Injection" storageaddress="B554" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2D330. Evidence: 0x1569D6: SSM injector PW FFFF2B4E[cyl] = FFFF1564[cyl]&gt;&gt;2 (pointer table 0x168EAC) =&gt; FFFF1564 in 0.8 us; 0x922F4 (via 0x89A78): FFFF1564 = 1.25*(FFFF0BC8*0.8 + FFFF1544*FFFF0B44*0.003125) =&gt; injection time us = FFFF0BC8*0.8 + q*k*0.003125. 0x92EB4: added to Injector Latency when FFFEF498.1 set." sizey="16">
+      <scaling units="us" expression="x*0.8" to_byte="x/0.8" format="0.0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Fuel Rail Pressure (filtered)" storageaddress="1E75C" elements="16" storagetype="uint16" endian="big">
         <scaling units="kPa" expression="x*639630/1048576" to_byte="x*1048576/639630" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -5046,8 +5046,8 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02CE90] (Fuel Rail Pressure (filtered))" category="Unidentified - Task 0x89A78" storageaddress="1E77C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CE90. Lookup result stored to: FFFF0B44. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    <table type="2D" name="Injector Flow Scaling (Fuel Rail Pressure) [output units unresolved]" category="Fuel Injection" storageaddress="1E77C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CE90. Evidence: 0x1569D6: SSM injector PW FFFF2B4E[cyl] = FFFF1564[cyl]&gt;&gt;2 (pointer table 0x168EAC) =&gt; FFFF1564 in 0.8 us; 0x922F4 (via 0x89A78): FFFF1564 = 1.25*(FFFF0BC8*0.8 + FFFF1544*FFFF0B44*0.003125) =&gt; injection time us = FFFF0BC8*0.8 + q*k*0.003125. 0x8DDA8: FFFF0B44 = T(FRP FFFEED18) multiplies fuel quantity FFFF1544 (time contribution = q*x*0.003125 us); unit of q not yet anchored. Lookup result stored to: FFFF0B44. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
+      <scaling units="raw (us per 320 q)" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       <table type="Y Axis" name="Fuel Rail Pressure (filtered)" storageaddress="1E75C" elements="16" storagetype="uint16" endian="big" locked="true">
         <scaling units="kPa" expression="x*639630/1048576" to_byte="x*1048576/639630" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
@@ -5085,9 +5085,9 @@
         <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02D324] (Fuel Rail Pressure (filtered))" category="Unidentified - Task 0x152882" storageaddress="1E83E" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2D324. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Fuel Rail Pressure (filtered)" storageaddress="1E75C" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Injector Latency (Fuel Rail Pressure)" category="Fuel Injection" storageaddress="1E83E" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2D324. Evidence: 0x1569D6: SSM injector PW FFFF2B4E[cyl] = FFFF1564[cyl]&gt;&gt;2 (pointer table 0x168EAC) =&gt; FFFF1564 in 0.8 us; 0x922F4 (via 0x89A78): FFFF1564 = 1.25*(FFFF0BC8*0.8 + FFFF1544*FFFF0B44*0.003125) =&gt; injection time us = FFFF0BC8*0.8 + q*k*0.003125. 0x92EB4: FFFF0BC8 = T(FRP FFFEED18) (+T_02D330 when FFFEF498.1)." sizey="16">
+      <scaling units="us" expression="x*0.8" to_byte="x/0.8" format="0.0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Fuel Rail Pressure (filtered)" storageaddress="1E75C" elements="16" storagetype="uint16" endian="big">
         <scaling units="kPa" expression="x*639630/1048576" to_byte="x*1048576/639630" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>

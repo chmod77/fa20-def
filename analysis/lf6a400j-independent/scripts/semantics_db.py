@@ -237,6 +237,21 @@ add(0x163A78, 'Engine Speed Filter Coefficient (RPM)', SENS,
     '0x4DD16: FFFF2AF0 = filter(FFFF2AF0, rpm FFFF2ADA, T(rpm FFFF2ADA)) when FFFEEEC6.0 clear.' + _flt, ('fraction', 'x/65536', 'x*65536', '0.0000'),
     axes={'0': dict(name='Engine Speed', units='rpm', expr='x*25/128', to_byte='x*128/25')})
 
+# ---------------------------------------------------------------- fuel injection (DI)
+# SSM 0x20 injector pulse width FFFF2B4E (ms = x*0.0032) = (*ptr[cyl]) >> 2 with ptr table 0x168EAC -> FFFF1564.. (0x1569D6),
+# so FFFF1564 is injection time in 0.8 us units.  0x922F4: FFFF1564 = 1.25*(FFFF0BC8*0.8 + q FFFF1544 * k FFFF0B44 * 0.003125)
+# => time_us = FFFF0BC8*0.8 + q*k*0.003125.
+INJ = 'Fuel Injection'
+FRPAX = {'0': dict(name='Fuel Rail Pressure (filtered)', units='kPa', expr='x*639630/1048576', to_byte='x*1048576/639630')}
+_inj = ('0x1569D6: SSM injector PW FFFF2B4E[cyl] = FFFF1564[cyl]>>2 (pointer table 0x168EAC) => FFFF1564 in 0.8 us; 0x922F4 (via 0x89A78): '
+        'FFFF1564 = 1.25*(FFFF0BC8*0.8 + FFFF1544*FFFF0B44*0.003125) => injection time us = FFFF0BC8*0.8 + q*k*0.003125. ')
+add(0x2D324, 'Injector Latency (Fuel Rail Pressure)', INJ, _inj + '0x92EB4: FFFF0BC8 = T(FRP FFFEED18) (+T_02D330 when FFFEF498.1).',
+    ('us', 'x*0.8', 'x/0.8', '0.0'), axes=FRPAX)
+add(0x2D330, 'Injector Latency Adder (Fuel Rail Pressure, flag FFFEF498.1)', INJ, _inj + '0x92EB4: added to Injector Latency when FFFEF498.1 set.',
+    ('us', 'x*0.8', 'x/0.8', '0.0'), axes=FRPAX)
+add(0x2CE90, 'Injector Flow Scaling (Fuel Rail Pressure)', INJ, _inj + '0x8DDA8: FFFF0B44 = T(FRP FFFEED18) multiplies fuel quantity FFFF1544 '
+    '(time contribution = q*x*0.003125 us); unit of q not yet anchored.', ('raw (us per 320 q)', 'x', 'x', '0'), status='partial', axes=FRPAX)
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

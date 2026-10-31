@@ -8,7 +8,9 @@ from capstone import Cs, CS_ARCH_SH, CS_MODE_SH2A, CS_MODE_BIG_ENDIAN
 H = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(H)
 rom = open(f'{ROOT}/../../roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin', 'rb').read()
 md = Cs(CS_ARCH_SH, CS_MODE_SH2A | CS_MODE_BIG_ENDIAN)
-fns = [(int(a, 16), int(n)) for a, n in (l.split() for l in open(f'{ROOT}/evidence/functions.tsv'))]
+import os as _os
+FT = '/tmp/functions_all.tsv' if _os.path.exists('/tmp/functions_all.tsv') else f'{ROOT}/evidence/functions.tsv'
+fns = [(int(a, 16), int(n)) for a, n in (l.split() for l in open(FT))]
 gbr = {int(a, 16): int(v, 16) for a, v in (l.split() for l in open(f'{ROOT}/evidence/gbr-map.tsv'))}
 # branch targets
 targets = set()
@@ -38,7 +40,7 @@ for fa, size in fns:
     for i in insns:
         if i.address in tg:
             R = {}
-        m, ops = i.mnemonic, [o.strip() for o in i.op_str.split(',')] if i.op_str else []
+        m, ops = i.mnemonic, [o.strip() for o in re.split(r',(?![^(]*\))', i.op_str)] if i.op_str else []
         try:
             if m in ('mov.l', 'mov.w') and len(ops) == 2 and ops[0].startswith('0x') and REG.match(ops[1]):
                 ea = int(ops[0], 16)
@@ -69,10 +71,15 @@ for fa, size in fns:
                     mm = re.fullmatch(r'@r(\d+)', op) or re.fullmatch(r'@-r(\d+)', op) or re.fullmatch(r'@r(\d+)\+', op)
                     if mm and f'r{mm.group(1)}' in R:
                         a = R[f'r{mm.group(1)}'] - (w if op.startswith('@-') else 0)
-                    mm = re.fullmatch(r'@\((0x[0-9a-f]+|\d+), r(\d+)\)', op)
+                    mm = re.fullmatch(r'@\((0x[0-9a-f]+|\d+),\s*r(\d+)\)', op)
                     if mm and f'r{mm.group(2)}' in R:
                         a = R[f'r{mm.group(2)}'] + int(mm.group(1), 0)
-                    mm = re.fullmatch(r'@\((0x[0-9a-f]+|\d+), gbr\)', op)
+                    mm = re.fullmatch(r'@\(r0,\s*r(\d+)\)', op)
+                    if mm and f'r{mm.group(1)}' in R and 'r0' not in R:
+                        b = R[f'r{mm.group(1)}']
+                        if u32(b) >= 0xFFFE0000:
+                            out.write(f'{u32(b):08X}\t{k}X\t{w}\t{i.address:06x}\t{fa:06x}\n'); n += 1
+                    mm = re.fullmatch(r'@\((0x[0-9a-f]+|\d+),\s*gbr\)', op)
                     if mm and G is not None:
                         a = G + int(mm.group(1), 0)
                     if a is not None and u32(a) >= 0xFFFE0000:
