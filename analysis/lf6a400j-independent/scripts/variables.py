@@ -259,3 +259,8 @@ V2.update({
 V2.update({
  0xFFFF0AAE:('Torque 0AAE','Nm','(x-16000)/80','x*80+16000','0x86F74: (0AAE-16000)*8192/(0ADC-16000) torque ratio; 0x85580 = 0AAC + P - 16000'+_TQ),
 })
+V2.update({
+ 0xFFFF0A04:('Torque 0A04','Nm','(x-16000)/80','x*80+16000','0x8034C p5 (r13+48): min(0A64, 0A7A + 0A78 - 0ADA)'+_TQ),
+ 0xFFFF0A30:('Torque Limit 0A30','Nm','(x-16000)/80','x*80+16000','0x80EF4: min(0A04, T(rpm))'+_TQ),
+ 0xFFFF0A76:('Torque 0A76','Nm','(x-16000)/80','x*80+16000','0x82664: 0A30 or 0A04'+_TQ),
+})

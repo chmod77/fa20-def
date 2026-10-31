@@ -629,6 +629,69 @@
    }
   }
  },
+ "0x2C394": {
+  "status": "identified",
+  "name": "Torque Limit vs RPM (high rpm / FFFEF540 high) [-> 0A30]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x80EF4 (from 0x82FA0; p1 rpm FFFF2994, p2 FFFF0A04, p3 FFFEF540): FFFF0A30 = min(0A04, T(rpm)); 0x8034C (call 0x84276, outputs r13 = FFFF09D4 + 48 / + 46): FFFF0A04 = min(0A64, 0A7A + 0A78 - 16000 - 0ADA + 16000) (proven torque terms), so 0A30 and T are torque type. T_02C394 applies when rpm > 0x7A00 (x*25/128 = 6100 rpm) or FFFEF540 > 0xF2B2; T_02C3A0 sits behind the same condition in an else-branch and is unreachable; T_02C3AC otherwise. 0x82664: FFFF0A76 = 0A30 when FFFF03C6 == 11 else 0A04.  Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range).",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed",
+    "units": "rpm",
+    "expr": "x*25/128",
+    "to_byte": "x*128/25"
+   }
+  }
+ },
+ "0x2C3A0": {
+  "status": "identified",
+  "name": "Torque Limit vs RPM (unreachable branch) [0x80EF4]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x80EF4 (from 0x82FA0; p1 rpm FFFF2994, p2 FFFF0A04, p3 FFFEF540): FFFF0A30 = min(0A04, T(rpm)); 0x8034C (call 0x84276, outputs r13 = FFFF09D4 + 48 / + 46): FFFF0A04 = min(0A64, 0A7A + 0A78 - 16000 - 0ADA + 16000) (proven torque terms), so 0A30 and T are torque type. T_02C394 applies when rpm > 0x7A00 (x*25/128 = 6100 rpm) or FFFEF540 > 0xF2B2; T_02C3A0 sits behind the same condition in an else-branch and is unreachable; T_02C3AC otherwise. 0x82664: FFFF0A76 = 0A30 when FFFF03C6 == 11 else 0A04.  Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range).",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed",
+    "units": "rpm",
+    "expr": "x*25/128",
+    "to_byte": "x*128/25"
+   }
+  }
+ },
+ "0x2C3AC": {
+  "status": "identified",
+  "name": "Torque Limit vs RPM (normal) [-> 0A30]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x80EF4 (from 0x82FA0; p1 rpm FFFF2994, p2 FFFF0A04, p3 FFFEF540): FFFF0A30 = min(0A04, T(rpm)); 0x8034C (call 0x84276, outputs r13 = FFFF09D4 + 48 / + 46): FFFF0A04 = min(0A64, 0A7A + 0A78 - 16000 - 0ADA + 16000) (proven torque terms), so 0A30 and T are torque type. T_02C394 applies when rpm > 0x7A00 (x*25/128 = 6100 rpm) or FFFEF540 > 0xF2B2; T_02C3A0 sits behind the same condition in an else-branch and is unreachable; T_02C3AC otherwise. 0x82664: FFFF0A76 = 0A30 when FFFF03C6 == 11 else 0A04.  Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range).",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed",
+    "units": "rpm",
+    "expr": "x*25/128",
+    "to_byte": "x*128/25"
+   }
+  }
+ },
  "0x2C3D0": {
   "status": "identified",
   "name": "Torque Limit vs Gear (FFFEEF76.7 set) [-> 0A40]",
@@ -5479,6 +5542,145 @@
    "expr": "x*639630/1048576",
    "to_byte": "x*1048576/639630",
    "format": "0.00"
+  }
+ },
+ "0x2E84C": {
+  "status": "identified",
+  "name": "Torque Threshold Low, default vs RPM [0xC1DDC]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0xC1DDC (from 0xC0FD0, call 0xC13B0; p2 rpm FFFF2ADA, p3 Torque FFFF0A76, p5 IAT FFFEEEE2, p13 mode FFFF0585, p15 flag): L = T_02E84C (default) / T_02E87C (mode 3 or p15) / T_02E864 (mode 2); H = T_02E858 (default) / T_02E888 (mode 3 or p15) / T_02E870 (mode 2); flag FEC9D6 = 0A76 < L, or < L + (H - L) while set (hysteresis; FFFF0E9C = H - L + 16000). 0A76 = 0A30/0A04 (torque type), so L and H are torque type. Separate flag FEC9DA = IAT FFFEEEE2 < T_02E894(vehicle speed) (+0x199 hysteresis), so T_02E894 is in the IAT word unit (C = x*5/2048 - 40).  Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range).",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed (OBD copy)",
+    "units": "rpm",
+    "expr": "x*25/128",
+    "to_byte": "x*128/25"
+   }
+  }
+ },
+ "0x2E858": {
+  "status": "identified",
+  "name": "Torque Threshold High, default vs RPM [0xC1DDC]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0xC1DDC (from 0xC0FD0, call 0xC13B0; p2 rpm FFFF2ADA, p3 Torque FFFF0A76, p5 IAT FFFEEEE2, p13 mode FFFF0585, p15 flag): L = T_02E84C (default) / T_02E87C (mode 3 or p15) / T_02E864 (mode 2); H = T_02E858 (default) / T_02E888 (mode 3 or p15) / T_02E870 (mode 2); flag FEC9D6 = 0A76 < L, or < L + (H - L) while set (hysteresis; FFFF0E9C = H - L + 16000). 0A76 = 0A30/0A04 (torque type), so L and H are torque type. Separate flag FEC9DA = IAT FFFEEEE2 < T_02E894(vehicle speed) (+0x199 hysteresis), so T_02E894 is in the IAT word unit (C = x*5/2048 - 40).  Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range).",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed (OBD copy)",
+    "units": "rpm",
+    "expr": "x*25/128",
+    "to_byte": "x*128/25"
+   }
+  }
+ },
+ "0x2E864": {
+  "status": "identified",
+  "name": "Torque Threshold Low, mode 2 vs RPM [0xC1DDC]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0xC1DDC (from 0xC0FD0, call 0xC13B0; p2 rpm FFFF2ADA, p3 Torque FFFF0A76, p5 IAT FFFEEEE2, p13 mode FFFF0585, p15 flag): L = T_02E84C (default) / T_02E87C (mode 3 or p15) / T_02E864 (mode 2); H = T_02E858 (default) / T_02E888 (mode 3 or p15) / T_02E870 (mode 2); flag FEC9D6 = 0A76 < L, or < L + (H - L) while set (hysteresis; FFFF0E9C = H - L + 16000). 0A76 = 0A30/0A04 (torque type), so L and H are torque type. Separate flag FEC9DA = IAT FFFEEEE2 < T_02E894(vehicle speed) (+0x199 hysteresis), so T_02E894 is in the IAT word unit (C = x*5/2048 - 40).  Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range).",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed (OBD copy)",
+    "units": "rpm",
+    "expr": "x*25/128",
+    "to_byte": "x*128/25"
+   }
+  }
+ },
+ "0x2E870": {
+  "status": "identified",
+  "name": "Torque Threshold High, mode 2 vs RPM [0xC1DDC]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0xC1DDC (from 0xC0FD0, call 0xC13B0; p2 rpm FFFF2ADA, p3 Torque FFFF0A76, p5 IAT FFFEEEE2, p13 mode FFFF0585, p15 flag): L = T_02E84C (default) / T_02E87C (mode 3 or p15) / T_02E864 (mode 2); H = T_02E858 (default) / T_02E888 (mode 3 or p15) / T_02E870 (mode 2); flag FEC9D6 = 0A76 < L, or < L + (H - L) while set (hysteresis; FFFF0E9C = H - L + 16000). 0A76 = 0A30/0A04 (torque type), so L and H are torque type. Separate flag FEC9DA = IAT FFFEEEE2 < T_02E894(vehicle speed) (+0x199 hysteresis), so T_02E894 is in the IAT word unit (C = x*5/2048 - 40).  Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range).",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed (OBD copy)",
+    "units": "rpm",
+    "expr": "x*25/128",
+    "to_byte": "x*128/25"
+   }
+  }
+ },
+ "0x2E87C": {
+  "status": "identified",
+  "name": "Torque Threshold Low, mode 3 / flag vs RPM [0xC1DDC]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0xC1DDC (from 0xC0FD0, call 0xC13B0; p2 rpm FFFF2ADA, p3 Torque FFFF0A76, p5 IAT FFFEEEE2, p13 mode FFFF0585, p15 flag): L = T_02E84C (default) / T_02E87C (mode 3 or p15) / T_02E864 (mode 2); H = T_02E858 (default) / T_02E888 (mode 3 or p15) / T_02E870 (mode 2); flag FEC9D6 = 0A76 < L, or < L + (H - L) while set (hysteresis; FFFF0E9C = H - L + 16000). 0A76 = 0A30/0A04 (torque type), so L and H are torque type. Separate flag FEC9DA = IAT FFFEEEE2 < T_02E894(vehicle speed) (+0x199 hysteresis), so T_02E894 is in the IAT word unit (C = x*5/2048 - 40).  Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range).",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed (OBD copy)",
+    "units": "rpm",
+    "expr": "x*25/128",
+    "to_byte": "x*128/25"
+   }
+  }
+ },
+ "0x2E888": {
+  "status": "identified",
+  "name": "Torque Threshold High, mode 3 / flag vs RPM [0xC1DDC]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0xC1DDC (from 0xC0FD0, call 0xC13B0; p2 rpm FFFF2ADA, p3 Torque FFFF0A76, p5 IAT FFFEEEE2, p13 mode FFFF0585, p15 flag): L = T_02E84C (default) / T_02E87C (mode 3 or p15) / T_02E864 (mode 2); H = T_02E858 (default) / T_02E888 (mode 3 or p15) / T_02E870 (mode 2); flag FEC9D6 = 0A76 < L, or < L + (H - L) while set (hysteresis; FFFF0E9C = H - L + 16000). 0A76 = 0A30/0A04 (torque type), so L and H are torque type. Separate flag FEC9DA = IAT FFFEEEE2 < T_02E894(vehicle speed) (+0x199 hysteresis), so T_02E894 is in the IAT word unit (C = x*5/2048 - 40).  Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range).",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed (OBD copy)",
+    "units": "rpm",
+    "expr": "x*25/128",
+    "to_byte": "x*128/25"
+   }
+  }
+ },
+ "0x2E894": {
+  "status": "identified",
+  "name": "Intake Air Temperature Threshold vs Vehicle Speed [0xC1DDC]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0xC1DDC (from 0xC0FD0, call 0xC13B0; p2 rpm FFFF2ADA, p3 Torque FFFF0A76, p5 IAT FFFEEEE2, p13 mode FFFF0585, p15 flag): L = T_02E84C (default) / T_02E87C (mode 3 or p15) / T_02E864 (mode 2); H = T_02E858 (default) / T_02E888 (mode 3 or p15) / T_02E870 (mode 2); flag FEC9D6 = 0A76 < L, or < L + (H - L) while set (hysteresis; FFFF0E9C = H - L + 16000). 0A76 = 0A30/0A04 (torque type), so L and H are torque type. Separate flag FEC9DA = IAT FFFEEEE2 < T_02E894(vehicle speed) (+0x199 hysteresis), so T_02E894 is in the IAT word unit (C = x*5/2048 - 40). ",
+  "description": "",
+  "data": {
+   "units": "C",
+   "expr": "x*5/2048-40",
+   "to_byte": "(x+40)*2048/5",
+   "format": "0.0"
   }
  },
  "0x2E918": {

@@ -1067,6 +1067,28 @@ add(0x2C900, 'Torque Correction Integral Step vs Error e [0x85580 -> 0AAE]', 'Dr
     ('Nm/step', '(x-16000)/80', 'x*80+16000', '0.0'))
 add(0x2C90C, 'Torque Correction Proportional Term vs Error e [0x85580 -> 0AAE]', 'Driver Demand / Torque Request', _aae + TQEV, TQ)
 
+_a30 = ('0x80EF4 (from 0x82FA0; p1 rpm FFFF2994, p2 FFFF0A04, p3 FFFEF540): FFFF0A30 = min(0A04, T(rpm)); 0x8034C (call 0x84276, outputs '
+        'r13 = FFFF09D4 + 48 / + 46): FFFF0A04 = min(0A64, 0A7A + 0A78 - 16000 - 0ADA + 16000) (proven torque terms), so 0A30 and T are torque '
+        'type. T_02C394 applies when rpm > 0x7A00 (x*25/128 = 6100 rpm) or FFFEF540 > 0xF2B2; T_02C3A0 sits behind the same condition in '
+        'an else-branch and is unreachable; T_02C3AC otherwise. 0x82664: FFFF0A76 = 0A30 when FFFF03C6 == 11 else 0A04. ')
+add(0x2C394, 'Torque Limit vs RPM (high rpm / FFFEF540 high) [-> 0A30]', 'Driver Demand / Torque Request', _a30 + TQEV, TQ,
+    axes={'0': dict(name='Engine Speed', units='rpm', expr='x*25/128', to_byte='x*128/25')})
+add(0x2C3A0, 'Torque Limit vs RPM (unreachable branch) [0x80EF4]', 'Driver Demand / Torque Request', _a30 + TQEV, TQ,
+    axes={'0': dict(name='Engine Speed', units='rpm', expr='x*25/128', to_byte='x*128/25')})
+add(0x2C3AC, 'Torque Limit vs RPM (normal) [-> 0A30]', 'Driver Demand / Torque Request', _a30 + TQEV, TQ,
+    axes={'0': dict(name='Engine Speed', units='rpm', expr='x*25/128', to_byte='x*128/25')})
+_c1d = ('0xC1DDC (from 0xC0FD0, call 0xC13B0; p2 rpm FFFF2ADA, p3 Torque FFFF0A76, p5 IAT FFFEEEE2, p13 mode FFFF0585, p15 flag): '
+        'L = T_02E84C (default) / T_02E87C (mode 3 or p15) / T_02E864 (mode 2); H = T_02E858 (default) / T_02E888 (mode 3 or p15) / '
+        'T_02E870 (mode 2); flag FEC9D6 = 0A76 < L, or < L + (H - L) while set (hysteresis; FFFF0E9C = H - L + 16000). 0A76 = 0A30/0A04 '
+        '(torque type), so L and H are torque type. Separate flag FEC9DA = IAT FFFEEEE2 < T_02E894(vehicle speed) (+0x199 hysteresis), so '
+        'T_02E894 is in the IAT word unit (C = x*5/2048 - 40). ')
+for d, nm in ((0x2E84C, 'Low, default'), (0x2E87C, 'Low, mode 3 / flag'), (0x2E864, 'Low, mode 2'),
+              (0x2E858, 'High, default'), (0x2E888, 'High, mode 3 / flag'), (0x2E870, 'High, mode 2')):
+    add(d, f'Torque Threshold {nm} vs RPM [0xC1DDC]', 'Driver Demand / Torque Request', _c1d + TQEV, TQ,
+        axes={'0': dict(name='Engine Speed (OBD copy)', units='rpm', expr='x*25/128', to_byte='x*128/25')})
+add(0x2E894, 'Intake Air Temperature Threshold vs Vehicle Speed [0xC1DDC]', 'Driver Demand / Torque Request', _c1d,
+    ('C', 'x*5/2048-40', '(x+40)*2048/5', '0.0'))
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

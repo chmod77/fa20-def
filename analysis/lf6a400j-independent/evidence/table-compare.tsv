@@ -1,4 +1,5 @@
 descriptor	function	var	var_name	units	expr	context
+02C3AC	00080ef4	FFFF0A04	Torque 0A04	Nm	(x-16000)/80	((uint)param_2 < (uVar1 & 0xffff)
 02C3DC	0008117c	FFFF0A58	Torque Ramp Output (0A58)	Nm	(x-16000)/80	((uint)param_4 < (uVar2 & 0xffff)
 02C78C	00082028	FFFF0A40	Torque Limit 0A40	Nm	(x-16000)/80	((uVar1 & 0xffff) <= (param_1 & 0xffff)
 02C7A0	00082028	FFFF0A40	Torque Limit 0A40	Nm	(x-16000)/80	((uVar2 & 0xffff) < (param_1 & 0xffff)

@@ -164,6 +164,8 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
 - 0x80968 speed-feedback torque terms (T_02C360/C380), torque limits T_02C78C/C7A0/C3D0 (-> 0A5C). Coverage 544 of 1271.
 - 0D06 is reported over SSM via converter 0xD0C50 (rpm*4); 0D06 = 0D10 = T_02DF00(coolant)<<6 or 0D0E = max(0D02, ...). T_02DF00 =
   alternate target idle speed (rpm = x*12.5). Coverage 545 of 1271.
+- 0x80EF4 torque limits T_02C394/3A0(unreachable)/3AC -> 0A30 -> 0A76; 0xC1DDC torque thresholds (6) + IAT threshold T_02E894;
+  0x85580 torque correction tables (all 0 Nm). Coverage 557 of 1271.
 - Dead ends this session (documented so they are not repeated):
   * FFFF12C2 (axis of the pedal-limit T1 tables, compared with 12BE in the torque monitor): only a read literal (0xC50D0); writer not
     found by literal, GBR (+70 from 127C) or r0-offset searches.
