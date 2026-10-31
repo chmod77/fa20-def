@@ -189,6 +189,24 @@ add(0x15388, 'Wastegate Integral Positive Gain Compensation (IAT)', WG,
 add(0x15398, 'Wastegate Proportional Gain Compensation (IAT)', WG,
     '0xBD300: proportional term = T_02E5D4(e)*T(FFFEE6A6)>>7.', F128, static_values=IAT16, axes=IATAX)
 
+# ---------------------------------------------------------------- driver demand (torque request) - torque units unresolved (16000 = 0)
+TQ = 'Driver Demand / Torque Request'
+RAWTQ = ('torque raw (16000 = 0)', 'x', 'x', '0')
+_sel = ('selection: first map when FFFEEF76.7 clear and FFFF0557 < 4, otherwise the alternate map; inputs rpm FFFF2994 and accelerator pedal FFFEEEF8 '
+        '(SSM 0x29). Output in the torque domain used across 0x82FA0 (16000 = zero; 0x3E80 offset arithmetic) - physical unit not anchored.')
+for d, alt, out, lab in ((0x2C4CC, 0x2C4E0, 'FFFF0A4A', 'A'), (0x2C4F4, 0x2C508, 'FFFF0A4E', 'B'), (0x2C530, 0x2C544, 'FFFF0A52', 'C'),
+                         (0x2C56C, 0x2C580, 'FFFF0A56', 'D')):
+    fn = {'A': '0x81448', 'B': '0x81498', 'C': '0x8151C', 'D': '0x815A0'}[lab]
+    add(d, f'Requested Torque {lab} (Accelerator Pedal)', TQ, f'{fn}: {out} = map; ' + _sel, RAWTQ, status='partial')
+    add(alt, f'Requested Torque {lab} (Accelerator Pedal, alternate)', TQ, f'{fn}: {out} = map; ' + _sel, RAWTQ, status='partial')
+add(0x2C51C, 'Requested Torque B Limit (Gear x RPM)', TQ, '0x81498: FFFF0A4E = min(T(gear FFFF03AC, rpm), Requested Torque B).', RAWTQ, status='partial')
+add(0x2C558, 'Requested Torque C Limit (Gear x RPM)', TQ, '0x8151C: FFFF0A52 = min(T(gear FFFF03AC, rpm), Requested Torque C).', RAWTQ, status='partial')
+_bl = ('0x82758: weight w = T(accelerator FFFEEEF8, vehicle speed FFFEF0DA)/255 blends the requested-torque candidates '
+       '(out = w*(Tq-16000) + (1-w)*(Tq_A-16000) + 16000 style arithmetic, 0xC80/0x33 = 16000/255 offset terms).')
+add(0x2C7FC, 'Requested Torque Blend Weight 1 (Accelerator x Vehicle Speed)', TQ, _bl + ' Weight multiplies FFFF0A52 (param_3; register r6 at call 0x835EE).', ('%', 'x*100/255', 'x*255/100', '0.0'))
+add(0x2C810, 'Requested Torque Blend Weight 2 (Accelerator x Vehicle Speed)', TQ, _bl + ' Weight multiplies FFFF0A4E (param_4; r7).', ('%', 'x*100/255', 'x*255/100', '0.0'))
+add(0x2C824, 'Requested Torque Blend Weight 3 (Accelerator x Vehicle Speed)', TQ, _bl + ' Weight w3 blends FFFF0A4A (param_5, stack) against FFFF0A52 with (255-w3).', ('%', 'x*100/255', 'x*255/100', '0.0'))
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

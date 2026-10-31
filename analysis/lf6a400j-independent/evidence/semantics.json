@@ -281,6 +281,175 @@
    "109.5"
   ]
  },
+ "0x2C4CC": {
+  "status": "partial",
+  "name": "Requested Torque A (Accelerator Pedal)",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x81448: FFFF0A4A = map; selection: first map when FFFEEF76.7 clear and FFFF0557 < 4, otherwise the alternate map; inputs rpm FFFF2994 and accelerator pedal FFFEEEF8 (SSM 0x29). Output in the torque domain used across 0x82FA0 (16000 = zero; 0x3E80 offset arithmetic) - physical unit not anchored.",
+  "description": "",
+  "data": {
+   "units": "torque raw (16000 = 0)",
+   "expr": "x",
+   "to_byte": "x",
+   "format": "0"
+  }
+ },
+ "0x2C4E0": {
+  "status": "partial",
+  "name": "Requested Torque A (Accelerator Pedal, alternate)",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x81448: FFFF0A4A = map; selection: first map when FFFEEF76.7 clear and FFFF0557 < 4, otherwise the alternate map; inputs rpm FFFF2994 and accelerator pedal FFFEEEF8 (SSM 0x29). Output in the torque domain used across 0x82FA0 (16000 = zero; 0x3E80 offset arithmetic) - physical unit not anchored.",
+  "description": "",
+  "data": {
+   "units": "torque raw (16000 = 0)",
+   "expr": "x",
+   "to_byte": "x",
+   "format": "0"
+  }
+ },
+ "0x2C4F4": {
+  "status": "partial",
+  "name": "Requested Torque B (Accelerator Pedal)",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x81498: FFFF0A4E = map; selection: first map when FFFEEF76.7 clear and FFFF0557 < 4, otherwise the alternate map; inputs rpm FFFF2994 and accelerator pedal FFFEEEF8 (SSM 0x29). Output in the torque domain used across 0x82FA0 (16000 = zero; 0x3E80 offset arithmetic) - physical unit not anchored.",
+  "description": "",
+  "data": {
+   "units": "torque raw (16000 = 0)",
+   "expr": "x",
+   "to_byte": "x",
+   "format": "0"
+  }
+ },
+ "0x2C508": {
+  "status": "partial",
+  "name": "Requested Torque B (Accelerator Pedal, alternate)",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x81498: FFFF0A4E = map; selection: first map when FFFEEF76.7 clear and FFFF0557 < 4, otherwise the alternate map; inputs rpm FFFF2994 and accelerator pedal FFFEEEF8 (SSM 0x29). Output in the torque domain used across 0x82FA0 (16000 = zero; 0x3E80 offset arithmetic) - physical unit not anchored.",
+  "description": "",
+  "data": {
+   "units": "torque raw (16000 = 0)",
+   "expr": "x",
+   "to_byte": "x",
+   "format": "0"
+  }
+ },
+ "0x2C51C": {
+  "status": "partial",
+  "name": "Requested Torque B Limit (Gear x RPM)",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x81498: FFFF0A4E = min(T(gear FFFF03AC, rpm), Requested Torque B).",
+  "description": "",
+  "data": {
+   "units": "torque raw (16000 = 0)",
+   "expr": "x",
+   "to_byte": "x",
+   "format": "0"
+  }
+ },
+ "0x2C530": {
+  "status": "partial",
+  "name": "Requested Torque C (Accelerator Pedal)",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x8151C: FFFF0A52 = map; selection: first map when FFFEEF76.7 clear and FFFF0557 < 4, otherwise the alternate map; inputs rpm FFFF2994 and accelerator pedal FFFEEEF8 (SSM 0x29). Output in the torque domain used across 0x82FA0 (16000 = zero; 0x3E80 offset arithmetic) - physical unit not anchored.",
+  "description": "",
+  "data": {
+   "units": "torque raw (16000 = 0)",
+   "expr": "x",
+   "to_byte": "x",
+   "format": "0"
+  }
+ },
+ "0x2C544": {
+  "status": "partial",
+  "name": "Requested Torque C (Accelerator Pedal, alternate)",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x8151C: FFFF0A52 = map; selection: first map when FFFEEF76.7 clear and FFFF0557 < 4, otherwise the alternate map; inputs rpm FFFF2994 and accelerator pedal FFFEEEF8 (SSM 0x29). Output in the torque domain used across 0x82FA0 (16000 = zero; 0x3E80 offset arithmetic) - physical unit not anchored.",
+  "description": "",
+  "data": {
+   "units": "torque raw (16000 = 0)",
+   "expr": "x",
+   "to_byte": "x",
+   "format": "0"
+  }
+ },
+ "0x2C558": {
+  "status": "partial",
+  "name": "Requested Torque C Limit (Gear x RPM)",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x8151C: FFFF0A52 = min(T(gear FFFF03AC, rpm), Requested Torque C).",
+  "description": "",
+  "data": {
+   "units": "torque raw (16000 = 0)",
+   "expr": "x",
+   "to_byte": "x",
+   "format": "0"
+  }
+ },
+ "0x2C56C": {
+  "status": "partial",
+  "name": "Requested Torque D (Accelerator Pedal)",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x815A0: FFFF0A56 = map; selection: first map when FFFEEF76.7 clear and FFFF0557 < 4, otherwise the alternate map; inputs rpm FFFF2994 and accelerator pedal FFFEEEF8 (SSM 0x29). Output in the torque domain used across 0x82FA0 (16000 = zero; 0x3E80 offset arithmetic) - physical unit not anchored.",
+  "description": "",
+  "data": {
+   "units": "torque raw (16000 = 0)",
+   "expr": "x",
+   "to_byte": "x",
+   "format": "0"
+  }
+ },
+ "0x2C580": {
+  "status": "partial",
+  "name": "Requested Torque D (Accelerator Pedal, alternate)",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x815A0: FFFF0A56 = map; selection: first map when FFFEEF76.7 clear and FFFF0557 < 4, otherwise the alternate map; inputs rpm FFFF2994 and accelerator pedal FFFEEEF8 (SSM 0x29). Output in the torque domain used across 0x82FA0 (16000 = zero; 0x3E80 offset arithmetic) - physical unit not anchored.",
+  "description": "",
+  "data": {
+   "units": "torque raw (16000 = 0)",
+   "expr": "x",
+   "to_byte": "x",
+   "format": "0"
+  }
+ },
+ "0x2C7FC": {
+  "status": "identified",
+  "name": "Requested Torque Blend Weight 1 (Accelerator x Vehicle Speed)",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x82758: weight w = T(accelerator FFFEEEF8, vehicle speed FFFEF0DA)/255 blends the requested-torque candidates (out = w*(Tq-16000) + (1-w)*(Tq_A-16000) + 16000 style arithmetic, 0xC80/0x33 = 16000/255 offset terms). Weight applied to FFFF0A4A.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/255",
+   "to_byte": "x*255/100",
+   "format": "0.0"
+  }
+ },
+ "0x2C810": {
+  "status": "identified",
+  "name": "Requested Torque Blend Weight 2 (Accelerator x Vehicle Speed)",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x82758: weight w = T(accelerator FFFEEEF8, vehicle speed FFFEF0DA)/255 blends the requested-torque candidates (out = w*(Tq-16000) + (1-w)*(Tq_A-16000) + 16000 style arithmetic, 0xC80/0x33 = 16000/255 offset terms). Weight applied to FFFF0A4E.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/255",
+   "to_byte": "x*255/100",
+   "format": "0.0"
+  }
+ },
+ "0x2C824": {
+  "status": "identified",
+  "name": "Requested Torque Blend Weight 3 (Accelerator x Vehicle Speed)",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x82758: weight w = T(accelerator FFFEEEF8, vehicle speed FFFEF0DA)/255 blends the requested-torque candidates (out = w*(Tq-16000) + (1-w)*(Tq_A-16000) + 16000 style arithmetic, 0xC80/0x33 = 16000/255 offset terms). Weight applied to FFFF0A4A (third output).",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/255",
+   "to_byte": "x*255/100",
+   "format": "0.0"
+  }
+ },
  "0x2C998": {
   "status": "identified",
   "name": "Base Ignition Timing (flags 04F4.7=1, 054A.4=0)",
