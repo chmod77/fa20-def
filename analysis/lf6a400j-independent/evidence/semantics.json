@@ -775,6 +775,27 @@
    "format": "0.0"
   }
  },
+ "0x2C9E8": {
+  "status": "identified",
+  "name": "Torque Offset Base (RPM) [-> 0ADC]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x868AC (from 0x87410): FFFF0ADC = T(rpm FFFF2994) + FFFF0ACC*(T_02C9F4-16000)/32768 (16000-offset arithmetic, clamped >= 16001); 0x8267C forms (Requested Torque 0A62 + 0ADA - 16000) - 0ADC + 16000, so 0ADC and T are in the torque type. Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range).",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed",
+    "units": "rpm",
+    "expr": "x*25/128",
+    "to_byte": "x*128/25"
+   }
+  }
+ },
  "0x2CA14": {
   "status": "identified",
   "name": "Target Throttle Opening (vs max(FFFF09D4, FFFF0B16))",

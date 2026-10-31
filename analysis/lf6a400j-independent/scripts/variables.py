@@ -194,3 +194,7 @@ _dc = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), '..', 'evidenc
 if not _os.environ.get('NO_V3') and _os.path.exists(_dc):
     for _k, _v in _json.load(open(_dc)).items():
         V2.setdefault(int(_k, 16), tuple(_v))
+V2.update({
+ 0xFFFF0ADC:('Torque (loss/offset term, 0ADC)','Nm','(x-16000)/80','x*80+16000','0x8267C: (FFFF0A62 + 0ADA - 16000) - 0ADC + 16000 with Requested Torque 0A62 (torque type) -> same type'+_TQ),
+ 0xFFFF0ADA:('Torque (adder term, 0ADA)','Nm','(x-16000)/80','x*80+16000','0x8267C: FFFF0A62 + 0ADA - 16000 (torque-type addition)'+_TQ),
+})

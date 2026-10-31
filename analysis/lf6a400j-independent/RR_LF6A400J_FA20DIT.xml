@@ -2106,9 +2106,9 @@
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 24 [D02C9E8] (Engine Speed)" category="Unidentified - Ignition Timing - Base &amp; Torque Model" storageaddress="12966" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C9E8. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="24">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="12454" elements="24" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Torque Offset Base (RPM) [-&gt; 0ADC]" category="Driver Demand / Torque Request" storageaddress="12966" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C9E8. Evidence: 0x868AC (from 0x87410): FFFF0ADC = T(rpm FFFF2994) + FFFF0ACC*(T_02C9F4-16000)/32768 (16000-offset arithmetic, clamped &gt;= 16001); 0x8267C forms (Requested Torque 0A62 + 0ADA - 16000) - 0ADC + 16000, so 0ADC and T are in the torque type. Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW-&gt;Nm via 60000/2pi, stored *80+16000, clamps = u16 range)." sizey="24">
+      <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="12454" elements="24" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>

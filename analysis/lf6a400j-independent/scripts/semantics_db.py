@@ -689,6 +689,11 @@ add(0x2D9EC, 'Ignition Timing Ramp Rate [0x9DE28]', IGN,
     '0x9DE28: the ramped timing FFFEC05C (0.5 deg, offset 32) increases by T per execution while ramping (vs FFFF2A04), so T is 0.5 deg per step.',
     ('deg/step', 'x/2', 'x*2', '0.0'))
 
+add(0x2C9E8, 'Torque Offset Base (RPM) [-> 0ADC]', 'Driver Demand / Torque Request',
+    '0x868AC (from 0x87410): FFFF0ADC = T(rpm FFFF2994) + FFFF0ACC*(T_02C9F4-16000)/32768 (16000-offset arithmetic, clamped >= 16001); '
+    '0x8267C forms (Requested Torque 0A62 + 0ADA - 16000) - 0ADC + 16000, so 0ADC and T are in the torque type.' + TQEV,
+    ('Nm', '(x-16000)/80', 'x*80+16000', '0.0'), axes={'0': dict(name='Engine Speed', units='rpm', expr='x*25/128', to_byte='x*128/25')})
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
