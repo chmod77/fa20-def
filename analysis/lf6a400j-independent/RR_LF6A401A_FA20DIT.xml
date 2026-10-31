@@ -444,27 +444,27 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 6 [D02CDD8]" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="A1E8" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2CDD8. Lookup result stored to: FFFF0B74, FFFF0B76. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="6">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="A1E2" elements="6" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Engine Speed Threshold (Gear) [0x8C790]" category="Fueling - Open Loop &amp; Enrichment" storageaddress="A1E8" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2CDD8. Evidence: 0x8C790 (from 0x888C0): flag FFFEBC94 = (T_thr - [T_hys while set]) &lt;= engine speed FFFF2994 (rpm = x*25/128); thresholds by gear (FFFF03AD when FFFEE710.7 set, else min(FFFF0593, FFFF0560)); outputs FFFF0B74/0B76 = selected threshold/hysteresis.  Lookup result stored to: FFFF0B74, FFFF0B76." sizey="6">
+      <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="A1E2" elements="6" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 6 [D02CDE4]" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="A1F4" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2CDE4. Lookup result stored to: FFFF0B76. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="6">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="A1E2" elements="6" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Engine Speed Threshold Hysteresis (Gear) [0x8C790]" category="Fueling - Open Loop &amp; Enrichment" storageaddress="A1F4" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2CDE4. Evidence: 0x8C790 (from 0x888C0): flag FFFEBC94 = (T_thr - [T_hys while set]) &lt;= engine speed FFFF2994 (rpm = x*25/128); thresholds by gear (FFFF03AD when FFFEE710.7 set, else min(FFFF0593, FFFF0560)); outputs FFFF0B74/0B76 = selected threshold/hysteresis.  Lookup result stored to: FFFF0B76." sizey="6">
+      <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="A1E2" elements="6" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 6 [D02CDCC]" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="A200" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2CDCC. Lookup result stored to: FFFF0B76. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="6">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF03AD)" storageaddress="A1E2" elements="6" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Engine Speed Threshold Hysteresis (Gear, FFFEE710.7 set) [0x8C790]" category="Fueling - Open Loop &amp; Enrichment" storageaddress="A200" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2CDCC. Evidence: 0x8C790 (from 0x888C0): flag FFFEBC94 = (T_thr - [T_hys while set]) &lt;= engine speed FFFF2994 (rpm = x*25/128); thresholds by gear (FFFF03AD when FFFEE710.7 set, else min(FFFF0593, FFFF0560)); outputs FFFF0B74/0B76 = selected threshold/hysteresis.  Lookup result stored to: FFFF0B76." sizey="6">
+      <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF03AD)" storageaddress="A1E2" elements="6" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 6 [D02CDC0]" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="A20C" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2CDC0. Lookup result stored to: FFFF0B74, FFFF0B76. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="6">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF03AD)" storageaddress="A1E2" elements="6" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Engine Speed Threshold (Gear, FFFEE710.7 set) [0x8C790]" category="Fueling - Open Loop &amp; Enrichment" storageaddress="A20C" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2CDC0. Evidence: 0x8C790 (from 0x888C0): flag FFFEBC94 = (T_thr - [T_hys while set]) &lt;= engine speed FFFF2994 (rpm = x*25/128); thresholds by gear (FFFF03AD when FFFEE710.7 set, else min(FFFF0593, FFFF0560)); outputs FFFF0B74/0B76 = selected threshold/hysteresis.  Lookup result stored to: FFFF0B74, FFFF0B76." sizey="6">
+      <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF03AD)" storageaddress="A1E2" elements="6" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>

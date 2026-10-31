@@ -1043,6 +1043,58 @@
    "format": "0.000"
   }
  },
+ "0x2CDC0": {
+  "status": "identified",
+  "name": "Engine Speed Threshold (Gear, FFFEE710.7 set) [0x8C790]",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x8C790 (from 0x888C0): flag FFFEBC94 = (T_thr - [T_hys while set]) <= engine speed FFFF2994 (rpm = x*25/128); thresholds by gear (FFFF03AD when FFFEE710.7 set, else min(FFFF0593, FFFF0560)); outputs FFFF0B74/0B76 = selected threshold/hysteresis. ",
+  "description": "",
+  "data": {
+   "units": "rpm",
+   "expr": "x*25/128",
+   "to_byte": "x*128/25",
+   "format": "0"
+  }
+ },
+ "0x2CDCC": {
+  "status": "identified",
+  "name": "Engine Speed Threshold Hysteresis (Gear, FFFEE710.7 set) [0x8C790]",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x8C790 (from 0x888C0): flag FFFEBC94 = (T_thr - [T_hys while set]) <= engine speed FFFF2994 (rpm = x*25/128); thresholds by gear (FFFF03AD when FFFEE710.7 set, else min(FFFF0593, FFFF0560)); outputs FFFF0B74/0B76 = selected threshold/hysteresis. ",
+  "description": "",
+  "data": {
+   "units": "rpm",
+   "expr": "x*25/128",
+   "to_byte": "x*128/25",
+   "format": "0"
+  }
+ },
+ "0x2CDD8": {
+  "status": "identified",
+  "name": "Engine Speed Threshold (Gear) [0x8C790]",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x8C790 (from 0x888C0): flag FFFEBC94 = (T_thr - [T_hys while set]) <= engine speed FFFF2994 (rpm = x*25/128); thresholds by gear (FFFF03AD when FFFEE710.7 set, else min(FFFF0593, FFFF0560)); outputs FFFF0B74/0B76 = selected threshold/hysteresis. ",
+  "description": "",
+  "data": {
+   "units": "rpm",
+   "expr": "x*25/128",
+   "to_byte": "x*128/25",
+   "format": "0"
+  }
+ },
+ "0x2CDE4": {
+  "status": "identified",
+  "name": "Engine Speed Threshold Hysteresis (Gear) [0x8C790]",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x8C790 (from 0x888C0): flag FFFEBC94 = (T_thr - [T_hys while set]) <= engine speed FFFF2994 (rpm = x*25/128); thresholds by gear (FFFF03AD when FFFEE710.7 set, else min(FFFF0593, FFFF0560)); outputs FFFF0B74/0B76 = selected threshold/hysteresis. ",
+  "description": "",
+  "data": {
+   "units": "rpm",
+   "expr": "x*25/128",
+   "to_byte": "x*128/25",
+   "format": "0"
+  }
+ },
  "0x2CE08": {
   "status": "identified",
   "name": "Fuel Enrichment (Coolant >= 100 C)",

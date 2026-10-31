@@ -798,6 +798,14 @@ add(0x2D1FC, 'Injection Angle B Adder Factor [-> 0B8A]', INJ, _ev8a + 'x/255 fac
 add(0x2D1E8, 'Injection Angle B, Start/Alternate Mode (RPM x Coolant) [-> 0B8A]', INJ, _ev8a + 'Replaces the 0B8A value directly in the engine-state branch of 0x907CC.', CA)
 add(0x2D1AC, 'Injection Angle B, Flag Mode (RPM x Load) [-> 0B8A]', INJ, _ev8a + 'Replaces the 0B8A value directly when param_10 is set.', CA)
 
+_evc79 = ('0x8C790 (from 0x888C0): flag FFFEBC94 = (T_thr - [T_hys while set]) <= engine speed FFFF2994 (rpm = x*25/128); thresholds by gear '
+          '(FFFF03AD when FFFEE710.7 set, else min(FFFF0593, FFFF0560)); outputs FFFF0B74/0B76 = selected threshold/hysteresis. ')
+RPM16 = ('rpm', 'x*25/128', 'x*128/25', '0')
+add(0x2CDC0, 'Engine Speed Threshold (Gear, FFFEE710.7 set) [0x8C790]', FE, _evc79, RPM16)
+add(0x2CDCC, 'Engine Speed Threshold Hysteresis (Gear, FFFEE710.7 set) [0x8C790]', FE, _evc79, RPM16)
+add(0x2CDD8, 'Engine Speed Threshold (Gear) [0x8C790]', FE, _evc79, RPM16)
+add(0x2CDE4, 'Engine Speed Threshold Hysteresis (Gear) [0x8C790]', FE, _evc79, RPM16)
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
