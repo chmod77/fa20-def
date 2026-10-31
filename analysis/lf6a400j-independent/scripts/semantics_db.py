@@ -191,16 +191,20 @@ add(0x15398, 'Wastegate Proportional Gain Compensation (IAT)', WG,
 
 # ---------------------------------------------------------------- driver demand (torque request) - torque units unresolved (16000 = 0)
 TQ = 'Driver Demand / Torque Request'
-RAWTQ = ('torque raw (16000 = 0)', 'x', 'x', '0')
+# Torque fixed-point type (anchor 0xC3FA8/0xC4124): torque_Nm = P_kW*60000/(2*pi*rpm) (constant 291.42593/0.030518044 = 9549.297
+# = 60000/2pi) is stored as Nm*80 + 16000 with clamps exactly at the u16 limits (619.1875 Nm = (65535-16000)/80, -200 Nm = -16000/80).
+# The same 0x3E80 (16000) zero-offset arithmetic is used for every torque-domain quantity in 0x82FA0/0x87478.
+TQEV = ' Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range).'
+RAWTQ = ('Nm', '(x-16000)/80', 'x*80+16000', '0.0')
 _sel = ('selection: first map when FFFEEF76.7 clear and FFFF0557 < 4, otherwise the alternate map; inputs rpm FFFF2994 and accelerator pedal FFFEEEF8 '
         '(SSM 0x29). Output in the torque domain used across 0x82FA0 (16000 = zero; 0x3E80 offset arithmetic) - physical unit not anchored.')
 for d, alt, out, lab in ((0x2C4CC, 0x2C4E0, 'FFFF0A4A', 'A'), (0x2C4F4, 0x2C508, 'FFFF0A4E', 'B'), (0x2C530, 0x2C544, 'FFFF0A52', 'C'),
                          (0x2C56C, 0x2C580, 'FFFF0A56', 'D')):
     fn = {'A': '0x81448', 'B': '0x81498', 'C': '0x8151C', 'D': '0x815A0'}[lab]
-    add(d, f'Requested Torque {lab} (Accelerator Pedal)', TQ, f'{fn}: {out} = map; ' + _sel, RAWTQ, status='partial')
-    add(alt, f'Requested Torque {lab} (Accelerator Pedal, alternate)', TQ, f'{fn}: {out} = map; ' + _sel, RAWTQ, status='partial')
-add(0x2C51C, 'Requested Torque B Limit (Gear x RPM)', TQ, '0x81498: FFFF0A4E = min(T(gear FFFF03AC, rpm), Requested Torque B).', RAWTQ, status='partial')
-add(0x2C558, 'Requested Torque C Limit (Gear x RPM)', TQ, '0x8151C: FFFF0A52 = min(T(gear FFFF03AC, rpm), Requested Torque C).', RAWTQ, status='partial')
+    add(d, f'Requested Torque {lab} (Accelerator Pedal)', TQ, f'{fn}: {out} = map; ' + _sel + TQEV, RAWTQ)
+    add(alt, f'Requested Torque {lab} (Accelerator Pedal, alternate)', TQ, f'{fn}: {out} = map; ' + _sel + TQEV, RAWTQ)
+add(0x2C51C, 'Requested Torque B Limit (Gear x RPM)', TQ, '0x81498: FFFF0A4E = min(T(gear FFFF03AC, rpm), Requested Torque B).' + TQEV, RAWTQ)
+add(0x2C558, 'Requested Torque C Limit (Gear x RPM)', TQ, '0x8151C: FFFF0A52 = min(T(gear FFFF03AC, rpm), Requested Torque C).' + TQEV, RAWTQ)
 _bl = ('0x82758: weight w = T(accelerator FFFEEEF8, vehicle speed FFFEF0DA)/255 blends the requested-torque candidates '
        '(out = w*(Tq-16000) + (1-w)*(Tq_A-16000) + 16000 style arithmetic, 0xC80/0x33 = 16000/255 offset terms).')
 add(0x2C7FC, 'Requested Torque Blend Weight 1 (Accelerator x Vehicle Speed)', TQ, _bl + ' Weight multiplies FFFF0A52 (param_3; register r6 at call 0x835EE).', ('%', 'x*100/255', 'x*255/100', '0.0'))

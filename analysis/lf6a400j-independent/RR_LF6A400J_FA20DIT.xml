@@ -1266,79 +1266,79 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Requested Torque C (Accelerator Pedal, alternate) [output units unresolved]" category="Driver Demand / Torque Request" storageaddress="E7A4" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C544. Evidence: 0x8151C: FFFF0A52 = map; selection: first map when FFFEEF76.7 clear and FFFF0557 &lt; 4, otherwise the alternate map; inputs rpm FFFF2994 and accelerator pedal FFFEEEF8 (SSM 0x29). Output in the torque domain used across 0x82FA0 (16000 = zero; 0x3E80 offset arithmetic) - physical unit not anchored. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="20" sizey="16">
-      <scaling units="torque raw (16000 = 0)" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="E75C" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Requested Torque C (Accelerator Pedal, alternate)" category="Driver Demand / Torque Request" storageaddress="E7A4" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C544. Evidence: 0x8151C: FFFF0A52 = map; selection: first map when FFFEEF76.7 clear and FFFF0557 &lt; 4, otherwise the alternate map; inputs rpm FFFF2994 and accelerator pedal FFFEEEF8 (SSM 0x29). Output in the torque domain used across 0x82FA0 (16000 = zero; 0x3E80 offset arithmetic) - physical unit not anchored. Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW-&gt;Nm via 60000/2pi, stored *80+16000, clamps = u16 range)." sizex="20" sizey="16">
+      <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="E75C" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Accelerator Pedal Angle" storageaddress="E77C" elements="20" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Accelerator Pedal Angle" storageaddress="E77C" elements="20" storagetype="uint16" endian="big">
         <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Requested Torque A (Accelerator Pedal, alternate) [output units unresolved]" category="Driver Demand / Torque Request" storageaddress="EA24" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C4E0. Evidence: 0x81448: FFFF0A4A = map; selection: first map when FFFEEF76.7 clear and FFFF0557 &lt; 4, otherwise the alternate map; inputs rpm FFFF2994 and accelerator pedal FFFEEEF8 (SSM 0x29). Output in the torque domain used across 0x82FA0 (16000 = zero; 0x3E80 offset arithmetic) - physical unit not anchored. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="20" sizey="16">
-      <scaling units="torque raw (16000 = 0)" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="E75C" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Requested Torque A (Accelerator Pedal, alternate)" category="Driver Demand / Torque Request" storageaddress="EA24" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C4E0. Evidence: 0x81448: FFFF0A4A = map; selection: first map when FFFEEF76.7 clear and FFFF0557 &lt; 4, otherwise the alternate map; inputs rpm FFFF2994 and accelerator pedal FFFEEEF8 (SSM 0x29). Output in the torque domain used across 0x82FA0 (16000 = zero; 0x3E80 offset arithmetic) - physical unit not anchored. Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW-&gt;Nm via 60000/2pi, stored *80+16000, clamps = u16 range)." sizex="20" sizey="16">
+      <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="E75C" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Accelerator Pedal Angle" storageaddress="E77C" elements="20" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Accelerator Pedal Angle" storageaddress="E77C" elements="20" storagetype="uint16" endian="big">
         <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Requested Torque B (Accelerator Pedal, alternate) [output units unresolved]" category="Driver Demand / Torque Request" storageaddress="ECA4" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C508. Evidence: 0x81498: FFFF0A4E = map; selection: first map when FFFEEF76.7 clear and FFFF0557 &lt; 4, otherwise the alternate map; inputs rpm FFFF2994 and accelerator pedal FFFEEEF8 (SSM 0x29). Output in the torque domain used across 0x82FA0 (16000 = zero; 0x3E80 offset arithmetic) - physical unit not anchored. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="20" sizey="16">
-      <scaling units="torque raw (16000 = 0)" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="E75C" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Requested Torque B (Accelerator Pedal, alternate)" category="Driver Demand / Torque Request" storageaddress="ECA4" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C508. Evidence: 0x81498: FFFF0A4E = map; selection: first map when FFFEEF76.7 clear and FFFF0557 &lt; 4, otherwise the alternate map; inputs rpm FFFF2994 and accelerator pedal FFFEEEF8 (SSM 0x29). Output in the torque domain used across 0x82FA0 (16000 = zero; 0x3E80 offset arithmetic) - physical unit not anchored. Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW-&gt;Nm via 60000/2pi, stored *80+16000, clamps = u16 range)." sizex="20" sizey="16">
+      <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="E75C" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Accelerator Pedal Angle" storageaddress="E77C" elements="20" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Accelerator Pedal Angle" storageaddress="E77C" elements="20" storagetype="uint16" endian="big">
         <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Requested Torque C (Accelerator Pedal) [output units unresolved]" category="Driver Demand / Torque Request" storageaddress="EF24" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C530. Evidence: 0x8151C: FFFF0A52 = map; selection: first map when FFFEEF76.7 clear and FFFF0557 &lt; 4, otherwise the alternate map; inputs rpm FFFF2994 and accelerator pedal FFFEEEF8 (SSM 0x29). Output in the torque domain used across 0x82FA0 (16000 = zero; 0x3E80 offset arithmetic) - physical unit not anchored. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="20" sizey="16">
-      <scaling units="torque raw (16000 = 0)" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="E75C" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Requested Torque C (Accelerator Pedal)" category="Driver Demand / Torque Request" storageaddress="EF24" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C530. Evidence: 0x8151C: FFFF0A52 = map; selection: first map when FFFEEF76.7 clear and FFFF0557 &lt; 4, otherwise the alternate map; inputs rpm FFFF2994 and accelerator pedal FFFEEEF8 (SSM 0x29). Output in the torque domain used across 0x82FA0 (16000 = zero; 0x3E80 offset arithmetic) - physical unit not anchored. Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW-&gt;Nm via 60000/2pi, stored *80+16000, clamps = u16 range)." sizex="20" sizey="16">
+      <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="E75C" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Accelerator Pedal Angle" storageaddress="E77C" elements="20" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Accelerator Pedal Angle" storageaddress="E77C" elements="20" storagetype="uint16" endian="big">
         <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Requested Torque A (Accelerator Pedal) [output units unresolved]" category="Driver Demand / Torque Request" storageaddress="F1A4" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C4CC. Evidence: 0x81448: FFFF0A4A = map; selection: first map when FFFEEF76.7 clear and FFFF0557 &lt; 4, otherwise the alternate map; inputs rpm FFFF2994 and accelerator pedal FFFEEEF8 (SSM 0x29). Output in the torque domain used across 0x82FA0 (16000 = zero; 0x3E80 offset arithmetic) - physical unit not anchored. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="20" sizey="16">
-      <scaling units="torque raw (16000 = 0)" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="E75C" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Requested Torque A (Accelerator Pedal)" category="Driver Demand / Torque Request" storageaddress="F1A4" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C4CC. Evidence: 0x81448: FFFF0A4A = map; selection: first map when FFFEEF76.7 clear and FFFF0557 &lt; 4, otherwise the alternate map; inputs rpm FFFF2994 and accelerator pedal FFFEEEF8 (SSM 0x29). Output in the torque domain used across 0x82FA0 (16000 = zero; 0x3E80 offset arithmetic) - physical unit not anchored. Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW-&gt;Nm via 60000/2pi, stored *80+16000, clamps = u16 range)." sizex="20" sizey="16">
+      <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="E75C" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Accelerator Pedal Angle" storageaddress="E77C" elements="20" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Accelerator Pedal Angle" storageaddress="E77C" elements="20" storagetype="uint16" endian="big">
         <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Requested Torque B (Accelerator Pedal) [output units unresolved]" category="Driver Demand / Torque Request" storageaddress="F424" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C4F4. Evidence: 0x81498: FFFF0A4E = map; selection: first map when FFFEEF76.7 clear and FFFF0557 &lt; 4, otherwise the alternate map; inputs rpm FFFF2994 and accelerator pedal FFFEEEF8 (SSM 0x29). Output in the torque domain used across 0x82FA0 (16000 = zero; 0x3E80 offset arithmetic) - physical unit not anchored. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="20" sizey="16">
-      <scaling units="torque raw (16000 = 0)" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="E75C" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Requested Torque B (Accelerator Pedal)" category="Driver Demand / Torque Request" storageaddress="F424" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C4F4. Evidence: 0x81498: FFFF0A4E = map; selection: first map when FFFEEF76.7 clear and FFFF0557 &lt; 4, otherwise the alternate map; inputs rpm FFFF2994 and accelerator pedal FFFEEEF8 (SSM 0x29). Output in the torque domain used across 0x82FA0 (16000 = zero; 0x3E80 offset arithmetic) - physical unit not anchored. Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW-&gt;Nm via 60000/2pi, stored *80+16000, clamps = u16 range)." sizex="20" sizey="16">
+      <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="E75C" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Accelerator Pedal Angle" storageaddress="E77C" elements="20" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Accelerator Pedal Angle" storageaddress="E77C" elements="20" storagetype="uint16" endian="big">
         <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Requested Torque D (Accelerator Pedal) [output units unresolved]" category="Driver Demand / Torque Request" storageaddress="F6EC" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C56C. Evidence: 0x815A0: FFFF0A56 = map; selection: first map when FFFEEF76.7 clear and FFFF0557 &lt; 4, otherwise the alternate map; inputs rpm FFFF2994 and accelerator pedal FFFEEEF8 (SSM 0x29). Output in the torque domain used across 0x82FA0 (16000 = zero; 0x3E80 offset arithmetic) - physical unit not anchored. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="20" sizey="16">
-      <scaling units="torque raw (16000 = 0)" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="F6A4" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Requested Torque D (Accelerator Pedal)" category="Driver Demand / Torque Request" storageaddress="F6EC" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C56C. Evidence: 0x815A0: FFFF0A56 = map; selection: first map when FFFEEF76.7 clear and FFFF0557 &lt; 4, otherwise the alternate map; inputs rpm FFFF2994 and accelerator pedal FFFEEEF8 (SSM 0x29). Output in the torque domain used across 0x82FA0 (16000 = zero; 0x3E80 offset arithmetic) - physical unit not anchored. Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW-&gt;Nm via 60000/2pi, stored *80+16000, clamps = u16 range)." sizex="20" sizey="16">
+      <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="F6A4" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Accelerator Pedal Angle" storageaddress="F6C4" elements="20" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Accelerator Pedal Angle" storageaddress="F6C4" elements="20" storagetype="uint16" endian="big">
         <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Requested Torque D (Accelerator Pedal, alternate) [output units unresolved]" category="Driver Demand / Torque Request" storageaddress="F96C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C580. Evidence: 0x815A0: FFFF0A56 = map; selection: first map when FFFEEF76.7 clear and FFFF0557 &lt; 4, otherwise the alternate map; inputs rpm FFFF2994 and accelerator pedal FFFEEEF8 (SSM 0x29). Output in the torque domain used across 0x82FA0 (16000 = zero; 0x3E80 offset arithmetic) - physical unit not anchored. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="20" sizey="16">
-      <scaling units="torque raw (16000 = 0)" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="F6A4" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Requested Torque D (Accelerator Pedal, alternate)" category="Driver Demand / Torque Request" storageaddress="F96C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C580. Evidence: 0x815A0: FFFF0A56 = map; selection: first map when FFFEEF76.7 clear and FFFF0557 &lt; 4, otherwise the alternate map; inputs rpm FFFF2994 and accelerator pedal FFFEEEF8 (SSM 0x29). Output in the torque domain used across 0x82FA0 (16000 = zero; 0x3E80 offset arithmetic) - physical unit not anchored. Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW-&gt;Nm via 60000/2pi, stored *80+16000, clamps = u16 range)." sizex="20" sizey="16">
+      <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="F6A4" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Accelerator Pedal Angle" storageaddress="F6C4" elements="20" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Accelerator Pedal Angle" storageaddress="F6C4" elements="20" storagetype="uint16" endian="big">
         <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Requested Torque Blend Weight 1 (Accelerator x Vehicle Speed)" category="Driver Demand / Torque Request" storageaddress="FBFC" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2C7FC, 0x304D0. Evidence: 0x82758: weight w = T(accelerator FFFEEEF8, vehicle speed FFFEF0DA)/255 blends the requested-torque candidates (out = w*(Tq-16000) + (1-w)*(Tq_A-16000) + 16000 style arithmetic, 0xC80/0x33 = 16000/255 offset terms). Weight applied to FFFF0A4A." sizex="4" sizey="4">
+    <table type="3D" name="Requested Torque Blend Weight 1 (Accelerator x Vehicle Speed)" category="Driver Demand / Torque Request" storageaddress="FBFC" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2C7FC, 0x304D0. Evidence: 0x82758: weight w = T(accelerator FFFEEEF8, vehicle speed FFFEF0DA)/255 blends the requested-torque candidates (out = w*(Tq-16000) + (1-w)*(Tq_A-16000) + 16000 style arithmetic, 0xC80/0x33 = 16000/255 offset terms). Weight multiplies FFFF0A52 (param_3; register r6 at call 0x835EE)." sizex="4" sizey="4">
       <scaling units="%" expression="x*100/255" to_byte="x*255/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       <table type="Y Axis" name="Unidentified input 1" storageaddress="FBEC" elements="4" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
@@ -1347,7 +1347,7 @@
         <scaling units="km/h" expression="x*9/160" to_byte="x*160/9" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Requested Torque Blend Weight 2 (Accelerator x Vehicle Speed)" category="Driver Demand / Torque Request" storageaddress="FC0C" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2C810, 0x304BC. Evidence: 0x82758: weight w = T(accelerator FFFEEEF8, vehicle speed FFFEF0DA)/255 blends the requested-torque candidates (out = w*(Tq-16000) + (1-w)*(Tq_A-16000) + 16000 style arithmetic, 0xC80/0x33 = 16000/255 offset terms). Weight applied to FFFF0A4E." sizex="4" sizey="4">
+    <table type="3D" name="Requested Torque Blend Weight 2 (Accelerator x Vehicle Speed)" category="Driver Demand / Torque Request" storageaddress="FC0C" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2C810, 0x304BC. Evidence: 0x82758: weight w = T(accelerator FFFEEEF8, vehicle speed FFFEF0DA)/255 blends the requested-torque candidates (out = w*(Tq-16000) + (1-w)*(Tq_A-16000) + 16000 style arithmetic, 0xC80/0x33 = 16000/255 offset terms). Weight multiplies FFFF0A4E (param_4; r7)." sizex="4" sizey="4">
       <scaling units="%" expression="x*100/255" to_byte="x*255/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       <table type="Y Axis" name="Unidentified input 1" storageaddress="FBEC" elements="4" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
@@ -1356,7 +1356,7 @@
         <scaling units="km/h" expression="x*9/160" to_byte="x*160/9" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Requested Torque Blend Weight 3 (Accelerator x Vehicle Speed)" category="Driver Demand / Torque Request" storageaddress="FC1C" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2C824, 0x304A8. Evidence: 0x82758: weight w = T(accelerator FFFEEEF8, vehicle speed FFFEF0DA)/255 blends the requested-torque candidates (out = w*(Tq-16000) + (1-w)*(Tq_A-16000) + 16000 style arithmetic, 0xC80/0x33 = 16000/255 offset terms). Weight applied to FFFF0A4A (third output)." sizex="4" sizey="4">
+    <table type="3D" name="Requested Torque Blend Weight 3 (Accelerator x Vehicle Speed)" category="Driver Demand / Torque Request" storageaddress="FC1C" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2C824, 0x304A8. Evidence: 0x82758: weight w = T(accelerator FFFEEEF8, vehicle speed FFFEF0DA)/255 blends the requested-torque candidates (out = w*(Tq-16000) + (1-w)*(Tq_A-16000) + 16000 style arithmetic, 0xC80/0x33 = 16000/255 offset terms). Weight w3 blends FFFF0A4A (param_5, stack) against FFFF0A52 with (255-w3)." sizex="4" sizey="4">
       <scaling units="%" expression="x*100/255" to_byte="x*255/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       <table type="Y Axis" name="Unidentified input 1" storageaddress="FBEC" elements="4" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
@@ -1365,21 +1365,21 @@
         <scaling units="km/h" expression="x*9/160" to_byte="x*160/9" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Requested Torque B Limit (Gear x RPM) [output units unresolved]" category="Driver Demand / Torque Request" storageaddress="FC3E" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C51C, 0x301C8. Evidence: 0x81498: FFFF0A4E = min(T(gear FFFF03AC, rpm), Requested Torque B). Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="5">
-      <scaling units="torque raw (16000 = 0)" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="FC39" elements="5" storagetype="uint8" endian="big" locked="true">
+    <table type="3D" name="Requested Torque B Limit (Gear x RPM)" category="Driver Demand / Torque Request" storageaddress="FC3E" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C51C, 0x301C8. Evidence: 0x81498: FFFF0A4E = min(T(gear FFFF03AC, rpm), Requested Torque B). Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW-&gt;Nm via 60000/2pi, stored *80+16000, clamps = u16 range)." sizex="16" sizey="5">
+      <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="FC39" elements="5" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Speed" storageaddress="1E5C4" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Engine Speed" storageaddress="1E5C4" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Requested Torque C Limit (Gear x RPM) [output units unresolved]" category="Driver Demand / Torque Request" storageaddress="FCE4" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C558, 0x30204. Evidence: 0x8151C: FFFF0A52 = min(T(gear FFFF03AC, rpm), Requested Torque C). Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="5">
-      <scaling units="torque raw (16000 = 0)" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="FCDE" elements="5" storagetype="uint8" endian="big" locked="true">
+    <table type="3D" name="Requested Torque C Limit (Gear x RPM)" category="Driver Demand / Torque Request" storageaddress="FCE4" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C558, 0x30204. Evidence: 0x8151C: FFFF0A52 = min(T(gear FFFF03AC, rpm), Requested Torque C). Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW-&gt;Nm via 60000/2pi, stored *80+16000, clamps = u16 range)." sizex="16" sizey="5">
+      <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="FCDE" elements="5" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Speed" storageaddress="1E5C4" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Engine Speed" storageaddress="1E5C4" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -2777,8 +2777,8 @@
       <table type="Y Axis" name="Engine Speed" storageaddress="14FBE" elements="13" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2 (RAM 0xFFFF0A62)" storageaddress="14FD8" elements="14" storagetype="uint16" endian="big">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="X Axis" name="Requested Torque" storageaddress="14FD8" elements="14" storagetype="uint16" endian="big">
+        <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
     <table type="3D" name="Wastegate Duty Maximum" category="Boost Control - Wastegate" storageaddress="15160" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E59C. X: FFFF0A62 (torque-domain request, units unresolved). Evidence: 0xBD11C: FFFF0E42 = T(rpm, FFFF0A62)*FFFF0E5C/32768; 0xBD2AC caps FFFF0E4E at FFFF0E42 -&gt; WG duty." sizex="14" sizey="13">
@@ -2786,8 +2786,8 @@
       <table type="Y Axis" name="Engine Speed" storageaddress="14FBE" elements="13" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2 (RAM 0xFFFF0A62)" storageaddress="14FD8" elements="14" storagetype="uint16" endian="big">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="X Axis" name="Requested Torque" storageaddress="14FD8" elements="14" storagetype="uint16" endian="big">
+        <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
     <table type="3D" name="Wastegate Duty Compensation (Atmospheric Pressure)" category="Boost Control - Wastegate" storageaddress="15308" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2E620. Evidence: 0xBDA58: FFFF0E5A = T(rpm, atmospheric FFFEE6AA)&lt;&lt;8; 0xBDA04: FFFF0E5C = 0E5A*IATfactor&gt;&gt;7 multiplies WG Duty Initial and Maximum (0xBD2AC/0xBD11C); 128 = 1.0." sizex="10" sizey="4">
@@ -2828,8 +2828,8 @@
       <table type="Y Axis" name="Engine Speed" storageaddress="153EA" elements="15" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2 (RAM 0xFFFF0A62)" storageaddress="15418" elements="16" storagetype="uint16" endian="big">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="X Axis" name="Requested Torque" storageaddress="15418" elements="16" storagetype="uint16" endian="big">
+        <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
     <table type="3D" name="Target Boost Compensation (Atmospheric Pressure)" category="Boost Control - Target" storageaddress="15658" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2E5E0. Evidence: 0xBD7A0: FFFF052A = T(rpm, atmospheric FFFEE6AA); 0xBD8F4: FFFF0E58 = IATfactor*052A*2*FFFF0529&gt;&gt;7 multiplies Target Boost (0xBD7C4); 128 = 1.0." sizex="8" sizey="6">

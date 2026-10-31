@@ -126,3 +126,12 @@ V2.update({
  0xFFFF0400:('Open Loop Fuel Enrichment (primary)','lambda','256/(256+x)','256/x-256','0x8F8C0 -> FFFF0401 -> OBD PID44 conv 0x10C32C: lambda=256/(256+0B84+0401+0B42)'),
  0xFFFF0401:('Open Loop Fuel Enrichment','lambda','256/(256+x)','256/x-256','OBD PID44 conv 0x10C32C: commanded lambda = 0x800000/(0B84+0401+0B42+256)/32768'),
 })
+
+_TQ = ' Torque type Nm=(x-16000)/80 anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range).'
+V2.update({
+ 0xFFFF0A62:('Requested Torque','Nm','(x-16000)/80','x*80+16000','0x820A0: = FFFF0A44 (limited); 16000-offset torque domain of 0x82FA0.'+_TQ),
+ 0xFFFF0A4A:('Requested Torque A (pedal)','Nm','(x-16000)/80','x*80+16000','0x81448 out (stack arg at 0x830CC).'+_TQ),
+ 0xFFFF0A4E:('Requested Torque B (pedal)','Nm','(x-16000)/80','x*80+16000','0x81498 out.'+_TQ),
+ 0xFFFF0A52:('Requested Torque C (pedal)','Nm','(x-16000)/80','x*80+16000','0x8151C out.'+_TQ),
+ 0xFFFF0A56:('Requested Torque D (pedal)','Nm','(x-16000)/80','x*80+16000','0x815A0 out.'+_TQ),
+})
