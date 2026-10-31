@@ -3085,10 +3085,128 @@
   },
   "axes": {
    "0": {
-    "name": "Executions Since Start",
-    "units": "count",
-    "expr": "x",
-    "to_byte": "x"
+    "name": "Time Since Start (40 ms task 0x153248, see PID 0x1F)",
+    "units": "s",
+    "expr": "x*0.04",
+    "to_byte": "x/0.04"
+   }
+  }
+ },
+ "0x2F104": {
+  "status": "identified",
+  "name": "Alternator Duty Base, Mode 3 (FFFF3950)",
+  "category": "Alternator Control",
+  "evidence": "0xE363C -> FFFF10E0 -> 0xE331C Alternator Duty FFFF10D6 (SSM 0x3A, % = x*0.06, same units). Mode 3: 10E0 = T(FFFF3950) + T_02F14C (when FFFF3950 < T_02F110 or FFFF0583 1..6).",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*0.06",
+   "to_byte": "x/0.06",
+   "format": "0.00"
+  }
+ },
+ "0x2F11C": {
+  "status": "identified",
+  "name": "Alternator Duty Adder, Mode 0 (Battery Temp)",
+  "category": "Alternator Control",
+  "evidence": "0xE363C -> FFFF10E0 -> 0xE331C Alternator Duty FFFF10D6 (SSM 0x3A, % = x*0.06, same units). FFFF06D8 mode: 10E0 = T + 0x46E (68.0 %).",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*0.06",
+   "to_byte": "x/0.06",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Battery Temperature",
+    "units": "C",
+    "expr": "x-50",
+    "to_byte": "x+50"
+   }
+  }
+ },
+ "0x2F128": {
+  "status": "identified",
+  "name": "Alternator Duty Adder, Mode 1 (Battery Temp)",
+  "category": "Alternator Control",
+  "evidence": "0xE363C -> FFFF10E0 -> 0xE331C Alternator Duty FFFF10D6 (SSM 0x3A, % = x*0.06, same units). FFFF06D8 mode: 10E0 = T + 0x46E (68.0 %).",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*0.06",
+   "to_byte": "x/0.06",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Battery Temperature",
+    "units": "C",
+    "expr": "x-50",
+    "to_byte": "x+50"
+   }
+  }
+ },
+ "0x2F134": {
+  "status": "identified",
+  "name": "Alternator Duty Adder, Mode 2 (Battery Temp)",
+  "category": "Alternator Control",
+  "evidence": "0xE363C -> FFFF10E0 -> 0xE331C Alternator Duty FFFF10D6 (SSM 0x3A, % = x*0.06, same units). FFFF06D8 mode: 10E0 = T + 0x248 (35.0 %).",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*0.06",
+   "to_byte": "x/0.06",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Battery Temperature",
+    "units": "C",
+    "expr": "x-50",
+    "to_byte": "x+50"
+   }
+  }
+ },
+ "0x2F140": {
+  "status": "identified",
+  "name": "Alternator Duty Adder, Mode 3 (Battery Temp)",
+  "category": "Alternator Control",
+  "evidence": "0xE363C -> FFFF10E0 -> 0xE331C Alternator Duty FFFF10D6 (SSM 0x3A, % = x*0.06, same units). FFFF06D8 mode: 10E0 = T + 0x248 (35.0 %).",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*0.06",
+   "to_byte": "x/0.06",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Battery Temperature",
+    "units": "C",
+    "expr": "x-50",
+    "to_byte": "x+50"
+   }
+  }
+ },
+ "0x2F14C": {
+  "status": "identified",
+  "name": "Alternator Duty Adder, Mode 3 Base Path (Battery Temp)",
+  "category": "Alternator Control",
+  "evidence": "0xE363C -> FFFF10E0 -> 0xE331C Alternator Duty FFFF10D6 (SSM 0x3A, % = x*0.06, same units). Mode 3: 10E0 = T_02F104(FFFF3950) + T.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*0.06",
+   "to_byte": "x/0.06",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Battery Temperature",
+    "units": "C",
+    "expr": "x-50",
+    "to_byte": "x+50"
    }
   }
  },

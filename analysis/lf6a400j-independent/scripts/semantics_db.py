@@ -427,7 +427,7 @@ add(0x2EEB0, 'Catalyst Temperature Initial Value at Start', CAT, evc + 'FFFECFC4
 add(0x2EEC4, 'Catalyst Temperature Target Gain (vs Initial Temperature)', CAT, evc + 'k factor, input = T_02EEB0 output.',
     ('factor', 'x/256', 'x*256', '0.000'), axes={'0': dict(name='Catalyst Temperature Initial Value', units='C', expr='x*4-40', to_byte='(x+40)/4')})
 add(0x2EED0, 'Catalyst Temperature Target Gain (vs Time Since Start)', CAT, evc + 'k factor, input = counter FFFECFC8 (+1 per execution while FFFEEEC1.0 clear).',
-    ('factor', 'x/256', 'x*256', '0.000'), axes={'0': dict(name='Executions Since Start', units='count', expr='x', to_byte='x')})
+    ('factor', 'x/256', 'x*256', '0.000'), axes={'0': dict(name='Time Since Start (40 ms task 0x153248, see PID 0x1F)', units='s', expr='x*0.04', to_byte='x/0.04')})
 evr = evc + 'Approach-rate gain = T_EE8C|98 * T_EEA4 * T_EE80 * (T_EE74*26/256) / 2^24 (relative factors). '
 add(0x2EE74, 'Catalyst Temperature Rate Factor (Vehicle Speed)', CAT, evr + 'Input FFFEF0DA vehicle speed.', ('factor', 'x/256', 'x*256', '0.000'))
 add(0x2EE80, 'Catalyst Temperature Rate Factor (FFFF0F56)', CAT, evr + 'Input FFFF0F56.', ('factor', 'x/256', 'x*256', '0.000'))
@@ -577,6 +577,21 @@ for n, (d, fn, out) in enumerate(((0x2D2DC, '0x91450', 'FFFF1538'), (0x2D2F0, '0
     add(d, f'Fuel Quantity Multiplier, Channel {n} (Fuel Quantity x RPM)', INJ,
         f'{fn} is instruction-for-instruction the twin of 0x91310 (called next to it from 0x8A670, enable FFFF0539 bit {8-n}): '
         f'{out} = (T(q FFFF0BA6, rpm FFFF2996) * q) >> 7, so T/128 multiplies the fuel quantity (128 = 1.0).', ('multiplier', 'x/128', 'x*128', '0.000'))
+
+
+# ---------------------------------------------------------------- alternator target duty (0xE363C from 0xE2938)
+# 0xE331C: Alternator Duty FFFF10D6 (SSM 0x3A, % = x*0.06) = rate-limited, clamped FFFF10E0 (same units); 0xE363C writes FFFF10E0 by mode
+# FFFF06D8: 0 -> T_02F11C + 0x46E, 1 -> T_02F128 + 0x46E, 2 -> T_02F134 + 0x248, 3 -> T_02F104(FFFF3950) + T_02F14C or T_02F140 + 0x248.
+#   Adder tables are indexed by battery temperature FFFEF0A6 (C = x-50).
+ALT = 'Alternator Control'
+DUTY = ('%', 'x*0.06', 'x/0.06', '0.00')
+BTAX = {'0': dict(name='Battery Temperature', units='C', expr='x-50', to_byte='x+50')}
+eva = '0xE363C -> FFFF10E0 -> 0xE331C Alternator Duty FFFF10D6 (SSM 0x3A, % = x*0.06, same units). '
+for d, nm, base in ((0x2F11C, 'Alternator Duty Adder, Mode 0 (Battery Temp)', 0x46E), (0x2F128, 'Alternator Duty Adder, Mode 1 (Battery Temp)', 0x46E),
+                    (0x2F134, 'Alternator Duty Adder, Mode 2 (Battery Temp)', 0x248), (0x2F140, 'Alternator Duty Adder, Mode 3 (Battery Temp)', 0x248)):
+    add(d, nm, ALT, eva + f'FFFF06D8 mode: 10E0 = T + 0x{base:X} ({base*0.06:.1f} %).', DUTY, axes=BTAX)
+add(0x2F14C, 'Alternator Duty Adder, Mode 3 Base Path (Battery Temp)', ALT, eva + 'Mode 3: 10E0 = T_02F104(FFFF3950) + T.', DUTY, axes=BTAX)
+add(0x2F104, 'Alternator Duty Base, Mode 3 (FFFF3950)', ALT, eva + 'Mode 3: 10E0 = T(FFFF3950) + T_02F14C (when FFFF3950 < T_02F110 or FFFF0583 1..6).', DUTY)
 
 
 if __name__ == '__main__':

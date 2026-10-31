@@ -5210,8 +5210,8 @@
     </table>
     <table type="2D" name="Catalyst Temperature Target Gain (vs Time Since Start)" category="Catalyst Temperature Model" storageaddress="1EEBA" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2EED0. Evidence: 0xD9D40: Catalyst Temperature B1S1 FFFF0FE4 (OBD PID 3C, C=x/64-40) model; target = k*(4*T-40) C, k = T_EEC4*T_EED0/65536. k factor, input = counter FFFECFC8 (+1 per execution while FFFEEEC1.0 clear). Lookup result stored to: FFFF0682." sizey="8">
       <scaling units="factor" expression="x/256" to_byte="x*256" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Executions Since Start" storageaddress="1EDBA" elements="8" storagetype="uint16" endian="big">
-        <scaling units="count" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Time Since Start (40 ms task 0x153248, see PID 0x1F)" storageaddress="1EDBA" elements="8" storagetype="uint16" endian="big">
+        <scaling units="s" expression="x*0.04" to_byte="x/0.04" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
     <table type="2D" name="Catalyst Temperature Target Gain (vs Initial Temperature)" category="Catalyst Temperature Model" storageaddress="1EEC2" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2EEC4. Evidence: 0xD9D40: Catalyst Temperature B1S1 FFFF0FE4 (OBD PID 3C, C=x/64-40) model; target = k*(4*T-40) C, k = T_EEC4*T_EED0/65536. k factor, input = T_02EEB0 output. Lookup result stored to: FFFF0681." sizey="8">
@@ -5250,39 +5250,39 @@
         <scaling units="km/h" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02F104]" category="Unidentified - Alternator Control" storageaddress="1EFF8" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F104. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF3950)" storageaddress="1F008" elements="8" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Alternator Duty Base, Mode 3 (FFFF3950)" category="Alternator Control" storageaddress="1EFF8" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F104. Evidence: 0xE363C -&gt; FFFF10E0 -&gt; 0xE331C Alternator Duty FFFF10D6 (SSM 0x3A, % = x*0.06, same units). Mode 3: 10E0 = T(FFFF3950) + T_02F14C (when FFFF3950 &lt; T_02F110 or FFFF0583 1..6)." sizey="8">
+      <scaling units="%" expression="x*0.06" to_byte="x/0.06" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF3950)" storageaddress="1F008" elements="8" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02F134] (Battery Temperature (control))" category="Unidentified - Alternator Control" storageaddress="1F018" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2F134. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Battery Temperature (control)" storageaddress="1F048" elements="8" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Alternator Duty Adder, Mode 2 (Battery Temp)" category="Alternator Control" storageaddress="1F018" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2F134. Evidence: 0xE363C -&gt; FFFF10E0 -&gt; 0xE331C Alternator Duty FFFF10D6 (SSM 0x3A, % = x*0.06, same units). FFFF06D8 mode: 10E0 = T + 0x248 (35.0 %)." sizey="8">
+      <scaling units="%" expression="x*0.06" to_byte="x/0.06" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Battery Temperature" storageaddress="1F048" elements="8" storagetype="uint8" endian="big">
         <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02F14C] (Battery Temperature (control))" category="Unidentified - Alternator Control" storageaddress="1F028" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2F14C. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Battery Temperature (control)" storageaddress="1F048" elements="8" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Alternator Duty Adder, Mode 3 Base Path (Battery Temp)" category="Alternator Control" storageaddress="1F028" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2F14C. Evidence: 0xE363C -&gt; FFFF10E0 -&gt; 0xE331C Alternator Duty FFFF10D6 (SSM 0x3A, % = x*0.06, same units). Mode 3: 10E0 = T_02F104(FFFF3950) + T." sizey="8">
+      <scaling units="%" expression="x*0.06" to_byte="x/0.06" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Battery Temperature" storageaddress="1F048" elements="8" storagetype="uint8" endian="big">
         <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02F140] (Battery Temperature (control))" category="Unidentified - Alternator Control" storageaddress="1F038" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2F140. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Battery Temperature (control)" storageaddress="1F048" elements="8" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Alternator Duty Adder, Mode 3 (Battery Temp)" category="Alternator Control" storageaddress="1F038" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2F140. Evidence: 0xE363C -&gt; FFFF10E0 -&gt; 0xE331C Alternator Duty FFFF10D6 (SSM 0x3A, % = x*0.06, same units). FFFF06D8 mode: 10E0 = T + 0x248 (35.0 %)." sizey="8">
+      <scaling units="%" expression="x*0.06" to_byte="x/0.06" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Battery Temperature" storageaddress="1F048" elements="8" storagetype="uint8" endian="big">
         <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02F11C] (Battery Temperature (control))" category="Unidentified - Alternator Control" storageaddress="1F050" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2F11C. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Battery Temperature (control)" storageaddress="1F070" elements="8" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Alternator Duty Adder, Mode 0 (Battery Temp)" category="Alternator Control" storageaddress="1F050" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2F11C. Evidence: 0xE363C -&gt; FFFF10E0 -&gt; 0xE331C Alternator Duty FFFF10D6 (SSM 0x3A, % = x*0.06, same units). FFFF06D8 mode: 10E0 = T + 0x46E (68.0 %)." sizey="8">
+      <scaling units="%" expression="x*0.06" to_byte="x/0.06" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Battery Temperature" storageaddress="1F070" elements="8" storagetype="uint8" endian="big">
         <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02F128] (Battery Temperature (control))" category="Unidentified - Alternator Control" storageaddress="1F060" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2F128. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Battery Temperature (control)" storageaddress="1F070" elements="8" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Alternator Duty Adder, Mode 1 (Battery Temp)" category="Alternator Control" storageaddress="1F060" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2F128. Evidence: 0xE363C -&gt; FFFF10E0 -&gt; 0xE331C Alternator Duty FFFF10D6 (SSM 0x3A, % = x*0.06, same units). FFFF06D8 mode: 10E0 = T + 0x46E (68.0 %)." sizey="8">
+      <scaling units="%" expression="x*0.06" to_byte="x/0.06" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Battery Temperature" storageaddress="1F070" elements="8" storagetype="uint8" endian="big">
         <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
