@@ -254,7 +254,7 @@ V2.update({
 V2.update({
  0xFFFF0D10:('Target Idle Speed (0D10)','rpm','x*25/128','x*128/25','0xAB738: FFFF0D06 (rpm, SSM via 0xD0C50) = 0D10'),
  0xFFFF0D0E:('Target Idle Speed (0D0E)','rpm','x*25/128','x*128/25','0xAB784: 0D10 = 0D0E when FFFF04CC.4 clear'),
- 0xFFFF0D02:('Target Idle Speed (0D02)','rpm','x*25/128','x*128/25','0xAB758: 0D0E = max(0D02, FFFEED47*1024/25)'),
+ 0xFFFF0D02:('Target Idle Speed (0D02)','rpm','x*25/128','x*128/25','0xAB758: 0D0E = max(0D02, FFFEED47*1024/25); writer 0xAB150 (emulation): 0D02 = min(0D12, (0D08>>6)<<6), 0D08 = Target Idle Speed (base)'),
 })
 V2.update({
  0xFFFF0AAE:('Torque 0AAE','Nm','(x-16000)/80','x*80+16000','0x86F74: (0AAE-16000)*8192/(0ADC-16000) torque ratio; 0x85580 = 0AAC + P - 16000'+_TQ),
@@ -302,4 +302,7 @@ V2.update({
 })
 V2.update({
  0xFFFF0A8E:('Accelerator Pedal Angle (limited, 0A8E)','%','x*100/65280','x*65280/100','0x82C34 (emulation: EmuFindWriter 0x82FA0 -> write at 0x82C4A): 0A8E = 1282 (pedal limit) when FFFF03C6 == 0x18 and pedal <= 1282, else Accelerator Pedal Angle FFFEEEF8 (SSM 0x29)'),
+})
+V2.update({
+ 0xFFFF0D12:('Target Idle Speed (0D12)','rpm','x*25/128','x*128/25','0xAB150 (call 0xA8F36; writer of 0D02 found by emulation): 0D02 = min(0D12, (0D08>>6)<<6) with 0D08 Target Idle Speed (base) rpm'),
 })
