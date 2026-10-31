@@ -207,6 +207,14 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
   **0.5 deg CA** (deg = x/2; the earlier 1 deg labels were wrong by 2 and are corrected). Misfire: 0x15A822 times a 17-tooth (170 deg)
   window -> 2F3C; 0x4DFF2 2B00 = 272e6*16/3/2F3C = rpm*128/25 (same unit as 2994); 2B0C/2B0E = second differences -> 0xE541C
   fluctuation thresholds (10 tables, rpm). 2B34..2B44 (0x4DAC8/0x4DC22) are quadratic metrics: unscaled. Coverage 625 of 1284.
+- **Emulation tools (session 4).** scripts/EmuCallArgs.java (run a function from entry to a call and print stack params) and
+  scripts/EmuFindWriter.java (seed a RAM word, emulate a function/task, report the instruction that writes it) use Ghidra's
+  EmulatorHelper. The checked-in project is owned by the local user: copy ghidra/ to /tmp/gp and set OWNER in lf6a400j.rep/project.prp
+  to run headless elsewhere. Results: 0xB53D4 outputs p22/p23/p24 = FFFF0DA6/0DAA/0D96 (static stack-args.tsv had these wrong);
+  0xAA684 outputs p13..p19 = 0CE2/0CE0/0CDE/0CF2/0CF4/0C4E/0C4C (so 0D02 is not from 0xAA684); FFFF12C2 is written by 0x1068D0 (from
+  0x1011EC in the 20 ms task) = filtered T_02FC98(FFFF0554, FFFF0F42), default 0x500 - unit still open (0554/0F42 unproven).
+  Next: use EmuFindWriter on the other pointer-written variables (0D02, 0A8E, 0F42, 0554, 0DA6 producer) and EmuCallArgs on calls
+  whose stack-args rows are missing.
 - Dead ends this session (documented so they are not repeated):
   * FFFF12C2 (axis of the pedal-limit T1 tables, compared with 12BE in the torque monitor): only a read literal (0xC50D0); writer not
     found by literal, GBR (+70 from 127C) or r0-offset searches.
