@@ -9446,6 +9446,19 @@
    "format": "0.00"
   }
  },
+ "0x30080": {
+  "status": "identified",
+  "name": "Torque 1422 (monitor) Threshold (0x123E10)",
+  "category": "Thresholds - Torque 1422 (monitor)",
+  "evidence": "0x123E10: lookup result compared with Torque 1422 (monitor) (FFFF1422): \"((uint)param_2 < (uVar1 & 0xffff)\"; a comparison requires the same unit, so the output carries that scaling.",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.00"
+  }
+ },
  "0x30568": {
   "status": "identified",
   "name": "Torque Limit Offset (RPM) [0x126410]",
