@@ -2275,6 +2275,19 @@
    "format": "0.00"
   }
  },
+ "0x2E418": {
+  "status": "identified",
+  "name": "Engine Load Threshold (0xB6258)",
+  "category": "Thresholds - Engine Load",
+  "evidence": "0xB6258: lookup result compared with Engine Load (FFFF03A0): \"((uVar4 & 0xff) <= (param_11 & 0xff)\"; a comparison requires the same unit, so the output carries that scaling.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x",
+   "to_byte": "x",
+   "format": "0.00"
+  }
+ },
  "0x2E588": {
   "status": "identified",
   "name": "Wastegate Duty Initial",
@@ -2481,6 +2494,32 @@
    "format": "0.00"
   }
  },
+ "0x2EB40": {
+  "status": "identified",
+  "name": "Engine Speed (OBD copy) Threshold (0xCD150)",
+  "category": "Thresholds - Engine Speed (OBD copy)",
+  "evidence": "0xCD150: lookup result compared with Engine Speed (OBD copy) (FFFF2ADA): \"((param_7 & 0xffff) < (uVar6 & 0xffff)\"; a comparison requires the same unit, so the output carries that scaling.",
+  "description": "",
+  "data": {
+   "units": "rpm",
+   "expr": "x*25/128",
+   "to_byte": "x*128/25",
+   "format": "0.00"
+  }
+ },
+ "0x2EB4C": {
+  "status": "identified",
+  "name": "Engine Load Threshold (0xCD150)",
+  "category": "Thresholds - Engine Load",
+  "evidence": "0xCD150: lookup result compared with Engine Load (FFFF03A0): \"(param_8 & 0xff) < (uVar6 & 0xff)\"; a comparison requires the same unit, so the output carries that scaling.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x",
+   "to_byte": "x",
+   "format": "0.00"
+  }
+ },
  "0x2ECE0": {
   "status": "identified",
   "name": "Throttle Flow Correction (vs FFFF05BB)",
@@ -2559,6 +2598,19 @@
    "units": "%",
    "expr": "x*100/32768",
    "to_byte": "x*32768/100",
+   "format": "0.00"
+  }
+ },
+ "0x2EDE8": {
+  "status": "identified",
+  "name": "Engine Load Threshold (0xD6BFC)",
+  "category": "Thresholds - Engine Load",
+  "evidence": "0xD6BFC: lookup result compared with Engine Load (FFFF03A0): \"((param_11 & 0xff) < (uVar5 & 0xff)\"; a comparison requires the same unit, so the output carries that scaling.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x",
+   "to_byte": "x",
    "format": "0.00"
   }
  },

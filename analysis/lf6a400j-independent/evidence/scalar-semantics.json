@@ -98,6 +98,17 @@
   "function": "084cf4",
   "context": "(param_2 < 0x5000"
  },
+ "011064": {
+  "width": 2,
+  "value": 30720,
+  "var": "FFFF2ADA",
+  "var_name": "Engine Speed (OBD copy)",
+  "units": "rpm",
+  "expr": "x*25/128",
+  "to_byte": "x*128/25",
+  "function": "07fb7c",
+  "context": "param_9 < 0x7800"
+ },
  "0122A8": {
   "width": 1,
   "value": 138,
@@ -284,6 +295,28 @@
   "to_byte": "x*65280/100",
   "function": "0ce450",
   "context": "(param_1 < 0x5999"
+ },
+ "01D916": {
+  "width": 2,
+  "value": 24576,
+  "var": "FFFEEEDE",
+  "var_name": "Coolant Temperature (filtered, word)",
+  "units": "C",
+  "expr": "x*5/2048-40",
+  "to_byte": "(x+40)*2048/5",
+  "function": "0c89a0",
+  "context": "((param_9 < 0x6000"
+ },
+ "01D918": {
+  "width": 2,
+  "value": 267,
+  "var": "FFFEF0DA",
+  "var_name": "Vehicle Speed (copy)",
+  "units": "km/h",
+  "expr": "x*9/160",
+  "to_byte": "x*160/9",
+  "function": "0c89a0",
+  "context": "(param_10 < 0x10b"
  },
  "01E9B0": {
   "width": 2,
@@ -557,8 +590,8 @@
   "units": "C",
   "expr": "x*5/2048-40",
   "to_byte": "(x+40)*2048/5",
-  "function": "131d8c",
-  "context": "(param_3 < 0xfffc"
+  "function": "12a49c",
+  "context": "(param_5 < 0xfffc"
  },
  "02AA76": {
   "width": 2,

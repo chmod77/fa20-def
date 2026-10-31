@@ -3,7 +3,7 @@ In cdump/F.c, for  v = LK_xxx((uint)&T_D, ...)  find a later comparison  v op VA
 before v is reassigned, where VAR is a proven variable (variables.py; C name DAT_ffffxxxx / v_ label) or a parameter that every
 call site passes as the same proven variable.  A comparison requires both operands in the same unit, so the table output carries
 VAR's scaling (lead for semantics_db; each accepted entry is reviewed and added by hand).  Output evidence/table-compare.tsv."""
-import os, re, sys, json, glob
+import os, re, sys, json, glob, collections
 H = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(H); sys.path.insert(0, H)
 import variables as VV
 known = {**VV.V, **VV.V2}
@@ -13,6 +13,12 @@ for l in open(f'{ROOT}/evidence/ghidra-labels.tsv'):
 CA = json.load(open(f'{ROOT}/evidence/callargs.json'))
 S = json.load(open(f'{ROOT}/evidence/semantics.json'))
 
+SAV = collections.defaultdict(set)
+for _l in list(open(f'{ROOT}/evidence/stack-args.tsv'))[1:]:
+    _ce, _cr, _ia, _k, _v = _l.split()
+    if _v.startswith('V'):
+        SAV[(_ce.zfill(8), _cr.zfill(8), int(_k))].add(_v.split(':')[1])
+
 
 def param_var(fn, k):
     res = set()
@@ -20,7 +26,10 @@ def param_var(fn, k):
         if caller == fn:
             continue
         if k > len(args):
-            return None
+            iv = SAV.get((fn, caller, k))
+            if not iv or len(iv) != 1:
+                return None
+            res.add(int(next(iter(iv)), 16)); continue
         m = re.fullmatch(r'(?:\(\w+\)\s*)*_?(DAT_f{3}[0-9a-f]{5}|v_\w+)', args[k - 1].strip())
         if not m:
             return None

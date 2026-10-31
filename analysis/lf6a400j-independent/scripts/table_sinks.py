@@ -13,7 +13,7 @@ SA = collections.defaultdict(set)   # (callee, param) -> constant RAM pointers f
 if os.path.exists(f'{ROOT}/evidence/stack-args.tsv'):
     for l in list(open(f'{ROOT}/evidence/stack-args.tsv'))[1:]:
         ce, cr, ia, k, v = l.split()
-        if int(v, 16) >= 0xFFFE0000:
+        if not v.startswith('V') and int(v, 16) >= 0xFFFE0000:
             SA[(ce.zfill(8), int(k))].add(v)
 ASG = re.compile(r'(\w+)\s*=\s*(?:\(\w+\)\s*)?LK_[0-9A-F]+\(\(uint\)&T_([0-9A-F]{6})')
 

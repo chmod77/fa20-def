@@ -12,6 +12,8 @@ md = Cs(CS_ARCH_SH, CS_MODE_SH2A | CS_MODE_BIG_ENDIAN)
 FT = '/tmp/functions_all.tsv' if os.path.exists('/tmp/functions_all.tsv') else f'{ROOT}/evidence/functions.tsv'
 fns = [(int(a, 16), int(n)) for a, n in (l.split() for l in open(FT))]
 REG = re.compile(r'^r(\d+)$')
+GBR = {int(a, 16): int(v, 16) for a, v in (l.split() for l in open(f'{ROOT}/evidence/gbr-map.tsv'))}
+WID = {'b': 1, 'w': 2, 'l': 4}
 SPLIT = re.compile(r',(?![^(]*\))')
 
 
@@ -57,6 +59,7 @@ for fa, size in fns:
                 tg.add(int(i.op_str.split(',')[-1].strip(), 16))
             except ValueError:
                 pass
+    G = GBR.get(fa)
     R, pushes, sp, slots = {}, [], 0, {}   # sp = bytes pushed since entry (relative), slots[abs_off]=value
     pend = None
     for i in insns:
@@ -86,20 +89,38 @@ for fa, size in fns:
                 if k > 0: pushes = pushes[:-k] if k <= len(pushes) else []
                 raise _Next
             if m == 'add' and ops[0].startswith('#') and ops[1] in R:
-                R[ops[1]] = u32(R[ops[1]] + int(ops[0][1:], 0)); raise _Next
+                if isinstance(R[ops[1]], int): R[ops[1]] = u32(R[ops[1]] + int(ops[0][1:], 0))
+                else: R.pop(ops[1])
+                raise _Next
+            if m == 'ldc' and len(ops) == 2 and ops[1] == 'gbr':
+                G = R.get(ops[0]) if isinstance(R.get(ops[0]), int) else None; raise _Next
+            if m in ('extu.b', 'extu.w', 'exts.b', 'exts.w') and len(ops) == 2 and REG.match(ops[1]):
+                if isinstance(R.get(ops[0]), str): R[ops[1]] = R[ops[0]]
+                else: R.pop(ops[1], None)
+                raise _Next
+            if m in ('mov.b', 'mov.w', 'mov.l') and len(ops) == 2 and REG.match(ops[1]) and ops[0].startswith('@') and not ops[0].startswith('@-'):
+                w = WID[m[-1]]; ad = None
+                mm = re.fullmatch(r'@r(\d+)\+?', ops[0])
+                if mm and isinstance(R.get(f'r{mm.group(1)}'), int): ad = R[f'r{mm.group(1)}']
+                mm = re.fullmatch(r'@\((0x[0-9a-f]+|\d+),\s*r(\d+)\)', ops[0])
+                if mm and mm.group(2) != '15' and isinstance(R.get(f'r{mm.group(2)}'), int): ad = R[f'r{mm.group(2)}'] + int(mm.group(1), 0)
+                mm = re.fullmatch(r'@\((0x[0-9a-f]+|\d+),\s*gbr\)', ops[0])
+                if mm and G is not None: ad = G + int(mm.group(1), 0)
+                if ad is not None and u32(ad) >= 0xFFFE0000:
+                    R[ops[1]] = f'V{w}:{u32(ad):08X}'; raise _Next
             if m == 'mov.l' and len(ops) == 2 and ops[1] == '@-r15' and REG.match(ops[0]):
                 sp += 4; pushes.append(R.get(ops[0])); slots[sp] = R.get(ops[0]); raise _Next
             if m == 'mov.l' and len(ops) == 2 and REG.match(ops[0]):
                 mm = re.fullmatch(r'@\((0x[0-9a-f]+|\d+),\s*r15\)', ops[1])
                 if mm: slots[sp - int(mm.group(1), 0)] = R.get(ops[0]); raise _Next
                 mm = re.fullmatch(r'@\(r0,\s*r15\)', ops[1])
-                if mm and 'r0' in R: slots[sp - R['r0']] = R.get(ops[0]); raise _Next
+                if mm and isinstance(R.get('r0'), int): slots[sp - R['r0']] = R.get(ops[0]); raise _Next
             if m == 'mov.l' and len(ops) == 2 and REG.match(ops[1]):
                 mm = re.fullmatch(r'@\((0x[0-9a-f]+|\d+),\s*r15\)', ops[0])
                 v = None; hit = False
                 if mm: v = slots.get(sp - int(mm.group(1), 0)); hit = True
                 mm = re.fullmatch(r'@\(r0,\s*r15\)', ops[0])
-                if mm and 'r0' in R: v = slots.get(sp - R['r0']); hit = True
+                if mm and isinstance(R.get('r0'), int): v = slots.get(sp - R['r0']); hit = True
                 if hit:
                     if v is None: R.pop(ops[1], None)
                     else: R[ops[1]] = v
@@ -131,5 +152,5 @@ for fa, size in fns:
 with open(f'{ROOT}/evidence/stack-args.tsv', 'w') as f:
     f.write('callee\tcaller\tinsn\tparam\tvalue\n')
     for t, c, a, k, v in rows:
-        f.write(f'{t:06x}\t{c:06x}\t{a:06x}\t{k}\t{v:08X}\n')
+        f.write(f'{t:06x}\t{c:06x}\t{a:06x}\t{k}\t{v if isinstance(v, str) else format(v, "08X")}\n')
 print('call-site constant args', len(rows))

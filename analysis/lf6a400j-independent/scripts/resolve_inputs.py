@@ -14,6 +14,12 @@ LAB = {}
 for l in open(f'{ROOT}/evidence/ghidra-labels.tsv'):
     a, n = l.split(); LAB[n] = int(a, 16)
 SRC = {}
+SAV = collections.defaultdict(set)   # (callee, caller, param) -> {'RAM:addr'} from instruction-level call sites (stack-args.tsv V:)
+if os.path.exists(f'{ROOT}/evidence/stack-args.tsv'):
+    for l in list(open(f'{ROOT}/evidence/stack-args.tsv'))[1:]:
+        ce, cr, ia, k, v = l.split()
+        if v.startswith('V'):
+            SAV[(ce.zfill(8), cr.zfill(8), int(k))].add('RAM:' + v.split(':')[1])
 
 
 def src(fn):
@@ -71,7 +77,11 @@ def reduce(fn, e, depth=0):
         if not sites:
             return {f'X:{fn}.param_{n+1}(no callers)'}
         for caller, args in sites:
-            out |= reduce(caller, args[n], depth + 1) if n < len(args) else {f'X:{caller}:argcount'}
+            if n < len(args):
+                out |= reduce(caller, args[n], depth + 1)
+            else:
+                iv = SAV.get((fn, caller, n + 1))
+                out |= iv if iv and len(iv) == 1 else {f'X:{caller}:argcount'}
         return out
     m = re.fullmatch(r'[a-z]\w*Var\d+', e) or re.fullmatch(r'local_\w+', e)
     if m:

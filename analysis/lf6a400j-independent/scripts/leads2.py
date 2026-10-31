@@ -22,7 +22,7 @@ for p in glob.glob(f'{ROOT}/cdump/*.c'):
         INIT.add(fn)
 for l in list(open(f'{ROOT}/evidence/stack-args.tsv'))[1:]:
     ce, cr, ia, k, v = l.split()
-    writes[ce.zfill(8)].add(v); writes[cr.zfill(8)].add(v)
+    if not v.startswith('V'): writes[ce.zfill(8)].add(v); writes[cr.zfill(8)].add(v)
 for d, vs in sorted(sinks.items()):
     if d in S:
         continue

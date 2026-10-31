@@ -60,6 +60,8 @@ for p in sorted(glob.glob(f'{ROOT}/cdump/*.c')):
 # instruction-level call sites (evidence/stack-args.tsv: r4 = table pointer) catch calls whose C prototype lost arguments
 for l in list(open(f'{ROOT}/evidence/stack-args.tsv'))[1:]:
     ce, cr, ia, k, v = l.split()
+    if v.startswith('V'):
+        continue
     h = ce.zfill(8); a = int(v, 16)
     if k != '1' or (h not in STRUCT and h not in FIXED) or a >= len(rom) or a < 0x8000:
         continue

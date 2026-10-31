@@ -45,6 +45,12 @@ for l in list(open(f'{ROOT}/evidence/scalar-reads.tsv'))[1:]:
 VARRE = r'\(?(?:\(\w+\)\s*)?\(?_?(DAT_f{3}[0-9a-f]{5}|v_\w+|param_\d+)(?:\s*&\s*0xff(?:ff)?)?\)?'
 CA = json.load(open(f'{ROOT}/evidence/callargs.json'))
 
+SAV = collections.defaultdict(set)
+for _l in list(open(f'{ROOT}/evidence/stack-args.tsv'))[1:]:
+    _ce, _cr, _ia, _k, _v = _l.split()
+    if _v.startswith('V'):
+        SAV[(_ce.zfill(8), _cr.zfill(8), int(_k))].add(_v.split(':')[1])
+
 
 def param_var(fn, k):
     """proven variable passed as param_k at every call site of fn (None if any differs/unknown)"""
@@ -53,7 +59,10 @@ def param_var(fn, k):
         if caller == fn:
             continue
         if k > len(args):
-            return None
+            iv = SAV.get((fn, caller, k))
+            if not iv or len(iv) != 1:
+                return None
+            res.add(int(next(iter(iv)), 16)); continue
         m = re.fullmatch(r'(?:\(\w+\)\s*)*_?(DAT_f{3}[0-9a-f]{5}|v_\w+)', args[k - 1].strip())
         if not m:
             return None
