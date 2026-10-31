@@ -1,4 +1,13 @@
-"""Timer-threshold tables.  Task periods:
+"""Timer-threshold tables.  OS (session 4 correction): TCB table 0x169768 + 16*id (ActivateTask 0x13C6E4 indexes it so); alarm records
+0x168FD0 + 16*n with the task id in halfword 1.  Startup 0x1513BC: SetRelAlarm(alarm, offset, cycle) = (10,1,1) (1,1,2) (2,3,4) (4,6,10)
+(6,11,20) (7,21,40): alarm 1 -> task 3 (0x151748 -> 0x152882), 2 -> task 4 (0x151776 -> 0x6F84C -> 0x1528A2), 4 -> task 8 (0x1517A4 ->
+0x6F86C -> 0x152A40), 6 -> task 9 (0x1517D2 -> 0x6F88C -> 0x15307C), 7 -> task 10 (0x1517FA -> 0x6F8AC -> 0x153248).  0x153248 is 40 ms
+(OBD PID 0x1F/0x4E below) with cycle 40 -> tick 1 ms: 0x152882 2 ms, 0x1528A2 4 ms, 0x152A40 10 ms, 0x15307C 20 ms.  0x152A40 calls
+0x49E70 unconditionally (0x152BC6); inside it 0x123600/0x12560C/0x12367C run only when FFFEF5A4 == 0 (counter 0..3 -> every 4th = 40 ms)
+and 0x9BDD0 every 100th (1 s); those subtrees are separate roots.  Task 11 (0x15188E -> 0x153800) is activated by task 10 through the
+prescaler 0x1511FE (period not proven) -> not used.  A function is accepted only if every timed root that reaches it has the same period
+and it is not reachable from any other top-level function.
+Earlier task periods:
   0x153248: 40 ms (OBD PID 0x1F: 0x4EDAE +1 s per 25 executions; PID 0x4E prescaler 25 in the task body)
   0x153568: 80 ms (OBD PID 0x31: 0x10BDA0 integrates vehicle speed, 1 km per 800000 counts -> dt = 0.08 s)
   0x15307C: 20 ms (OS alarm table 0x168FD0: alarm 4 -> task 8 (body 0x1517D2 -> 0x15307C), cycle 10 ticks; alarm 6 -> task 9
@@ -8,7 +17,9 @@ A table T is accepted when, in function F of the task tree, the lookup result v 
 and appears only in F (plus constant-only writers), and F is reached from the task root.  Output evidence/timer-tables.tsv."""
 import re, os, glob, json, collections
 H = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(H)
-PERIOD = {'0015307c': 0.02, '00153248': 0.04, '00153568': 0.08, '00153800': 0.08, '001528a2': 0.004}
+PERIOD = {'0015307c': 0.02, '00153248': 0.04, '00153568': 0.08, '001528a2': 0.004, '00152882': 0.002, '00152a40': 0.01,
+          '00123600': 0.04, '0012560c': 0.04, '0012367c': 0.04, '0009bdd0': 1.0}
+CUT = {'00049e70': {'00123600', '0012560c', '0012367c', '0009bdd0'}}
 S = json.load(open(f'{ROOT}/evidence/semantics.json'))
 
 
@@ -26,7 +37,7 @@ def tree(r):
         p = f'{ROOT}/cdump/{f}.c'
         if f in seen or not os.path.exists(p):
             continue
-        seen.add(f); st += re.findall(r'FUN_([0-9a-f]{8})', open(p).read())
+        seen.add(f); st += [c for c in re.findall(r'FUN_([0-9a-f]{8})', open(p).read()) if c not in CUT.get(f, ()) and (c not in PERIOD or c == r)]
     return seen
 
 
@@ -52,9 +63,30 @@ def counter_ok(c, fn):
     return True
 
 
+TREES = {r: tree(r) for r in PERIOD}
+_callers = collections.defaultdict(set)
+for _f, _s in src.items():
+    for _c in set(re.findall(r'FUN_([0-9a-f]{8})', _s)):
+        if _c != _f: _callers[_c].add(_f)
+def _tops(f, seen=None):
+    seen = seen if seen is not None else set()
+    if f in seen: return set()
+    seen.add(f)
+    if f in PERIOD: return {f}
+    cs = _callers.get(f)
+    if not cs: return {f}
+    out = set()
+    for c in cs:
+        if f in CUT.get(c, ()): continue
+        out |= _tops(c, seen)
+    return out
+def unique_period(fn):
+    t = _tops(fn)
+    return len(t) > 0 and all(x in PERIOD for x in t) and len({PERIOD[x] for x in t}) == 1
 rows = []
 for root, per in PERIOD.items():
-    for fn in sorted(tree(root)):
+    for fn in sorted(TREES[root]):
+        if not unique_period(fn): continue
         s = src[fn]
         ctrs = set(re.findall(r'_?(DAT_f{3}[0-9a-f]{5})\s*\+\s*1\b', s))
         for m in re.finditer(r'(\w+)\s*=\s*(?:\(\w+\)\s*)?LK_[0-9A-F]+\(\(uint\)&T_([0-9A-F]{6})', s):
@@ -73,7 +105,8 @@ for root, per in PERIOD.items():
 # countdown timers: C = v (lookup result) and C - 1 elsewhere in the same function; every C write in cdump/ is in F
 # and is a constant, v, C - 1, or a single-assignment local holding C - 1
 for root, per in PERIOD.items():
-    for fn in sorted(tree(root)):
+    for fn in sorted(TREES[root]):
+        if not unique_period(fn): continue
         s = src[fn]
         for m in re.finditer(r'(\w+)\s*=\s*(?:\(\w+\)\s*)?LK_[0-9A-F]+\(\(uint\)&T_([0-9A-F]{6})', s):
             v, d = m.group(1), m.group(2)

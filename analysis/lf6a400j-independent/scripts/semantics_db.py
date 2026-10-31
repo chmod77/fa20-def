@@ -516,11 +516,17 @@ for d, nm in ((0x2F034, 'Misfire Detection Timing Interpolation Point A (RPM)'),
         'so both tables are in the unit of Ignition Total Timing FFFF046C (SSM 0x11, deg = x/2); the weight blends T_02F040/T_02F054.', DEG2)
 
 # ---------------------------------------------------------------- timer thresholds (scripts/timers.py)
-_PEREV = {'0015307c': 'task 0x15307C = 20 ms (OS alarm table 0x168FD0: alarm 4 -> task 8 cycle 10 ticks; tick 2 ms from alarm 6 -> task 9 '
-          '0x153248 cycle 20 = proven 40 ms)', '00153248': 'task 0x153248 = 40 ms (OBD PID 0x1F/0x4E prescalers)',
+_OSEV = ('OS: TCB 0x169768 + 16*id; startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 4 -> task 8 (0x1517A4 -> 0x152A40) cycle 10, '
+         'alarm 6 -> task 9 (0x1517D2 -> 0x15307C) cycle 20, alarm 7 -> task 10 (0x1517FA -> 0x153248) cycle 40, alarm 2 -> task 4 '
+         '(-> 0x1528A2) cycle 4, alarm 1 -> task 3 (-> 0x152882) cycle 2; 0x153248 = 40 ms (OBD PID 0x1F/0x4E) -> 1 ms tick')
+_PEREV = {'0015307c': 'task 0x15307C = 20 ms (' + _OSEV + ')', '00153248': 'task 0x153248 = 40 ms (OBD PID 0x1F/0x4E prescalers)',
           '00153568': 'task 0x153568 = 80 ms (OBD PID 0x31 distance integration)',
-          '00153800': 'task 0x153800 = 80 ms (OS alarm 7 -> task 10 (body 0x15188E), cycle 40 ticks of 2 ms; tick from alarm 6 -> 0x153248 = 40 ms)',
-          '001528a2': 'task 0x1528A2 = 4 ms (OS alarm 1 -> task 3, cycle 2 ticks of 2 ms)'}
+          '001528a2': 'task 0x1528A2 = 4 ms (' + _OSEV + ')', '00152882': 'task 0x152882 = 2 ms (' + _OSEV + ')',
+          '00152a40': 'task 0x152A40 = 10 ms (' + _OSEV + '; 0x49E70 called unconditionally at 0x152BC6)',
+          '00123600': 'every 4th run of 0x49E70 (FFFEF5A4 == 0) in the 10 ms task = 40 ms (' + _OSEV + ')',
+          '0012560c': 'every 4th run of 0x49E70 (FFFEF5A4 == 0) in the 10 ms task = 40 ms (' + _OSEV + ')',
+          '0012367c': 'every 4th run of 0x49E70 (FFFEF5A4 == 0) in the 10 ms task = 40 ms (' + _OSEV + ')',
+          '0009bdd0': 'every 100th run of 0x49E70 in the 10 ms task = 1 s (' + _OSEV + ')'}
 if os.path.exists(f'{ROOT}/evidence/timer-tables.tsv'):
     import csv as _csv2
     for _r in _csv2.DictReader(open(f'{ROOT}/evidence/timer-tables.tsv'), delimiter='\t'):
@@ -706,12 +712,13 @@ add(0x2E240, 'Fuel Quantity Term (RPM x Load) [-> 0507]', INJ,
     '(0507 + 0B62 + 0B80 [+ 0407 + 03EC + ...])/256), so with the other terms at 0 the multiplier is (T+128)/256 (128 = 1.0).',
     ('multiplier', '(x+128)/256', 'x*256-128', '0.000'))
 
-_ev407 = ('0x8FDC0 (from 0x89E04, task 0x152A40): while active, FFFF0407 = T_02D0AC * (1 - n/(8*T_02D0B8)) with n +1 per execution '
+_ev407 = ('0x8FDC0 (from 0x89E04, task 0x15307C = 20 ms; timers.py reachability: 0x89E04 is only called from 0x15307C): while active, FFFF0407 = T_02D0AC * (1 - n/(8*T_02D0B8)) with n +1 per execution '
           '(reset at activation); FFFF0407 is an additive fuel-quantity term in 0x910D8 (base*(0.5 + (... + 0407 + ...)/256)). ')
 add(0x2D0AC, 'Fuel Enrichment (Decaying, 0407) Initial Amount', 'Fueling - Open Loop & Enrichment', _ev407 + 'Initial fraction of base fuel quantity.',
     ('%', 'x*100/256', 'x*256/100', '0.0'))
 add(0x2D0B8, 'Fuel Enrichment (Decaying, 0407) Decay Length', 'Fueling - Open Loop & Enrichment', _ev407 +
-    'Decay length in units of 8 executions of task 0x152A40 (event-driven; time base not proven).', ('executions', 'x*8', 'x/8', '0'))
+    'Decay length in units of 8 executions of the 20 ms task (OS alarm 6 -> task 9, cycle 20 x 1 ms tick; see timers.py): s = x*0.16.',
+    ('s', 'x*0.16', 'x/0.16', '0.00'))
 
 _ev80 = ('0x900C8 (from 0x89E04): FFFF0B80 = max(target, previous - 1) (decays 1 count per execution), FFFF0B80 being an additive fuel-quantity '
          'term in 0x9106C (base*(0.5 + (0507 + 0B80 + 0B62)/256)); target = T_02D0C4(coolant) at start, otherwise '
@@ -775,7 +782,9 @@ _ev72 = ('0x8F6EC (from 0x888C0, input coolant FFFF29A5): when triggered FFFF0B7
          'by 2*T_02D010 per execution to 0; FFFF0B72 is a fuel-quantity fraction term in 0x910D8 (base*(0.5 + ... + 0B72/65536)). ')
 add(0x2D004, 'Fuel Enrichment (0B72) Amount (Coolant)', FE, _ev72, ('%', 'x*3200/65536', 'x*65536/3200', '0.00'))
 add(0x2D010, 'Fuel Enrichment (0B72) Decay Step (Coolant)', FE, _ev72, ('%/step', 'x*200/65536', 'x*65536/200', '0.000'))
-add(0x2D01C, 'Fuel Enrichment (0B72) Hold Count (Coolant)', FE, _ev72 + 'Executions of task 0x152A40 (event-driven).', ('executions', 'x', 'x', '0'))
+S.pop(0x2D01C, None)   # also found by timers.py; the specific entry below replaces the generic one
+add(0x2D01C, 'Fuel Enrichment (0B72) Hold Time (Coolant)', FE, _ev72 + 'Executions of 0x8F6EC, reached only from task 0x152A40 = 10 ms '
+    '(OS alarm 4 -> task 8, cycle 10 x 1 ms tick; see timers.py): s = x*0.01.', ('s', 'x*0.01', 'x/0.01', '0.00'))
 
 _ev82 = ('0x902CC (from 0x89E04; load FFFF03A0 x coolant FFFEEEDE): FFFF0B82 = T_02D118*w + T_02D104*(1-w)*T_02D12C/128 (w = FFFF0E90/65536); '
          '0x900C8 adds FFFF0B82 to the FFFF0B80 target (fuel-quantity fraction, x/256 of base). ')

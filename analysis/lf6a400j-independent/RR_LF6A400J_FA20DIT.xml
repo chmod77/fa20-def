@@ -2010,14 +2010,14 @@
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Fuel Enrichment (Decaying, 0407) Initial Amount" category="Fueling - Open Loop &amp; Enrichment" storageaddress="121FC" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D0AC. Evidence: 0x8FDC0 (from 0x89E04, task 0x152A40): while active, FFFF0407 = T_02D0AC * (1 - n/(8*T_02D0B8)) with n +1 per execution (reset at activation); FFFF0407 is an additive fuel-quantity term in 0x910D8 (base*(0.5 + (... + 0407 + ...)/256)). Initial fraction of base fuel quantity. Lookup result stored to: FFFEBD50, FFFEBD51." sizey="16">
+    <table type="2D" name="Fuel Enrichment (Decaying, 0407) Initial Amount" category="Fueling - Open Loop &amp; Enrichment" storageaddress="121FC" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D0AC. Evidence: 0x8FDC0 (from 0x89E04, task 0x15307C = 20 ms; timers.py reachability: 0x89E04 is only called from 0x15307C): while active, FFFF0407 = T_02D0AC * (1 - n/(8*T_02D0B8)) with n +1 per execution (reset at activation); FFFF0407 is an additive fuel-quantity term in 0x910D8 (base*(0.5 + (... + 0407 + ...)/256)). Initial fraction of base fuel quantity. Lookup result stored to: FFFEBD50, FFFEBD51." sizey="16">
       <scaling units="%" expression="x*100/256" to_byte="x*256/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       <table type="Y Axis" name="Unidentified input 1" storageaddress="1E46C" elements="16" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Fuel Enrichment (Decaying, 0407) Decay Length" category="Fueling - Open Loop &amp; Enrichment" storageaddress="1220D" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D0B8. Evidence: 0x8FDC0 (from 0x89E04, task 0x152A40): while active, FFFF0407 = T_02D0AC * (1 - n/(8*T_02D0B8)) with n +1 per execution (reset at activation); FFFF0407 is an additive fuel-quantity term in 0x910D8 (base*(0.5 + (... + 0407 + ...)/256)). Decay length in units of 8 executions of task 0x152A40 (event-driven; time base not proven). Lookup result stored to: FFFEBD52." sizey="16">
-      <scaling units="executions" expression="x*8" to_byte="x/8" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+    <table type="2D" name="Fuel Enrichment (Decaying, 0407) Decay Length" category="Fueling - Open Loop &amp; Enrichment" storageaddress="1220D" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D0B8. Evidence: 0x8FDC0 (from 0x89E04, task 0x15307C = 20 ms; timers.py reachability: 0x89E04 is only called from 0x15307C): while active, FFFF0407 = T_02D0AC * (1 - n/(8*T_02D0B8)) with n +1 per execution (reset at activation); FFFF0407 is an additive fuel-quantity term in 0x910D8 (base*(0.5 + (... + 0407 + ...)/256)). Decay length in units of 8 executions of the 20 ms task (OS alarm 6 -&gt; task 9, cycle 20 x 1 ms tick; see timers.py): s = x*0.16. Lookup result stored to: FFFEBD52." sizey="16">
+      <scaling units="s" expression="x*0.16" to_byte="x/0.16" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       <table type="Y Axis" name="Unidentified input 1" storageaddress="1E46C" elements="16" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
@@ -2901,12 +2901,12 @@
         <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 8x8 [D02E758] (Engine Speed (OBD copy) x ?)" category="Unidentified - Task 0xBE0E8" storageaddress="157F4" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E758. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="8" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="157D4" elements="8" storagetype="int16" endian="big" locked="true">
+    <table type="3D" name="Time Threshold [0xBEEA8]" category="Timers" storageaddress="157F4" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E758. Evidence: 0xBEEA8: lookup result compared with counter FFFEC92E (&quot;(uVar7 &amp; 0xffff) &lt;= (uint)_DAT_fffec92e&quot;), which is only reset or incremented by 1 per execution; task 0x152A40 = 10 ms (OS: TCB 0x169768 + 16*id; startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 4 -&gt; task 8 (0x1517A4 -&gt; 0x152A40) cycle 10, alarm 6 -&gt; task 9 (0x1517D2 -&gt; 0x15307C) cycle 20, alarm 7 -&gt; task 10 (0x1517FA -&gt; 0x153248) cycle 40, alarm 2 -&gt; task 4 (-&gt; 0x1528A2) cycle 4, alarm 1 -&gt; task 3 (-&gt; 0x152882) cycle 2; 0x153248 = 40 ms (OBD PID 0x1F/0x4E) -&gt; 1 ms tick; 0x49E70 called unconditionally at 0x152BC6)." sizex="8" sizey="8">
+      <scaling units="s" expression="x*0.01" to_byte="x/0.01" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="157D4" elements="8" storagetype="int16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="157E4" elements="8" storagetype="int16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2" storageaddress="157E4" elements="8" storagetype="int16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
@@ -3111,15 +3111,15 @@
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02EE24] (Coolant Temperature (filtered, word))" category="Unidentified - Task 0x152A40" storageaddress="16596" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2EE24. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="165D8" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Time Threshold [0xD9378] @16596" category="Timers" storageaddress="16596" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2EE24. Evidence: 0xD9378: lookup result compared with counter FFFECF92 (&quot;(uVar3 &amp; 0xffff) &lt;= uVar9)&quot;), which is only reset or incremented by 1 per execution; task 0x152A40 = 10 ms (OS: TCB 0x169768 + 16*id; startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 4 -&gt; task 8 (0x1517A4 -&gt; 0x152A40) cycle 10, alarm 6 -&gt; task 9 (0x1517D2 -&gt; 0x15307C) cycle 20, alarm 7 -&gt; task 10 (0x1517FA -&gt; 0x153248) cycle 40, alarm 2 -&gt; task 4 (-&gt; 0x1528A2) cycle 4, alarm 1 -&gt; task 3 (-&gt; 0x152882) cycle 2; 0x153248 = 40 ms (OBD PID 0x1F/0x4E) -&gt; 1 ms tick; 0x49E70 called unconditionally at 0x152BC6)." sizey="16">
+      <scaling units="s" expression="x*0.01" to_byte="x/0.01" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="165D8" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02EE3C] (Coolant Temperature (filtered, word))" category="Unidentified - Task 0x152A40" storageaddress="165B8" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2EE3C. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="165D8" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Time Threshold [0xD9378] @165B8" category="Timers" storageaddress="165B8" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2EE3C. Evidence: 0xD9378: lookup result compared with counter FFFECF94 (&quot;(uVar5 &amp; 0xffff) &lt;= uVar8)&quot;), which is only reset or incremented by 1 per execution; task 0x152A40 = 10 ms (OS: TCB 0x169768 + 16*id; startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 4 -&gt; task 8 (0x1517A4 -&gt; 0x152A40) cycle 10, alarm 6 -&gt; task 9 (0x1517D2 -&gt; 0x15307C) cycle 20, alarm 7 -&gt; task 10 (0x1517FA -&gt; 0x153248) cycle 40, alarm 2 -&gt; task 4 (-&gt; 0x1528A2) cycle 4, alarm 1 -&gt; task 3 (-&gt; 0x152882) cycle 2; 0x153248 = 40 ms (OBD PID 0x1F/0x4E) -&gt; 1 ms tick; 0x49E70 called unconditionally at 0x152BC6)." sizey="16">
+      <scaling units="s" expression="x*0.01" to_byte="x/0.01" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="165D8" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -3657,7 +3657,7 @@
         <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Time Threshold [0xB2F30]" category="Timers" storageaddress="190FC" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E1E0. Evidence: 0xB2F30: lookup result compared with counter FFFEC6D8 (&quot;(uint)_DAT_fffec6d8 &lt; (uVar4 &amp; 0xffff)&quot;), which is only reset or incremented by 1 per execution; task 0x15307C = 20 ms (OS alarm table 0x168FD0: alarm 4 -&gt; task 8 cycle 10 ticks; tick 2 ms from alarm 6 -&gt; task 9 0x153248 cycle 20 = proven 40 ms). Lookup result stored to: FFFEC6DC, FFFF0D7A." sizey="8">
+    <table type="2D" name="Time Threshold [0xB2F30]" category="Timers" storageaddress="190FC" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E1E0. Evidence: 0xB2F30: lookup result compared with counter FFFEC6D8 (&quot;(uint)_DAT_fffec6d8 &lt; (uVar4 &amp; 0xffff)&quot;), which is only reset or incremented by 1 per execution; task 0x15307C = 20 ms (OS: TCB 0x169768 + 16*id; startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 4 -&gt; task 8 (0x1517A4 -&gt; 0x152A40) cycle 10, alarm 6 -&gt; task 9 (0x1517D2 -&gt; 0x15307C) cycle 20, alarm 7 -&gt; task 10 (0x1517FA -&gt; 0x153248) cycle 40, alarm 2 -&gt; task 4 (-&gt; 0x1528A2) cycle 4, alarm 1 -&gt; task 3 (-&gt; 0x152882) cycle 2; 0x153248 = 40 ms (OBD PID 0x1F/0x4E) -&gt; 1 ms tick). Lookup result stored to: FFFEC6DC, FFFF0D7A." sizey="8">
       <scaling units="s" expression="x*0.02" to_byte="x/0.02" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       <table type="Y Axis" name="Engine Speed (high byte)" storageaddress="1911C" elements="8" storagetype="uint8" endian="big">
         <scaling units="rpm" expression="x*50" to_byte="x/50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
@@ -5058,8 +5058,8 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Fuel Enrichment (0B72) Hold Count (Coolant)" category="Fueling - Open Loop &amp; Enrichment" storageaddress="1E7B0" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D01C. Evidence: 0x8F6EC (from 0x888C0, input coolant FFFF29A5): when triggered FFFF0B72 = T_02D004*32 for the first T_02D01C executions, then decays by 2*T_02D010 per execution to 0; FFFF0B72 is a fuel-quantity fraction term in 0x910D8 (base*(0.5 + ... + 0B72/65536)). Executions of task 0x152A40 (event-driven). Lookup result stored to: FFFEBD26, FFFEBD28." sizey="16">
-      <scaling units="executions" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+    <table type="2D" name="Fuel Enrichment (0B72) Hold Time (Coolant)" category="Fueling - Open Loop &amp; Enrichment" storageaddress="1E7B0" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D01C. Evidence: 0x8F6EC (from 0x888C0, input coolant FFFF29A5): when triggered FFFF0B72 = T_02D004*32 for the first T_02D01C executions, then decays by 2*T_02D010 per execution to 0; FFFF0B72 is a fuel-quantity fraction term in 0x910D8 (base*(0.5 + ... + 0B72/65536)). Executions of 0x8F6EC, reached only from task 0x152A40 = 10 ms (OS alarm 4 -&gt; task 8, cycle 10 x 1 ms tick; see timers.py): s = x*0.01. Lookup result stored to: FFFEBD26, FFFEBD28." sizey="16">
+      <scaling units="s" expression="x*0.01" to_byte="x/0.01" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       <table type="Y Axis" name="Unidentified input 1" storageaddress="1E46C" elements="16" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
@@ -5166,7 +5166,7 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Time Threshold [0xD82E0]" category="Timers" storageaddress="1ED66" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2EDF4. Evidence: 0xD82E0: lookup result compared with counter FFFECF4C (&quot;(uint)_DAT_fffecf4c &lt; (uVar3 &amp; 0xffff)&quot;), which is only reset or incremented by 1 per execution; task 0x15307C = 20 ms (OS alarm table 0x168FD0: alarm 4 -&gt; task 8 cycle 10 ticks; tick 2 ms from alarm 6 -&gt; task 9 0x153248 cycle 20 = proven 40 ms). Lookup result stored to: FFFF0FE2." sizey="16">
+    <table type="2D" name="Time Threshold [0xD82E0]" category="Timers" storageaddress="1ED66" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2EDF4. Evidence: 0xD82E0: lookup result compared with counter FFFECF4C (&quot;(uint)_DAT_fffecf4c &lt; (uVar3 &amp; 0xffff)&quot;), which is only reset or incremented by 1 per execution; task 0x15307C = 20 ms (OS: TCB 0x169768 + 16*id; startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 4 -&gt; task 8 (0x1517A4 -&gt; 0x152A40) cycle 10, alarm 6 -&gt; task 9 (0x1517D2 -&gt; 0x15307C) cycle 20, alarm 7 -&gt; task 10 (0x1517FA -&gt; 0x153248) cycle 40, alarm 2 -&gt; task 4 (-&gt; 0x1528A2) cycle 4, alarm 1 -&gt; task 3 (-&gt; 0x152882) cycle 2; 0x153248 = 40 ms (OBD PID 0x1F/0x4E) -&gt; 1 ms tick). Lookup result stored to: FFFF0FE2." sizey="16">
       <scaling units="s" expression="x*0.02" to_byte="x/0.02" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       <table type="Y Axis" name="Engine Speed" storageaddress="1ED46" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
@@ -5562,7 +5562,7 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Time Threshold [0xFBB84]" category="Timers" storageaddress="201D2" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F5AC, 0x2F5D0, 0x2F838, 0x2F85C. Evidence: 0xFBB84: lookup result compared with counter FFFED8C0 (&quot;(uVar4 &amp; 0xffff) &lt;= (uint)_DAT_fffed8c0&quot;), which is only reset or incremented by 1 per execution; task 0x15307C = 20 ms (OS alarm table 0x168FD0: alarm 4 -&gt; task 8 cycle 10 ticks; tick 2 ms from alarm 6 -&gt; task 9 0x153248 cycle 20 = proven 40 ms)." sizey="16">
+    <table type="2D" name="Time Threshold [0xFBB84]" category="Timers" storageaddress="201D2" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F5AC, 0x2F5D0, 0x2F838, 0x2F85C. Evidence: 0xFBB84: lookup result compared with counter FFFED8C0 (&quot;(uVar4 &amp; 0xffff) &lt;= (uint)_DAT_fffed8c0&quot;), which is only reset or incremented by 1 per execution; task 0x15307C = 20 ms (OS: TCB 0x169768 + 16*id; startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 4 -&gt; task 8 (0x1517A4 -&gt; 0x152A40) cycle 10, alarm 6 -&gt; task 9 (0x1517D2 -&gt; 0x15307C) cycle 20, alarm 7 -&gt; task 10 (0x1517FA -&gt; 0x153248) cycle 40, alarm 2 -&gt; task 4 (-&gt; 0x1528A2) cycle 4, alarm 1 -&gt; task 3 (-&gt; 0x152882) cycle 2; 0x153248 = 40 ms (OBD PID 0x1F/0x4E) -&gt; 1 ms tick)." sizey="16">
       <scaling units="s" expression="x*0.02" to_byte="x/0.02" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF11B6)" storageaddress="20172" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />

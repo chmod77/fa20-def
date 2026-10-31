@@ -188,6 +188,15 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
 - 0D2E (0xAE058) is a start-injection base pulse in 3.2 us units (0x92410 family: us = 0D2E*3.2*(0B44/256) + latency). Its four
   tables are applied one by one with own shift and 0xFFFF saturation; neutral values in the data (128, 64) -> multipliers x/128, x/64.
   Products evaluated in one expression (0xAE9B4, 0xAEFF4, 0x8B178) stay locked. Coverage 584 of 1284.
+- **OS correction (session 4).** ActivateTask 0x13C6E4 indexes the TCB table at 0x169768 + 16*id (not 0x169780): earlier task
+  numbers were off by one. Startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 1 -> task 3 (0x152882) cycle 2, alarm 2 -> task 4
+  (0x1528A2) cycle 4, alarm 4 -> task 8 (0x1517A4 -> 0x6F86C -> 0x152A40) cycle 10, alarm 6 -> task 9 (0x15307C) cycle 20, alarm 7 ->
+  task 10 (0x1517FA -> 0x6F8AC -> 0x153248) cycle 40. 0x153248 is proven 40 ms (OBD PID 0x1F), so the tick is 1 ms and **0x152A40 (incl.
+  0x49E70, idle, torque, fuel) runs every 10 ms**; 0x15307C 20 ms and 0x1528A2 4 ms are unchanged. 0x49E70 runs 0x123600/0x12560C/
+  0x12367C only every 4th pass (40 ms) and 0x9BDD0 every 100th (1 s). Task 11 (0x153800) is started by task 10 through the prescaler
+  0x1511FE (table FFFF1BF0 {flag, offset, period}); its 80 ms figure was wrong and is no longer used. timers.py now requires every
+  timed root reaching a function to agree on one period. The "task 7 has no time base" note above is superseded.
+  New timer tables (3) and T_02D0B8/T_02D01C converted to seconds. Coverage 587 of 1284.
 - Dead ends this session (documented so they are not repeated):
   * FFFF12C2 (axis of the pedal-limit T1 tables, compared with 12BE in the torque monitor): only a read literal (0xC50D0); writer not
     found by literal, GBR (+70 from 127C) or r0-offset searches.
