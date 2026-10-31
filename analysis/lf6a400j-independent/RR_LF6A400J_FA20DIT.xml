@@ -333,12 +333,12 @@
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 9x12 [D02D2C8] (? x Engine Speed (high byte))" category="Unidentified - Task 0x158ED8" storageaddress="9A22" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D2C8. Lookup result stored to: FFFEBDB8, FFFEBDBE. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="12" sizey="9">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="9A10" elements="9" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Fuel Quantity Multiplier (Fuel Quantity x RPM)" category="Fuel Injection" storageaddress="9A22" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D2C8. Evidence: 0x91310 (from 0x8A670, FFFF053D mode 0): FFFF1534 = (T(q FFFF0BA6, rpm FFFF2996) * q) &gt;&gt; 7, so T/128 multiplies the fuel quantity (128 = 1.0); FFFF1534 feeds the base pulse FFFF1544 (0x917EC) -&gt; injection time FFFF1564 (SSM 0x20). Lookup result stored to: FFFEBDB8, FFFEBDBE." sizex="12" sizey="9">
+      <scaling units="multiplier" expression="x/128" to_byte="x*128" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="9A10" elements="9" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Speed (high byte)" storageaddress="9A04" elements="12" storagetype="uint8" endian="big" locked="true">
+      <table type="X Axis" name="Engine Speed (high byte)" storageaddress="9A04" elements="12" storagetype="uint8" endian="big">
         <scaling units="rpm" expression="x*50" to_byte="x/50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
