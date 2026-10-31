@@ -754,6 +754,13 @@ for d, nm in ((0x2CD28, 'A, flag clear'), (0x2CD34, 'A, flag set'), (0x2CD40, 'B
     add(d, f'Transient Fuel (0B38) Decay Step {nm}', FE, _ev38 + 'Per-execution decrement.', ('%/step', 'x*100/65536', 'x*65536/100', '0.0000'))
 add(0x2CD1C, 'Transient Fuel (0B38) Multiplier', FE, _ev38 + 'x/32768 factor.', ('multiplier', 'x/32768', 'x*32768', '0.000'))
 
+for d, nm in ((0x2CC2C, 'FFFF054A.2 clear, FFFF3653.7 clear'), (0x2CC38, 'FFFF054A.2 clear, FFFF3653.7 set'),
+              (0x2CC14, 'FFFF054A.2 set, FFFF3653.7 clear'), (0x2CC20, 'FFFF054A.2 set, FFFF3653.7 set')):
+    add(d, f'Start Fuel Decay Factor per Execution ({nm})', FE,
+        '0x8B5B4 (from 0x888C0): during cranking (engine state FFFF66B0 = 2) the start fuel FFFEBC40 is computed from factor tables; '
+        'afterwards it is multiplied by T(FFFF29A7 coolant)/65536 every execution, then FFFF0B24 = FFFEBC40/8 (0x91310: fuel quantity '
+        'FFFF1534 = 0B24*10 in modes 2/3). T/65536 is the per-execution decay multiplier.', ('multiplier', 'x/65536', 'x*65536', '0.0000'))
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

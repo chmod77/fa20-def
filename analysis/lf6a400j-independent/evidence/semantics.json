@@ -809,6 +809,58 @@
    "format": "0.00"
   }
  },
+ "0x2CC14": {
+  "status": "identified",
+  "name": "Start Fuel Decay Factor per Execution (FFFF054A.2 set, FFFF3653.7 clear)",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x8B5B4 (from 0x888C0): during cranking (engine state FFFF66B0 = 2) the start fuel FFFEBC40 is computed from factor tables; afterwards it is multiplied by T(FFFF29A7 coolant)/65536 every execution, then FFFF0B24 = FFFEBC40/8 (0x91310: fuel quantity FFFF1534 = 0B24*10 in modes 2/3). T/65536 is the per-execution decay multiplier.",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x/65536",
+   "to_byte": "x*65536",
+   "format": "0.0000"
+  }
+ },
+ "0x2CC20": {
+  "status": "identified",
+  "name": "Start Fuel Decay Factor per Execution (FFFF054A.2 set, FFFF3653.7 set)",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x8B5B4 (from 0x888C0): during cranking (engine state FFFF66B0 = 2) the start fuel FFFEBC40 is computed from factor tables; afterwards it is multiplied by T(FFFF29A7 coolant)/65536 every execution, then FFFF0B24 = FFFEBC40/8 (0x91310: fuel quantity FFFF1534 = 0B24*10 in modes 2/3). T/65536 is the per-execution decay multiplier.",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x/65536",
+   "to_byte": "x*65536",
+   "format": "0.0000"
+  }
+ },
+ "0x2CC2C": {
+  "status": "identified",
+  "name": "Start Fuel Decay Factor per Execution (FFFF054A.2 clear, FFFF3653.7 clear)",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x8B5B4 (from 0x888C0): during cranking (engine state FFFF66B0 = 2) the start fuel FFFEBC40 is computed from factor tables; afterwards it is multiplied by T(FFFF29A7 coolant)/65536 every execution, then FFFF0B24 = FFFEBC40/8 (0x91310: fuel quantity FFFF1534 = 0B24*10 in modes 2/3). T/65536 is the per-execution decay multiplier.",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x/65536",
+   "to_byte": "x*65536",
+   "format": "0.0000"
+  }
+ },
+ "0x2CC38": {
+  "status": "identified",
+  "name": "Start Fuel Decay Factor per Execution (FFFF054A.2 clear, FFFF3653.7 set)",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x8B5B4 (from 0x888C0): during cranking (engine state FFFF66B0 = 2) the start fuel FFFEBC40 is computed from factor tables; afterwards it is multiplied by T(FFFF29A7 coolant)/65536 every execution, then FFFF0B24 = FFFEBC40/8 (0x91310: fuel quantity FFFF1534 = 0B24*10 in modes 2/3). T/65536 is the per-execution decay multiplier.",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x/65536",
+   "to_byte": "x*65536",
+   "format": "0.0000"
+  }
+ },
  "0x2CCE4": {
   "status": "identified",
   "name": "Engine Load Threshold (0x8BB84)",
