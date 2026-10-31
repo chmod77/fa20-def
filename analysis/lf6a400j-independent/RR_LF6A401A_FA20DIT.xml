@@ -525,9 +525,9 @@
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02D33C] (Coolant Temperature (filtered, word))" category="Unidentified - Task 0x153248" storageaddress="A5FC" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2D33C. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Time Threshold vs Coolant [0x93044]" category="Fuel Injection" storageaddress="A5FC" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2D33C. Evidence: 0x93044 (called unconditionally from 0x8A330 in the 40 ms task 0x153248; period from OBD PID 0x1F: 0x4EDAE adds 1 s per 25 executions of that task) compares T(coolant FFFEEEDE) with a counter that increments once per execution, so T is time in 40 ms units. Caveat: 0x153D20 (separate scheduler table 0x1525F0) also calls 0x4EDAE." sizey="16">
+      <scaling units="s" expression="x*0.04" to_byte="x/0.04" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -3564,9 +3564,9 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02F28C] (Coolant Temperature)" category="Unidentified - Task 0x153248" storageaddress="181F2" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F28C. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature" storageaddress="18202" elements="16" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Time Threshold [0xE6908]" category="Diagnostics - Timers" storageaddress="181F2" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F28C. Evidence: 0xE6908 (from 0xE61E8, called unconditionally by the 40 ms task 0x153248): flag = T &lt;= FFFED365, a counter incremented once per execution while the condition holds (reset otherwise), so T is time in 40 ms units (task period from OBD PID 0x1F)." sizey="16">
+      <scaling units="s" expression="x*0.04" to_byte="x/0.04" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature" storageaddress="18202" elements="16" storagetype="uint8" endian="big">
         <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
