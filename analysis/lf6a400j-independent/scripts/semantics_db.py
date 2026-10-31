@@ -710,6 +710,16 @@ add(0x2D0AC, 'Fuel Enrichment (Decaying, 0407) Initial Amount', 'Fueling - Open 
 add(0x2D0B8, 'Fuel Enrichment (Decaying, 0407) Decay Length', 'Fueling - Open Loop & Enrichment', _ev407 +
     'Decay length in units of 8 executions of task 0x152A40 (event-driven; time base not proven).', ('executions', 'x*8', 'x/8', '0'))
 
+_ev80 = ('0x900C8 (from 0x89E04): FFFF0B80 = max(target, previous - 1) (decays 1 count per execution), FFFF0B80 being an additive fuel-quantity '
+         'term in 0x9106C (base*(0.5 + (0507 + 0B80 + 0B62)/256)); target = T_02D0C4(coolant) at start, otherwise '
+         'T_02D0E4*w + T_02D0D0*(1-w)*T_02D0F8/128 (w = FFFF0E90/65536). ')
+FQ = ('%', 'x*100/256', 'x*256/100', '0.0')
+add(0x2D0C4, 'Fuel Enrichment (0B80) Start Target (Coolant)', 'Fueling - Open Loop & Enrichment', _ev80, FQ)
+add(0x2D0E4, 'Fuel Enrichment (0B80) Target (weight w=FFFF0E90)', 'Fueling - Open Loop & Enrichment', _ev80, FQ)
+add(0x2D0D0, 'Fuel Enrichment (0B80) Target (weight 1-w)', 'Fueling - Open Loop & Enrichment', _ev80, FQ)
+add(0x2D0F8, 'Fuel Enrichment (0B80) Target Multiplier', 'Fueling - Open Loop & Enrichment', _ev80 + 'Factor on the (1-w) term, x/128.',
+    ('multiplier', 'x/128', 'x*128', '0.000'))
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

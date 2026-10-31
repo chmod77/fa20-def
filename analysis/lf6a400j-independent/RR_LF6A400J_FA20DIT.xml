@@ -123,15 +123,15 @@
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02D0C4] (Coolant Temperature (filtered, word))" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="88E0" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2D0C4. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Fuel Enrichment (0B80) Start Target (Coolant)" category="Fueling - Open Loop &amp; Enrichment" storageaddress="88E0" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2D0C4. Evidence: 0x900C8 (from 0x89E04): FFFF0B80 = max(target, previous - 1) (decays 1 count per execution), FFFF0B80 being an additive fuel-quantity term in 0x9106C (base*(0.5 + (0507 + 0B80 + 0B62)/256)); target = T_02D0C4(coolant) at start, otherwise T_02D0E4*w + T_02D0D0*(1-w)*T_02D0F8/128 (w = FFFF0E90/65536). " sizey="16">
+      <scaling units="%" expression="x*100/256" to_byte="x*256/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02D0F8] (Engine Speed)" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="8912" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D0F8, 0x2D12C. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="1E5E4" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Fuel Enrichment (0B80) Target Multiplier" category="Fueling - Open Loop &amp; Enrichment" storageaddress="8912" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D0F8, 0x2D12C. Evidence: 0x900C8 (from 0x89E04): FFFF0B80 = max(target, previous - 1) (decays 1 count per execution), FFFF0B80 being an additive fuel-quantity term in 0x9106C (base*(0.5 + (0507 + 0B80 + 0B62)/256)); target = T_02D0C4(coolant) at start, otherwise T_02D0E4*w + T_02D0D0*(1-w)*T_02D0F8/128 (w = FFFF0E90/65536). Factor on the (1-w) term, x/128." sizey="16">
+      <scaling units="multiplier" expression="x/128" to_byte="x*128" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="1E5E4" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -297,21 +297,21 @@
         <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x16 [D02D0D0] (Engine Load x Coolant Temperature (filtered, word))" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="9204" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2D0D0. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Load" storageaddress="91D4" elements="16" storagetype="uint8" endian="big" locked="true">
+    <table type="3D" name="Fuel Enrichment (0B80) Target (weight 1-w)" category="Fueling - Open Loop &amp; Enrichment" storageaddress="9204" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2D0D0. Evidence: 0x900C8 (from 0x89E04): FFFF0B80 = max(target, previous - 1) (decays 1 count per execution), FFFF0B80 being an additive fuel-quantity term in 0x9106C (base*(0.5 + (0507 + 0B80 + 0B62)/256)); target = T_02D0C4(coolant) at start, otherwise T_02D0E4*w + T_02D0D0*(1-w)*T_02D0F8/128 (w = FFFF0E90/65536). " sizex="16" sizey="16">
+      <scaling units="%" expression="x*100/256" to_byte="x*256/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Load" storageaddress="91D4" elements="16" storagetype="uint8" endian="big">
         <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Coolant Temperature (filtered, word)" storageaddress="91E4" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Coolant Temperature (filtered, word)" storageaddress="91E4" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x16 [D02D0E4] (Engine Load x Coolant Temperature (filtered, word))" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="9404" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2D0E4. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Load" storageaddress="91D4" elements="16" storagetype="uint8" endian="big" locked="true">
+    <table type="3D" name="Fuel Enrichment (0B80) Target (weight w=FFFF0E90)" category="Fueling - Open Loop &amp; Enrichment" storageaddress="9404" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2D0E4. Evidence: 0x900C8 (from 0x89E04): FFFF0B80 = max(target, previous - 1) (decays 1 count per execution), FFFF0B80 being an additive fuel-quantity term in 0x9106C (base*(0.5 + (0507 + 0B80 + 0B62)/256)); target = T_02D0C4(coolant) at start, otherwise T_02D0E4*w + T_02D0D0*(1-w)*T_02D0F8/128 (w = FFFF0E90/65536). " sizex="16" sizey="16">
+      <scaling units="%" expression="x*100/256" to_byte="x*256/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Load" storageaddress="91D4" elements="16" storagetype="uint8" endian="big">
         <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Coolant Temperature (filtered, word)" storageaddress="91E4" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Coolant Temperature (filtered, word)" storageaddress="91E4" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
