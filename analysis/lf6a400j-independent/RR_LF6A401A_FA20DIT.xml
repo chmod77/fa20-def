@@ -2646,9 +2646,9 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02DF00] (Coolant Temperature (filtered, word))" category="Unidentified - Idle Speed Control" storageaddress="147B3" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2DF00. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Target Idle Speed (alternate, FFFF04CC.4 set) vs Coolant [-&gt; 0D10]" category="Idle Speed Control" storageaddress="147B3" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2DF00. Evidence: 0xAB784 (from 0xA8230, call 0xA8F6A; p1 FFFF04CC.4, p2 Coolant FFFEEEDE): FFFF0D10 = T(coolant) &lt;&lt; 6 when p1 set, else FFFF0D0E. 0xAB738: FFFF0D06 = 0D10 (or FFFEF473 &lt;&lt; 6); 0xD17F0 reports 0D06 over SSM through converter 0xD0C50 (x*25/32 = rpm*4), and 0x80968 uses 0D06 - filtered Engine Speed (rpm x*25/128). So 0D10 is rpm = x*25/128 and T is rpm = x*64*25/128 = x*12.5." sizey="16">
+      <scaling units="rpm" expression="x*12.5" to_byte="x/12.5" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>

@@ -251,3 +251,8 @@ V2.update({
  0xFFFF0A40:('Torque Limit 0A40','Nm','(x-16000)/80','x*80+16000','0x82028: Torque Ramp Target 0A5C = min(0A40, T, T)'+_TQ),
  0xFFFF0A46:('Torque 0A46','Nm','(x-16000)/80','x*80+16000','0x810A0: 0A40 = min(0A46, limit)'+_TQ),
 })
+V2.update({
+ 0xFFFF0D10:('Target Idle Speed (0D10)','rpm','x*25/128','x*128/25','0xAB738: FFFF0D06 (rpm, SSM via 0xD0C50) = 0D10'),
+ 0xFFFF0D0E:('Target Idle Speed (0D0E)','rpm','x*25/128','x*128/25','0xAB784: 0D10 = 0D0E when FFFF04CC.4 clear'),
+ 0xFFFF0D02:('Target Idle Speed (0D02)','rpm','x*25/128','x*128/25','0xAB758: 0D0E = max(0D02, FFFEED47*1024/25)'),
+})

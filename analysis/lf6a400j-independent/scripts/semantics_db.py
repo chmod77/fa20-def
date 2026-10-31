@@ -1053,6 +1053,12 @@ add(0x2C78C, 'Torque Limit (RPM x IAT) [-> 0A5C]', 'Driver Demand / Torque Reque
 add(0x2C7A0, 'Torque Limit (FFFF03C4 x RPM) [-> 0A5C]', 'Driver Demand / Torque Request', _tlim + 'Input FFFF03C4 unresolved.' + TQEV, TQ)
 add(0x2C3D0, 'Torque Limit vs Gear (FFFEEF76.7 set) [-> 0A40]', 'Driver Demand / Torque Request', _tlim + TQEV, TQ)
 
+add(0x2DF00, 'Target Idle Speed (alternate, FFFF04CC.4 set) vs Coolant [-> 0D10]', 'Idle Speed Control',
+    '0xAB784 (from 0xA8230, call 0xA8F6A; p1 FFFF04CC.4, p2 Coolant FFFEEEDE): FFFF0D10 = T(coolant) << 6 when p1 set, else FFFF0D0E. '
+    '0xAB738: FFFF0D06 = 0D10 (or FFFEF473 << 6); 0xD17F0 reports 0D06 over SSM through converter 0xD0C50 (x*25/32 = rpm*4), and '
+    '0x80968 uses 0D06 - filtered Engine Speed (rpm x*25/128). So 0D10 is rpm = x*25/128 and T is rpm = x*64*25/128 = x*12.5.',
+    ('rpm', 'x*12.5', 'x/12.5', '0'))
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
