@@ -96,19 +96,19 @@ for f, lst in reads.items():
 # hand-proven scalars (disassembly checked; see context strings)
 RPM = dict(units='rpm', expr='x*25/128', to_byte='x*128/25', var='FFFF2994', var_name='Engine Speed')
 MANUAL = {
- '0087BA': dict(RPM, width=2, value=0x7A00, function='085b74', name='Rev Limit (Fuel Cut), FFFEF3FC.5/.7 or FFFEF32E.2',
-                context='0x85B74: limit = 0x87BA when FFFEF3FC.5|FFFEF3FC.7|FFFEF32E.2; rpm FFFF2994 >= limit -> cut level FFFF03CF = 4 -> 0x86B80 FFFF03D4 -> fuel cut FFFF03E4.7 (0x917EC base pulse = 0)'),
- '0087BC': dict(RPM, width=2, value=0x7A00, function='085b74', name='Rev Limit (Fuel Cut), FFFEF498.1',
-                context='0x85B74: limit = 0x87BC when FFFEF498.1 (param_8, r11); same cut chain'),
- '0087BE': dict(RPM, width=2, value=0x7A00, function='085b74', name='Rev Limit (Fuel Cut), FFFEF498.2',
-                context='0x85B74: limit = 0x87BE when FFFEF498.2 (param_9, r13); same cut chain'),
- '0087B8': dict(RPM, width=2, value=0x400, function='085b74', name='Rev Limit Minimum Margin above FFFF0D06',
+ '0087BA': dict(RPM, width=2, value=0x7A00, function='085b74', name='Engine Speed Limit (cut level 4), FFFEF3FC.5/.7 or FFFEF32E.2',
+                context='0x85B74: limit = 0x87BA when FFFEF3FC.5|FFFEF3FC.7|FFFEF32E.2; otherwise no limit (0xFFFF); rpm FFFF2994 >= limit -> level FFFF03CF = 4 (highest of the 0..4 levels) -> 0x882A8 sets FFFF03D8.1 (used e.g. by the catalyst model alternate target). Not proven to be the injector fuel-cut path.'),
+ '0087BC': dict(RPM, width=2, value=0x7A00, function='085b74', name='Engine Speed Limit (cut level 4), FFFEF498.1',
+                context='0x85B74: limit = 0x87BC when FFFEF498.1 (param_8, r11); same chain as 0x87BA'),
+ '0087BE': dict(RPM, width=2, value=0x7A00, function='085b74', name='Engine Speed Limit (cut level 4), FFFEF498.2',
+                context='0x85B74: limit = 0x87BE when FFFEF498.2 (param_9, r13); same chain as 0x87BA'),
+ '0087B8': dict(RPM, width=2, value=0x400, function='085b74', name='Engine Speed Limit Minimum Margin above FFFF0D06',
                 context='0x85B74: limit >= FFFF0D06 + 0x87B8 (rpm units, FFFF0D06 rpm = x*25/128)'),
  '00E666': dict(RPM, width=2, value=0x7A00, function='082c50', name='Engine Speed Limit, Torque Mode 0x0B (enter)',
                 context='0x82C50 (driver demand 0x82FA0): FFFF2994 > 0x7A00 (latch FFFEBB28 clear) -> mode FFFF03C6 = 0x0B'),
  '00E668': dict(RPM, width=2, value=0x7800, function='082c50', name='Engine Speed Limit, Torque Mode 0x0B (exit)',
                 context='0x82C50: threshold 0x7800 while latch FFFEBB28 set (hysteresis)'),
- '0087B6': dict(RPM, width=2, value=0x200, function='085b74', name='Rev Limit Hysteresis',
+ '0087B6': dict(RPM, width=2, value=0x200, function='085b74', name='Engine Speed Limit Hysteresis',
                 context='0x85B74: once cut, limit is lowered by 0x87B6 until rpm drops below'),
 }
 for k, v in MANUAL.items():
