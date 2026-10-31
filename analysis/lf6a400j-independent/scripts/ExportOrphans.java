@@ -49,10 +49,19 @@ public class ExportOrphans extends GhidraScript {
     List<Address> entries = new ArrayList<>();
     for (Instruction i : currentProgram.getListing().getInstructions(true)) {
       if (fm.getFunctionContaining(i.getAddress()) != null) continue;
-      if (!isPrologue(i)) continue;
       Instruction p = getInstructionBefore(i.getAddress());
-      if (p != null && fm.getFunctionContaining(p.getAddress()) == null && !isEnd(p)) continue;
-      entries.add(i.getAddress());
+      boolean afterRet = false;
+      if (p != null) {
+        Instruction q = getInstructionBefore(p.getAddress());
+        String qm = q == null ? "" : q.getMnemonicString().replace("_", "");
+        afterRet = qm.equals("rts") || qm.equals("rte");
+      }
+      if (isPrologue(i)) {
+        if (p != null && fm.getFunctionContaining(p.getAddress()) == null && !isEnd(p)) continue;
+        entries.add(i.getAddress());
+      } else if (afterRet || p == null) {
+        entries.add(i.getAddress());   // leaf routine directly after another routine's rts delay slot
+      }
     }
     int made = 0;
     StringBuilder sb = new StringBuilder();
