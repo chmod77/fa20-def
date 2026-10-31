@@ -1984,6 +1984,45 @@
    "format": "0.0"
   }
  },
+ "0x2D94C": {
+  "status": "identified",
+  "name": "Ignition Retard (Coolant), FFFF04C1 = 1",
+  "category": "Ignition Timing",
+  "evidence": "0x9D68C (from 0x9BDF4): when enabled and FFFF04C1 = 1, FFFF0C06 = T(coolant FFFEEEDE) << 7; 0x9B694 ramps it into FFFF0C02; 0x96F3C: FFFF0458 = (049E*128 - max(048D<<7, FFFF0C02) + ...)/128, and 0458 is in total-timing units (deg = x/2, via 03D3 vs 046C), so T is a retard in 0.5 deg.",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "x/2",
+   "to_byte": "x*2",
+   "format": "0.0"
+  }
+ },
+ "0x2D958": {
+  "status": "identified",
+  "name": "Ignition Retard (Coolant), FFFF04C1 = 0",
+  "category": "Ignition Timing",
+  "evidence": "0x9D68C (from 0x9BDF4): when enabled and FFFF04C1 = 0, FFFF0C06 = T(coolant FFFEEEDE) << 7; 0x9B694 ramps it into FFFF0C02; 0x96F3C: FFFF0458 = (049E*128 - max(048D<<7, FFFF0C02) + ...)/128, and 0458 is in total-timing units (deg = x/2, via 03D3 vs 046C), so T is a retard in 0.5 deg.",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "x/2",
+   "to_byte": "x*2",
+   "format": "0.0"
+  }
+ },
+ "0x2D964": {
+  "status": "identified",
+  "name": "Ignition Retard (Coolant), FFFF04C1 = 2",
+  "category": "Ignition Timing",
+  "evidence": "0x9D68C (from 0x9BDF4): when enabled and FFFF04C1 = 2, FFFF0C06 = T(coolant FFFEEEDE) << 7; 0x9B694 ramps it into FFFF0C02; 0x96F3C: FFFF0458 = (049E*128 - max(048D<<7, FFFF0C02) + ...)/128, and 0458 is in total-timing units (deg = x/2, via 03D3 vs 046C), so T is a retard in 0.5 deg.",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "x/2",
+   "to_byte": "x*2",
+   "format": "0.0"
+  }
+ },
  "0x2D97C": {
   "status": "identified",
   "name": "Ignition Timing Compensation (IAT) Activation (RPM x Load)",

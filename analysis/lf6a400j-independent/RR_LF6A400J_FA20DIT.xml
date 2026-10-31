@@ -4155,21 +4155,21 @@
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02D94C] (Coolant Temperature (filtered, word))" category="Unidentified - Ignition Timing - Corrections" storageaddress="1AFB0" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D94C. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Ignition Retard (Coolant), FFFF04C1 = 1" category="Ignition Timing" storageaddress="1AFB0" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D94C. Evidence: 0x9D68C (from 0x9BDF4): when enabled and FFFF04C1 = 1, FFFF0C06 = T(coolant FFFEEEDE) &lt;&lt; 7; 0x9B694 ramps it into FFFF0C02; 0x96F3C: FFFF0458 = (049E*128 - max(048D&lt;&lt;7, FFFF0C02) + ...)/128, and 0458 is in total-timing units (deg = x/2, via 03D3 vs 046C), so T is a retard in 0.5 deg." sizey="16">
+      <scaling units="deg" expression="x/2" to_byte="x*2" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02D958] (Coolant Temperature (filtered, word))" category="Unidentified - Ignition Timing - Corrections" storageaddress="1AFC0" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D958. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Ignition Retard (Coolant), FFFF04C1 = 0" category="Ignition Timing" storageaddress="1AFC0" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D958. Evidence: 0x9D68C (from 0x9BDF4): when enabled and FFFF04C1 = 0, FFFF0C06 = T(coolant FFFEEEDE) &lt;&lt; 7; 0x9B694 ramps it into FFFF0C02; 0x96F3C: FFFF0458 = (049E*128 - max(048D&lt;&lt;7, FFFF0C02) + ...)/128, and 0458 is in total-timing units (deg = x/2, via 03D3 vs 046C), so T is a retard in 0.5 deg." sizey="16">
+      <scaling units="deg" expression="x/2" to_byte="x*2" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02D964] (Coolant Temperature (filtered, word))" category="Unidentified - Ignition Timing - Corrections" storageaddress="1AFD0" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D964. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Ignition Retard (Coolant), FFFF04C1 = 2" category="Ignition Timing" storageaddress="1AFD0" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D964. Evidence: 0x9D68C (from 0x9BDF4): when enabled and FFFF04C1 = 2, FFFF0C06 = T(coolant FFFEEEDE) &lt;&lt; 7; 0x9B694 ramps it into FFFF0C02; 0x96F3C: FFFF0458 = (049E*128 - max(048D&lt;&lt;7, FFFF0C02) + ...)/128, and 0458 is in total-timing units (deg = x/2, via 03D3 vs 046C), so T is a retard in 0.5 deg." sizey="16">
+      <scaling units="deg" expression="x/2" to_byte="x*2" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>

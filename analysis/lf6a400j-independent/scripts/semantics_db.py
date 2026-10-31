@@ -638,6 +638,12 @@ add(0x2D318, 'Injector Minimum Pulse Width (Fuel Rail Pressure)', INJ, _inj + '0
     'max(FFFF0BB6, computed time) in the same 0.8 us units (and the same for the other cylinders 0x925E4/0x928D4/0x92BC4).',
     ('us', 'x*0.8', 'x/0.8', '0.0'), axes=FRPAX)
 
+for d, md in ((0x2D958, 0), (0x2D94C, 1), (0x2D964, 2)):
+    add(d, f'Ignition Retard (Coolant), FFFF04C1 = {md}', IGN,
+        f'0x9D68C (from 0x9BDF4): when enabled and FFFF04C1 = {md}, FFFF0C06 = T(coolant FFFEEEDE) << 7; 0x9B694 ramps it into FFFF0C02; '
+        '0x96F3C: FFFF0458 = (049E*128 - max(048D<<7, FFFF0C02) + ...)/128, and 0458 is in total-timing units (deg = x/2, via 03D3 vs 046C), '
+        'so T is a retard in 0.5 deg.', DEG2)
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
