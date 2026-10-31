@@ -408,6 +408,32 @@ for g, (a, b, c, d0, d1) in enumerate(((0x2D65C, 0x2D668, 0x2D674, 0x2D740, 0x2D
 add(0x2D734, 'Timing Term 047B Factor (vs FFFF0541)', IGT, ev7b + 'Factor T734.', F255)
 
 
+# ---------------------------------------------------------------- catalyst temperature model (0xD9D40 from 0xD9B78)
+# Output FFFF0FE4 = Catalyst Temperature B1S1 (OBD PID 3C, C = x/64-40), state FFFECFC4.
+# Target (0FE4 units) = T_EE60(rpm FFFF299C, FFFF09BE)*256 * k - 0xA00*k + 0xA00, k = T_EEC4*T_EED0/65536, i.e. C_target = k*(4*T-40):
+#   steady-state map unit C = 4x-40.  At start (FFFF0000.1 rising / FFFF66B0 state) FFFECFC4 = T_EEB0(FFFF36A2, coolant FFFF29A5)<<8
+#   (same unit).  FFFF36A2 (0xD9CD4) = FFFF0FE4>>8 at engine stop (C = 4x-40).  Approach rate = f(error) * T_EE8C|98 * T_EEA4 * T_EE80 *
+#   (T_EE74*26/256) / 2^24 (relative factors x/256).
+CAT = 'Catalyst Temperature Model'
+CAT4 = ('C', 'x*4-40', '(x+40)/4', '0')
+evc = '0xD9D40: Catalyst Temperature B1S1 FFFF0FE4 (OBD PID 3C, C=x/64-40) model; target = k*(4*T-40) C, k = T_EEC4*T_EED0/65536. '
+add(0x2EE60, 'Catalyst Temperature Steady-State Target', CAT, evc + 'Steady-state map (FFFF03D8.1 clear), Y = FFFF299C rpm.', CAT4)
+add(0x2EE54, 'Catalyst Temperature Steady-State Target (FFFF03D8.1 set)', CAT, evc + 'Used instead of T_02EE60 when FFFF03D8 bit 1 set.', CAT4)
+add(0x2EEB0, 'Catalyst Temperature Initial Value at Start', CAT, evc + 'FFFECFC4 = T<<8 at start; Y = FFFF36A2 (0FE4>>8 at engine stop), X = coolant FFFF29A5.',
+    CAT4, axes={'0': dict(name='Catalyst Temperature at Stop (FFFF36A2)', units='C', expr='x*4-40', to_byte='(x+40)/4'),
+                '1': dict(name='Coolant Temperature', units='C', expr='x-50', to_byte='x+50')})
+add(0x2EEC4, 'Catalyst Temperature Target Gain (vs Initial Temperature)', CAT, evc + 'k factor, input = T_02EEB0 output.',
+    ('factor', 'x/256', 'x*256', '0.000'), axes={'0': dict(name='Catalyst Temperature Initial Value', units='C', expr='x*4-40', to_byte='(x+40)/4')})
+add(0x2EED0, 'Catalyst Temperature Target Gain (vs Time Since Start)', CAT, evc + 'k factor, input = counter FFFECFC8 (+1 per execution while FFFEEEC1.0 clear).',
+    ('factor', 'x/256', 'x*256', '0.000'), axes={'0': dict(name='Executions Since Start', units='count', expr='x', to_byte='x')})
+evr = evc + 'Approach-rate gain = T_EE8C|98 * T_EEA4 * T_EE80 * (T_EE74*26/256) / 2^24 (relative factors). '
+add(0x2EE74, 'Catalyst Temperature Rate Factor (Vehicle Speed)', CAT, evr + 'Input FFFEF0DA vehicle speed.', ('factor', 'x/256', 'x*256', '0.000'))
+add(0x2EE80, 'Catalyst Temperature Rate Factor (FFFF0F56)', CAT, evr + 'Input FFFF0F56.', ('factor', 'x/256', 'x*256', '0.000'))
+add(0x2EEA4, 'Catalyst Temperature Rate Factor (|delta FFFF0F56|)', CAT, evr + 'Input |FFFF0F56 - previous|.', ('factor', 'x/256', 'x*256', '0.000'))
+add(0x2EE8C, 'Catalyst Temperature Rate Factor (FFFEEF14), FFFF03D8.1 clear', CAT, evr, ('factor', 'x/256', 'x*256', '0.000'))
+add(0x2EE98, 'Catalyst Temperature Rate Factor (FFFEEF14), FFFF03D8.1 set', CAT, evr, ('factor', 'x/256', 'x*256', '0.000'))
+
+
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
     print(len(S), 'entries')

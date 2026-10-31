@@ -5172,69 +5172,69 @@
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 8x8 [D02EE60] (Engine Speed (byte, 25 rpm) x ?)" category="Unidentified - Task 0x153248" storageaddress="1EE22" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2EE60. Lookup result stored to: FFFF0681, FFFF0686. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="8" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Engine Speed (byte, 25 rpm)" storageaddress="1EDFA" elements="8" storagetype="uint8" endian="big" locked="true">
+    <table type="3D" name="Catalyst Temperature Steady-State Target" category="Catalyst Temperature Model" storageaddress="1EE22" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2EE60. Evidence: 0xD9D40: Catalyst Temperature B1S1 FFFF0FE4 (OBD PID 3C, C=x/64-40) model; target = k*(4*T-40) C, k = T_EEC4*T_EED0/65536. Steady-state map (FFFF03D8.1 clear), Y = FFFF299C rpm. Lookup result stored to: FFFF0681, FFFF0686." sizex="8" sizey="8">
+      <scaling units="C" expression="x*4-40" to_byte="(x+40)/4" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Engine Speed (byte, 25 rpm)" storageaddress="1EDFA" elements="8" storagetype="uint8" endian="big">
         <scaling units="rpm" expression="x*25" to_byte="x/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2 (RAM 0xFFFF09BE)" storageaddress="1EE02" elements="8" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2 (RAM 0xFFFF09BE)" storageaddress="1EE02" elements="8" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 8x8 [D02EEB0]" category="Unidentified - Task 0x153248" storageaddress="1EE62" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2EEB0. Lookup result stored to: FFFF0680. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="8" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF36A2)" storageaddress="1EE12" elements="8" storagetype="uint8" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+    <table type="3D" name="Catalyst Temperature Initial Value at Start" category="Catalyst Temperature Model" storageaddress="1EE62" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2EEB0. Evidence: 0xD9D40: Catalyst Temperature B1S1 FFFF0FE4 (OBD PID 3C, C=x/64-40) model; target = k*(4*T-40) C, k = T_EEC4*T_EED0/65536. FFFECFC4 = T&lt;&lt;8 at start; Y = FFFF36A2 (0FE4&gt;&gt;8 at engine stop), X = coolant FFFF29A5. Lookup result stored to: FFFF0680." sizex="8" sizey="8">
+      <scaling units="C" expression="x*4-40" to_byte="(x+40)/4" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Catalyst Temperature at Stop (FFFF36A2)" storageaddress="1EE12" elements="8" storagetype="uint8" endian="big">
+        <scaling units="C" expression="x*4-40" to_byte="(x+40)/4" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="1EE1A" elements="8" storagetype="uint8" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="X Axis" name="Coolant Temperature" storageaddress="1EE1A" elements="8" storagetype="uint8" endian="big">
+        <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02EEA4]" category="Unidentified - Task 0x153248" storageaddress="1EEA2" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2EEA4. Lookup result stored to: FFFF0685, FFFF0FEA. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="1ED8A" elements="8" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Catalyst Temperature Rate Factor (|delta FFFF0F56|)" category="Catalyst Temperature Model" storageaddress="1EEA2" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2EEA4. Evidence: 0xD9D40: Catalyst Temperature B1S1 FFFF0FE4 (OBD PID 3C, C=x/64-40) model; target = k*(4*T-40) C, k = T_EEC4*T_EED0/65536. Approach-rate gain = T_EE8C|98 * T_EEA4 * T_EE80 * (T_EE74*26/256) / 2^24 (relative factors). Input |FFFF0F56 - previous|. Lookup result stored to: FFFF0685, FFFF0FEA." sizey="8">
+      <scaling units="factor" expression="x/256" to_byte="x*256" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="1ED8A" elements="8" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02EE80]" category="Unidentified - Task 0x153248" storageaddress="1EEAA" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2EE80. Lookup result stored to: FFFF0680, FFFF0684. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0F56)" storageaddress="1ED9A" elements="8" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Catalyst Temperature Rate Factor (FFFF0F56)" category="Catalyst Temperature Model" storageaddress="1EEAA" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2EE80. Evidence: 0xD9D40: Catalyst Temperature B1S1 FFFF0FE4 (OBD PID 3C, C=x/64-40) model; target = k*(4*T-40) C, k = T_EEC4*T_EED0/65536. Approach-rate gain = T_EE8C|98 * T_EEA4 * T_EE80 * (T_EE74*26/256) / 2^24 (relative factors). Input FFFF0F56. Lookup result stored to: FFFF0680, FFFF0684." sizey="8">
+      <scaling units="factor" expression="x/256" to_byte="x*256" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0F56)" storageaddress="1ED9A" elements="8" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02EE74] (Vehicle Speed (copy))" category="Unidentified - Task 0x153248" storageaddress="1EEB2" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2EE74. Lookup result stored to: FFFF0683. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Vehicle Speed (copy)" storageaddress="1EDAA" elements="8" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Catalyst Temperature Rate Factor (Vehicle Speed)" category="Catalyst Temperature Model" storageaddress="1EEB2" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2EE74. Evidence: 0xD9D40: Catalyst Temperature B1S1 FFFF0FE4 (OBD PID 3C, C=x/64-40) model; target = k*(4*T-40) C, k = T_EEC4*T_EED0/65536. Approach-rate gain = T_EE8C|98 * T_EEA4 * T_EE80 * (T_EE74*26/256) / 2^24 (relative factors). Input FFFEF0DA vehicle speed. Lookup result stored to: FFFF0683." sizey="8">
+      <scaling units="factor" expression="x/256" to_byte="x*256" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Vehicle Speed (copy)" storageaddress="1EDAA" elements="8" storagetype="uint16" endian="big">
         <scaling units="km/h" expression="x*9/160" to_byte="x*160/9" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02EED0]" category="Unidentified - Task 0x153248" storageaddress="1EEBA" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2EED0. Lookup result stored to: FFFF0682. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="1EDBA" elements="8" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    <table type="2D" name="Catalyst Temperature Target Gain (vs Time Since Start)" category="Catalyst Temperature Model" storageaddress="1EEBA" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2EED0. Evidence: 0xD9D40: Catalyst Temperature B1S1 FFFF0FE4 (OBD PID 3C, C=x/64-40) model; target = k*(4*T-40) C, k = T_EEC4*T_EED0/65536. k factor, input = counter FFFECFC8 (+1 per execution while FFFEEEC1.0 clear). Lookup result stored to: FFFF0682." sizey="8">
+      <scaling units="factor" expression="x/256" to_byte="x*256" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Executions Since Start" storageaddress="1EDBA" elements="8" storagetype="uint16" endian="big">
+        <scaling units="count" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02EEC4]" category="Unidentified - Task 0x153248" storageaddress="1EEC2" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2EEC4. Lookup result stored to: FFFF0681. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="1EDCA" elements="8" storagetype="uint8" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+    <table type="2D" name="Catalyst Temperature Target Gain (vs Initial Temperature)" category="Catalyst Temperature Model" storageaddress="1EEC2" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2EEC4. Evidence: 0xD9D40: Catalyst Temperature B1S1 FFFF0FE4 (OBD PID 3C, C=x/64-40) model; target = k*(4*T-40) C, k = T_EEC4*T_EED0/65536. k factor, input = T_02EEB0 output. Lookup result stored to: FFFF0681." sizey="8">
+      <scaling units="factor" expression="x/256" to_byte="x*256" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Catalyst Temperature Initial Value" storageaddress="1EDCA" elements="8" storagetype="uint8" endian="big">
+        <scaling units="C" expression="x*4-40" to_byte="(x+40)/4" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02EE54] (Engine Speed (byte, 25 rpm))" category="Unidentified - Task 0x153248" storageaddress="1EECA" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2EE54. Lookup result stored to: FFFF0681, FFFF0686. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Engine Speed (byte, 25 rpm)" storageaddress="1EDD2" elements="8" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Catalyst Temperature Steady-State Target (FFFF03D8.1 set)" category="Catalyst Temperature Model" storageaddress="1EECA" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2EE54. Evidence: 0xD9D40: Catalyst Temperature B1S1 FFFF0FE4 (OBD PID 3C, C=x/64-40) model; target = k*(4*T-40) C, k = T_EEC4*T_EED0/65536. Used instead of T_02EE60 when FFFF03D8 bit 1 set. Lookup result stored to: FFFF0681, FFFF0686." sizey="8">
+      <scaling units="C" expression="x*4-40" to_byte="(x+40)/4" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Engine Speed (byte, 25 rpm)" storageaddress="1EDD2" elements="8" storagetype="uint8" endian="big">
         <scaling units="rpm" expression="x*25" to_byte="x/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02EE98]" category="Unidentified - Task 0x153248" storageaddress="1EED2" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2EE98. Lookup result stored to: FFFF0681, FFFF0686. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFEEF14)" storageaddress="1EDDA" elements="8" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Catalyst Temperature Rate Factor (FFFEEF14), FFFF03D8.1 set" category="Catalyst Temperature Model" storageaddress="1EED2" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2EE98. Evidence: 0xD9D40: Catalyst Temperature B1S1 FFFF0FE4 (OBD PID 3C, C=x/64-40) model; target = k*(4*T-40) C, k = T_EEC4*T_EED0/65536. Approach-rate gain = T_EE8C|98 * T_EEA4 * T_EE80 * (T_EE74*26/256) / 2^24 (relative factors).  Lookup result stored to: FFFF0681, FFFF0686." sizey="8">
+      <scaling units="factor" expression="x/256" to_byte="x*256" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFEEF14)" storageaddress="1EDDA" elements="8" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02EE8C]" category="Unidentified - Task 0x153248" storageaddress="1EEDA" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2EE8C. Lookup result stored to: FFFF0681, FFFF0686. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFEEF14)" storageaddress="1EDEA" elements="8" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Catalyst Temperature Rate Factor (FFFEEF14), FFFF03D8.1 clear" category="Catalyst Temperature Model" storageaddress="1EEDA" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2EE8C. Evidence: 0xD9D40: Catalyst Temperature B1S1 FFFF0FE4 (OBD PID 3C, C=x/64-40) model; target = k*(4*T-40) C, k = T_EEC4*T_EED0/65536. Approach-rate gain = T_EE8C|98 * T_EEA4 * T_EE80 * (T_EE74*26/256) / 2^24 (relative factors).  Lookup result stored to: FFFF0681, FFFF0686." sizey="8">
+      <scaling units="factor" expression="x/256" to_byte="x*256" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFEEF14)" storageaddress="1EDEA" elements="8" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>

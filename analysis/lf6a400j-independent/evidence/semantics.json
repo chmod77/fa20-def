@@ -1860,6 +1860,166 @@
    "format": "0.00"
   }
  },
+ "0x2EE54": {
+  "status": "identified",
+  "name": "Catalyst Temperature Steady-State Target (FFFF03D8.1 set)",
+  "category": "Catalyst Temperature Model",
+  "evidence": "0xD9D40: Catalyst Temperature B1S1 FFFF0FE4 (OBD PID 3C, C=x/64-40) model; target = k*(4*T-40) C, k = T_EEC4*T_EED0/65536. Used instead of T_02EE60 when FFFF03D8 bit 1 set.",
+  "description": "",
+  "data": {
+   "units": "C",
+   "expr": "x*4-40",
+   "to_byte": "(x+40)/4",
+   "format": "0"
+  }
+ },
+ "0x2EE60": {
+  "status": "identified",
+  "name": "Catalyst Temperature Steady-State Target",
+  "category": "Catalyst Temperature Model",
+  "evidence": "0xD9D40: Catalyst Temperature B1S1 FFFF0FE4 (OBD PID 3C, C=x/64-40) model; target = k*(4*T-40) C, k = T_EEC4*T_EED0/65536. Steady-state map (FFFF03D8.1 clear), Y = FFFF299C rpm.",
+  "description": "",
+  "data": {
+   "units": "C",
+   "expr": "x*4-40",
+   "to_byte": "(x+40)/4",
+   "format": "0"
+  }
+ },
+ "0x2EE74": {
+  "status": "identified",
+  "name": "Catalyst Temperature Rate Factor (Vehicle Speed)",
+  "category": "Catalyst Temperature Model",
+  "evidence": "0xD9D40: Catalyst Temperature B1S1 FFFF0FE4 (OBD PID 3C, C=x/64-40) model; target = k*(4*T-40) C, k = T_EEC4*T_EED0/65536. Approach-rate gain = T_EE8C|98 * T_EEA4 * T_EE80 * (T_EE74*26/256) / 2^24 (relative factors). Input FFFEF0DA vehicle speed.",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/256",
+   "to_byte": "x*256",
+   "format": "0.000"
+  }
+ },
+ "0x2EE80": {
+  "status": "identified",
+  "name": "Catalyst Temperature Rate Factor (FFFF0F56)",
+  "category": "Catalyst Temperature Model",
+  "evidence": "0xD9D40: Catalyst Temperature B1S1 FFFF0FE4 (OBD PID 3C, C=x/64-40) model; target = k*(4*T-40) C, k = T_EEC4*T_EED0/65536. Approach-rate gain = T_EE8C|98 * T_EEA4 * T_EE80 * (T_EE74*26/256) / 2^24 (relative factors). Input FFFF0F56.",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/256",
+   "to_byte": "x*256",
+   "format": "0.000"
+  }
+ },
+ "0x2EE8C": {
+  "status": "identified",
+  "name": "Catalyst Temperature Rate Factor (FFFEEF14), FFFF03D8.1 clear",
+  "category": "Catalyst Temperature Model",
+  "evidence": "0xD9D40: Catalyst Temperature B1S1 FFFF0FE4 (OBD PID 3C, C=x/64-40) model; target = k*(4*T-40) C, k = T_EEC4*T_EED0/65536. Approach-rate gain = T_EE8C|98 * T_EEA4 * T_EE80 * (T_EE74*26/256) / 2^24 (relative factors). ",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/256",
+   "to_byte": "x*256",
+   "format": "0.000"
+  }
+ },
+ "0x2EE98": {
+  "status": "identified",
+  "name": "Catalyst Temperature Rate Factor (FFFEEF14), FFFF03D8.1 set",
+  "category": "Catalyst Temperature Model",
+  "evidence": "0xD9D40: Catalyst Temperature B1S1 FFFF0FE4 (OBD PID 3C, C=x/64-40) model; target = k*(4*T-40) C, k = T_EEC4*T_EED0/65536. Approach-rate gain = T_EE8C|98 * T_EEA4 * T_EE80 * (T_EE74*26/256) / 2^24 (relative factors). ",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/256",
+   "to_byte": "x*256",
+   "format": "0.000"
+  }
+ },
+ "0x2EEA4": {
+  "status": "identified",
+  "name": "Catalyst Temperature Rate Factor (|delta FFFF0F56|)",
+  "category": "Catalyst Temperature Model",
+  "evidence": "0xD9D40: Catalyst Temperature B1S1 FFFF0FE4 (OBD PID 3C, C=x/64-40) model; target = k*(4*T-40) C, k = T_EEC4*T_EED0/65536. Approach-rate gain = T_EE8C|98 * T_EEA4 * T_EE80 * (T_EE74*26/256) / 2^24 (relative factors). Input |FFFF0F56 - previous|.",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/256",
+   "to_byte": "x*256",
+   "format": "0.000"
+  }
+ },
+ "0x2EEB0": {
+  "status": "identified",
+  "name": "Catalyst Temperature Initial Value at Start",
+  "category": "Catalyst Temperature Model",
+  "evidence": "0xD9D40: Catalyst Temperature B1S1 FFFF0FE4 (OBD PID 3C, C=x/64-40) model; target = k*(4*T-40) C, k = T_EEC4*T_EED0/65536. FFFECFC4 = T<<8 at start; Y = FFFF36A2 (0FE4>>8 at engine stop), X = coolant FFFF29A5.",
+  "description": "",
+  "data": {
+   "units": "C",
+   "expr": "x*4-40",
+   "to_byte": "(x+40)/4",
+   "format": "0"
+  },
+  "axes": {
+   "0": {
+    "name": "Catalyst Temperature at Stop (FFFF36A2)",
+    "units": "C",
+    "expr": "x*4-40",
+    "to_byte": "(x+40)/4"
+   },
+   "1": {
+    "name": "Coolant Temperature",
+    "units": "C",
+    "expr": "x-50",
+    "to_byte": "x+50"
+   }
+  }
+ },
+ "0x2EEC4": {
+  "status": "identified",
+  "name": "Catalyst Temperature Target Gain (vs Initial Temperature)",
+  "category": "Catalyst Temperature Model",
+  "evidence": "0xD9D40: Catalyst Temperature B1S1 FFFF0FE4 (OBD PID 3C, C=x/64-40) model; target = k*(4*T-40) C, k = T_EEC4*T_EED0/65536. k factor, input = T_02EEB0 output.",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/256",
+   "to_byte": "x*256",
+   "format": "0.000"
+  },
+  "axes": {
+   "0": {
+    "name": "Catalyst Temperature Initial Value",
+    "units": "C",
+    "expr": "x*4-40",
+    "to_byte": "(x+40)/4"
+   }
+  }
+ },
+ "0x2EED0": {
+  "status": "identified",
+  "name": "Catalyst Temperature Target Gain (vs Time Since Start)",
+  "category": "Catalyst Temperature Model",
+  "evidence": "0xD9D40: Catalyst Temperature B1S1 FFFF0FE4 (OBD PID 3C, C=x/64-40) model; target = k*(4*T-40) C, k = T_EEC4*T_EED0/65536. k factor, input = counter FFFECFC8 (+1 per execution while FFFEEEC1.0 clear).",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/256",
+   "to_byte": "x*256",
+   "format": "0.000"
+  },
+  "axes": {
+   "0": {
+    "name": "Executions Since Start",
+    "units": "count",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
  "0x2F37C": {
   "status": "identified",
   "name": "Intake AVCS Target, Alternate Mode (FFFEF152.5), FFFF076C.3 set",
