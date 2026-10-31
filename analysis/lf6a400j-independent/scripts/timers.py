@@ -8,12 +8,19 @@ A table T is accepted when, in function F of the task tree, the lookup result v 
 and appears only in F (plus constant-only writers), and F is reached from the task root.  Output evidence/timer-tables.tsv."""
 import re, os, glob, json, collections
 H = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(H)
-PERIOD = {'0015307c': 0.02, '00153248': 0.04, '00153568': 0.08}
+PERIOD = {'0015307c': 0.02, '00153248': 0.04, '00153568': 0.08, '00153800': 0.08, '001528a2': 0.004}
 S = json.load(open(f'{ROOT}/evidence/semantics.json'))
 
 
+SEED = {'00153800': ['0004c24e', '0003e9a0', '000dcaac', '0011a89c', '00077f68', '000780a2', '0007ba44', '0014019c', '00061a48', '0004a20e',
+                     '000aefd4', '0006acec', '000d2c48', '0008a274', '0009ca88', '001196b4', '000aa2b8', '000c8210', '00151288', '0004b414',
+                     '00050c62', '00049950', '00049b2e', '0004a520', '0005adca', '0003ecd4', '0004b344', '0003dc4a', '0004c358', '0004b2d6',
+                     '0006aef4', '000dce34', '0005e90a', '00048e3a', '0010e7d0', '0010e33c', '0010e858', '0010ebb4', '000a12dc']}
+# 0x153800 (task 10 body target) is not a decompiled function: its direct callees are taken from the disassembly at 0x153800..0x153A00
+
+
 def tree(r):
-    seen = set(); st = [r]
+    seen = set(); st = [r] + SEED.get(r, [])
     while st:
         f = st.pop()
         p = f'{ROOT}/cdump/{f}.c'

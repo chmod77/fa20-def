@@ -515,7 +515,9 @@ for d, nm in ((0x2F034, 'Misfire Detection Timing Interpolation Point A (RPM)'),
 # ---------------------------------------------------------------- timer thresholds (scripts/timers.py)
 _PEREV = {'0015307c': 'task 0x15307C = 20 ms (OS alarm table 0x168FD0: alarm 4 -> task 8 cycle 10 ticks; tick 2 ms from alarm 6 -> task 9 '
           '0x153248 cycle 20 = proven 40 ms)', '00153248': 'task 0x153248 = 40 ms (OBD PID 0x1F/0x4E prescalers)',
-          '00153568': 'task 0x153568 = 80 ms (OBD PID 0x31 distance integration)'}
+          '00153568': 'task 0x153568 = 80 ms (OBD PID 0x31 distance integration)',
+          '00153800': 'task 0x153800 = 80 ms (OS alarm 7 -> task 10 (body 0x15188E), cycle 40 ticks of 2 ms; tick from alarm 6 -> 0x153248 = 40 ms)',
+          '001528a2': 'task 0x1528A2 = 4 ms (OS alarm 1 -> task 3, cycle 2 ticks of 2 ms)'}
 if os.path.exists(f'{ROOT}/evidence/timer-tables.tsv'):
     import csv as _csv2
     for _r in _csv2.DictReader(open(f'{ROOT}/evidence/timer-tables.tsv'), delimiter='\t'):

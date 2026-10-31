@@ -116,6 +116,10 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
   task 3 = 0x1528A2, 8 = 0x15307C, 9 = 0x153248, 10 = 0x153800, 18 = 0x153568.
   Alarm 6 -> task 9 (cycle 20) with 0x153248 proven 40 ms gives a 2 ms tick, so 0x1528A2 = 4 ms, 0x15307C = 20 ms, 0x153800 = 80 ms.
   Caveat: this relies on reading word 0 as the task ID. 0x152A40 (task 7, alarm 9) is not set at startup; it is probably event-driven.
+  There are three alarm sets with the same cycles (1, 2, 4, 10, 20, 40 ticks): set A (alarms 10,1,2,4,6,7 -> tasks 0x14,3,4,8,9,10),
+  alarms 12-17 -> tasks 0x19-0x1E, and alarms 24-29 -> tasks 0x34-0x39. 0x1526AC (called from the background loop 0x49E70) cancels set A and
+  activates task 18 (0x153568, the OBD/SSM formatter task). The 80 ms figure for 0x153568 comes from the PID 0x31 arithmetic and its
+  activation pattern needs checking. Task 10 (body 0x15188E -> 0x153800) = 80 ms runs misfire 0xDCE34, 0x8A274 and others.
   `scripts/timers.py` accepts timer tables only under strict checks (direct comparison with a +1 counter) -> `evidence/timer-tables.tsv`.
 - OS structure: the task control blocks at 0x169780 are 16-byte records {entry, flags, priority, stack}. The task bodies (0x151748..)
   call their functions, increment FFFF1B2x (execution count) and jump to 0x13CF00 (terminate). Priorities do not follow the
