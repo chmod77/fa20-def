@@ -1,6 +1,7 @@
 descriptor	function	var	var_name	units	expr	context
 02CCE4	0008bb84	FFFF03A0	Engine Load	%	x	(param_3 & 0xff) <= (uVar1 & 0xff)
 02DAD8	000a3118	FFFF2ADA	Engine Speed (OBD copy)	rpm	x*25/128	param_1 <= uVar1
+02DF0C	000ab7b4	FFFEEF18	Control Module Voltage	V	x*625/2048000	(undefined **)(param_8 & 0xffff) < (undefined **)(uVar7 & 0xffff)
 02DF30	000ac870	FFFEEEDE	Coolant Temperature (filtered, word)	C	x*5/2048-40	(uVar6 & 0xffff) <= (param_3 & 0xffff)
 02E418	000b6258	FFFF03A0	Engine Load	%	x	((uVar4 & 0xff) <= (param_11 & 0xff)
 02E7BC	000c0150	FFFEED16	Fuel Rail Pressure (gauge)	kPa	x*639630/1048576	(param_3 & 0xffff) < (uVar3 & 0xffff)

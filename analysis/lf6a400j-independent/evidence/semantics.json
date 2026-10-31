@@ -2340,6 +2340,19 @@
    "format": "0.00"
   }
  },
+ "0x2DF0C": {
+  "status": "identified",
+  "name": "Control Module Voltage Threshold (0xAB7B4)",
+  "category": "Thresholds - Control Module Voltage",
+  "evidence": "0xAB7B4: lookup result compared with Control Module Voltage (FFFFEF18): \"(undefined **)(param_8 & 0xffff) < (undefined **)(uVar7 & 0xffff)\"; a comparison requires the same unit, so the output carries that scaling.",
+  "description": "",
+  "data": {
+   "units": "V",
+   "expr": "x*625/2048000",
+   "to_byte": "x*2048000/625",
+   "format": "0.00"
+  }
+ },
  "0x2DF30": {
   "status": "identified",
   "name": "Coolant Temperature (filtered, word) Threshold (0xAC870)",

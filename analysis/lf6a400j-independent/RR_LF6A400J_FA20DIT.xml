@@ -4497,9 +4497,9 @@
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 3 [D02DF0C] (Alternator Duty)" category="Unidentified - Idle Speed Control" storageaddress="1C354" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2DF0C. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="3">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Alternator Duty" storageaddress="1C35A" elements="3" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Control Module Voltage Threshold (0xAB7B4)" category="Thresholds - Control Module Voltage" storageaddress="1C354" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2DF0C. Evidence: 0xAB7B4: lookup result compared with Control Module Voltage (FFFFEF18): &quot;(undefined **)(param_8 &amp; 0xffff) &lt; (undefined **)(uVar7 &amp; 0xffff)&quot;; a comparison requires the same unit, so the output carries that scaling." sizey="3">
+      <scaling units="V" expression="x*625/2048000" to_byte="x*2048000/625" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Alternator Duty" storageaddress="1C35A" elements="3" storagetype="uint16" endian="big">
         <scaling units="%" expression="x*0.06" to_byte="x/0.06" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>

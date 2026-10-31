@@ -63,7 +63,7 @@ def param_var(fn, k):
             if not iv or len(iv) != 1:
                 return None
             res.add(int(next(iter(iv)), 16)); continue
-        m = re.fullmatch(r'(?:\(\w+\)\s*)*_?(DAT_f{3}[0-9a-f]{5}|v_\w+)', args[k - 1].strip())
+        m = re.fullmatch(r'(?:\(\w+\s*\**\)\s*)*_?(DAT_f{3}[0-9a-f]{5}|v_\w+)', args[k - 1].strip())
         if not m:
             return None
         t = m.group(1)
@@ -84,8 +84,8 @@ for f, lst in reads.items():
             lp = litpool_values(int(f, 16))
         if v in lp:
             continue
-        hx = f'0x{v:x}'
-        for m in re.finditer(VARRE + r'\s*(<=?|>=?)\s*' + re.escape(hx) + r'\b|' + re.escape(hx) + r'\s*(<=?|>=?)\s*' + VARRE, s):
+        hx = r'(?:\(\w+\s*\**\)\s*)?(?:0x%x|&(?:PTR_)?(?:DAT|UNK|LAB)_0*%x)\b' % (v, v)
+        for m in re.finditer(VARRE + r'\s*(<=?|>=?)\s*' + hx + '|' + hx + r'\s*(<=?|>=?)\s*' + VARRE, s):
             tok = m.group(1) or m.group(4)
             addr = int(tok[4:], 16) if tok.startswith('DAT_') else (param_var(f.zfill(8), int(tok[6:])) if tok.startswith('param_') else lab.get(tok))
             if addr in known:
