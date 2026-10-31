@@ -14,10 +14,10 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
 ## Coverage (2026-10-31, session 2)
 | measure | value |
 |---|---|
-| table views in XML | 1165 (1044 descriptor views of 1181 descriptors + 121 helper-routine tables) |
-| identified (name and output scaling proven) | 67 |
-| partial (role proven, units unresolved) | 1 |
-| axes with a proven physical scaling / name | 657 / 1443 (incl. 68 static axes) |
+| table views in XML | 1182 (1046 descriptor views + 136 helper-routine tables) |
+| identified (name and output scaling proven) | 80 |
+| partial (role proven, units unresolved) | 2 |
+| axes with a proven physical scaling / name | 683 / 1528 |
 | lookup inputs resolved to a RAM variable (`evidence/c-input-origins.tsv`) | 971 / 1556 |
 | proven RAM variables (`scripts/variables.py` V and V2) | about 110 |
 
@@ -46,6 +46,17 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
   (tasks 0xF6B24, 0xB42AC, 0x1011EC, 0x11F134 and others) still need monitor-flag tracing.
 - Known blind spot: knock retard FFFF04AD and injector pulse width FFFF2B4E are written by code Ghidra did not discover
   (for example the region around 0x154C60 that writes FFFF2994/FFFF299C). Next: create functions in 0x150000-0x15A000 and re-export.
+
+## Session 2, late
+- Orphan code recovery (ExportOrphans.java, 2 passes: register-save prologues and leaf routines after rts) gave 504 functions
+  merged into cdump/ (evidence/orphan-functions.txt). This exposed the crank code: FFFF299C = rpm/25, and injection.
+- store_scan.py now parses operands correctly. It resolves 29k accesses, including @(disp,Rn), @(r0,Rn) and gbr forms.
+- DI injection: SSM PW FFFF2B4E = FFFF1564>>2 (0x1569D6). Time_us = latency FFFF0BC8*0.8 + q*k*0.003125 (0x922F4).
+  Injector latency tables are identified. Injector flow scaling T_02CE90 is partial because the unit of fuel quantity q is unproven.
+- Lookup result sinks: evidence/table-sinks.json (401 descriptors). These are shown in the descriptions.
+- Next high-yield idea: OBD Mode 06 (handler 0x70980 -> 0x7202C -> per-OBDMID 0x7216C...). Each test writes
+  [MID, TID, Unit/Scaling ID, value, min, max]. Limits that come from tables would get a standard (SAE J1979) unit. This needs
+  emulating the jump-table handlers and an authoritative unit/scaling list (not from memory).
 
 ## Key proven chains
 - **Ignition.** `0x98FAC`: total timing `FFFF046C` (SSM 0x11, deg = x/2) is the sum of components in 0.5° units. The base comes from four 22x16 maps (`0x86758`), selected by `FFFF04F4.7` and `FFFF054A.4`.
