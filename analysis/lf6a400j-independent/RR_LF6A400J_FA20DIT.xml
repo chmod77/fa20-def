@@ -5832,36 +5832,36 @@
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x16 [D02F900] (Engine Load x Engine Speed (high byte))" category="Unidentified - Task 0xFFFB0" storageaddress="21764" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F900. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Engine Load" storageaddress="21874" elements="16" storagetype="uint8" endian="big" locked="true">
+    <table type="3D" name="Target Fuel Rail Pressure (Base)" category="Fuel Rail Pressure - Target" storageaddress="21764" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F900. Evidence: 0x1008D0 -&gt; FFFF1276 Target Fuel Rail Pressure (OBD PID 0x6D commanded rail pressure, kPa = x*1250/2048); u8 maps are scaled *150 (MPa = x*0.0916), u16 maps direct. Base map B (load x rpm); used for FFFF1276 in mode FFFF0541=4 with FFFF66B0=3." sizex="16" sizey="16">
+      <scaling units="MPa" expression="x*150*1250/2048/1000" to_byte="x*1000*2048/1250/150" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Engine Load" storageaddress="21874" elements="16" storagetype="uint8" endian="big">
         <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Speed (high byte)" storageaddress="21864" elements="16" storagetype="uint8" endian="big" locked="true">
+      <table type="X Axis" name="Engine Speed (high byte)" storageaddress="21864" elements="16" storagetype="uint8" endian="big">
         <scaling units="rpm" expression="x*50" to_byte="x/50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 8x4 [D02F94C] (Coolant Temperature (filtered, word) x Engine Speed (high byte))" category="Unidentified - Task 0xFFFB0" storageaddress="218A0" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F94C. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="4" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="2188C" elements="8" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Target Fuel Rail Pressure (Mode 0/other)" category="Fuel Rail Pressure - Target" storageaddress="218A0" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F94C. Evidence: 0x1008D0 -&gt; FFFF1276 Target Fuel Rail Pressure (OBD PID 0x6D commanded rail pressure, kPa = x*1250/2048); u8 maps are scaled *150 (MPa = x*0.0916), u16 maps direct. FFFF0541 not 1..4 (coolant x rpm)." sizex="4" sizey="8">
+      <scaling units="MPa" expression="x*150*1250/2048/1000" to_byte="x*1000*2048/1250/150" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="2188C" elements="8" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Speed (high byte)" storageaddress="2189C" elements="4" storagetype="uint8" endian="big" locked="true">
+      <table type="X Axis" name="Engine Speed (high byte)" storageaddress="2189C" elements="4" storagetype="uint8" endian="big">
         <scaling units="rpm" expression="x*50" to_byte="x/50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 8x4 [D02F96C] (Coolant Temperature (filtered, word) x Engine Speed (high byte))" category="Unidentified - Task 0xFFFB0" storageaddress="218D0" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F96C. Lookup result stored to: FFFF1276. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="4" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="218C0" elements="8" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Target Fuel Rail Pressure (Mode 4)" category="Fuel Rail Pressure - Target" storageaddress="218D0" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F96C. Evidence: 0x1008D0 -&gt; FFFF1276 Target Fuel Rail Pressure (OBD PID 0x6D commanded rail pressure, kPa = x*1250/2048); u8 maps are scaled *150 (MPa = x*0.0916), u16 maps direct. FFFF0541 = 4 and FFFF66B0 != 3 (coolant x rpm). Lookup result stored to: FFFF1276 (Target Fuel Rail Pressure)." sizex="4" sizey="8">
+      <scaling units="MPa" expression="x*150*1250/2048/1000" to_byte="x*1000*2048/1250/150" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="218C0" elements="8" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Speed (high byte)" storageaddress="2189C" elements="4" storagetype="uint8" endian="big" locked="true">
+      <table type="X Axis" name="Engine Speed (high byte)" storageaddress="2189C" elements="4" storagetype="uint8" endian="big">
         <scaling units="rpm" expression="x*50" to_byte="x/50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02F960] (Coolant Temperature (filtered, word))" category="Unidentified - Task 0xFFFB0" storageaddress="218F0" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F960. Lookup result stored to: FFFF1276. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Target Fuel Rail Pressure (Base, FFFF0491.0)" category="Fuel Rail Pressure - Target" storageaddress="218F0" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F960. Evidence: 0x1008D0 -&gt; FFFF1276 Target Fuel Rail Pressure (OBD PID 0x6D commanded rail pressure, kPa = x*1250/2048); u8 maps are scaled *150 (MPa = x*0.0916), u16 maps direct. Replaces B when FFFF0491 bit 0 set (input coolant). Lookup result stored to: FFFF1276 (Target Fuel Rail Pressure)." sizey="16">
+      <scaling units="MPa" expression="x*150*1250/2048/1000" to_byte="x*1000*2048/1250/150" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -5892,39 +5892,39 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x16 [D02F914] (Engine Load x Engine Speed (high byte))" category="Unidentified - Task 0xFFFB0" storageaddress="21BD9" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2F914. Lookup result stored to: FFFF1276. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
-      <table type="Y Axis" name="Engine Load" storageaddress="21BB9" elements="16" storagetype="uint8" endian="big" locked="true">
+    <table type="3D" name="Target Fuel Rail Pressure Adder (Base)" category="Fuel Rail Pressure - Target" storageaddress="21BD9" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2F914. Evidence: 0x1008D0 -&gt; FFFF1276 Target Fuel Rail Pressure (OBD PID 0x6D commanded rail pressure, kPa = x*1250/2048); u8 maps are scaled *150 (MPa = x*0.0916), u16 maps direct. Signed adder to B, multiplied by T_02F980/255. Lookup result stored to: FFFF1276 (Target Fuel Rail Pressure)." sizex="16" sizey="16">
+      <scaling units="MPa" expression="x*150*1250/2048/1000" to_byte="x*1000*2048/1250/150" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
+      <table type="Y Axis" name="Engine Load" storageaddress="21BB9" elements="16" storagetype="uint8" endian="big">
         <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Speed (high byte)" storageaddress="21BC9" elements="16" storagetype="uint8" endian="big" locked="true">
+      <table type="X Axis" name="Engine Speed (high byte)" storageaddress="21BC9" elements="16" storagetype="uint8" endian="big">
         <scaling units="rpm" expression="x*50" to_byte="x/50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 8x8 [D02F980] (Engine Oil Temperature x Intake Air Temperature (control))" category="Unidentified - Task 0xFFFB0" storageaddress="21CD9" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F980. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="8" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Engine Oil Temperature" storageaddress="21BA9" elements="8" storagetype="uint8" endian="big" locked="true">
+    <table type="3D" name="Target Fuel Rail Pressure Adder Weight" category="Fuel Rail Pressure - Target" storageaddress="21CD9" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F980. Evidence: 0x1008D0 -&gt; FFFF1276 Target Fuel Rail Pressure (OBD PID 0x6D commanded rail pressure, kPa = x*1250/2048); u8 maps are scaled *150 (MPa = x*0.0916), u16 maps direct. Weight on T_02F914 (x/255); inputs FFFEEF33, IAT FFFEE6A5." sizex="8" sizey="8">
+      <scaling units="factor" expression="x/255" to_byte="x*255" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Engine Oil Temperature" storageaddress="21BA9" elements="8" storagetype="uint8" endian="big">
         <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Intake Air Temperature (control)" storageaddress="21BB1" elements="8" storagetype="uint8" endian="big" locked="true">
+      <table type="X Axis" name="Intake Air Temperature (control)" storageaddress="21BB1" elements="8" storagetype="uint8" endian="big">
         <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02F928] (Coolant Temperature (filtered, word))" category="Unidentified - Task 0xFFFB0" storageaddress="21D42" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F928. Lookup result stored to: FFFF1276. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="21D22" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Target Fuel Rail Pressure (Mode 1)" category="Fuel Rail Pressure - Target" storageaddress="21D42" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F928. Evidence: 0x1008D0 -&gt; FFFF1276 Target Fuel Rail Pressure (OBD PID 0x6D commanded rail pressure, kPa = x*1250/2048); u8 maps are scaled *150 (MPa = x*0.0916), u16 maps direct. FFFF0541 = 1 (vs coolant). Lookup result stored to: FFFF1276 (Target Fuel Rail Pressure)." sizey="16">
+      <scaling units="MPa" expression="x*1250/2048/1000" to_byte="x*1000*2048/1250" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="21D22" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02F934] (Coolant Temperature (filtered, word))" category="Unidentified - Task 0xFFFB0" storageaddress="21D62" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F934. Lookup result stored to: FFFF1276. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Target Fuel Rail Pressure (Mode 3, FFFEF152.5)" category="Fuel Rail Pressure - Target" storageaddress="21D62" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F934. Evidence: 0x1008D0 -&gt; FFFF1276 Target Fuel Rail Pressure (OBD PID 0x6D commanded rail pressure, kPa = x*1250/2048); u8 maps are scaled *150 (MPa = x*0.0916), u16 maps direct. FFFF0541 = 3, FFFEF152.5 set (vs coolant). Lookup result stored to: FFFF1276 (Target Fuel Rail Pressure)." sizey="16">
+      <scaling units="MPa" expression="x*1250/2048/1000" to_byte="x*1000*2048/1250" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02F940] (Coolant Temperature (filtered, word))" category="Unidentified - Task 0xFFFB0" storageaddress="21D82" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F940. Lookup result stored to: FFFF1276. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Target Fuel Rail Pressure (Mode 3)" category="Fuel Rail Pressure - Target" storageaddress="21D82" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F940. Evidence: 0x1008D0 -&gt; FFFF1276 Target Fuel Rail Pressure (OBD PID 0x6D commanded rail pressure, kPa = x*1250/2048); u8 maps are scaled *150 (MPa = x*0.0916), u16 maps direct. FFFF0541 = 3, FFFEF152.5 clear (vs coolant). Lookup result stored to: FFFF1276 (Target Fuel Rail Pressure)." sizey="16">
+      <scaling units="MPa" expression="x*1250/2048/1000" to_byte="x*1000*2048/1250" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>

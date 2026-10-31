@@ -465,6 +465,30 @@ for a, md in ((0x1348C, 'Modes 1-2'), (0x134AC, 'Mode 3'), (0x134CC, 'Mode 4'), 
         static_values=ECT16, axes=ECTAX)
 
 
+# ---------------------------------------------------------------- target fuel rail pressure (0x1008D0 from 0xFFFB0)
+# FFFF1276 = Target Fuel Rail Pressure: OBD PID 0x6D bytes B-C (commanded fuel rail pressure A, 10 kPa/bit; handler 0x71C92 via
+#   0x3169C PID pointer table) = 0x10C408 x*125/2048 -> FFFF12F6 -> FFFF39D2, i.e. kPa = x*1250/2048.  Cross-check: actual rail
+#   pressure FFFEED16 (PID 0x23/0x6D D-E) uses x*0xF9DB>>20 (=0.0610 per 10 kPa), same as 125/2048.
+# 0x1008D0: base B = T_02F900(load FFFF03A0, rpm FFFF2996) + T_02F914(load, rpm)*T_02F980(FFFEEF33, IAT FFFEE6A5)/255 (or T_02F960(coolant)
+#   when FFFF0491.0), rate-limited -> FFFF0780; FFFF1276 = by mode FFFF0541: 4 -> T_02F96C(coolant, rpm) (or B when FFFF66B0 == 3) *150,
+#   3 -> T_02F940/T_02F934(coolant) direct, 1 -> T_02F928(coolant) direct, other -> T_02F94C(coolant, rpm)*150; constants 0x600E (15.0 MPa),
+#   0x4009 (10.0 MPa), 0x23E (350 kPa).
+FRP = 'Fuel Rail Pressure - Target'
+FRP8 = ('MPa', 'x*150*1250/2048/1000', 'x*1000*2048/1250/150', '0.00')
+FRP16 = ('MPa', 'x*1250/2048/1000', 'x*1000*2048/1250', '0.00')
+evf = ('0x1008D0 -> FFFF1276 Target Fuel Rail Pressure (OBD PID 0x6D commanded rail pressure, kPa = x*1250/2048); u8 maps are scaled *150 '
+       '(MPa = x*0.0916), u16 maps direct. ')
+add(0x2F900, 'Target Fuel Rail Pressure (Base)', FRP, evf + 'Base map B (load x rpm); used for FFFF1276 in mode FFFF0541=4 with FFFF66B0=3.', FRP8)
+add(0x2F914, 'Target Fuel Rail Pressure Adder (Base)', FRP, evf + 'Signed adder to B, multiplied by T_02F980/255.', FRP8)
+add(0x2F980, 'Target Fuel Rail Pressure Adder Weight', FRP, evf + 'Weight on T_02F914 (x/255); inputs FFFEEF33, IAT FFFEE6A5.', ('factor', 'x/255', 'x*255', '0.000'))
+add(0x2F960, 'Target Fuel Rail Pressure (Base, FFFF0491.0)', FRP, evf + 'Replaces B when FFFF0491 bit 0 set (input coolant).', FRP8)
+add(0x2F96C, 'Target Fuel Rail Pressure (Mode 4)', FRP, evf + 'FFFF0541 = 4 and FFFF66B0 != 3 (coolant x rpm).', FRP8)
+add(0x2F94C, 'Target Fuel Rail Pressure (Mode 0/other)', FRP, evf + 'FFFF0541 not 1..4 (coolant x rpm).', FRP8)
+add(0x2F928, 'Target Fuel Rail Pressure (Mode 1)', FRP, evf + 'FFFF0541 = 1 (vs coolant).', FRP16)
+add(0x2F940, 'Target Fuel Rail Pressure (Mode 3)', FRP, evf + 'FFFF0541 = 3, FFFEF152.5 clear (vs coolant).', FRP16)
+add(0x2F934, 'Target Fuel Rail Pressure (Mode 3, FFFEF152.5)', FRP, evf + 'FFFF0541 = 3, FFFEF152.5 set (vs coolant).', FRP16)
+
+
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
     print(len(S), 'entries')

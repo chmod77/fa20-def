@@ -173,3 +173,6 @@ V2.update({
  0xFFFF047B:('Ignition Timing Term 047B','deg','x/2','x*2','0x98FAC adds to FFFF046C in 0.5 deg'),
  0xFFFF0479:('Ignition Timing IAT Adder','deg','x/2','x*2','0x99558 sums into 0473 (0.5 deg)'),
 })
+V2.update({
+ 0xFFFF1276:('Target Fuel Rail Pressure','kPa','x*1250/2048','x*2048/1250','OBD PID 0x6D bytes B-C (commanded FRP A, 10 kPa/bit) via 0x10C408 x*125/2048 -> 12F6 -> 39D2 (handler 0x71C92)'),
+})
