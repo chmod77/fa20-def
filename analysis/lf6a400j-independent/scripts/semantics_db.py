@@ -1308,6 +1308,12 @@ for _d, _c in ((0x2D464, 'FFFF0435.3 clear'), (0x2D47C, 'FFFF0435.3 set, FFFF389
     add(_d, f'Time Threshold ({_c}) [0x95DA0]', 'Timers', _95da + 'This table is compared directly with FEBEF0: s = x*0.08.',
         ('s', 'x*0.08', 'x/0.08', '0.00'), axes={'0': dict(name='Engine Speed (byte, 25 rpm)', units='rpm', expr='x*25', to_byte='x/25')})
 
+for _d, _fn, _c in ((0x2E424, '0xB692C', 'FEC792'), (0x2FD70, '0x11C49C', 'FEE074')):
+    add(_d, f'Time Threshold [{_fn}]', 'Timers',
+        f'{_fn} (reached only from the 20 ms task 0x15307C; OS alarm 6 -> task 9, cycle 20 x 1 ms tick): counter {_c} = 0 while the '
+        'enabling condition is false, else +1 per execution (saturating); the table output is compared directly with that counter: s = x*0.02.',
+        ('s', 'x*0.02', 'x/0.02', '0.00'))
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

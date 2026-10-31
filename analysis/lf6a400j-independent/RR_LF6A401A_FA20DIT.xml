@@ -1128,9 +1128,9 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02E424] (Engine Speed (high byte)) - unresolved: stored to output *param_19 of 0xB692C" category="Unidentified - Task 0x15307C" storageaddress="DA9C" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2E424, 0x2FD70. Lookup result stored to: FFFF0511. UNRESOLVED (locked): 0xB692C: stored to output *param_19 of 0xB692C (unit of the receiving variable not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Engine Speed (high byte)" storageaddress="DAA4" elements="8" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Time Threshold [0xB692C]" category="Timers" storageaddress="DA9C" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2E424, 0x2FD70. Evidence: 0xB692C (reached only from the 20 ms task 0x15307C; OS alarm 6 -&gt; task 9, cycle 20 x 1 ms tick): counter FEC792 = 0 while the enabling condition is false, else +1 per execution (saturating); the table output is compared directly with that counter: s = x*0.02. Lookup result stored to: FFFF0511." sizey="8">
+      <scaling units="s" expression="x*0.02" to_byte="x/0.02" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Engine Speed (high byte)" storageaddress="DAA4" elements="8" storagetype="uint8" endian="big">
         <scaling units="rpm" expression="x*50" to_byte="x/50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>

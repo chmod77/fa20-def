@@ -6388,6 +6388,19 @@
    "format": "0.00"
   }
  },
+ "0x2E424": {
+  "status": "identified",
+  "name": "Time Threshold [0xB692C]",
+  "category": "Timers",
+  "evidence": "0xB692C (reached only from the 20 ms task 0x15307C; OS alarm 6 -> task 9, cycle 20 x 1 ms tick): counter FEC792 = 0 while the enabling condition is false, else +1 per execution (saturating); the table output is compared directly with that counter: s = x*0.02.",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.02",
+   "to_byte": "x/0.02",
+   "format": "0.00"
+  }
+ },
  "0x2E588": {
   "status": "identified",
   "name": "Wastegate Duty Initial",
@@ -9450,6 +9463,19 @@
    "expr": "x/43194",
    "to_byte": "x*43194",
    "format": "0.0000"
+  }
+ },
+ "0x2FD70": {
+  "status": "identified",
+  "name": "Time Threshold [0x11C49C]",
+  "category": "Timers",
+  "evidence": "0x11C49C (reached only from the 20 ms task 0x15307C; OS alarm 6 -> task 9, cycle 20 x 1 ms tick): counter FEE074 = 0 while the enabling condition is false, else +1 per execution (saturating); the table output is compared directly with that counter: s = x*0.02.",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.02",
+   "to_byte": "x/0.02",
+   "format": "0.00"
   }
  },
  "0x2FEE4": {
