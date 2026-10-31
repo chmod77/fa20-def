@@ -1818,6 +1818,71 @@
    }
   }
  },
+ "0x2C924": {
+  "status": "identified",
+  "name": "Torque Filter Gain Multiplier vs Coolant (case R, p6=0) [-> 0AC8]",
+  "category": "Filters",
+  "evidence": "Filter gain of the torque-model efficiency/torque filters: 0x8637C (FFFF19A8) and 0x870FC (FFFF19B0) call 0x16B4D8 (y += (x-y)*k/65536) with k = min(FFFF0AC8 * FFFF0B0E >> 9, 0xFFFF). 0x87010: FFFF0B0E = T_02CA64(rpm), T_02CA70(rpm) or their average, selected by FFFF29B7 - FFFF29BA (+/-14 band with dwell counter). 0x85FB4 (p2 03D3, p3 Ignition Total Timing 046C, p5 coolant FFFEEEDE, p6 FFFF04CA.0): FFFF0AC8 = 0x200 when no case is active, else T(coolant) per case; the cases come from 03D3 - 046C (0.5 deg) above 8 (p6 clear) / 14 (p6 set) and the torque mode p1 = FFFF0541. With the neutral default 0x200 the gain equals 0B0E, so 0AC8/512 is a gain multiplier and 0B0E/65536 the base gain (fraction per execution). ",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x/512",
+   "to_byte": "x*512",
+   "format": "0.00"
+  }
+ },
+ "0x2C930": {
+  "status": "identified",
+  "name": "Torque Filter Gain Multiplier vs Coolant (case K) [-> 0AC8]",
+  "category": "Filters",
+  "evidence": "Filter gain of the torque-model efficiency/torque filters: 0x8637C (FFFF19A8) and 0x870FC (FFFF19B0) call 0x16B4D8 (y += (x-y)*k/65536) with k = min(FFFF0AC8 * FFFF0B0E >> 9, 0xFFFF). 0x87010: FFFF0B0E = T_02CA64(rpm), T_02CA70(rpm) or their average, selected by FFFF29B7 - FFFF29BA (+/-14 band with dwell counter). 0x85FB4 (p2 03D3, p3 Ignition Total Timing 046C, p5 coolant FFFEEEDE, p6 FFFF04CA.0): FFFF0AC8 = 0x200 when no case is active, else T(coolant) per case; the cases come from 03D3 - 046C (0.5 deg) above 8 (p6 clear) / 14 (p6 set) and the torque mode p1 = FFFF0541. With the neutral default 0x200 the gain equals 0B0E, so 0AC8/512 is a gain multiplier and 0B0E/65536 the base gain (fraction per execution). ",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x/512",
+   "to_byte": "x*512",
+   "format": "0.00"
+  }
+ },
+ "0x2C93C": {
+  "status": "identified",
+  "name": "Torque Filter Gain Multiplier vs Coolant (case R, p6=1) [-> 0AC8]",
+  "category": "Filters",
+  "evidence": "Filter gain of the torque-model efficiency/torque filters: 0x8637C (FFFF19A8) and 0x870FC (FFFF19B0) call 0x16B4D8 (y += (x-y)*k/65536) with k = min(FFFF0AC8 * FFFF0B0E >> 9, 0xFFFF). 0x87010: FFFF0B0E = T_02CA64(rpm), T_02CA70(rpm) or their average, selected by FFFF29B7 - FFFF29BA (+/-14 band with dwell counter). 0x85FB4 (p2 03D3, p3 Ignition Total Timing 046C, p5 coolant FFFEEEDE, p6 FFFF04CA.0): FFFF0AC8 = 0x200 when no case is active, else T(coolant) per case; the cases come from 03D3 - 046C (0.5 deg) above 8 (p6 clear) / 14 (p6 set) and the torque mode p1 = FFFF0541. With the neutral default 0x200 the gain equals 0B0E, so 0AC8/512 is a gain multiplier and 0B0E/65536 the base gain (fraction per execution). ",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x/512",
+   "to_byte": "x*512",
+   "format": "0.00"
+  }
+ },
+ "0x2C948": {
+  "status": "identified",
+  "name": "Torque Filter Gain Multiplier vs Coolant (case D, p6=1) [-> 0AC8]",
+  "category": "Filters",
+  "evidence": "Filter gain of the torque-model efficiency/torque filters: 0x8637C (FFFF19A8) and 0x870FC (FFFF19B0) call 0x16B4D8 (y += (x-y)*k/65536) with k = min(FFFF0AC8 * FFFF0B0E >> 9, 0xFFFF). 0x87010: FFFF0B0E = T_02CA64(rpm), T_02CA70(rpm) or their average, selected by FFFF29B7 - FFFF29BA (+/-14 band with dwell counter). 0x85FB4 (p2 03D3, p3 Ignition Total Timing 046C, p5 coolant FFFEEEDE, p6 FFFF04CA.0): FFFF0AC8 = 0x200 when no case is active, else T(coolant) per case; the cases come from 03D3 - 046C (0.5 deg) above 8 (p6 clear) / 14 (p6 set) and the torque mode p1 = FFFF0541. With the neutral default 0x200 the gain equals 0B0E, so 0AC8/512 is a gain multiplier and 0B0E/65536 the base gain (fraction per execution). ",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x/512",
+   "to_byte": "x*512",
+   "format": "0.00"
+  }
+ },
+ "0x2C954": {
+  "status": "identified",
+  "name": "Torque Filter Gain Multiplier vs Coolant (case D, p6=0) [-> 0AC8]",
+  "category": "Filters",
+  "evidence": "Filter gain of the torque-model efficiency/torque filters: 0x8637C (FFFF19A8) and 0x870FC (FFFF19B0) call 0x16B4D8 (y += (x-y)*k/65536) with k = min(FFFF0AC8 * FFFF0B0E >> 9, 0xFFFF). 0x87010: FFFF0B0E = T_02CA64(rpm), T_02CA70(rpm) or their average, selected by FFFF29B7 - FFFF29BA (+/-14 band with dwell counter). 0x85FB4 (p2 03D3, p3 Ignition Total Timing 046C, p5 coolant FFFEEEDE, p6 FFFF04CA.0): FFFF0AC8 = 0x200 when no case is active, else T(coolant) per case; the cases come from 03D3 - 046C (0.5 deg) above 8 (p6 clear) / 14 (p6 set) and the torque mode p1 = FFFF0541. With the neutral default 0x200 the gain equals 0B0E, so 0AC8/512 is a gain multiplier and 0B0E/65536 the base gain (fraction per execution). ",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x/512",
+   "to_byte": "x*512",
+   "format": "0.00"
+  }
+ },
  "0x2C960": {
   "status": "identified",
   "name": "Air Density Correction vs Intake Air Temperature [-> 0ACE]",
@@ -1985,6 +2050,48 @@
   "name": "Torque Filter Coefficient (RPM) [0x86D9C -> FFFF19AC]",
   "category": "Filters",
   "evidence": "0x86D9C (from 0x87478; p4 = rpm FFFF2994): FUN_0016B4D8(&FFFF19AC, FFFF0F56, T(rpm)) with 0x16B4D8: y += (x - y)*k/65536, so T is a first-order filter gain (fraction per execution, 65536 = 1.0).",
+  "description": "",
+  "data": {
+   "units": "fraction/step",
+   "expr": "x/65536",
+   "to_byte": "x*65536",
+   "format": "0.0000"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed",
+    "units": "rpm",
+    "expr": "x*25/128",
+    "to_byte": "x*128/25"
+   }
+  }
+ },
+ "0x2CA64": {
+  "status": "identified",
+  "name": "Torque Filter Base Gain A (RPM) [-> 0B0E]",
+  "category": "Filters",
+  "evidence": "Filter gain of the torque-model efficiency/torque filters: 0x8637C (FFFF19A8) and 0x870FC (FFFF19B0) call 0x16B4D8 (y += (x-y)*k/65536) with k = min(FFFF0AC8 * FFFF0B0E >> 9, 0xFFFF). 0x87010: FFFF0B0E = T_02CA64(rpm), T_02CA70(rpm) or their average, selected by FFFF29B7 - FFFF29BA (+/-14 band with dwell counter). 0x85FB4 (p2 03D3, p3 Ignition Total Timing 046C, p5 coolant FFFEEEDE, p6 FFFF04CA.0): FFFF0AC8 = 0x200 when no case is active, else T(coolant) per case; the cases come from 03D3 - 046C (0.5 deg) above 8 (p6 clear) / 14 (p6 set) and the torque mode p1 = FFFF0541. With the neutral default 0x200 the gain equals 0B0E, so 0AC8/512 is a gain multiplier and 0B0E/65536 the base gain (fraction per execution). ",
+  "description": "",
+  "data": {
+   "units": "fraction/step",
+   "expr": "x/65536",
+   "to_byte": "x*65536",
+   "format": "0.0000"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed",
+    "units": "rpm",
+    "expr": "x*25/128",
+    "to_byte": "x*128/25"
+   }
+  }
+ },
+ "0x2CA70": {
+  "status": "identified",
+  "name": "Torque Filter Base Gain B (RPM) [-> 0B0E]",
+  "category": "Filters",
+  "evidence": "Filter gain of the torque-model efficiency/torque filters: 0x8637C (FFFF19A8) and 0x870FC (FFFF19B0) call 0x16B4D8 (y += (x-y)*k/65536) with k = min(FFFF0AC8 * FFFF0B0E >> 9, 0xFFFF). 0x87010: FFFF0B0E = T_02CA64(rpm), T_02CA70(rpm) or their average, selected by FFFF29B7 - FFFF29BA (+/-14 band with dwell counter). 0x85FB4 (p2 03D3, p3 Ignition Total Timing 046C, p5 coolant FFFEEEDE, p6 FFFF04CA.0): FFFF0AC8 = 0x200 when no case is active, else T(coolant) per case; the cases come from 03D3 - 046C (0.5 deg) above 8 (p6 clear) / 14 (p6 set) and the torque mode p1 = FFFF0541. With the neutral default 0x200 the gain equals 0B0E, so 0AC8/512 is a gain multiplier and 0B0E/65536 the base gain (fraction per execution). ",
   "description": "",
   "data": {
    "units": "fraction/step",

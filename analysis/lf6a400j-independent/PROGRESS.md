@@ -153,6 +153,14 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
   x condition C, step multipliers T_02C774/780 x/255) and 0x8117C ramp-down (12 tables: ceiling, threshold, two decrement steps for
   V<4 km/h / flag 064A.7). Chain: 0A58/0A42 -> 0A5E (max) -> 0A44 (0x81394 min/max) -> Requested Torque 0A62 (0x820A0). Args resolved from
   call-site disassembly (0x83F92, 0x84020; struct base r13 = FFFF09D4). Coverage 494 of 1271.
+- Twin check: the torque-monitor copies 0x124430/0x123FE0 (called from 0x12560C) use different descriptors that alias the same data
+  views; every alias role matches the 0x815F0/0x8117C labels. Monitor chain: 0x124E28 (== 0x820A0 code) compares 1438 with f(0F1A).
+- MAP transient detection 0xCEF4C (8), pedal angle limits 0x103CF4 (12, 1282 proven by 0x82C34 vs SSM pedal), 0532 timing terms
+  0xBDD60 (8, 0x86B58 selects 0532 into 03D3), throttle opening limits 0x88054 (4, compared with scaled SSM 0x15 target),
+  torque filter gains (0x85FB4/0x87010, neutral 0AC8 = 0x200), filter T_02CA34, inactive branch 0xE541C (5).
+- Ghidra constant-folds calibration bytes in ROM: branches gated by e.g. 0x17F4A are dropped as unreachable, so some descriptors only
+  appear in the disassembly (literal pools). 0x49E70 (task 7) period is still unproven: alarm 9 -> task 7 is never set.
+  Coverage 539 of 1271.
 - Previous coverage: 452 of 1271 views unlocked (tables + 81 proven scalars). Torque chain: 0ADC/0ADA/0A1E/0A7A/0A78/0A64/0AE8/0AAA/0ABC
   are proven torque type (0x86680 disasm, 0x8267C, 0x8034C, 0x85434, 0x85940). Filter helpers: 0x16B4D8 (y += (x-y)*k/65536),
   0x16B44C (8-bit, k/256), 0x16B520 (signed).

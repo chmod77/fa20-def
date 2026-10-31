@@ -1021,6 +1021,19 @@ for d, cond in ((0x2CA9C, 'FFFF0675.2 set'), (0x2CAC0, 'FFFEF498.3 set'), (0x2CA
         ('%', '(x-10)*128/58891', 'x*58891/128+10', '0.0'),
         axes={'0': dict(name='Engine Speed', units='rpm', expr='x*25/128', to_byte='x*128/25')})
 
+_tfg = ('Filter gain of the torque-model efficiency/torque filters: 0x8637C (FFFF19A8) and 0x870FC (FFFF19B0) call 0x16B4D8 (y += (x-y)*k/65536) '
+        'with k = min(FFFF0AC8 * FFFF0B0E >> 9, 0xFFFF). 0x87010: FFFF0B0E = T_02CA64(rpm), T_02CA70(rpm) or their average, selected by '
+        'FFFF29B7 - FFFF29BA (+/-14 band with dwell counter). 0x85FB4 (p2 03D3, p3 Ignition Total Timing 046C, p5 coolant FFFEEEDE, p6 '
+        'FFFF04CA.0): FFFF0AC8 = 0x200 when no case is active, else T(coolant) per case; the cases come from 03D3 - 046C (0.5 deg) above '
+        '8 (p6 clear) / 14 (p6 set) and the torque mode p1 = FFFF0541. With the neutral default 0x200 the gain equals 0B0E, so 0AC8/512 '
+        'is a gain multiplier and 0B0E/65536 the base gain (fraction per execution). ')
+for d, case in ((0x2C924, 'case R, p6=0'), (0x2C93C, 'case R, p6=1'), (0x2C930, 'case K'), (0x2C954, 'case D, p6=0'), (0x2C948, 'case D, p6=1')):
+    add(d, f'Torque Filter Gain Multiplier vs Coolant ({case}) [-> 0AC8]', 'Filters', _tfg,
+        ('multiplier', 'x/512', 'x*512', '0.00'))
+for d, nm in ((0x2CA64, 'A'), (0x2CA70, 'B')):
+    add(d, f'Torque Filter Base Gain {nm} (RPM) [-> 0B0E]', 'Filters', _tfg, ('fraction/step', 'x/65536', 'x*65536', '0.0000'),
+        axes={'0': dict(name='Engine Speed', units='rpm', expr='x*25/128', to_byte='x*128/25')})
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
