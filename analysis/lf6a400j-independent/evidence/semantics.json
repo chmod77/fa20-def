@@ -6202,6 +6202,19 @@
    "format": "0.000"
   }
  },
+ "0x2E3EC": {
+  "status": "identified",
+  "name": "Open Loop Enrichment Adder (RPM x Load) [0xB6044 -> 0DD0]",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0xB6044 (from 0xB42AC; p1 rpm FFFF2996, p2 load FFFF03A0, p3 FFFF0B9A): FFFF0DD0 = T + 0B9A (saturating add) with 0B9A the open-loop enrichment (phi-1)*32768 (0xB5B38 target AFR uses 14.5*0B9A/(32768+0B9A)), so T is an additive enrichment in the same unit: % = x*100/32768.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/32768",
+   "to_byte": "x*32768/100",
+   "format": "0.00"
+  }
+ },
  "0x2E400": {
   "status": "identified",
   "name": "Time Since FFFEEEC1.0 Cleared Threshold (0xB6078)",

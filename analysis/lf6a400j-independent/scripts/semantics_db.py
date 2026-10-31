@@ -1280,6 +1280,11 @@ for d, g in ((0x2F1D8, '1'), (0x2F1E4, '2'), (0x2F1F0, '3'), (0x2F1FC, '4'), (0x
 for d, g in ((0x2F214, '1'), (0x2F220, '2'), (0x2F22C, '3'), (0x2F238, '4'), (0x2F244, '5-6')):
     add(d, f'Engine Speed Fluctuation Threshold vs IAT (gear {g}, inactive: 0x17F4A=1)', 'Misfire / Roughness Detection', _esf2, ('rpm', 'x*25/128', 'x*128/25', '0.0'))
 
+add(0x2E3EC, 'Open Loop Enrichment Adder (RPM x Load) [0xB6044 -> 0DD0]', FE,
+    '0xB6044 (from 0xB42AC; p1 rpm FFFF2996, p2 load FFFF03A0, p3 FFFF0B9A): FFFF0DD0 = T + 0B9A (saturating add) with 0B9A the open-loop '
+    'enrichment (phi-1)*32768 (0xB5B38 target AFR uses 14.5*0B9A/(32768+0B9A)), so T is an additive enrichment in the same unit: '
+    '% = x*100/32768.', ('%', 'x*100/32768', 'x*32768/100', '0.00'))
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

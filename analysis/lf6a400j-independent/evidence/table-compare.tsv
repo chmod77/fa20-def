@@ -37,3 +37,4 @@ descriptor	function	var	var_name	units	expr	context
 02FF40	00120d40	FFFF13B2	Time While FFFF0935.5 Set	s	x*0.01	((uVar1 & 0xffff) <= (param_2 & 0xffff)
 02FF2C	00120d40	FFFF13B2	Time While FFFF0935.5 Set	s	x*0.01	((uVar2 & 0xffff) <= (param_2 & 0xffff)
 02FF54	00120e2c	FFFEF406	Accelerator Pedal Angle (unlimited)	%	x*100/65280	(uVar1 & 0xffff) <= (param_1 & 0xffff)
+02E3EC	000b6044	FFFF0B9A	Open Loop Enrichment (phi-1) (delta)	%	x*0.0030517578125	(ushort)uVar1 + param_3

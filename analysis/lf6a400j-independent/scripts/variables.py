@@ -297,3 +297,6 @@ V2.update({
 V2.update({
  0xFFFF03D7:('Required Torque Efficiency','ratio','x/256','x*256','0x870FC: 03D7 = (FFFF0AA8 * r/32768) >> 7 with 0AA8 = Torque Efficiency vs Ignition Retard (T_02C8DC, 32768 = efficiency at zero retard) and r a torque ratio (32768 = 1.0); 0x9B384 uses 03D7<<7 as the T_02D890 input'),
 })
+V2.update({
+ 0xFFFF0B9A:('Open Loop Enrichment (phi-1)','%','x*100/32768','x*32768/100','0xB5B38 target AFR = (...)*14.5/43194 - 14.5*0B9A/(32768+0B9A): 0B9A = (phi-1)*32768, lambda = 32768/(32768+x)'),
+})
