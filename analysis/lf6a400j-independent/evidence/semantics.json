@@ -645,6 +645,27 @@
    "format": "0.000"
   }
  },
+ "0x2C1D0": {
+  "status": "identified",
+  "name": "Time Threshold vs Coolant [0x7F96C]",
+  "category": "Timers",
+  "evidence": "0x7F96C (from 0x7F8B8 <- 0x49E70 <- 10 ms task 0x152A40; p3 Coolant FFFEEEDE): while active, counter FEBA8A starts at 0 and +1 per execution; flag FEBA88 = T(coolant) <= counter (direct comparison). OS alarm 4 -> task 8 (0x152A40), cycle 10 x 1 ms tick (see timers.py): s = x*0.01.",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.01",
+   "to_byte": "x/0.01",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Coolant Temperature (filtered, word)",
+    "units": "C",
+    "expr": "x*5/2048-40",
+    "to_byte": "(x+40)*2048/5"
+   }
+  }
+ },
  "0x2C20C": {
   "status": "identified",
   "name": "Staged Timer Threshold vs Vehicle Speed [0x7FB7C]",
@@ -5352,6 +5373,48 @@
    "format": "0.00"
   }
  },
+ "0x2DB14": {
+  "status": "identified",
+  "name": "Time Threshold (state 1) [0xA562C]",
+  "category": "Idle Speed Control",
+  "evidence": "0xA562C (from idle 0xA8230; p2 Coolant FFFEEEDE): in state 1 the threshold is T(coolant) and is compared directly with counter FEC37E (0 at entry, +1 per execution while the mode p1 matches). 0xA8230 runs from 0x49E70 in the 10 ms task (OS alarm 4 -> task 8 (0x152A40), cycle 10 x 1 ms tick (see timers.py)); application mode 2 also runs it every 20 ms via 0x153B4E. s = x*0.01.",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.01",
+   "to_byte": "x/0.01",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Coolant Temperature (filtered, word)",
+    "units": "C",
+    "expr": "x*5/2048-40",
+    "to_byte": "(x+40)*2048/5"
+   }
+  }
+ },
+ "0x2DB20": {
+  "status": "identified",
+  "name": "Time Threshold (state 2) [0xA562C]",
+  "category": "Idle Speed Control",
+  "evidence": "0xA562C (from idle 0xA8230; p2 Coolant FFFEEEDE): in state 2 the threshold is T(coolant) and is compared directly with counter FEC37F (0 at entry, +1 per execution while the mode p1 matches). 0xA8230 runs from 0x49E70 in the 10 ms task (OS alarm 4 -> task 8 (0x152A40), cycle 10 x 1 ms tick (see timers.py)); application mode 2 also runs it every 20 ms via 0x153B4E. s = x*0.01.",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.01",
+   "to_byte": "x/0.01",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Coolant Temperature (filtered, word)",
+    "units": "C",
+    "expr": "x*5/2048-40",
+    "to_byte": "(x+40)*2048/5"
+   }
+  }
+ },
  "0x2DB2C": {
   "status": "identified",
   "name": "Time Threshold [0xA562C]",
@@ -5363,6 +5426,27 @@
    "expr": "x*0.01",
    "to_byte": "x/0.01",
    "format": "0.00"
+  }
+ },
+ "0x2DB38": {
+  "status": "identified",
+  "name": "Time Threshold (state 2) [0xA562C]",
+  "category": "Idle Speed Control",
+  "evidence": "0xA562C (from idle 0xA8230; p2 Coolant FFFEEEDE): in state 2 the threshold is T(coolant) and is compared directly with counter FEC37D (0 at entry, +1 per execution while the mode p1 matches). 0xA8230 runs from 0x49E70 in the 10 ms task (OS alarm 4 -> task 8 (0x152A40), cycle 10 x 1 ms tick (see timers.py)); application mode 2 also runs it every 20 ms via 0x153B4E. s = x*0.01.",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.01",
+   "to_byte": "x/0.01",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Coolant Temperature (filtered, word)",
+    "units": "C",
+    "expr": "x*5/2048-40",
+    "to_byte": "(x+40)*2048/5"
+   }
   }
  },
  "0x2DBE4": {

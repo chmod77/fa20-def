@@ -1240,6 +1240,18 @@ _a79 = ('0xA7970 (from idle 0xA8230, call 0xAA220): x = p3 + p8 (+0x1DB in one s
 for d, nm in ((0x2DC84, 'p2 set, p6 clear'), (0x2DC90, 'p2 and p6 set'), (0x2DC9C, 'p2 clear')):
     add(d, f'Idle Filter Gain ({nm}) [0xA7970]', 'Idle Speed Control', _a79, ('fraction/step', 'x/65536', 'x*65536', '0.0000'))
 
+_TOS = ('OS alarm 4 -> task 8 (0x152A40), cycle 10 x 1 ms tick (see timers.py)')
+add(0x2C1D0, 'Time Threshold vs Coolant [0x7F96C]', 'Timers',
+    '0x7F96C (from 0x7F8B8 <- 0x49E70 <- 10 ms task 0x152A40; p3 Coolant FFFEEEDE): while active, counter FEBA8A starts at 0 and +1 per '
+    'execution; flag FEBA88 = T(coolant) <= counter (direct comparison). ' + _TOS + ': s = x*0.01.', ('s', 'x*0.01', 'x/0.01', '0.00'),
+    axes={'0': dict(name='Coolant Temperature (filtered, word)', units='C', expr='x*5/2048-40', to_byte='(x+40)*2048/5')})
+for _d, _c, _st in ((0x2DB38, 'FEC37D', 2), (0x2DB20, 'FEC37F', 2), (0x2DB14, 'FEC37E', 1)):
+    add(_d, f'Time Threshold (state {_st}) [0xA562C]', 'Idle Speed Control',
+        f'0xA562C (from idle 0xA8230; p2 Coolant FFFEEEDE): in state {_st} the threshold is T(coolant) and is compared directly with counter '
+        f'{_c} (0 at entry, +1 per execution while the mode p1 matches). 0xA8230 runs from 0x49E70 in the 10 ms task (' + _TOS +
+        '); application mode 2 also runs it every 20 ms via 0x153B4E. s = x*0.01.', ('s', 'x*0.01', 'x/0.01', '0.00'),
+        axes={'0': dict(name='Coolant Temperature (filtered, word)', units='C', expr='x*5/2048-40', to_byte='(x+40)*2048/5')})
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

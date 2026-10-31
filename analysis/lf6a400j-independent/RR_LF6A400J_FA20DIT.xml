@@ -1962,9 +1962,9 @@
         <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02C1D0] (Coolant Temperature (filtered, word))" category="Unidentified - Task 0x7F8B8" storageaddress="12100" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C1D0. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Time Threshold vs Coolant [0x7F96C]" category="Timers" storageaddress="12100" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C1D0. Evidence: 0x7F96C (from 0x7F8B8 &lt;- 0x49E70 &lt;- 10 ms task 0x152A40; p3 Coolant FFFEEEDE): while active, counter FEBA8A starts at 0 and +1 per execution; flag FEBA88 = T(coolant) &lt;= counter (direct comparison). OS alarm 4 -&gt; task 8 (0x152A40), cycle 10 x 1 ms tick (see timers.py): s = x*0.01." sizey="16">
+      <scaling units="s" expression="x*0.01" to_byte="x/0.01" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -4473,15 +4473,15 @@
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02DB14] (Coolant Temperature (filtered, word))" category="Unidentified - Idle Speed Control" storageaddress="1C2FC" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2DB14. Lookup result stored to: FFFEC37A. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Time Threshold (state 1) [0xA562C]" category="Idle Speed Control" storageaddress="1C2FC" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2DB14. Evidence: 0xA562C (from idle 0xA8230; p2 Coolant FFFEEEDE): in state 1 the threshold is T(coolant) and is compared directly with counter FEC37E (0 at entry, +1 per execution while the mode p1 matches). 0xA8230 runs from 0x49E70 in the 10 ms task (OS alarm 4 -&gt; task 8 (0x152A40), cycle 10 x 1 ms tick (see timers.py)); application mode 2 also runs it every 20 ms via 0x153B4E. s = x*0.01. Lookup result stored to: FFFEC37A." sizey="16">
+      <scaling units="s" expression="x*0.01" to_byte="x/0.01" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02DB20] (Coolant Temperature (filtered, word))" category="Unidentified - Idle Speed Control" storageaddress="1C30C" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2DB20. Lookup result stored to: FFFEC37B. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Time Threshold (state 2) [0xA562C] @1C30C" category="Idle Speed Control" storageaddress="1C30C" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2DB20. Evidence: 0xA562C (from idle 0xA8230; p2 Coolant FFFEEEDE): in state 2 the threshold is T(coolant) and is compared directly with counter FEC37F (0 at entry, +1 per execution while the mode p1 matches). 0xA8230 runs from 0x49E70 in the 10 ms task (OS alarm 4 -&gt; task 8 (0x152A40), cycle 10 x 1 ms tick (see timers.py)); application mode 2 also runs it every 20 ms via 0x153B4E. s = x*0.01. Lookup result stored to: FFFEC37B." sizey="16">
+      <scaling units="s" expression="x*0.01" to_byte="x/0.01" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -4491,9 +4491,9 @@
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02DB38] (Coolant Temperature (filtered, word))" category="Unidentified - Idle Speed Control" storageaddress="1C32C" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2DB38. Lookup result stored to: FFFEC378. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Time Threshold (state 2) [0xA562C] @1C32C" category="Idle Speed Control" storageaddress="1C32C" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2DB38. Evidence: 0xA562C (from idle 0xA8230; p2 Coolant FFFEEEDE): in state 2 the threshold is T(coolant) and is compared directly with counter FEC37D (0 at entry, +1 per execution while the mode p1 matches). 0xA8230 runs from 0x49E70 in the 10 ms task (OS alarm 4 -&gt; task 8 (0x152A40), cycle 10 x 1 ms tick (see timers.py)); application mode 2 also runs it every 20 ms via 0x153B4E. s = x*0.01. Lookup result stored to: FFFEC378." sizey="16">
+      <scaling units="s" expression="x*0.01" to_byte="x/0.01" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
