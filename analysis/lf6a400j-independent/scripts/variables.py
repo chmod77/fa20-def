@@ -111,3 +111,18 @@ V2.update({
  0xFFFF0E56:('Target Boost (absolute, offset form)','kPa','x/256+13.3','(x-13.3)*256','0xBD7C4: target=(T_02E5F4+3404)*FFFF0E58/32768-3404 (FFFF0E58 comp. multiplier); 0xBD300: error = this - FFFF09BA'),
  0xFFFF0E2E:('Wastegate Duty (pre-check)','%','x/256','x*256','0xBDA84: FFFF0E5E (SSM 0x30) = this in normal mode'),
 })
+
+V2.update({
+ 0xFFFEEF84:('Engine Oil Temperature (1/256 C)','C','x/256-50','(x+50)*256','0x3C90E: same value as OBD PID5C source (FFFEF326=(x-0xA00)*256/205, C=F326*205/65536-40)'),
+ 0xFFFEEF33:('Engine Oil Temperature','C','x-50','x+50','0x3C90E: x = FFFEEF84>>8'),
+ 0xFFFF2A04:('Engine Speed (byte, 31.25 rpm)','rpm','(x+16)*31.25','x/31.25-16','0x3BF24: x=max(FFFF2988/2-40,0)*4/10, FFFF2988=(FFFF2994>>4+1)>>1 (rpm*0.16) => rpm=(x+16)*31.25 (0 below 500 rpm)'),
+ 0xFFFF09D0:('Engine Speed / Vehicle Speed Ratio','rpm per km/h','x/256','x*256','0x7F424: x = FFFF2994*50/FFFF65A1 (rpm raw*25/128 / km/h *256)'),
+ 0xFFFF03AE:('Gear (calculated)','gear','x','x','0x7F71C: gear 1..6 from FFFF09D0 ratio bands (0=none)'),
+ 0xFFFF03AC:('Gear','gear','x','x','0x7F490: debounced FFFF03AE (or TCU gear FFFEF51A when FFFEE710.7 set)'),
+})
+
+V2.update({
+ 0xFFFEECB4:('Accelerator Pedal Angle (selected)','%','x*100/65280','x*65280/100','0x69F44: x = FFFEF134, or SSM pedal angle FFFEEEF8 (SSM 0x29 %=x*100/65280) when sensor flags set, or min(F134,F13A)'),
+ 0xFFFF0400:('Open Loop Fuel Enrichment (primary)','lambda','256/(256+x)','256/x-256','0x8F8C0 -> FFFF0401 -> OBD PID44 conv 0x10C32C: lambda=256/(256+0B84+0401+0B42)'),
+ 0xFFFF0401:('Open Loop Fuel Enrichment','lambda','256/(256+x)','256/x-256','OBD PID44 conv 0x10C32C: commanded lambda = 0x800000/(0B84+0401+0B42+256)/32768'),
+})

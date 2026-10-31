@@ -51,6 +51,175 @@
    "format": "0.0"
   }
  },
+ "0x2CE08": {
+  "status": "identified",
+  "name": "Fuel Enrichment (Coolant >= 100 C)",
+  "category": "Fueling - Open Loop",
+  "evidence": "OBD PID44 (0x10C32C) commanded lambda = 256/(256 + FFFF0B84 + FFFF0401 + FFFF0B42); 0x8CBE4 -> FFFF0B42 (only when FFFF03DF.1 set, else 0): T_02CE08 when coolant FFFEEEDE >= 0xE000 (100 C) and rpm < 0xF000, T_02CE1C when coolant < 0xDCCD (97.5 C) or rpm max; hysteresis holds the previous selection in between. Inputs rpm FFFF2994, load FFFF03A0.",
+  "description": "",
+  "data": {
+   "units": "lambda",
+   "expr": "256/(256+x)",
+   "to_byte": "256/x-256",
+   "format": "0.000"
+  }
+ },
+ "0x2CE1C": {
+  "status": "identified",
+  "name": "Fuel Enrichment (Coolant < 100 C)",
+  "category": "Fueling - Open Loop",
+  "evidence": "OBD PID44 (0x10C32C) commanded lambda = 256/(256 + FFFF0B84 + FFFF0401 + FFFF0B42); 0x8CBE4 -> FFFF0B42 (only when FFFF03DF.1 set, else 0): T_02CE08 when coolant FFFEEEDE >= 0xE000 (100 C) and rpm < 0xF000, T_02CE1C when coolant < 0xDCCD (97.5 C) or rpm max; hysteresis holds the previous selection in between. Inputs rpm FFFF2994, load FFFF03A0.",
+  "description": "",
+  "data": {
+   "units": "lambda",
+   "expr": "256/(256+x)",
+   "to_byte": "256/x-256",
+   "format": "0.000"
+  }
+ },
+ "0x2D028": {
+  "status": "identified",
+  "name": "Primary Open Loop Fueling",
+  "category": "Fueling - Open Loop",
+  "evidence": "OBD PID44 (0x10C32C) commanded lambda = 256/(256 + FFFF0B84 + FFFF0401 + FFFF0B42); 0x8F8C0: FFFF0400 = T(rpm FFFF2994, load FFFF03A0) + T_02D050*(16-IAM)/16; 0x8F9C0: FFFF0401 = max(0400,...)*coolant mult/128.",
+  "description": "",
+  "data": {
+   "units": "lambda",
+   "expr": "256/(256+x)",
+   "to_byte": "256/x-256",
+   "format": "0.000"
+  }
+ },
+ "0x2D03C": {
+  "status": "identified",
+  "name": "Primary Open Loop Fueling (Alternate, not selected)",
+  "category": "Fueling - Open Loop",
+  "evidence": "OBD PID44 (0x10C32C) commanded lambda = 256/(256 + FFFF0B84 + FFFF0401 + FFFF0B42); 0x8F8C0: only used when param_3!=0; caller 0x888C0 passes constant 0, so it never reaches FFFF0400 in this ROM.",
+  "description": "",
+  "data": {
+   "units": "lambda",
+   "expr": "256/(256+x)",
+   "to_byte": "256/x-256",
+   "format": "0.000"
+  }
+ },
+ "0x2D050": {
+  "status": "identified",
+  "name": "Primary Open Loop Fueling Additive (Low IAM)",
+  "category": "Fueling - Open Loop",
+  "evidence": "OBD PID44 (0x10C32C) commanded lambda = 256/(256 + FFFF0B84 + FFFF0401 + FFFF0B42); 0x8F8C0: added to Primary Open Loop Fueling scaled by (16-IAM)/16, IAM = FFFF3669 (SSM 0xF9, x/16): full value at IAM 0, none at IAM 1.0.",
+  "description": "",
+  "data": {
+   "units": "lambda (at IAM 0)",
+   "expr": "256/(256+x)",
+   "to_byte": "256/x-256",
+   "format": "0.000"
+  }
+ },
+ "0x2D064": {
+  "status": "partial",
+  "name": "Primary Open Loop Fueling Offset vs FFFF049B (not selected)",
+  "category": "Fueling - Open Loop",
+  "evidence": "0x8F8C0: added only on the param_3!=0 path (caller passes 0), so not applied in this ROM. Input FFFF049B (signed byte).",
+  "description": "",
+  "data": {
+   "units": "raw",
+   "expr": "x",
+   "to_byte": "x",
+   "format": "0"
+  }
+ },
+ "0x2D07C": {
+  "status": "identified",
+  "name": "Open Loop Fueling Enrichment (Accelerator Pedal)",
+  "category": "Fueling - Open Loop",
+  "evidence": "OBD PID44 (0x10C32C) commanded lambda = 256/(256 + FFFF0B84 + FFFF0401 + FFFF0B42); 0x8F9C0: candidate in max() for FFFF0401 when FFFF0B30 >= FFFF0B40; input FFFEECB4 = selected accelerator pedal (0x69F44).",
+  "description": "",
+  "data": {
+   "units": "lambda",
+   "expr": "256/(256+x)",
+   "to_byte": "256/x-256",
+   "format": "0.000"
+  }
+ },
+ "0x2D088": {
+  "status": "identified",
+  "name": "Open Loop Fueling Multiplier (Coolant)",
+  "category": "Fueling - Open Loop",
+  "evidence": "OBD PID44 (0x10C32C) commanded lambda = 256/(256 + FFFF0B84 + FFFF0401 + FFFF0B42); 0x8F9C0: FFFF0401 = max(enrichments)*T(coolant FFFEEEDE)/128.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/128",
+   "to_byte": "x*128/100",
+   "format": "0.0"
+  }
+ },
+ "0x2D094": {
+  "status": "identified",
+  "name": "Open Loop Fueling Enrichment (input FFFF29B4)",
+  "category": "Fueling - Open Loop",
+  "evidence": "OBD PID44 (0x10C32C) commanded lambda = 256/(256 + FFFF0B84 + FFFF0401 + FFFF0B42); 0x8F9C0: candidate in max() for FFFF0401 when FFFF0B30 >= FFFF0B40; input FFFF29B4 = FFFF02C4-10 (0x69F44), physical meaning unresolved.",
+  "description": "",
+  "data": {
+   "units": "lambda",
+   "expr": "256/(256+x)",
+   "to_byte": "256/x-256",
+   "format": "0.000"
+  }
+ },
+ "0x2D138": {
+  "status": "identified",
+  "name": "Decaying Fuel Enrichment (Coolant)",
+  "category": "Fueling - Open Loop",
+  "evidence": "OBD PID44 (0x10C32C) commanded lambda = 256/(256 + FFFF0B84 + FFFF0401 + FFFF0B42); 0x90390 -> FFFF0B84 (computed only in engine state FFFF66B0 = 2 or 3, otherwise held): T_02D138(coolant FFFEEEDE), or [T_02D144(load,coolant)*(1-w) + T_02D158(load,coolant)*w]*T_02D16C(rpm)/128 with w = FFFF0E90/65536; the result is limited by a counter (FFFEBD76) decremented every execution, i.e. the enrichment decays over time.",
+  "description": "",
+  "data": {
+   "units": "lambda",
+   "expr": "256/(256+x)",
+   "to_byte": "256/x-256",
+   "format": "0.000"
+  }
+ },
+ "0x2D144": {
+  "status": "identified",
+  "name": "Decaying Fuel Enrichment A (Load x Coolant)",
+  "category": "Fueling - Open Loop",
+  "evidence": "OBD PID44 (0x10C32C) commanded lambda = 256/(256 + FFFF0B84 + FFFF0401 + FFFF0B42); 0x90390 -> FFFF0B84 (computed only in engine state FFFF66B0 = 2 or 3, otherwise held): T_02D138(coolant FFFEEEDE), or [T_02D144(load,coolant)*(1-w) + T_02D158(load,coolant)*w]*T_02D16C(rpm)/128 with w = FFFF0E90/65536; the result is limited by a counter (FFFEBD76) decremented every execution, i.e. the enrichment decays over time.",
+  "description": "",
+  "data": {
+   "units": "lambda",
+   "expr": "256/(256+x)",
+   "to_byte": "256/x-256",
+   "format": "0.000"
+  }
+ },
+ "0x2D158": {
+  "status": "identified",
+  "name": "Decaying Fuel Enrichment B (Load x Coolant)",
+  "category": "Fueling - Open Loop",
+  "evidence": "OBD PID44 (0x10C32C) commanded lambda = 256/(256 + FFFF0B84 + FFFF0401 + FFFF0B42); 0x90390 -> FFFF0B84 (computed only in engine state FFFF66B0 = 2 or 3, otherwise held): T_02D138(coolant FFFEEEDE), or [T_02D144(load,coolant)*(1-w) + T_02D158(load,coolant)*w]*T_02D16C(rpm)/128 with w = FFFF0E90/65536; the result is limited by a counter (FFFEBD76) decremented every execution, i.e. the enrichment decays over time.",
+  "description": "",
+  "data": {
+   "units": "lambda",
+   "expr": "256/(256+x)",
+   "to_byte": "256/x-256",
+   "format": "0.000"
+  }
+ },
+ "0x2D16C": {
+  "status": "identified",
+  "name": "Decaying Fuel Enrichment Multiplier (RPM)",
+  "category": "Fueling - Open Loop",
+  "evidence": "OBD PID44 (0x10C32C) commanded lambda = 256/(256 + FFFF0B84 + FFFF0401 + FFFF0B42); 0x90390 -> FFFF0B84 (computed only in engine state FFFF66B0 = 2 or 3, otherwise held): T_02D138(coolant FFFEEEDE), or [T_02D144(load,coolant)*(1-w) + T_02D158(load,coolant)*w]*T_02D16C(rpm)/128 with w = FFFF0E90/65536; the result is limited by a counter (FFFEBD76) decremented every execution, i.e. the enrichment decays over time.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/128",
+   "to_byte": "x*128/100",
+   "format": "0.0"
+  }
+ },
  "0x2D5BC": {
   "status": "identified",
   "name": "Minimum Ignition Timing (Coolant)",

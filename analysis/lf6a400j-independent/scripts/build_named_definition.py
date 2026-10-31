@@ -16,6 +16,8 @@ import xml.etree.ElementTree as ET
 H = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(H); E = f'{ROOT}/evidence'
 sys.path.insert(0, H)
 from variables import V, V2
+import subsystems
+D2R = subsystems.build_map()
 VV = dict(V); VV.update(V2)
 ROMS = {
     'LF6A401A': (f'{ROOT}/../../roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin',
@@ -111,7 +113,8 @@ def build(rid, path, sha):
             name = sem['name'] + ('' if ident else ' [output units unresolved]')
         else:
             name = f'Unidentified {dimtxt} [D{d0:06X}]' + (f' ({" x ".join(axnames)})' if any(a != '?' for a in axnames) else '')
-        cat = (sem or {}).get('category') or 'Unidentified (raw layout)'
+        sub = subsystems.category(set().union(*[D2R.get(d, set()) for d in view['aliases']]))
+        cat = (sem or {}).get('category') or ('Unidentified - ' + sub)
         desc = [f'Descriptor(s): {", ".join(f"0x{x:X}" for x in view["aliases"])}.']
         if sem:
             desc.append(sem.get('description', ''))

@@ -89,6 +89,43 @@ add(0x2E5B0, 'Wastegate Feedback Activation Threshold (Target Boost, relative)',
     'P/I feedback is zeroed unless s > T(rpm FFFF2994) (+0x6AA hysteresis) and rpm > 0x1400/0x1600 (1000/1100 rpm) and mode FFFF0520 allows.',
     ('kPa (relative)', 'x/256', 'x*256', '0.00'))
 
+# ---------------------------------------------------------------- fuel target (open loop)
+# OBD PID 44 (commanded equivalence ratio, lambda = (256A+B)/32768) formatter 0x10C32C: when FFFF050E.7==0,
+#   PID44 = (0x200000/(FFFF0B84 + FFFF0401 + FFFF0B42 + 256))<<2  =>  lambda = 256/(256 + sum): each term is
+#   fuel enrichment in (phi-1)*256 units.  FFFF0401 = 0x8F9C0: max(FFFF0400 if >=5, T_02D07C, T_02D094)*T_02D088/128.
+#   FFFF0400 = 0x8F8C0 with param_3 = 0 (constant from 0x888C0): T_02D028(rpm, load FFFF03A0) + T_02D050(rpm, load)*(16-IAM)/16.
+FUEL = 'Fueling - Open Loop'
+LAM = ('lambda', '256/(256+x)', '256/x-256', '0.000')
+_ol = 'OBD PID44 (0x10C32C) commanded lambda = 256/(256 + FFFF0B84 + FFFF0401 + FFFF0B42); '
+add(0x2D028, 'Primary Open Loop Fueling', FUEL,
+    _ol + '0x8F8C0: FFFF0400 = T(rpm FFFF2994, load FFFF03A0) + T_02D050*(16-IAM)/16; 0x8F9C0: FFFF0401 = max(0400,...)*coolant mult/128.', LAM)
+add(0x2D050, 'Primary Open Loop Fueling Additive (Low IAM)', FUEL,
+    _ol + '0x8F8C0: added to Primary Open Loop Fueling scaled by (16-IAM)/16, IAM = FFFF3669 (SSM 0xF9, x/16): full value at IAM 0, none at IAM 1.0.',
+    ('lambda (at IAM 0)', '256/(256+x)', '256/x-256', '0.000'))
+add(0x2D03C, 'Primary Open Loop Fueling (Alternate, not selected)', FUEL,
+    _ol + '0x8F8C0: only used when param_3!=0; caller 0x888C0 passes constant 0, so it never reaches FFFF0400 in this ROM.', LAM)
+add(0x2D064, 'Primary Open Loop Fueling Offset vs FFFF049B (not selected)', FUEL,
+    '0x8F8C0: added only on the param_3!=0 path (caller passes 0), so not applied in this ROM. Input FFFF049B (signed byte).', ('raw', 'x', 'x', '0'),
+    status='partial')
+add(0x2D088, 'Open Loop Fueling Multiplier (Coolant)', FUEL,
+    _ol + '0x8F9C0: FFFF0401 = max(enrichments)*T(coolant FFFEEEDE)/128.', ('%', 'x*100/128', 'x*128/100', '0.0'))
+add(0x2D07C, 'Open Loop Fueling Enrichment (Accelerator Pedal)', FUEL,
+    _ol + '0x8F9C0: candidate in max() for FFFF0401 when FFFF0B30 >= FFFF0B40; input FFFEECB4 = selected accelerator pedal (0x69F44).', LAM)
+add(0x2D094, 'Open Loop Fueling Enrichment (input FFFF29B4)', FUEL,
+    _ol + '0x8F9C0: candidate in max() for FFFF0401 when FFFF0B30 >= FFFF0B40; input FFFF29B4 = FFFF02C4-10 (0x69F44), physical meaning unresolved.', LAM)
+
+_e42 = (_ol + '0x8CBE4 -> FFFF0B42 (only when FFFF03DF.1 set, else 0): T_02CE08 when coolant FFFEEEDE >= 0xE000 (100 C) and rpm < 0xF000, '
+        'T_02CE1C when coolant < 0xDCCD (97.5 C) or rpm max; hysteresis holds the previous selection in between. Inputs rpm FFFF2994, load FFFF03A0.')
+add(0x2CE08, 'Fuel Enrichment (Coolant >= 100 C)', FUEL, _e42, LAM)
+add(0x2CE1C, 'Fuel Enrichment (Coolant < 100 C)', FUEL, _e42, LAM)
+_e84 = (_ol + '0x90390 -> FFFF0B84 (computed only in engine state FFFF66B0 = 2 or 3, otherwise held): T_02D138(coolant FFFEEEDE), or '
+        '[T_02D144(load,coolant)*(1-w) + T_02D158(load,coolant)*w]*T_02D16C(rpm)/128 with w = FFFF0E90/65536; the result is limited by a '
+        'counter (FFFEBD76) decremented every execution, i.e. the enrichment decays over time.')
+add(0x2D138, 'Decaying Fuel Enrichment (Coolant)', FUEL, _e84, LAM)
+add(0x2D144, 'Decaying Fuel Enrichment A (Load x Coolant)', FUEL, _e84, LAM)
+add(0x2D158, 'Decaying Fuel Enrichment B (Load x Coolant)', FUEL, _e84, LAM)
+add(0x2D16C, 'Decaying Fuel Enrichment Multiplier (RPM)', FUEL, _e84, ('%', 'x*100/128', 'x*128/100', '0.0'))
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
