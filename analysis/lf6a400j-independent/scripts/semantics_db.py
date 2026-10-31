@@ -828,6 +828,10 @@ add(0x2D260, 'Injection Angle C Base [-> 0B90]', INJ, _ev90, CA)
 add(0x2D24C, 'Injection Angle C Adder [-> 0B90]', INJ, _ev90, CA)
 add(0x2D274, 'Injection Angle C Adder Factor [-> 0B90]', INJ, _ev90 + 'x/255 factor.', ('factor', 'x/255', 'x*255', '0.000'))
 
+add(0x2F2E0, 'A/F Sensor #1 Deviation Gain [0xEBD2C -> 1152]', 'Fueling - Closed Loop',
+    '0xEBD2C: FFFF1152 = (1 + T(FFFEEED0)*(lambda - 1)/128)*8192 with lambda = A/F Sensor #1 FFFEEF96 (SSM 0x46, x/8192): '
+    '(x-0x2000)*T*9.536743e-07 = T*(lambda-1)/128, so T is a gain with 128 = 1.0.', ('multiplier', 'x/128', 'x*128', '0.000'))
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

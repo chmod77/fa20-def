@@ -1,2 +1,2 @@
-LF6A401A: PASS: 1265 tables (435 identified/unlocked), 86850 cells/axis entries match ROM bytes; 76 static axes; 35370 scaled values round-trip through expression/to_byte; all unidentified tables locked; no faulty tables
-LF6A400J: PASS: 1265 tables (435 identified/unlocked), 86850 cells/axis entries match ROM bytes; 76 static axes; 35370 scaled values round-trip through expression/to_byte; all unidentified tables locked; no faulty tables
+LF6A401A: PASS: 1265 tables (436 identified/unlocked), 86850 cells/axis entries match ROM bytes; 76 static axes; 35378 scaled values round-trip through expression/to_byte; all unidentified tables locked; no faulty tables
+LF6A400J: PASS: 1265 tables (436 identified/unlocked), 86850 cells/axis entries match ROM bytes; 76 static axes; 35378 scaled values round-trip through expression/to_byte; all unidentified tables locked; no faulty tables

@@ -4578,6 +4578,19 @@
    "format": "0.00"
   }
  },
+ "0x2F2E0": {
+  "status": "identified",
+  "name": "A/F Sensor #1 Deviation Gain [0xEBD2C -> 1152]",
+  "category": "Fueling - Closed Loop",
+  "evidence": "0xEBD2C: FFFF1152 = (1 + T(FFFEEED0)*(lambda - 1)/128)*8192 with lambda = A/F Sensor #1 FFFEEF96 (SSM 0x46, x/8192): (x-0x2000)*T*9.536743e-07 = T*(lambda-1)/128, so T is a gain with 128 = 1.0.",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x/128",
+   "to_byte": "x*128",
+   "format": "0.000"
+  }
+ },
  "0x2F37C": {
   "status": "identified",
   "name": "Intake AVCS Target, Alternate Mode (FFFEF152.5), FFFF076C.3 set",
