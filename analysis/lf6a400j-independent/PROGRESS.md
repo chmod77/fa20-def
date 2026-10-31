@@ -219,6 +219,11 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
   0xB538C 0DA4 = min(max(0DAE, 0D9A), +35 %); 0xB5A24 0DAE = T_02E30C(coolant) lower limit. 0A8E = limited pedal angle (0x82C34);
   0D02 writer 0xAB150. EmuFindWriter accepts seeds (addr=value:bytes) for engine-running state. Coverage 639 of 1284.
   Next: 0D9A producer (0xB5088 copies @(24,0D86) = 0D9E) -> the integrator 0DA6/0D86 gets the % unit -> step tables in 0xB53D4.
+- **Every table is now either proven or explicitly labelled unresolved.** scripts/unresolved_reasons.py (run by validate.sh)
+  classifies how each unproven table's lookup result is used (stored to an unproven variable 261, compared with an unproven
+  variable 81, multiplied with another table/variable 73, added to an unproven variable 32, enters a larger expression 32, passed to
+  a function 17, no decompiled reference 19, use not resolved 128) and the builder puts "- unresolved: <reason>" in the name and
+  "UNRESOLVED (locked): <reason>" in the description. All such tables stay locked (CLAUDE.md rule). Coverage 639 proven of 1284.
 - Dead ends this session (documented so they are not repeated):
   * FFFF12C2 (axis of the pedal-limit T1 tables, compared with 12BE in the torque monitor): only a read literal (0xC50D0); writer not
     found by literal, GBR (+70 from 127C) or r0-offset searches.

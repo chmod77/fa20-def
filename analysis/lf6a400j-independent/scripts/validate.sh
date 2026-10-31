@@ -5,6 +5,7 @@ cd "$(dirname "$0")/.."
 python3 scripts/filter_gains.py >/dev/null
 python3 scripts/timers.py >/dev/null
 python3 scripts/semantics_db.py
+python3 scripts/unresolved_reasons.py >/dev/null
 python3 scripts/table_sinks.py
 python3 scripts/build_named_definition.py
 cd ../../RomRaider

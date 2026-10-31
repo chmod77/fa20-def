@@ -28,6 +28,16 @@ ROMS = {
 }
 cal = json.load(open(f'{E}/calibrations.json'))
 HT = json.load(open(f'{E}/helper-tables.json'))
+UR = json.load(open(f'{E}/unresolved-reasons.json')) if os.path.exists(f'{E}/unresolved-reasons.json') else {}
+def ureason(keys):
+    for k in keys:
+        r = UR.get(f'0x{k:X}')
+        if r: return r
+    return 'no decompiled reference (read only in a calibration-disabled branch, through a computed address, or not at all)'
+def ushort(r):
+    r = r.split(': ', 1)[-1]
+    r = re.sub(r' \(unit[^)]*\)| \(use there not resolved\)| \(unit of the receiving variable not proven\)', '', r)
+    return r[:70]
 SINK = {int(k, 16): v for k, v in json.load(open(f'{E}/table-sinks.json')).items()} if os.path.exists(f'{E}/table-sinks.json') else {}
 SEM = json.load(open(f'{E}/semantics.json')) if os.path.exists(f'{E}/semantics.json') else {}
 SEM = {int(k, 16): v for k, v in SEM.items()}
@@ -115,7 +125,8 @@ def build(rid, path, sha):
         if sem and sem.get('name'):
             name = sem['name'] + ('' if ident else ' [output units unresolved]')
         else:
-            name = f'Unidentified {dimtxt} [D{d0:06X}]' + (f' ({" x ".join(axnames)})' if any(a != '?' for a in axnames) else '')
+            name = f'Unidentified {dimtxt} [D{d0:06X}]' + (f' ({" x ".join(axnames)})' if any(a != '?' for a in axnames) else '') \
+                   + ' - unresolved: ' + ushort(ureason(view['aliases']))
         sub = subsystems.category(set().union(*[D2R.get(d, set()) for d in view['aliases']]))
         cat = (sem or {}).get('category') or ('Unidentified - ' + sub)
         desc = [f'Descriptor(s): {", ".join(f"0x{x:X}" for x in view["aliases"])}.']
@@ -127,7 +138,7 @@ def build(rid, path, sha):
             desc.append('Lookup result stored to: ' + ', '.join(
                 (x + (f' ({VV[int(x,16)][0]})' if ':' not in x and int(x, 16) in VV else '')) for x in sinks) + '.')
         if not ident:
-            desc.append('Function/output scaling not yet proven from the binary; locked.')
+            desc.append('UNRESOLVED (locked): ' + ureason(view['aliases']) + '. Function/output scaling not yet proven from the binary.')
         attrs = dict(type='3D' if rank == 2 else '2D', name=name, category=cat, storageaddress=f'{view["data_address"]:X}',
                      storagetype=view['data_storage'], endian='big', userlevel='1', description=' '.join(x for x in desc if x))
         if not ident:
@@ -165,13 +176,13 @@ def build(rid, path, sha):
         if sem and sem.get('name'):
             name = sem['name'] + ('' if ident else ' [output units unresolved]')
         else:
-            name = f'Unidentified secondary {n} @0x{t["data_address"]:06X} [H{tid:06X}]'
+            name = f'Unidentified secondary {n} @0x{t["data_address"]:06X} [H{tid:06X}] - unresolved: ' + ushort(ureason([tid]))
         cat = (sem or {}).get('category') or ('Unidentified - ' + sub)
         desc = [f'Secondary table read by helper 0x{int(t["helper"],16):X} (structure/array at 0x{tid:X}); call sites: {sites}.']
         if sem:
             desc += [sem.get('description', ''), 'Evidence: ' + sem.get('evidence', '')]
         if not ident:
-            desc.append('Function/output scaling not yet proven from the binary; locked.')
+            desc.append('UNRESOLVED (locked): ' + ureason([tid]) + '. Function/output scaling not yet proven from the binary.')
         attrs = dict(type='2D', name=name, category=cat, storageaddress=f'{t["data_address"]:X}', storagetype=dst, endian='big',
                      userlevel='1', sizey=str(n), description=' '.join(x for x in desc if x))
         if t['kind'] == 'map':
