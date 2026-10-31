@@ -732,6 +732,18 @@ add(0x2CED8, 'Fuel Enrichment (0B62) Multiplier [0x8EDF0]', FE, _ev62 + 'x/128 f
 add(0x2CEE4, 'Fuel Enrichment (0B62) Multiplier (Coolant)', FE, _ev62 + 'x/128 factor (0x80 when FFFF0423 flag clear); input coolant FFFF29A5.',
     ('multiplier', 'x/128', 'x*128', '0.000'))
 
+_ev60 = ('0x8F250 (from 0x89E04): FFFF0B60 = max(T_02CF8C*f(T_02CFC8), T_02CFA0*f(T_02CFDC), T_02CFB4*f(T_02CFF0)) * T_02CF80/128 * '
+         'T_02CF74/128 + adder (T_02CF68 when actual FRP FFFEED16 < target FFFF1276 - 0xCCF for 500+ counts), f(L) = linear decay over 8*L '
+         'counts of FFFF0B98. 0x88588 sums FFFF0B84 (PID44 decaying enrichment term) + FFFF0B60 + FFFF03EC, so 0B60 is in the same '
+         'fuel-fraction unit (x/256). ')
+for d, n in ((0x2CF8C, 'A'), (0x2CFA0, 'B'), (0x2CFB4, 'C')):
+    add(d, f'Fuel Enrichment (0B60) Amount {n}', FE, _ev60, FQ)
+for d, n in ((0x2CFC8, 'A'), (0x2CFDC, 'B'), (0x2CFF0, 'C')):
+    add(d, f'Fuel Enrichment (0B60) Decay Length {n}', FE, _ev60 + 'Decay length in units of 8 counts of FFFF0B98.', ('counts', 'x*8', 'x/8', '0'))
+add(0x2CF80, 'Fuel Enrichment (0B60) Multiplier [0x8F250]', FE, _ev60 + 'x/128 factor.', ('multiplier', 'x/128', 'x*128', '0.000'))
+add(0x2CF74, 'Fuel Enrichment (0B60) Multiplier (Coolant)', FE, _ev60 + 'x/128 factor; input coolant FFFF29A5.', ('multiplier', 'x/128', 'x*128', '0.000'))
+add(0x2CF68, 'Fuel Enrichment (0B60) Low Rail Pressure Adder (Coolant)', FE, _ev60 + 'Added amount; input coolant FFFF29A5.', FQ)
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

@@ -141,9 +141,9 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02CF74] (Coolant Temperature)" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="8936" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2CF74. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature" storageaddress="1E46C" elements="16" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Fuel Enrichment (0B60) Multiplier (Coolant)" category="Fueling - Open Loop &amp; Enrichment" storageaddress="8936" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2CF74. Evidence: 0x8F250 (from 0x89E04): FFFF0B60 = max(T_02CF8C*f(T_02CFC8), T_02CFA0*f(T_02CFDC), T_02CFB4*f(T_02CFF0)) * T_02CF80/128 * T_02CF74/128 + adder (T_02CF68 when actual FRP FFFEED16 &lt; target FFFF1276 - 0xCCF for 500+ counts), f(L) = linear decay over 8*L counts of FFFF0B98. 0x88588 sums FFFF0B84 (PID44 decaying enrichment term) + FFFF0B60 + FFFF03EC, so 0B60 is in the same fuel-fraction unit (x/256). x/128 factor; input coolant FFFF29A5." sizey="16">
+      <scaling units="multiplier" expression="x/128" to_byte="x*128" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature" storageaddress="1E46C" elements="16" storagetype="uint8" endian="big">
         <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
@@ -765,57 +765,57 @@
         <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 3x16 [D02CF8C]" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="B5D0" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CF8C. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="3">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="B5CC" elements="3" storagetype="uint8" endian="big" locked="true">
+    <table type="3D" name="Fuel Enrichment (0B60) Amount A" category="Fueling - Open Loop &amp; Enrichment" storageaddress="B5D0" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CF8C. Evidence: 0x8F250 (from 0x89E04): FFFF0B60 = max(T_02CF8C*f(T_02CFC8), T_02CFA0*f(T_02CFDC), T_02CFB4*f(T_02CFF0)) * T_02CF80/128 * T_02CF74/128 + adder (T_02CF68 when actual FRP FFFEED16 &lt; target FFFF1276 - 0xCCF for 500+ counts), f(L) = linear decay over 8*L counts of FFFF0B98. 0x88588 sums FFFF0B84 (PID44 decaying enrichment term) + FFFF0B60 + FFFF03EC, so 0B60 is in the same fuel-fraction unit (x/256). " sizex="16" sizey="3">
+      <scaling units="%" expression="x*100/256" to_byte="x*256/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="B5CC" elements="3" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 3x16 [D02CFA0]" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="B630" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CFA0. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="3">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="B5CC" elements="3" storagetype="uint8" endian="big" locked="true">
+    <table type="3D" name="Fuel Enrichment (0B60) Amount B" category="Fueling - Open Loop &amp; Enrichment" storageaddress="B630" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CFA0. Evidence: 0x8F250 (from 0x89E04): FFFF0B60 = max(T_02CF8C*f(T_02CFC8), T_02CFA0*f(T_02CFDC), T_02CFB4*f(T_02CFF0)) * T_02CF80/128 * T_02CF74/128 + adder (T_02CF68 when actual FRP FFFEED16 &lt; target FFFF1276 - 0xCCF for 500+ counts), f(L) = linear decay over 8*L counts of FFFF0B98. 0x88588 sums FFFF0B84 (PID44 decaying enrichment term) + FFFF0B60 + FFFF03EC, so 0B60 is in the same fuel-fraction unit (x/256). " sizex="16" sizey="3">
+      <scaling units="%" expression="x*100/256" to_byte="x*256/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="B5CC" elements="3" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 3x16 [D02CFB4]" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="B690" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CFB4. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="3">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="B5CC" elements="3" storagetype="uint8" endian="big" locked="true">
+    <table type="3D" name="Fuel Enrichment (0B60) Amount C" category="Fueling - Open Loop &amp; Enrichment" storageaddress="B690" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CFB4. Evidence: 0x8F250 (from 0x89E04): FFFF0B60 = max(T_02CF8C*f(T_02CFC8), T_02CFA0*f(T_02CFDC), T_02CFB4*f(T_02CFF0)) * T_02CF80/128 * T_02CF74/128 + adder (T_02CF68 when actual FRP FFFEED16 &lt; target FFFF1276 - 0xCCF for 500+ counts), f(L) = linear decay over 8*L counts of FFFF0B98. 0x88588 sums FFFF0B84 (PID44 decaying enrichment term) + FFFF0B60 + FFFF03EC, so 0B60 is in the same fuel-fraction unit (x/256). " sizex="16" sizey="3">
+      <scaling units="%" expression="x*100/256" to_byte="x*256/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="B5CC" elements="3" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 3x16 [D02CFC8]" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="B6F0" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2CFC8. Lookup result stored to: FFFF0424. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="3">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="B5CC" elements="3" storagetype="uint8" endian="big" locked="true">
+    <table type="3D" name="Fuel Enrichment (0B60) Decay Length A" category="Fueling - Open Loop &amp; Enrichment" storageaddress="B6F0" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2CFC8. Evidence: 0x8F250 (from 0x89E04): FFFF0B60 = max(T_02CF8C*f(T_02CFC8), T_02CFA0*f(T_02CFDC), T_02CFB4*f(T_02CFF0)) * T_02CF80/128 * T_02CF74/128 + adder (T_02CF68 when actual FRP FFFEED16 &lt; target FFFF1276 - 0xCCF for 500+ counts), f(L) = linear decay over 8*L counts of FFFF0B98. 0x88588 sums FFFF0B84 (PID44 decaying enrichment term) + FFFF0B60 + FFFF03EC, so 0B60 is in the same fuel-fraction unit (x/256). Decay length in units of 8 counts of FFFF0B98. Lookup result stored to: FFFF0424." sizex="16" sizey="3">
+      <scaling units="counts" expression="x*8" to_byte="x/8" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="B5CC" elements="3" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 3x16 [D02CFDC]" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="B720" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2CFDC. Lookup result stored to: FFFF0428. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="3">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="B5CC" elements="3" storagetype="uint8" endian="big" locked="true">
+    <table type="3D" name="Fuel Enrichment (0B60) Decay Length B" category="Fueling - Open Loop &amp; Enrichment" storageaddress="B720" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2CFDC. Evidence: 0x8F250 (from 0x89E04): FFFF0B60 = max(T_02CF8C*f(T_02CFC8), T_02CFA0*f(T_02CFDC), T_02CFB4*f(T_02CFF0)) * T_02CF80/128 * T_02CF74/128 + adder (T_02CF68 when actual FRP FFFEED16 &lt; target FFFF1276 - 0xCCF for 500+ counts), f(L) = linear decay over 8*L counts of FFFF0B98. 0x88588 sums FFFF0B84 (PID44 decaying enrichment term) + FFFF0B60 + FFFF03EC, so 0B60 is in the same fuel-fraction unit (x/256). Decay length in units of 8 counts of FFFF0B98. Lookup result stored to: FFFF0428." sizex="16" sizey="3">
+      <scaling units="counts" expression="x*8" to_byte="x/8" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="B5CC" elements="3" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 3x16 [D02CFF0]" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="B750" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2CFF0. Lookup result stored to: FFFF0426. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="3">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="B5CC" elements="3" storagetype="uint8" endian="big" locked="true">
+    <table type="3D" name="Fuel Enrichment (0B60) Decay Length C" category="Fueling - Open Loop &amp; Enrichment" storageaddress="B750" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2CFF0. Evidence: 0x8F250 (from 0x89E04): FFFF0B60 = max(T_02CF8C*f(T_02CFC8), T_02CFA0*f(T_02CFDC), T_02CFB4*f(T_02CFF0)) * T_02CF80/128 * T_02CF74/128 + adder (T_02CF68 when actual FRP FFFEED16 &lt; target FFFF1276 - 0xCCF for 500+ counts), f(L) = linear decay over 8*L counts of FFFF0B98. 0x88588 sums FFFF0B84 (PID44 decaying enrichment term) + FFFF0B60 + FFFF03EC, so 0B60 is in the same fuel-fraction unit (x/256). Decay length in units of 8 counts of FFFF0B98. Lookup result stored to: FFFF0426." sizex="16" sizey="3">
+      <scaling units="counts" expression="x*8" to_byte="x/8" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="B5CC" elements="3" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -900,9 +900,9 @@
         <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02CF68] (Coolant Temperature)" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="BA96" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CF68. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature" storageaddress="1E46C" elements="16" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Fuel Enrichment (0B60) Low Rail Pressure Adder (Coolant)" category="Fueling - Open Loop &amp; Enrichment" storageaddress="BA96" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CF68. Evidence: 0x8F250 (from 0x89E04): FFFF0B60 = max(T_02CF8C*f(T_02CFC8), T_02CFA0*f(T_02CFDC), T_02CFB4*f(T_02CFF0)) * T_02CF80/128 * T_02CF74/128 + adder (T_02CF68 when actual FRP FFFEED16 &lt; target FFFF1276 - 0xCCF for 500+ counts), f(L) = linear decay over 8*L counts of FFFF0B98. 0x88588 sums FFFF0B84 (PID44 decaying enrichment term) + FFFF0B60 + FFFF03EC, so 0B60 is in the same fuel-fraction unit (x/256). Added amount; input coolant FFFF29A5." sizey="16">
+      <scaling units="%" expression="x*100/256" to_byte="x*256/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature" storageaddress="1E46C" elements="16" storagetype="uint8" endian="big">
         <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
@@ -1998,9 +1998,9 @@
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02CF80] (Engine Speed)" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="121D6" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2CF80. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="1E5E4" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Fuel Enrichment (0B60) Multiplier [0x8F250]" category="Fueling - Open Loop &amp; Enrichment" storageaddress="121D6" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2CF80. Evidence: 0x8F250 (from 0x89E04): FFFF0B60 = max(T_02CF8C*f(T_02CFC8), T_02CFA0*f(T_02CFDC), T_02CFB4*f(T_02CFF0)) * T_02CF80/128 * T_02CF74/128 + adder (T_02CF68 when actual FRP FFFEED16 &lt; target FFFF1276 - 0xCCF for 500+ counts), f(L) = linear decay over 8*L counts of FFFF0B98. 0x88588 sums FFFF0B84 (PID44 decaying enrichment term) + FFFF0B60 + FFFF03EC, so 0B60 is in the same fuel-fraction unit (x/256). x/128 factor." sizey="16">
+      <scaling units="multiplier" expression="x/128" to_byte="x*128" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="1E5E4" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>

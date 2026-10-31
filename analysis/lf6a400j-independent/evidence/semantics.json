@@ -973,6 +973,123 @@
    "format": "0"
   }
  },
+ "0x2CF68": {
+  "status": "identified",
+  "name": "Fuel Enrichment (0B60) Low Rail Pressure Adder (Coolant)",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x8F250 (from 0x89E04): FFFF0B60 = max(T_02CF8C*f(T_02CFC8), T_02CFA0*f(T_02CFDC), T_02CFB4*f(T_02CFF0)) * T_02CF80/128 * T_02CF74/128 + adder (T_02CF68 when actual FRP FFFEED16 < target FFFF1276 - 0xCCF for 500+ counts), f(L) = linear decay over 8*L counts of FFFF0B98. 0x88588 sums FFFF0B84 (PID44 decaying enrichment term) + FFFF0B60 + FFFF03EC, so 0B60 is in the same fuel-fraction unit (x/256). Added amount; input coolant FFFF29A5.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/256",
+   "to_byte": "x*256/100",
+   "format": "0.0"
+  }
+ },
+ "0x2CF74": {
+  "status": "identified",
+  "name": "Fuel Enrichment (0B60) Multiplier (Coolant)",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x8F250 (from 0x89E04): FFFF0B60 = max(T_02CF8C*f(T_02CFC8), T_02CFA0*f(T_02CFDC), T_02CFB4*f(T_02CFF0)) * T_02CF80/128 * T_02CF74/128 + adder (T_02CF68 when actual FRP FFFEED16 < target FFFF1276 - 0xCCF for 500+ counts), f(L) = linear decay over 8*L counts of FFFF0B98. 0x88588 sums FFFF0B84 (PID44 decaying enrichment term) + FFFF0B60 + FFFF03EC, so 0B60 is in the same fuel-fraction unit (x/256). x/128 factor; input coolant FFFF29A5.",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x/128",
+   "to_byte": "x*128",
+   "format": "0.000"
+  }
+ },
+ "0x2CF80": {
+  "status": "identified",
+  "name": "Fuel Enrichment (0B60) Multiplier [0x8F250]",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x8F250 (from 0x89E04): FFFF0B60 = max(T_02CF8C*f(T_02CFC8), T_02CFA0*f(T_02CFDC), T_02CFB4*f(T_02CFF0)) * T_02CF80/128 * T_02CF74/128 + adder (T_02CF68 when actual FRP FFFEED16 < target FFFF1276 - 0xCCF for 500+ counts), f(L) = linear decay over 8*L counts of FFFF0B98. 0x88588 sums FFFF0B84 (PID44 decaying enrichment term) + FFFF0B60 + FFFF03EC, so 0B60 is in the same fuel-fraction unit (x/256). x/128 factor.",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x/128",
+   "to_byte": "x*128",
+   "format": "0.000"
+  }
+ },
+ "0x2CF8C": {
+  "status": "identified",
+  "name": "Fuel Enrichment (0B60) Amount A",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x8F250 (from 0x89E04): FFFF0B60 = max(T_02CF8C*f(T_02CFC8), T_02CFA0*f(T_02CFDC), T_02CFB4*f(T_02CFF0)) * T_02CF80/128 * T_02CF74/128 + adder (T_02CF68 when actual FRP FFFEED16 < target FFFF1276 - 0xCCF for 500+ counts), f(L) = linear decay over 8*L counts of FFFF0B98. 0x88588 sums FFFF0B84 (PID44 decaying enrichment term) + FFFF0B60 + FFFF03EC, so 0B60 is in the same fuel-fraction unit (x/256). ",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/256",
+   "to_byte": "x*256/100",
+   "format": "0.0"
+  }
+ },
+ "0x2CFA0": {
+  "status": "identified",
+  "name": "Fuel Enrichment (0B60) Amount B",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x8F250 (from 0x89E04): FFFF0B60 = max(T_02CF8C*f(T_02CFC8), T_02CFA0*f(T_02CFDC), T_02CFB4*f(T_02CFF0)) * T_02CF80/128 * T_02CF74/128 + adder (T_02CF68 when actual FRP FFFEED16 < target FFFF1276 - 0xCCF for 500+ counts), f(L) = linear decay over 8*L counts of FFFF0B98. 0x88588 sums FFFF0B84 (PID44 decaying enrichment term) + FFFF0B60 + FFFF03EC, so 0B60 is in the same fuel-fraction unit (x/256). ",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/256",
+   "to_byte": "x*256/100",
+   "format": "0.0"
+  }
+ },
+ "0x2CFB4": {
+  "status": "identified",
+  "name": "Fuel Enrichment (0B60) Amount C",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x8F250 (from 0x89E04): FFFF0B60 = max(T_02CF8C*f(T_02CFC8), T_02CFA0*f(T_02CFDC), T_02CFB4*f(T_02CFF0)) * T_02CF80/128 * T_02CF74/128 + adder (T_02CF68 when actual FRP FFFEED16 < target FFFF1276 - 0xCCF for 500+ counts), f(L) = linear decay over 8*L counts of FFFF0B98. 0x88588 sums FFFF0B84 (PID44 decaying enrichment term) + FFFF0B60 + FFFF03EC, so 0B60 is in the same fuel-fraction unit (x/256). ",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/256",
+   "to_byte": "x*256/100",
+   "format": "0.0"
+  }
+ },
+ "0x2CFC8": {
+  "status": "identified",
+  "name": "Fuel Enrichment (0B60) Decay Length A",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x8F250 (from 0x89E04): FFFF0B60 = max(T_02CF8C*f(T_02CFC8), T_02CFA0*f(T_02CFDC), T_02CFB4*f(T_02CFF0)) * T_02CF80/128 * T_02CF74/128 + adder (T_02CF68 when actual FRP FFFEED16 < target FFFF1276 - 0xCCF for 500+ counts), f(L) = linear decay over 8*L counts of FFFF0B98. 0x88588 sums FFFF0B84 (PID44 decaying enrichment term) + FFFF0B60 + FFFF03EC, so 0B60 is in the same fuel-fraction unit (x/256). Decay length in units of 8 counts of FFFF0B98.",
+  "description": "",
+  "data": {
+   "units": "counts",
+   "expr": "x*8",
+   "to_byte": "x/8",
+   "format": "0"
+  }
+ },
+ "0x2CFDC": {
+  "status": "identified",
+  "name": "Fuel Enrichment (0B60) Decay Length B",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x8F250 (from 0x89E04): FFFF0B60 = max(T_02CF8C*f(T_02CFC8), T_02CFA0*f(T_02CFDC), T_02CFB4*f(T_02CFF0)) * T_02CF80/128 * T_02CF74/128 + adder (T_02CF68 when actual FRP FFFEED16 < target FFFF1276 - 0xCCF for 500+ counts), f(L) = linear decay over 8*L counts of FFFF0B98. 0x88588 sums FFFF0B84 (PID44 decaying enrichment term) + FFFF0B60 + FFFF03EC, so 0B60 is in the same fuel-fraction unit (x/256). Decay length in units of 8 counts of FFFF0B98.",
+  "description": "",
+  "data": {
+   "units": "counts",
+   "expr": "x*8",
+   "to_byte": "x/8",
+   "format": "0"
+  }
+ },
+ "0x2CFF0": {
+  "status": "identified",
+  "name": "Fuel Enrichment (0B60) Decay Length C",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x8F250 (from 0x89E04): FFFF0B60 = max(T_02CF8C*f(T_02CFC8), T_02CFA0*f(T_02CFDC), T_02CFB4*f(T_02CFF0)) * T_02CF80/128 * T_02CF74/128 + adder (T_02CF68 when actual FRP FFFEED16 < target FFFF1276 - 0xCCF for 500+ counts), f(L) = linear decay over 8*L counts of FFFF0B98. 0x88588 sums FFFF0B84 (PID44 decaying enrichment term) + FFFF0B60 + FFFF03EC, so 0B60 is in the same fuel-fraction unit (x/256). Decay length in units of 8 counts of FFFF0B98.",
+  "description": "",
+  "data": {
+   "units": "counts",
+   "expr": "x*8",
+   "to_byte": "x/8",
+   "format": "0"
+  }
+ },
  "0x2D028": {
   "status": "identified",
   "name": "Primary Open Loop Fueling",
