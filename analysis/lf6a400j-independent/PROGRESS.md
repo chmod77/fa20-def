@@ -104,7 +104,9 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
 
 - Task timing anchor: OBD PID 0x1F (run time, s) = FFFEF35E (0x10BE50 copy -> 12E0 -> 39C4, handler 0x718AA). 0x4EDAE
   increments it once every 25 executions, so 0x4EDAE's task 0x153248 (also called from 0x153D20) runs every 40 ms. Counters
-  incremented once per execution in that task are therefore in 40 ms units. Next: find counter-vs-table comparisons in the 0x153248 tree.
+  incremented once per execution in that task are therefore in 40 ms units. Second, independent anchor: 0x153248 runs 0x10C4DC
+  once every 25 executions (prescaler FFFEF3AB = 0x19), and 0x10C4DC adds 1 to FFFF3B30, the seconds counter behind OBD PID 0x4E
+  (minutes = s/60, 0x10BB94). Both give 25 x 40 ms = 1 s. Next: find counter-vs-table comparisons in the 0x153248 tree.
 - Fixed: scanners now bound functions by the next function start. Ghidra sizes truncated large functions, e.g. 0x9CBF8 missed its
   0x98FAC call.
 

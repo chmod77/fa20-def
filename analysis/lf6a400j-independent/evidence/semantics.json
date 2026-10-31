@@ -1102,7 +1102,7 @@
   "status": "identified",
   "name": "Time Threshold vs Coolant [0x93044]",
   "category": "Fuel Injection",
-  "evidence": "0x93044 (called unconditionally from 0x8A330 in the 40 ms task 0x153248; period from OBD PID 0x1F: 0x4EDAE adds 1 s per 25 executions of that task) compares T(coolant FFFEEEDE) with a counter that increments once per execution, so T is time in 40 ms units. Caveat: 0x153D20 (separate scheduler table 0x1525F0) also calls 0x4EDAE.",
+  "evidence": "0x93044 (called unconditionally from 0x8A330 in the 40 ms task 0x153248; period from OBD PID 0x1F: 0x4EDAE adds 1 s per 25 executions of that task) compares T(coolant FFFEEEDE) with a counter that increments once per execution, so T is time in 40 ms units. Confirmed by the PID 0x4E seconds counter (0x10C4DC every 25 executions). Caveat: 0x153D20 (scheduler table 0x1525F0) also calls 0x4EDAE.",
   "description": "",
   "data": {
    "units": "s",

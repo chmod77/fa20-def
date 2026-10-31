@@ -605,7 +605,7 @@ add(0x2F170, 'Alternator Control MAP Threshold (RPM)', ALT,
 add(0x2D33C, 'Time Threshold vs Coolant [0x93044]', 'Fuel Injection',
     '0x93044 (called unconditionally from 0x8A330 in the 40 ms task 0x153248; period from OBD PID 0x1F: 0x4EDAE adds 1 s per 25 '
     'executions of that task) compares T(coolant FFFEEEDE) with a counter that increments once per execution, so T is time in 40 ms units. '
-    'Caveat: 0x153D20 (separate scheduler table 0x1525F0) also calls 0x4EDAE.', ('s', 'x*0.04', 'x/0.04', '0.00'))
+    'Confirmed by the PID 0x4E seconds counter (0x10C4DC every 25 executions). Caveat: 0x153D20 (scheduler table 0x1525F0) also calls 0x4EDAE.', ('s', 'x*0.04', 'x/0.04', '0.00'))
 
 add(0x2F28C, 'Time Threshold [0xE6908]', 'Diagnostics - Timers',
     '0xE6908 (from 0xE61E8, called unconditionally by the 40 ms task 0x153248): flag = T <= FFFED365, a counter incremented once per '
