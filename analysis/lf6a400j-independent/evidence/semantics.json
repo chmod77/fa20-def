@@ -809,6 +809,32 @@
    "format": "0.00"
   }
  },
+ "0x2CAD8": {
+  "status": "identified",
+  "name": "Fuel Enrichment, Torque Mode 0x0E [0x88588]",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x88588 (from 0x888C0): total enrichment = FFFF0507 + FFFF0407 + FFFF0404 + T_02CAD8 (torque mode FFFF03C6 = 0x0E) + T_02CAE4 + (FFFF0B84 + FFFF0B60 + FFFF03EC) + ... + 0x80, the same x/256 fuel-fraction unit as the proven terms (0B84 = OBD PID44 term). Input FFFF03DA.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/256",
+   "to_byte": "x*256/100",
+   "format": "0.0"
+  }
+ },
+ "0x2CAE4": {
+  "status": "identified",
+  "name": "Fuel Enrichment Adder [0x88588]",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x88588 (from 0x888C0): total enrichment = FFFF0507 + FFFF0407 + FFFF0404 + T_02CAD8 (torque mode FFFF03C6 = 0x0E) + T_02CAE4 + (FFFF0B84 + FFFF0B60 + FFFF03EC) + ... + 0x80, the same x/256 fuel-fraction unit as the proven terms (0B84 = OBD PID44 term). Signed; inputs FFFF03A0 load x FFFF2994 rpm (when enabled).",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/256",
+   "to_byte": "x*256/100",
+   "format": "0.0"
+  }
+ },
  "0x2CB74": {
   "status": "identified",
   "name": "Start Fuel Decay Factor per Execution, Channel 2 (FFFF054A.2 set, FFFF3653.7 clear)",

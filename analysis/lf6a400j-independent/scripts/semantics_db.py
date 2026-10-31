@@ -811,6 +811,11 @@ _ev9a = ('0x91008 (from 0x89E04): FFFF0B9A = T_02D2A8(rpm FFFF2994, load FFFF03A
 add(0x2D2A8, 'Open Loop Enrichment for Target Lambda (RPM x Load) [-> 0B9A]', FE, _ev9a, ('lambda', '32768/(32768+x)', '32768/x-32768', '0.000'))
 add(0x2D2BC, 'Open Loop Enrichment Multiplier (IAM) [-> 0B9A]', FE, _ev9a + 'x/128 factor indexed by IAM.', ('multiplier', 'x/128', 'x*128', '0.000'))
 
+_ev885 = ('0x88588 (from 0x888C0): total enrichment = FFFF0507 + FFFF0407 + FFFF0404 + T_02CAD8 (torque mode FFFF03C6 = 0x0E) + T_02CAE4 + '
+          '(FFFF0B84 + FFFF0B60 + FFFF03EC) + ... + 0x80, the same x/256 fuel-fraction unit as the proven terms (0B84 = OBD PID44 term). ')
+add(0x2CAD8, 'Fuel Enrichment, Torque Mode 0x0E [0x88588]', FE, _ev885 + 'Input FFFF03DA.', FQ)
+add(0x2CAE4, 'Fuel Enrichment Adder [0x88588]', FE, _ev885 + 'Signed; inputs FFFF03A0 load x FFFF2994 rpm (when enabled).', FQ)
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

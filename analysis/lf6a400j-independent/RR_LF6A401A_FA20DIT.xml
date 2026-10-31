@@ -228,12 +228,12 @@
         <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 3x7 [D02CAE4] (Engine Load x Engine Speed)" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="8F0C" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2CAE4. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="7" sizey="3">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
-      <table type="Y Axis" name="Engine Load" storageaddress="8EFA" elements="3" storagetype="uint8" endian="big" locked="true">
+    <table type="3D" name="Fuel Enrichment Adder [0x88588]" category="Fueling - Open Loop &amp; Enrichment" storageaddress="8F0C" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2CAE4. Evidence: 0x88588 (from 0x888C0): total enrichment = FFFF0507 + FFFF0407 + FFFF0404 + T_02CAD8 (torque mode FFFF03C6 = 0x0E) + T_02CAE4 + (FFFF0B84 + FFFF0B60 + FFFF03EC) + ... + 0x80, the same x/256 fuel-fraction unit as the proven terms (0B84 = OBD PID44 term). Signed; inputs FFFF03A0 load x FFFF2994 rpm (when enabled)." sizex="7" sizey="3">
+      <scaling units="%" expression="x*100/256" to_byte="x*256/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
+      <table type="Y Axis" name="Engine Load" storageaddress="8EFA" elements="3" storagetype="uint8" endian="big">
         <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Speed" storageaddress="8EFE" elements="7" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Engine Speed" storageaddress="8EFE" elements="7" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -5040,9 +5040,9 @@
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02CAD8]" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="1E746" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2CAD8. Lookup result stored to: FFFF03DE, FFFF03FD. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF03DA)" storageaddress="1E74E" elements="8" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Fuel Enrichment, Torque Mode 0x0E [0x88588]" category="Fueling - Open Loop &amp; Enrichment" storageaddress="1E746" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2CAD8. Evidence: 0x88588 (from 0x888C0): total enrichment = FFFF0507 + FFFF0407 + FFFF0404 + T_02CAD8 (torque mode FFFF03C6 = 0x0E) + T_02CAE4 + (FFFF0B84 + FFFF0B60 + FFFF03EC) + ... + 0x80, the same x/256 fuel-fraction unit as the proven terms (0B84 = OBD PID44 term). Input FFFF03DA. Lookup result stored to: FFFF03DE, FFFF03FD." sizey="8">
+      <scaling units="%" expression="x*100/256" to_byte="x*256/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF03DA)" storageaddress="1E74E" elements="8" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
