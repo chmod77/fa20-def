@@ -222,3 +222,8 @@ V2.update({
  0xFFFF0A64:('Torque (limit, 0A64)','Nm','(x-16000)/80','x*80+16000','0x8034C: min(0A64, torque sum)'+_TQ),
 })
 V2.update({0xFFFF0A1E:('Torque (0ADC - 0ADA, 0A1E)','Nm','(x-16000)/80','x*80+16000','0x80D54: 0ADC - 0ADA + 16000'+_TQ)})
+V2.update({
+ 0xFFFF0AE8:('Torque Term 0AE8','Nm','(x-16000)/80','x*80+16000','0x86680 torque-type sum with 0ADC'+_TQ),
+ 0xFFFF0AAA:('Torque 0AAA','Nm','(x-16000)/80','x*80+16000','0x85434: 0AF8 = 0AAA - 0AE8 + 16000'+_TQ),
+ 0xFFFF0ABC:('Torque 0ABC (delayed)','Nm','(x-16000)/80','x*80+16000','0x85940 delayed scaled 0AAA'+_TQ),
+})

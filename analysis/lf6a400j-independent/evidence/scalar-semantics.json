@@ -120,6 +120,17 @@
   "function": "099614",
   "context": "0x8a < param_1)"
  },
+ "012318": {
+  "width": 2,
+  "value": 65520,
+  "var": "FFFF0ABC",
+  "var_name": "Torque 0ABC (delayed)",
+  "units": "Nm",
+  "expr": "(x-16000)/80",
+  "to_byte": "x*80+16000",
+  "function": "08549c",
+  "context": "0xfff0 < param_2"
+ },
  "0147AC": {
   "width": 2,
   "value": 10240,
@@ -539,6 +550,17 @@
   "function": "11a060",
   "context": "(param_2 < 0x7ae"
  },
+ "025376": {
+  "width": 2,
+  "value": 1296,
+  "var": "FFFF39F6",
+  "var_name": "Target Lambda Learning Offset (latched)",
+  "units": "lambda offset",
+  "expr": "x/43194",
+  "to_byte": "x*43194",
+  "function": "11cca8",
+  "context": "(param_5 < 0x510"
+ },
  "0297C0": {
   "width": 1,
   "value": 145,
@@ -842,5 +864,53 @@
   "function": "07f71c",
   "name": "Gear 6 Detection Ratio, lower bound",
   "context": "0x7F71C: gear 6 when lower <= FFFF09D0 (rpm/(km/h), x/256) < upper; disasm 0x7F730.. reads base 0x1B9A4 + 20 (+0 upper, +2 lower)"
+ },
+ "01244C": {
+  "units": "Nm",
+  "expr": "(x-16000)/80",
+  "to_byte": "x*80+16000",
+  "var": "FFFF0ADA",
+  "var_name": "Torque",
+  "width": 2,
+  "value": 16000,
+  "function": "086680",
+  "name": "Torque Term A Default [0x86680]",
+  "context": "0x86680: FFFF0ADA = min(0ADC, max(0x12484, a + b + c + 0AE8 - 48000)); a/b/c use 0x1244C/0x1244E/0x12450 (torque type)"
+ },
+ "01244E": {
+  "units": "Nm",
+  "expr": "(x-16000)/80",
+  "to_byte": "x*80+16000",
+  "var": "FFFF0ADA",
+  "var_name": "Torque",
+  "width": 2,
+  "value": 16000,
+  "function": "086680",
+  "name": "Torque Term B Default [0x86680]",
+  "context": "0x86680: FFFF0ADA = min(0ADC, max(0x12484, a + b + c + 0AE8 - 48000)); a/b/c use 0x1244C/0x1244E/0x12450 (torque type)"
+ },
+ "012450": {
+  "units": "Nm",
+  "expr": "(x-16000)/80",
+  "to_byte": "x*80+16000",
+  "var": "FFFF0ADA",
+  "var_name": "Torque",
+  "width": 2,
+  "value": 16000,
+  "function": "086680",
+  "name": "Torque Term C Default [0x86680]",
+  "context": "0x86680: FFFF0ADA = min(0ADC, max(0x12484, a + b + c + 0AE8 - 48000)); a/b/c use 0x1244C/0x1244E/0x12450 (torque type)"
+ },
+ "012484": {
+  "units": "Nm",
+  "expr": "(x-16000)/80",
+  "to_byte": "x*80+16000",
+  "var": "FFFF0ADA",
+  "var_name": "Torque",
+  "width": 2,
+  "value": 16000,
+  "function": "086680",
+  "name": "Torque 0ADA Lower Limit [0x86680]",
+  "context": "0x86680: FFFF0ADA = min(0ADC, max(0x12484, a + b + c + 0AE8 - 48000)); a/b/c use 0x1244C/0x1244E/0x12450 (torque type)"
  }
 }

@@ -554,6 +554,27 @@
    "109.5"
   ]
  },
+ "0x2C374": {
+  "status": "identified",
+  "name": "Reference Torque vs RPM [0x80968]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x86680 (disasm 0x866EE..0x8672E): FFFF0ADA = min(FFFF0ADC, max(scalar 0x12484, a + b + c + FFFF0AE8 - 48000)) with a, b, c torque terms (defaults 0x3E80 = 0 Nm, scalars 0x1244C..0x12450), i.e. a torque-type sum, so FFFF0AE8 is torque type; 0x85434: FFFF0AAA = min(FFFF0AFE, T_02C8E8(rpm)) and FFFF0AF8 = 0AAA - 0AE8 + 16000 (torque difference) -> 0AAA torque type; 0x85940: FFFF0ABC = delayed 16000 + (0AAA-16000)*FFFF0AFC/32768 (torque type). 0x80968: ratio = (FFFF0ABC - 16000)*256/(T(rpm FFFF2ADA) - 16000) -> T in the torque type. Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range).",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed",
+    "units": "rpm",
+    "expr": "x*25/128",
+    "to_byte": "x*128/25"
+   }
+  }
+ },
  "0x2C4CC": {
   "status": "identified",
   "name": "Requested Torque A (Accelerator Pedal)",
@@ -757,6 +778,27 @@
    }
   }
  },
+ "0x2C8E8": {
+  "status": "identified",
+  "name": "Torque Maximum (RPM) [0x85434 -> 0AAA]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x86680 (disasm 0x866EE..0x8672E): FFFF0ADA = min(FFFF0ADC, max(scalar 0x12484, a + b + c + FFFF0AE8 - 48000)) with a, b, c torque terms (defaults 0x3E80 = 0 Nm, scalars 0x1244C..0x12450), i.e. a torque-type sum, so FFFF0AE8 is torque type; 0x85434: FFFF0AAA = min(FFFF0AFE, T_02C8E8(rpm)) and FFFF0AF8 = 0AAA - 0AE8 + 16000 (torque difference) -> 0AAA torque type; 0x85940: FFFF0ABC = delayed 16000 + (0AAA-16000)*FFFF0AFC/32768 (torque type). T caps 0AAA. Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range).",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed",
+    "units": "rpm",
+    "expr": "x*25/128",
+    "to_byte": "x*128/25"
+   }
+  }
+ },
  "0x2C998": {
   "status": "identified",
   "name": "Base Ignition Timing (flags 04F4.7=1, 054A.4=0)",
@@ -828,6 +870,19 @@
     "expr": "x*25/128",
     "to_byte": "x*128/25"
    }
+  }
+ },
+ "0x2CA00": {
+  "status": "identified",
+  "name": "Torque Term 0AE8 (RPM x MAP) [0x86A50]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x86680 (disasm 0x866EE..0x8672E): FFFF0ADA = min(FFFF0ADC, max(scalar 0x12484, a + b + c + FFFF0AE8 - 48000)) with a, b, c torque terms (defaults 0x3E80 = 0 Nm, scalars 0x1244C..0x12450), i.e. a torque-type sum, so FFFF0AE8 is torque type; 0x85434: FFFF0AAA = min(FFFF0AFE, T_02C8E8(rpm)) and FFFF0AF8 = 0AAA - 0AE8 + 16000 (torque difference) -> 0AAA torque type; 0x85940: FFFF0ABC = delayed 16000 + (0AAA-16000)*FFFF0AFC/32768 (torque type). 0x86A50: FFFF0AE8 = T(rpm FFFF2994, filtered MAP FFFF19AA). Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range).",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
   }
  },
  "0x2CA14": {

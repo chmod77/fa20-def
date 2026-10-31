@@ -853,6 +853,18 @@ for d, fn, out in ((0x2FBC0, '0x10641C', 'FFFF12B0'), (0x30568, '0x126410', 'FFF
         'and a + b - 16000 is the torque-type addition, so T is in the torque type.' + TQEV,
         ('Nm', '(x-16000)/80', 'x*80+16000', '0.0'), axes={'0': dict(name='Engine Speed', units='rpm', expr='x*25', to_byte='x/25')})
 
+_evtq = ('0x86680 (disasm 0x866EE..0x8672E): FFFF0ADA = min(FFFF0ADC, max(scalar 0x12484, a + b + c + FFFF0AE8 - 48000)) with a, b, c torque terms '
+         '(defaults 0x3E80 = 0 Nm, scalars 0x1244C..0x12450), i.e. a torque-type sum, so FFFF0AE8 is torque type; 0x85434: FFFF0AAA = min(FFFF0AFE, '
+         'T_02C8E8(rpm)) and FFFF0AF8 = 0AAA - 0AE8 + 16000 (torque difference) -> 0AAA torque type; 0x85940: FFFF0ABC = delayed 16000 + '
+         '(0AAA-16000)*FFFF0AFC/32768 (torque type). ')
+TQ = ('Nm', '(x-16000)/80', 'x*80+16000', '0.0')
+add(0x2CA00, 'Torque Term 0AE8 (RPM x MAP) [0x86A50]', 'Driver Demand / Torque Request', _evtq + '0x86A50: FFFF0AE8 = T(rpm FFFF2994, filtered MAP FFFF19AA).' + TQEV, TQ)
+add(0x2C8E8, 'Torque Maximum (RPM) [0x85434 -> 0AAA]', 'Driver Demand / Torque Request', _evtq + 'T caps 0AAA.' + TQEV, TQ,
+    axes={'0': dict(name='Engine Speed', units='rpm', expr='x*25/128', to_byte='x*128/25')})
+add(0x2C374, 'Reference Torque vs RPM [0x80968]', 'Driver Demand / Torque Request', _evtq +
+    '0x80968: ratio = (FFFF0ABC - 16000)*256/(T(rpm FFFF2ADA) - 16000) -> T in the torque type.' + TQEV, TQ,
+    axes={'0': dict(name='Engine Speed', units='rpm', expr='x*25/128', to_byte='x*128/25')})
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

@@ -63,9 +63,9 @@
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02C8E8] (Engine Speed)" category="Unidentified - Ignition Timing - Base &amp; Torque Model / Task 0x12367C" storageaddress="8736" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C8E8, 0x2FF8C. Lookup result stored to: FFFF13F2. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="8716" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Torque Maximum (RPM) [0x85434 -&gt; 0AAA]" category="Driver Demand / Torque Request" storageaddress="8736" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C8E8, 0x2FF8C. Evidence: 0x86680 (disasm 0x866EE..0x8672E): FFFF0ADA = min(FFFF0ADC, max(scalar 0x12484, a + b + c + FFFF0AE8 - 48000)) with a, b, c torque terms (defaults 0x3E80 = 0 Nm, scalars 0x1244C..0x12450), i.e. a torque-type sum, so FFFF0AE8 is torque type; 0x85434: FFFF0AAA = min(FFFF0AFE, T_02C8E8(rpm)) and FFFF0AF8 = 0AAA - 0AE8 + 16000 (torque difference) -&gt; 0AAA torque type; 0x85940: FFFF0ABC = delayed 16000 + (0AAA-16000)*FFFF0AFC/32768 (torque type). T caps 0AAA. Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW-&gt;Nm via 60000/2pi, stored *80+16000, clamps = u16 range). Lookup result stored to: FFFF13F2." sizey="16">
+      <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="8716" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -1203,9 +1203,9 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02C374] (Engine Speed (OBD copy))" category="Unidentified - Driver Demand / Torque Request" storageaddress="E45C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C374. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="E43C" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Reference Torque vs RPM [0x80968]" category="Driver Demand / Torque Request" storageaddress="E45C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C374. Evidence: 0x86680 (disasm 0x866EE..0x8672E): FFFF0ADA = min(FFFF0ADC, max(scalar 0x12484, a + b + c + FFFF0AE8 - 48000)) with a, b, c torque terms (defaults 0x3E80 = 0 Nm, scalars 0x1244C..0x12450), i.e. a torque-type sum, so FFFF0AE8 is torque type; 0x85434: FFFF0AAA = min(FFFF0AFE, T_02C8E8(rpm)) and FFFF0AF8 = 0AAA - 0AE8 + 16000 (torque difference) -&gt; 0AAA torque type; 0x85940: FFFF0ABC = delayed 16000 + (0AAA-16000)*FFFF0AFC/32768 (torque type). 0x80968: ratio = (FFFF0ABC - 16000)*256/(T(rpm FFFF2ADA) - 16000) -&gt; T in the torque type. Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW-&gt;Nm via 60000/2pi, stored *80+16000, clamps = u16 range)." sizey="16">
+      <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="E43C" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -2091,12 +2091,12 @@
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 24x24 [D02CA00] (Engine Speed x ?)" category="Unidentified - Ignition Timing - Base &amp; Torque Model" storageaddress="124B6" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CA00. Lookup result stored to: FFFF0AE8. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="24" sizey="24">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="12454" elements="24" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Torque Term 0AE8 (RPM x MAP) [0x86A50]" category="Driver Demand / Torque Request" storageaddress="124B6" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CA00. Evidence: 0x86680 (disasm 0x866EE..0x8672E): FFFF0ADA = min(FFFF0ADC, max(scalar 0x12484, a + b + c + FFFF0AE8 - 48000)) with a, b, c torque terms (defaults 0x3E80 = 0 Nm, scalars 0x1244C..0x12450), i.e. a torque-type sum, so FFFF0AE8 is torque type; 0x85434: FFFF0AAA = min(FFFF0AFE, T_02C8E8(rpm)) and FFFF0AF8 = 0AAA - 0AE8 + 16000 (torque difference) -&gt; 0AAA torque type; 0x85940: FFFF0ABC = delayed 16000 + (0AAA-16000)*FFFF0AFC/32768 (torque type). 0x86A50: FFFF0AE8 = T(rpm FFFF2994, filtered MAP FFFF19AA). Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW-&gt;Nm via 60000/2pi, stored *80+16000, clamps = u16 range). Lookup result stored to: FFFF0AE8 (Torque Term 0AE8)." sizex="24" sizey="24">
+      <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="12454" elements="24" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2 (RAM 0xFFFF19AA)" storageaddress="12486" elements="24" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2 (RAM 0xFFFF19AA)" storageaddress="12486" elements="24" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -2127,13 +2127,13 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x16 [D02CA20] (Engine Speed x ?)" category="Unidentified - Ignition Timing - Base &amp; Torque Model" storageaddress="12F10" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CA20. Lookup result stored to: 00086d9c:*param_7. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="16">
+    <table type="3D" name="Unidentified 16x16 [D02CA20] (Engine Speed x Torque 0AAA)" category="Unidentified - Ignition Timing - Base &amp; Torque Model" storageaddress="12F10" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CA20. Lookup result stored to: 00086d9c:*param_7. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="16">
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       <table type="Y Axis" name="Engine Speed" storageaddress="12E90" elements="16" storagetype="uint16" endian="big" locked="true">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2 (RAM 0xFFFF0AAA)" storageaddress="12EF0" elements="16" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="X Axis" name="Torque 0AAA" storageaddress="12EF0" elements="16" storagetype="uint16" endian="big" locked="true">
+        <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
     <table type="2D" name="Unidentified 16 [D02CA40]" category="Unidentified - Ignition Timing - Base &amp; Torque Model" storageaddress="13110" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CA40. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
@@ -9429,6 +9429,21 @@
     <table type="1D" name="Coolant Temperature (sampled) Threshold [0x0122A8] (0x99614)" category="Scalars - Ignition Timing - Final" storageaddress="0122A8" storagetype="uint8" endian="big" userlevel="1" description="Scalar at 0x0122A8 read by 0x99614 and compared with Coolant Temperature (sampled) (FFFF29A7): &quot;0x8a &lt; param_1)&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
       <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
     </table>
+    <table type="1D" name="Torque 0ABC (delayed) Threshold [0x012318] (0x8549C)" category="Scalars - Ignition Timing - Base &amp; Torque Model" storageaddress="012318" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x012318 read by 0x8549C and compared with Torque 0ABC (delayed) (FFFF0ABC): &quot;0xfff0 &lt; param_2&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Torque Term A Default [0x86680]" category="Scalars - Ignition Timing - Base &amp; Torque Model" storageaddress="01244C" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x01244C read by 0x86680 and compared with Torque (FFFF0ADA): &quot;0x86680: FFFF0ADA = min(0ADC, max(0x12484, a + b + c + 0AE8 - 48000)); a/b/c use 0x1244C/0x1244E/0x12450 (torque type)&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Torque Term B Default [0x86680]" category="Scalars - Ignition Timing - Base &amp; Torque Model" storageaddress="01244E" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x01244E read by 0x86680 and compared with Torque (FFFF0ADA): &quot;0x86680: FFFF0ADA = min(0ADC, max(0x12484, a + b + c + 0AE8 - 48000)); a/b/c use 0x1244C/0x1244E/0x12450 (torque type)&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Torque Term C Default [0x86680]" category="Scalars - Ignition Timing - Base &amp; Torque Model" storageaddress="012450" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x012450 read by 0x86680 and compared with Torque (FFFF0ADA): &quot;0x86680: FFFF0ADA = min(0ADC, max(0x12484, a + b + c + 0AE8 - 48000)); a/b/c use 0x1244C/0x1244E/0x12450 (torque type)&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Torque 0ADA Lower Limit [0x86680]" category="Scalars - Ignition Timing - Base &amp; Torque Model" storageaddress="012484" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x012484 read by 0x86680 and compared with Torque (FFFF0ADA): &quot;0x86680: FFFF0ADA = min(0ADC, max(0x12484, a + b + c + 0AE8 - 48000)); a/b/c use 0x1244C/0x1244E/0x12450 (torque type)&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
     <table type="1D" name="Engine Speed (OBD copy) Threshold [0x0147AC] (0xA68B0)" category="Scalars - Idle Speed Control" storageaddress="0147AC" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x0147AC read by 0xA68B0 and compared with Engine Speed (OBD copy) (FFFF2ADA): &quot;(param_2 &lt; 0x2800&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
       <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
     </table>
@@ -9575,6 +9590,9 @@
     </table>
     <table type="1D" name="Mass Airflow (load-path copy) Threshold [0x02501A] (0x11A060)" category="Scalars - Task 0x11A89C" storageaddress="02501A" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x02501A read by 0x11A060 and compared with Mass Airflow (load-path copy) (FFFFEEF4): &quot;(param_2 &lt; 0x7ae&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
       <scaling units="g/s" expression="x*75/16384" to_byte="x*16384/75" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Target Lambda Learning Offset (latched) Threshold [0x025376] (0x11CCA8)" category="Scalars - Task 0x15307C" storageaddress="025376" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x025376 read by 0x11CCA8 and compared with Target Lambda Learning Offset (latched) (FFFF39F6): &quot;(param_5 &lt; 0x510&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="lambda offset" expression="x/43194" to_byte="x*43194" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
     </table>
     <table type="1D" name="Coolant Temperature Threshold [0x0297C0] (0xB6258)" category="Scalars - Task 0x15307C" storageaddress="0297C0" storagetype="uint8" endian="big" userlevel="1" description="Scalar at 0x0297C0 read by 0xB6258 and compared with Coolant Temperature (FFFF29A5): &quot;((param_1 &lt; 0x91&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
       <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />

@@ -118,6 +118,10 @@ for g in range(1, 7):
         v = int.from_bytes(rom[a + off:a + off + 2], 'big')
         MANUAL[f'{a + off:06X}'] = dict(RAT, width=2, value=v, function='07f71c', name=f'Gear {g} Detection Ratio, {which} bound',
             context=f'0x7F71C: gear {g} when lower <= FFFF09D0 (rpm/(km/h), x/256) < upper; disasm 0x7F730.. reads base 0x1B9A4 + {4*(g-1)} (+0 upper, +2 lower)')
+TQS = dict(units='Nm', expr='(x-16000)/80', to_byte='x*80+16000', var='FFFF0ADA', var_name='Torque')
+for a, nm in ((0x1244C, 'Torque Term A Default'), (0x1244E, 'Torque Term B Default'), (0x12450, 'Torque Term C Default'), (0x12484, 'Torque 0ADA Lower Limit')):
+    MANUAL[f'{a:06X}'] = dict(TQS, width=2, value=int.from_bytes(rom[a:a + 2], 'big'), function='086680', name=f'{nm} [0x86680]',
+        context='0x86680: FFFF0ADA = min(0ADC, max(0x12484, a + b + c + 0AE8 - 48000)); a/b/c use 0x1244C/0x1244E/0x12450 (torque type)')
 for k, v in MANUAL.items():
     out[k] = v
 json.dump(out, open(f'{ROOT}/evidence/scalar-semantics.json', 'w'), indent=1)
