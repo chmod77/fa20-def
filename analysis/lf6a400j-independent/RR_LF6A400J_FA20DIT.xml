@@ -1194,13 +1194,13 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 8x16 [D02C360]" category="Unidentified - Driver Demand / Torque Request" storageaddress="E306" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C360. Lookup result stored to: FFFF0A10, FFFF0A1A. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0D06)" storageaddress="E406" elements="8" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    <table type="3D" name="Speed Feedback Torque Correction vs RPM Error [-&gt; 0A18]" category="Driver Demand / Torque Request" storageaddress="E306" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C360. Evidence: 0x80968 (from 0x82FA0, call 0x83036; p1 FFFF0D06, p2 FFFEF33C filtered rpm, p3 Torque 0ABC, p4 Torque 0ADA, p5 rpm FFFF2994, p8 rpm FFFF2ADA): e = 0D06 - F33C (rpm, x*25/128); A = max(T_02C360(0D06, e), 16000) -&gt; FFFF0A18; d = rpm - rpm two executions earlier (FEBAB8/FEBABA history) -&gt; FFFF0A10; B = T_02C380(0D06, d) -&gt; FFFF0A1A; r = (0ABC-16000)*256/(T_02C374(rpm)-16000) (torque ratio, 256 = 1.0; 0x100 when p7); output FFFF0A12 = 0ABC - 0ADA + 16000 + r*((A-16000) + (B-16000))/256 (torque-type arithmetic, clamped). So A and B are torque type.  Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW-&gt;Nm via 60000/2pi, stored *80+16000, clamps = u16 range). Lookup result stored to: FFFF0A10, FFFF0A1A." sizex="16" sizey="8">
+      <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed 0D06 (reference)" storageaddress="E406" elements="8" storagetype="uint16" endian="big">
+        <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="E416" elements="16" storagetype="int16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="X Axis" name="Engine Speed Error (0D06 - filtered)" storageaddress="E416" elements="16" storagetype="int16" endian="big">
+        <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
     <table type="2D" name="Reference Torque vs RPM [0x80968]" category="Driver Demand / Torque Request" storageaddress="E45C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C374. Evidence: 0x86680 (disasm 0x866EE..0x8672E): FFFF0ADA = min(FFFF0ADC, max(scalar 0x12484, a + b + c + FFFF0AE8 - 48000)) with a, b, c torque terms (defaults 0x3E80 = 0 Nm, scalars 0x1244C..0x12450), i.e. a torque-type sum, so FFFF0AE8 is torque type; 0x85434: FFFF0AAA = min(FFFF0AFE, T_02C8E8(rpm)) and FFFF0AF8 = 0AAA - 0AE8 + 16000 (torque difference) -&gt; 0AAA torque type; 0x85940: FFFF0ABC = delayed 16000 + (0AAA-16000)*FFFF0AFC/32768 (torque type). 0x80968: ratio = (FFFF0ABC - 16000)*256/(T(rpm FFFF2ADA) - 16000) -&gt; T in the torque type. Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW-&gt;Nm via 60000/2pi, stored *80+16000, clamps = u16 range)." sizey="16">
@@ -1209,13 +1209,13 @@
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 8x16 [D02C380]" category="Unidentified - Driver Demand / Torque Request" storageaddress="E4AC" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C380. Lookup result stored to: FFFF0A1A. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0D06)" storageaddress="E47C" elements="8" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    <table type="3D" name="Speed Feedback Torque Correction vs RPM Change [-&gt; 0A1A]" category="Driver Demand / Torque Request" storageaddress="E4AC" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C380. Evidence: 0x80968 (from 0x82FA0, call 0x83036; p1 FFFF0D06, p2 FFFEF33C filtered rpm, p3 Torque 0ABC, p4 Torque 0ADA, p5 rpm FFFF2994, p8 rpm FFFF2ADA): e = 0D06 - F33C (rpm, x*25/128); A = max(T_02C360(0D06, e), 16000) -&gt; FFFF0A18; d = rpm - rpm two executions earlier (FEBAB8/FEBABA history) -&gt; FFFF0A10; B = T_02C380(0D06, d) -&gt; FFFF0A1A; r = (0ABC-16000)*256/(T_02C374(rpm)-16000) (torque ratio, 256 = 1.0; 0x100 when p7); output FFFF0A12 = 0ABC - 0ADA + 16000 + r*((A-16000) + (B-16000))/256 (torque-type arithmetic, clamped). So A and B are torque type.  Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW-&gt;Nm via 60000/2pi, stored *80+16000, clamps = u16 range). Lookup result stored to: FFFF0A1A." sizex="16" sizey="8">
+      <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed 0D06 (reference)" storageaddress="E47C" elements="8" storagetype="uint16" endian="big">
+        <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="E48C" elements="16" storagetype="int16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="X Axis" name="Engine Speed Change (over 2 executions)" storageaddress="E48C" elements="16" storagetype="int16" endian="big">
+        <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
     <table type="2D" name="Unidentified 8 [D02C394]" category="Unidentified - Driver Demand / Torque Request / Task 0x12560C" storageaddress="E5CE" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C394, 0x30098. Lookup result stored to: FFFF0A30. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
@@ -4548,13 +4548,13 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 12x6 [D02DBF0]" category="Unidentified - Idle Speed Control" storageaddress="1C79C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2DBF0. Lookup result stored to: FFFEC3F0. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="6" sizey="12">
+    <table type="3D" name="Unidentified 12x6 [D02DBF0] (? x Engine Speed 0D06 (reference))" category="Unidentified - Idle Speed Control" storageaddress="1C79C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2DBF0. Lookup result stored to: FFFEC3F0. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="6" sizey="12">
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       <table type="Y Axis" name="Unidentified input 1" storageaddress="1C6E8" elements="12" storagetype="uint8" endian="big" locked="true">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2 (RAM 0xFFFF0D06)" storageaddress="1C700" elements="6" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="X Axis" name="Engine Speed 0D06 (reference)" storageaddress="1C700" elements="6" storagetype="uint16" endian="big" locked="true">
+        <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
     <table type="2D" name="Unidentified 8 [D02EB78]" category="Unidentified - Task 0x152A40" storageaddress="1C858" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2EB78. Lookup result stored to: 000cddf8:*param_7. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">

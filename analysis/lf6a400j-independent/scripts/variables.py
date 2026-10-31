@@ -243,3 +243,7 @@ V2.update({
  0xFFFF0531:('Ignition Timing (0531 path)','deg','x/2','x*2','0x86B58: Ignition Timing 03D3 = 0531 when FFFF0530 == 0 (03D3 0.5 deg)'),
  0xFFFF0533:('Ignition Timing (0533 path)','deg','x/2','x*2','0x86B58: Ignition Timing 03D3 = 0533 when FFFF0530 == 3 (03D3 0.5 deg)'),
 })
+V2.update({
+ 0xFFFEF33C:('Engine Speed (filtered OBD copy)','rpm','x*25/128','x*128/25','0x4EA64: FFFEF33C = filter 0x16B4D8(FFFEF33C, FFFF2ADA, 0xFFFF) - a first-order filter of Engine Speed (OBD copy) keeps its unit'),
+ 0xFFFF0D06:('Engine Speed 0D06 (reference)','rpm','x*25/128','x*128/25','0x80968: 0D06 - FFFEF33C (filtered rpm) is a difference, so 0D06 is in rpm (x*25/128)'),
+})

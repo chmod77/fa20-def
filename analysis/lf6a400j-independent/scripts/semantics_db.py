@@ -1034,6 +1034,17 @@ for d, nm in ((0x2CA64, 'A'), (0x2CA70, 'B')):
     add(d, f'Torque Filter Base Gain {nm} (RPM) [-> 0B0E]', 'Filters', _tfg, ('fraction/step', 'x/65536', 'x*65536', '0.0000'),
         axes={'0': dict(name='Engine Speed', units='rpm', expr='x*25/128', to_byte='x*128/25')})
 
+_idq = ('0x80968 (from 0x82FA0, call 0x83036; p1 FFFF0D06, p2 FFFEF33C filtered rpm, p3 Torque 0ABC, p4 Torque 0ADA, p5 rpm FFFF2994, p8 rpm '
+        'FFFF2ADA): e = 0D06 - F33C (rpm, x*25/128); A = max(T_02C360(0D06, e), 16000) -> FFFF0A18; d = rpm - rpm two executions earlier (FEBAB8/FEBABA history) -> FFFF0A10; '
+        'B = T_02C380(0D06, d) -> FFFF0A1A; r = (0ABC-16000)*256/(T_02C374(rpm)-16000) (torque ratio, 256 = 1.0; 0x100 when p7); output '
+        'FFFF0A12 = 0ABC - 0ADA + 16000 + r*((A-16000) + (B-16000))/256 (torque-type arithmetic, clamped). So A and B are torque type. ')
+add(0x2C360, 'Speed Feedback Torque Correction vs RPM Error [-> 0A18]', 'Driver Demand / Torque Request', _idq + TQEV, TQ,
+    axes={'0': dict(name='Engine Speed 0D06 (reference)', units='rpm', expr='x*25/128', to_byte='x*128/25'),
+          '1': dict(name='Engine Speed Error (0D06 - filtered)', units='rpm', expr='x*25/128', to_byte='x*128/25')})
+add(0x2C380, 'Speed Feedback Torque Correction vs RPM Change [-> 0A1A]', 'Driver Demand / Torque Request', _idq + TQEV, TQ,
+    axes={'0': dict(name='Engine Speed 0D06 (reference)', units='rpm', expr='x*25/128', to_byte='x*128/25'),
+          '1': dict(name='Engine Speed Change (over 2 executions)', units='rpm', expr='x*25/128', to_byte='x*128/25')})
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
