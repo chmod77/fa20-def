@@ -264,3 +264,7 @@ V2.update({
  0xFFFF0A30:('Torque Limit 0A30','Nm','(x-16000)/80','x*80+16000','0x80EF4: min(0A04, T(rpm))'+_TQ),
  0xFFFF0A76:('Torque 0A76','Nm','(x-16000)/80','x*80+16000','0x82664: 0A30 or 0A04'+_TQ),
 })
+V2.update({
+ 0xFFFEECB0:('Mass Airflow (sensor curve, 32-bit)','g/s','x/76800','x*76800','0x3D45E: MAF curve 0x14B7C; 0x4C53C: Mass Airflow FFFEEEE4 (OBD PID10, g/s=x*75/16384) = 16*ECB0/5625'),
+ 0xFFFEEED2:('Manifold Gauge Pressure (MAP - Atmospheric, halved)','kPa','x/128','x*128','0x4D602: x = (MAP FFFEEECE - Atmospheric FFFEEED0)/2, both kPa = x/256 (signed)'),
+})

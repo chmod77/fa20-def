@@ -5154,10 +5154,10 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02ED98]" category="Unidentified - Task 0x15307C" storageaddress="1EC98" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2ED98. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
+    <table type="2D" name="Unidentified 8 [D02ED98] (Manifold Gauge Pressure (MAP - Atmospheric, halved))" category="Unidentified - Task 0x15307C" storageaddress="1EC98" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2ED98. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFEEED2)" storageaddress="1ED08" elements="8" storagetype="int16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Manifold Gauge Pressure (MAP - Atmospheric, halved)" storageaddress="1ED08" elements="8" storagetype="int16" endian="big" locked="true">
+        <scaling units="kPa" expression="x/128" to_byte="x*128" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
     <table type="2D" name="Unidentified 16 [D02EDA4]" category="Unidentified - Task 0x15307C" storageaddress="1ECA8" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2EDA4. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">

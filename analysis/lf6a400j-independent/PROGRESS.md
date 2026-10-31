@@ -171,6 +171,9 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
   Coverage 562 of 1271.
 - scripts/helper_compare.py: comparison prover for secondary (helper) tables. Proved rear O2 heater current limits
   (0x163A20/0x163A2C/0x168BA4 vs battery V), load threshold 0x163A9C, FRP threshold 0x158FE. Coverage 567 of 1271.
+- Inventory gap: helpers 0x52B4A (u32 curve) and 0x16BBC4 are not in helper-tables.json, so tables such as 0x163A90, 0x163AA8
+  (vs rpm, compared with MAF FFFEECB0 g/s=x/76800) and 0x163AB4 (vs coolant, compared with gauge pressure FFFEEED2 kPa=x/128) are
+  missing from the definition. Add these helpers to the secondary-table scan (scan_helper_tables.py) next.
 - Dead ends this session (documented so they are not repeated):
   * FFFF12C2 (axis of the pedal-limit T1 tables, compared with 12BE in the torque monitor): only a read literal (0xC50D0); writer not
     found by literal, GBR (+70 from 127C) or r0-offset searches.

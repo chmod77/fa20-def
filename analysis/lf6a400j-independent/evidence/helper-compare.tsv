@@ -1,6 +1,1 @@
 table	function	var	var_name	units	expr	input_var	context
-163A20	000493ec	FFFEE6D0	Rear O2 Heater Current	A	x*179*1004/6553600		((DAT_fffee6d0 < DAT_fffefa22)
-163A2C	000493ec	FFFEE6D0	Rear O2 Heater Current	A	x*179*1004/6553600		(DAT_fffefa23 < DAT_fffee6d0)
-163A9C	0005036c	FFFF03A0	Engine Load	%	x	FFFEEEDE	((bVar6 < DAT_ffff03a0
-168BA4	0006a444	FFFEE6D0	Rear O2 Heater Current	A	x*179*1004/6553600	FFFFAB41	(bVar1 < DAT_ffff2aba)
-158FE	000c02d4	FFFEED16	Fuel Rail Pressure (gauge)	kPa	x*639630/1048576	FFFEEEDE	(uVar1 <= param_3)
