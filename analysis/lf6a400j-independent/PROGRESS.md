@@ -65,7 +65,18 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
 - **Open-loop fuel.** OBD PID 44 formatter `0x10C32C`: λ = 256/(256 + `0B84` + `0401` + `0B42`). The fuel tables use the expression λ = 256/(256+x).
 
 ## Session 3
-- Coverage: 182 of 1182 tables identified (both ROMs PASS RomRaider validation).
+- Coverage (latest): 1247 table views (1046 descriptor + 144 helper + 57 scalars); identified 236 tables + 57 scalars = 293 unlocked;
+  810/1392 axes scaled; 1151/1561 lookup inputs resolved. Both ROMs PASS RomRaider validation (VerifyNamedDefinition, now with 1D support).
+- New proof tools: `scalar_reads.py` scans for calibration scalar reads (3669 candidates); `scalar_semantics.py` proves a scalar
+  when its folded value is compared with a proven variable; `table_compare.py` proves a table's output unit when it is compared with
+  a proven variable. `stackargs.py` now also records value arguments (`V2:FFFFxxxx`, loaded from constant/GBR RAM), which
+  `resolve_inputs`, `table_compare` and `scalar_semantics` use when the C prototype dropped an argument.
+- Target idle speed: SSM 0x70/0x71 user adjustment -> 0xAB210 -> 0xAB09C target = 0D0A/4 + adj*128 - 0x4000 proves FFFF0D0A
+  (rpm = x*25/512). The 0xAB238 helper tables 0x1348C..0x1354C (rpm = x*25/128, by mode FFFF04D7 vs coolant) and 22 ramp-rate tables
+  (0xAB3C4) are identified.
+- Target fuel rail pressure FFFF1276: OBD PID 0x6D bytes B-C (0x3169C PID pointer table -> handler 0x71C92), kPa = x*1250/2048,
+  matching the actual FRP conversion. 9 maps in 0x1008D0 are identified (u8 maps x150).
+- The builder makes names unique, because RomRaider silently merges tables with identical names.
 - `scripts/stackargs.py` is an instruction-level call-site resolver that writes `evidence/stack-args.tsv`. It records constant r4..r7
   and pushed stack arguments, tracks stack slots and handles the delay slot. Ghidra drops many stack arguments, so this recovered
   output pointers that were missing: AVCS 0xF8EE0 -> 11B8..11BE, knock 0x9F368 -> 04AD, 0xA2F20 -> 04BA. Table sinks went from 403 to 461.
@@ -79,6 +90,12 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
 - Ignition term 047B (0x9A05C): 127.5 deg × product of five x/255 factors, chosen per gear (FFFEF51A) and by the oscillation counter FFFF0481.
 - Catalyst temperature model (OBD PID 3C, 0xD9D40): steady-state and initial maps (C = 4x-40) and rate factors.
 - Ignition final-sum inputs: IAT adder T_02D614, restore step tables, post-event limit T_02D5F0, retard hold count T_02D494.
+
+## Next steps (session 3)
+- A/F Learning #3 FFFF0D80 (SSM 0xD1, multiplier 1.0 = 43194) = clamp(FFFF0DBA + FFFF38F8) (0xB3260, task 0xB42AC): trace 0DBA/38F8 to the tables.
+- Idle: 0xAAB08 (11 tables) and the ISC feedback that uses the final target FFFF0CFE.
+- Gear/ratio task 0x7F324/0x7FB7C (15 per-gear tables) and the torque tree (0x82FA0, 0x12560C).
+- FRP feedback (0x100514: P-term = (FRP - target)*T_02F8E0/0xA3EF) needs the unit of the pump command.
 
 ## Unresolved anchors / next steps
 1. Torque domain (16000 = 0). `FFFF0A62` and the 0x82FA0 / 0x87478 / 0x12560C task trees (about 200 tables) have no OBD/SSM torque anchor. The opendbc Subaru DBCs only give factor 1, no units. Name these by role and keep them partial.

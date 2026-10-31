@@ -38,7 +38,15 @@ def param_var(fn, k):
     return res.pop() if len(res) == 1 else None
 
 
-def resolve(fn, tok):
+def resolve(fn, tok, src=None, depth=0):
+    if src is not None and depth < 4 and re.fullmatch(r'[a-z]\w*Var\d+|local_\w+', tok):
+        asg = set(re.findall(r'(?<![\w.])' + re.escape(tok) + r'\s*=(?!=)\s*([^;]+);', src))
+        if len(asg) == 1:
+            m = re.fullmatch(r'\(?(?:\(\w+\)\s*)*\(?_?(DAT_f{3}[0-9a-f]{5}|v_\w+|param_\d+|[a-z]\w*Var\d+)(?:\s*&\s*0xff(?:ff)?)?\)?',
+                             next(iter(asg)).strip())
+            if m:
+                return resolve(fn, m.group(1), src, depth + 1)
+        return None
     if tok.startswith('DAT_'):
         return int(tok[4:], 16)
     if tok.startswith('param_'):
@@ -46,7 +54,7 @@ def resolve(fn, tok):
     return lab.get(tok)
 
 
-OPND = r'\(?(?:\(\w+\)\s*)*\(?_?(DAT_f{3}[0-9a-f]{5}|v_\w+|param_\d+)(?:\s*&\s*0xff(?:ff)?)?\)?'
+OPND = r'\(?(?:\(\w+\)\s*)*\(?_?(DAT_f{3}[0-9a-f]{5}|v_\w+|param_\d+|[a-z]\w*Var\d+|local_\w+)(?:\s*&\s*0xff(?:ff)?)?\)?'
 rows = []
 for p in sorted(glob.glob(f'{ROOT}/cdump/*.c')):
     fn = os.path.basename(p)[:-2]; s = open(p).read()
@@ -58,10 +66,27 @@ for p in sorted(glob.glob(f'{ROOT}/cdump/*.c')):
         V = r'\(?(?:\(\w+\)\s*)*\(?' + re.escape(v) + r'(?:\s*&\s*0xff(?:ff)?)?\)?'
         for c in re.finditer(V + r'\s*(<=?|>=?)\s*' + OPND + '|' + OPND + r'\s*(<=?|>=?)\s*' + V, tail):
             tok = c.group(2) or c.group(3)
-            a = resolve(fn, tok)
+            a = resolve(fn, tok, s) if tok != v else None
             if a in known:
                 rows.append((d, fn, f'{a:08X}', known[a][0], known[a][1], known[a][2], c.group(0).replace('\t', ' ')))
                 break
+# table-vs-table: v1 = LK(T_a) and v2 = LK(T_b), each assigned once in the function, compared directly; if one table is identified
+# (semantics.json data scaling) the other carries the same scaling.
+for p in sorted(glob.glob(f'{ROOT}/cdump/*.c')):
+    fn = os.path.basename(p)[:-2]; s = open(p).read()
+    lk = {}
+    for m in re.finditer(r'(\w+)\s*=\s*(?:\(\w+\)\s*)?LK_[0-9A-F]+\(\(uint\)&T_([0-9A-F]{6})', s):
+        lk.setdefault(m.group(1), set()).add(m.group(2))
+    once = {v: next(iter(d)) for v, d in lk.items() if len(d) == 1 and len(re.findall(r'\b' + re.escape(v) + r'\s*=[^=]', s)) == 1}
+    if len(once) < 2:
+        continue
+    T = r'\(?(?:\(\w+\)\s*)*\(?(' + '|'.join(map(re.escape, once)) + r')(?:\s*&\s*0xff(?:ff)?)?\)?'
+    for c in re.finditer(T + r'\s*(<=?|>=?)\s*' + T, s):
+        a, b = once[c.group(1)], once[c.group(3)]
+        for x, y in ((a, b), (b, a)):
+            sx = S.get('0x' + x.lstrip('0'))
+            if sx and sx.get('status') == 'identified' and sx.get('data') and '0x' + y.lstrip('0') not in S:
+                rows.append((y, fn, 'T:' + x, sx['name'], sx['data']['units'], sx['data']['expr'], c.group(0).replace('\t', ' ')))
 with open(f'{ROOT}/evidence/table-compare.tsv', 'w') as f:
     f.write('descriptor\tfunction\tvar\tvar_name\tunits\texpr\tcontext\n')
     for r in rows:
