@@ -208,9 +208,9 @@ V2.update({
  0xFFFF0B38:('Fuel Quantity Fraction Term 0B38','%','x*100/65536','x*65536/100','additive term'+_FQ),
 })
 V2.update({
- 0xFFFF0B8E:('Injection Angle A','deg CA','x','x','0x44EAC: (0B8E - 0B90 + 720)*FFFF2986/90 vs injection time; 2986<<3 = 720 deg'),
- 0xFFFF0B8A:('Injection Angle B','deg CA','x','x','0x8DEA0 treats with 0B8E/0B90 as crank angles (/360, 720/1080 limits)'),
- 0xFFFF0B90:('Injection Angle C','deg CA','x','x','0x44EAC: 0B90 - 0B8E angle difference'),
+ # UNDER REVIEW (angle unit, see PROGRESS.md) 0xFFFF0B8E:('Injection Angle A','deg CA','x','x','0x44EAC: (0B8E - 0B90 + 720)*FFFF2986/90 vs injection time; 2986<<3 = 720 deg'),
+ # UNDER REVIEW 0xFFFF0B8A:('Injection Angle B','deg CA','x','x','0x8DEA0 treats with 0B8E/0B90 as crank angles (/360, 720/1080 limits)'),
+ # UNDER REVIEW 0xFFFF0B90:('Injection Angle C','deg CA','x','x','0x44EAC: 0B90 - 0B8E angle difference'),
 })
 V2.update({
  0xFFFF38F8:('Target Lambda Learning Offset','lambda offset','x/43194','x*43194','0xB3260: 0D80 = 0DBA + 38F8 with 0DBA = lambda*43194'),

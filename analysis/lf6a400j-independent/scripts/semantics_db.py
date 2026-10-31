@@ -1201,7 +1201,7 @@ add(0x2E04C, 'Injection Time Offset Lower Limit vs Coolant [0xAEFF4 -> 1654]', I
 _d2e = ('0x92410/0x92700/0x929F0/0x92CE0 (from 0x89A78, p12 = FFFF0D2E): with mode FFFF0541 == 4, injection time FFFF1568.. = 1.25*(0D2E*FFFF0B44*0.0125 '
         '+ latency FFFF0BC8*0.8) in 0.8 us units, i.e. us = 0D2E*3.2*(0B44/256) + 0BC8*0.8 (0B44/256 = Injector Pulse Multiplier), so 0D2E is a base '
         'pulse in 3.2 us units. 0xAE058 (from 0xAEBE8; active when FFFF66B0 == 3, rpm FFFF299C < 0x50 (2000 rpm) and 0541 == 4): 0D2E = '
-        'min(0xFFFF, min(0xFFFF, min(0xFFFF, b*T_coolant >> 6)*T_rpm >> 7)*T_29C2 >> 7) with b from FFFF2986 (time per 90 deg CA) and '
+        'min(0xFFFF, min(0xFFFF, min(0xFFFF, b*T_coolant >> 6)*T_rpm >> 7)*T_29C2 >> 7) with b from FFFF2986 (crank period = 2B6C, see PROGRESS.md) and '
         'FFFF09CA. Each factor is applied with its own shift and saturated in the 0D2E container, and the neutral values present in the '
         'data (T_02DF8C all 128, coolant tables max 64) are 1.0, so the tables are multipliers. ')
 add(0x2DF98, 'Start Injection Multiplier vs Coolant (FFFEEF76.6 clear) [0xAE058 -> 0D2E]', INJ, _d2e, ('multiplier', 'x/64', 'x*64', '0.000'),
@@ -1251,6 +1251,14 @@ for _d, _c, _st in ((0x2DB38, 'FEC37D', 2), (0x2DB20, 'FEC37F', 2), (0x2DB14, 'F
         f'{_c} (0 at entry, +1 per execution while the mode p1 matches). 0xA8230 runs from 0x49E70 in the 10 ms task (' + _TOS +
         '); application mode 2 also runs it every 20 ms via 0x153B4E. s = x*0.01.', ('s', 'x*0.01', 'x/0.01', '0.00'),
         axes={'0': dict(name='Coolant Temperature (filtered, word)', units='C', expr='x*5/2048-40', to_byte='(x+40)*2048/5')})
+
+# ---- injection angle unit under review (session 4): demote the angle-valued tables until the 2986 / crank-timer inconsistency is resolved
+_INJ_REVIEW = ('UNDER REVIEW: the 1 deg CA unit relied on FFFF2986 being the time per 90 deg CA (0x44EAC). The crank timer trace (0x143640: '
+               '2986 = 2B6C = (72-position cycle ticks)/32, rpm = 3e8/cycle_ticks) contradicts that reading, so the angle unit is not proven. '
+               'The 1080..1439 clamp and the 720 wrap fit 1 deg units but also other units. Locked until resolved; see PROGRESS.md.')
+for _d in (0x2D238, 0x2D210, 0x2D1D4, 0x2D1C0, 0x2D1E8, 0x2D1AC, 0x2D198, 0x2D260, 0x2D24C):
+    S[_d]['status'] = 'unresolved'
+    S[_d]['evidence'] = _INJ_REVIEW + ' Previous evidence: ' + S[_d]['evidence']
 
 
 if __name__ == '__main__':

@@ -3822,10 +3822,10 @@
   }
  },
  "0x2D198": {
-  "status": "identified",
+  "status": "unresolved",
   "name": "Injection Angle D (Coolant x RPM) [-> 0B88]",
   "category": "Fuel Injection",
-  "evidence": "0x90758 (from 0x888C0): FFFF0B88 = T(coolant FFFEEEDE, rpm FFFF2996) clamped 1080..1439 while running; 0x8DEA0 compares FFFF0B88 with 1080 next to the proven crank-angle values 0B8A/0B8E (1 deg CA).",
+  "evidence": "UNDER REVIEW: the 1 deg CA unit relied on FFFF2986 being the time per 90 deg CA (0x44EAC). The crank timer trace (0x143640: 2986 = 2B6C = (72-position cycle ticks)/32, rpm = 3e8/cycle_ticks) contradicts that reading, so the angle unit is not proven. The 1080..1439 clamp and the 720 wrap fit 1 deg units but also other units. Locked until resolved; see PROGRESS.md. Previous evidence: 0x90758 (from 0x888C0): FFFF0B88 = T(coolant FFFEEEDE, rpm FFFF2996) clamped 1080..1439 while running; 0x8DEA0 compares FFFF0B88 with 1080 next to the proven crank-angle values 0B8A/0B8E (1 deg CA).",
   "description": "",
   "data": {
    "units": "deg CA",
@@ -3835,10 +3835,10 @@
   }
  },
  "0x2D1AC": {
-  "status": "identified",
+  "status": "unresolved",
   "name": "Injection Angle B, Flag Mode (RPM x Load) [-> 0B8A]",
   "category": "Fuel Injection",
-  "evidence": "0x907CC (from 0x888C0): FFFF0B8A = T_02D1D4(rpm FFFF2994, load FFFF03A0) + T_02D1C0(rpm, load)*T_02D1FC(FFFEEF33, IAT FFFEE6A5)/255; 0x8DEA0 handles the injection angles together (compared with 720/1080 and divided by 360 deg), and 0B8E is proven 1 deg CA (0x44EAC), so 0B8A is a crank angle in 1 deg units. Replaces the 0B8A value directly when param_10 is set.",
+  "evidence": "UNDER REVIEW: the 1 deg CA unit relied on FFFF2986 being the time per 90 deg CA (0x44EAC). The crank timer trace (0x143640: 2986 = 2B6C = (72-position cycle ticks)/32, rpm = 3e8/cycle_ticks) contradicts that reading, so the angle unit is not proven. The 1080..1439 clamp and the 720 wrap fit 1 deg units but also other units. Locked until resolved; see PROGRESS.md. Previous evidence: 0x907CC (from 0x888C0): FFFF0B8A = T_02D1D4(rpm FFFF2994, load FFFF03A0) + T_02D1C0(rpm, load)*T_02D1FC(FFFEEF33, IAT FFFEE6A5)/255; 0x8DEA0 handles the injection angles together (compared with 720/1080 and divided by 360 deg), and 0B8E is proven 1 deg CA (0x44EAC), so 0B8A is a crank angle in 1 deg units. Replaces the 0B8A value directly when param_10 is set.",
   "description": "",
   "data": {
    "units": "deg CA",
@@ -3848,10 +3848,10 @@
   }
  },
  "0x2D1C0": {
-  "status": "identified",
+  "status": "unresolved",
   "name": "Injection Angle B Adder (RPM x Load) [-> 0B8A]",
   "category": "Fuel Injection",
-  "evidence": "0x907CC (from 0x888C0): FFFF0B8A = T_02D1D4(rpm FFFF2994, load FFFF03A0) + T_02D1C0(rpm, load)*T_02D1FC(FFFEEF33, IAT FFFEE6A5)/255; 0x8DEA0 handles the injection angles together (compared with 720/1080 and divided by 360 deg), and 0B8E is proven 1 deg CA (0x44EAC), so 0B8A is a crank angle in 1 deg units. ",
+  "evidence": "UNDER REVIEW: the 1 deg CA unit relied on FFFF2986 being the time per 90 deg CA (0x44EAC). The crank timer trace (0x143640: 2986 = 2B6C = (72-position cycle ticks)/32, rpm = 3e8/cycle_ticks) contradicts that reading, so the angle unit is not proven. The 1080..1439 clamp and the 720 wrap fit 1 deg units but also other units. Locked until resolved; see PROGRESS.md. Previous evidence: 0x907CC (from 0x888C0): FFFF0B8A = T_02D1D4(rpm FFFF2994, load FFFF03A0) + T_02D1C0(rpm, load)*T_02D1FC(FFFEEF33, IAT FFFEE6A5)/255; 0x8DEA0 handles the injection angles together (compared with 720/1080 and divided by 360 deg), and 0B8E is proven 1 deg CA (0x44EAC), so 0B8A is a crank angle in 1 deg units. ",
   "description": "",
   "data": {
    "units": "deg CA",
@@ -3861,10 +3861,10 @@
   }
  },
  "0x2D1D4": {
-  "status": "identified",
+  "status": "unresolved",
   "name": "Injection Angle B Base (RPM x Load) [-> 0B8A]",
   "category": "Fuel Injection",
-  "evidence": "0x907CC (from 0x888C0): FFFF0B8A = T_02D1D4(rpm FFFF2994, load FFFF03A0) + T_02D1C0(rpm, load)*T_02D1FC(FFFEEF33, IAT FFFEE6A5)/255; 0x8DEA0 handles the injection angles together (compared with 720/1080 and divided by 360 deg), and 0B8E is proven 1 deg CA (0x44EAC), so 0B8A is a crank angle in 1 deg units. ",
+  "evidence": "UNDER REVIEW: the 1 deg CA unit relied on FFFF2986 being the time per 90 deg CA (0x44EAC). The crank timer trace (0x143640: 2986 = 2B6C = (72-position cycle ticks)/32, rpm = 3e8/cycle_ticks) contradicts that reading, so the angle unit is not proven. The 1080..1439 clamp and the 720 wrap fit 1 deg units but also other units. Locked until resolved; see PROGRESS.md. Previous evidence: 0x907CC (from 0x888C0): FFFF0B8A = T_02D1D4(rpm FFFF2994, load FFFF03A0) + T_02D1C0(rpm, load)*T_02D1FC(FFFEEF33, IAT FFFEE6A5)/255; 0x8DEA0 handles the injection angles together (compared with 720/1080 and divided by 360 deg), and 0B8E is proven 1 deg CA (0x44EAC), so 0B8A is a crank angle in 1 deg units. ",
   "description": "",
   "data": {
    "units": "deg CA",
@@ -3874,10 +3874,10 @@
   }
  },
  "0x2D1E8": {
-  "status": "identified",
+  "status": "unresolved",
   "name": "Injection Angle B, Start/Alternate Mode (RPM x Coolant) [-> 0B8A]",
   "category": "Fuel Injection",
-  "evidence": "0x907CC (from 0x888C0): FFFF0B8A = T_02D1D4(rpm FFFF2994, load FFFF03A0) + T_02D1C0(rpm, load)*T_02D1FC(FFFEEF33, IAT FFFEE6A5)/255; 0x8DEA0 handles the injection angles together (compared with 720/1080 and divided by 360 deg), and 0B8E is proven 1 deg CA (0x44EAC), so 0B8A is a crank angle in 1 deg units. Replaces the 0B8A value directly in the engine-state branch of 0x907CC.",
+  "evidence": "UNDER REVIEW: the 1 deg CA unit relied on FFFF2986 being the time per 90 deg CA (0x44EAC). The crank timer trace (0x143640: 2986 = 2B6C = (72-position cycle ticks)/32, rpm = 3e8/cycle_ticks) contradicts that reading, so the angle unit is not proven. The 1080..1439 clamp and the 720 wrap fit 1 deg units but also other units. Locked until resolved; see PROGRESS.md. Previous evidence: 0x907CC (from 0x888C0): FFFF0B8A = T_02D1D4(rpm FFFF2994, load FFFF03A0) + T_02D1C0(rpm, load)*T_02D1FC(FFFEEF33, IAT FFFEE6A5)/255; 0x8DEA0 handles the injection angles together (compared with 720/1080 and divided by 360 deg), and 0B8E is proven 1 deg CA (0x44EAC), so 0B8A is a crank angle in 1 deg units. Replaces the 0B8A value directly in the engine-state branch of 0x907CC.",
   "description": "",
   "data": {
    "units": "deg CA",
@@ -3900,10 +3900,10 @@
   }
  },
  "0x2D210": {
-  "status": "identified",
+  "status": "unresolved",
   "name": "Injection Angle Adder (RPM x Load) [-> 0B8E]",
   "category": "Fuel Injection",
-  "evidence": "0x909BC (from 0x888C0): FFFF0B8E = T_02D238(rpm FFFF2994, coolant FFFEEEDE) + T_02D210(rpm, load FFFF03A0)*T_02D224(IAT FFFEE6A5, ..)/255, clamped 720..1080 while running. 0x44EAC compares (0B8E - 0B90 + 720)*FFFF2986/90 with injection time, and FFFF2986<<3 with the same time for a 720 deg cycle (FFFF2986 = time per 90 deg crank), so 0B8E is a crank angle in 1 deg units. ",
+  "evidence": "UNDER REVIEW: the 1 deg CA unit relied on FFFF2986 being the time per 90 deg CA (0x44EAC). The crank timer trace (0x143640: 2986 = 2B6C = (72-position cycle ticks)/32, rpm = 3e8/cycle_ticks) contradicts that reading, so the angle unit is not proven. The 1080..1439 clamp and the 720 wrap fit 1 deg units but also other units. Locked until resolved; see PROGRESS.md. Previous evidence: 0x909BC (from 0x888C0): FFFF0B8E = T_02D238(rpm FFFF2994, coolant FFFEEEDE) + T_02D210(rpm, load FFFF03A0)*T_02D224(IAT FFFEE6A5, ..)/255, clamped 720..1080 while running. 0x44EAC compares (0B8E - 0B90 + 720)*FFFF2986/90 with injection time, and FFFF2986<<3 with the same time for a 720 deg cycle (FFFF2986 = time per 90 deg crank), so 0B8E is a crank angle in 1 deg units. ",
   "description": "",
   "data": {
    "units": "deg CA",
@@ -3926,10 +3926,10 @@
   }
  },
  "0x2D238": {
-  "status": "identified",
+  "status": "unresolved",
   "name": "Injection Angle Base (RPM x Coolant) [-> 0B8E]",
   "category": "Fuel Injection",
-  "evidence": "0x909BC (from 0x888C0): FFFF0B8E = T_02D238(rpm FFFF2994, coolant FFFEEEDE) + T_02D210(rpm, load FFFF03A0)*T_02D224(IAT FFFEE6A5, ..)/255, clamped 720..1080 while running. 0x44EAC compares (0B8E - 0B90 + 720)*FFFF2986/90 with injection time, and FFFF2986<<3 with the same time for a 720 deg cycle (FFFF2986 = time per 90 deg crank), so 0B8E is a crank angle in 1 deg units. ",
+  "evidence": "UNDER REVIEW: the 1 deg CA unit relied on FFFF2986 being the time per 90 deg CA (0x44EAC). The crank timer trace (0x143640: 2986 = 2B6C = (72-position cycle ticks)/32, rpm = 3e8/cycle_ticks) contradicts that reading, so the angle unit is not proven. The 1080..1439 clamp and the 720 wrap fit 1 deg units but also other units. Locked until resolved; see PROGRESS.md. Previous evidence: 0x909BC (from 0x888C0): FFFF0B8E = T_02D238(rpm FFFF2994, coolant FFFEEEDE) + T_02D210(rpm, load FFFF03A0)*T_02D224(IAT FFFEE6A5, ..)/255, clamped 720..1080 while running. 0x44EAC compares (0B8E - 0B90 + 720)*FFFF2986/90 with injection time, and FFFF2986<<3 with the same time for a 720 deg cycle (FFFF2986 = time per 90 deg crank), so 0B8E is a crank angle in 1 deg units. ",
   "description": "",
   "data": {
    "units": "deg CA",
@@ -3939,10 +3939,10 @@
   }
  },
  "0x2D24C": {
-  "status": "identified",
+  "status": "unresolved",
   "name": "Injection Angle C Adder [-> 0B90]",
   "category": "Fuel Injection",
-  "evidence": "0x90AF0 (from 0x888C0): FFFF0B90 = T_02D260(rpm FFFF2996, FFFF0489) + T_02D24C(rpm, 0489)*T_02D274(FFFEEF33, IAT FFFEE6A5)/255, clamped 1080..1439 while running; 0x44EAC uses (0B90 - 0B8E) and (0B8E - 0B90 + 720) with FFFF2986 (time per 90 deg) -> 1 deg CA. ",
+  "evidence": "UNDER REVIEW: the 1 deg CA unit relied on FFFF2986 being the time per 90 deg CA (0x44EAC). The crank timer trace (0x143640: 2986 = 2B6C = (72-position cycle ticks)/32, rpm = 3e8/cycle_ticks) contradicts that reading, so the angle unit is not proven. The 1080..1439 clamp and the 720 wrap fit 1 deg units but also other units. Locked until resolved; see PROGRESS.md. Previous evidence: 0x90AF0 (from 0x888C0): FFFF0B90 = T_02D260(rpm FFFF2996, FFFF0489) + T_02D24C(rpm, 0489)*T_02D274(FFFEEF33, IAT FFFEE6A5)/255, clamped 1080..1439 while running; 0x44EAC uses (0B90 - 0B8E) and (0B8E - 0B90 + 720) with FFFF2986 (time per 90 deg) -> 1 deg CA. ",
   "description": "",
   "data": {
    "units": "deg CA",
@@ -3952,10 +3952,10 @@
   }
  },
  "0x2D260": {
-  "status": "identified",
+  "status": "unresolved",
   "name": "Injection Angle C Base [-> 0B90]",
   "category": "Fuel Injection",
-  "evidence": "0x90AF0 (from 0x888C0): FFFF0B90 = T_02D260(rpm FFFF2996, FFFF0489) + T_02D24C(rpm, 0489)*T_02D274(FFFEEF33, IAT FFFEE6A5)/255, clamped 1080..1439 while running; 0x44EAC uses (0B90 - 0B8E) and (0B8E - 0B90 + 720) with FFFF2986 (time per 90 deg) -> 1 deg CA. ",
+  "evidence": "UNDER REVIEW: the 1 deg CA unit relied on FFFF2986 being the time per 90 deg CA (0x44EAC). The crank timer trace (0x143640: 2986 = 2B6C = (72-position cycle ticks)/32, rpm = 3e8/cycle_ticks) contradicts that reading, so the angle unit is not proven. The 1080..1439 clamp and the 720 wrap fit 1 deg units but also other units. Locked until resolved; see PROGRESS.md. Previous evidence: 0x90AF0 (from 0x888C0): FFFF0B90 = T_02D260(rpm FFFF2996, FFFF0489) + T_02D24C(rpm, 0489)*T_02D274(FFFEEF33, IAT FFFEE6A5)/255, clamped 1080..1439 while running; 0x44EAC uses (0B90 - 0B8E) and (0B8E - 0B90 + 720) with FFFF2986 (time per 90 deg) -> 1 deg CA. ",
   "description": "",
   "data": {
    "units": "deg CA",
@@ -5872,7 +5872,7 @@
   "status": "identified",
   "name": "Start Injection Multiplier vs RPM [0xAE058 -> 0D2E]",
   "category": "Fuel Injection",
-  "evidence": "0x92410/0x92700/0x929F0/0x92CE0 (from 0x89A78, p12 = FFFF0D2E): with mode FFFF0541 == 4, injection time FFFF1568.. = 1.25*(0D2E*FFFF0B44*0.0125 + latency FFFF0BC8*0.8) in 0.8 us units, i.e. us = 0D2E*3.2*(0B44/256) + 0BC8*0.8 (0B44/256 = Injector Pulse Multiplier), so 0D2E is a base pulse in 3.2 us units. 0xAE058 (from 0xAEBE8; active when FFFF66B0 == 3, rpm FFFF299C < 0x50 (2000 rpm) and 0541 == 4): 0D2E = min(0xFFFF, min(0xFFFF, min(0xFFFF, b*T_coolant >> 6)*T_rpm >> 7)*T_29C2 >> 7) with b from FFFF2986 (time per 90 deg CA) and FFFF09CA. Each factor is applied with its own shift and saturated in the 0D2E container, and the neutral values present in the data (T_02DF8C all 128, coolant tables max 64) are 1.0, so the tables are multipliers. ",
+  "evidence": "0x92410/0x92700/0x929F0/0x92CE0 (from 0x89A78, p12 = FFFF0D2E): with mode FFFF0541 == 4, injection time FFFF1568.. = 1.25*(0D2E*FFFF0B44*0.0125 + latency FFFF0BC8*0.8) in 0.8 us units, i.e. us = 0D2E*3.2*(0B44/256) + 0BC8*0.8 (0B44/256 = Injector Pulse Multiplier), so 0D2E is a base pulse in 3.2 us units. 0xAE058 (from 0xAEBE8; active when FFFF66B0 == 3, rpm FFFF299C < 0x50 (2000 rpm) and 0541 == 4): 0D2E = min(0xFFFF, min(0xFFFF, min(0xFFFF, b*T_coolant >> 6)*T_rpm >> 7)*T_29C2 >> 7) with b from FFFF2986 (crank period = 2B6C, see PROGRESS.md) and FFFF09CA. Each factor is applied with its own shift and saturated in the 0D2E container, and the neutral values present in the data (T_02DF8C all 128, coolant tables max 64) are 1.0, so the tables are multipliers. ",
   "description": "",
   "data": {
    "units": "multiplier",
@@ -5893,7 +5893,7 @@
   "status": "identified",
   "name": "Start Injection Multiplier vs FFFF29C2 [0xAE058 -> 0D2E]",
   "category": "Fuel Injection",
-  "evidence": "0x92410/0x92700/0x929F0/0x92CE0 (from 0x89A78, p12 = FFFF0D2E): with mode FFFF0541 == 4, injection time FFFF1568.. = 1.25*(0D2E*FFFF0B44*0.0125 + latency FFFF0BC8*0.8) in 0.8 us units, i.e. us = 0D2E*3.2*(0B44/256) + 0BC8*0.8 (0B44/256 = Injector Pulse Multiplier), so 0D2E is a base pulse in 3.2 us units. 0xAE058 (from 0xAEBE8; active when FFFF66B0 == 3, rpm FFFF299C < 0x50 (2000 rpm) and 0541 == 4): 0D2E = min(0xFFFF, min(0xFFFF, min(0xFFFF, b*T_coolant >> 6)*T_rpm >> 7)*T_29C2 >> 7) with b from FFFF2986 (time per 90 deg CA) and FFFF09CA. Each factor is applied with its own shift and saturated in the 0D2E container, and the neutral values present in the data (T_02DF8C all 128, coolant tables max 64) are 1.0, so the tables are multipliers. Input FFFF29C2 unresolved.",
+  "evidence": "0x92410/0x92700/0x929F0/0x92CE0 (from 0x89A78, p12 = FFFF0D2E): with mode FFFF0541 == 4, injection time FFFF1568.. = 1.25*(0D2E*FFFF0B44*0.0125 + latency FFFF0BC8*0.8) in 0.8 us units, i.e. us = 0D2E*3.2*(0B44/256) + 0BC8*0.8 (0B44/256 = Injector Pulse Multiplier), so 0D2E is a base pulse in 3.2 us units. 0xAE058 (from 0xAEBE8; active when FFFF66B0 == 3, rpm FFFF299C < 0x50 (2000 rpm) and 0541 == 4): 0D2E = min(0xFFFF, min(0xFFFF, min(0xFFFF, b*T_coolant >> 6)*T_rpm >> 7)*T_29C2 >> 7) with b from FFFF2986 (crank period = 2B6C, see PROGRESS.md) and FFFF09CA. Each factor is applied with its own shift and saturated in the 0D2E container, and the neutral values present in the data (T_02DF8C all 128, coolant tables max 64) are 1.0, so the tables are multipliers. Input FFFF29C2 unresolved.",
   "description": "",
   "data": {
    "units": "multiplier",
@@ -5906,7 +5906,7 @@
   "status": "identified",
   "name": "Start Injection Multiplier vs Coolant (FFFEEF76.6 clear) [0xAE058 -> 0D2E]",
   "category": "Fuel Injection",
-  "evidence": "0x92410/0x92700/0x929F0/0x92CE0 (from 0x89A78, p12 = FFFF0D2E): with mode FFFF0541 == 4, injection time FFFF1568.. = 1.25*(0D2E*FFFF0B44*0.0125 + latency FFFF0BC8*0.8) in 0.8 us units, i.e. us = 0D2E*3.2*(0B44/256) + 0BC8*0.8 (0B44/256 = Injector Pulse Multiplier), so 0D2E is a base pulse in 3.2 us units. 0xAE058 (from 0xAEBE8; active when FFFF66B0 == 3, rpm FFFF299C < 0x50 (2000 rpm) and 0541 == 4): 0D2E = min(0xFFFF, min(0xFFFF, min(0xFFFF, b*T_coolant >> 6)*T_rpm >> 7)*T_29C2 >> 7) with b from FFFF2986 (time per 90 deg CA) and FFFF09CA. Each factor is applied with its own shift and saturated in the 0D2E container, and the neutral values present in the data (T_02DF8C all 128, coolant tables max 64) are 1.0, so the tables are multipliers. ",
+  "evidence": "0x92410/0x92700/0x929F0/0x92CE0 (from 0x89A78, p12 = FFFF0D2E): with mode FFFF0541 == 4, injection time FFFF1568.. = 1.25*(0D2E*FFFF0B44*0.0125 + latency FFFF0BC8*0.8) in 0.8 us units, i.e. us = 0D2E*3.2*(0B44/256) + 0BC8*0.8 (0B44/256 = Injector Pulse Multiplier), so 0D2E is a base pulse in 3.2 us units. 0xAE058 (from 0xAEBE8; active when FFFF66B0 == 3, rpm FFFF299C < 0x50 (2000 rpm) and 0541 == 4): 0D2E = min(0xFFFF, min(0xFFFF, min(0xFFFF, b*T_coolant >> 6)*T_rpm >> 7)*T_29C2 >> 7) with b from FFFF2986 (crank period = 2B6C, see PROGRESS.md) and FFFF09CA. Each factor is applied with its own shift and saturated in the 0D2E container, and the neutral values present in the data (T_02DF8C all 128, coolant tables max 64) are 1.0, so the tables are multipliers. ",
   "description": "",
   "data": {
    "units": "multiplier",
@@ -5927,7 +5927,7 @@
   "status": "identified",
   "name": "Start Injection Multiplier vs Coolant (FFFEEF76.6 set) [0xAE058 -> 0D2E]",
   "category": "Fuel Injection",
-  "evidence": "0x92410/0x92700/0x929F0/0x92CE0 (from 0x89A78, p12 = FFFF0D2E): with mode FFFF0541 == 4, injection time FFFF1568.. = 1.25*(0D2E*FFFF0B44*0.0125 + latency FFFF0BC8*0.8) in 0.8 us units, i.e. us = 0D2E*3.2*(0B44/256) + 0BC8*0.8 (0B44/256 = Injector Pulse Multiplier), so 0D2E is a base pulse in 3.2 us units. 0xAE058 (from 0xAEBE8; active when FFFF66B0 == 3, rpm FFFF299C < 0x50 (2000 rpm) and 0541 == 4): 0D2E = min(0xFFFF, min(0xFFFF, min(0xFFFF, b*T_coolant >> 6)*T_rpm >> 7)*T_29C2 >> 7) with b from FFFF2986 (time per 90 deg CA) and FFFF09CA. Each factor is applied with its own shift and saturated in the 0D2E container, and the neutral values present in the data (T_02DF8C all 128, coolant tables max 64) are 1.0, so the tables are multipliers. ",
+  "evidence": "0x92410/0x92700/0x929F0/0x92CE0 (from 0x89A78, p12 = FFFF0D2E): with mode FFFF0541 == 4, injection time FFFF1568.. = 1.25*(0D2E*FFFF0B44*0.0125 + latency FFFF0BC8*0.8) in 0.8 us units, i.e. us = 0D2E*3.2*(0B44/256) + 0BC8*0.8 (0B44/256 = Injector Pulse Multiplier), so 0D2E is a base pulse in 3.2 us units. 0xAE058 (from 0xAEBE8; active when FFFF66B0 == 3, rpm FFFF299C < 0x50 (2000 rpm) and 0541 == 4): 0D2E = min(0xFFFF, min(0xFFFF, min(0xFFFF, b*T_coolant >> 6)*T_rpm >> 7)*T_29C2 >> 7) with b from FFFF2986 (crank period = 2B6C, see PROGRESS.md) and FFFF09CA. Each factor is applied with its own shift and saturated in the 0D2E container, and the neutral values present in the data (T_02DF8C all 128, coolant tables max 64) are 1.0, so the tables are multipliers. ",
   "description": "",
   "data": {
    "units": "multiplier",

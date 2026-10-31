@@ -34,6 +34,13 @@
   "x*65535/100",
   "('id',) of FFFF00BA in 00066c52"
  ],
+ "FFFEF354": [
+  "Engine Speed (filtered OBD copy) (copy)",
+  "rpm",
+  "x*25/128",
+  "x*128/25",
+  "('id',) of FFFEF33C in 0004ea7c"
+ ],
  "FFFEF196": [
   "Engine Speed (OBD copy) (copy)",
   "rpm",
@@ -75,6 +82,13 @@
   "x*5/2048-40",
   "(x+40)*2048/5",
   "('id',) of FFFEF322 in 0004e6d4,0004eb32"
+ ],
+ "FFFEEF4E": [
+  "Mass Airflow (sensor curve, 32-bit) (scaled)",
+  "g/s",
+  "(x*256)/76800",
+  "(x*76800)/256",
+  "('shr', 8) of FFFEECB0 in 0003d45e"
  ],
  "FFFEF190": [
   "Engine Speed (filtered) (copy)",
