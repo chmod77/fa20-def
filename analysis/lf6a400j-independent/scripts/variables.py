@@ -156,3 +156,7 @@ V2.update({
  0xFFFF1564:('Injection Time Cylinder 1','us','x*0.8','x/0.8','0x1569D6: SSM 0x20 PW FFFF2B4E (ms=x*0.0032) = this>>2 (pointer table 0x168EAC)'),
  0xFFFF0BC8:('Injector Latency','us','x*0.8','x/0.8','0x922F4: injection time FFFF1564 = 1.25*(this*0.8 + ...) in 0.8us units'),
 })
+
+V2.update({
+ 0xFFFEF18E:('Control Module Voltage (copy)','V','x*625/2048000','x*2048000/625','0x4C0E8/0x4CDB2: x = FFFEEF18 (OBD PID42 V = x*625/2048000) or substitute'),
+})

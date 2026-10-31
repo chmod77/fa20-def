@@ -5508,15 +5508,15 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 4 [D02F510]" category="Unidentified - Task 0x15307C" storageaddress="20094" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F510, 0x2F558. Lookup result stored to: 000fb3d4:*param_10, 000fb7ac:*param_10. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="4">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="2002A" elements="4" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Intake Right OCV Duty Gain (vs FFFF11B6, FFFF11CC &gt;= 20)" category="AVCS - OCV Feedback" storageaddress="20094" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F510, 0x2F558. Evidence: 0xFB3D4: Intake Right OCV duty post-processing (see block comment). factor in duty*T*G*2^-35 (*25): 1.0 at x = 41943. Lookup result stored to: 000fb3d4:*param_10, 000fb7ac:*param_10." sizey="4">
+      <scaling units="multiplier" expression="x*25/1048576" to_byte="x*1048576/25" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="2002A" elements="4" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 4 [D02F51C]" category="Unidentified - Task 0x15307C" storageaddress="2009C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F51C, 0x2F564. Lookup result stored to: 000fb3d4:*param_10, 000fb7ac:*param_10. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="4">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="20032" elements="4" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Intake Right OCV Duty Gain (vs FFFF11B6, FFFF11CC &lt; 20)" category="AVCS - OCV Feedback" storageaddress="2009C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F51C, 0x2F564. Evidence: 0xFB3D4: Intake Right OCV duty post-processing (see block comment). factor in duty*T*G*2^-35 (*25): 1.0 at x = 41943. Lookup result stored to: 000fb3d4:*param_10, 000fb7ac:*param_10." sizey="4">
+      <scaling units="multiplier" expression="x*25/1048576" to_byte="x*1048576/25" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="20032" elements="4" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -5526,28 +5526,28 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 13 [D02F540]" category="Unidentified - Task 0x15307C" storageaddress="200BE" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F540. Lookup result stored to: 000fb3d4:*param_11. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="13">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="20054" elements="13" storagetype="int16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+    <table type="2D" name="Intake Right OCV Current Feedback Gain Step" category="AVCS - OCV Feedback" storageaddress="200BE" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F540. Evidence: 0xFB3D4: Intake Right OCV duty post-processing (see block comment). G changes by T(current error)*4096*7.450581e-9 (= x/32768) per step. Lookup result stored to: 000fb3d4:*param_11." sizey="13">
+      <scaling units="gain/step" expression="x/32768" to_byte="x*32768" format="0.00000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="OCV Current Error" storageaddress="20054" elements="13" storagetype="int16" endian="big">
+        <scaling units="A" expression="x/26214.4" to_byte="x*26214.4" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 7 [D02F504]" category="Unidentified - Task 0x15307C" storageaddress="200D8" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F504, 0x2F54C. Lookup result stored to: 000fb3d4:*param_13, 000fb7ac:*param_13. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="7">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFEF18E)" storageaddress="2006E" elements="7" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    <table type="2D" name="Intake Right OCV Duty Voltage Compensation" category="AVCS - OCV Feedback" storageaddress="200D8" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F504, 0x2F54C. Evidence: 0xFB3D4: Intake Right OCV duty post-processing (see block comment). multiplier T(FFFEF18E)/32768 on the final duty. Lookup result stored to: 000fb3d4:*param_13, 000fb7ac:*param_13." sizey="7">
+      <scaling units="%" expression="x*100/32768" to_byte="x*32768/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Control Module Voltage" storageaddress="2006E" elements="7" storagetype="uint16" endian="big">
+        <scaling units="V" expression="x*625/2048000" to_byte="x*2048000/625" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 12 [D02F528]" category="Unidentified - Task 0x15307C" storageaddress="200E6" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F528, 0x2F570. Lookup result stored to: 000fb3d4:*param_11, 000fb3d4:*param_7, 000fb7ac:*param_7. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="12">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="2007C" elements="12" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    <table type="2D" name="Intake Right OCV Target Current (vs Duty)" category="AVCS - OCV Feedback" storageaddress="200E6" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F528, 0x2F570. Evidence: 0xFB3D4: Intake Right OCV duty post-processing (see block comment). expected current compared with measured OCV current*26214.4. Lookup result stored to: 000fb3d4:*param_11, 000fb3d4:*param_7, 000fb7ac:*param_7." sizey="12">
+      <scaling units="A" expression="x/26214.4" to_byte="x*26214.4" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="OCV Duty" storageaddress="2007C" elements="12" storagetype="uint16" endian="big">
+        <scaling units="%" expression="x/25" to_byte="x*25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 13 [D02F57C]" category="Unidentified - Task 0x15307C" storageaddress="20118" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F57C. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="13">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="200FE" elements="13" storagetype="int16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+    <table type="2D" name="Intake Left OCV Current Feedback Gain Step" category="AVCS - OCV Feedback" storageaddress="20118" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F57C. Evidence: 0xFB7AC: Intake Left OCV duty post-processing (see block comment). G changes by T(current error)*4096*7.450581e-9 (= x/32768) per step." sizey="13">
+      <scaling units="gain/step" expression="x/32768" to_byte="x*32768" format="0.00000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="OCV Current Error" storageaddress="200FE" elements="13" storagetype="int16" endian="big">
+        <scaling units="A" expression="x/26214.4" to_byte="x*26214.4" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
     <table type="2D" name="Unidentified 16 [D02F594]" category="Unidentified - Task 0x15307C" storageaddress="20192" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F594, 0x2F5B8. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
@@ -5715,15 +5715,15 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 4 [D02F79C]" category="Unidentified - Task 0x15307C" storageaddress="20F94" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F79C, 0x2F7E4. Lookup result stored to: 000feb84:*param_10, 000fef5c:*param_10. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="4">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="20F2A" elements="4" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Exhaust Right OCV Duty Gain (vs FFFF11B6, FFFF11CC &gt;= 20)" category="AVCS - OCV Feedback" storageaddress="20F94" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F79C, 0x2F7E4. Evidence: 0xFEB84: Exhaust Right OCV duty post-processing (see block comment). factor in duty*T*G*2^-35 (*25): 1.0 at x = 41943. Lookup result stored to: 000feb84:*param_10, 000fef5c:*param_10." sizey="4">
+      <scaling units="multiplier" expression="x*25/1048576" to_byte="x*1048576/25" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="20F2A" elements="4" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 4 [D02F7A8]" category="Unidentified - Task 0x15307C" storageaddress="20F9C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F7A8, 0x2F7F0. Lookup result stored to: 000feb84:*param_10, 000fef5c:*param_10. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="4">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="20F32" elements="4" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Exhaust Right OCV Duty Gain (vs FFFF11B6, FFFF11CC &lt; 20)" category="AVCS - OCV Feedback" storageaddress="20F9C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F7A8, 0x2F7F0. Evidence: 0xFEB84: Exhaust Right OCV duty post-processing (see block comment). factor in duty*T*G*2^-35 (*25): 1.0 at x = 41943. Lookup result stored to: 000feb84:*param_10, 000fef5c:*param_10." sizey="4">
+      <scaling units="multiplier" expression="x*25/1048576" to_byte="x*1048576/25" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="20F32" elements="4" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -5733,28 +5733,28 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 13 [D02F7CC]" category="Unidentified - Task 0x15307C" storageaddress="20FBE" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F7CC. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="13">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="20F54" elements="13" storagetype="int16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+    <table type="2D" name="Exhaust Right OCV Current Feedback Gain Step" category="AVCS - OCV Feedback" storageaddress="20FBE" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F7CC. Evidence: 0xFEB84: Exhaust Right OCV duty post-processing (see block comment). G changes by T(current error)*4096*7.450581e-9 (= x/32768) per step." sizey="13">
+      <scaling units="gain/step" expression="x/32768" to_byte="x*32768" format="0.00000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="OCV Current Error" storageaddress="20F54" elements="13" storagetype="int16" endian="big">
+        <scaling units="A" expression="x/26214.4" to_byte="x*26214.4" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 7 [D02F790]" category="Unidentified - Task 0x15307C" storageaddress="20FD8" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F790, 0x2F7D8. Lookup result stored to: 000feb84:*param_13, 000fef5c:*param_13. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="7">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFEF18E)" storageaddress="20F6E" elements="7" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    <table type="2D" name="Exhaust Right OCV Duty Voltage Compensation" category="AVCS - OCV Feedback" storageaddress="20FD8" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F790, 0x2F7D8. Evidence: 0xFEB84: Exhaust Right OCV duty post-processing (see block comment). multiplier T(FFFEF18E)/32768 on the final duty. Lookup result stored to: 000feb84:*param_13, 000fef5c:*param_13." sizey="7">
+      <scaling units="%" expression="x*100/32768" to_byte="x*32768/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Control Module Voltage" storageaddress="20F6E" elements="7" storagetype="uint16" endian="big">
+        <scaling units="V" expression="x*625/2048000" to_byte="x*2048000/625" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 12 [D02F7B4]" category="Unidentified - Task 0x15307C" storageaddress="20FE6" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F7B4, 0x2F7FC. Lookup result stored to: 000feb84:*param_7, 000fef5c:*param_7. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="12">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="20F7C" elements="12" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    <table type="2D" name="Exhaust Right OCV Target Current (vs Duty)" category="AVCS - OCV Feedback" storageaddress="20FE6" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F7B4, 0x2F7FC. Evidence: 0xFEB84: Exhaust Right OCV duty post-processing (see block comment). expected current compared with measured OCV current*26214.4. Lookup result stored to: 000feb84:*param_7, 000fef5c:*param_7." sizey="12">
+      <scaling units="A" expression="x/26214.4" to_byte="x*26214.4" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="OCV Duty" storageaddress="20F7C" elements="12" storagetype="uint16" endian="big">
+        <scaling units="%" expression="x/25" to_byte="x*25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 13 [D02F808]" category="Unidentified - Task 0x15307C" storageaddress="21018" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F808. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="13">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="20FFE" elements="13" storagetype="int16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+    <table type="2D" name="Exhaust Left OCV Current Feedback Gain Step" category="AVCS - OCV Feedback" storageaddress="21018" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F808. Evidence: 0xFEF5C: Exhaust Left OCV duty post-processing (see block comment). G changes by T(current error)*4096*7.450581e-9 (= x/32768) per step." sizey="13">
+      <scaling units="gain/step" expression="x/32768" to_byte="x*32768" format="0.00000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="OCV Current Error" storageaddress="20FFE" elements="13" storagetype="int16" endian="big">
+        <scaling units="A" expression="x/26214.4" to_byte="x*26214.4" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
     <table type="2D" name="Unidentified 16 [D02F820]" category="Unidentified - Task 0x15307C" storageaddress="21072" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F820, 0x2F844. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">

@@ -1474,6 +1474,184 @@
    "format": "0.00"
   }
  },
+ "0x2F504": {
+  "status": "identified",
+  "name": "Intake Right OCV Duty Voltage Compensation",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFB3D4: Intake Right OCV duty post-processing (see block comment). multiplier T(FFFEF18E)/32768 on the final duty.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/32768",
+   "to_byte": "x*32768/100",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Control Module Voltage",
+    "units": "V",
+    "expr": "x*625/2048000",
+    "to_byte": "x*2048000/625"
+   }
+  }
+ },
+ "0x2F510": {
+  "status": "identified",
+  "name": "Intake Right OCV Duty Gain (vs FFFF11B6, FFFF11CC >= 20)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFB3D4: Intake Right OCV duty post-processing (see block comment). factor in duty*T*G*2^-35 (*25): 1.0 at x = 41943.",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x*25/1048576",
+   "to_byte": "x*1048576/25",
+   "format": "0.000"
+  }
+ },
+ "0x2F51C": {
+  "status": "identified",
+  "name": "Intake Right OCV Duty Gain (vs FFFF11B6, FFFF11CC < 20)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFB3D4: Intake Right OCV duty post-processing (see block comment). factor in duty*T*G*2^-35 (*25): 1.0 at x = 41943.",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x*25/1048576",
+   "to_byte": "x*1048576/25",
+   "format": "0.000"
+  }
+ },
+ "0x2F528": {
+  "status": "identified",
+  "name": "Intake Right OCV Target Current (vs Duty)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFB3D4: Intake Right OCV duty post-processing (see block comment). expected current compared with measured OCV current*26214.4.",
+  "description": "",
+  "data": {
+   "units": "A",
+   "expr": "x/26214.4",
+   "to_byte": "x*26214.4",
+   "format": "0.000"
+  },
+  "axes": {
+   "0": {
+    "name": "OCV Duty",
+    "units": "%",
+    "expr": "x/25",
+    "to_byte": "x*25"
+   }
+  }
+ },
+ "0x2F540": {
+  "status": "identified",
+  "name": "Intake Right OCV Current Feedback Gain Step",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFB3D4: Intake Right OCV duty post-processing (see block comment). G changes by T(current error)*4096*7.450581e-9 (= x/32768) per step.",
+  "description": "",
+  "data": {
+   "units": "gain/step",
+   "expr": "x/32768",
+   "to_byte": "x*32768",
+   "format": "0.00000"
+  },
+  "axes": {
+   "0": {
+    "name": "OCV Current Error",
+    "units": "A",
+    "expr": "x/26214.4",
+    "to_byte": "x*26214.4"
+   }
+  }
+ },
+ "0x2F54C": {
+  "status": "identified",
+  "name": "Intake Left OCV Duty Voltage Compensation",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFB7AC: Intake Left OCV duty post-processing (see block comment). multiplier T(FFFEF18E)/32768 on the final duty.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/32768",
+   "to_byte": "x*32768/100",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Control Module Voltage",
+    "units": "V",
+    "expr": "x*625/2048000",
+    "to_byte": "x*2048000/625"
+   }
+  }
+ },
+ "0x2F558": {
+  "status": "identified",
+  "name": "Intake Left OCV Duty Gain (vs FFFF11B6, FFFF11CC >= 20)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFB7AC: Intake Left OCV duty post-processing (see block comment). factor in duty*T*G*2^-35 (*25): 1.0 at x = 41943.",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x*25/1048576",
+   "to_byte": "x*1048576/25",
+   "format": "0.000"
+  }
+ },
+ "0x2F564": {
+  "status": "identified",
+  "name": "Intake Left OCV Duty Gain (vs FFFF11B6, FFFF11CC < 20)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFB7AC: Intake Left OCV duty post-processing (see block comment). factor in duty*T*G*2^-35 (*25): 1.0 at x = 41943.",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x*25/1048576",
+   "to_byte": "x*1048576/25",
+   "format": "0.000"
+  }
+ },
+ "0x2F570": {
+  "status": "identified",
+  "name": "Intake Left OCV Target Current (vs Duty)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFB7AC: Intake Left OCV duty post-processing (see block comment). expected current compared with measured OCV current*26214.4.",
+  "description": "",
+  "data": {
+   "units": "A",
+   "expr": "x/26214.4",
+   "to_byte": "x*26214.4",
+   "format": "0.000"
+  },
+  "axes": {
+   "0": {
+    "name": "OCV Duty",
+    "units": "%",
+    "expr": "x/25",
+    "to_byte": "x*25"
+   }
+  }
+ },
+ "0x2F57C": {
+  "status": "identified",
+  "name": "Intake Left OCV Current Feedback Gain Step",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFB7AC: Intake Left OCV duty post-processing (see block comment). G changes by T(current error)*4096*7.450581e-9 (= x/32768) per step.",
+  "description": "",
+  "data": {
+   "units": "gain/step",
+   "expr": "x/32768",
+   "to_byte": "x*32768",
+   "format": "0.00000"
+  },
+  "axes": {
+   "0": {
+    "name": "OCV Current Error",
+    "units": "A",
+    "expr": "x/26214.4",
+    "to_byte": "x*26214.4"
+   }
+  }
+ },
  "0x2F688": {
   "status": "identified",
   "name": "Exhaust Right AVCS OCV Feedback A Gain (vs FFFF11B6)",
@@ -1706,6 +1884,184 @@
    "expr": "x*100/32768-100",
    "to_byte": "(x+100)*32768/100",
    "format": "0.00"
+  }
+ },
+ "0x2F790": {
+  "status": "identified",
+  "name": "Exhaust Right OCV Duty Voltage Compensation",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFEB84: Exhaust Right OCV duty post-processing (see block comment). multiplier T(FFFEF18E)/32768 on the final duty.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/32768",
+   "to_byte": "x*32768/100",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Control Module Voltage",
+    "units": "V",
+    "expr": "x*625/2048000",
+    "to_byte": "x*2048000/625"
+   }
+  }
+ },
+ "0x2F79C": {
+  "status": "identified",
+  "name": "Exhaust Right OCV Duty Gain (vs FFFF11B6, FFFF11CC >= 20)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFEB84: Exhaust Right OCV duty post-processing (see block comment). factor in duty*T*G*2^-35 (*25): 1.0 at x = 41943.",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x*25/1048576",
+   "to_byte": "x*1048576/25",
+   "format": "0.000"
+  }
+ },
+ "0x2F7A8": {
+  "status": "identified",
+  "name": "Exhaust Right OCV Duty Gain (vs FFFF11B6, FFFF11CC < 20)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFEB84: Exhaust Right OCV duty post-processing (see block comment). factor in duty*T*G*2^-35 (*25): 1.0 at x = 41943.",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x*25/1048576",
+   "to_byte": "x*1048576/25",
+   "format": "0.000"
+  }
+ },
+ "0x2F7B4": {
+  "status": "identified",
+  "name": "Exhaust Right OCV Target Current (vs Duty)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFEB84: Exhaust Right OCV duty post-processing (see block comment). expected current compared with measured OCV current*26214.4.",
+  "description": "",
+  "data": {
+   "units": "A",
+   "expr": "x/26214.4",
+   "to_byte": "x*26214.4",
+   "format": "0.000"
+  },
+  "axes": {
+   "0": {
+    "name": "OCV Duty",
+    "units": "%",
+    "expr": "x/25",
+    "to_byte": "x*25"
+   }
+  }
+ },
+ "0x2F7CC": {
+  "status": "identified",
+  "name": "Exhaust Right OCV Current Feedback Gain Step",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFEB84: Exhaust Right OCV duty post-processing (see block comment). G changes by T(current error)*4096*7.450581e-9 (= x/32768) per step.",
+  "description": "",
+  "data": {
+   "units": "gain/step",
+   "expr": "x/32768",
+   "to_byte": "x*32768",
+   "format": "0.00000"
+  },
+  "axes": {
+   "0": {
+    "name": "OCV Current Error",
+    "units": "A",
+    "expr": "x/26214.4",
+    "to_byte": "x*26214.4"
+   }
+  }
+ },
+ "0x2F7D8": {
+  "status": "identified",
+  "name": "Exhaust Left OCV Duty Voltage Compensation",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFEF5C: Exhaust Left OCV duty post-processing (see block comment). multiplier T(FFFEF18E)/32768 on the final duty.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/32768",
+   "to_byte": "x*32768/100",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Control Module Voltage",
+    "units": "V",
+    "expr": "x*625/2048000",
+    "to_byte": "x*2048000/625"
+   }
+  }
+ },
+ "0x2F7E4": {
+  "status": "identified",
+  "name": "Exhaust Left OCV Duty Gain (vs FFFF11B6, FFFF11CC >= 20)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFEF5C: Exhaust Left OCV duty post-processing (see block comment). factor in duty*T*G*2^-35 (*25): 1.0 at x = 41943.",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x*25/1048576",
+   "to_byte": "x*1048576/25",
+   "format": "0.000"
+  }
+ },
+ "0x2F7F0": {
+  "status": "identified",
+  "name": "Exhaust Left OCV Duty Gain (vs FFFF11B6, FFFF11CC < 20)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFEF5C: Exhaust Left OCV duty post-processing (see block comment). factor in duty*T*G*2^-35 (*25): 1.0 at x = 41943.",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x*25/1048576",
+   "to_byte": "x*1048576/25",
+   "format": "0.000"
+  }
+ },
+ "0x2F7FC": {
+  "status": "identified",
+  "name": "Exhaust Left OCV Target Current (vs Duty)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFEF5C: Exhaust Left OCV duty post-processing (see block comment). expected current compared with measured OCV current*26214.4.",
+  "description": "",
+  "data": {
+   "units": "A",
+   "expr": "x/26214.4",
+   "to_byte": "x*26214.4",
+   "format": "0.000"
+  },
+  "axes": {
+   "0": {
+    "name": "OCV Duty",
+    "units": "%",
+    "expr": "x/25",
+    "to_byte": "x*25"
+   }
+  }
+ },
+ "0x2F808": {
+  "status": "identified",
+  "name": "Exhaust Left OCV Current Feedback Gain Step",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFEF5C: Exhaust Left OCV duty post-processing (see block comment). G changes by T(current error)*4096*7.450581e-9 (= x/32768) per step.",
+  "description": "",
+  "data": {
+   "units": "gain/step",
+   "expr": "x/32768",
+   "to_byte": "x*32768",
+   "format": "0.00000"
+  },
+  "axes": {
+   "0": {
+    "name": "OCV Current Error",
+    "units": "A",
+    "expr": "x/26214.4",
+    "to_byte": "x*26214.4"
+   }
   }
  },
  "0x163898": {

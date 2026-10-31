@@ -308,6 +308,28 @@ for cname, (fn, T, lowcond) in CTRL.items():
     add(T['wp4'], f'{cname} AVCS OCV Feedback A Gain (vs FFFF11B6)', AV, ev + 'term A weight.', W128)
     add(T['werr'], f'{cname} AVCS OCV Feedback A Gain (vs Cam Error)', AV, ev + 'term A weight indexed by the first error input.', W128)
 
+# OCV duty post-processing (current feedback, voltage compensation): 0xFB3D4/0xFB7AC (intake R/L -> FFFF11E8/FFFF11F6 -> SSM 0x3E/0x3F),
+# 0xFEB84/0xFEF5C (exhaust R/L -> FFFF1238/FFFF1246).  measured current = OCV current (SSM 0x40/0x41/0x11C/0x11D, A = x*625/16384/1000)
+# *26214.4 counts; target current = T_cur(duty FFFF11D8.. %*25); gain G += T_step(target-measured)*4096*7.45e-9 (0..2);
+# final duty = duty * T_g(FFFF11B6) * G * 2^-35 * T_v(module voltage FFFEF18E)/32768 (*25).
+VOLTAX = {'0': dict(name='Control Module Voltage', units='V', expr='x*625/2048000', to_byte='x*2048000/625')}
+DUTYAX = {'0': dict(name='OCV Duty', units='%', expr='x/25', to_byte='x*25')}
+CURAX = {'0': dict(name='OCV Current Error', units='A', expr='x/26214.4', to_byte='x*26214.4')}
+for cname, fn, T in (('Intake Right', '0xFB3D4', (0x2F504, 0x2F528, 0x2F51C, 0x2F510, 0x2F540)),
+                     ('Intake Left', '0xFB7AC', (0x2F54C, 0x2F570, 0x2F564, 0x2F558, 0x2F57C)),
+                     ('Exhaust Right', '0xFEB84', (0x2F790, 0x2F7B4, 0x2F7A8, 0x2F79C, 0x2F7CC)),
+                     ('Exhaust Left', '0xFEF5C', (0x2F7D8, 0x2F7FC, 0x2F7F0, 0x2F7E4, 0x2F808))):
+    ev = f'{fn}: {cname} OCV duty post-processing (see block comment). '
+    add(T[0], f'{cname} OCV Duty Voltage Compensation', AV, ev + 'multiplier T(FFFEF18E)/32768 on the final duty.', PCT32768, axes=VOLTAX)
+    add(T[1], f'{cname} OCV Target Current (vs Duty)', AV, ev + 'expected current compared with measured OCV current*26214.4.',
+        ('A', 'x/26214.4', 'x*26214.4', '0.000'), axes=DUTYAX)
+    add(T[2], f'{cname} OCV Duty Gain (vs FFFF11B6, FFFF11CC < 20)', AV, ev + 'factor in duty*T*G*2^-35 (*25): 1.0 at x = 41943.',
+        ('multiplier', 'x*25/1048576', 'x*1048576/25', '0.000'))
+    add(T[3], f'{cname} OCV Duty Gain (vs FFFF11B6, FFFF11CC >= 20)', AV, ev + 'factor in duty*T*G*2^-35 (*25): 1.0 at x = 41943.',
+        ('multiplier', 'x*25/1048576', 'x*1048576/25', '0.000'))
+    add(T[4], f'{cname} OCV Current Feedback Gain Step', AV, ev + 'G changes by T(current error)*4096*7.450581e-9 (= x/32768) per step.',
+        ('gain/step', 'x/32768', 'x*32768', '0.00000'), axes=CURAX)
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
