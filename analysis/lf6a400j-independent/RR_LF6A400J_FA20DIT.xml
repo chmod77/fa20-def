@@ -537,63 +537,63 @@
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x16 [D02CD70] (? x Engine Load)" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="A6FA" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2CD70. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="A67A" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Transient Fuel (0B38) Amount A, flag clear" category="Fueling - Open Loop &amp; Enrichment" storageaddress="A6FA" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2CD70. Evidence: 0x8BF1C (from 0x888C0): FFFF0B38 = T_02CD1C/32768 * (A + B); A is set to T_02CD70|T_02CD84 (FFFF param_8 clear|set) on its trigger and decays toward 0 by T_02CD28|T_02CD34 per execution; B likewise with T_02CD98|T_02CDAC and steps T_02CD40|T_02CD4C. FFFF0B38 is a fuel-quantity fraction term in 0x910D8 (base*(0.5 + ... + 0B38/65536)), so amounts/steps are in 1/65536 of base. " sizex="16" sizey="16">
+      <scaling units="%" expression="x*100/65536" to_byte="x*65536/100" format="0.000" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="A67A" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Load" storageaddress="A66A" elements="16" storagetype="uint8" endian="big" locked="true">
+      <table type="X Axis" name="Engine Load" storageaddress="A66A" elements="16" storagetype="uint8" endian="big">
         <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x16 [D02CD84] (? x Engine Load)" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="A8FA" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2CD84. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="A67A" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Transient Fuel (0B38) Amount A, flag set" category="Fueling - Open Loop &amp; Enrichment" storageaddress="A8FA" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2CD84. Evidence: 0x8BF1C (from 0x888C0): FFFF0B38 = T_02CD1C/32768 * (A + B); A is set to T_02CD70|T_02CD84 (FFFF param_8 clear|set) on its trigger and decays toward 0 by T_02CD28|T_02CD34 per execution; B likewise with T_02CD98|T_02CDAC and steps T_02CD40|T_02CD4C. FFFF0B38 is a fuel-quantity fraction term in 0x910D8 (base*(0.5 + ... + 0B38/65536)), so amounts/steps are in 1/65536 of base. " sizex="16" sizey="16">
+      <scaling units="%" expression="x*100/65536" to_byte="x*65536/100" format="0.000" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="A67A" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Load" storageaddress="A66A" elements="16" storagetype="uint8" endian="big" locked="true">
+      <table type="X Axis" name="Engine Load" storageaddress="A66A" elements="16" storagetype="uint8" endian="big">
         <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x16 [D02CD98] (? x Engine Load)" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="AAFA" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2CD98. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="A67A" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Transient Fuel (0B38) Amount B, flag clear" category="Fueling - Open Loop &amp; Enrichment" storageaddress="AAFA" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2CD98. Evidence: 0x8BF1C (from 0x888C0): FFFF0B38 = T_02CD1C/32768 * (A + B); A is set to T_02CD70|T_02CD84 (FFFF param_8 clear|set) on its trigger and decays toward 0 by T_02CD28|T_02CD34 per execution; B likewise with T_02CD98|T_02CDAC and steps T_02CD40|T_02CD4C. FFFF0B38 is a fuel-quantity fraction term in 0x910D8 (base*(0.5 + ... + 0B38/65536)), so amounts/steps are in 1/65536 of base. " sizex="16" sizey="16">
+      <scaling units="%" expression="x*100/65536" to_byte="x*65536/100" format="0.000" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="A67A" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Load" storageaddress="A66A" elements="16" storagetype="uint8" endian="big" locked="true">
+      <table type="X Axis" name="Engine Load" storageaddress="A66A" elements="16" storagetype="uint8" endian="big">
         <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x16 [D02CDAC] (? x Engine Load)" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="ACFA" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2CDAC. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="A67A" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Transient Fuel (0B38) Amount B, flag set" category="Fueling - Open Loop &amp; Enrichment" storageaddress="ACFA" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2CDAC. Evidence: 0x8BF1C (from 0x888C0): FFFF0B38 = T_02CD1C/32768 * (A + B); A is set to T_02CD70|T_02CD84 (FFFF param_8 clear|set) on its trigger and decays toward 0 by T_02CD28|T_02CD34 per execution; B likewise with T_02CD98|T_02CDAC and steps T_02CD40|T_02CD4C. FFFF0B38 is a fuel-quantity fraction term in 0x910D8 (base*(0.5 + ... + 0B38/65536)), so amounts/steps are in 1/65536 of base. " sizex="16" sizey="16">
+      <scaling units="%" expression="x*100/65536" to_byte="x*65536/100" format="0.000" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="A67A" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Load" storageaddress="A66A" elements="16" storagetype="uint8" endian="big" locked="true">
+      <table type="X Axis" name="Engine Load" storageaddress="A66A" elements="16" storagetype="uint8" endian="big">
         <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02CD28]" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="AEFA" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CD28. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="A64A" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Transient Fuel (0B38) Decay Step A, flag clear" category="Fueling - Open Loop &amp; Enrichment" storageaddress="AEFA" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CD28. Evidence: 0x8BF1C (from 0x888C0): FFFF0B38 = T_02CD1C/32768 * (A + B); A is set to T_02CD70|T_02CD84 (FFFF param_8 clear|set) on its trigger and decays toward 0 by T_02CD28|T_02CD34 per execution; B likewise with T_02CD98|T_02CDAC and steps T_02CD40|T_02CD4C. FFFF0B38 is a fuel-quantity fraction term in 0x910D8 (base*(0.5 + ... + 0B38/65536)), so amounts/steps are in 1/65536 of base. Per-execution decrement." sizey="16">
+      <scaling units="%/step" expression="x*100/65536" to_byte="x*65536/100" format="0.0000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="A64A" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02CD34]" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="AF1A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CD34. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="A64A" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Transient Fuel (0B38) Decay Step A, flag set" category="Fueling - Open Loop &amp; Enrichment" storageaddress="AF1A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CD34. Evidence: 0x8BF1C (from 0x888C0): FFFF0B38 = T_02CD1C/32768 * (A + B); A is set to T_02CD70|T_02CD84 (FFFF param_8 clear|set) on its trigger and decays toward 0 by T_02CD28|T_02CD34 per execution; B likewise with T_02CD98|T_02CDAC and steps T_02CD40|T_02CD4C. FFFF0B38 is a fuel-quantity fraction term in 0x910D8 (base*(0.5 + ... + 0B38/65536)), so amounts/steps are in 1/65536 of base. Per-execution decrement." sizey="16">
+      <scaling units="%/step" expression="x*100/65536" to_byte="x*65536/100" format="0.0000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="A64A" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02CD40]" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="AF3A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CD40. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="A64A" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Transient Fuel (0B38) Decay Step B, flag clear" category="Fueling - Open Loop &amp; Enrichment" storageaddress="AF3A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CD40. Evidence: 0x8BF1C (from 0x888C0): FFFF0B38 = T_02CD1C/32768 * (A + B); A is set to T_02CD70|T_02CD84 (FFFF param_8 clear|set) on its trigger and decays toward 0 by T_02CD28|T_02CD34 per execution; B likewise with T_02CD98|T_02CDAC and steps T_02CD40|T_02CD4C. FFFF0B38 is a fuel-quantity fraction term in 0x910D8 (base*(0.5 + ... + 0B38/65536)), so amounts/steps are in 1/65536 of base. Per-execution decrement." sizey="16">
+      <scaling units="%/step" expression="x*100/65536" to_byte="x*65536/100" format="0.0000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="A64A" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02CD4C]" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="AF5A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CD4C. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="A64A" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Transient Fuel (0B38) Decay Step B, flag set" category="Fueling - Open Loop &amp; Enrichment" storageaddress="AF5A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CD4C. Evidence: 0x8BF1C (from 0x888C0): FFFF0B38 = T_02CD1C/32768 * (A + B); A is set to T_02CD70|T_02CD84 (FFFF param_8 clear|set) on its trigger and decays toward 0 by T_02CD28|T_02CD34 per execution; B likewise with T_02CD98|T_02CDAC and steps T_02CD40|T_02CD4C. FFFF0B38 is a fuel-quantity fraction term in 0x910D8 (base*(0.5 + ... + 0B38/65536)), so amounts/steps are in 1/65536 of base. Per-execution decrement." sizey="16">
+      <scaling units="%/step" expression="x*100/65536" to_byte="x*65536/100" format="0.0000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="A64A" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -621,9 +621,9 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02CD1C] (Coolant Temperature (filtered, word))" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="AFBA" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CD1C. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="A6BA" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Transient Fuel (0B38) Multiplier" category="Fueling - Open Loop &amp; Enrichment" storageaddress="AFBA" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CD1C. Evidence: 0x8BF1C (from 0x888C0): FFFF0B38 = T_02CD1C/32768 * (A + B); A is set to T_02CD70|T_02CD84 (FFFF param_8 clear|set) on its trigger and decays toward 0 by T_02CD28|T_02CD34 per execution; B likewise with T_02CD98|T_02CDAC and steps T_02CD40|T_02CD4C. FFFF0B38 is a fuel-quantity fraction term in 0x910D8 (base*(0.5 + ... + 0B38/65536)), so amounts/steps are in 1/65536 of base. x/32768 factor." sizey="16">
+      <scaling units="multiplier" expression="x/32768" to_byte="x*32768" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="A6BA" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>

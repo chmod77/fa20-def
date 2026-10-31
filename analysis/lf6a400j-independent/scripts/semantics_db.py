@@ -744,6 +744,16 @@ add(0x2CF80, 'Fuel Enrichment (0B60) Multiplier [0x8F250]', FE, _ev60 + 'x/128 f
 add(0x2CF74, 'Fuel Enrichment (0B60) Multiplier (Coolant)', FE, _ev60 + 'x/128 factor; input coolant FFFF29A5.', ('multiplier', 'x/128', 'x*128', '0.000'))
 add(0x2CF68, 'Fuel Enrichment (0B60) Low Rail Pressure Adder (Coolant)', FE, _ev60 + 'Added amount; input coolant FFFF29A5.', FQ)
 
+_ev38 = ('0x8BF1C (from 0x888C0): FFFF0B38 = T_02CD1C/32768 * (A + B); A is set to T_02CD70|T_02CD84 (FFFF param_8 clear|set) on its trigger and '
+         'decays toward 0 by T_02CD28|T_02CD34 per execution; B likewise with T_02CD98|T_02CDAC and steps T_02CD40|T_02CD4C. FFFF0B38 is a '
+         'fuel-quantity fraction term in 0x910D8 (base*(0.5 + ... + 0B38/65536)), so amounts/steps are in 1/65536 of base. ')
+FQ16 = ('%', 'x*100/65536', 'x*65536/100', '0.000')
+for d, nm in ((0x2CD70, 'A, flag clear'), (0x2CD84, 'A, flag set'), (0x2CD98, 'B, flag clear'), (0x2CDAC, 'B, flag set')):
+    add(d, f'Transient Fuel (0B38) Amount {nm}', FE, _ev38, FQ16)
+for d, nm in ((0x2CD28, 'A, flag clear'), (0x2CD34, 'A, flag set'), (0x2CD40, 'B, flag clear'), (0x2CD4C, 'B, flag set')):
+    add(d, f'Transient Fuel (0B38) Decay Step {nm}', FE, _ev38 + 'Per-execution decrement.', ('%/step', 'x*100/65536', 'x*65536/100', '0.0000'))
+add(0x2CD1C, 'Transient Fuel (0B38) Multiplier', FE, _ev38 + 'x/32768 factor.', ('multiplier', 'x/32768', 'x*32768', '0.000'))
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
