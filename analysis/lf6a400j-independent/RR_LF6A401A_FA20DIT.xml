@@ -2664,21 +2664,21 @@
         <scaling units="km/h" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 6 [D02DC84]" category="Unidentified - Idle Speed Control" storageaddress="14864" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2DC84. Lookup result stored to: 000a7970:*param_14. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="6">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="14858" elements="6" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Idle Filter Gain (p2 set, p6 clear) [0xA7970]" category="Idle Speed Control" storageaddress="14864" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2DC84. Evidence: 0xA7970 (from idle 0xA8230, call 0xAA220): x = p3 + p8 (+0x1DB in one state); y = p7 + (x - p7)*T/65536 (saturating 16-bit arithmetic, (d*T)&gt;&gt;16), i.e. a first-order filter step with gain T (65536 = 1.0, fraction per execution); T = T_02DC84 (p2 set, p6 clear), T_02DC90 (p2 and p6 set) or T_02DC9C (p2 clear). Input p9 unresolved.  Lookup result stored to: 000a7970:*param_14." sizey="6">
+      <scaling units="fraction/step" expression="x/65536" to_byte="x*65536" format="0.0000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="14858" elements="6" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 6 [D02DC90]" category="Unidentified - Idle Speed Control" storageaddress="1487C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2DC90. Lookup result stored to: 000a7970:*param_14. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="6">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="14870" elements="6" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Idle Filter Gain (p2 and p6 set) [0xA7970]" category="Idle Speed Control" storageaddress="1487C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2DC90. Evidence: 0xA7970 (from idle 0xA8230, call 0xAA220): x = p3 + p8 (+0x1DB in one state); y = p7 + (x - p7)*T/65536 (saturating 16-bit arithmetic, (d*T)&gt;&gt;16), i.e. a first-order filter step with gain T (65536 = 1.0, fraction per execution); T = T_02DC84 (p2 set, p6 clear), T_02DC90 (p2 and p6 set) or T_02DC9C (p2 clear). Input p9 unresolved.  Lookup result stored to: 000a7970:*param_14." sizey="6">
+      <scaling units="fraction/step" expression="x/65536" to_byte="x*65536" format="0.0000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="14870" elements="6" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 6 [D02DC9C]" category="Unidentified - Idle Speed Control" storageaddress="14894" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2DC9C. Lookup result stored to: 000a7970:*param_14. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="6">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="14888" elements="6" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Idle Filter Gain (p2 clear) [0xA7970]" category="Idle Speed Control" storageaddress="14894" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2DC9C. Evidence: 0xA7970 (from idle 0xA8230, call 0xAA220): x = p3 + p8 (+0x1DB in one state); y = p7 + (x - p7)*T/65536 (saturating 16-bit arithmetic, (d*T)&gt;&gt;16), i.e. a first-order filter step with gain T (65536 = 1.0, fraction per execution); T = T_02DC84 (p2 set, p6 clear), T_02DC90 (p2 and p6 set) or T_02DC9C (p2 clear). Input p9 unresolved.  Lookup result stored to: 000a7970:*param_14." sizey="6">
+      <scaling units="fraction/step" expression="x/65536" to_byte="x*65536" format="0.0000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="14888" elements="6" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>

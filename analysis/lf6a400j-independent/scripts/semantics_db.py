@@ -1234,6 +1234,12 @@ _AX423 = {'1': dict(name='Coolant Temperature (filtered, word)', units='C', expr
 add(0x2DD00, 'Idle Phase End Time (FFFF0423 x Coolant) [0xAAB08]', 'Idle Speed Control', _ab08, ('s', 'x*0.01', 'x/0.01', '0.00'), axes=_AX423)
 add(0x2DD3C, 'Idle Phase Ramp Start Time (FFFF0423 x Coolant) [0xAAB08]', 'Idle Speed Control', _ab08, ('s', 'x*0.01', 'x/0.01', '0.00'), axes=_AX423)
 
+_a79 = ('0xA7970 (from idle 0xA8230, call 0xAA220): x = p3 + p8 (+0x1DB in one state); y = p7 + (x - p7)*T/65536 (saturating 16-bit '
+        'arithmetic, (d*T)>>16), i.e. a first-order filter step with gain T (65536 = 1.0, fraction per execution); T = T_02DC84 (p2 set, p6 '
+        'clear), T_02DC90 (p2 and p6 set) or T_02DC9C (p2 clear). Input p9 unresolved. ')
+for d, nm in ((0x2DC84, 'p2 set, p6 clear'), (0x2DC90, 'p2 and p6 set'), (0x2DC9C, 'p2 clear')):
+    add(d, f'Idle Filter Gain ({nm}) [0xA7970]', 'Idle Speed Control', _a79, ('fraction/step', 'x/65536', 'x*65536', '0.0000'))
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

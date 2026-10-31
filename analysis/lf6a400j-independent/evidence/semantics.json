@@ -5378,6 +5378,45 @@
    "format": "0.00"
   }
  },
+ "0x2DC84": {
+  "status": "identified",
+  "name": "Idle Filter Gain (p2 set, p6 clear) [0xA7970]",
+  "category": "Idle Speed Control",
+  "evidence": "0xA7970 (from idle 0xA8230, call 0xAA220): x = p3 + p8 (+0x1DB in one state); y = p7 + (x - p7)*T/65536 (saturating 16-bit arithmetic, (d*T)>>16), i.e. a first-order filter step with gain T (65536 = 1.0, fraction per execution); T = T_02DC84 (p2 set, p6 clear), T_02DC90 (p2 and p6 set) or T_02DC9C (p2 clear). Input p9 unresolved. ",
+  "description": "",
+  "data": {
+   "units": "fraction/step",
+   "expr": "x/65536",
+   "to_byte": "x*65536",
+   "format": "0.0000"
+  }
+ },
+ "0x2DC90": {
+  "status": "identified",
+  "name": "Idle Filter Gain (p2 and p6 set) [0xA7970]",
+  "category": "Idle Speed Control",
+  "evidence": "0xA7970 (from idle 0xA8230, call 0xAA220): x = p3 + p8 (+0x1DB in one state); y = p7 + (x - p7)*T/65536 (saturating 16-bit arithmetic, (d*T)>>16), i.e. a first-order filter step with gain T (65536 = 1.0, fraction per execution); T = T_02DC84 (p2 set, p6 clear), T_02DC90 (p2 and p6 set) or T_02DC9C (p2 clear). Input p9 unresolved. ",
+  "description": "",
+  "data": {
+   "units": "fraction/step",
+   "expr": "x/65536",
+   "to_byte": "x*65536",
+   "format": "0.0000"
+  }
+ },
+ "0x2DC9C": {
+  "status": "identified",
+  "name": "Idle Filter Gain (p2 clear) [0xA7970]",
+  "category": "Idle Speed Control",
+  "evidence": "0xA7970 (from idle 0xA8230, call 0xAA220): x = p3 + p8 (+0x1DB in one state); y = p7 + (x - p7)*T/65536 (saturating 16-bit arithmetic, (d*T)>>16), i.e. a first-order filter step with gain T (65536 = 1.0, fraction per execution); T = T_02DC84 (p2 set, p6 clear), T_02DC90 (p2 and p6 set) or T_02DC9C (p2 clear). Input p9 unresolved. ",
+  "description": "",
+  "data": {
+   "units": "fraction/step",
+   "expr": "x/65536",
+   "to_byte": "x*65536",
+   "format": "0.0000"
+  }
+ },
  "0x2DD00": {
   "status": "identified",
   "name": "Idle Phase End Time (FFFF0423 x Coolant) [0xAAB08]",
