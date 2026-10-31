@@ -46,7 +46,7 @@ def fn_roots():
         if f in seen:
             return set()
         seen.add(f)
-        if f in main or not callers[f]:
+        if f in main or f in LABELS or not callers[f]:
             return {f}
         r = set()
         for c in callers[f]:
@@ -75,7 +75,7 @@ def build_map():
         if f in seen:
             return set()
         seen.add(f)
-        if f in main or not callers[f]:
+        if f in main or f in LABELS or not callers[f]:
             return {f}
         r = set()
         for c in callers[f]:

@@ -360,6 +360,30 @@ for cam, fn, base, ect, ta, tb, tb2, c0, c1, filt in (
         ev + 'Replaces T when FFFEF152 bit 5 set; rate-limited 0x1D counts/step.', DEG16)
 
 
+# ---------------------------------------------------------------- ignition timing, task 0x9CBF8 (final sum inputs)
+# 0x99558: FFFF0473 = 048B + (0459-128) + 0479 + 047A + T_02D5C8 + (T_02D5DC-32), all 0.5 deg; 0x98FAC: FFFF046C (SSM 0x11, deg=x/2)
+# includes 0473 and (0477-128).  0x999A4: FFFF0477 = min(FFFF0478, FFFF0BF2>>7) (output pointer 03BA+189, disasm 0x9D0BC).
+add(0x2D614, 'Ignition Timing Adder (IAT), FFFF06DA mode', 'Ignition Timing - Final',
+    '0x999CC (from 0x9CBF8, output FFFF0479): when FFFF06DA bits 0 and 3 are set and FFFF2A03.7 clear, '
+    'FFFF0479 = min(T(FFFEEEE2 IAT) + min(0,(04BA-04A4)*180/256), previous+6); FFFF0479 is summed into 0473 -> 046C in 0.5 deg.',
+    ('deg', 'x/2', 'x*2', '0.0'))
+for d, flag in ((0x2D608, 'clear'), (0x2D5FC, 'set')):
+    add(d, f'Ignition Timing Restore Step (RPM), FFFF048C=2, latch {flag}', 'Ignition Timing - Final',
+        '0x99874 (from 0x9CBF8, input FFFF2994 engine speed, state FFFF048C, output FFFF0478): in state 2, '
+        'out = min(prev + T - 128, 128); state 3 -> 128, state 4 -> 0x76.  FFFF0477 = min(0478, 0BF2>>7) enters FFFF046C as '
+        '(0477-128) in 0.5 deg, so T-128 is the per-execution timing step in 0.5 deg.  Latch FFFEBFBA chooses the table.',
+        ('deg/step', '(x-128)/2', 'x*2+128', '0.0'))
+
+add(0x2D5F0, 'Ignition Timing Limit After Event (Coolant), Initial', 'Ignition Timing - Final',
+    '0x99630 (from 0x9CBF8, input FFFEEEDE coolant, output FFFF0BF2): on the trigger edge FFFF0BF2 = T<<7, then it ramps by 0x4D/execution '
+    'toward 0x4000; 0x999A4 FFFF0477 = min(FFFF0478, 0BF2>>7) and 0477 enters FFFF046C as (0477-128) in 0.5 deg, so T caps that term at (T-128)/2 deg.',
+    ('deg', '(x-128)/2', 'x*2+128', '0.0'))
+add(0x2D494, 'Ignition Retard FFFF0454 Hold Count (RPM)', 'Ignition Timing - Final',
+    '0x96DA0 (from 0x9CBF8, input FFFF2ADA engine speed): when enabled, counter FFFF0480 = T(rpm), else it counts down by 1 per execution; '
+    'retard FFFF0454 (subtracted from FFFF046C) is held while FFFF0480 != 0.',
+    ('executions', 'x', 'x', '0'), axes={'0': dict(name='Engine Speed', units='rpm', expr='x*25/128', to_byte='x*128/25')})
+
+
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
     print(len(S), 'entries')
