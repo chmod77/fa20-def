@@ -5830,6 +5830,32 @@
    "format": "0.000"
   }
  },
+ "0x2FD58": {
+  "status": "identified",
+  "name": "Target Lambda Learning Offset Adder [0x11BF14 -> 1358]",
+  "category": "Fueling - Target Lambda",
+  "evidence": "0x11BFB4: FFFF39F6 = latched FFFF38F8 (0x11BD7C); 0xB3260 adds FFFF38F8 to the target lambda FFFF0DBA (lambda*43194, 0xB5B38), so 38F8/39F6 are lambda offsets in 1/43194 units. Input of the table is 39F6 itself. 0x11BF14: FFFF1358 = 39F6 + T.",
+  "description": "",
+  "data": {
+   "units": "lambda offset",
+   "expr": "x/43194",
+   "to_byte": "x*43194",
+   "format": "0.0000"
+  }
+ },
+ "0x2FD64": {
+  "status": "identified",
+  "name": "Target Lambda Learning Offset Subtractor [0x11BF64 -> 135A]",
+  "category": "Fueling - Target Lambda",
+  "evidence": "0x11BFB4: FFFF39F6 = latched FFFF38F8 (0x11BD7C); 0xB3260 adds FFFF38F8 to the target lambda FFFF0DBA (lambda*43194, 0xB5B38), so 38F8/39F6 are lambda offsets in 1/43194 units. Input of the table is 39F6 itself. 0x11BF64: FFFF135A = 39F6 - T.",
+  "description": "",
+  "data": {
+   "units": "lambda offset",
+   "expr": "x/43194",
+   "to_byte": "x*43194",
+   "format": "0.0000"
+  }
+ },
  "0x163898": {
   "status": "identified",
   "name": "Manifold Pressure Filter Coefficient (RPM)",

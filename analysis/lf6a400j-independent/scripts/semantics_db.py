@@ -832,6 +832,12 @@ add(0x2F2E0, 'A/F Sensor #1 Deviation Gain [0xEBD2C -> 1152]', 'Fueling - Closed
     '0xEBD2C: FFFF1152 = (1 + T(FFFEEED0)*(lambda - 1)/128)*8192 with lambda = A/F Sensor #1 FFFEEF96 (SSM 0x46, x/8192): '
     '(x-0x2000)*T*9.536743e-07 = T*(lambda-1)/128, so T is a gain with 128 = 1.0.', ('multiplier', 'x/128', 'x*128', '0.000'))
 
+_evfd = ('0x11BFB4: FFFF39F6 = latched FFFF38F8 (0x11BD7C); 0xB3260 adds FFFF38F8 to the target lambda FFFF0DBA (lambda*43194, 0xB5B38), so 38F8/39F6 '
+         'are lambda offsets in 1/43194 units. Input of the table is 39F6 itself. ')
+LOFF = ('lambda offset', 'x/43194', 'x*43194', '0.0000')
+add(0x2FD58, 'Target Lambda Learning Offset Adder [0x11BF14 -> 1358]', 'Fueling - Target Lambda', _evfd + '0x11BF14: FFFF1358 = 39F6 + T.', LOFF)
+add(0x2FD64, 'Target Lambda Learning Offset Subtractor [0x11BF64 -> 135A]', 'Fueling - Target Lambda', _evfd + '0x11BF64: FFFF135A = 39F6 - T.', LOFF)
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
