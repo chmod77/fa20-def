@@ -178,6 +178,10 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
   3D secondary kind.
 - Map helpers added (kind "map", 3D, first input = Y axis since data index = i1*n2 + i2): 1284 views. Proven: 0x163A38 MAF
   load-path correction (MAF x IAT, x/256) and 0x163A84 initial MAF vs coolant (g/s). Coverage 573 of 1284.
+- Radiator fan: SSM 0x2F (P92) = FFFF0D44 (converter 0xD0E40, byte = x*25>>14; mode constants 0xFFFF/0x8000/0xB333 = 100/50/70 %),
+  so it is fan duty, not fuel level. 0xB0234 builds it from 0D48 (0xB0EF8: duty vs coolant T_02E0CC/0D8/0E4) and 0D3C (0xAF97C: T_02E0C0).
+  0xAFDC0 calls these with enable p1 = 0, so they are labelled inactive. Task 0xAEBE8 writes 4-element per-cylinder arrays
+  FFFF163C/1644/164C/1654 read by fuel code (0x8A670, 0x940E8 via pointers): next lead for its 29 tables. Coverage 577 of 1284.
 - Dead ends this session (documented so they are not repeated):
   * FFFF12C2 (axis of the pedal-limit T1 tables, compared with 12BE in the torque monitor): only a read literal (0xC50D0); writer not
     found by literal, GBR (+70 from 127C) or r0-offset searches.

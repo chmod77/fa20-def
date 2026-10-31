@@ -268,3 +268,8 @@ V2.update({
  0xFFFEECB0:('Mass Airflow (sensor curve, 32-bit)','g/s','x/76800','x*76800','0x3D45E: MAF curve 0x14B7C; 0x4C53C: Mass Airflow FFFEEEE4 (OBD PID10, g/s=x*75/16384) = 16*ECB0/5625'),
  0xFFFEEED2:('Manifold Gauge Pressure (MAP - Atmospheric, halved)','kPa','x/128','x*128','0x4D602: x = (MAP FFFEEECE - Atmospheric FFFEEED0)/2, both kPa = x/256 (signed)'),
 })
+V2.update({
+ 0xFFFF0D44:('Radiator Fan Control','%','x*100/65536','x*65536/100','SSM 0x2F (P92 Radiator Fan Control %) via converter 0xD0E40 (byte = x*25>>14); 0xB0234 sets it to mode constants 0xFFFF/0x8000/0xB333 = 100/50/70 %'),
+ 0xFFFF0D48:('Radiator Fan Duty Request 0D48','%','x*100/65536','x*65536/100','0xB0234 (call 0xB0076): 0D44 = 0D48 in mode 1 and max(0D3C, 0D48) in mode 7'),
+ 0xFFFF0D3C:('Radiator Fan Duty Request 0D3C','%','x*100/65536','x*65536/100','0xB0234: in mode 7 0D44 = 0D3C (min 0x8000) compared with 0D48'),
+})

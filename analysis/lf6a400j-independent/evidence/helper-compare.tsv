@@ -1,5 +1,1 @@
 table	function	var	var_name	units	expr	input_var	context
-163AA8	0005036c	FFFEECB0	Mass Airflow (sensor curve, 32-bit)	g/s	x/76800		(uVar3 < _DAT_fffeecb0)
-163AB4	0005036c	FFFEEED2	Manifold Gauge Pressure (MAP - Atmospheric, halved)	kPa	x/128	FFFF29A7	(sVar4 < _DAT_fffeeed2)
-14DB0	0014f35c	FFFF1A3C	Engine Speed (byte, 25 rpm, source)	rpm	x*25		(bVar1 <= DAT_ffff1a3c)
-14DA0	0014f4ae	FFFF1A3C	Engine Speed (byte, 25 rpm, source)	rpm	x*25		(uint)DAT_ffff1a3c < (uVar2 & 0xff)

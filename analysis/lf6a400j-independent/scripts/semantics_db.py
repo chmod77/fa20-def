@@ -1161,6 +1161,18 @@ add(0x163A84, 'Initial Mass Airflow vs Coolant (initialisation)', 'Airflow Model
     'integer division).', ('g/s', 'x/16384', 'x*16384', '0.000'),
     axes={'0': dict(name='Coolant Temperature (filtered, word)', units='C', expr='x*5/2048-40', to_byte='(x+40)*2048/5')})
 
+# ---- radiator fan (0xAFDC0 block; every sub-function is called with enable p1 = 0 in this ROM -> inactive)
+_FAN = ('%', 'x*100/65536', 'x*65536/100', '0.0')
+_fan = ('Unit chain: 0xB0234 writes Radiator Fan Control FFFF0D44 (SSM 0x2F P92 %, converter 0xD0E40 byte = x*25>>14; mode constants '
+        '0xFFFF/0x8000/0xB333 = 100/50/70 %) from FFFF0D48 (mode 1) or max(0D3C, 0D48) (mode 7), so 0D48/0D3C are fan duty % = x*100/65536. '
+        'In this ROM 0xAFDC0 calls 0xB0EF8, 0xAF97C and 0xB0234 with p1 = 0 (reset path only), so these tables are inactive. ')
+for d, cond in ((0x2E0CC, 'default'), (0x2E0D8, 'FFFF04E8.5 set'), (0x2E0E4, 'FFFEF082 >= 0x94')):
+    add(d, f'Radiator Fan Duty vs Coolant ({cond}, inactive) [-> 0D48]', 'Radiator Fan', _fan +
+        f'0xB0EF8 (p2 Coolant FFFEEEDE): 0D48 = T(coolant) between the on/off coolant thresholds (0 below, 0xFFFF above); this table is used when {cond}.',
+        _FAN)
+add(0x2E0C0, 'Radiator Fan Duty vs FFFEF067 (inactive) [-> 0D3C]', 'Radiator Fan', _fan +
+    '0xAF97C (p2 FFFEF067): 0D3C = 0 below 0x44 (0x36 with hysteresis), 0xFFFF at/above 0xFC (0xB8), else T(F067). Input FFFEF067 unresolved.', _FAN)
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
