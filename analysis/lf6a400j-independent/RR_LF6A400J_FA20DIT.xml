@@ -1083,12 +1083,12 @@
         <scaling units="multiplier" expression="x/16" to_byte="x*16" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 24x24 [D02C7E8] (Engine Speed x ?)" category="Unidentified - Driver Demand / Torque Request" storageaddress="D1B2" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C7E8. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="24" sizey="24">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="D632" elements="24" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Torque Offset Multiplier (RPM x FFFF0A6E) [0x826D4]" category="Driver Demand / Torque Request" storageaddress="D1B2" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C7E8. Evidence: 0x826D4 (from 0x82FA0): FFFF0A7A = 16000 + (FFFF0ADC - 16000)*T/32768, scaling the torque-type value 0ADC (proven via 0x8267C with Requested Torque 0A62), so T is a multiplier with 32768 = 1.0. Inputs FFFF2994 rpm, FFFF0A6E." sizex="24" sizey="24">
+      <scaling units="multiplier" expression="x/32768" to_byte="x*32768" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="D632" elements="24" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2 (RAM 0xFFFF0A6E)" storageaddress="D662" elements="24" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2 (RAM 0xFFFF0A6E)" storageaddress="D662" elements="24" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>

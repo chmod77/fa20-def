@@ -843,6 +843,10 @@ add(0x2C838, 'Reference (Maximum) Torque vs RPM [0x84484]', 'Driver Demand / Tor
     '16000-offset torque type, so T is a torque in that type (the requested torque is normalised by it).' + TQEV,
     ('Nm', '(x-16000)/80', 'x*80+16000', '0.0'), axes={'0': dict(name='Engine Speed', units='rpm', expr='x*25/128', to_byte='x*128/25')})
 
+add(0x2C7E8, 'Torque Offset Multiplier (RPM x FFFF0A6E) [0x826D4]', 'Driver Demand / Torque Request',
+    '0x826D4 (from 0x82FA0): FFFF0A7A = 16000 + (FFFF0ADC - 16000)*T/32768, scaling the torque-type value 0ADC (proven via 0x8267C with '
+    'Requested Torque 0A62), so T is a multiplier with 32768 = 1.0. Inputs FFFF2994 rpm, FFFF0A6E.', ('multiplier', 'x/32768', 'x*32768', '0.000'))
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

@@ -216,3 +216,9 @@ V2.update({
  0xFFFF38F8:('Target Lambda Learning Offset','lambda offset','x/43194','x*43194','0xB3260: 0D80 = 0DBA + 38F8 with 0DBA = lambda*43194'),
  0xFFFF39F6:('Target Lambda Learning Offset (latched)','lambda offset','x/43194','x*43194','0x11BD7C: latched copy of 38F8'),
 })
+V2.update({0xFFFF0A7A:('Torque (scaled 0ADC, 0A7A)','Nm','(x-16000)/80','x*80+16000','0x826D4: 16000 + (0ADC-16000)*T/32768'+_TQ)})
+V2.update({
+ 0xFFFF0A78:('Torque (adder term, 0A78)','Nm','(x-16000)/80','x*80+16000','0x8034C: 0A7A + 0A78 - 16000 (torque-type addition)'+_TQ),
+ 0xFFFF0A64:('Torque (limit, 0A64)','Nm','(x-16000)/80','x*80+16000','0x8034C: min(0A64, torque sum)'+_TQ),
+})
+V2.update({0xFFFF0A1E:('Torque (0ADC - 0ADA, 0A1E)','Nm','(x-16000)/80','x*80+16000','0x80D54: 0ADC - 0ADA + 16000'+_TQ)})

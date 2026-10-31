@@ -684,6 +684,19 @@
    "format": "0.0"
   }
  },
+ "0x2C7E8": {
+  "status": "identified",
+  "name": "Torque Offset Multiplier (RPM x FFFF0A6E) [0x826D4]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x826D4 (from 0x82FA0): FFFF0A7A = 16000 + (FFFF0ADC - 16000)*T/32768, scaling the torque-type value 0ADC (proven via 0x8267C with Requested Torque 0A62), so T is a multiplier with 32768 = 1.0. Inputs FFFF2994 rpm, FFFF0A6E.",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x/32768",
+   "to_byte": "x*32768",
+   "format": "0.000"
+  }
+ },
  "0x2C7FC": {
   "status": "identified",
   "name": "Requested Torque Blend Weight 1 (Accelerator x Vehicle Speed)",
