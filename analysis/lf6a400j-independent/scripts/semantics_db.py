@@ -780,6 +780,21 @@ add(0x2D118, 'Fuel Enrichment (0B82) (weight w=FFFF0E90)', FE, _ev82, FQ)
 add(0x2D104, 'Fuel Enrichment (0B82) (weight 1-w)', FE, _ev82, FQ)
 add(0x2D12C, 'Fuel Enrichment (0B82) Multiplier (RPM)', FE, _ev82 + 'x/128 factor; input FFFF2994.', ('multiplier', 'x/128', 'x*128', '0.000'))
 
+_ev8e = ('0x909BC (from 0x888C0): FFFF0B8E = T_02D238(rpm FFFF2994, coolant FFFEEEDE) + T_02D210(rpm, load FFFF03A0)*T_02D224(IAT FFFEE6A5, ..)/255, '
+         'clamped 720..1080 while running. 0x44EAC compares (0B8E - 0B90 + 720)*FFFF2986/90 with injection time, and FFFF2986<<3 with the '
+         'same time for a 720 deg cycle (FFFF2986 = time per 90 deg crank), so 0B8E is a crank angle in 1 deg units. ')
+CA = ('deg CA', 'x', 'x', '0')
+add(0x2D238, 'Injection Angle Base (RPM x Coolant) [-> 0B8E]', INJ, _ev8e, CA)
+add(0x2D210, 'Injection Angle Adder (RPM x Load) [-> 0B8E]', INJ, _ev8e, CA)
+add(0x2D224, 'Injection Angle Adder Factor [-> 0B8E]', INJ, _ev8e + 'x/255 factor.', ('factor', 'x/255', 'x*255', '0.000'))
+
+_ev8a = ('0x907CC (from 0x888C0): FFFF0B8A = T_02D1D4(rpm FFFF2994, load FFFF03A0) + T_02D1C0(rpm, load)*T_02D1FC(FFFEEF33, IAT FFFEE6A5)/255; '
+         '0x8DEA0 handles the injection angles together (compared with 720/1080 and divided by 360 deg), and 0B8E is proven 1 deg CA '
+         '(0x44EAC), so 0B8A is a crank angle in 1 deg units. ')
+add(0x2D1D4, 'Injection Angle B Base (RPM x Load) [-> 0B8A]', INJ, _ev8a, CA)
+add(0x2D1C0, 'Injection Angle B Adder (RPM x Load) [-> 0B8A]', INJ, _ev8a, CA)
+add(0x2D1FC, 'Injection Angle B Adder Factor [-> 0B8A]', INJ, _ev8a + 'x/255 factor.', ('factor', 'x/255', 'x*255', '0.000'))
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

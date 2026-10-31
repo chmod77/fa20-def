@@ -174,12 +174,12 @@
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x8 [D02D1D4] (Engine Speed x Engine Load)" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="8AD0" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2D1D4. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="8" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="8AA8" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Injection Angle B Base (RPM x Load) [-&gt; 0B8A]" category="Fuel Injection" storageaddress="8AD0" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2D1D4. Evidence: 0x907CC (from 0x888C0): FFFF0B8A = T_02D1D4(rpm FFFF2994, load FFFF03A0) + T_02D1C0(rpm, load)*T_02D1FC(FFFEEF33, IAT FFFEE6A5)/255; 0x8DEA0 handles the injection angles together (compared with 720/1080 and divided by 360 deg), and 0B8E is proven 1 deg CA (0x44EAC), so 0B8A is a crank angle in 1 deg units. " sizex="8" sizey="16">
+      <scaling units="deg CA" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="8AA8" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Load" storageaddress="8AC8" elements="8" storagetype="uint8" endian="big" locked="true">
+      <table type="X Axis" name="Engine Load" storageaddress="8AC8" elements="8" storagetype="uint8" endian="big">
         <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
@@ -675,39 +675,39 @@
         <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x8 [D02D1C0] (Engine Speed x Engine Load)" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="B132" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2D1C0. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="8" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="B10A" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Injection Angle B Adder (RPM x Load) [-&gt; 0B8A]" category="Fuel Injection" storageaddress="B132" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2D1C0. Evidence: 0x907CC (from 0x888C0): FFFF0B8A = T_02D1D4(rpm FFFF2994, load FFFF03A0) + T_02D1C0(rpm, load)*T_02D1FC(FFFEEF33, IAT FFFEE6A5)/255; 0x8DEA0 handles the injection angles together (compared with 720/1080 and divided by 360 deg), and 0B8E is proven 1 deg CA (0x44EAC), so 0B8A is a crank angle in 1 deg units. " sizex="8" sizey="16">
+      <scaling units="deg CA" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="B10A" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Load" storageaddress="B12A" elements="8" storagetype="uint8" endian="big" locked="true">
+      <table type="X Axis" name="Engine Load" storageaddress="B12A" elements="8" storagetype="uint8" endian="big">
         <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 8x8 [D02D1FC] (Engine Oil Temperature x Intake Air Temperature (control))" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="B232" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D1FC. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="8" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Engine Oil Temperature" storageaddress="B0FA" elements="8" storagetype="uint8" endian="big" locked="true">
+    <table type="3D" name="Injection Angle B Adder Factor [-&gt; 0B8A]" category="Fuel Injection" storageaddress="B232" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D1FC. Evidence: 0x907CC (from 0x888C0): FFFF0B8A = T_02D1D4(rpm FFFF2994, load FFFF03A0) + T_02D1C0(rpm, load)*T_02D1FC(FFFEEF33, IAT FFFEE6A5)/255; 0x8DEA0 handles the injection angles together (compared with 720/1080 and divided by 360 deg), and 0B8E is proven 1 deg CA (0x44EAC), so 0B8A is a crank angle in 1 deg units. x/255 factor." sizex="8" sizey="8">
+      <scaling units="factor" expression="x/255" to_byte="x*255" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Engine Oil Temperature" storageaddress="B0FA" elements="8" storagetype="uint8" endian="big">
         <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Intake Air Temperature (control)" storageaddress="B102" elements="8" storagetype="uint8" endian="big" locked="true">
+      <table type="X Axis" name="Intake Air Temperature (control)" storageaddress="B102" elements="8" storagetype="uint8" endian="big">
         <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x8 [D02D210] (Engine Speed x Engine Load)" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="B2AA" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2D210. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="8" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="B282" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Injection Angle Adder (RPM x Load) [-&gt; 0B8E]" category="Fuel Injection" storageaddress="B2AA" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2D210. Evidence: 0x909BC (from 0x888C0): FFFF0B8E = T_02D238(rpm FFFF2994, coolant FFFEEEDE) + T_02D210(rpm, load FFFF03A0)*T_02D224(IAT FFFEE6A5, ..)/255, clamped 720..1080 while running. 0x44EAC compares (0B8E - 0B90 + 720)*FFFF2986/90 with injection time, and FFFF2986&lt;&lt;3 with the same time for a 720 deg cycle (FFFF2986 = time per 90 deg crank), so 0B8E is a crank angle in 1 deg units. " sizex="8" sizey="16">
+      <scaling units="deg CA" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="B282" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Load" storageaddress="B2A2" elements="8" storagetype="uint8" endian="big" locked="true">
+      <table type="X Axis" name="Engine Load" storageaddress="B2A2" elements="8" storagetype="uint8" endian="big">
         <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 8x8 [D02D224] (? x Intake Air Temperature (control))" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="B3AA" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D224. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="8" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="B272" elements="8" storagetype="uint8" endian="big" locked="true">
+    <table type="3D" name="Injection Angle Adder Factor [-&gt; 0B8E]" category="Fuel Injection" storageaddress="B3AA" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D224. Evidence: 0x909BC (from 0x888C0): FFFF0B8E = T_02D238(rpm FFFF2994, coolant FFFEEEDE) + T_02D210(rpm, load FFFF03A0)*T_02D224(IAT FFFEE6A5, ..)/255, clamped 720..1080 while running. 0x44EAC compares (0B8E - 0B90 + 720)*FFFF2986/90 with injection time, and FFFF2986&lt;&lt;3 with the same time for a 720 deg cycle (FFFF2986 = time per 90 deg crank), so 0B8E is a crank angle in 1 deg units. x/255 factor." sizex="8" sizey="8">
+      <scaling units="factor" expression="x/255" to_byte="x*255" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="B272" elements="8" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Intake Air Temperature (control)" storageaddress="B27A" elements="8" storagetype="uint8" endian="big" locked="true">
+      <table type="X Axis" name="Intake Air Temperature (control)" storageaddress="B27A" elements="8" storagetype="uint8" endian="big">
         <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
@@ -948,12 +948,12 @@
         <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x16 [D02D238] (Engine Speed x Coolant Temperature (filtered, word))" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="C2DE" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2D238. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="C2BC" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Injection Angle Base (RPM x Coolant) [-&gt; 0B8E]" category="Fuel Injection" storageaddress="C2DE" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2D238. Evidence: 0x909BC (from 0x888C0): FFFF0B8E = T_02D238(rpm FFFF2994, coolant FFFEEEDE) + T_02D210(rpm, load FFFF03A0)*T_02D224(IAT FFFEE6A5, ..)/255, clamped 720..1080 while running. 0x44EAC compares (0B8E - 0B90 + 720)*FFFF2986/90 with injection time, and FFFF2986&lt;&lt;3 with the same time for a 720 deg cycle (FFFF2986 = time per 90 deg crank), so 0B8E is a crank angle in 1 deg units. " sizex="16" sizey="16">
+      <scaling units="deg CA" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="C2BC" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>

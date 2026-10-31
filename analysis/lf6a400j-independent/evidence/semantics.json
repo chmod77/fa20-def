@@ -1623,6 +1623,84 @@
    "format": "0.0"
   }
  },
+ "0x2D1C0": {
+  "status": "identified",
+  "name": "Injection Angle B Adder (RPM x Load) [-> 0B8A]",
+  "category": "Fuel Injection",
+  "evidence": "0x907CC (from 0x888C0): FFFF0B8A = T_02D1D4(rpm FFFF2994, load FFFF03A0) + T_02D1C0(rpm, load)*T_02D1FC(FFFEEF33, IAT FFFEE6A5)/255; 0x8DEA0 handles the injection angles together (compared with 720/1080 and divided by 360 deg), and 0B8E is proven 1 deg CA (0x44EAC), so 0B8A is a crank angle in 1 deg units. ",
+  "description": "",
+  "data": {
+   "units": "deg CA",
+   "expr": "x",
+   "to_byte": "x",
+   "format": "0"
+  }
+ },
+ "0x2D1D4": {
+  "status": "identified",
+  "name": "Injection Angle B Base (RPM x Load) [-> 0B8A]",
+  "category": "Fuel Injection",
+  "evidence": "0x907CC (from 0x888C0): FFFF0B8A = T_02D1D4(rpm FFFF2994, load FFFF03A0) + T_02D1C0(rpm, load)*T_02D1FC(FFFEEF33, IAT FFFEE6A5)/255; 0x8DEA0 handles the injection angles together (compared with 720/1080 and divided by 360 deg), and 0B8E is proven 1 deg CA (0x44EAC), so 0B8A is a crank angle in 1 deg units. ",
+  "description": "",
+  "data": {
+   "units": "deg CA",
+   "expr": "x",
+   "to_byte": "x",
+   "format": "0"
+  }
+ },
+ "0x2D1FC": {
+  "status": "identified",
+  "name": "Injection Angle B Adder Factor [-> 0B8A]",
+  "category": "Fuel Injection",
+  "evidence": "0x907CC (from 0x888C0): FFFF0B8A = T_02D1D4(rpm FFFF2994, load FFFF03A0) + T_02D1C0(rpm, load)*T_02D1FC(FFFEEF33, IAT FFFEE6A5)/255; 0x8DEA0 handles the injection angles together (compared with 720/1080 and divided by 360 deg), and 0B8E is proven 1 deg CA (0x44EAC), so 0B8A is a crank angle in 1 deg units. x/255 factor.",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  }
+ },
+ "0x2D210": {
+  "status": "identified",
+  "name": "Injection Angle Adder (RPM x Load) [-> 0B8E]",
+  "category": "Fuel Injection",
+  "evidence": "0x909BC (from 0x888C0): FFFF0B8E = T_02D238(rpm FFFF2994, coolant FFFEEEDE) + T_02D210(rpm, load FFFF03A0)*T_02D224(IAT FFFEE6A5, ..)/255, clamped 720..1080 while running. 0x44EAC compares (0B8E - 0B90 + 720)*FFFF2986/90 with injection time, and FFFF2986<<3 with the same time for a 720 deg cycle (FFFF2986 = time per 90 deg crank), so 0B8E is a crank angle in 1 deg units. ",
+  "description": "",
+  "data": {
+   "units": "deg CA",
+   "expr": "x",
+   "to_byte": "x",
+   "format": "0"
+  }
+ },
+ "0x2D224": {
+  "status": "identified",
+  "name": "Injection Angle Adder Factor [-> 0B8E]",
+  "category": "Fuel Injection",
+  "evidence": "0x909BC (from 0x888C0): FFFF0B8E = T_02D238(rpm FFFF2994, coolant FFFEEEDE) + T_02D210(rpm, load FFFF03A0)*T_02D224(IAT FFFEE6A5, ..)/255, clamped 720..1080 while running. 0x44EAC compares (0B8E - 0B90 + 720)*FFFF2986/90 with injection time, and FFFF2986<<3 with the same time for a 720 deg cycle (FFFF2986 = time per 90 deg crank), so 0B8E is a crank angle in 1 deg units. x/255 factor.",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  }
+ },
+ "0x2D238": {
+  "status": "identified",
+  "name": "Injection Angle Base (RPM x Coolant) [-> 0B8E]",
+  "category": "Fuel Injection",
+  "evidence": "0x909BC (from 0x888C0): FFFF0B8E = T_02D238(rpm FFFF2994, coolant FFFEEEDE) + T_02D210(rpm, load FFFF03A0)*T_02D224(IAT FFFEE6A5, ..)/255, clamped 720..1080 while running. 0x44EAC compares (0B8E - 0B90 + 720)*FFFF2986/90 with injection time, and FFFF2986<<3 with the same time for a 720 deg cycle (FFFF2986 = time per 90 deg crank), so 0B8E is a crank angle in 1 deg units. ",
+  "description": "",
+  "data": {
+   "units": "deg CA",
+   "expr": "x",
+   "to_byte": "x",
+   "format": "0"
+  }
+ },
  "0x2D2C8": {
   "status": "identified",
   "name": "Fuel Quantity Multiplier, Channel 1 (Fuel Quantity x RPM)",
