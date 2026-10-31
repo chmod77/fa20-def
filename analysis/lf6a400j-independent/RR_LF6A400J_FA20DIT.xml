@@ -4074,15 +4074,15 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02D7D0] (Coolant Temperature (filtered, word))" category="Unidentified - Ignition Timing - Corrections" storageaddress="1A788" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D7D0. Lookup result stored to: FFFF047F. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Timing Term 047B Factor (Coolant), FFFEEF76.7 clear" category="Ignition Timing - Term 047B" storageaddress="1A788" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D7D0. Evidence: 0x9A05C: FFFF047B (0.5 deg, added to FFFF046C in 0x98FAC) = 2*min(63.5, 127.5*(T734/255)*(D/255)*(C/255)*(047F/255)*(E/255)) deg; gear = FFFEF51A. 0x9A660 (from 0x9BDD0): FFFF047F = T(coolant FFFEEEDE) when FFFEEF76 bit 7 clear; 047F is the (047F/255) factor of 047B. Lookup result stored to: FFFF047F." sizey="16">
+      <scaling units="factor" expression="x/255" to_byte="x*255" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02D7DC] (Coolant Temperature (filtered, word))" category="Unidentified - Ignition Timing - Corrections" storageaddress="1A798" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D7DC. Lookup result stored to: FFFF047F. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Timing Term 047B Factor (Coolant), FFFEEF76.7 set" category="Ignition Timing - Term 047B" storageaddress="1A798" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D7DC. Evidence: 0x9A05C: FFFF047B (0.5 deg, added to FFFF046C in 0x98FAC) = 2*min(63.5, 127.5*(T734/255)*(D/255)*(C/255)*(047F/255)*(E/255)) deg; gear = FFFEF51A. 0x9A660 (from 0x9BDD0): FFFF047F = T(coolant FFFEEEDE) when FFFEEF76 bit 7 set; 047F is the (047F/255) factor of 047B. Lookup result stored to: FFFF047F." sizey="16">
+      <scaling units="factor" expression="x/255" to_byte="x*255" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>

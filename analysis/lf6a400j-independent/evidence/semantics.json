@@ -1885,6 +1885,32 @@
    "format": "0.000"
   }
  },
+ "0x2D7D0": {
+  "status": "identified",
+  "name": "Timing Term 047B Factor (Coolant), FFFEEF76.7 clear",
+  "category": "Ignition Timing - Term 047B",
+  "evidence": "0x9A05C: FFFF047B (0.5 deg, added to FFFF046C in 0x98FAC) = 2*min(63.5, 127.5*(T734/255)*(D/255)*(C/255)*(047F/255)*(E/255)) deg; gear = FFFEF51A. 0x9A660 (from 0x9BDD0): FFFF047F = T(coolant FFFEEEDE) when FFFEEF76 bit 7 clear; 047F is the (047F/255) factor of 047B.",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  }
+ },
+ "0x2D7DC": {
+  "status": "identified",
+  "name": "Timing Term 047B Factor (Coolant), FFFEEF76.7 set",
+  "category": "Ignition Timing - Term 047B",
+  "evidence": "0x9A05C: FFFF047B (0.5 deg, added to FFFF046C in 0x98FAC) = 2*min(63.5, 127.5*(T734/255)*(D/255)*(C/255)*(047F/255)*(E/255)) deg; gear = FFFEF51A. 0x9A660 (from 0x9BDD0): FFFF047F = T(coolant FFFEEEDE) when FFFEEF76 bit 7 set; 047F is the (047F/255) factor of 047B.",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  }
+ },
  "0x2D810": {
   "status": "identified",
   "name": "Ignition Timing Target, Override Path (weight 1-w, w=FFFF0E90)",

@@ -661,6 +661,10 @@ add(0x2D9F8, 'Ignition Timing Base, Override Path (RPM x Load)', IGN,
     '(0.5 deg) on its override path, with 0486 offset 128 (0x9AE9C), so T is 0.5 deg with offset 32 (param_8 is passed as 0 in this ROM).',
     ('deg', '(x-32)/2', 'x*2+32', '0.0'))
 
+for d, fl in ((0x2D7D0, 'clear'), (0x2D7DC, 'set')):
+    add(d, f'Timing Term 047B Factor (Coolant), FFFEEF76.7 {fl}', IGT, ev7b + f'0x9A660 (from 0x9BDD0): FFFF047F = T(coolant FFFEEEDE) when '
+        f'FFFEEF76 bit 7 {fl}; 047F is the (047F/255) factor of 047B.', F255)
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
