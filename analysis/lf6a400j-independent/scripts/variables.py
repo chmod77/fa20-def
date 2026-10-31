@@ -256,3 +256,6 @@ V2.update({
  0xFFFF0D0E:('Target Idle Speed (0D0E)','rpm','x*25/128','x*128/25','0xAB784: 0D10 = 0D0E when FFFF04CC.4 clear'),
  0xFFFF0D02:('Target Idle Speed (0D02)','rpm','x*25/128','x*128/25','0xAB758: 0D0E = max(0D02, FFFEED47*1024/25)'),
 })
+V2.update({
+ 0xFFFF0AAE:('Torque 0AAE','Nm','(x-16000)/80','x*80+16000','0x86F74: (0AAE-16000)*8192/(0ADC-16000) torque ratio; 0x85580 = 0AAC + P - 16000'+_TQ),
+})

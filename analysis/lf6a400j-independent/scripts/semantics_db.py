@@ -1059,6 +1059,14 @@ add(0x2DF00, 'Target Idle Speed (alternate, FFFF04CC.4 set) vs Coolant [-> 0D10]
     '0x80968 uses 0D06 - filtered Engine Speed (rpm x*25/128). So 0D10 is rpm = x*25/128 and T is rpm = x*64*25/128 = x*12.5.',
     ('rpm', 'x*12.5', 'x/12.5', '0'))
 
+_aae = ('0x85580 (from 0x87478; p1 rpm FFFF2994, p2 FFFF152C, p3 FFFF0AAC; output p4 = FFFF09B4+0xFA = FFFF0AAE): e = (152C*512/(rpm*25))/2 - '
+        'T_02C8F4(rpm)/2 (signed); when e > 0 (with hold): I = max(T_02C900(e) + I_prev - 16000, 16000) capped below 16000-offset range, '
+        'P = I + T_02C90C(e) - 16000; FFFF0AAE = 0AAC + P - 16000 (torque-type sums). 0x86F74: (0AAE-16000)*8192/(Torque 0ADC-16000) is a '
+        'torque ratio, so 0AAE, P, I and both tables are torque type. Input e (from FFFF152C) is unresolved. ')
+add(0x2C900, 'Torque Correction Integral Step vs Error e [0x85580 -> 0AAE]', 'Driver Demand / Torque Request', _aae + TQEV,
+    ('Nm/step', '(x-16000)/80', 'x*80+16000', '0.0'))
+add(0x2C90C, 'Torque Correction Proportional Term vs Error e [0x85580 -> 0AAE]', 'Driver Demand / Torque Request', _aae + TQEV, TQ)
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

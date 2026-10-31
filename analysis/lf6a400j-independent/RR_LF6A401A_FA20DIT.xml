@@ -2052,15 +2052,15 @@
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02C900]" category="Unidentified - Ignition Timing - Base &amp; Torque Model / Task 0x12367C" storageaddress="1231E" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C900, 0x2FFB0. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="1233E" elements="8" storagetype="int16" endian="big" locked="true">
+    <table type="2D" name="Torque Correction Integral Step vs Error e [0x85580 -&gt; 0AAE]" category="Driver Demand / Torque Request" storageaddress="1231E" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C900, 0x2FFB0. Evidence: 0x85580 (from 0x87478; p1 rpm FFFF2994, p2 FFFF152C, p3 FFFF0AAC; output p4 = FFFF09B4+0xFA = FFFF0AAE): e = (152C*512/(rpm*25))/2 - T_02C8F4(rpm)/2 (signed); when e &gt; 0 (with hold): I = max(T_02C900(e) + I_prev - 16000, 16000) capped below 16000-offset range, P = I + T_02C90C(e) - 16000; FFFF0AAE = 0AAC + P - 16000 (torque-type sums). 0x86F74: (0AAE-16000)*8192/(Torque 0ADC-16000) is a torque ratio, so 0AAE, P, I and both tables are torque type. Input e (from FFFF152C) is unresolved.  Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW-&gt;Nm via 60000/2pi, stored *80+16000, clamps = u16 range)." sizey="8">
+      <scaling units="Nm/step" expression="(x-16000)/80" to_byte="x*80+16000" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="1233E" elements="8" storagetype="int16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02C90C]" category="Unidentified - Ignition Timing - Base &amp; Torque Model" storageaddress="1232E" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C90C. Lookup result stored to: 00085580:*param_6. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="1234E" elements="8" storagetype="int16" endian="big" locked="true">
+    <table type="2D" name="Torque Correction Proportional Term vs Error e [0x85580 -&gt; 0AAE]" category="Driver Demand / Torque Request" storageaddress="1232E" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C90C. Evidence: 0x85580 (from 0x87478; p1 rpm FFFF2994, p2 FFFF152C, p3 FFFF0AAC; output p4 = FFFF09B4+0xFA = FFFF0AAE): e = (152C*512/(rpm*25))/2 - T_02C8F4(rpm)/2 (signed); when e &gt; 0 (with hold): I = max(T_02C900(e) + I_prev - 16000, 16000) capped below 16000-offset range, P = I + T_02C90C(e) - 16000; FFFF0AAE = 0AAC + P - 16000 (torque-type sums). 0x86F74: (0AAE-16000)*8192/(Torque 0ADC-16000) is a torque ratio, so 0AAE, P, I and both tables are torque type. Input e (from FFFF152C) is unresolved.  Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW-&gt;Nm via 60000/2pi, stored *80+16000, clamps = u16 range). Lookup result stored to: 00085580:*param_6." sizey="8">
+      <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="1234E" elements="8" storagetype="int16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
