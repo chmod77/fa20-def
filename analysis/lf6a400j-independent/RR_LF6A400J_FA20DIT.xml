@@ -990,12 +990,12 @@
         <scaling units="%" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 22x16 [D02D938] (Engine Speed x Engine Load)" category="Unidentified - Ignition Timing - Corrections" storageaddress="C9B4" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2D938. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="22">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="D69A" elements="22" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Ignition Timing Limit (Base Path)" category="Ignition Timing" storageaddress="C9B4" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2D938. Evidence: 0x9D664: FFFF0497 = T(rpm, load FFFF09B4); 0x9B384: FFFF0488 = min(FFFF03D1 - T_02D890, FFFF0497) (half-degrees) -&gt; 048B -&gt; 0473 -&gt; FFFF046C." sizex="16" sizey="22">
+      <scaling units="deg" expression="x/2" to_byte="x*2" format="0.0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="D69A" elements="22" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Load" storageaddress="D6C6" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Engine Load" storageaddress="D6C6" elements="16" storagetype="uint16" endian="big">
         <scaling units="%" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -3708,10 +3708,10 @@
         <scaling units="V" expression="x*8/100" to_byte="x*100/8" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02D878]" category="Unidentified - Crank/Cam Signal Processing / Ignition Timing - Corrections" storageaddress="19D5E" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D878, 0x2D890. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="19D3E" elements="16" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    <table type="2D" name="Ignition Timing Reduction (vs ratio FFFF0AA8)" category="Ignition Timing" storageaddress="19D5E" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D878, 0x2D890. Evidence: 0x9B384: FFFF0488 = FFFF03D1 - T(FFFF0AA8) (half-degrees) when FFFF03C6 not in {11,12,25,26,27}; input is a ratio (32768 = 1.0); meaning of FFFF0AA8 unresolved." sizey="16">
+      <scaling units="deg" expression="x/2" to_byte="x*2" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Ratio FFFF0AA8" storageaddress="19D3E" elements="16" storagetype="uint16" endian="big">
+        <scaling units="ratio" expression="x/32768" to_byte="x*32768" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
     <table type="3D" name="Unidentified 3x7 [D02D9D8] (Engine Load x Engine Speed)" category="Unidentified - Unidentified (no static caller)" storageaddress="19D94" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D9D8. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="7" sizey="3">
@@ -4137,9 +4137,9 @@
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02D990] (Intake Air Temperature (control, word))" category="Unidentified - Ignition Timing - Corrections" storageaddress="1AE92" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2D990. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
-      <table type="Y Axis" name="Intake Air Temperature (control, word)" storageaddress="1AE72" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Ignition Timing Compensation (IAT)" category="Ignition Timing" storageaddress="1AE92" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2D990. Evidence: 0x9D9F0: FFFF049B = T_02D990(IAT FFFEEEE2) * T_02D97C(rpm, load FFFF09B4) / 128 (half-degrees), only when FFFEE6AF==3 and FFFF299C &gt; 0x1F; 0x86758 adds FFFF049B to base timing FFFF03D1 -&gt; Ignition Total Timing FFFF046C (SSM 0x11)." sizey="16">
+      <scaling units="deg" expression="x/2" to_byte="x*2" format="0.0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
+      <table type="Y Axis" name="Intake Air Temperature (control, word)" storageaddress="1AE72" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -5013,24 +5013,24 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 22x16 [D02D97C] (Engine Speed x Engine Load)" category="Unidentified - Ignition Timing - Corrections" storageaddress="1E28F" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D97C. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="22">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="D69A" elements="22" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Ignition Timing Compensation (IAT) Activation (RPM x Load)" category="Ignition Timing" storageaddress="1E28F" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D97C. Evidence: 0x9D9F0: FFFF049B = T_02D990(IAT FFFEEEE2) * T_02D97C(rpm, load FFFF09B4) / 128 (half-degrees), only when FFFEE6AF==3 and FFFF299C &gt; 0x1F; 0x86758 adds FFFF049B to base timing FFFF03D1 -&gt; Ignition Total Timing FFFF046C (SSM 0x11)." sizex="16" sizey="22">
+      <scaling units="%" expression="x*100/128" to_byte="x*128/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="D69A" elements="22" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Load" storageaddress="D6C6" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Engine Load" storageaddress="D6C6" elements="16" storagetype="uint16" endian="big">
         <scaling units="%" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02D9A8] (Coolant Temperature (filtered, word))" category="Unidentified - Ignition Timing - Corrections" storageaddress="1E3EF" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2D9A8. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Ignition Timing Compensation (Coolant, FFFF299C &lt; 200)" category="Ignition Timing" storageaddress="1E3EF" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2D9A8. Evidence: 0x9DAC8: FFFF049C = FFFF0487 + T(coolant FFFEEEDE) - 128 (half-degrees; FFFF0487 is the 128-biased output of 0x9B058), only when FFFEE6AF==3 and FFFF299C &gt; 0x1F; T_02D99C when FFFF299C &gt;= 200 (192 hysteresis), else T_02D9A8; 0x86758 adds FFFF049C to base timing." sizey="16">
+      <scaling units="deg" expression="x/2" to_byte="x*2" format="0.0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02D99C] (Coolant Temperature (filtered, word))" category="Unidentified - Ignition Timing - Corrections" storageaddress="1E3FF" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2D99C. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Ignition Timing Compensation (Coolant, FFFF299C &gt;= 200)" category="Ignition Timing" storageaddress="1E3FF" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2D99C. Evidence: 0x9DAC8: FFFF049C = FFFF0487 + T(coolant FFFEEEDE) - 128 (half-degrees; FFFF0487 is the 128-biased output of 0x9B058), only when FFFEE6AF==3 and FFFF299C &gt; 0x1F; T_02D99C when FFFF299C &gt;= 200 (192 hysteresis), else T_02D9A8; 0x86758 adds FFFF049C to base timing." sizey="16">
+      <scaling units="deg" expression="x/2" to_byte="x*2" format="0.0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
