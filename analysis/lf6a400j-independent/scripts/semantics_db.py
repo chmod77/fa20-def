@@ -1212,6 +1212,28 @@ add(0x2DF80, 'Start Injection Multiplier vs RPM [0xAE058 -> 0D2E]', INJ, _d2e, (
     axes={'0': dict(name='Engine Speed (byte, 25 rpm)', units='rpm', expr='x*25', to_byte='x/25')})
 add(0x2DF8C, 'Start Injection Multiplier vs FFFF29C2 [0xAE058 -> 0D2E]', INJ, _d2e + 'Input FFFF29C2 unresolved.', ('multiplier', 'x/128', 'x*128', '0.000'))
 
+# ---- staged timer 0x7FB7C (10 ms task)
+_fb7 = ('0x7FB7C (from 0x82FA0, call 0x83AF2; p8 Vehicle Speed FFFEF0DA, p9 rpm FFFF2ADA, p10 gear FFFEF51A clamped 1..6 (7 when p11 > 0x1E), '
+        'p13 table-set select). Band b = 1..6 from p9 thresholds 0x2800/0x3C00/0x5000/0x6400/0x7800. Thresholds t1..t4 = T_set_gear(b, 1..4) '
+        '(or T_02C20C(vehicle speed) when p7 set); counter FEBAA0 (out FFFF0A..) is 0 or previous + 1 per execution and the stage '
+        '(0..4) = number of thresholds reached (direct comparisons). 0x7FB7C is reached only from the 10 ms task 0x152A40 (OS alarm 4 -> '
+        'task 8, cycle 10 x 1 ms tick; timers.py), so the tables are times: s = x*0.01. ')
+_SEC = ('s', 'x*0.01', 'x/0.01', '0.00')
+_BAX = {'0': dict(name='Engine Speed Band (1-6)', units='band', expr='x', to_byte='x'), '1': dict(name='Stage', units='stage', expr='x', to_byte='x')}
+for d, g in ((0x2C218, '1'), (0x2C22C, '2'), (0x2C290, '3'), (0x2C2A4, '4'), (0x2C2B8, '5'), (0x2C2CC, '6'), (0x2C2E0, '7')):
+    add(d, f'Staged Timer Thresholds, set A (gear {g}) [0x7FB7C]', 'Timers', _fb7 + 'Set A = p13 set.', _SEC, axes=_BAX)
+for d, g in ((0x2C2F4, '1'), (0x2C308, '2'), (0x2C31C, '3'), (0x2C240, '4'), (0x2C254, '5'), (0x2C268, '6'), (0x2C27C, '7')):
+    add(d, f'Staged Timer Thresholds, set B (gear {g}) [0x7FB7C]', 'Timers', _fb7 + 'Set B = p13 clear (only stages 1-3 and 4 used).', _SEC, axes=_BAX)
+add(0x2C20C, 'Staged Timer Threshold vs Vehicle Speed [0x7FB7C]', 'Timers', _fb7 + 'T_02C20C(vehicle speed) replaces all thresholds when p7 is set.', _SEC)
+
+_ab08 = ('0xAAB08 (from idle 0xA8230, call 0xA9172; p5 FFFF0423, p6 Coolant FFFEEEDE): counter FEC48E = 0, or +1 on every call while FEC486 is set; '
+         'it is compared directly with T_02DD00 (u <= counter: multiply by T_02DD50) and T_02DD3C (T_02DD3C <= counter < T_02DD00: ramp phase). '
+         '0xA8230 runs from the 10 ms task 0x152A40 via 0x49E70 (OS alarm 4 -> task 8, cycle 10 x 1 ms tick; see timers.py); in application '
+         'mode 2 it is also run every 20 ms via 0x153B4E. s = x*0.01 for the engine-running mode. ')
+_AX423 = {'1': dict(name='Coolant Temperature (filtered, word)', units='C', expr='x*5/2048-40', to_byte='(x+40)*2048/5')}
+add(0x2DD00, 'Idle Phase End Time (FFFF0423 x Coolant) [0xAAB08]', 'Idle Speed Control', _ab08, ('s', 'x*0.01', 'x/0.01', '0.00'), axes=_AX423)
+add(0x2DD3C, 'Idle Phase Ramp Start Time (FFFF0423 x Coolant) [0xAAB08]', 'Idle Speed Control', _ab08, ('s', 'x*0.01', 'x/0.01', '0.00'), axes=_AX423)
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

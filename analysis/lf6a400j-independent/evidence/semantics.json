@@ -645,6 +645,397 @@
    "format": "0.000"
   }
  },
+ "0x2C20C": {
+  "status": "identified",
+  "name": "Staged Timer Threshold vs Vehicle Speed [0x7FB7C]",
+  "category": "Timers",
+  "evidence": "0x7FB7C (from 0x82FA0, call 0x83AF2; p8 Vehicle Speed FFFEF0DA, p9 rpm FFFF2ADA, p10 gear FFFEF51A clamped 1..6 (7 when p11 > 0x1E), p13 table-set select). Band b = 1..6 from p9 thresholds 0x2800/0x3C00/0x5000/0x6400/0x7800. Thresholds t1..t4 = T_set_gear(b, 1..4) (or T_02C20C(vehicle speed) when p7 set); counter FEBAA0 (out FFFF0A..) is 0 or previous + 1 per execution and the stage (0..4) = number of thresholds reached (direct comparisons). 0x7FB7C is reached only from the 10 ms task 0x152A40 (OS alarm 4 -> task 8, cycle 10 x 1 ms tick; timers.py), so the tables are times: s = x*0.01. T_02C20C(vehicle speed) replaces all thresholds when p7 is set.",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.01",
+   "to_byte": "x/0.01",
+   "format": "0.00"
+  }
+ },
+ "0x2C218": {
+  "status": "identified",
+  "name": "Staged Timer Thresholds, set A (gear 1) [0x7FB7C]",
+  "category": "Timers",
+  "evidence": "0x7FB7C (from 0x82FA0, call 0x83AF2; p8 Vehicle Speed FFFEF0DA, p9 rpm FFFF2ADA, p10 gear FFFEF51A clamped 1..6 (7 when p11 > 0x1E), p13 table-set select). Band b = 1..6 from p9 thresholds 0x2800/0x3C00/0x5000/0x6400/0x7800. Thresholds t1..t4 = T_set_gear(b, 1..4) (or T_02C20C(vehicle speed) when p7 set); counter FEBAA0 (out FFFF0A..) is 0 or previous + 1 per execution and the stage (0..4) = number of thresholds reached (direct comparisons). 0x7FB7C is reached only from the 10 ms task 0x152A40 (OS alarm 4 -> task 8, cycle 10 x 1 ms tick; timers.py), so the tables are times: s = x*0.01. Set A = p13 set.",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.01",
+   "to_byte": "x/0.01",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed Band (1-6)",
+    "units": "band",
+    "expr": "x",
+    "to_byte": "x"
+   },
+   "1": {
+    "name": "Stage",
+    "units": "stage",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x2C22C": {
+  "status": "identified",
+  "name": "Staged Timer Thresholds, set A (gear 2) [0x7FB7C]",
+  "category": "Timers",
+  "evidence": "0x7FB7C (from 0x82FA0, call 0x83AF2; p8 Vehicle Speed FFFEF0DA, p9 rpm FFFF2ADA, p10 gear FFFEF51A clamped 1..6 (7 when p11 > 0x1E), p13 table-set select). Band b = 1..6 from p9 thresholds 0x2800/0x3C00/0x5000/0x6400/0x7800. Thresholds t1..t4 = T_set_gear(b, 1..4) (or T_02C20C(vehicle speed) when p7 set); counter FEBAA0 (out FFFF0A..) is 0 or previous + 1 per execution and the stage (0..4) = number of thresholds reached (direct comparisons). 0x7FB7C is reached only from the 10 ms task 0x152A40 (OS alarm 4 -> task 8, cycle 10 x 1 ms tick; timers.py), so the tables are times: s = x*0.01. Set A = p13 set.",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.01",
+   "to_byte": "x/0.01",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed Band (1-6)",
+    "units": "band",
+    "expr": "x",
+    "to_byte": "x"
+   },
+   "1": {
+    "name": "Stage",
+    "units": "stage",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x2C240": {
+  "status": "identified",
+  "name": "Staged Timer Thresholds, set B (gear 4) [0x7FB7C]",
+  "category": "Timers",
+  "evidence": "0x7FB7C (from 0x82FA0, call 0x83AF2; p8 Vehicle Speed FFFEF0DA, p9 rpm FFFF2ADA, p10 gear FFFEF51A clamped 1..6 (7 when p11 > 0x1E), p13 table-set select). Band b = 1..6 from p9 thresholds 0x2800/0x3C00/0x5000/0x6400/0x7800. Thresholds t1..t4 = T_set_gear(b, 1..4) (or T_02C20C(vehicle speed) when p7 set); counter FEBAA0 (out FFFF0A..) is 0 or previous + 1 per execution and the stage (0..4) = number of thresholds reached (direct comparisons). 0x7FB7C is reached only from the 10 ms task 0x152A40 (OS alarm 4 -> task 8, cycle 10 x 1 ms tick; timers.py), so the tables are times: s = x*0.01. Set B = p13 clear (only stages 1-3 and 4 used).",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.01",
+   "to_byte": "x/0.01",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed Band (1-6)",
+    "units": "band",
+    "expr": "x",
+    "to_byte": "x"
+   },
+   "1": {
+    "name": "Stage",
+    "units": "stage",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x2C254": {
+  "status": "identified",
+  "name": "Staged Timer Thresholds, set B (gear 5) [0x7FB7C]",
+  "category": "Timers",
+  "evidence": "0x7FB7C (from 0x82FA0, call 0x83AF2; p8 Vehicle Speed FFFEF0DA, p9 rpm FFFF2ADA, p10 gear FFFEF51A clamped 1..6 (7 when p11 > 0x1E), p13 table-set select). Band b = 1..6 from p9 thresholds 0x2800/0x3C00/0x5000/0x6400/0x7800. Thresholds t1..t4 = T_set_gear(b, 1..4) (or T_02C20C(vehicle speed) when p7 set); counter FEBAA0 (out FFFF0A..) is 0 or previous + 1 per execution and the stage (0..4) = number of thresholds reached (direct comparisons). 0x7FB7C is reached only from the 10 ms task 0x152A40 (OS alarm 4 -> task 8, cycle 10 x 1 ms tick; timers.py), so the tables are times: s = x*0.01. Set B = p13 clear (only stages 1-3 and 4 used).",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.01",
+   "to_byte": "x/0.01",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed Band (1-6)",
+    "units": "band",
+    "expr": "x",
+    "to_byte": "x"
+   },
+   "1": {
+    "name": "Stage",
+    "units": "stage",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x2C268": {
+  "status": "identified",
+  "name": "Staged Timer Thresholds, set B (gear 6) [0x7FB7C]",
+  "category": "Timers",
+  "evidence": "0x7FB7C (from 0x82FA0, call 0x83AF2; p8 Vehicle Speed FFFEF0DA, p9 rpm FFFF2ADA, p10 gear FFFEF51A clamped 1..6 (7 when p11 > 0x1E), p13 table-set select). Band b = 1..6 from p9 thresholds 0x2800/0x3C00/0x5000/0x6400/0x7800. Thresholds t1..t4 = T_set_gear(b, 1..4) (or T_02C20C(vehicle speed) when p7 set); counter FEBAA0 (out FFFF0A..) is 0 or previous + 1 per execution and the stage (0..4) = number of thresholds reached (direct comparisons). 0x7FB7C is reached only from the 10 ms task 0x152A40 (OS alarm 4 -> task 8, cycle 10 x 1 ms tick; timers.py), so the tables are times: s = x*0.01. Set B = p13 clear (only stages 1-3 and 4 used).",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.01",
+   "to_byte": "x/0.01",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed Band (1-6)",
+    "units": "band",
+    "expr": "x",
+    "to_byte": "x"
+   },
+   "1": {
+    "name": "Stage",
+    "units": "stage",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x2C27C": {
+  "status": "identified",
+  "name": "Staged Timer Thresholds, set B (gear 7) [0x7FB7C]",
+  "category": "Timers",
+  "evidence": "0x7FB7C (from 0x82FA0, call 0x83AF2; p8 Vehicle Speed FFFEF0DA, p9 rpm FFFF2ADA, p10 gear FFFEF51A clamped 1..6 (7 when p11 > 0x1E), p13 table-set select). Band b = 1..6 from p9 thresholds 0x2800/0x3C00/0x5000/0x6400/0x7800. Thresholds t1..t4 = T_set_gear(b, 1..4) (or T_02C20C(vehicle speed) when p7 set); counter FEBAA0 (out FFFF0A..) is 0 or previous + 1 per execution and the stage (0..4) = number of thresholds reached (direct comparisons). 0x7FB7C is reached only from the 10 ms task 0x152A40 (OS alarm 4 -> task 8, cycle 10 x 1 ms tick; timers.py), so the tables are times: s = x*0.01. Set B = p13 clear (only stages 1-3 and 4 used).",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.01",
+   "to_byte": "x/0.01",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed Band (1-6)",
+    "units": "band",
+    "expr": "x",
+    "to_byte": "x"
+   },
+   "1": {
+    "name": "Stage",
+    "units": "stage",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x2C290": {
+  "status": "identified",
+  "name": "Staged Timer Thresholds, set A (gear 3) [0x7FB7C]",
+  "category": "Timers",
+  "evidence": "0x7FB7C (from 0x82FA0, call 0x83AF2; p8 Vehicle Speed FFFEF0DA, p9 rpm FFFF2ADA, p10 gear FFFEF51A clamped 1..6 (7 when p11 > 0x1E), p13 table-set select). Band b = 1..6 from p9 thresholds 0x2800/0x3C00/0x5000/0x6400/0x7800. Thresholds t1..t4 = T_set_gear(b, 1..4) (or T_02C20C(vehicle speed) when p7 set); counter FEBAA0 (out FFFF0A..) is 0 or previous + 1 per execution and the stage (0..4) = number of thresholds reached (direct comparisons). 0x7FB7C is reached only from the 10 ms task 0x152A40 (OS alarm 4 -> task 8, cycle 10 x 1 ms tick; timers.py), so the tables are times: s = x*0.01. Set A = p13 set.",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.01",
+   "to_byte": "x/0.01",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed Band (1-6)",
+    "units": "band",
+    "expr": "x",
+    "to_byte": "x"
+   },
+   "1": {
+    "name": "Stage",
+    "units": "stage",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x2C2A4": {
+  "status": "identified",
+  "name": "Staged Timer Thresholds, set A (gear 4) [0x7FB7C]",
+  "category": "Timers",
+  "evidence": "0x7FB7C (from 0x82FA0, call 0x83AF2; p8 Vehicle Speed FFFEF0DA, p9 rpm FFFF2ADA, p10 gear FFFEF51A clamped 1..6 (7 when p11 > 0x1E), p13 table-set select). Band b = 1..6 from p9 thresholds 0x2800/0x3C00/0x5000/0x6400/0x7800. Thresholds t1..t4 = T_set_gear(b, 1..4) (or T_02C20C(vehicle speed) when p7 set); counter FEBAA0 (out FFFF0A..) is 0 or previous + 1 per execution and the stage (0..4) = number of thresholds reached (direct comparisons). 0x7FB7C is reached only from the 10 ms task 0x152A40 (OS alarm 4 -> task 8, cycle 10 x 1 ms tick; timers.py), so the tables are times: s = x*0.01. Set A = p13 set.",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.01",
+   "to_byte": "x/0.01",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed Band (1-6)",
+    "units": "band",
+    "expr": "x",
+    "to_byte": "x"
+   },
+   "1": {
+    "name": "Stage",
+    "units": "stage",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x2C2B8": {
+  "status": "identified",
+  "name": "Staged Timer Thresholds, set A (gear 5) [0x7FB7C]",
+  "category": "Timers",
+  "evidence": "0x7FB7C (from 0x82FA0, call 0x83AF2; p8 Vehicle Speed FFFEF0DA, p9 rpm FFFF2ADA, p10 gear FFFEF51A clamped 1..6 (7 when p11 > 0x1E), p13 table-set select). Band b = 1..6 from p9 thresholds 0x2800/0x3C00/0x5000/0x6400/0x7800. Thresholds t1..t4 = T_set_gear(b, 1..4) (or T_02C20C(vehicle speed) when p7 set); counter FEBAA0 (out FFFF0A..) is 0 or previous + 1 per execution and the stage (0..4) = number of thresholds reached (direct comparisons). 0x7FB7C is reached only from the 10 ms task 0x152A40 (OS alarm 4 -> task 8, cycle 10 x 1 ms tick; timers.py), so the tables are times: s = x*0.01. Set A = p13 set.",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.01",
+   "to_byte": "x/0.01",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed Band (1-6)",
+    "units": "band",
+    "expr": "x",
+    "to_byte": "x"
+   },
+   "1": {
+    "name": "Stage",
+    "units": "stage",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x2C2CC": {
+  "status": "identified",
+  "name": "Staged Timer Thresholds, set A (gear 6) [0x7FB7C]",
+  "category": "Timers",
+  "evidence": "0x7FB7C (from 0x82FA0, call 0x83AF2; p8 Vehicle Speed FFFEF0DA, p9 rpm FFFF2ADA, p10 gear FFFEF51A clamped 1..6 (7 when p11 > 0x1E), p13 table-set select). Band b = 1..6 from p9 thresholds 0x2800/0x3C00/0x5000/0x6400/0x7800. Thresholds t1..t4 = T_set_gear(b, 1..4) (or T_02C20C(vehicle speed) when p7 set); counter FEBAA0 (out FFFF0A..) is 0 or previous + 1 per execution and the stage (0..4) = number of thresholds reached (direct comparisons). 0x7FB7C is reached only from the 10 ms task 0x152A40 (OS alarm 4 -> task 8, cycle 10 x 1 ms tick; timers.py), so the tables are times: s = x*0.01. Set A = p13 set.",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.01",
+   "to_byte": "x/0.01",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed Band (1-6)",
+    "units": "band",
+    "expr": "x",
+    "to_byte": "x"
+   },
+   "1": {
+    "name": "Stage",
+    "units": "stage",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x2C2E0": {
+  "status": "identified",
+  "name": "Staged Timer Thresholds, set A (gear 7) [0x7FB7C]",
+  "category": "Timers",
+  "evidence": "0x7FB7C (from 0x82FA0, call 0x83AF2; p8 Vehicle Speed FFFEF0DA, p9 rpm FFFF2ADA, p10 gear FFFEF51A clamped 1..6 (7 when p11 > 0x1E), p13 table-set select). Band b = 1..6 from p9 thresholds 0x2800/0x3C00/0x5000/0x6400/0x7800. Thresholds t1..t4 = T_set_gear(b, 1..4) (or T_02C20C(vehicle speed) when p7 set); counter FEBAA0 (out FFFF0A..) is 0 or previous + 1 per execution and the stage (0..4) = number of thresholds reached (direct comparisons). 0x7FB7C is reached only from the 10 ms task 0x152A40 (OS alarm 4 -> task 8, cycle 10 x 1 ms tick; timers.py), so the tables are times: s = x*0.01. Set A = p13 set.",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.01",
+   "to_byte": "x/0.01",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed Band (1-6)",
+    "units": "band",
+    "expr": "x",
+    "to_byte": "x"
+   },
+   "1": {
+    "name": "Stage",
+    "units": "stage",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x2C2F4": {
+  "status": "identified",
+  "name": "Staged Timer Thresholds, set B (gear 1) [0x7FB7C]",
+  "category": "Timers",
+  "evidence": "0x7FB7C (from 0x82FA0, call 0x83AF2; p8 Vehicle Speed FFFEF0DA, p9 rpm FFFF2ADA, p10 gear FFFEF51A clamped 1..6 (7 when p11 > 0x1E), p13 table-set select). Band b = 1..6 from p9 thresholds 0x2800/0x3C00/0x5000/0x6400/0x7800. Thresholds t1..t4 = T_set_gear(b, 1..4) (or T_02C20C(vehicle speed) when p7 set); counter FEBAA0 (out FFFF0A..) is 0 or previous + 1 per execution and the stage (0..4) = number of thresholds reached (direct comparisons). 0x7FB7C is reached only from the 10 ms task 0x152A40 (OS alarm 4 -> task 8, cycle 10 x 1 ms tick; timers.py), so the tables are times: s = x*0.01. Set B = p13 clear (only stages 1-3 and 4 used).",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.01",
+   "to_byte": "x/0.01",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed Band (1-6)",
+    "units": "band",
+    "expr": "x",
+    "to_byte": "x"
+   },
+   "1": {
+    "name": "Stage",
+    "units": "stage",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x2C308": {
+  "status": "identified",
+  "name": "Staged Timer Thresholds, set B (gear 2) [0x7FB7C]",
+  "category": "Timers",
+  "evidence": "0x7FB7C (from 0x82FA0, call 0x83AF2; p8 Vehicle Speed FFFEF0DA, p9 rpm FFFF2ADA, p10 gear FFFEF51A clamped 1..6 (7 when p11 > 0x1E), p13 table-set select). Band b = 1..6 from p9 thresholds 0x2800/0x3C00/0x5000/0x6400/0x7800. Thresholds t1..t4 = T_set_gear(b, 1..4) (or T_02C20C(vehicle speed) when p7 set); counter FEBAA0 (out FFFF0A..) is 0 or previous + 1 per execution and the stage (0..4) = number of thresholds reached (direct comparisons). 0x7FB7C is reached only from the 10 ms task 0x152A40 (OS alarm 4 -> task 8, cycle 10 x 1 ms tick; timers.py), so the tables are times: s = x*0.01. Set B = p13 clear (only stages 1-3 and 4 used).",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.01",
+   "to_byte": "x/0.01",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed Band (1-6)",
+    "units": "band",
+    "expr": "x",
+    "to_byte": "x"
+   },
+   "1": {
+    "name": "Stage",
+    "units": "stage",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x2C31C": {
+  "status": "identified",
+  "name": "Staged Timer Thresholds, set B (gear 3) [0x7FB7C]",
+  "category": "Timers",
+  "evidence": "0x7FB7C (from 0x82FA0, call 0x83AF2; p8 Vehicle Speed FFFEF0DA, p9 rpm FFFF2ADA, p10 gear FFFEF51A clamped 1..6 (7 when p11 > 0x1E), p13 table-set select). Band b = 1..6 from p9 thresholds 0x2800/0x3C00/0x5000/0x6400/0x7800. Thresholds t1..t4 = T_set_gear(b, 1..4) (or T_02C20C(vehicle speed) when p7 set); counter FEBAA0 (out FFFF0A..) is 0 or previous + 1 per execution and the stage (0..4) = number of thresholds reached (direct comparisons). 0x7FB7C is reached only from the 10 ms task 0x152A40 (OS alarm 4 -> task 8, cycle 10 x 1 ms tick; timers.py), so the tables are times: s = x*0.01. Set B = p13 clear (only stages 1-3 and 4 used).",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.01",
+   "to_byte": "x/0.01",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed Band (1-6)",
+    "units": "band",
+    "expr": "x",
+    "to_byte": "x"
+   },
+   "1": {
+    "name": "Stage",
+    "units": "stage",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
  "0x2C360": {
   "status": "identified",
   "name": "Speed Feedback Torque Correction vs RPM Error [-> 0A18]",
@@ -4985,6 +5376,48 @@
    "expr": "x*0.01",
    "to_byte": "x/0.01",
    "format": "0.00"
+  }
+ },
+ "0x2DD00": {
+  "status": "identified",
+  "name": "Idle Phase End Time (FFFF0423 x Coolant) [0xAAB08]",
+  "category": "Idle Speed Control",
+  "evidence": "0xAAB08 (from idle 0xA8230, call 0xA9172; p5 FFFF0423, p6 Coolant FFFEEEDE): counter FEC48E = 0, or +1 on every call while FEC486 is set; it is compared directly with T_02DD00 (u <= counter: multiply by T_02DD50) and T_02DD3C (T_02DD3C <= counter < T_02DD00: ramp phase). 0xA8230 runs from the 10 ms task 0x152A40 via 0x49E70 (OS alarm 4 -> task 8, cycle 10 x 1 ms tick; see timers.py); in application mode 2 it is also run every 20 ms via 0x153B4E. s = x*0.01 for the engine-running mode. ",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.01",
+   "to_byte": "x/0.01",
+   "format": "0.00"
+  },
+  "axes": {
+   "1": {
+    "name": "Coolant Temperature (filtered, word)",
+    "units": "C",
+    "expr": "x*5/2048-40",
+    "to_byte": "(x+40)*2048/5"
+   }
+  }
+ },
+ "0x2DD3C": {
+  "status": "identified",
+  "name": "Idle Phase Ramp Start Time (FFFF0423 x Coolant) [0xAAB08]",
+  "category": "Idle Speed Control",
+  "evidence": "0xAAB08 (from idle 0xA8230, call 0xA9172; p5 FFFF0423, p6 Coolant FFFEEEDE): counter FEC48E = 0, or +1 on every call while FEC486 is set; it is compared directly with T_02DD00 (u <= counter: multiply by T_02DD50) and T_02DD3C (T_02DD3C <= counter < T_02DD00: ramp phase). 0xA8230 runs from the 10 ms task 0x152A40 via 0x49E70 (OS alarm 4 -> task 8, cycle 10 x 1 ms tick; see timers.py); in application mode 2 it is also run every 20 ms via 0x153B4E. s = x*0.01 for the engine-running mode. ",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.01",
+   "to_byte": "x/0.01",
+   "format": "0.00"
+  },
+  "axes": {
+   "1": {
+    "name": "Coolant Temperature (filtered, word)",
+    "units": "C",
+    "expr": "x*5/2048-40",
+    "to_byte": "(x+40)*2048/5"
+   }
   }
  },
  "0x2DDF8": {

@@ -197,6 +197,9 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
   0x1511FE (table FFFF1BF0 {flag, offset, period}); its 80 ms figure was wrong and is no longer used. timers.py now requires every
   timed root reaching a function to agree on one period. The "task 7 has no time base" note above is superseded.
   New timer tables (3) and T_02D0B8/T_02D01C converted to seconds. Coverage 587 of 1284.
+- With the 10 ms period: 0x7FB7C staged timer thresholds (15 tables, s = x*0.01) and idle phase timers T_02DD00/T_02DD3C (0xAAB08).
+  timers.py accepts functions also reachable from application mode 2 (task 55 -> 0x153B4E, 20 ms) and notes it. Coverage 608 of 1284.
+  Next: convert the remaining counter tables in 0x152A40's tree by hand (idle 0xA5E18/0xA6A3C/0xA7970/0xA7260, misfire, torque).
 - Dead ends this session (documented so they are not repeated):
   * FFFF12C2 (axis of the pedal-limit T1 tables, compared with 12BE in the torque monitor): only a read literal (0xC50D0); writer not
     found by literal, GBR (+70 from 127C) or r0-offset searches.
