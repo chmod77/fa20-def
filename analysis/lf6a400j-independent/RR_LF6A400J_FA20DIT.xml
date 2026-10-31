@@ -2961,57 +2961,57 @@
         <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x16 [D02E648] (Engine Speed (byte, 25 rpm) x Coolant Temperature (filtered, word))" category="Unidentified - Task 0xBE0E8" storageaddress="15A74" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2E648. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
-      <table type="Y Axis" name="Engine Speed (byte, 25 rpm)" storageaddress="15FB6" elements="16" storagetype="uint8" endian="big" locked="true">
+    <table type="3D" name="Ignition Timing Term 0532 (RPM x Coolant, set A)" category="Ignition Timing" storageaddress="15A74" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2E648. Evidence: 0xBDD60 (from 0xBE0E8, call 0xBE512; p1 FFFF299C rpm/25, p2 FFFF0542, p3 FFFF0458, p4 FFFF0541, p7 Vehicle Speed FFFF65A1, p8 FFFF66B0, p9 Coolant FFFEEEDE, p10 FFFEEED4, p11 rpm, p12 load FFFF09B4, p13 FFFF049E; output p15 = r9(FFFF0458)+218 = FFFF0532). When p6 set, 65A1 != 0xFF and p14 set: x = Ta(rpm/25, coolant) + Tb(0542, coolant) + Tc(c1, coolant) + Td(c2, coolant) (signed int8 sum, saturated); with p14 clear the B set is used. c1 counts executions while FFFF66B0 == 3, c2 is a second execution counter. FFFF0532 = x when 0541 &lt; 2 (else 0458). 0x86B58 (0x87478): Ignition Timing 03D3 = 0532 when FFFF0530 == 2; 03D3 is 0.5 deg (0x88478 compares |03D3 - 046C|), so the sum and each term are 0.5 deg. " sizex="16" sizey="16">
+      <scaling units="deg" expression="x/2" to_byte="x*2" format="0.0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
+      <table type="Y Axis" name="Engine Speed (byte, 25 rpm)" storageaddress="15FB6" elements="16" storagetype="uint8" endian="big">
         <scaling units="rpm" expression="x*25" to_byte="x/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Coolant Temperature (filtered, word)" storageaddress="15FCE" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Coolant Temperature (filtered, word)" storageaddress="15FCE" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x16 [D02E65C] (Engine Speed (byte, 25 rpm) x Coolant Temperature (filtered, word))" category="Unidentified - Task 0xBE0E8" storageaddress="15B74" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2E65C. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
-      <table type="Y Axis" name="Engine Speed (byte, 25 rpm)" storageaddress="15FB6" elements="16" storagetype="uint8" endian="big" locked="true">
+    <table type="3D" name="Ignition Timing Term 0532 (RPM x Coolant, set B)" category="Ignition Timing" storageaddress="15B74" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2E65C. Evidence: 0xBDD60 (from 0xBE0E8, call 0xBE512; p1 FFFF299C rpm/25, p2 FFFF0542, p3 FFFF0458, p4 FFFF0541, p7 Vehicle Speed FFFF65A1, p8 FFFF66B0, p9 Coolant FFFEEEDE, p10 FFFEEED4, p11 rpm, p12 load FFFF09B4, p13 FFFF049E; output p15 = r9(FFFF0458)+218 = FFFF0532). When p6 set, 65A1 != 0xFF and p14 set: x = Ta(rpm/25, coolant) + Tb(0542, coolant) + Tc(c1, coolant) + Td(c2, coolant) (signed int8 sum, saturated); with p14 clear the B set is used. c1 counts executions while FFFF66B0 == 3, c2 is a second execution counter. FFFF0532 = x when 0541 &lt; 2 (else 0458). 0x86B58 (0x87478): Ignition Timing 03D3 = 0532 when FFFF0530 == 2; 03D3 is 0.5 deg (0x88478 compares |03D3 - 046C|), so the sum and each term are 0.5 deg. " sizex="16" sizey="16">
+      <scaling units="deg" expression="x/2" to_byte="x*2" format="0.0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
+      <table type="Y Axis" name="Engine Speed (byte, 25 rpm)" storageaddress="15FB6" elements="16" storagetype="uint8" endian="big">
         <scaling units="rpm" expression="x*25" to_byte="x/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Coolant Temperature (filtered, word)" storageaddress="15FCE" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Coolant Temperature (filtered, word)" storageaddress="15FCE" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 8x16 [D02E670] (? x Coolant Temperature (filtered, word))" category="Unidentified - Task 0xBE0E8" storageaddress="15C74" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2E670. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0542)" storageaddress="15FC6" elements="8" storagetype="uint8" endian="big" locked="true">
+    <table type="3D" name="Ignition Timing Term 0532 (FFFF0542 x Coolant, set A)" category="Ignition Timing" storageaddress="15C74" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2E670. Evidence: 0xBDD60 (from 0xBE0E8, call 0xBE512; p1 FFFF299C rpm/25, p2 FFFF0542, p3 FFFF0458, p4 FFFF0541, p7 Vehicle Speed FFFF65A1, p8 FFFF66B0, p9 Coolant FFFEEEDE, p10 FFFEEED4, p11 rpm, p12 load FFFF09B4, p13 FFFF049E; output p15 = r9(FFFF0458)+218 = FFFF0532). When p6 set, 65A1 != 0xFF and p14 set: x = Ta(rpm/25, coolant) + Tb(0542, coolant) + Tc(c1, coolant) + Td(c2, coolant) (signed int8 sum, saturated); with p14 clear the B set is used. c1 counts executions while FFFF66B0 == 3, c2 is a second execution counter. FFFF0532 = x when 0541 &lt; 2 (else 0458). 0x86B58 (0x87478): Ignition Timing 03D3 = 0532 when FFFF0530 == 2; 03D3 is 0.5 deg (0x88478 compares |03D3 - 046C|), so the sum and each term are 0.5 deg. " sizex="16" sizey="8">
+      <scaling units="deg" expression="x/2" to_byte="x*2" format="0.0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0542)" storageaddress="15FC6" elements="8" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Coolant Temperature (filtered, word)" storageaddress="15FCE" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Coolant Temperature (filtered, word)" storageaddress="15FCE" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 8x16 [D02E684] (? x Coolant Temperature (filtered, word))" category="Unidentified - Task 0xBE0E8" storageaddress="15CF4" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2E684. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0542)" storageaddress="15FC6" elements="8" storagetype="uint8" endian="big" locked="true">
+    <table type="3D" name="Ignition Timing Term 0532 (FFFF0542 x Coolant, set B)" category="Ignition Timing" storageaddress="15CF4" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2E684. Evidence: 0xBDD60 (from 0xBE0E8, call 0xBE512; p1 FFFF299C rpm/25, p2 FFFF0542, p3 FFFF0458, p4 FFFF0541, p7 Vehicle Speed FFFF65A1, p8 FFFF66B0, p9 Coolant FFFEEEDE, p10 FFFEEED4, p11 rpm, p12 load FFFF09B4, p13 FFFF049E; output p15 = r9(FFFF0458)+218 = FFFF0532). When p6 set, 65A1 != 0xFF and p14 set: x = Ta(rpm/25, coolant) + Tb(0542, coolant) + Tc(c1, coolant) + Td(c2, coolant) (signed int8 sum, saturated); with p14 clear the B set is used. c1 counts executions while FFFF66B0 == 3, c2 is a second execution counter. FFFF0532 = x when 0541 &lt; 2 (else 0458). 0x86B58 (0x87478): Ignition Timing 03D3 = 0532 when FFFF0530 == 2; 03D3 is 0.5 deg (0x88478 compares |03D3 - 046C|), so the sum and each term are 0.5 deg. " sizex="16" sizey="8">
+      <scaling units="deg" expression="x/2" to_byte="x*2" format="0.0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0542)" storageaddress="15FC6" elements="8" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Coolant Temperature (filtered, word)" storageaddress="15FCE" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Coolant Temperature (filtered, word)" storageaddress="15FCE" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x16 [D02E6C0] (? x Coolant Temperature (filtered, word))" category="Unidentified - Task 0xBE0E8" storageaddress="15D74" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2E6C0. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="15FEE" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Ignition Timing Term 0532 (Counter c1 x Coolant, set A)" category="Ignition Timing" storageaddress="15D74" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2E6C0. Evidence: 0xBDD60 (from 0xBE0E8, call 0xBE512; p1 FFFF299C rpm/25, p2 FFFF0542, p3 FFFF0458, p4 FFFF0541, p7 Vehicle Speed FFFF65A1, p8 FFFF66B0, p9 Coolant FFFEEEDE, p10 FFFEEED4, p11 rpm, p12 load FFFF09B4, p13 FFFF049E; output p15 = r9(FFFF0458)+218 = FFFF0532). When p6 set, 65A1 != 0xFF and p14 set: x = Ta(rpm/25, coolant) + Tb(0542, coolant) + Tc(c1, coolant) + Td(c2, coolant) (signed int8 sum, saturated); with p14 clear the B set is used. c1 counts executions while FFFF66B0 == 3, c2 is a second execution counter. FFFF0532 = x when 0541 &lt; 2 (else 0458). 0x86B58 (0x87478): Ignition Timing 03D3 = 0532 when FFFF0530 == 2; 03D3 is 0.5 deg (0x88478 compares |03D3 - 046C|), so the sum and each term are 0.5 deg. " sizex="16" sizey="16">
+      <scaling units="deg" expression="x/2" to_byte="x*2" format="0.0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="15FEE" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Coolant Temperature (filtered, word)" storageaddress="15FCE" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Coolant Temperature (filtered, word)" storageaddress="15FCE" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x16 [D02E6D4] (? x Coolant Temperature (filtered, word))" category="Unidentified - Task 0xBE0E8" storageaddress="15E74" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2E6D4. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="15FEE" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Ignition Timing Term 0532 (Counter c1 x Coolant, set B)" category="Ignition Timing" storageaddress="15E74" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2E6D4. Evidence: 0xBDD60 (from 0xBE0E8, call 0xBE512; p1 FFFF299C rpm/25, p2 FFFF0542, p3 FFFF0458, p4 FFFF0541, p7 Vehicle Speed FFFF65A1, p8 FFFF66B0, p9 Coolant FFFEEEDE, p10 FFFEEED4, p11 rpm, p12 load FFFF09B4, p13 FFFF049E; output p15 = r9(FFFF0458)+218 = FFFF0532). When p6 set, 65A1 != 0xFF and p14 set: x = Ta(rpm/25, coolant) + Tb(0542, coolant) + Tc(c1, coolant) + Td(c2, coolant) (signed int8 sum, saturated); with p14 clear the B set is used. c1 counts executions while FFFF66B0 == 3, c2 is a second execution counter. FFFF0532 = x when 0541 &lt; 2 (else 0458). 0x86B58 (0x87478): Ignition Timing 03D3 = 0532 when FFFF0530 == 2; 03D3 is 0.5 deg (0x88478 compares |03D3 - 046C|), so the sum and each term are 0.5 deg. " sizex="16" sizey="16">
+      <scaling units="deg" expression="x/2" to_byte="x*2" format="0.0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="15FEE" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Coolant Temperature (filtered, word)" storageaddress="15FCE" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Coolant Temperature (filtered, word)" storageaddress="15FCE" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -3063,21 +3063,21 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x16 [D02E6E8] (? x Coolant Temperature (filtered, word))" category="Unidentified - Task 0xBE0E8" storageaddress="162D2" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2E6E8. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="162B2" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Ignition Timing Term 0532 (Counter c2 x Coolant, set A)" category="Ignition Timing" storageaddress="162D2" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2E6E8. Evidence: 0xBDD60 (from 0xBE0E8, call 0xBE512; p1 FFFF299C rpm/25, p2 FFFF0542, p3 FFFF0458, p4 FFFF0541, p7 Vehicle Speed FFFF65A1, p8 FFFF66B0, p9 Coolant FFFEEEDE, p10 FFFEEED4, p11 rpm, p12 load FFFF09B4, p13 FFFF049E; output p15 = r9(FFFF0458)+218 = FFFF0532). When p6 set, 65A1 != 0xFF and p14 set: x = Ta(rpm/25, coolant) + Tb(0542, coolant) + Tc(c1, coolant) + Td(c2, coolant) (signed int8 sum, saturated); with p14 clear the B set is used. c1 counts executions while FFFF66B0 == 3, c2 is a second execution counter. FFFF0532 = x when 0541 &lt; 2 (else 0458). 0x86B58 (0x87478): Ignition Timing 03D3 = 0532 when FFFF0530 == 2; 03D3 is 0.5 deg (0x88478 compares |03D3 - 046C|), so the sum and each term are 0.5 deg. " sizex="16" sizey="16">
+      <scaling units="deg" expression="x/2" to_byte="x*2" format="0.0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="162B2" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x16 [D02E6FC] (? x Coolant Temperature (filtered, word))" category="Unidentified - Task 0xBE0E8" storageaddress="163F2" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2E6FC. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="163D2" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Ignition Timing Term 0532 (Counter c2 x Coolant, set B)" category="Ignition Timing" storageaddress="163F2" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2E6FC. Evidence: 0xBDD60 (from 0xBE0E8, call 0xBE512; p1 FFFF299C rpm/25, p2 FFFF0542, p3 FFFF0458, p4 FFFF0541, p7 Vehicle Speed FFFF65A1, p8 FFFF66B0, p9 Coolant FFFEEEDE, p10 FFFEEED4, p11 rpm, p12 load FFFF09B4, p13 FFFF049E; output p15 = r9(FFFF0458)+218 = FFFF0532). When p6 set, 65A1 != 0xFF and p14 set: x = Ta(rpm/25, coolant) + Tb(0542, coolant) + Tc(c1, coolant) + Td(c2, coolant) (signed int8 sum, saturated); with p14 clear the B set is used. c1 counts executions while FFFF66B0 == 3, c2 is a second execution counter. FFFF0532 = x when 0541 &lt; 2 (else 0458). 0x86B58 (0x87478): Ignition Timing 03D3 = 0532 when FFFF0530 == 2; 03D3 is 0.5 deg (0x88478 compares |03D3 - 046C|), so the sum and each term are 0.5 deg. " sizex="16" sizey="16">
+      <scaling units="deg" expression="x/2" to_byte="x*2" format="0.0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="163D2" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>

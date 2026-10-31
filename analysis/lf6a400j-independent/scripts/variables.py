@@ -238,3 +238,8 @@ V2.update({
  0xFFFF12B0:('Torque 12B0','Nm','(x-16000)/80','x*80+16000','0x81394 (call 0x840B0): p2=12B0 replaced by p8=0A5C (Torque Ramp Target) when smaller, then compared with 0A5E'+_TQ),
  0xFFFF1282:('Accelerator Pedal Angle Limit','%','x*100/65280','x*65280/100','0x82C34: when FFFF03C6==0x18 and pedal FFFEEEF8 <= 1282, output = 1282 (else pedal): same unit as SSM 0x29 pedal'),
 })
+V2.update({
+ 0xFFFF0532:('Ignition Timing (0532 path)','deg','x/2','x*2','0x86B58: Ignition Timing 03D3 = 0532 when FFFF0530 == 2 (03D3 0.5 deg)'),
+ 0xFFFF0531:('Ignition Timing (0531 path)','deg','x/2','x*2','0x86B58: Ignition Timing 03D3 = 0531 when FFFF0530 == 0 (03D3 0.5 deg)'),
+ 0xFFFF0533:('Ignition Timing (0533 path)','deg','x/2','x*2','0x86B58: Ignition Timing 03D3 = 0533 when FFFF0530 == 3 (03D3 0.5 deg)'),
+})

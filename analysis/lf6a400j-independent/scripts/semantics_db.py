@@ -985,6 +985,19 @@ for d, v in ((0x2FA00, 'mode other, B=0'), (0x2FA14, 'mode 2, B=0'), (0x2FA28, '
     add(d, f'Accelerator Pedal Angle Limit (Torque x RPM, {v})', 'Driver Demand / Torque Request', _pl + 'This table is T2.', _PCT)
 
 
+# ---- ignition timing 0532 path 0xBDD60 (session 4)
+_532 = ('0xBDD60 (from 0xBE0E8, call 0xBE512; p1 FFFF299C rpm/25, p2 FFFF0542, p3 FFFF0458, p4 FFFF0541, p7 Vehicle Speed FFFF65A1, p8 FFFF66B0, '
+        'p9 Coolant FFFEEEDE, p10 FFFEEED4, p11 rpm, p12 load FFFF09B4, p13 FFFF049E; output p15 = r9(FFFF0458)+218 = FFFF0532). When '
+        'p6 set, 65A1 != 0xFF and p14 set: x = Ta(rpm/25, coolant) + Tb(0542, coolant) + Tc(c1, coolant) + Td(c2, coolant) (signed int8 sum, '
+        'saturated); with p14 clear the B set is used. c1 counts executions while FFFF66B0 == 3, c2 is a second execution counter. '
+        'FFFF0532 = x when 0541 < 2 (else 0458). 0x86B58 (0x87478): Ignition Timing 03D3 = 0532 when FFFF0530 == 2; 03D3 is 0.5 deg '
+        '(0x88478 compares |03D3 - 046C|), so the sum and each term are 0.5 deg. ')
+for d, nm, v in ((0x2E648, 'RPM x Coolant', 'A'), (0x2E670, 'FFFF0542 x Coolant', 'A'), (0x2E6C0, 'Counter c1 x Coolant', 'A'),
+                 (0x2E6E8, 'Counter c2 x Coolant', 'A'), (0x2E65C, 'RPM x Coolant', 'B'), (0x2E684, 'FFFF0542 x Coolant', 'B'),
+                 (0x2E6D4, 'Counter c1 x Coolant', 'B'), (0x2E6FC, 'Counter c2 x Coolant', 'B')):
+    add(d, f'Ignition Timing Term 0532 ({nm}, set {v})', IGN, _532, DEG2)
+
+
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
     print(len(S), 'entries')
