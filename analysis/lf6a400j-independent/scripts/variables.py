@@ -104,3 +104,10 @@ V2.update({
  0xFFFF09B4:('Engine Load','%','x/256','x*256','0x7E3F8: %=(airflow/2586*200000)/rpm, airflow FFFF169C=VE*rpm*P[Pa]/(287*(IAT+273)) (0xCFEDC; P from 0xCF8C8 in Pa: fallback FFFEE6F8*3.90625), VE FFFF16A4 = T_02ED10/T_02ED24/32768 (0xD025C) => %=VE*rho/1.293 g/L*100 (air density at 0 C, 101.325 kPa); stored *256'),
  0xFFFF03A0:('Engine Load','%','x','x','0x7E3E8: x = FFFF09B4>>8 (Engine Load %, x/256)'),
 })
+
+V2.update({
+ 0xFFFEF540:('Manifold Absolute Pressure (offset form)','kPa','x/256+13.3','(x-13.3)*256','0x14AE50: FFFF1FB2=(ADch0x12*0x13B>>8)-0x24EC vs MAP FFFF1FB8=(same)-0x17A0 (OBD PID0B kPa=x/256): offset 0xD4C=13.3*256; 0x153E70 FFFEF540=FFFF1FB2'),
+ 0xFFFF09BA:('Manifold Absolute Pressure (filtered, offset form)','kPa','x/256+13.3','(x-13.3)*256','0x7E298->0x7E4AC(param_2=1): filtered FFFEF540; alt. branch encodes Pa as (kPa*256-3404.8)'),
+ 0xFFFF0E56:('Target Boost (absolute, offset form)','kPa','x/256+13.3','(x-13.3)*256','0xBD7C4: target=(T_02E5F4+3404)*FFFF0E58/32768-3404 (FFFF0E58 comp. multiplier); 0xBD300: error = this - FFFF09BA'),
+ 0xFFFF0E2E:('Wastegate Duty (pre-check)','%','x/256','x*256','0xBDA84: FFFF0E5E (SSM 0x30) = this in normal mode'),
+})

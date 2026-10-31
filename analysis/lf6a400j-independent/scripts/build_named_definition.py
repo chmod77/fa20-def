@@ -108,7 +108,7 @@ def build(rid, path, sha):
             axes_out.append((i, ax, nm, units, ex, tb))
         dimtxt = 'x'.join(map(str, dims))
         if sem and sem.get('name'):
-            name = sem['name']
+            name = sem['name'] + ('' if ident else ' [output units unresolved]')
         else:
             name = f'Unidentified {dimtxt} [D{d0:06X}]' + (f' ({" x ".join(axnames)})' if any(a != '?' for a in axnames) else '')
         cat = (sem or {}).get('category') or 'Unidentified (raw layout)'

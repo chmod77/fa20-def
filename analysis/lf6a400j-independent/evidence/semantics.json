@@ -1,4 +1,301 @@
 {
+ "0x2C998": {
+  "status": "identified",
+  "name": "Base Ignition Timing (flags 04F4.7=1, 054A.4=0)",
+  "category": "Ignition Timing",
+  "evidence": "0x86758: FFFF03D1 = map(FFFF2994 rpm, FFFF09B4 load) + FFFF049C + FFFF049B; selected by flags FFFF04F4.7 / FFFF054A.4 (0x87478 passes (04F4&0x80)!=0, (054A&0x10)!=0). 03D1 flows in 0.5 deg units to Ignition Total Timing FFFF046C (0x9B384 -> 0x9B4B4 -> 0x99558 -> 0x98FAC), SSM 0x11 deg=x/2.",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "x/2",
+   "to_byte": "x*2",
+   "format": "0.0"
+  }
+ },
+ "0x2C9AC": {
+  "status": "identified",
+  "name": "Base Ignition Timing (flags 04F4.7=1, 054A.4=1)",
+  "category": "Ignition Timing",
+  "evidence": "0x86758: FFFF03D1 = map(FFFF2994 rpm, FFFF09B4 load) + FFFF049C + FFFF049B; selected by flags FFFF04F4.7 / FFFF054A.4 (0x87478 passes (04F4&0x80)!=0, (054A&0x10)!=0). 03D1 flows in 0.5 deg units to Ignition Total Timing FFFF046C (0x9B384 -> 0x9B4B4 -> 0x99558 -> 0x98FAC), SSM 0x11 deg=x/2.",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "x/2",
+   "to_byte": "x*2",
+   "format": "0.0"
+  }
+ },
+ "0x2C9C0": {
+  "status": "identified",
+  "name": "Base Ignition Timing (flags 04F4.7=0, 054A.4=0)",
+  "category": "Ignition Timing",
+  "evidence": "0x86758: FFFF03D1 = map(FFFF2994 rpm, FFFF09B4 load) + FFFF049C + FFFF049B; selected by flags FFFF04F4.7 / FFFF054A.4 (0x87478 passes (04F4&0x80)!=0, (054A&0x10)!=0). 03D1 flows in 0.5 deg units to Ignition Total Timing FFFF046C (0x9B384 -> 0x9B4B4 -> 0x99558 -> 0x98FAC), SSM 0x11 deg=x/2.",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "x/2",
+   "to_byte": "x*2",
+   "format": "0.0"
+  }
+ },
+ "0x2C9D4": {
+  "status": "identified",
+  "name": "Base Ignition Timing (flags 04F4.7=0, 054A.4=1)",
+  "category": "Ignition Timing",
+  "evidence": "0x86758: FFFF03D1 = map(FFFF2994 rpm, FFFF09B4 load) + FFFF049C + FFFF049B; selected by flags FFFF04F4.7 / FFFF054A.4 (0x87478 passes (04F4&0x80)!=0, (054A&0x10)!=0). 03D1 flows in 0.5 deg units to Ignition Total Timing FFFF046C (0x9B384 -> 0x9B4B4 -> 0x99558 -> 0x98FAC), SSM 0x11 deg=x/2.",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "x/2",
+   "to_byte": "x*2",
+   "format": "0.0"
+  }
+ },
+ "0x2D5BC": {
+  "status": "identified",
+  "name": "Minimum Ignition Timing (Coolant)",
+  "category": "Ignition Timing",
+  "evidence": "0x98FAC: lower clamp of Ignition Total Timing FFFF046C (half-degrees) when FFFEE710.5 clear and 4 < FFFF29B4/4 < 81; input coolant FFFEEEDE; otherwise floor is -25 deg.",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "x/2",
+   "to_byte": "x*2",
+   "format": "0.0"
+  }
+ },
+ "0x2D5C8": {
+  "status": "identified",
+  "name": "Ignition Timing Compensation (Load x RPM, disabled)",
+  "category": "Ignition Timing",
+  "evidence": "0x99558: added to FFFF0473 (half-degrees) only if param_2!=0; caller 0x9CBF8 passes constant 0, so never applied in this ROM.",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "x/2",
+   "to_byte": "x*2",
+   "format": "0.0"
+  }
+ },
+ "0x2D5DC": {
+  "status": "identified",
+  "name": "Ignition Timing Compensation (RPM x Load, flag 056B.6)",
+  "category": "Ignition Timing",
+  "evidence": "0x99558: added to FFFF0473 as (x-32) half-degrees when FFFF056B.6 set (else 32 = neutral); inputs rpm FFFF2994, load FFFF09B4.",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "(x-32)/2",
+   "to_byte": "x*2+32",
+   "format": "0.0"
+  }
+ },
+ "0x2D8D4": {
+  "status": "identified",
+  "name": "Ignition Timing Retard (1st gear)",
+  "category": "Ignition Timing",
+  "evidence": "0x9D364: FFFF0494 = -(map*23/128) half-degrees (= map*23/256 deg retard) applied to Ignition Total Timing (0x98FAC); map selected by gear FFFF03AC (1:D8D4 2:D8E8 3:D8FC 4:D910 5:D924; D8FC also used for flagged states); active when rpm FFFF2994 >= 0x3800/0x3600 (2800/2637.5 rpm hysteresis) and load FFFF09B4 >= 0x4100/0x3200 (65/50 %).",
+  "description": "",
+  "data": {
+   "units": "deg retard",
+   "expr": "x*23/256",
+   "to_byte": "x*256/23",
+   "format": "0.00"
+  }
+ },
+ "0x2D8E8": {
+  "status": "identified",
+  "name": "Ignition Timing Retard (2nd gear)",
+  "category": "Ignition Timing",
+  "evidence": "0x9D364: FFFF0494 = -(map*23/128) half-degrees (= map*23/256 deg retard) applied to Ignition Total Timing (0x98FAC); map selected by gear FFFF03AC (1:D8D4 2:D8E8 3:D8FC 4:D910 5:D924; D8FC also used for flagged states); active when rpm FFFF2994 >= 0x3800/0x3600 (2800/2637.5 rpm hysteresis) and load FFFF09B4 >= 0x4100/0x3200 (65/50 %).",
+  "description": "",
+  "data": {
+   "units": "deg retard",
+   "expr": "x*23/256",
+   "to_byte": "x*256/23",
+   "format": "0.00"
+  }
+ },
+ "0x2D8FC": {
+  "status": "identified",
+  "name": "Ignition Timing Retard (3rd / default gear)",
+  "category": "Ignition Timing",
+  "evidence": "0x9D364: FFFF0494 = -(map*23/128) half-degrees (= map*23/256 deg retard) applied to Ignition Total Timing (0x98FAC); map selected by gear FFFF03AC (1:D8D4 2:D8E8 3:D8FC 4:D910 5:D924; D8FC also used for flagged states); active when rpm FFFF2994 >= 0x3800/0x3600 (2800/2637.5 rpm hysteresis) and load FFFF09B4 >= 0x4100/0x3200 (65/50 %).",
+  "description": "",
+  "data": {
+   "units": "deg retard",
+   "expr": "x*23/256",
+   "to_byte": "x*256/23",
+   "format": "0.00"
+  }
+ },
+ "0x2D910": {
+  "status": "identified",
+  "name": "Ignition Timing Retard (4th gear)",
+  "category": "Ignition Timing",
+  "evidence": "0x9D364: FFFF0494 = -(map*23/128) half-degrees (= map*23/256 deg retard) applied to Ignition Total Timing (0x98FAC); map selected by gear FFFF03AC (1:D8D4 2:D8E8 3:D8FC 4:D910 5:D924; D8FC also used for flagged states); active when rpm FFFF2994 >= 0x3800/0x3600 (2800/2637.5 rpm hysteresis) and load FFFF09B4 >= 0x4100/0x3200 (65/50 %).",
+  "description": "",
+  "data": {
+   "units": "deg retard",
+   "expr": "x*23/256",
+   "to_byte": "x*256/23",
+   "format": "0.00"
+  }
+ },
+ "0x2D924": {
+  "status": "identified",
+  "name": "Ignition Timing Retard (5th gear)",
+  "category": "Ignition Timing",
+  "evidence": "0x9D364: FFFF0494 = -(map*23/128) half-degrees (= map*23/256 deg retard) applied to Ignition Total Timing (0x98FAC); map selected by gear FFFF03AC (1:D8D4 2:D8E8 3:D8FC 4:D910 5:D924; D8FC also used for flagged states); active when rpm FFFF2994 >= 0x3800/0x3600 (2800/2637.5 rpm hysteresis) and load FFFF09B4 >= 0x4100/0x3200 (65/50 %).",
+  "description": "",
+  "data": {
+   "units": "deg retard",
+   "expr": "x*23/256",
+   "to_byte": "x*256/23",
+   "format": "0.00"
+  }
+ },
+ "0x2E588": {
+  "status": "identified",
+  "name": "Wastegate Duty Initial",
+  "category": "Boost Control - Wastegate",
+  "evidence": "0xBCF30: FFFF0E32 = T(rpm FFFF2994, FFFF0A62); 0xBD2AC: duty FFFF0E4E = FFFF0E32*FFFF0E5C/32768 + feedback FFFF0E50 -> WG duty FFFF0E5E (%=x/256).",
+  "description": "Y: engine speed; X: FFFF0A62 (torque-domain request, 16000 = zero; units unresolved).",
+  "data": {
+   "units": "%",
+   "expr": "x/256",
+   "to_byte": "x*256",
+   "format": "0.00"
+  }
+ },
+ "0x2E59C": {
+  "status": "identified",
+  "name": "Wastegate Duty Maximum",
+  "category": "Boost Control - Wastegate",
+  "evidence": "0xBD11C: FFFF0E42 = T(rpm, FFFF0A62)*FFFF0E5C/32768; 0xBD2AC caps FFFF0E4E at FFFF0E42 -> WG duty.",
+  "description": "X: FFFF0A62 (torque-domain request, units unresolved).",
+  "data": {
+   "units": "%",
+   "expr": "x/256",
+   "to_byte": "x*256",
+   "format": "0.00"
+  }
+ },
+ "0x2E5B0": {
+  "status": "identified",
+  "name": "Wastegate Feedback Activation Threshold (Target Boost, relative)",
+  "category": "Boost Control - Wastegate",
+  "evidence": "0xBD300: s = Target Boost FFFF0E56 - atmospheric FFFEE6AA + 0xD4D = target gauge pressure *256 (offset forms cancel); P/I feedback is zeroed unless s > T(rpm FFFF2994) (+0x6AA hysteresis) and rpm > 0x1400/0x1600 (1000/1100 rpm) and mode FFFF0520 allows.",
+  "description": "",
+  "data": {
+   "units": "kPa (relative)",
+   "expr": "x/256",
+   "to_byte": "x*256",
+   "format": "0.00"
+  }
+ },
+ "0x2E5BC": {
+  "status": "identified",
+  "name": "Wastegate Duty Integral Negative (Boost Error)",
+  "category": "Boost Control - Wastegate",
+  "evidence": "0xBD300: boost error e = Target Boost FFFF0E56 - MAP FFFF09BA (same offset encoding => kPa = x/256); integral step when e < 0 and duty >= 0x500; accumulator clamped at -0x5A00.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x/256",
+   "to_byte": "x*256",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Boost Error",
+    "units": "kPa",
+    "expr": "x/256",
+    "to_byte": "x*256"
+   }
+  }
+ },
+ "0x2E5C8": {
+  "status": "identified",
+  "name": "Wastegate Duty Integral Positive (Boost Error)",
+  "category": "Boost Control - Wastegate",
+  "evidence": "0xBD300: boost error e = Target Boost FFFF0E56 - MAP FFFF09BA (same offset encoding => kPa = x/256); integral step when e > 0xA9 (0.66 kPa) and duty below limit; accumulator clamped at 0x0A00.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x/256",
+   "to_byte": "x*256",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Boost Error",
+    "units": "kPa",
+    "expr": "x/256",
+    "to_byte": "x*256"
+   }
+  }
+ },
+ "0x2E5D4": {
+  "status": "identified",
+  "name": "Wastegate Duty Proportional (Boost Error)",
+  "category": "Boost Control - Wastegate",
+  "evidence": "0xBD300: boost error e = Target Boost FFFF0E56 - MAP FFFF09BA (same offset encoding => kPa = x/256); P term = T(e)*IATfactor>>7 -> feedback FFFF0E50 (duty, %=x/256).",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x/256",
+   "to_byte": "x*256",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Boost Error",
+    "units": "kPa",
+    "expr": "x/256",
+    "to_byte": "x*256"
+   }
+  }
+ },
+ "0x2E5E0": {
+  "status": "identified",
+  "name": "Target Boost Compensation (Atmospheric Pressure)",
+  "category": "Boost Control - Target",
+  "evidence": "0xBD7A0: FFFF052A = T(rpm, atmospheric FFFEE6AA); 0xBD8F4: FFFF0E58 = IATfactor*052A*2*FFFF0529>>7 multiplies Target Boost (0xBD7C4); 128 = 1.0.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/128",
+   "to_byte": "x*128/100",
+   "format": "0.0"
+  }
+ },
+ "0x2E5F4": {
+  "status": "identified",
+  "name": "Target Boost",
+  "category": "Boost Control - Target",
+  "evidence": "0xBD7C4: FFFF0E56 = (T + 0xD4C)*FFFF0E58/32768 - 0xD4C, compared against MAP FFFF09BA (kPa=x/256+13.3, A/D ch 0x12 offset form, 0x14AE50) in 0xBD300 boost-error feedback.",
+  "description": "X: FFFF0A62 (torque-domain request, units unresolved). Value before atmospheric/IAT compensation (FFFF0E58).",
+  "data": {
+   "units": "kPa absolute",
+   "expr": "x/256+13.3",
+   "to_byte": "(x-13.3)*256",
+   "format": "0.0"
+  }
+ },
+ "0x2E620": {
+  "status": "identified",
+  "name": "Wastegate Duty Compensation (Atmospheric Pressure)",
+  "category": "Boost Control - Wastegate",
+  "evidence": "0xBDA58: FFFF0E5A = T(rpm, atmospheric FFFEE6AA)<<8; 0xBDA04: FFFF0E5C = 0E5A*IATfactor>>7 multiplies WG Duty Initial and Maximum (0xBD2AC/0xBD11C); 128 = 1.0.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/128",
+   "to_byte": "x*128/100",
+   "format": "0.0"
+  }
+ },
  "0x2ED10": {
   "status": "identified",
   "name": "Volumetric Efficiency (Primary)",

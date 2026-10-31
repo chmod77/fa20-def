@@ -15,39 +15,39 @@
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 22x16 [D02C9C0] (Engine Speed x Engine Load)" category="Unidentified (raw layout)" storageaddress="80FC" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2C9C0. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="22">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="8680" elements="22" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Base Ignition Timing (flags 04F4.7=0, 054A.4=0)" category="Ignition Timing" storageaddress="80FC" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2C9C0. Evidence: 0x86758: FFFF03D1 = map(FFFF2994 rpm, FFFF09B4 load) + FFFF049C + FFFF049B; selected by flags FFFF04F4.7 / FFFF054A.4 (0x87478 passes (04F4&amp;0x80)!=0, (054A&amp;0x10)!=0). 03D1 flows in 0.5 deg units to Ignition Total Timing FFFF046C (0x9B384 -&gt; 0x9B4B4 -&gt; 0x99558 -&gt; 0x98FAC), SSM 0x11 deg=x/2." sizex="16" sizey="22">
+      <scaling units="deg" expression="x/2" to_byte="x*2" format="0.0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="8680" elements="22" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Load" storageaddress="86AC" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Engine Load" storageaddress="86AC" elements="16" storagetype="uint16" endian="big">
         <scaling units="%" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 22x16 [D02C9D4] (Engine Speed x Engine Load)" category="Unidentified (raw layout)" storageaddress="825C" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2C9D4. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="22">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="8680" elements="22" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Base Ignition Timing (flags 04F4.7=0, 054A.4=1)" category="Ignition Timing" storageaddress="825C" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2C9D4. Evidence: 0x86758: FFFF03D1 = map(FFFF2994 rpm, FFFF09B4 load) + FFFF049C + FFFF049B; selected by flags FFFF04F4.7 / FFFF054A.4 (0x87478 passes (04F4&amp;0x80)!=0, (054A&amp;0x10)!=0). 03D1 flows in 0.5 deg units to Ignition Total Timing FFFF046C (0x9B384 -&gt; 0x9B4B4 -&gt; 0x99558 -&gt; 0x98FAC), SSM 0x11 deg=x/2." sizex="16" sizey="22">
+      <scaling units="deg" expression="x/2" to_byte="x*2" format="0.0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="8680" elements="22" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Load" storageaddress="86AC" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Engine Load" storageaddress="86AC" elements="16" storagetype="uint16" endian="big">
         <scaling units="%" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 22x16 [D02C998] (Engine Speed x Engine Load)" category="Unidentified (raw layout)" storageaddress="83BC" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2C998. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="22">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="8680" elements="22" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Base Ignition Timing (flags 04F4.7=1, 054A.4=0)" category="Ignition Timing" storageaddress="83BC" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2C998. Evidence: 0x86758: FFFF03D1 = map(FFFF2994 rpm, FFFF09B4 load) + FFFF049C + FFFF049B; selected by flags FFFF04F4.7 / FFFF054A.4 (0x87478 passes (04F4&amp;0x80)!=0, (054A&amp;0x10)!=0). 03D1 flows in 0.5 deg units to Ignition Total Timing FFFF046C (0x9B384 -&gt; 0x9B4B4 -&gt; 0x99558 -&gt; 0x98FAC), SSM 0x11 deg=x/2." sizex="16" sizey="22">
+      <scaling units="deg" expression="x/2" to_byte="x*2" format="0.0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="8680" elements="22" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Load" storageaddress="86AC" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Engine Load" storageaddress="86AC" elements="16" storagetype="uint16" endian="big">
         <scaling units="%" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 22x16 [D02C9AC] (Engine Speed x Engine Load)" category="Unidentified (raw layout)" storageaddress="851C" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2C9AC. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="22">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="8680" elements="22" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Base Ignition Timing (flags 04F4.7=1, 054A.4=1)" category="Ignition Timing" storageaddress="851C" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2C9AC. Evidence: 0x86758: FFFF03D1 = map(FFFF2994 rpm, FFFF09B4 load) + FFFF049C + FFFF049B; selected by flags FFFF04F4.7 / FFFF054A.4 (0x87478 passes (04F4&amp;0x80)!=0, (054A&amp;0x10)!=0). 03D1 flows in 0.5 deg units to Ignition Total Timing FFFF046C (0x9B384 -&gt; 0x9B4B4 -&gt; 0x99558 -&gt; 0x98FAC), SSM 0x11 deg=x/2." sizex="16" sizey="22">
+      <scaling units="deg" expression="x/2" to_byte="x*2" format="0.0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="8680" elements="22" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Load" storageaddress="86AC" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Engine Load" storageaddress="86AC" elements="16" storagetype="uint16" endian="big">
         <scaling units="%" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -1743,13 +1743,13 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x16 [D02C7B4] (Engine Speed (OBD copy) x ?)" category="Unidentified (raw layout)" storageaddress="10E5C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C7B4. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="16">
+    <table type="3D" name="Unidentified 16x16 [D02C7B4] (Engine Speed (OBD copy) x Target Boost (absolute, offset form))" category="Unidentified (raw layout)" storageaddress="10E5C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C7B4. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="16">
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="10E1C" elements="16" storagetype="uint16" endian="big" locked="true">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2 (RAM 0xFFFF0E56)" storageaddress="10E3C" elements="16" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="X Axis" name="Target Boost (absolute, offset form)" storageaddress="10E3C" elements="16" storagetype="uint16" endian="big" locked="true">
+        <scaling units="kPa" expression="x/256+13.3" to_byte="(x-13.3)*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
     <table type="3D" name="Unidentified 6x4 [D02C218]" category="Unidentified (raw layout)" storageaddress="11072" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C218. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="4" sizey="6">
@@ -2772,49 +2772,49 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 13x14 [D02E588] (Engine Speed x ?)" category="Unidentified (raw layout)" storageaddress="14FF4" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E588. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="14" sizey="13">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="14FBE" elements="13" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Wastegate Duty Initial" category="Boost Control - Wastegate" storageaddress="14FF4" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E588. Y: engine speed; X: FFFF0A62 (torque-domain request, 16000 = zero; units unresolved). Evidence: 0xBCF30: FFFF0E32 = T(rpm FFFF2994, FFFF0A62); 0xBD2AC: duty FFFF0E4E = FFFF0E32*FFFF0E5C/32768 + feedback FFFF0E50 -&gt; WG duty FFFF0E5E (%=x/256)." sizex="14" sizey="13">
+      <scaling units="%" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="14FBE" elements="13" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2 (RAM 0xFFFF0A62)" storageaddress="14FD8" elements="14" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2 (RAM 0xFFFF0A62)" storageaddress="14FD8" elements="14" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 13x14 [D02E59C] (Engine Speed x ?)" category="Unidentified (raw layout)" storageaddress="15160" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E59C. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="14" sizey="13">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="14FBE" elements="13" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Wastegate Duty Maximum" category="Boost Control - Wastegate" storageaddress="15160" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E59C. X: FFFF0A62 (torque-domain request, units unresolved). Evidence: 0xBD11C: FFFF0E42 = T(rpm, FFFF0A62)*FFFF0E5C/32768; 0xBD2AC caps FFFF0E4E at FFFF0E42 -&gt; WG duty." sizex="14" sizey="13">
+      <scaling units="%" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="14FBE" elements="13" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2 (RAM 0xFFFF0A62)" storageaddress="14FD8" elements="14" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2 (RAM 0xFFFF0A62)" storageaddress="14FD8" elements="14" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 4x10 [D02E620] (Engine Speed x Atmospheric Pressure)" category="Unidentified (raw layout)" storageaddress="15308" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2E620. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="10" sizey="4">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="152EC" elements="4" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Wastegate Duty Compensation (Atmospheric Pressure)" category="Boost Control - Wastegate" storageaddress="15308" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2E620. Evidence: 0xBDA58: FFFF0E5A = T(rpm, atmospheric FFFEE6AA)&lt;&lt;8; 0xBDA04: FFFF0E5C = 0E5A*IATfactor&gt;&gt;7 multiplies WG Duty Initial and Maximum (0xBD2AC/0xBD11C); 128 = 1.0." sizex="10" sizey="4">
+      <scaling units="%" expression="x*100/128" to_byte="x*128/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="152EC" elements="4" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Atmospheric Pressure" storageaddress="152F4" elements="10" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Atmospheric Pressure" storageaddress="152F4" elements="10" storagetype="uint16" endian="big">
         <scaling units="kPa" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 9 [D02E5BC]" category="Unidentified (raw layout)" storageaddress="153A8" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2E5BC. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="9">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="15342" elements="9" storagetype="int16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+    <table type="2D" name="Wastegate Duty Integral Negative (Boost Error)" category="Boost Control - Wastegate" storageaddress="153A8" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2E5BC. Evidence: 0xBD300: boost error e = Target Boost FFFF0E56 - MAP FFFF09BA (same offset encoding =&gt; kPa = x/256); integral step when e &lt; 0 and duty &gt;= 0x500; accumulator clamped at -0x5A00." sizey="9">
+      <scaling units="%" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Boost Error" storageaddress="15342" elements="9" storagetype="int16" endian="big">
+        <scaling units="kPa" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 9 [D02E5C8]" category="Unidentified (raw layout)" storageaddress="153BA" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2E5C8. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="9">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="15354" elements="9" storagetype="int16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+    <table type="2D" name="Wastegate Duty Integral Positive (Boost Error)" category="Boost Control - Wastegate" storageaddress="153BA" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2E5C8. Evidence: 0xBD300: boost error e = Target Boost FFFF0E56 - MAP FFFF09BA (same offset encoding =&gt; kPa = x/256); integral step when e &gt; 0xA9 (0.66 kPa) and duty below limit; accumulator clamped at 0x0A00." sizey="9">
+      <scaling units="%" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Boost Error" storageaddress="15354" elements="9" storagetype="int16" endian="big">
+        <scaling units="kPa" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 9 [D02E5D4]" category="Unidentified (raw layout)" storageaddress="153CC" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2E5D4. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="9">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="15366" elements="9" storagetype="int16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+    <table type="2D" name="Wastegate Duty Proportional (Boost Error)" category="Boost Control - Wastegate" storageaddress="153CC" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2E5D4. Evidence: 0xBD300: boost error e = Target Boost FFFF0E56 - MAP FFFF09BA (same offset encoding =&gt; kPa = x/256); P term = T(e)*IATfactor&gt;&gt;7 -&gt; feedback FFFF0E50 (duty, %=x/256)." sizey="9">
+      <scaling units="%" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Boost Error" storageaddress="15366" elements="9" storagetype="int16" endian="big">
+        <scaling units="kPa" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
     <table type="2D" name="Unidentified 15 [D02E608] (Engine Speed)" category="Unidentified (raw layout)" storageaddress="15408" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2E608. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="15">
@@ -2823,27 +2823,27 @@
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 15x16 [D02E5F4] (Engine Speed x ?)" category="Unidentified (raw layout)" storageaddress="15438" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E5F4. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="15">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="153EA" elements="15" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Target Boost" category="Boost Control - Target" storageaddress="15438" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E5F4. X: FFFF0A62 (torque-domain request, units unresolved). Value before atmospheric/IAT compensation (FFFF0E58). Evidence: 0xBD7C4: FFFF0E56 = (T + 0xD4C)*FFFF0E58/32768 - 0xD4C, compared against MAP FFFF09BA (kPa=x/256+13.3, A/D ch 0x12 offset form, 0x14AE50) in 0xBD300 boost-error feedback." sizex="16" sizey="15">
+      <scaling units="kPa absolute" expression="x/256+13.3" to_byte="(x-13.3)*256" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="153EA" elements="15" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2 (RAM 0xFFFF0A62)" storageaddress="15418" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2 (RAM 0xFFFF0A62)" storageaddress="15418" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 6x8 [D02E5E0] (Engine Speed x Atmospheric Pressure)" category="Unidentified (raw layout)" storageaddress="15658" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2E5E0. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="8" sizey="6">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="1563C" elements="6" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Target Boost Compensation (Atmospheric Pressure)" category="Boost Control - Target" storageaddress="15658" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2E5E0. Evidence: 0xBD7A0: FFFF052A = T(rpm, atmospheric FFFEE6AA); 0xBD8F4: FFFF0E58 = IATfactor*052A*2*FFFF0529&gt;&gt;7 multiplies Target Boost (0xBD7C4); 128 = 1.0." sizex="8" sizey="6">
+      <scaling units="%" expression="x*100/128" to_byte="x*128/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="1563C" elements="6" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Atmospheric Pressure" storageaddress="15648" elements="8" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Atmospheric Pressure" storageaddress="15648" elements="8" storagetype="uint16" endian="big">
         <scaling units="kPa" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02E5B0]" category="Unidentified (raw layout)" storageaddress="156AE" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2E5B0. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="1568C" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Wastegate Feedback Activation Threshold (Target Boost, relative)" category="Boost Control - Wastegate" storageaddress="156AE" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2E5B0. Evidence: 0xBD300: s = Target Boost FFFF0E56 - atmospheric FFFEE6AA + 0xD4D = target gauge pressure *256 (offset forms cancel); P/I feedback is zeroed unless s &gt; T(rpm FFFF2994) (+0x6AA hysteresis) and rpm &gt; 0x1400/0x1600 (1000/1100 rpm) and mode FFFF0520 allows." sizey="16">
+      <scaling units="kPa (relative)" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="1568C" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -3693,9 +3693,9 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02D4A0] (Coolant Temperature (filtered, word))" category="Unidentified (raw layout)" storageaddress="19BF8" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2D4A0, 0x2D5BC. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Minimum Ignition Timing (Coolant)" category="Ignition Timing" storageaddress="19BF8" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2D4A0, 0x2D5BC. Evidence: 0x98FAC: lower clamp of Ignition Total Timing FFFF046C (half-degrees) when FFFEE710.5 clear and 4 &lt; FFFF29B4/4 &lt; 81; input coolant FFFEEEDE; otherwise floor is -25 deg." sizey="16">
+      <scaling units="deg" expression="x/2" to_byte="x*2" format="0.0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -3723,57 +3723,57 @@
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 3x7 [D02D5C8] (Engine Load x Engine Speed)" category="Unidentified (raw layout)" storageaddress="19DA9" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2D5C8. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="7" sizey="3">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
-      <table type="Y Axis" name="Engine Load" storageaddress="19D82" elements="3" storagetype="uint8" endian="big" locked="true">
+    <table type="3D" name="Ignition Timing Compensation (Load x RPM, disabled)" category="Ignition Timing" storageaddress="19DA9" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2D5C8. Evidence: 0x99558: added to FFFF0473 (half-degrees) only if param_2!=0; caller 0x9CBF8 passes constant 0, so never applied in this ROM." sizex="7" sizey="3">
+      <scaling units="deg" expression="x/2" to_byte="x*2" format="0.0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
+      <table type="Y Axis" name="Engine Load" storageaddress="19D82" elements="3" storagetype="uint8" endian="big">
         <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Speed" storageaddress="19D86" elements="7" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Engine Speed" storageaddress="19D86" elements="7" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 3x3 [D02D8D4] (Engine Speed x ?)" category="Unidentified (raw layout)" storageaddress="19DD4" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D8D4. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="3" sizey="3">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="19DCE" elements="3" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Ignition Timing Retard (1st gear)" category="Ignition Timing" storageaddress="19DD4" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D8D4. Evidence: 0x9D364: FFFF0494 = -(map*23/128) half-degrees (= map*23/256 deg retard) applied to Ignition Total Timing (0x98FAC); map selected by gear FFFF03AC (1:D8D4 2:D8E8 3:D8FC 4:D910 5:D924; D8FC also used for flagged states); active when rpm FFFF2994 &gt;= 0x3800/0x3600 (2800/2637.5 rpm hysteresis) and load FFFF09B4 &gt;= 0x4100/0x3200 (65/50 %)." sizex="3" sizey="3">
+      <scaling units="deg retard" expression="x*23/256" to_byte="x*256/23" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="19DCE" elements="3" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="19DC8" elements="3" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2" storageaddress="19DC8" elements="3" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 3x3 [D02D8E8] (Engine Speed x ?)" category="Unidentified (raw layout)" storageaddress="19DDD" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D8E8. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="3" sizey="3">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="19DCE" elements="3" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Ignition Timing Retard (2nd gear)" category="Ignition Timing" storageaddress="19DDD" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D8E8. Evidence: 0x9D364: FFFF0494 = -(map*23/128) half-degrees (= map*23/256 deg retard) applied to Ignition Total Timing (0x98FAC); map selected by gear FFFF03AC (1:D8D4 2:D8E8 3:D8FC 4:D910 5:D924; D8FC also used for flagged states); active when rpm FFFF2994 &gt;= 0x3800/0x3600 (2800/2637.5 rpm hysteresis) and load FFFF09B4 &gt;= 0x4100/0x3200 (65/50 %)." sizex="3" sizey="3">
+      <scaling units="deg retard" expression="x*23/256" to_byte="x*256/23" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="19DCE" elements="3" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="19DC8" elements="3" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2" storageaddress="19DC8" elements="3" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 3x3 [D02D8FC] (Engine Speed x ?)" category="Unidentified (raw layout)" storageaddress="19DE6" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D8FC. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="3" sizey="3">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="19DCE" elements="3" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Ignition Timing Retard (3rd / default gear)" category="Ignition Timing" storageaddress="19DE6" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D8FC. Evidence: 0x9D364: FFFF0494 = -(map*23/128) half-degrees (= map*23/256 deg retard) applied to Ignition Total Timing (0x98FAC); map selected by gear FFFF03AC (1:D8D4 2:D8E8 3:D8FC 4:D910 5:D924; D8FC also used for flagged states); active when rpm FFFF2994 &gt;= 0x3800/0x3600 (2800/2637.5 rpm hysteresis) and load FFFF09B4 &gt;= 0x4100/0x3200 (65/50 %)." sizex="3" sizey="3">
+      <scaling units="deg retard" expression="x*23/256" to_byte="x*256/23" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="19DCE" elements="3" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="19DC8" elements="3" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2" storageaddress="19DC8" elements="3" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 3x3 [D02D910] (Engine Speed x ?)" category="Unidentified (raw layout)" storageaddress="19DEF" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D910. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="3" sizey="3">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="19DCE" elements="3" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Ignition Timing Retard (4th gear)" category="Ignition Timing" storageaddress="19DEF" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D910. Evidence: 0x9D364: FFFF0494 = -(map*23/128) half-degrees (= map*23/256 deg retard) applied to Ignition Total Timing (0x98FAC); map selected by gear FFFF03AC (1:D8D4 2:D8E8 3:D8FC 4:D910 5:D924; D8FC also used for flagged states); active when rpm FFFF2994 &gt;= 0x3800/0x3600 (2800/2637.5 rpm hysteresis) and load FFFF09B4 &gt;= 0x4100/0x3200 (65/50 %)." sizex="3" sizey="3">
+      <scaling units="deg retard" expression="x*23/256" to_byte="x*256/23" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="19DCE" elements="3" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="19DC8" elements="3" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2" storageaddress="19DC8" elements="3" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 3x3 [D02D924] (Engine Speed x ?)" category="Unidentified (raw layout)" storageaddress="19DF8" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D924. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="3" sizey="3">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="19DCE" elements="3" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Ignition Timing Retard (5th gear)" category="Ignition Timing" storageaddress="19DF8" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D924. Evidence: 0x9D364: FFFF0494 = -(map*23/128) half-degrees (= map*23/256 deg retard) applied to Ignition Total Timing (0x98FAC); map selected by gear FFFF03AC (1:D8D4 2:D8E8 3:D8FC 4:D910 5:D924; D8FC also used for flagged states); active when rpm FFFF2994 &gt;= 0x3800/0x3600 (2800/2637.5 rpm hysteresis) and load FFFF09B4 &gt;= 0x4100/0x3200 (65/50 %)." sizex="3" sizey="3">
+      <scaling units="deg retard" expression="x*23/256" to_byte="x*256/23" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="19DCE" elements="3" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="19DC8" elements="3" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2" storageaddress="19DC8" elements="3" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -3879,12 +3879,12 @@
         <scaling units="%" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 22x16 [D02D5DC] (Engine Speed x Engine Load)" category="Unidentified (raw layout)" storageaddress="1A4E8" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2D5DC. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="22">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="D69A" elements="22" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Ignition Timing Compensation (RPM x Load, flag 056B.6)" category="Ignition Timing" storageaddress="1A4E8" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2D5DC. Evidence: 0x99558: added to FFFF0473 as (x-32) half-degrees when FFFF056B.6 set (else 32 = neutral); inputs rpm FFFF2994, load FFFF09B4." sizex="16" sizey="22">
+      <scaling units="deg" expression="(x-32)/2" to_byte="x*2+32" format="0.0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="D69A" elements="22" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Load" storageaddress="D6C6" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Engine Load" storageaddress="D6C6" elements="16" storagetype="uint16" endian="big">
         <scaling units="%" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
