@@ -910,6 +910,54 @@ add(0x2C96C, 'Torque Efficiency Filter Coefficient (RPM) [0x8637C -> FFFF19A8]',
     axes={'0': dict(name='Engine Speed', units='rpm', expr='x*25/128', to_byte='x*128/25')})
 
 
+# ---- torque ramp limiter 0x815F0 (session 4)
+_GR = {'0': dict(name='Gear', units='gear', expr='x', to_byte='x'),
+       '1': dict(name='Engine Speed', units='rpm', expr='x*25/128', to_byte='x*128/25')}
+_rmp = ('0x815F0 (from 0x82FA0, call 0x83F92; args from disassembly: p1 FFFF0A5C target torque, p2 FFFF0A5E previous torque, p6 mode '
+        'FFFF0585, p8 Gear FFFF03AC, p9 FFFF0A8E, p10 rpm FFFF2994, p11 = FFFEEF76.7, p12 FFFF09DE; outputs at FFFF09D4+k). Lookups '
+        'LK_13AAF0(T, gear, rpm). Result: x1 = 0A5E + s1 - 16000 (s1 = phase-1 step); if x1 < H then x = max(x1, F) (F floor) else '
+        'x = max(0A5E + s2 - 16000, H) (s2 = phase-2 step); FFFF0A58 = min(0A5C, x). 0x8208C: 0A5E = max(0A42, 0A58); 0x81394 selects '
+        'FFFF0A44 from 0A5E/0A5C/12B0/0F24 by min/max; 0x820A0: Requested Torque FFFF0A62 = 0A44 limited, so all of these are torque '
+        'type. Steps: s = 16000 + (T-16000)*G*M/65025 (64-bit form (P*T)/0xFE01 - P*0x280/0xA29, 0x280/0xA29 = 16000/65025), G = gear '
+        'constant (255*{1,2,5,5,5} phase 2, 255*{1,1,3,3,3} phase 1; 255 when FFFF03CA.4 clear), M = T_02C780 / T_02C774 (FFFF0A8E). '
+        'Variant condition C = (FFFEEF76.7 clear and FFFF09DE > 4); meaning of mode 0585 values unresolved. ')
+_modes = {'2': 'mode 2', '3': 'mode 3', '4': 'mode 4', 'o': 'other modes'}
+for d, m in ((0x2C6D4, '2'), (0x2C6E8, '3'), (0x2C74C, '4'), (0x2C6FC, 'o')):
+    add(d, f'Torque Ramp Floor (Gear x RPM, {_modes[m]})', 'Driver Demand / Torque Request', _rmp + 'This table is F (lower limit below H).' + TQEV, TQ, axes=_GR)
+for d, m in ((0x2C710, '2'), (0x2C724, '3'), (0x2C760, '4'), (0x2C738, 'o')):
+    add(d, f'Torque Ramp Phase Threshold (Gear x RPM, {_modes[m]})', 'Driver Demand / Torque Request', _rmp + 'This table is H (phase-2 threshold and floor).' + TQEV, TQ, axes=_GR)
+for d, m, c in ((0x2C594, '2', 1), (0x2C5A8, '3', 1), (0x2C60C, '4', 1), (0x2C5BC, 'o', 1),
+                (0x2C5D0, '2', 0), (0x2C5E4, '3', 0), (0x2C620, '4', 0), (0x2C5F8, 'o', 0)):
+    add(d, f'Torque Ramp Step Phase 1 (Gear x RPM, {_modes[m]}, C={c})', 'Driver Demand / Torque Request',
+        _rmp + 'This table is the base of s1 (torque delta per execution before G*M/65025 scaling).' + TQEV,
+        ('Nm/step', '(x-16000)/80', 'x*80+16000', '0.0'), axes=_GR)
+for d, m, c in ((0x2C634, '2', 1), (0x2C648, '3', 1), (0x2C6AC, '4', 1), (0x2C65C, 'o', 1),
+                (0x2C670, '2', 0), (0x2C684, '3', 0), (0x2C6C0, '4', 0), (0x2C698, 'o', 0)):
+    add(d, f'Torque Ramp Step Phase 2 (Gear x RPM, {_modes[m]}, C={c})', 'Driver Demand / Torque Request',
+        _rmp + 'This table is the base of s2 (torque delta per execution before G*M/65025 scaling).' + TQEV,
+        ('Nm/step', '(x-16000)/80', 'x*80+16000', '0.0'), axes=_GR)
+for d, ph in ((0x2C774, 1), (0x2C780, 2)):
+    add(d, f'Torque Ramp Step Multiplier Phase {ph} [vs FFFF0A8E]', 'Driver Demand / Torque Request',
+        _rmp + f'This table is M for phase {ph}: the step is scaled by G*M/65025 with G an integer multiple of 255 (255 = x1), so M/255 is '
+        'the multiplier. Input FFFF0A8E unresolved.', ('multiplier', 'x/255', 'x*255', '0.00'))
+
+
+# ---- torque ramp-down limiter 0x8117C (session 4)
+_rdn = ('0x8117C (from 0x82FA0, call 0x84020; args from disassembly: p1 FFFF0A5E torque, p4 FFFF0A58 ramp output, p7 Gear FFFF03AC, '
+        'p8 rpm FFFF2994, p9 FFFF03CB.2, p10 FFFF064A.7 (latched when 03CB.2 clear), p11 Vehicle Speed FFFF65A1; p12 = FFFF0A42). '
+        'Variant: V<4 when vehicle speed < 4 km/h, else B0/B1 by p10. x1 = 0A5E - (s1-16000); if x1 < H: x = max(0A5E - (s2-16000), H) '
+        'else x = min(x1, F); FFFF0A42 = x when 0A58 < F and EF76.6/EF364.0/0567.2/0567.1 clear, else 0A58. 0x8208C: 0A5E = max(0A42, 0A58) '
+        '(torque type, see FFFF0A44 -> Requested Torque 0A62), so F, H and the subtracted steps are torque type. ')
+for v, (f, s1, h, s2) in {'V<4': (0x2C4A4, 0x2C404, 0x2C4B8, 0x2C418), 'B0': (0x2C454, 0x2C47C, 0x2C468, 0x2C490),
+                          'B1': (0x2C3DC, 0x2C42C, 0x2C3F0, 0x2C440)}.items():
+    add(f, f'Torque Ramp-Down Ceiling (Gear x RPM, {v})', 'Driver Demand / Torque Request', _rdn + 'This table is F.' + TQEV, TQ, axes=_GR)
+    add(h, f'Torque Ramp-Down Threshold (Gear x RPM, {v})', 'Driver Demand / Torque Request', _rdn + 'This table is H.' + TQEV, TQ, axes=_GR)
+    add(s1, f'Torque Ramp-Down Step Phase 1 (Gear x RPM, {v})', 'Driver Demand / Torque Request', _rdn + 'This table is s1 (decrement per execution).' + TQEV,
+        ('Nm/step', '(x-16000)/80', 'x*80+16000', '0.0'), axes=_GR)
+    add(s2, f'Torque Ramp-Down Step Phase 2 (Gear x RPM, {v})', 'Driver Demand / Torque Request', _rdn + 'This table is s2 (decrement per execution).' + TQEV,
+        ('Nm/step', '(x-16000)/80', 'x*80+16000', '0.0'), axes=_GR)
+
+
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
     print(len(S), 'entries')

@@ -227,3 +227,10 @@ V2.update({
  0xFFFF0AAA:('Torque 0AAA','Nm','(x-16000)/80','x*80+16000','0x85434: 0AF8 = 0AAA - 0AE8 + 16000'+_TQ),
  0xFFFF0ABC:('Torque 0ABC (delayed)','Nm','(x-16000)/80','x*80+16000','0x85940 delayed scaled 0AAA'+_TQ),
 })
+V2.update({
+ 0xFFFF0A44:('Requested Torque (pre-limit, 0A44)','Nm','(x-16000)/80','x*80+16000','0x820A0: Requested Torque 0A62 = 0A44 limited (call 0x840F4)'+_TQ),
+ 0xFFFF0A5E:('Torque Ramp Previous (0A5E)','Nm','(x-16000)/80','x*80+16000','0x81394 (call 0x840B0) selects 0A44 from 0A5E/min(12B0,0A5C)/0F24 by comparisons'+_TQ),
+ 0xFFFF0A5C:('Torque Ramp Target (0A5C)','Nm','(x-16000)/80','x*80+16000','0x81394 p8: min(12B0, 0A5C) -> 0A44'+_TQ),
+ 0xFFFF0A58:('Torque Ramp Output (0A58)','Nm','(x-16000)/80','x*80+16000','0x8208C: 0A5E = max(0A42, 0A58); 0x815F0 0A58 = min(0A5C, ramp)'+_TQ),
+ 0xFFFF0A42:('Torque Term 0A42','Nm','(x-16000)/80','x*80+16000','0x8208C: 0A5E = max(0A42, 0A58)'+_TQ),
+})

@@ -1,4 +1,5 @@
 descriptor	function	var	var_name	units	expr	context
+02C3DC	0008117c	FFFF0A58	Torque Ramp Output (0A58)	Nm	(x-16000)/80	((uint)param_4 < (uVar2 & 0xffff)
 02CCE4	0008bb84	FFFF03A0	Engine Load	%	x	(param_3 & 0xff) <= (uVar1 & 0xff)
 02DAD8	000a3118	FFFF2ADA	Engine Speed (OBD copy)	rpm	x*25/128	param_1 <= uVar1
 02DF0C	000ab7b4	FFFEEF18	Control Module Voltage	V	x*625/2048000	(undefined **)(param_8 & 0xffff) < (undefined **)(uVar7 & 0xffff)
