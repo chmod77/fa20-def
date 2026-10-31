@@ -7311,5 +7311,1799 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
+    <table type="2D" name="Unidentified secondary 16 @0x00CC2E [H00CC2E]" category="Unidentified - Task 0xA12DC" storageaddress="CC2E" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BB44 (structure/array at 0xCC2E); call sites: 000a33a4. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>16</data>
+        <data>32</data>
+        <data>48</data>
+        <data>64</data>
+        <data>80</data>
+        <data>96</data>
+        <data>112</data>
+        <data>128</data>
+        <data>144</data>
+        <data>160</data>
+        <data>176</data>
+        <data>192</data>
+        <data>208</data>
+        <data>224</data>
+        <data>240</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x00D07A [H00D07A]" category="Unidentified - Task 0xA12DC" storageaddress="D07A" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BB44 (structure/array at 0xD07A); call sites: 000a33f0. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>16</data>
+        <data>32</data>
+        <data>48</data>
+        <data>64</data>
+        <data>80</data>
+        <data>96</data>
+        <data>112</data>
+        <data>128</data>
+        <data>144</data>
+        <data>160</data>
+        <data>176</data>
+        <data>192</data>
+        <data>208</data>
+        <data>224</data>
+        <data>240</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x00D09A [H00D09A]" category="Unidentified - Task 0xA12DC" storageaddress="D09A" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BB44 (structure/array at 0xD09A); call sites: 000a33f0. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>16</data>
+        <data>32</data>
+        <data>48</data>
+        <data>64</data>
+        <data>80</data>
+        <data>96</data>
+        <data>112</data>
+        <data>128</data>
+        <data>144</data>
+        <data>160</data>
+        <data>176</data>
+        <data>192</data>
+        <data>208</data>
+        <data>224</data>
+        <data>240</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x00D0BA [H00D0BA]" category="Unidentified - Task 0xA12DC" storageaddress="D0BA" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BB44 (structure/array at 0xD0BA); call sites: 000a33f0. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>16</data>
+        <data>32</data>
+        <data>48</data>
+        <data>64</data>
+        <data>80</data>
+        <data>96</data>
+        <data>112</data>
+        <data>128</data>
+        <data>144</data>
+        <data>160</data>
+        <data>176</data>
+        <data>192</data>
+        <data>208</data>
+        <data>224</data>
+        <data>240</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x012996 [H163AD8]" category="Unidentified - Task 0x4C10A" storageaddress="12996" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC08 (structure/array at 0x163AD8); call sites: 00050992. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="129B6" elements="16" storagetype="uint16" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x0134AC [H0134AC]" category="Unidentified - Idle Speed Control" storageaddress="134AC" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x134AC); call sites: 000ab238. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x0134CC [H0134CC]" category="Unidentified - Idle Speed Control" storageaddress="134CC" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x134CC); call sites: 000ab238. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x0134EC [H0134EC]" category="Unidentified - Idle Speed Control" storageaddress="134EC" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x134EC); call sites: 000ab238. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x01350C [H01350C]" category="Unidentified - Idle Speed Control" storageaddress="1350C" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x1350C); call sites: 000ab238. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x01352C [H01352C]" category="Unidentified - Idle Speed Control" storageaddress="1352C" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x1352C); call sites: 000ab238. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x01354C [H01354C]" category="Unidentified - Idle Speed Control" storageaddress="1354C" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x1354C); call sites: 000ab238. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x01387A [H01387A]" category="Unidentified - Idle Speed Control" storageaddress="1387A" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x1387A); call sites: 000a81f0. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x01389A [H01389A]" category="Unidentified - Idle Speed Control" storageaddress="1389A" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x1389A); call sites: 000aa684. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x0138BA [H0138BA]" category="Unidentified - Idle Speed Control" storageaddress="138BA" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x138BA); call sites: 000aa684. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x0138DA [H0138DA]" category="Unidentified - Idle Speed Control" storageaddress="138DA" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x138DA); call sites: 000aa684. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x0138FA [H0138FA]" category="Unidentified - Idle Speed Control" storageaddress="138FA" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x138FA); call sites: 000aa684. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x01391A [H01391A]" category="Unidentified - Idle Speed Control" storageaddress="1391A" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x1391A); call sites: 000aa684. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x01393A [H01393A]" category="Unidentified - Idle Speed Control" storageaddress="1393A" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x1393A); call sites: 000aa684. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x01395A [H01395A]" category="Unidentified - Idle Speed Control" storageaddress="1395A" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x1395A); call sites: 000aa684. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x01397A [H01397A]" category="Unidentified - Idle Speed Control" storageaddress="1397A" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x1397A); call sites: 000aa684. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x01399A [H01399A]" category="Unidentified - Idle Speed Control" storageaddress="1399A" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x1399A); call sites: 000aa684. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x0139BA [H0139BA]" category="Unidentified - Idle Speed Control" storageaddress="139BA" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x139BA); call sites: 000aa684. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x0139DA [H0139DA]" category="Unidentified - Idle Speed Control" storageaddress="139DA" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x139DA); call sites: 000aa684. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x0139FA [H0139FA]" category="Unidentified - Idle Speed Control" storageaddress="139FA" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x139FA); call sites: 000aa684. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x013A1A [H013A1A]" category="Unidentified - Idle Speed Control" storageaddress="13A1A" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x13A1A); call sites: 000aa684. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x013A3A [H013A3A]" category="Unidentified - Idle Speed Control" storageaddress="13A3A" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x13A3A); call sites: 000aa684. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x013C5E [H013C5E]" category="Unidentified - Idle Speed Control" storageaddress="13C5E" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x13C5E); call sites: 000a5b24. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x013FF8 [H013FF8]" category="Unidentified - Idle Speed Control" storageaddress="13FF8" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x13FF8); call sites: 000a7024. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x014028 [H014028]" category="Unidentified - Idle Speed Control" storageaddress="14028" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x14028); call sites: 000a6f18. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x014068 [H014068]" category="Unidentified - Idle Speed Control" storageaddress="14068" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x14068); call sites: 000a6f18. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x014542 [H014542]" category="Unidentified - Idle Speed Control" storageaddress="14542" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x14542); call sites: 000aab08. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x014574 [H014574]" category="Unidentified - Idle Speed Control" storageaddress="14574" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x14574); call sites: 000a5c58. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x0148F0 [H0148F0]" category="Unidentified - Idle Speed Control" storageaddress="148F0" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x148F0); call sites: 000a5974. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x014952 [H014952]" category="Unidentified - Idle Speed Control" storageaddress="14952" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x14952); call sites: 000a5b24. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x014AAF [H014AAF]" category="Unidentified - Task 0xA12DC" storageaddress="14AAF" storagetype="uint8" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BA04 (structure/array at 0x14AAF); call sites: 000a2430. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>16</data>
+        <data>32</data>
+        <data>48</data>
+        <data>64</data>
+        <data>80</data>
+        <data>96</data>
+        <data>112</data>
+        <data>128</data>
+        <data>144</data>
+        <data>160</data>
+        <data>176</data>
+        <data>192</data>
+        <data>208</data>
+        <data>224</data>
+        <data>240</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x014ABF [H014ABF]" category="Unidentified - Task 0xA12DC" storageaddress="14ABF" storagetype="uint8" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BA04 (structure/array at 0x14ABF); call sites: 000a2430. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>16</data>
+        <data>32</data>
+        <data>48</data>
+        <data>64</data>
+        <data>80</data>
+        <data>96</data>
+        <data>112</data>
+        <data>128</data>
+        <data>144</data>
+        <data>160</data>
+        <data>176</data>
+        <data>192</data>
+        <data>208</data>
+        <data>224</data>
+        <data>240</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x014ACF [H014ACF]" category="Unidentified - Task 0xA12DC" storageaddress="14ACF" storagetype="uint8" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BA04 (structure/array at 0x14ACF); call sites: 000a2430. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>16</data>
+        <data>32</data>
+        <data>48</data>
+        <data>64</data>
+        <data>80</data>
+        <data>96</data>
+        <data>112</data>
+        <data>128</data>
+        <data>144</data>
+        <data>160</data>
+        <data>176</data>
+        <data>192</data>
+        <data>208</data>
+        <data>224</data>
+        <data>240</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x014ADF [H014ADF]" category="Unidentified - Task 0xA12DC" storageaddress="14ADF" storagetype="uint8" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BA04 (structure/array at 0x14ADF); call sites: 000a2430. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>16</data>
+        <data>32</data>
+        <data>48</data>
+        <data>64</data>
+        <data>80</data>
+        <data>96</data>
+        <data>112</data>
+        <data>128</data>
+        <data>144</data>
+        <data>160</data>
+        <data>176</data>
+        <data>192</data>
+        <data>208</data>
+        <data>224</data>
+        <data>240</data>
+      </table>
+    </table>
+    <table type="2D" name="MAF Sensor Scaling" category="Sensors" storageaddress="14B7C" storagetype="uint32" endian="big" userlevel="1" sizey="64" description="Secondary table read by helper 0x16B0AC (structure/array at 0x14B7C); call sites: 0003d45e. Evidence: 0x3D45E: FFFEECB0 = helper 0x16B0AC(table, FFFEF1EC&gt;&gt;2); 0x4C53C (assembly): Mass Airflow FFFEEEE4 = floor(16*FFFEECB0/5625), OBD PID10 g/s = x*75/16384 =&gt; g/s = table/76800. FFFEF1EC = MAF sensor voltage FFFEEEB2 (SSM 0x1D, V=x*5/65536) (0x3D490); breakpoint i = FFFEF1EC&gt;&gt;2 = i*256 -&gt; V = i*0.078125.">
+      <scaling units="g/s" expression="x/76800" to_byte="x*76800" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint32" endian="big" />
+      <table type="Static Y Axis" name="MAF Sensor Voltage (V)" sizey="64">
+        <data>0.0000</data>
+        <data>0.0781</data>
+        <data>0.1562</data>
+        <data>0.2344</data>
+        <data>0.3125</data>
+        <data>0.3906</data>
+        <data>0.4688</data>
+        <data>0.5469</data>
+        <data>0.6250</data>
+        <data>0.7031</data>
+        <data>0.7812</data>
+        <data>0.8594</data>
+        <data>0.9375</data>
+        <data>1.0156</data>
+        <data>1.0938</data>
+        <data>1.1719</data>
+        <data>1.2500</data>
+        <data>1.3281</data>
+        <data>1.4062</data>
+        <data>1.4844</data>
+        <data>1.5625</data>
+        <data>1.6406</data>
+        <data>1.7188</data>
+        <data>1.7969</data>
+        <data>1.8750</data>
+        <data>1.9531</data>
+        <data>2.0312</data>
+        <data>2.1094</data>
+        <data>2.1875</data>
+        <data>2.2656</data>
+        <data>2.3438</data>
+        <data>2.4219</data>
+        <data>2.5000</data>
+        <data>2.5781</data>
+        <data>2.6562</data>
+        <data>2.7344</data>
+        <data>2.8125</data>
+        <data>2.8906</data>
+        <data>2.9688</data>
+        <data>3.0469</data>
+        <data>3.1250</data>
+        <data>3.2031</data>
+        <data>3.2812</data>
+        <data>3.3594</data>
+        <data>3.4375</data>
+        <data>3.5156</data>
+        <data>3.5938</data>
+        <data>3.6719</data>
+        <data>3.7500</data>
+        <data>3.8281</data>
+        <data>3.9062</data>
+        <data>3.9844</data>
+        <data>4.0625</data>
+        <data>4.1406</data>
+        <data>4.2188</data>
+        <data>4.2969</data>
+        <data>4.3750</data>
+        <data>4.4531</data>
+        <data>4.5312</data>
+        <data>4.6094</data>
+        <data>4.6875</data>
+        <data>4.7656</data>
+        <data>4.8438</data>
+        <data>4.9219</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 8 @0x014D26 [H1627F4]" category="Unidentified - Task 0x149C20" storageaddress="14D26" storagetype="uint16" endian="big" userlevel="1" sizey="8" description="Secondary table read by helper 0x16BC08 (structure/array at 0x1627F4); call sites: 0014b44c. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="14D36" elements="8" storagetype="uint16" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 8 @0x014D4A [H162800]" category="Unidentified - Task 0x149C20" storageaddress="14D4A" storagetype="uint16" endian="big" userlevel="1" sizey="8" description="Secondary table read by helper 0x16BC08 (structure/array at 0x162800); call sites: 0014b44c. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="14D5A" elements="8" storagetype="uint16" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x014FAE [H014FAE]" category="Unidentified - Boost Control" storageaddress="14FAE" storagetype="uint8" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BA04 (structure/array at 0x14FAE); call sites: 000bd1bc. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>16</data>
+        <data>32</data>
+        <data>48</data>
+        <data>64</data>
+        <data>80</data>
+        <data>96</data>
+        <data>112</data>
+        <data>128</data>
+        <data>144</data>
+        <data>160</data>
+        <data>176</data>
+        <data>192</data>
+        <data>208</data>
+        <data>224</data>
+        <data>240</data>
+      </table>
+    </table>
+    <table type="2D" name="Wastegate Duty Compensation (IAT)" category="Boost Control - Wastegate" storageaddress="152DC" storagetype="uint8" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BA04 (structure/array at 0x152DC); call sites: 000bda04. Evidence: 0xBDA04: FFFF0E5C = FFFF0E5A*T(FFFEE6A6)&gt;&gt;7 (128 = 1.0); FFFF0E5C multiplies WG Duty Initial/Maximum (0xBD2AC, 0xBD11C).">
+      <scaling units="%" expression="x*100/128" to_byte="x*128/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Static Y Axis" name="Intake Air Temperature (C, via FFFEE6A6)" sizey="16">
+        <data>-40.3</data>
+        <data>-30.3</data>
+        <data>-20.3</data>
+        <data>-10.3</data>
+        <data>-0.4</data>
+        <data>9.6</data>
+        <data>19.6</data>
+        <data>29.6</data>
+        <data>39.6</data>
+        <data>49.6</data>
+        <data>59.6</data>
+        <data>69.6</data>
+        <data>79.6</data>
+        <data>89.6</data>
+        <data>99.6</data>
+        <data>109.5</data>
+      </table>
+    </table>
+    <table type="2D" name="Wastegate Integral Negative Gain Compensation (IAT)" category="Boost Control - Wastegate" storageaddress="15378" storagetype="uint8" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BA04 (structure/array at 0x15378); call sites: 000bd300. Evidence: 0xBD300: negative-error integral step = T_02E5BC(e)*T(FFFEE6A6)&gt;&gt;7.">
+      <scaling units="%" expression="x*100/128" to_byte="x*128/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Static Y Axis" name="Intake Air Temperature (C, via FFFEE6A6)" sizey="16">
+        <data>-40.3</data>
+        <data>-30.3</data>
+        <data>-20.3</data>
+        <data>-10.3</data>
+        <data>-0.4</data>
+        <data>9.6</data>
+        <data>19.6</data>
+        <data>29.6</data>
+        <data>39.6</data>
+        <data>49.6</data>
+        <data>59.6</data>
+        <data>69.6</data>
+        <data>79.6</data>
+        <data>89.6</data>
+        <data>99.6</data>
+        <data>109.5</data>
+      </table>
+    </table>
+    <table type="2D" name="Wastegate Integral Positive Gain Compensation (IAT)" category="Boost Control - Wastegate" storageaddress="15388" storagetype="uint8" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BA04 (structure/array at 0x15388); call sites: 000bd300. Evidence: 0xBD300: positive-error integral step = T_02E5C8(e)*T(FFFEE6A6)&gt;&gt;7.">
+      <scaling units="%" expression="x*100/128" to_byte="x*128/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Static Y Axis" name="Intake Air Temperature (C, via FFFEE6A6)" sizey="16">
+        <data>-40.3</data>
+        <data>-30.3</data>
+        <data>-20.3</data>
+        <data>-10.3</data>
+        <data>-0.4</data>
+        <data>9.6</data>
+        <data>19.6</data>
+        <data>29.6</data>
+        <data>39.6</data>
+        <data>49.6</data>
+        <data>59.6</data>
+        <data>69.6</data>
+        <data>79.6</data>
+        <data>89.6</data>
+        <data>99.6</data>
+        <data>109.5</data>
+      </table>
+    </table>
+    <table type="2D" name="Wastegate Proportional Gain Compensation (IAT)" category="Boost Control - Wastegate" storageaddress="15398" storagetype="uint8" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BA04 (structure/array at 0x15398); call sites: 000bd300. Evidence: 0xBD300: proportional term = T_02E5D4(e)*T(FFFEE6A6)&gt;&gt;7.">
+      <scaling units="%" expression="x*100/128" to_byte="x*128/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Static Y Axis" name="Intake Air Temperature (C, via FFFEE6A6)" sizey="16">
+        <data>-40.3</data>
+        <data>-30.3</data>
+        <data>-20.3</data>
+        <data>-10.3</data>
+        <data>-0.4</data>
+        <data>9.6</data>
+        <data>19.6</data>
+        <data>29.6</data>
+        <data>39.6</data>
+        <data>49.6</data>
+        <data>59.6</data>
+        <data>69.6</data>
+        <data>79.6</data>
+        <data>89.6</data>
+        <data>99.6</data>
+        <data>109.5</data>
+      </table>
+    </table>
+    <table type="2D" name="Target Boost Compensation (IAT)" category="Boost Control - Target" storageaddress="1561B" storagetype="uint8" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BA04 (structure/array at 0x1561B); call sites: 000bd8f4. Evidence: 0xBD8F4: FFFF0E58 = T(FFFEE6A6)*FFFF052A*2*FFFF0529&gt;&gt;7 (each 128 = 1.0) multiplies Target Boost (0xBD7C4).">
+      <scaling units="%" expression="x*100/128" to_byte="x*128/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Static Y Axis" name="Intake Air Temperature (C, via FFFEE6A6)" sizey="16">
+        <data>-40.3</data>
+        <data>-30.3</data>
+        <data>-20.3</data>
+        <data>-10.3</data>
+        <data>-0.4</data>
+        <data>9.6</data>
+        <data>19.6</data>
+        <data>29.6</data>
+        <data>39.6</data>
+        <data>49.6</data>
+        <data>59.6</data>
+        <data>69.6</data>
+        <data>79.6</data>
+        <data>89.6</data>
+        <data>99.6</data>
+        <data>109.5</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x0158FE [H0158FE]" category="Unidentified - Task 0xBE0E8" storageaddress="158FE" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x158FE); call sites: 000c02d4. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x0167BA [H0167BA]" category="Unidentified - Airflow Model (Speed Density)" storageaddress="167BA" storagetype="uint8" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BA04 (structure/array at 0x167BA); call sites: 000d0048. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>16</data>
+        <data>32</data>
+        <data>48</data>
+        <data>64</data>
+        <data>80</data>
+        <data>96</data>
+        <data>112</data>
+        <data>128</data>
+        <data>144</data>
+        <data>160</data>
+        <data>176</data>
+        <data>192</data>
+        <data>208</data>
+        <data>224</data>
+        <data>240</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x01C3E4 [H01C3E4]" category="Unidentified - Idle Speed Control" storageaddress="1C3E4" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BB44 (structure/array at 0x1C3E4); call sites: 000aa684. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>16</data>
+        <data>32</data>
+        <data>48</data>
+        <data>64</data>
+        <data>80</data>
+        <data>96</data>
+        <data>112</data>
+        <data>128</data>
+        <data>144</data>
+        <data>160</data>
+        <data>176</data>
+        <data>192</data>
+        <data>208</data>
+        <data>224</data>
+        <data>240</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x01C404 [H01C404]" category="Unidentified - Idle Speed Control" storageaddress="1C404" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BB44 (structure/array at 0x1C404); call sites: 000aa684. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>16</data>
+        <data>32</data>
+        <data>48</data>
+        <data>64</data>
+        <data>80</data>
+        <data>96</data>
+        <data>112</data>
+        <data>128</data>
+        <data>144</data>
+        <data>160</data>
+        <data>176</data>
+        <data>192</data>
+        <data>208</data>
+        <data>224</data>
+        <data>240</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x01C424 [H01C424]" category="Unidentified - Idle Speed Control" storageaddress="1C424" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BB44 (structure/array at 0x1C424); call sites: 000aa684. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>16</data>
+        <data>32</data>
+        <data>48</data>
+        <data>64</data>
+        <data>80</data>
+        <data>96</data>
+        <data>112</data>
+        <data>128</data>
+        <data>144</data>
+        <data>160</data>
+        <data>176</data>
+        <data>192</data>
+        <data>208</data>
+        <data>224</data>
+        <data>240</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x01C444 [H01C444]" category="Unidentified - Idle Speed Control" storageaddress="1C444" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BB44 (structure/array at 0x1C444); call sites: 000aa684. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>16</data>
+        <data>32</data>
+        <data>48</data>
+        <data>64</data>
+        <data>80</data>
+        <data>96</data>
+        <data>112</data>
+        <data>128</data>
+        <data>144</data>
+        <data>160</data>
+        <data>176</data>
+        <data>192</data>
+        <data>208</data>
+        <data>224</data>
+        <data>240</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x01C464 [H01C464]" category="Unidentified - Idle Speed Control" storageaddress="1C464" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BB44 (structure/array at 0x1C464); call sites: 000aa684. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>16</data>
+        <data>32</data>
+        <data>48</data>
+        <data>64</data>
+        <data>80</data>
+        <data>96</data>
+        <data>112</data>
+        <data>128</data>
+        <data>144</data>
+        <data>160</data>
+        <data>176</data>
+        <data>192</data>
+        <data>208</data>
+        <data>224</data>
+        <data>240</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x01C4BE [H01C4BE]" category="Unidentified - Idle Speed Control" storageaddress="1C4BE" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x1C4BE); call sites: 000a6a3c. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x01C4DE [H01C4DE]" category="Unidentified - Idle Speed Control" storageaddress="1C4DE" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x1C4DE); call sites: 000a6a3c. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x01C4FE [H01C4FE]" category="Unidentified - Idle Speed Control" storageaddress="1C4FE" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x1C4FE); call sites: 000a6a3c. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x01C51E [H01C51E]" category="Unidentified - Idle Speed Control" storageaddress="1C51E" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x1C51E); call sites: 000a6a3c. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x01C53E [H01C53E]" category="Unidentified - Idle Speed Control" storageaddress="1C53E" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x1C53E); call sites: 000a6a3c. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x01C55E [H01C55E]" category="Unidentified - Idle Speed Control" storageaddress="1C55E" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x1C55E); call sites: 000a6a3c. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x01C57E [H01C57E]" category="Unidentified - Idle Speed Control" storageaddress="1C57E" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x1C57E); call sites: 000a6a3c. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x01C59E [H01C59E]" category="Unidentified - Idle Speed Control" storageaddress="1C59E" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x1C59E); call sites: 000a6a3c. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x01C5BE [H01C5BE]" category="Unidentified - Idle Speed Control" storageaddress="1C5BE" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x1C5BE); call sites: 000a6a3c. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x01C5DE [H01C5DE]" category="Unidentified - Idle Speed Control" storageaddress="1C5DE" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x1C5DE); call sites: 000a6a3c. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x01C5FE [H01C5FE]" category="Unidentified - Idle Speed Control" storageaddress="1C5FE" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x1C5FE); call sites: 000a6a3c. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x01C61E [H01C61E]" category="Unidentified - Idle Speed Control" storageaddress="1C61E" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x1C61E); call sites: 000a6a3c. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x01C63E [H01C63E]" category="Unidentified - Idle Speed Control" storageaddress="1C63E" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x1C63E); call sites: 000a6a3c. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x01C65E [H01C65E]" category="Unidentified - Idle Speed Control" storageaddress="1C65E" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x1C65E); call sites: 000a6a3c. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x01C67E [H01C67E]" category="Unidentified - Idle Speed Control" storageaddress="1C67E" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x1C67E); call sites: 000a6a3c. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x01C69E [H01C69E]" category="Unidentified - Idle Speed Control" storageaddress="1C69E" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x1C69E); call sites: 000a6a3c. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>4096</data>
+        <data>8192</data>
+        <data>12288</data>
+        <data>16384</data>
+        <data>20480</data>
+        <data>24576</data>
+        <data>28672</data>
+        <data>32768</data>
+        <data>36864</data>
+        <data>40960</data>
+        <data>45056</data>
+        <data>49152</data>
+        <data>53248</data>
+        <data>57344</data>
+        <data>61440</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x029856 [H029856]" category="Unidentified - Task 0xB7370" storageaddress="29856" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BB44 (structure/array at 0x29856); call sites: 000b7f88. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
+        <data>0</data>
+        <data>16</data>
+        <data>32</data>
+        <data>48</data>
+        <data>64</data>
+        <data>80</data>
+        <data>96</data>
+        <data>112</data>
+        <data>128</data>
+        <data>144</data>
+        <data>160</data>
+        <data>176</data>
+        <data>192</data>
+        <data>208</data>
+        <data>224</data>
+        <data>240</data>
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x02AACE [H168BBC]" category="Unidentified - Task 0x6A990" storageaddress="2AACE" storagetype="uint8" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BA80 (structure/array at 0x168BBC); call sites: 0006a642. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2AADE" elements="16" storagetype="uint16" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 8 @0x02AB83 [H1639EC]" category="Unidentified - Task 0x4A1EE" storageaddress="2AB83" storagetype="uint8" endian="big" userlevel="1" sizey="8" description="Secondary table read by helper 0x16B9A4 (structure/array at 0x1639EC); call sites: 00041a38. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2AB7B" elements="8" storagetype="uint8" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x02AB8D [H163928]" category="Unidentified - Task 0x2C88 / Task 0x31C2 / Task 0x3E138 / Task 0x6BBA0" storageaddress="2AB8D" storagetype="uint8" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BA80 (structure/array at 0x163928); call sites: 0003ecd4. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="160FF0" elements="16" storagetype="uint16" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 8 @0x02ABBA [H168BA4]" category="Unidentified - Task 0x4A1EE" storageaddress="2ABBA" storagetype="uint8" endian="big" userlevel="1" sizey="8" description="Secondary table read by helper 0x16B9A4 (structure/array at 0x168BA4); call sites: 0006a444. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2AB7B" elements="8" storagetype="uint8" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x02ABC6 [H16388C]" category="Unidentified - Task 0x3AEA8" storageaddress="2ABC6" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BAE4 (structure/array at 0x16388C); call sites: 0003aea8. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="160F70" elements="16" storagetype="uint8" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x02ACC5 [H1638BC]" category="Unidentified - Task 0x3C55C" storageaddress="2ACC5" storagetype="uint8" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BA80 (structure/array at 0x1638BC); call sites: 0003c55c. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2ACD6" elements="16" storagetype="uint16" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x02AF74 [H163A84]" category="Unidentified - Task 0x2C88 / Task 0x31C2 / Task 0x3E138 / Task 0x6BBA0" storageaddress="2AF74" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC08 (structure/array at 0x163A84); call sites: 0004e6d4. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2AF54" elements="16" storagetype="uint16" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x02AF96 [H168B98]" category="Unidentified - Task 0x13B89C" storageaddress="2AF96" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BAE4 (structure/array at 0x168B98); call sites: 0013bd70. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="160F70" elements="16" storagetype="uint8" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Coolant Temperature Sensor Scaling" category="Sensors" storageaddress="2AFCA" storagetype="uint16" endian="big" userlevel="1" sizey="32" description="Secondary table read by helper 0x16BC08 (structure/array at 0x1638C8); call sites: 0003c578. Evidence: 0x3C578: FFFEEF86 = helper 0x16BC08(table, filtered ECT signal); SSM coolant FFFF29A5 (SSM 0x08, C=x-50) = FFFEEF86&gt;&gt;8.">
+      <scaling units="C" expression="x/256-50" to_byte="(x+50)*256" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="ECT Sensor Signal (raw)" storageaddress="2B00A" elements="32" storagetype="uint16" endian="big">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Engine Oil Temperature Sensor Scaling" category="Sensors" storageaddress="2B056" storagetype="uint16" endian="big" userlevel="1" sizey="32" description="Secondary table read by helper 0x16BC08 (structure/array at 0x1638D4); call sites: 0003c90e. Evidence: 0x3C90E: table output = FFFEEF84 basis; OBD PID5C FFFEF326=(out-0xA00)*256/205 =&gt; C = out/256-50.">
+      <scaling units="C" expression="x/256-50" to_byte="(x+50)*256" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Oil Temp Sensor Signal (FFFEEF82, raw)" storageaddress="2B096" elements="32" storagetype="uint16" endian="big">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 64 @0x02B136 [H1638E0]" category="Unidentified - Task 0x3CBD6" storageaddress="2B136" storagetype="uint16" endian="big" userlevel="1" sizey="64" description="Secondary table read by helper 0x16B1A8 (structure/array at 0x1638E0); call sites: 0003cbd6. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2B236" elements="64" storagetype="int16" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 64 @0x02B1B6 [H1638EC]" category="Unidentified - Task 0x3CBD6" storageaddress="2B1B6" storagetype="uint16" endian="big" userlevel="1" sizey="64" description="Secondary table read by helper 0x16B1A8 (structure/array at 0x1638EC); call sites: 0003cbd6. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2B236" elements="64" storagetype="int16" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 24 @0x02B2BB [H163AE4]" category="Unidentified - Task 0x5109C" storageaddress="2B2BB" storagetype="uint8" endian="big" userlevel="1" sizey="24" description="Secondary table read by helper 0x16BCEC (structure/array at 0x163AE4); call sites: 0005109c. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2B2D4" elements="24" storagetype="uint16" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 24 @0x02B304 [H163AF0]" category="Unidentified - Task 0x5109C" storageaddress="2B304" storagetype="uint16" endian="big" userlevel="1" sizey="24" description="Secondary table read by helper 0x16B238 (structure/array at 0x163AF0); call sites: 0005109c. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2B334" elements="24" storagetype="uint8" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Fuel Level Sensor Scaling" category="Sensors" storageaddress="2B3B8" storagetype="uint8" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BA80 (structure/array at 0x1638F8); call sites: 0003cdfe. Evidence: 0x3CDFE: FFFEF0B2 = table(FFFEF0B0); FFFEF0B3/FFFEF0B5 = sampled copy; OBD PID2F (0x10BFDC) byte = FFFEF0B5*255/219 -&gt; % = x*100/219. Input FFFEF0B0 = filtered FFFF0EDE*0xAF0/(FFFF0EDE+0x2D0) (fuel level sender resistance divider model).">
+      <scaling units="%" expression="x*100/219" to_byte="x*219/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Fuel Level Signal (FFFEF0B0, raw)" storageaddress="2B3C8" elements="16" storagetype="uint16" endian="big">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Battery Temperature Sensor Scaling" category="Sensors" storageaddress="2B438" storagetype="uint8" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BA80 (structure/array at 0x163904); call sites: 0003d1b2. Evidence: 0x3D1B2: SSM battery temperature FFFEF0D2 (SSM 0x273, C=x-50) = helper 0x16BA80(table, FFFEF0BA filtered signal).">
+      <scaling units="C" expression="x-50" to_byte="x+50" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Battery Temp Sensor Signal (raw)" storageaddress="2B418" elements="16" storagetype="uint16" endian="big">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x02B4D0 [H168B20]" category="Unidentified - Task 0x62510 / Task 0x6A224" storageaddress="2B4D0" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC08 (structure/array at 0x168B20); call sites: 0006825a. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2B4F0" elements="16" storagetype="uint16" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x02B4D0 [H168B2C]" category="Unidentified - Task 0x62510 / Task 0x6A224" storageaddress="2B4D0" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC08 (structure/array at 0x168B2C); call sites: 0006825a. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2B510" elements="16" storagetype="uint16" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 4 @0x02B578 [H168B80]" category="Unidentified - Task 0x62510 / Task 0x6A224" storageaddress="2B578" storagetype="uint8" endian="big" userlevel="1" sizey="4" description="Secondary table read by helper 0x16BA80 (structure/array at 0x168B80); call sites: 0006825a. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2B57C" elements="4" storagetype="uint16" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 8 @0x02B5EC [H1639F8]" category="Unidentified - Task 0x6AB10" storageaddress="2B5EC" storagetype="uint16" endian="big" userlevel="1" sizey="8" description="Secondary table read by helper 0x16BAE4 (structure/array at 0x1639F8); call sites: 00044544. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2B5FC" elements="8" storagetype="uint8" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 10 @0x02B638 [H163A78]" category="Unidentified - Crank/Cam Signal Processing" storageaddress="2B638" storagetype="uint16" endian="big" userlevel="1" sizey="10" description="Secondary table read by helper 0x16BC08 (structure/array at 0x163A78); call sites: 0004dd16. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2B624" elements="10" storagetype="uint16" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 8 @0x02B682 [H16391C]" category="Unidentified - Task 0x3D45E" storageaddress="2B682" storagetype="uint8" endian="big" userlevel="1" sizey="8" description="Secondary table read by helper 0x16B9A4 (structure/array at 0x16391C); call sites: 0003d5b0. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2B68A" elements="8" storagetype="uint8" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 8 @0x02B692 [H163910]" category="Unidentified - Task 0x3D45E" storageaddress="2B692" storagetype="uint8" endian="big" userlevel="1" sizey="8" description="Secondary table read by helper 0x16B9A4 (structure/array at 0x163910); call sites: 0003d5b0. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2B69A" elements="8" storagetype="uint8" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x02B6FE [H163B30]" category="Unidentified - Crank/Cam Signal Processing" storageaddress="2B6FE" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16B14C (structure/array at 0x163B30); call sites: 00059484. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x02B71E [H163B3C]" category="Unidentified - Crank/Cam Signal Processing" storageaddress="2B71E" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16B14C (structure/array at 0x163B3C); call sites: 00059484. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x02B73E [H163B48]" category="Unidentified - Crank/Cam Signal Processing" storageaddress="2B73E" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16B14C (structure/array at 0x163B48); call sites: 00059484. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="1E6F4" elements="16" storagetype="uint16" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x02B75E [H163B54]" category="Unidentified - Crank/Cam Signal Processing" storageaddress="2B75E" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16B14C (structure/array at 0x163B54); call sites: 00059484. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="1E6F4" elements="16" storagetype="uint16" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x02B78E [H163B00]" category="Unidentified - Crank/Cam Signal Processing" storageaddress="2B78E" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16B14C (structure/array at 0x163B00); call sites: 00058d0a. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x02B7AE [H163B0C]" category="Unidentified - Crank/Cam Signal Processing" storageaddress="2B7AE" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16B14C (structure/array at 0x163B0C); call sites: 00058d0a. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x02B7CE [H163B18]" category="Unidentified - Crank/Cam Signal Processing" storageaddress="2B7CE" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16B14C (structure/array at 0x163B18); call sites: 00058d0a. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="1E6F4" elements="16" storagetype="uint16" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x02B7EE [H163B24]" category="Unidentified - Crank/Cam Signal Processing" storageaddress="2B7EE" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16B14C (structure/array at 0x163B24); call sites: 00058d0a. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="1E6F4" elements="16" storagetype="uint16" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x02B8AE [H163A14]" category="Unidentified - Task 0x6AD9C" storageaddress="2B8AE" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BAE4 (structure/array at 0x163A14); call sites: 000493ec. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="1E594" elements="16" storagetype="uint8" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 8 @0x02B8CE [H163A20]" category="Unidentified - Task 0x6AD9C" storageaddress="2B8CE" storagetype="uint8" endian="big" userlevel="1" sizey="8" description="Secondary table read by helper 0x16B9A4 (structure/array at 0x163A20); call sites: 000493ec. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2B8DE" elements="8" storagetype="uint8" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 8 @0x02B8D6 [H163A2C]" category="Unidentified - Task 0x6AD9C" storageaddress="2B8D6" storagetype="uint8" endian="big" userlevel="1" sizey="8" description="Secondary table read by helper 0x16B9A4 (structure/array at 0x163A2C); call sites: 000493ec. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2B8DE" elements="8" storagetype="uint8" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 4 @0x02B9AE [H168B8C]" category="Unidentified - Task 0x62510 / Task 0x6A224" storageaddress="2B9AE" storagetype="uint8" endian="big" userlevel="1" sizey="4" description="Secondary table read by helper 0x16BA80 (structure/array at 0x168B8C); call sites: 0006825a. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2B9B2" elements="4" storagetype="uint16" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Intake Air Temperature Sensor Scaling" category="Sensors" storageaddress="2B9DE" storagetype="uint8" endian="big" userlevel="1" sizey="64" description="Secondary table read by helper 0x16BA80 (structure/array at 0x1638A4); call sites: 0003baf2. Evidence: 0x3BAF2: FFFEF643 -&gt; SSM IAT FFFF2B23 (SSM 0x12, C=x-50) and control IAT FFFEE6A5 = helper 0x16BA80(table, IAT signal FFFEF482/FFFEF480). Count byte 0x40 (64 points; points 33-64 overlap the next table, as read by the ECU).">
+      <scaling units="C" expression="x-50" to_byte="x+50" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="IAT Sensor Signal (FFFEF482, raw)" storageaddress="161010" elements="64" storagetype="uint16" endian="big">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Intake Air Temperature Sensor 2 Scaling" category="Sensors" storageaddress="2B9FE" storagetype="uint8" endian="big" userlevel="1" sizey="64" description="Secondary table read by helper 0x16BA80 (structure/array at 0x1638B0); call sites: 0003bdc6. Evidence: 0x3BDC6: FFFEED6A (OBD PID68 sensor 2, C=x-50 via 0x10C0B8) = helper 0x16BA80(table, FFFEF486 filtered signal).">
+      <scaling units="C" expression="x-50" to_byte="x+50" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="IAT Sensor 2 Signal (FFFEF488, raw)" storageaddress="161010" elements="64" storagetype="uint16" endian="big">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x02BA9C [H168BB0]" category="Unidentified - Task 0x6A990" storageaddress="2BA9C" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC08 (structure/array at 0x168BB0); call sites: 0006a642. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2BABC" elements="16" storagetype="uint16" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 8 @0x02BE5C [H163898]" category="Unidentified - Task 0x3B634" storageaddress="2BE5C" storagetype="uint16" endian="big" userlevel="1" sizey="8" description="Secondary table read by helper 0x16BC08 (structure/array at 0x163898); call sites: 0003b634. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2BE4C" elements="8" storagetype="uint16" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x02BE86 [H168AE4]" category="Unidentified - Task 0x624D8 / Task 0x6A20C" storageaddress="2BE86" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC08 (structure/array at 0x168AE4); call sites: 00065644. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x02BEAE [H163A60]" category="Unidentified - Crank/Cam Signal Processing" storageaddress="2BEAE" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16B14C (structure/array at 0x163A60); call sites: 0004d620. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x02BECE [H163A6C]" category="Unidentified - Crank/Cam Signal Processing" storageaddress="2BECE" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16B14C (structure/array at 0x163A6C); call sites: 0004d620. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x02BEEE [H163A48]" category="Unidentified - Crank/Cam Signal Processing" storageaddress="2BEEE" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16B14C (structure/array at 0x163A48); call sites: 0004d620. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x02BF0E [H163A54]" category="Unidentified - Crank/Cam Signal Processing" storageaddress="2BF0E" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16B14C (structure/array at 0x163A54); call sites: 0004d620. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 8 @0x02BF3A [H168AF0]" category="Unidentified - Task 0x624D8 / Task 0x6A20C" storageaddress="2BF3A" storagetype="uint8" endian="big" userlevel="1" sizey="8" description="Secondary table read by helper 0x16BA80 (structure/array at 0x168AF0); call sites: 00065644. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2BF42" elements="8" storagetype="uint16" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 8 @0x02BF52 [H168AFC]" category="Unidentified - Task 0x624D8 / Task 0x6A20C" storageaddress="2BF52" storagetype="uint8" endian="big" userlevel="1" sizey="8" description="Secondary table read by helper 0x16BA80 (structure/array at 0x168AFC); call sites: 00065644. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2BF5A" elements="8" storagetype="uint16" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 8 @0x02BF6A [H168B08]" category="Unidentified - Task 0x624D8 / Task 0x6A20C" storageaddress="2BF6A" storagetype="uint8" endian="big" userlevel="1" sizey="8" description="Secondary table read by helper 0x16BA80 (structure/array at 0x168B08); call sites: 00065644. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2BF42" elements="8" storagetype="uint16" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 8 @0x02BF72 [H168B14]" category="Unidentified - Task 0x624D8 / Task 0x6A20C" storageaddress="2BF72" storagetype="uint8" endian="big" userlevel="1" sizey="8" description="Secondary table read by helper 0x16BA80 (structure/array at 0x168B14); call sites: 00065644. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2BF5A" elements="8" storagetype="uint16" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x02BF92 [H163A9C]" category="Unidentified - Task 0x4C10A" storageaddress="2BF92" storagetype="uint8" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BA80 (structure/array at 0x163A9C); call sites: 0005036c. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2BFA2" elements="16" storagetype="uint16" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Unidentified secondary 16 @0x02BFC2 [H163AC0]" category="Unidentified - Task 0x4C10A" storageaddress="2BFC2" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC08 (structure/array at 0x163AC0); call sites: 0005036c. Function/output scaling not yet proven from the binary; locked." locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2BFA2" elements="16" storagetype="uint16" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
   </rom>
 </roms>

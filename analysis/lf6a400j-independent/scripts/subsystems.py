@@ -25,6 +25,32 @@ LABELS = {
 }
 
 
+def fn_roots():
+    """function -> set of task roots"""
+    CA = json.load(open(f'{ROOT}/evidence/callargs.json'))
+    callers = collections.defaultdict(set)
+    for callee, sites in CA.items():
+        for c, _ in sites:
+            if c != callee:
+                callers[callee].add(c)
+    main = set(re.findall(r'FUN_([0-9a-f]{8})', open(f'{ROOT}/cdump/00049e70.c').read()))
+    out = {}
+    def roots(f, seen):
+        if f in seen:
+            return set()
+        seen.add(f)
+        if f in main or not callers[f]:
+            return {f}
+        r = set()
+        for c in callers[f]:
+            r |= roots(c, seen)
+        return r
+    for p in glob.glob(f'{ROOT}/cdump/*.c'):
+        fn = os.path.basename(p)[:-2]
+        out[fn] = roots(fn, set())
+    return out
+
+
 def build_map():
     CA = json.load(open(f'{ROOT}/evidence/callargs.json'))
     callers = collections.defaultdict(set)

@@ -13,7 +13,7 @@ import com.romraider.swing.JProgressPane;
    3. every table whose name starts with "Unidentified" is locked (with its axes);
    4. no faulty tables.  Usage (from RomRaider/): VerifyNamedDefinition <xml> <rom> */
 public class VerifyNamedDefinition {
- static int checked = 0, scaled = 0;
+ static int checked = 0, scaled = 0, statics = 0;
  static void check(Table t, DataCell c, byte[] b, int index) {
   int w = t.getStorageType(), a = t.getStorageAddress() + index * w;
   long raw = 0; for (int i = 0; i < w; i++) raw = (raw << 8) | (b[a + i] & 255);
@@ -49,13 +49,15 @@ public class VerifyNamedDefinition {
     for (int i = 0; i < y.getDataSize(); i++) check(y, y.getData()[i], b, i);
    } else {
     for (int i = 0; i < t.getDataSize(); i++) check(t, t.getData()[i], b, i);
-    Table ax = ((Table2D) t).getAxis(); for (int i = 0; i < ax.getDataSize(); i++) check(ax, ax.getData()[i], b, i);
+    Table ax = ((Table2D) t).getAxis();
+    if (ax.isStaticDataTable()) { if (ax.getDataSize() != t.getDataSize()) throw new AssertionError(t.getName() + " static axis size"); statics++; }
+    else for (int i = 0; i < ax.getDataSize(); i++) check(ax, ax.getData()[i], b, i);
    }
    tables++;
   }
   if (!rom.getFaultyTables().isEmpty()) throw new AssertionError(rom.getFaultyTables());
   System.out.println("PASS: " + tables + " tables (" + unlocked + " identified/unlocked), " + checked + " cells/axis entries match ROM bytes; "
-    + scaled + " scaled values round-trip through expression/to_byte; all unidentified tables locked; no faulty tables");
+    + statics + " static axes; " + scaled + " scaled values round-trip through expression/to_byte; all unidentified tables locked; no faulty tables");
   System.exit(0);
  }
 }

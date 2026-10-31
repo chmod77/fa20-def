@@ -7,7 +7,7 @@ H = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(H)
 S = {}
 
 
-def add(desc, name, category, evidence, data=None, status='identified', description='', axes=None):
+def add(desc, name, category, evidence, data=None, status='identified', description='', axes=None, static_values=None):
     assert desc not in S, hex(desc)
     S[desc] = dict(status=status, name=name, category=category, evidence=evidence, description=description)
     if data:
@@ -15,6 +15,8 @@ def add(desc, name, category, evidence, data=None, status='identified', descript
         S[desc]['data'] = dict(units=u, expr=e, to_byte=t, format=(f[0] if f else '0.00'))
     if axes:
         S[desc]['axes'] = axes
+    if static_values:
+        S[desc]['static_values'] = static_values
 
 
 PCT32768 = ('%', 'x*100/32768', 'x*32768/100', '0.00')
@@ -140,6 +142,52 @@ add(0x2D890, 'Ignition Timing Reduction (vs ratio FFFF0AA8)', IGN,
     '0x9B384: FFFF0488 = FFFF03D1 - T(FFFF0AA8) (half-degrees) when FFFF03C6 not in {11,12,25,26,27}; input is a ratio (32768 = 1.0); '
     'meaning of FFFF0AA8 unresolved.', ('deg', 'x/2', 'x*2', '0.0'),
     axes={'0': dict(name='Ratio FFFF0AA8', units='ratio', expr='x/32768', to_byte='x*32768')})
+
+# ---------------------------------------------------------------- sensor scalings (secondary helper tables, keyed by struct address)
+SENS = 'Sensors'
+add(0x1638A4, 'Intake Air Temperature Sensor Scaling', SENS,
+    '0x3BAF2: FFFEF643 -> SSM IAT FFFF2B23 (SSM 0x12, C=x-50) and control IAT FFFEE6A5 = helper 0x16BA80(table, IAT signal FFFEF482/FFFEF480). '
+    'Count byte 0x40 (64 points; points 33-64 overlap the next table, as read by the ECU).', ('C', 'x-50', 'x+50', '0'),
+    axes={'0': dict(name='IAT Sensor Signal (FFFEF482, raw)', units='raw', expr='x', to_byte='x')})
+add(0x1638B0, 'Intake Air Temperature Sensor 2 Scaling', SENS,
+    '0x3BDC6: FFFEED6A (OBD PID68 sensor 2, C=x-50 via 0x10C0B8) = helper 0x16BA80(table, FFFEF486 filtered signal).', ('C', 'x-50', 'x+50', '0'),
+    axes={'0': dict(name='IAT Sensor 2 Signal (FFFEF488, raw)', units='raw', expr='x', to_byte='x')})
+add(0x1638C8, 'Coolant Temperature Sensor Scaling', SENS,
+    '0x3C578: FFFEEF86 = helper 0x16BC08(table, filtered ECT signal); SSM coolant FFFF29A5 (SSM 0x08, C=x-50) = FFFEEF86>>8.',
+    ('C', 'x/256-50', '(x+50)*256', '0.0'), axes={'0': dict(name='ECT Sensor Signal (raw)', units='raw', expr='x', to_byte='x')})
+add(0x1638D4, 'Engine Oil Temperature Sensor Scaling', SENS,
+    '0x3C90E: table output = FFFEEF84 basis; OBD PID5C FFFEF326=(out-0xA00)*256/205 => C = out/256-50.',
+    ('C', 'x/256-50', '(x+50)*256', '0.0'), axes={'0': dict(name='Oil Temp Sensor Signal (FFFEEF82, raw)', units='raw', expr='x', to_byte='x')})
+add(0x163904, 'Battery Temperature Sensor Scaling', SENS,
+    '0x3D1B2: SSM battery temperature FFFEF0D2 (SSM 0x273, C=x-50) = helper 0x16BA80(table, FFFEF0BA filtered signal).', ('C', 'x-50', 'x+50', '0'),
+    axes={'0': dict(name='Battery Temp Sensor Signal (raw)', units='raw', expr='x', to_byte='x')})
+add(0x1638F8, 'Fuel Level Sensor Scaling', SENS,
+    '0x3CDFE: FFFEF0B2 = table(FFFEF0B0); FFFEF0B3/FFFEF0B5 = sampled copy; OBD PID2F (0x10BFDC) byte = FFFEF0B5*255/219 -> % = x*100/219. '
+    'Input FFFEF0B0 = filtered FFFF0EDE*0xAF0/(FFFF0EDE+0x2D0) (fuel level sender resistance divider model).',
+    ('%', 'x*100/219', 'x*219/100', '0.0'), axes={'0': dict(name='Fuel Level Signal (FFFEF0B0, raw)', units='raw', expr='x', to_byte='x')})
+add(0x14B7C, 'MAF Sensor Scaling', SENS,
+    '0x3D45E: FFFEECB0 = helper 0x16B0AC(table, FFFEF1EC>>2); 0x4C53C (assembly): Mass Airflow FFFEEEE4 = floor(16*FFFEECB0/5625), '
+    'OBD PID10 g/s = x*75/16384 => g/s = table/76800. FFFEF1EC = MAF sensor voltage FFFEEEB2 (SSM 0x1D, V=x*5/65536) (0x3D490); '
+    'breakpoint i = FFFEF1EC>>2 = i*256 -> V = i*0.078125.',
+    ('g/s', 'x/76800', 'x*76800', '0.000'), static_values=['%.4f' % (i * 0.078125) for i in range(64)],
+    axes={'0': dict(name='MAF Sensor Voltage (V)', units='V', expr='x', to_byte='x')})
+
+# IAT index FFFEE6A6 (0x3BAF2): E6A6 = (E6A5*0x19A - 0xF84)>>8 (E6A5 = IAT control, C = x-50) => breakpoint 16*i <-> IAT ~ (16*i*256+3972)/410 - 50 C
+IAT16 = ['%.1f' % ((16 * i * 256 + 3972) / 410 - 50) for i in range(16)]
+IATAX = {'0': dict(name='Intake Air Temperature (C, via FFFEE6A6)', units='C', expr='x', to_byte='x')}
+F128 = ('%', 'x*100/128', 'x*128/100', '0.0')
+add(0x152DC, 'Wastegate Duty Compensation (IAT)', WG,
+    '0xBDA04: FFFF0E5C = FFFF0E5A*T(FFFEE6A6)>>7 (128 = 1.0); FFFF0E5C multiplies WG Duty Initial/Maximum (0xBD2AC, 0xBD11C).', F128,
+    static_values=IAT16, axes=IATAX)
+add(0x1561B, 'Target Boost Compensation (IAT)', 'Boost Control - Target',
+    '0xBD8F4: FFFF0E58 = T(FFFEE6A6)*FFFF052A*2*FFFF0529>>7 (each 128 = 1.0) multiplies Target Boost (0xBD7C4).', F128,
+    static_values=IAT16, axes=IATAX)
+add(0x15378, 'Wastegate Integral Negative Gain Compensation (IAT)', WG,
+    '0xBD300: negative-error integral step = T_02E5BC(e)*T(FFFEE6A6)>>7.', F128, static_values=IAT16, axes=IATAX)
+add(0x15388, 'Wastegate Integral Positive Gain Compensation (IAT)', WG,
+    '0xBD300: positive-error integral step = T_02E5C8(e)*T(FFFEE6A6)>>7.', F128, static_values=IAT16, axes=IATAX)
+add(0x15398, 'Wastegate Proportional Gain Compensation (IAT)', WG,
+    '0xBD300: proportional term = T_02E5D4(e)*T(FFFEE6A6)>>7.', F128, static_values=IAT16, axes=IATAX)
 
 
 if __name__ == '__main__':

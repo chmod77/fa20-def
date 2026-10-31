@@ -18,6 +18,7 @@ sys.path.insert(0, H)
 from variables import V, V2
 import subsystems
 D2R = subsystems.build_map()
+HROOT = subsystems.fn_roots()
 VV = dict(V); VV.update(V2)
 ROMS = {
     'LF6A401A': (f'{ROOT}/../../roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin',
@@ -26,6 +27,7 @@ ROMS = {
                  '26fe97c8242409ec328aad7e6336b3cba735edcc861073c17384be82985e3548'),
 }
 cal = json.load(open(f'{E}/calibrations.json'))
+HT = json.load(open(f'{E}/helper-tables.json'))
 SEM = json.load(open(f'{E}/semantics.json')) if os.path.exists(f'{E}/semantics.json') else {}
 SEM = {int(k, 16): v for k, v in SEM.items()}
 
@@ -144,6 +146,53 @@ def build(rid, path, sha):
                 a.set('locked', 'true')
             scaling(a, ax['storage'], units, ex, tb, '0.00' if units != 'raw' else '0')
         stats['tables'] += 1
+        stats['identified'] += ident
+    # ---- secondary (helper-routine) tables: evidence/helper-tables.json, layouts from 0x16B000-0x16CB14 helpers
+    for key, t in sorted(HT.items(), key=lambda kv: kv[1]['data_address']):
+        tid = int(key, 16)
+        sem = SEM.get(tid)
+        ident = bool(sem and sem.get('status') == 'identified')
+        dst = {'int8': 'uint8', 'int16': 'uint16'}.get(t['data_storage'], t['data_storage']) if not (sem and sem.get('signed')) else t['data_storage']
+        n = t['count']
+        sites = ', '.join(sorted({x['function'] for x in t['sites']}))
+        roots = set().union(*[HROOT.get(x['function'], set()) for x in t['sites']])
+        sub = subsystems.category(roots)
+        if sem and sem.get('name'):
+            name = sem['name'] + ('' if ident else ' [output units unresolved]')
+        else:
+            name = f'Unidentified secondary {n} @0x{t["data_address"]:06X} [H{tid:06X}]'
+        cat = (sem or {}).get('category') or ('Unidentified - ' + sub)
+        desc = [f'Secondary table read by helper 0x{int(t["helper"],16):X} (structure/array at 0x{tid:X}); call sites: {sites}.']
+        if sem:
+            desc += [sem.get('description', ''), 'Evidence: ' + sem.get('evidence', '')]
+        if not ident:
+            desc.append('Function/output scaling not yet proven from the binary; locked.')
+        attrs = dict(type='2D', name=name, category=cat, storageaddress=f'{t["data_address"]:X}', storagetype=dst, endian='big',
+                     userlevel='1', sizey=str(n), description=' '.join(x for x in desc if x))
+        if not ident:
+            attrs['locked'] = 'true'
+        tab = ET.SubElement(rom, 'table', **attrs)
+        ds = (sem or {}).get('data')
+        if ds:
+            scaling(tab, dst, ds['units'], ds['expr'], ds['to_byte'], ds.get('format', '0.00'), ds.get('inc', '1'))
+            stats['data_scaled'] += 1
+        else:
+            scaling(tab, dst)
+        ov = (sem or {}).get('axes', {}).get('0')
+        if t['kind'] == 'struct':
+            nm, units, ex, tb = (ov['name'], ov['units'], ov['expr'], ov['to_byte']) if ov else ('Unidentified input (see call sites)', 'raw', 'x', 'x')
+            a = ET.SubElement(tab, 'table', type='Y Axis', name=nm, storageaddress=f'{t["axis_address"]:X}', elements=str(n),
+                              storagetype=t['axis_storage'], endian='big')
+            if not ident:
+                a.set('locked', 'true')
+            scaling(a, t['axis_storage'], units, ex, tb, '0.00' if units != 'raw' else '0')
+        else:
+            nm = ov['name'] if ov else 'Input (implicit breakpoints, raw)'
+            a = ET.SubElement(tab, 'table', type='Static Y Axis', name=nm, sizey=str(n))
+            vals = (sem or {}).get('static_values') or [str(v) for v in t['axis_static']]
+            for v in vals:
+                ET.SubElement(a, 'data').text = str(v)
+        stats['secondary_tables'] += 1
         stats['identified'] += ident
     ET.indent(root, space='  ')
     out = f'{ROOT}/RR_{rid}_FA20DIT.xml'

@@ -1,4 +1,286 @@
 {
+ "0x14B7C": {
+  "status": "identified",
+  "name": "MAF Sensor Scaling",
+  "category": "Sensors",
+  "evidence": "0x3D45E: FFFEECB0 = helper 0x16B0AC(table, FFFEF1EC>>2); 0x4C53C (assembly): Mass Airflow FFFEEEE4 = floor(16*FFFEECB0/5625), OBD PID10 g/s = x*75/16384 => g/s = table/76800. FFFEF1EC = MAF sensor voltage FFFEEEB2 (SSM 0x1D, V=x*5/65536) (0x3D490); breakpoint i = FFFEF1EC>>2 = i*256 -> V = i*0.078125.",
+  "description": "",
+  "data": {
+   "units": "g/s",
+   "expr": "x/76800",
+   "to_byte": "x*76800",
+   "format": "0.000"
+  },
+  "axes": {
+   "0": {
+    "name": "MAF Sensor Voltage (V)",
+    "units": "V",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  },
+  "static_values": [
+   "0.0000",
+   "0.0781",
+   "0.1562",
+   "0.2344",
+   "0.3125",
+   "0.3906",
+   "0.4688",
+   "0.5469",
+   "0.6250",
+   "0.7031",
+   "0.7812",
+   "0.8594",
+   "0.9375",
+   "1.0156",
+   "1.0938",
+   "1.1719",
+   "1.2500",
+   "1.3281",
+   "1.4062",
+   "1.4844",
+   "1.5625",
+   "1.6406",
+   "1.7188",
+   "1.7969",
+   "1.8750",
+   "1.9531",
+   "2.0312",
+   "2.1094",
+   "2.1875",
+   "2.2656",
+   "2.3438",
+   "2.4219",
+   "2.5000",
+   "2.5781",
+   "2.6562",
+   "2.7344",
+   "2.8125",
+   "2.8906",
+   "2.9688",
+   "3.0469",
+   "3.1250",
+   "3.2031",
+   "3.2812",
+   "3.3594",
+   "3.4375",
+   "3.5156",
+   "3.5938",
+   "3.6719",
+   "3.7500",
+   "3.8281",
+   "3.9062",
+   "3.9844",
+   "4.0625",
+   "4.1406",
+   "4.2188",
+   "4.2969",
+   "4.3750",
+   "4.4531",
+   "4.5312",
+   "4.6094",
+   "4.6875",
+   "4.7656",
+   "4.8438",
+   "4.9219"
+  ]
+ },
+ "0x152DC": {
+  "status": "identified",
+  "name": "Wastegate Duty Compensation (IAT)",
+  "category": "Boost Control - Wastegate",
+  "evidence": "0xBDA04: FFFF0E5C = FFFF0E5A*T(FFFEE6A6)>>7 (128 = 1.0); FFFF0E5C multiplies WG Duty Initial/Maximum (0xBD2AC, 0xBD11C).",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/128",
+   "to_byte": "x*128/100",
+   "format": "0.0"
+  },
+  "axes": {
+   "0": {
+    "name": "Intake Air Temperature (C, via FFFEE6A6)",
+    "units": "C",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  },
+  "static_values": [
+   "-40.3",
+   "-30.3",
+   "-20.3",
+   "-10.3",
+   "-0.4",
+   "9.6",
+   "19.6",
+   "29.6",
+   "39.6",
+   "49.6",
+   "59.6",
+   "69.6",
+   "79.6",
+   "89.6",
+   "99.6",
+   "109.5"
+  ]
+ },
+ "0x15378": {
+  "status": "identified",
+  "name": "Wastegate Integral Negative Gain Compensation (IAT)",
+  "category": "Boost Control - Wastegate",
+  "evidence": "0xBD300: negative-error integral step = T_02E5BC(e)*T(FFFEE6A6)>>7.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/128",
+   "to_byte": "x*128/100",
+   "format": "0.0"
+  },
+  "axes": {
+   "0": {
+    "name": "Intake Air Temperature (C, via FFFEE6A6)",
+    "units": "C",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  },
+  "static_values": [
+   "-40.3",
+   "-30.3",
+   "-20.3",
+   "-10.3",
+   "-0.4",
+   "9.6",
+   "19.6",
+   "29.6",
+   "39.6",
+   "49.6",
+   "59.6",
+   "69.6",
+   "79.6",
+   "89.6",
+   "99.6",
+   "109.5"
+  ]
+ },
+ "0x15388": {
+  "status": "identified",
+  "name": "Wastegate Integral Positive Gain Compensation (IAT)",
+  "category": "Boost Control - Wastegate",
+  "evidence": "0xBD300: positive-error integral step = T_02E5C8(e)*T(FFFEE6A6)>>7.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/128",
+   "to_byte": "x*128/100",
+   "format": "0.0"
+  },
+  "axes": {
+   "0": {
+    "name": "Intake Air Temperature (C, via FFFEE6A6)",
+    "units": "C",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  },
+  "static_values": [
+   "-40.3",
+   "-30.3",
+   "-20.3",
+   "-10.3",
+   "-0.4",
+   "9.6",
+   "19.6",
+   "29.6",
+   "39.6",
+   "49.6",
+   "59.6",
+   "69.6",
+   "79.6",
+   "89.6",
+   "99.6",
+   "109.5"
+  ]
+ },
+ "0x15398": {
+  "status": "identified",
+  "name": "Wastegate Proportional Gain Compensation (IAT)",
+  "category": "Boost Control - Wastegate",
+  "evidence": "0xBD300: proportional term = T_02E5D4(e)*T(FFFEE6A6)>>7.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/128",
+   "to_byte": "x*128/100",
+   "format": "0.0"
+  },
+  "axes": {
+   "0": {
+    "name": "Intake Air Temperature (C, via FFFEE6A6)",
+    "units": "C",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  },
+  "static_values": [
+   "-40.3",
+   "-30.3",
+   "-20.3",
+   "-10.3",
+   "-0.4",
+   "9.6",
+   "19.6",
+   "29.6",
+   "39.6",
+   "49.6",
+   "59.6",
+   "69.6",
+   "79.6",
+   "89.6",
+   "99.6",
+   "109.5"
+  ]
+ },
+ "0x1561B": {
+  "status": "identified",
+  "name": "Target Boost Compensation (IAT)",
+  "category": "Boost Control - Target",
+  "evidence": "0xBD8F4: FFFF0E58 = T(FFFEE6A6)*FFFF052A*2*FFFF0529>>7 (each 128 = 1.0) multiplies Target Boost (0xBD7C4).",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/128",
+   "to_byte": "x*128/100",
+   "format": "0.0"
+  },
+  "axes": {
+   "0": {
+    "name": "Intake Air Temperature (C, via FFFEE6A6)",
+    "units": "C",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  },
+  "static_values": [
+   "-40.3",
+   "-30.3",
+   "-20.3",
+   "-10.3",
+   "-0.4",
+   "9.6",
+   "19.6",
+   "29.6",
+   "39.6",
+   "49.6",
+   "59.6",
+   "69.6",
+   "79.6",
+   "89.6",
+   "99.6",
+   "109.5"
+  ]
+ },
  "0x2C998": {
   "status": "identified",
   "name": "Base Ignition Timing (flags 04F4.7=1, 054A.4=0)",
@@ -575,6 +857,132 @@
    "expr": "x*100/32768",
    "to_byte": "x*32768/100",
    "format": "0.00"
+  }
+ },
+ "0x1638A4": {
+  "status": "identified",
+  "name": "Intake Air Temperature Sensor Scaling",
+  "category": "Sensors",
+  "evidence": "0x3BAF2: FFFEF643 -> SSM IAT FFFF2B23 (SSM 0x12, C=x-50) and control IAT FFFEE6A5 = helper 0x16BA80(table, IAT signal FFFEF482/FFFEF480). Count byte 0x40 (64 points; points 33-64 overlap the next table, as read by the ECU).",
+  "description": "",
+  "data": {
+   "units": "C",
+   "expr": "x-50",
+   "to_byte": "x+50",
+   "format": "0"
+  },
+  "axes": {
+   "0": {
+    "name": "IAT Sensor Signal (FFFEF482, raw)",
+    "units": "raw",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x1638B0": {
+  "status": "identified",
+  "name": "Intake Air Temperature Sensor 2 Scaling",
+  "category": "Sensors",
+  "evidence": "0x3BDC6: FFFEED6A (OBD PID68 sensor 2, C=x-50 via 0x10C0B8) = helper 0x16BA80(table, FFFEF486 filtered signal).",
+  "description": "",
+  "data": {
+   "units": "C",
+   "expr": "x-50",
+   "to_byte": "x+50",
+   "format": "0"
+  },
+  "axes": {
+   "0": {
+    "name": "IAT Sensor 2 Signal (FFFEF488, raw)",
+    "units": "raw",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x1638C8": {
+  "status": "identified",
+  "name": "Coolant Temperature Sensor Scaling",
+  "category": "Sensors",
+  "evidence": "0x3C578: FFFEEF86 = helper 0x16BC08(table, filtered ECT signal); SSM coolant FFFF29A5 (SSM 0x08, C=x-50) = FFFEEF86>>8.",
+  "description": "",
+  "data": {
+   "units": "C",
+   "expr": "x/256-50",
+   "to_byte": "(x+50)*256",
+   "format": "0.0"
+  },
+  "axes": {
+   "0": {
+    "name": "ECT Sensor Signal (raw)",
+    "units": "raw",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x1638D4": {
+  "status": "identified",
+  "name": "Engine Oil Temperature Sensor Scaling",
+  "category": "Sensors",
+  "evidence": "0x3C90E: table output = FFFEEF84 basis; OBD PID5C FFFEF326=(out-0xA00)*256/205 => C = out/256-50.",
+  "description": "",
+  "data": {
+   "units": "C",
+   "expr": "x/256-50",
+   "to_byte": "(x+50)*256",
+   "format": "0.0"
+  },
+  "axes": {
+   "0": {
+    "name": "Oil Temp Sensor Signal (FFFEEF82, raw)",
+    "units": "raw",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x1638F8": {
+  "status": "identified",
+  "name": "Fuel Level Sensor Scaling",
+  "category": "Sensors",
+  "evidence": "0x3CDFE: FFFEF0B2 = table(FFFEF0B0); FFFEF0B3/FFFEF0B5 = sampled copy; OBD PID2F (0x10BFDC) byte = FFFEF0B5*255/219 -> % = x*100/219. Input FFFEF0B0 = filtered FFFF0EDE*0xAF0/(FFFF0EDE+0x2D0) (fuel level sender resistance divider model).",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/219",
+   "to_byte": "x*219/100",
+   "format": "0.0"
+  },
+  "axes": {
+   "0": {
+    "name": "Fuel Level Signal (FFFEF0B0, raw)",
+    "units": "raw",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x163904": {
+  "status": "identified",
+  "name": "Battery Temperature Sensor Scaling",
+  "category": "Sensors",
+  "evidence": "0x3D1B2: SSM battery temperature FFFEF0D2 (SSM 0x273, C=x-50) = helper 0x16BA80(table, FFFEF0BA filtered signal).",
+  "description": "",
+  "data": {
+   "units": "C",
+   "expr": "x-50",
+   "to_byte": "x+50",
+   "format": "0"
+  },
+  "axes": {
+   "0": {
+    "name": "Battery Temp Sensor Signal (raw)",
+    "units": "raw",
+    "expr": "x",
+    "to_byte": "x"
+   }
   }
  }
 }
