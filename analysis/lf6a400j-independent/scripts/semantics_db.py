@@ -870,6 +870,11 @@ add(0x2FB14, 'Torque Offset (FFFF299C rpm/25) [0x105ACC]', 'Driver Demand / Torq
     'FFFF0A1E (0ADC - 0ADA + 16000, torque type), so T is in the torque type.' + TQEV, TQ,
     axes={'0': dict(name='Engine Speed', units='rpm', expr='x*25', to_byte='x/25')})
 
+add(0x2E918, 'Torque Ratio Filter Coefficient (RPM) [0xC2D6C]', 'Driver Demand / Torque Request',
+    '0xC2D6C (from 0xC0FD0/0xC5934): FFFECA48 += (target - FFFECA48)*T/255 per execution (target 0xFF00 or 0); the filtered ratio then scales the '
+    'torque-type value in the same function. T is a first-order filter gain (fraction per execution). Input FFFF2ADA rpm.',
+    ('fraction/step', 'x/255', 'x*255', '0.000'), axes={'0': dict(name='Engine Speed', units='rpm', expr='x*25/128', to_byte='x*128/25')})
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

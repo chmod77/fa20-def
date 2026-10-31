@@ -3951,6 +3951,27 @@
    "format": "0.00"
   }
  },
+ "0x2E918": {
+  "status": "identified",
+  "name": "Torque Ratio Filter Coefficient (RPM) [0xC2D6C]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0xC2D6C (from 0xC0FD0/0xC5934): FFFECA48 += (target - FFFECA48)*T/255 per execution (target 0xFF00 or 0); the filtered ratio then scales the torque-type value in the same function. T is a first-order filter gain (fraction per execution). Input FFFF2ADA rpm.",
+  "description": "",
+  "data": {
+   "units": "fraction/step",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed",
+    "units": "rpm",
+    "expr": "x*25/128",
+    "to_byte": "x*128/25"
+   }
+  }
+ },
  "0x2E924": {
   "status": "identified",
   "name": "Accelerator Pedal Angle Threshold (0xC34CC)",
