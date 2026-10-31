@@ -111,6 +111,12 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
   (km/h = x*9/160) to an accumulator each call and counts 1 km at 800000 (feeds OBD PID 0x31, km since codes cleared).
   That gives dt = 0.08 s, so this task runs every 80 ms. Periods of 0x1528A2, 0x152A40 (idle, ignition, fuel, misfire, torque) and
   0x15307C (AVCS, target lambda) are still unknown; the OS table order hints at 5/10/20 ms, but this is unproven.
+- OS structure: the task control blocks at 0x169780 are 16-byte records {entry, flags, priority, stack}. The task bodies (0x151748..)
+  call their functions, increment FFFF1B2x (execution count) and jump to 0x13CF00 (terminate). Priorities do not follow the
+  periods: the 80 ms task 0x153568 has a higher priority than the 40 ms task 0x153248. Alarm/period configuration not located yet.
+- Gear detection ratio bands (scalars 0x1B9A4..0x1B9BA, rpm/(km/h) = x/256) are proven by disassembly of 0x7F71C. The per-gear tables
+  in 0x7FB7C are time thresholds against an execution counter (uStack_28) in task 0x152A40, so their units need that task's period.
+- `table_compare.py` also proves additive deltas (A +/- T, where A is a proven variable). Misfire timing interpolation points are identified.
 - `copies.py` derives proven variables that are pure or scaled copies of proven variables (53).
 - Fixed: scanners now bound functions by the next function start. Ghidra sizes truncated large functions, e.g. 0x9CBF8 missed its
   0x98FAC call.
