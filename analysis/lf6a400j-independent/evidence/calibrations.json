@@ -62640,5 +62640,101 @@
     "semantic_name": null,
     "physical_scaling": null,
     "status": "raw layout supported by static calls, decompiler types and synthetic exact-node emulation; semantics unresolved"
+  },
+  {
+    "descriptor": 192664,
+    "rank": 1,
+    "dimensions": [
+      16
+    ],
+    "axes": [
+      {
+        "address": 172598,
+        "storage": "uint16",
+        "raw_values": [
+          0,
+          4096,
+          8192,
+          12288,
+          16384,
+          20480,
+          24576,
+          28672,
+          32768,
+          36864,
+          40960,
+          45056,
+          49152,
+          53248,
+          57344,
+          61440
+        ]
+      }
+    ],
+    "data_address": 172646,
+    "data_storage": "uint8",
+    "data_min": 64,
+    "data_max": 254,
+    "data_count": 16,
+    "data_sha256": "91e532801977f07251182eecce012e58915c79c37b0b71ca6e44d19482d02f79",
+    "calls": [
+      {
+        "call": null,
+        "function": 903852,
+        "target": 1260492,
+        "r4": 192664
+      }
+    ],
+    "semantic_name": null,
+    "physical_scaling": null,
+    "status": "layout from node-tested lookup routine; call site in function recovered from orphan code (ExportOrphans.java)"
+  },
+  {
+    "descriptor": 192676,
+    "rank": 1,
+    "dimensions": [
+      16
+    ],
+    "axes": [
+      {
+        "address": 172598,
+        "storage": "uint16",
+        "raw_values": [
+          0,
+          4096,
+          8192,
+          12288,
+          16384,
+          20480,
+          24576,
+          28672,
+          32768,
+          36864,
+          40960,
+          45056,
+          49152,
+          53248,
+          57344,
+          61440
+        ]
+      }
+    ],
+    "data_address": 174676,
+    "data_storage": "uint8",
+    "data_min": 64,
+    "data_max": 254,
+    "data_count": 16,
+    "data_sha256": "91e532801977f07251182eecce012e58915c79c37b0b71ca6e44d19482d02f79",
+    "calls": [
+      {
+        "call": null,
+        "function": 903852,
+        "target": 1260492,
+        "r4": 192676
+      }
+    ],
+    "semantic_name": null,
+    "physical_scaling": null,
+    "status": "layout from node-tested lookup routine; call site in function recovered from orphan code (ExportOrphans.java)"
   }
 ]
