@@ -1,0 +1,1187 @@
+[
+ {
+  "name": "ssm_05BD_from_wFFFEEEB6",
+  "dest": "0xffff05bd",
+  "src": "0xfffeeeb6",
+  "srcw": 2,
+  "converter": "0xd03f8",
+  "ssm": []
+ },
+ {
+  "name": "ssm_05BE_from_wFFFEF134",
+  "dest": "0xffff05be",
+  "src": "0xfffef134",
+  "srcw": 2,
+  "converter": "0xd041c",
+  "ssm": []
+ },
+ {
+  "name": "ssm_05BF_from_wFFFEF13A",
+  "dest": "0xffff05bf",
+  "src": "0xfffef13a",
+  "srcw": 2,
+  "converter": "0xd043c",
+  "ssm": []
+ },
+ {
+  "name": "ssm_05D0_from_bFFFF046C",
+  "dest": "0xffff05d0",
+  "src": "0xffff046c",
+  "srcw": 1,
+  "converter": "0xd0638",
+  "ssm": [
+   {
+    "src": "SSM P10 0x11",
+    "name": "Ignition Total Timing",
+    "units": "degrees",
+    "expr": "(x-128)/2",
+    "ssm_len": 1
+   },
+   {
+    "src": "SSM P13 0x11",
+    "name": "Throttle Position",
+    "units": "%",
+    "expr": "x*100/255",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_05CE_from_wFFFF00B8",
+  "dest": "0xffff05ce",
+  "src": "0xffff00b8",
+  "srcw": 2,
+  "converter": "0xd0600",
+  "ssm": [
+   {
+    "src": "SSM P74 0x101",
+    "name": "Main Throttle Sensor",
+    "units": "V",
+    "expr": "x/50",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_05CF_from_wFFFF00BA",
+  "dest": "0xffff05cf",
+  "src": "0xffff00ba",
+  "srcw": 2,
+  "converter": "0xd061c",
+  "ssm": [
+   {
+    "src": "SSM P73 0x100",
+    "name": "Sub Throttle Sensor",
+    "units": "V",
+    "expr": "x/50",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_05D2_from_wFFFEEEB6",
+  "dest": "0xffff05d2",
+  "src": "0xfffeeeb6",
+  "srcw": 2,
+  "converter": "0xd065c",
+  "ssm": [
+   {
+    "src": "SSM P56 0x44",
+    "name": "A/F Sensor #1 Resistance",
+    "units": "ohm",
+    "expr": "x",
+    "ssm_len": 1
+   },
+   {
+    "src": "SSM PID44 0x44",
+    "name": "Fuel/Air Commanded",
+    "units": "lambda",
+    "expr": "x/32767",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_05D1_from_wFFFEF048",
+  "dest": "0xffff05d1",
+  "src": "0xfffef048",
+  "srcw": 2,
+  "converter": "0xd0640",
+  "ssm": []
+ },
+ {
+  "name": "ssm_05D3_from_wFFFEE6AA",
+  "dest": "0xffff05d3",
+  "src": "0xfffee6aa",
+  "srcw": 2,
+  "converter": "0xd0680",
+  "ssm": [
+   {
+    "src": "SSM P24 0x23",
+    "name": "Atmospheric Pressure",
+    "units": "kPa",
+    "expr": "x",
+    "ssm_len": 1
+   },
+   {
+    "src": "SSM PID23 0x23",
+    "name": "Fuel Rail Pressure (direct inject)",
+    "units": "psi",
+    "expr": "x*1.450377",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_05D7_from_wFFFF008E",
+  "dest": "0xffff05d7",
+  "src": "0xffff008e",
+  "srcw": 2,
+  "converter": "0xd06cc",
+  "ssm": [
+   {
+    "src": "SSM P72 0xFB",
+    "name": "Throttle Motor Voltage",
+    "units": "V",
+    "expr": "x*8/100",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_05D8_from_wFFFEEECE",
+  "dest": "0xffff05d8",
+  "src": "0xfffeeece",
+  "srcw": 2,
+  "converter": "0xd06e8",
+  "ssm": [
+   {
+    "src": "SSM P25 0x24",
+    "name": "Manifold Relative Pressure",
+    "units": "kPa",
+    "expr": "x-128",
+    "ssm_len": 1
+   },
+   {
+    "src": "SSM PID24 0x24",
+    "name": "O2 Wideband Bank 1 Sensor 1",
+    "units": "lambda",
+    "expr": "if(65536+x/65536>32767,(65536+x/65536)/32768,x/65536/32768)",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_05DB_from_bFFFF043B",
+  "dest": "0xffff05db",
+  "src": "0xffff043b",
+  "srcw": 1,
+  "converter": "0xd0754",
+  "ssm": [
+   {
+    "src": "SSM P38 0x32",
+    "name": "CPC Valve Duty Ratio",
+    "units": "%",
+    "expr": "x*100/255",
+    "ssm_len": 1
+   },
+   {
+    "src": "SSM PID32 0x32",
+    "name": "EVAP System Vapor Pressure",
+    "units": "psi",
+    "expr": "x*0.0000362594345",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_05DC_from_wFFFF10D6",
+  "dest": "0xffff05dc",
+  "src": "0xffff10d6",
+  "srcw": 2,
+  "converter": "0xd0784",
+  "ssm": [
+   {
+    "src": "SSM P46 0x3A",
+    "name": "Alternator Duty",
+    "units": "%",
+    "expr": "x",
+    "ssm_len": 1
+   },
+   {
+    "src": "SSM PID3A 0x3A",
+    "name": "O2 Wideband Bank 2 Sensor 3",
+    "units": "lambda",
+    "expr": "if(65536+x/65536>32767,(65536+x/65536)/32768,x/65536/32768)",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_05DD_from_wFFFF0FDC",
+  "dest": "0xffff05dd",
+  "src": "0xffff0fdc",
+  "srcw": 2,
+  "converter": "0xd07b0",
+  "ssm": [
+   {
+    "src": "SSM P47 0x3B",
+    "name": "Fuel Pump Duty",
+    "units": "%",
+    "expr": "x*100/255",
+    "ssm_len": 1
+   },
+   {
+    "src": "SSM PID3B 0x3B",
+    "name": "O2 Wideband Bank 2 Sensor 4",
+    "units": "lambda",
+    "expr": "if(65536+x/65536>32767,(65536+x/65536)/32768,x/65536/32768)",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_05DE_from_wFFFF0E5E",
+  "dest": "0xffff05de",
+  "src": "0xffff0e5e",
+  "srcw": 2,
+  "converter": "0xd07dc",
+  "ssm": [
+   {
+    "src": "SSM P36 0x30",
+    "name": "Primary Wastegate Duty Cycle",
+    "units": "%",
+    "expr": "x*100/255",
+    "ssm_len": 1
+   },
+   {
+    "src": "SSM PID30 0x30",
+    "name": "Number of warm-ups since DTCs cleared",
+    "units": "count",
+    "expr": "x",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_05DF_from_bFFFF0545",
+  "dest": "0xffff05df",
+  "src": "0xffff0545",
+  "srcw": 1,
+  "converter": "0xd080c",
+  "ssm": []
+ },
+ {
+  "name": "ssm_05E1_from_wFFFF1230",
+  "dest": "0xffff05e1",
+  "src": "0xffff1230",
+  "srcw": 2,
+  "converter": "0xd0834",
+  "ssm": [
+   {
+    "src": "SSM P86 0x11B",
+    "name": "Exhaust OCV Duty Left",
+    "units": "%",
+    "expr": "x*100/255",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_05E2_from_wFFFF1228",
+  "dest": "0xffff05e2",
+  "src": "0xffff1228",
+  "srcw": 2,
+  "converter": "0xd0860",
+  "ssm": [
+   {
+    "src": "SSM P85 0x11A",
+    "name": "Exhaust OCV Duty Right",
+    "units": "%",
+    "expr": "x*100/255",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_05E3_from_wFFFEEEB4",
+  "dest": "0xffff05e3",
+  "src": "0xfffeeeb4",
+  "srcw": 2,
+  "converter": "0xd088c",
+  "ssm": [
+   {
+    "src": "SSM P45 0x39",
+    "name": "Number of Exh. Gas Recirc. Steps",
+    "units": "steps",
+    "expr": "x",
+    "ssm_len": 1
+   },
+   {
+    "src": "SSM PID39 0x39",
+    "name": "O2 Wideband Bank 2 Sensor 2",
+    "units": "lambda",
+    "expr": "if(65536+x/65536>32767,(65536+x/65536)/32768,x/65536/32768)",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_05E6_from_wFFFEF2BA",
+  "dest": "0xffff05e6",
+  "src": "0xfffef2ba",
+  "srcw": 2,
+  "converter": "0xd08cc",
+  "ssm": [
+   {
+    "src": "SSM P84 0x119",
+    "name": "Exhaust VVT Advance Angle Left",
+    "units": "degrees",
+    "expr": "x-50",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_05E7_from_wFFFEF2B8",
+  "dest": "0xffff05e7",
+  "src": "0xfffef2b8",
+  "srcw": 2,
+  "converter": "0xd08f8",
+  "ssm": [
+   {
+    "src": "SSM P83 0x118",
+    "name": "Exhaust VVT Advance Angle Right",
+    "units": "degrees",
+    "expr": "x-50",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_05E8_from_wFFFEF282",
+  "dest": "0xffff05e8",
+  "src": "0xfffef282",
+  "srcw": 2,
+  "converter": "0xd0924",
+  "ssm": [
+   {
+    "src": "SSM P88 0x11D",
+    "name": "Exhaust OCV Current Left",
+    "units": "mA",
+    "expr": "x*32",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_05E9_from_wFFFEF280",
+  "dest": "0xffff05e9",
+  "src": "0xfffef280",
+  "srcw": 2,
+  "converter": "0xd093c",
+  "ssm": [
+   {
+    "src": "SSM P87 0x11C",
+    "name": "Exhaust OCV Current Right",
+    "units": "mA",
+    "expr": "x*32",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_0F64_from_wFFFF0EDE",
+  "dest": "0xffff0f64",
+  "src": "0xffff0ede",
+  "srcw": 2,
+  "converter": "0xd0968",
+  "ssm": []
+ },
+ {
+  "name": "ssm_05EE_from_wFFFEF0CA",
+  "dest": "0xffff05ee",
+  "src": "0xfffef0ca",
+  "srcw": 2,
+  "converter": "0xd09b8",
+  "ssm": [
+   {
+    "src": "SSM P183 0x271",
+    "name": "Battery Current",
+    "units": "A",
+    "expr": "x-128",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_05F0_from_wFFFF0128",
+  "dest": "0xffff05f0",
+  "src": "0xffff0128",
+  "srcw": 2,
+  "converter": "0xd09f0",
+  "ssm": [
+   {
+    "src": "SSM P71 0xFA",
+    "name": "Throttle Motor Duty",
+    "units": "%",
+    "expr": "(x-128)*100/128",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_05F1_from_bFFFF0586",
+  "dest": "0xffff05f1",
+  "src": "0xffff0586",
+  "srcw": 1,
+  "converter": "0xd0a28",
+  "ssm": []
+ },
+ {
+  "name": "ssm_05F2_from_bFFFF3691",
+  "dest": "0xffff05f2",
+  "src": "0xffff3691",
+  "srcw": 1,
+  "converter": "0xd0a3c",
+  "ssm": [
+   {
+    "src": "SSM P4 0x0A",
+    "name": "A/F Learning #1",
+    "units": "%",
+    "expr": "(x-128)*100/128",
+    "ssm_len": 1
+   },
+   {
+    "src": "SSM P78 0x0A",
+    "name": "Fuel Pressure",
+    "units": "psi",
+    "expr": "x*3*37/255",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_05F4_from_wFFFEF006",
+  "dest": "0xffff05f4",
+  "src": "0xfffef006",
+  "srcw": 2,
+  "converter": "0xd0a5c",
+  "ssm": [
+   {
+    "src": "SSM P54 0x42",
+    "name": "A/F Sensor #1 Current",
+    "units": "mA",
+    "expr": "(x-128)/8",
+    "ssm_len": 1
+   },
+   {
+    "src": "SSM P17 0x42",
+    "name": "Battery Voltage",
+    "units": "VDC",
+    "expr": "x/1000",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_05F5_from_wFFFF2F9C",
+  "dest": "0xffff05f5",
+  "src": "0xffff2f9c",
+  "srcw": 2,
+  "converter": "0xd0a94",
+  "ssm": []
+ },
+ {
+  "name": "ssm_05F6_from_wFFFF2F9E",
+  "dest": "0xffff05f6",
+  "src": "0xffff2f9e",
+  "srcw": 2,
+  "converter": "0xd0ad0",
+  "ssm": []
+ },
+ {
+  "name": "ssm_05F7_from_bFFFEEF2A",
+  "dest": "0xffff05f7",
+  "src": "0xfffeef2a",
+  "srcw": 1,
+  "converter": "0xd0b0c",
+  "ssm": [
+   {
+    "src": "SSM P32 0x2B",
+    "name": "Front O2 Heater Current #1",
+    "units": "A",
+    "expr": "x*1004/25600",
+    "ssm_len": 1
+   },
+   {
+    "src": "SSM PID2B 0x2B",
+    "name": "O2 Wideband Bank 2 Sensor 4",
+    "units": "lambda",
+    "expr": "if(65536+x/65536>32767,(65536+x/65536)/32768,x/65536/32768)",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_05F8_from_wFFFF0D92",
+  "dest": "0xffff05f8",
+  "src": "0xffff0d92",
+  "srcw": 2,
+  "converter": "0xd0b28",
+  "ssm": [
+   {
+    "src": "SSM P3 0x09",
+    "name": "A/F Correction #1",
+    "units": "%",
+    "expr": "(x-128)*100/128",
+    "ssm_len": 1
+   },
+   {
+    "src": "SSM P6 0x09",
+    "name": "Fuel Trim #2 - Long Term",
+    "units": "%",
+    "expr": "(x-128)*100/128",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_05FA_from_wFFFF0D80",
+  "dest": "0xffff05fa",
+  "src": "0xffff0d80",
+  "srcw": 2,
+  "converter": "0xd0b8c",
+  "ssm": [
+   {
+    "src": "SSM P66 0xD1",
+    "name": "A/F Learning #3",
+    "units": "%",
+    "expr": "(x-128)*100/128",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_05F9_from_wFFFF0DC2",
+  "dest": "0xffff05f9",
+  "src": "0xffff0dc2",
+  "srcw": 2,
+  "converter": "0xd0b44",
+  "ssm": [
+   {
+    "src": "SSM P65 0xD0",
+    "name": "A/F Correction #3 (16-bit ECU)",
+    "units": "%",
+    "expr": "(x-128)*100/128",
+    "ssm_len": 1
+   },
+   {
+    "src": "SSM P89 0xD0",
+    "name": "A/F Correction #3 (32-bit ECU)",
+    "units": "%",
+    "expr": "(x*.078125)-5",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_05FB_from_bFFFEE6FE",
+  "dest": "0xffff05fb",
+  "src": "0xfffee6fe",
+  "srcw": 1,
+  "converter": "0xd0be4",
+  "ssm": [
+   {
+    "src": "SSM P1 0x07",
+    "name": "Engine Load (Relative)",
+    "units": "%",
+    "expr": "x*100/255",
+    "ssm_len": 1
+   },
+   {
+    "src": "SSM P4 0x07",
+    "name": "Fuel Trim #1 - Long Term",
+    "units": "%",
+    "expr": "(x-128)*100/128",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_0F66_from_wFFFF2994",
+  "dest": "0xffff0f66",
+  "src": "0xffff2994",
+  "srcw": 2,
+  "converter": "0xd0c38",
+  "ssm": [
+   {
+    "src": "SSM P8 0x0E",
+    "name": "Engine Speed",
+    "units": "rpm",
+    "expr": "x/4",
+    "ssm_len": 2
+   },
+   {
+    "src": "SSM P10 0x0E",
+    "name": "Timing Advance",
+    "units": "degrees",
+    "expr": "x/2-64",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_0F68_from_wFFFF0D06",
+  "dest": "0xffff0f68",
+  "src": "0xffff0d06",
+  "srcw": 2,
+  "converter": "0xd0c50",
+  "ssm": []
+ },
+ {
+  "name": "ssm_0600_from_bFFFEE6DE",
+  "dest": "0xffff0600",
+  "src": "0xfffee6de",
+  "srcw": 1,
+  "converter": "0xd0c68",
+  "ssm": [
+   {
+    "src": "SSM P15 0x18",
+    "name": "Rear O2 Sensor",
+    "units": "V",
+    "expr": "x/200",
+    "ssm_len": 2
+   },
+   {
+    "src": "SSM PID18 0x18",
+    "name": "O2 Narrowband Bank 2 Sensor 1",
+    "units": "VDC",
+    "expr": "x/256/200",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_0603_from_wFFFEF26E",
+  "dest": "0xffff0603",
+  "src": "0xfffef26e",
+  "srcw": 2,
+  "converter": "0xd0cd8",
+  "ssm": [
+   {
+    "src": "SSM P53 0x41",
+    "name": "Intake OCV Current Left",
+    "units": "mA",
+    "expr": "x*32",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_0604_from_wFFFEF26C",
+  "dest": "0xffff0604",
+  "src": "0xfffef26c",
+  "srcw": 2,
+  "converter": "0xd0cf0",
+  "ssm": [
+   {
+    "src": "SSM P52 0x40",
+    "name": "Intake OCV Current Right",
+    "units": "mA",
+    "expr": "x*32",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_0607_from_wFFFEF200",
+  "dest": "0xffff0607",
+  "src": "0xfffef200",
+  "srcw": 2,
+  "converter": "0xd0d2c",
+  "ssm": [
+   {
+    "src": "SSM P77 0x104",
+    "name": "Brake Booster Pressure",
+    "units": "kPa",
+    "expr": "x",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_0606_from_wFFFEEECE",
+  "dest": "0xffff0606",
+  "src": "0xfffeeece",
+  "srcw": 2,
+  "converter": "0xd0d1c",
+  "ssm": [
+   {
+    "src": "SSM P7 0x0D",
+    "name": "Manifold Absolute Pressure",
+    "units": "kPa",
+    "expr": "x",
+    "ssm_len": 1
+   },
+   {
+    "src": "SSM P9 0x0D",
+    "name": "Vehicle Speed",
+    "units": "mph",
+    "expr": "x*0.621371192",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_0609_from_bFFFF04BB",
+  "dest": "0xffff0609",
+  "src": "0xffff04bb",
+  "srcw": 1,
+  "converter": "0xd0d50",
+  "ssm": [
+   {
+    "src": "SSM P91 0x199",
+    "name": "Fine Learning Knock Correction",
+    "units": "degrees",
+    "expr": "(x*0.25)-32",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_0F6A_from_wFFFEEEE4",
+  "dest": "0xffff0f6a",
+  "src": "0xfffeeee4",
+  "srcw": 2,
+  "converter": "0xd0da0",
+  "ssm": [
+   {
+    "src": "SSM P12 0x13",
+    "name": "Mass Airflow",
+    "units": "g/s",
+    "expr": "x/100",
+    "ssm_len": 2
+   },
+   {
+    "src": "SSM PID13 0x13",
+    "name": "Oxygen Sensors Present",
+    "units": "bit flags",
+    "expr": "x",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_060B_from_wFFFF00C2",
+  "dest": "0xffff060b",
+  "src": "0xffff00c2",
+  "srcw": 2,
+  "converter": "0xd0db8",
+  "ssm": [
+   {
+    "src": "SSM P76 0x103",
+    "name": "Main Accelerator Sensor",
+    "units": "V",
+    "expr": "x/50",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_060C_from_wFFFF00C4",
+  "dest": "0xffff060c",
+  "src": "0xffff00c4",
+  "srcw": 2,
+  "converter": "0xd0dd4",
+  "ssm": [
+   {
+    "src": "SSM P75 0x102",
+    "name": "Sub Accelerator Sensor",
+    "units": "V",
+    "expr": "x/50",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_0611_from_wFFFF0D44",
+  "dest": "0xffff0611",
+  "src": "0xffff0d44",
+  "srcw": 2,
+  "converter": "0xd0e40",
+  "ssm": [
+   {
+    "src": "SSM P92 0x2F",
+    "name": "Radiator Fan Control",
+    "units": "%",
+    "expr": "x",
+    "ssm_len": 1
+   },
+   {
+    "src": "SSM P35 0x2F",
+    "name": "Fuel Level",
+    "units": "%",
+    "expr": "x*100/255",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_0612_from_bFFFEE6D0",
+  "dest": "0xffff0612",
+  "src": "0xfffee6d0",
+  "srcw": 1,
+  "converter": "0xd0e58",
+  "ssm": [
+   {
+    "src": "SSM P33 0x2C",
+    "name": "Rear O2 Heater Current",
+    "units": "A",
+    "expr": "x*1004/25600",
+    "ssm_len": 1
+   },
+   {
+    "src": "SSM PID2C 0x2C",
+    "name": "EGR Commanded Control",
+    "units": "%",
+    "expr": "x*100/255",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_0615_from_wFFFEEF96",
+  "dest": "0xffff0615",
+  "src": "0xfffeef96",
+  "srcw": 2,
+  "converter": "0xd0edc",
+  "ssm": [
+   {
+    "src": "SSM P58 0x46",
+    "name": "A/F Sensor #1",
+    "units": "Lambda",
+    "expr": "x/128",
+    "ssm_len": 1
+   },
+   {
+    "src": "SSM PID46 0x46",
+    "name": "Ambient Air Temperature",
+    "units": "\u00b0F",
+    "expr": "32+9*(x-40)/5",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_0618_from_bFFFF2B23",
+  "dest": "0xffff0618",
+  "src": "0xffff2b23",
+  "srcw": 1,
+  "converter": "0xd0f28",
+  "ssm": [
+   {
+    "src": "SSM P11 0x12",
+    "name": "Intake Air Temperature",
+    "units": "C",
+    "expr": "x-40",
+    "ssm_len": 1
+   },
+   {
+    "src": "SSM PID12 0x12",
+    "name": "Commanded Secondary Air Status",
+    "units": "status",
+    "expr": "x",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_0619_from_bFFFEF0D2",
+  "dest": "0xffff0619",
+  "src": "0xfffef0d2",
+  "srcw": 1,
+  "converter": "0xd0f40",
+  "ssm": [
+   {
+    "src": "SSM P184 0x273",
+    "name": "Battery Temperature",
+    "units": "C",
+    "expr": "x-40",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_061C_from_wFFFEED6C",
+  "dest": "0xffff061c",
+  "src": "0xfffeed6c",
+  "srcw": 2,
+  "converter": "0xd0f80",
+  "ssm": [
+   {
+    "src": "SSM P40 0x34",
+    "name": "Tumble Valve Position Sensor Left",
+    "units": "V",
+    "expr": "x/50",
+    "ssm_len": 1
+   },
+   {
+    "src": "SSM PID34 0x34",
+    "name": "O2 Wideband Bank 1 Sensor 1",
+    "units": "lambda",
+    "expr": "if(65536+x/65536>32767,(65536+x/65536)/32768,x/65536/32768)",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_061E_from_wFFFEED6E",
+  "dest": "0xffff061e",
+  "src": "0xfffeed6e",
+  "srcw": 2,
+  "converter": "0xd0fb0",
+  "ssm": [
+   {
+    "src": "SSM P39 0x33",
+    "name": "Tumble Valve Position Sensor Right",
+    "units": "V",
+    "expr": "x/50",
+    "ssm_len": 1
+   },
+   {
+    "src": "SSM P24 0x33",
+    "name": "Atmospheric Pressure",
+    "units": "psi",
+    "expr": "x*37/255",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_0620_from_bFFFF04A4",
+  "dest": "0xffff0620",
+  "src": "0xffff04a4",
+  "srcw": 1,
+  "converter": "0xd0ff8",
+  "ssm": [
+   {
+    "src": "SSM P29 0x28",
+    "name": "Learned Ignition Timing",
+    "units": "degrees",
+    "expr": "(x-128)/2",
+    "ssm_len": 1
+   },
+   {
+    "src": "SSM PID28 0x28",
+    "name": "O2 Wideband Bank 2 Sensor 1",
+    "units": "lambda",
+    "expr": "if(65536+x/65536>32767,(65536+x/65536)/32768,x/65536/32768)",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_0621_from_wFFFF0AF4",
+  "dest": "0xffff0621",
+  "src": "0xffff0af4",
+  "srcw": 2,
+  "converter": "0xd1040",
+  "ssm": [
+   {
+    "src": "SSM P13 0x15",
+    "name": "Throttle Opening Angle",
+    "units": "%",
+    "expr": "x*100/255",
+    "ssm_len": 1
+   },
+   {
+    "src": "SSM PID15 0x15",
+    "name": "O2 Narrowband Bank 1 Sensor 2",
+    "units": "VDC",
+    "expr": "x/256/200",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_0622_from_wFFFF0B1A",
+  "dest": "0xffff0622",
+  "src": "0xffff0b1a",
+  "srcw": 2,
+  "converter": "0xd1070",
+  "ssm": []
+ },
+ {
+  "name": "ssm_0623_from_bFFFF29A5",
+  "dest": "0xffff0623",
+  "src": "0xffff29a5",
+  "srcw": 1,
+  "converter": "0xd1090",
+  "ssm": [
+   {
+    "src": "SSM P2 0x08",
+    "name": "Coolant Temperature",
+    "units": "C",
+    "expr": "x-40",
+    "ssm_len": 1
+   },
+   {
+    "src": "SSM P5 0x08",
+    "name": "Fuel Trim #2 - Short Term",
+    "units": "%",
+    "expr": "(x-128)*100/128",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_0624_from_wFFFEEEB2",
+  "dest": "0xffff0624",
+  "src": "0xfffeeeb2",
+  "srcw": 2,
+  "converter": "0xd10a8",
+  "ssm": [
+   {
+    "src": "SSM P18 0x1D",
+    "name": "Mass Airflow Sensor Voltage",
+    "units": "V",
+    "expr": "x/50",
+    "ssm_len": 1
+   },
+   {
+    "src": "SSM PID1D 0x1D",
+    "name": "Oxygen Sensors Present",
+    "units": "bit flags",
+    "expr": "x",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_0625_from_bFFFFAB41",
+  "dest": "0xffff0625",
+  "src": "0xffffab41",
+  "srcw": 1,
+  "converter": "0xd10b8",
+  "ssm": [
+   {
+    "src": "SSM P17 0x1C",
+    "name": "Battery Voltage",
+    "units": "V",
+    "expr": "x*8/100",
+    "ssm_len": 1
+   },
+   {
+    "src": "SSM PID1C 0x1C",
+    "name": "OBD standard to which vehicle conforms to",
+    "units": "index",
+    "expr": "x",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_0626_from_bFFFF65A1",
+  "dest": "0xffff0626",
+  "src": "0xffff65a1",
+  "srcw": 1,
+  "converter": "0xd10bc",
+  "ssm": [
+   {
+    "src": "SSM P9 0x10",
+    "name": "Vehicle Speed",
+    "units": "km/h",
+    "expr": "x",
+    "ssm_len": 1
+   },
+   {
+    "src": "SSM P12 0x10",
+    "name": "Mass Airflow",
+    "units": "g/s",
+    "expr": "x/100",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_05CA_from_wFFFF0EDE",
+  "dest": "0xffff05ca",
+  "src": "0xffff0ede",
+  "srcw": 2,
+  "converter": "0xd05a8",
+  "ssm": [
+   {
+    "src": "SSM P119 0x10D",
+    "name": "Fuel Level Sensor Resistance",
+    "units": "ohm",
+    "expr": "x*4/2",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_063E_from_wFFFF102E",
+  "dest": "0xffff063e",
+  "src": "0xffff102e",
+  "srcw": 2,
+  "converter": "0xd267c",
+  "ssm": [
+   {
+    "src": "SSM P63 0xCE",
+    "name": "Roughness Monitor Cylinder #1",
+    "units": "misfire count",
+    "expr": "x",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_063F_from_wFFFF1030",
+  "dest": "0xffff063f",
+  "src": "0xffff1030",
+  "srcw": 2,
+  "converter": "0xd2690",
+  "ssm": [
+   {
+    "src": "SSM P64 0xCF",
+    "name": "Roughness Monitor Cylinder #2",
+    "units": "misfire count",
+    "expr": "x",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_0640_from_wFFFF1032",
+  "dest": "0xffff0640",
+  "src": "0xffff1032",
+  "srcw": 2,
+  "converter": "0xd26a4",
+  "ssm": [
+   {
+    "src": "SSM P69 0xD8",
+    "name": "Roughness Monitor Cylinder #3",
+    "units": "misfire count",
+    "expr": "x",
+    "ssm_len": 1
+   }
+  ]
+ },
+ {
+  "name": "ssm_0641_from_wFFFF1034",
+  "dest": "0xffff0641",
+  "src": "0xffff1034",
+  "srcw": 2,
+  "converter": "0xd26b8",
+  "ssm": [
+   {
+    "src": "SSM P70 0xD9",
+    "name": "Roughness Monitor Cylinder #4",
+    "units": "misfire count",
+    "expr": "x",
+    "ssm_len": 1
+   }
+  ]
+ }
+]

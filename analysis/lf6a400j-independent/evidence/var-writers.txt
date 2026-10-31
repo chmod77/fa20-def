@@ -1,0 +1,76 @@
+VAR 0xFFFEEEDE @ 0004d2f6 in 0004d2d6 size 2
+   = call ROM[0x4D420]=0x16B5D4(call ROM[0x4D41C]=0x16C580())
+VAR 0xFFFF03A0 @ 0007e3c8 in 0007e3c0 size 1
+   = 0x0
+VAR 0xFFFF2996 @ 0003bfcc in 0003bf24 size 1
+   = SUBPIECE(INT_RIGHT(RAM2[0xFFFF2994], 0x8), 0x0)
+VAR 0xFFFEEEE2 @ 0004d2d2 in 0004d2b0 size 2
+   = call ROM[0x4D420]=0x16B5D4(call ROM[0x4D41C]=0x16C580())
+VAR 0xFFFF09B4 @ 0007e3cc in 0007e3c0 size 2
+   = 0x0
+VAR 0xFFFF03AC @ 0007f85c in 0007f854 size 1
+   = 0x0
+VAR 0xFFFEE290 @ 001249d2 in 00124430 size 2
+   = call phi(phi(phi(phi(phi(phi(phi(phi(phi(phi(phi(phi(… | …) | …) | …) | <loop>) | <loop>) | <loop> | <loop> | <loop> | <loop>) | <loop>) | <loop>) | <loop>) | <loop>) | <loop>) | <loop>)(phi(phi(phi(phi(phi(phi(phi(phi(phi(phi(phi(phi(phi(… | …) | …) | …) | <loop>) | <loop>) | <loop>) | <loop> | <loop> | <loop> | <loop>) | <loop>) | <loop>) | <loop>) | <loop>) | <loop>) | <loop>), phi(phi(phi(phi(phi(phi(phi(phi(phi(phi(phi(phi(phi(… | …) | …) | <loop>) | <loop>) | <loop>) | <loop>) | <loop> | <loop> | <loop> | <loop>) | <loop>) | <loop>) | <loop>) | <loop>) | <loop>) | <loop>), *(INT_ADD(PTRSUB((register, 0x3c, 4), 0xFFFFFF6C), INT_SEXT(phi(phi(phi(phi(phi(phi(phi(phi(phi(… | …) | …) | <loop> | <loop> | <loop> | <loop>) | <loop>) | <loop>) | <loop>) | <loop>) | <loop>) | <loop>)))))
+VAR 0xFFFF0BFE @ 0009d586 in 0009d504 size 2
+   = 0x0
+VAR 0xFFFF0554 @ 000c8f8c in 000c8f58 size 1
+   = 0x0
+VAR 0xFFFEF52E in 00069e78: no resolved STORE
+VAR 0xFFFF093A @ 0011fd0a in 0011fcc4 size 1
+   = 0x0
+VAR 0xFFFEEEE0 @ 0004d320 in 0004d2fa size 2
+   = RAM2[0xFFFEF322]
+VAR 0xFFFEEEE0 @ 0004d328 in 0004d2fa size 2
+   = ROM[0x4D3D0]=0xFFFFB000
+VAR 0xFFFEEEE0 @ 0004e706 in 0004e6d4 size 2
+   = RAM2[0xFFFEF322]
+VAR 0xFFFEF0DA @ 0003cd5a in 0003ccf6 size 2
+   = RAM2[0xFFFEF324]
+VAR 0xFFFEF0DA @ 0003cd86 in 0003ccf6 size 2
+   = ROM[0x3CE4A]=0xB2
+VAR 0xFFFEF0DA @ 0003cda0 in 0003ccf6 size 2
+   = 0x0
+VAR 0xFFFF0423 in 0008ead8: no resolved STORE
+VAR 0xFFFF2A04 in 0003bf24: no resolved STORE
+VAR 0xFFFF12B0 in 00104868: no resolved STORE
+VAR 0xFFFEEED0 @ 0004d03a in 0004d034 size 2
+   = RAM2[0xFFFEEEDC]
+VAR 0xFFFEE6A5 in 0003baf2: no resolved STORE
+VAR 0xFFFF0F56 @ 000ceb4a in 000ceafc size 2
+   = 0x0
+VAR 0xFFFF0E56 @ 000bd6f6 in 000bd65c size 2
+   = 0x0
+VAR 0xFFFEEF33 in 0003c90e: no resolved STORE
+VAR 0xFFFF2AD8 @ 0004d546 in 0004d520 size 2
+   = SUBPIECE(call ROM[0x4D6E0]=0x16B4D8(ROM[0x4D6DC]=0xFFFF2AD8, INT_SEXT(RAM2[0xFFFF2AF0]), call ROM[0x4D6D8]=0x1540(INT_LEFT(ROM[0x2B665]=0x26, 0x9))), 0x0)
+VAR 0xFFFF2AD8 @ 0004d55e in 0004d520 size 2
+   = SUBPIECE(call ROM[0x4D6F0]=0x16B5D4(INT_ADD(RAM2[0xFFFF2ADA], INT_SEXT(RAM2[0xFFFF2ADC]))), 0x0)
+VAR 0xFFFF04E0 @ 000ae298 in 000ae280 size 1
+   = 0x0
+VAR 0xFFFF113A @ 000eb74e in 000eb734 size 2
+   = 0x0
+VAR 0xFFFEF406 in 0006825a: no resolved STORE
+VAR 0xFFFF0D06 @ 000a8124 in 000a7f50 size 2
+   = 0x0
+VAR 0xFFFF0557 @ 000c8f92 in 000c8f58 size 1
+   = 0x0
+VAR 0xFFFEEF76 @ 0004e262 in 0004e0f8 size 1
+   = INT_AND(RAM1[0xFFFEEF76], 0xBF)
+VAR 0xFFFEEF76 @ 0004e26a in 0004e0f8 size 1
+   = INT_OR(RAM1[0xFFFEEF76], 0x40)
+VAR 0xFFFEEF76 @ 0004e2e0 in 0004e2d0 size 1
+   = INT_OR(RAM1[0xFFFEEF76], 0x20)
+VAR 0xFFFEEF76 @ 0004e2e8 in 0004e2d0 size 1
+   = INT_AND(RAM1[0xFFFEEF76], 0xDF)
+VAR 0xFFFEEF76 @ 0004e306 in 0004e2d0 size 1
+   = INT_OR(RAM1[0xFFFEEF76], 0x10)
+VAR 0xFFFEEF76 @ 0004e30e in 0004e2d0 size 1
+   = INT_AND(RAM1[0xFFFEEF76], 0xEF)
+VAR 0xFFFEEF76 @ 0004e34c in 0004e2d0 size 1
+   = INT_OR(RAM1[0xFFFEEF76], 0x8)
+VAR 0xFFFEEF76 @ 0004e380 in 0004e2d0 size 1
+   = INT_AND(RAM1[0xFFFEEF76], 0xF7)
+VAR 0xFFFEEF76 in 0004e6d4: no resolved STORE
+VAR 0xFFFEEF76 @ 0004ee9e in 0004edea size 1
+   = phi(INT_OR(RAM1[0xFFFEEF76], 0x80) | INT_AND(<loop>, 0x7F))

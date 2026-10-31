@@ -1,0 +1,16 @@
+[
+  {
+    "descriptor": 4294888716,
+    "reason": "dynamic/RAM descriptor or unknown pointer",
+    "calls": [
+      {
+        "call": 846528,
+        "function": 846504,
+        "target": 1260344,
+        "r4": 4294888716,
+        "r5": null,
+        "r6": null
+      }
+    ]
+  }
+]

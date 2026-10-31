@@ -1,0 +1,605 @@
+[
+ {
+  "ram": "0xffff046c",
+  "width": 1,
+  "name": "Ignition Total Timing",
+  "units": "degrees",
+  "scale": -0.2499659354135441,
+  "offset": 31.620656765226872,
+  "relerr": 0.24999999920172353
+ },
+ {
+  "ram": "0xffff046c",
+  "width": 1,
+  "name": "Throttle Position",
+  "units": "%",
+  "scale": -0.19605171404983848,
+  "offset": 74.99659354135441,
+  "relerr": 0.24999999920172353
+ },
+ {
+  "ram": "0xffff00b8",
+  "width": 2,
+  "name": "Main Throttle Sensor",
+  "units": "V",
+  "scale": 7.62942811816279e-05,
+  "offset": -0.010001097898933173,
+  "relerr": 0.0011696651375950346
+ },
+ {
+  "ram": "0xffff00ba",
+  "width": 2,
+  "name": "Sub Throttle Sensor",
+  "units": "V",
+  "scale": 7.62942811816279e-05,
+  "offset": -0.010001097898933173,
+  "relerr": 0.0011696651375950346
+ },
+ {
+  "ram": "0xfffeeeb6",
+  "width": 2,
+  "name": "A/F Sensor #1 Resistance",
+  "units": "ohm",
+  "scale": 0.007812409179153927,
+  "offset": -0.2485148975250149,
+  "relerr": 0.0009881365488626074
+ },
+ {
+  "ram": "0xfffee6aa",
+  "width": 2,
+  "name": "Atmospheric Pressure",
+  "units": "kPa",
+  "scale": 0.0039061932169156205,
+  "offset": -0.3733828878227018,
+  "relerr": 0.0011073360477751482
+ },
+ {
+  "ram": "0xffff008e",
+  "width": 2,
+  "name": "Throttle Motor Voltage",
+  "units": "V",
+  "scale": 0.10009389439960568,
+  "offset": -0.014037335962047592,
+  "relerr": 0.0002878127772232762
+ },
+ {
+  "ram": "0xfffeeece",
+  "width": 2,
+  "name": "Manifold Relative Pressure",
+  "units": "kPa",
+  "scale": 0.0039061755886516014,
+  "offset": -101.37309109806048,
+  "relerr": 0.001239965683782829
+ },
+ {
+  "ram": "0xffff043b",
+  "width": 1,
+  "name": "CPC Valve Duty Ratio",
+  "units": "%",
+  "scale": 0.39796771829581784,
+  "offset": -0.15096320599955343,
+  "relerr": 0.0010971415550812737
+ },
+ {
+  "ram": "0xffff10d6",
+  "width": 2,
+  "name": "Alternator Duty",
+  "units": "%",
+  "scale": 0.059998956267612986,
+  "offset": -0.5165501165501237,
+  "relerr": 0.0011371624603005292
+ },
+ {
+  "ram": "0xffff0fdc",
+  "width": 2,
+  "name": "Fuel Pump Duty",
+  "units": "%",
+  "scale": 0.10000875350140052,
+  "offset": -0.22408963585432198,
+  "relerr": 0.0011721984294404502
+ },
+ {
+  "ram": "0xffff0e5e",
+  "width": 2,
+  "name": "Primary Wastegate Duty Cycle",
+  "units": "%",
+  "scale": 0.0039059982297600334,
+  "offset": -0.19516164042976097,
+  "relerr": 0.0011418989071493727
+ },
+ {
+  "ram": "0xffff1230",
+  "width": 2,
+  "name": "Exhaust OCV Duty Left",
+  "units": "%",
+  "scale": 0.03999340120663652,
+  "offset": -0.18099547511314412,
+  "relerr": 0.0011529397348706801
+ },
+ {
+  "ram": "0xffff1228",
+  "width": 2,
+  "name": "Exhaust OCV Duty Right",
+  "units": "%",
+  "scale": 0.03999340120663652,
+  "offset": -0.18099547511314412,
+  "relerr": 0.0011529397348706801
+ },
+ {
+  "ram": "0xfffeeeb4",
+  "width": 2,
+  "name": "Number of Exh. Gas Recirc. Steps",
+  "units": "steps",
+  "scale": 0.5,
+  "offset": 0.0,
+  "relerr": 0.0
+ },
+ {
+  "ram": "0xfffef2ba",
+  "width": 2,
+  "name": "Exhaust VVT Advance Angle Left",
+  "units": "degrees",
+  "scale": -0.00103073456821421,
+  "offset": 50.958691232701746,
+  "relerr": 0.24343588517059322
+ },
+ {
+  "ram": "0xfffef2b8",
+  "width": 2,
+  "name": "Exhaust VVT Advance Angle Right",
+  "units": "degrees",
+  "scale": -0.00103073456821421,
+  "offset": 50.958691232701746,
+  "relerr": 0.24343588517059322
+ },
+ {
+  "ram": "0xfffef282",
+  "width": 2,
+  "name": "Exhaust OCV Current Left",
+  "units": "mA",
+  "scale": 0.038140293056636326,
+  "offset": -15.79659987912623,
+  "relerr": 0.003801913528495218
+ },
+ {
+  "ram": "0xfffef280",
+  "width": 2,
+  "name": "Exhaust OCV Current Right",
+  "units": "mA",
+  "scale": 0.038140293056636326,
+  "offset": -15.79659987912623,
+  "relerr": 0.003801913528495218
+ },
+ {
+  "ram": "0xfffef0ca",
+  "width": 2,
+  "name": "Battery Current",
+  "units": "A",
+  "scale": 0.00781238528068604,
+  "offset": -100.24832968678874,
+  "relerr": 0.0011111029532632818
+ },
+ {
+  "ram": "0xffff0128",
+  "width": 2,
+  "name": "Throttle Motor Duty",
+  "units": "%",
+  "scale": -0.0013894518133446808,
+  "offset": 45.1388911534487,
+  "relerr": 0.1624327967420584
+ },
+ {
+  "ram": "0xffff3691",
+  "width": 1,
+  "name": "A/F Learning #1",
+  "units": "%",
+  "scale": 0.3906065461474261,
+  "offset": -50.19295963379683,
+  "relerr": 0.0019999527575794485
+ },
+ {
+  "ram": "0xffff3691",
+  "width": 1,
+  "name": "Fuel Pressure",
+  "units": "psi",
+  "scale": 0.21763677677108353,
+  "offset": 27.751310961686848,
+  "relerr": 0.0019999527575794524
+ },
+ {
+  "ram": "0xfffef006",
+  "width": 2,
+  "name": "A/F Sensor #1 Current",
+  "units": "mA",
+  "scale": -0.0002721665662307769,
+  "offset": 8.895810799687682,
+  "relerr": 0.18924949942909242
+ },
+ {
+  "ram": "0xfffef006",
+  "width": 2,
+  "name": "Battery Voltage",
+  "units": "VDC",
+  "scale": -2.177332529846216e-06,
+  "offset": 0.1991664863975015,
+  "relerr": 0.18924949942909242
+ },
+ {
+  "ram": "0xfffeef2a",
+  "width": 1,
+  "name": "Front O2 Heater Current #1",
+  "units": "A",
+  "scale": 0.027427103201773693,
+  "offset": -0.02020045982703283,
+  "relerr": 0.0016364052178883186
+ },
+ {
+  "ram": "0xffff0d92",
+  "width": 2,
+  "name": "A/F Correction #1",
+  "units": "%",
+  "scale": 0.0030517134507153285,
+  "offset": -100.29170538111148,
+  "relerr": 0.0011073360477751495
+ },
+ {
+  "ram": "0xffff0d92",
+  "width": 2,
+  "name": "Fuel Trim #2 - Long Term",
+  "units": "%",
+  "scale": 0.0030517134507153285,
+  "offset": -100.29170538111148,
+  "relerr": 0.0011073360477751495
+ },
+ {
+  "ram": "0xffff0d80",
+  "width": 2,
+  "name": "A/F Learning #3",
+  "units": "%",
+  "scale": 0.0023150799770480113,
+  "offset": -100.38193719037461,
+  "relerr": 0.001503441475507187
+ },
+ {
+  "ram": "0xffff0dc2",
+  "width": 2,
+  "name": "A/F Correction #3 (16-bit ECU)",
+  "units": "%",
+  "scale": 0.022834707583801465,
+  "offset": -1050.3241622835264,
+  "relerr": 0.0011309105620477503
+ },
+ {
+  "ram": "0xffff0dc2",
+  "width": 2,
+  "name": "A/F Correction #3 (32-bit ECU)",
+  "units": "%",
+  "scale": 0.0022834707583801466,
+  "offset": -100.03241622835266,
+  "relerr": 0.001130910562047768
+ },
+ {
+  "ram": "0xfffee6fe",
+  "width": 1,
+  "name": "Engine Load (Relative)",
+  "units": "%",
+  "scale": 0.3921568627450978,
+  "offset": 2.8645502418044983e-14,
+  "relerr": 1.7229731206691028e-16
+ },
+ {
+  "ram": "0xfffee6fe",
+  "width": 1,
+  "name": "Fuel Trim #1 - Long Term",
+  "units": "%",
+  "scale": 0.78125,
+  "offset": -100.0,
+  "relerr": 0.0
+ },
+ {
+  "ram": "0xffff2994",
+  "width": 2,
+  "name": "Engine Speed",
+  "units": "rpm",
+  "scale": 0.19531250000014952,
+  "offset": -5.335855774763154e-05,
+  "relerr": 1.336451720672619e-07
+ },
+ {
+  "ram": "0xffff2994",
+  "width": 2,
+  "name": "Timing Advance",
+  "units": "degrees",
+  "scale": 0.39062500000029904,
+  "offset": -64.0001067171155,
+  "relerr": 1.3364517206727071e-07
+ },
+ {
+  "ram": "0xfffee6de",
+  "width": 1,
+  "name": "Rear O2 Sensor",
+  "units": "V",
+  "scale": 0.0024998818953435257,
+  "offset": -0.0012349416562994998,
+  "relerr": 0.001999952757579449
+ },
+ {
+  "ram": "0xfffef26e",
+  "width": 2,
+  "name": "Intake OCV Current Left",
+  "units": "mA",
+  "scale": 0.038140293056636326,
+  "offset": -15.79659987912623,
+  "relerr": 0.003801913528495218
+ },
+ {
+  "ram": "0xfffef26c",
+  "width": 2,
+  "name": "Intake OCV Current Right",
+  "units": "mA",
+  "scale": 0.038140293056636326,
+  "offset": -15.79659987912623,
+  "relerr": 0.003801913528495218
+ },
+ {
+  "ram": "0xfffef200",
+  "width": 2,
+  "name": "Brake Booster Pressure",
+  "units": "kPa",
+  "scale": 0.0039061932169156205,
+  "offset": -0.3733828878227018,
+  "relerr": 0.0011073360477751482
+ },
+ {
+  "ram": "0xfffeeece",
+  "width": 2,
+  "name": "Manifold Absolute Pressure",
+  "units": "kPa",
+  "scale": 0.0039061932169156205,
+  "offset": -0.3733828878227018,
+  "relerr": 0.0011073360477751482
+ },
+ {
+  "ram": "0xfffeeece",
+  "width": 2,
+  "name": "Vehicle Speed",
+  "units": "mph",
+  "scale": 0.0024271959353771725,
+  "offset": -0.2320093700787419,
+  "relerr": 0.0011073360477751486
+ },
+ {
+  "ram": "0xffff04bb",
+  "width": 1,
+  "name": "Fine Learning Knock Correction",
+  "units": "degrees",
+  "scale": -0.14298137085705837,
+  "offset": 18.078954610754835,
+  "relerr": 0.2141700822122738
+ },
+ {
+  "ram": "0xfffeeee4",
+  "width": 2,
+  "name": "Mass Airflow",
+  "units": "g/s",
+  "scale": 0.004577636760783944,
+  "offset": -0.004923740649487959,
+  "relerr": 9.635726253164893e-06
+ },
+ {
+  "ram": "0xffff00c2",
+  "width": 2,
+  "name": "Main Accelerator Sensor",
+  "units": "V",
+  "scale": 7.62942811816279e-05,
+  "offset": -0.010001097898933173,
+  "relerr": 0.0011696651375950346
+ },
+ {
+  "ram": "0xffff00c4",
+  "width": 2,
+  "name": "Sub Accelerator Sensor",
+  "units": "V",
+  "scale": 7.62942811816279e-05,
+  "offset": -0.010001097898933173,
+  "relerr": 0.0011696651375950346
+ },
+ {
+  "ram": "0xffff0d44",
+  "width": 2,
+  "name": "Radiator Fan Control",
+  "units": "%",
+  "scale": 0.0015256652478219442,
+  "offset": -0.4915047852411653,
+  "relerr": 0.0029798559416053354
+ },
+ {
+  "ram": "0xffff0d44",
+  "width": 2,
+  "name": "Fuel Level",
+  "units": "%",
+  "scale": 0.000598300097185076,
+  "offset": -0.19274697460437457,
+  "relerr": 0.002979855941605335
+ },
+ {
+  "ram": "0xfffee6d0",
+  "width": 1,
+  "name": "Rear O2 Heater Current",
+  "units": "A",
+  "scale": 0.027427103201773693,
+  "offset": -0.02020045982703283,
+  "relerr": 0.0016364052178883186
+ },
+ {
+  "ram": "0xfffeef96",
+  "width": 2,
+  "name": "A/F Sensor #1",
+  "units": "Lambda",
+  "scale": 0.0001220703125,
+  "offset": 0.0,
+  "relerr": 0.0
+ },
+ {
+  "ram": "0xffff2b23",
+  "width": 1,
+  "name": "Intake Air Temperature",
+  "units": "C",
+  "scale": 1.0,
+  "offset": -50.0,
+  "relerr": 0.0
+ },
+ {
+  "ram": "0xfffef0d2",
+  "width": 1,
+  "name": "Battery Temperature",
+  "units": "C",
+  "scale": 1.0,
+  "offset": -50.0,
+  "relerr": 0.0
+ },
+ {
+  "ram": "0xfffeed6c",
+  "width": 2,
+  "name": "Tumble Valve Position Sensor Left",
+  "units": "V",
+  "scale": 0.005,
+  "offset": 0.0,
+  "relerr": 0.0
+ },
+ {
+  "ram": "0xfffeed6e",
+  "width": 2,
+  "name": "Tumble Valve Position Sensor Right",
+  "units": "V",
+  "scale": 0.005,
+  "offset": 0.0,
+  "relerr": 0.0
+ },
+ {
+  "ram": "0xfffeed6e",
+  "width": 2,
+  "name": "Atmospheric Pressure",
+  "units": "psi",
+  "scale": 0.03627450980392157,
+  "offset": -3.789561257387201e-15,
+  "relerr": 8.706100495456914e-17
+ },
+ {
+  "ram": "0xffff04a4",
+  "width": 1,
+  "name": "Learned Ignition Timing",
+  "units": "degrees",
+  "scale": 0.35181093465570273,
+  "offset": -0.23825874081978846,
+  "relerr": 0.002306278379826509
+ },
+ {
+  "ram": "0xffff0af4",
+  "width": 2,
+  "name": "Throttle Opening Angle",
+  "units": "%",
+  "scale": 0.0039059982297600334,
+  "offset": -0.19516164042976097,
+  "relerr": 0.0011418989071493727
+ },
+ {
+  "ram": "0xffff29a5",
+  "width": 1,
+  "name": "Coolant Temperature",
+  "units": "C",
+  "scale": 1.0,
+  "offset": -50.0,
+  "relerr": 0.0
+ },
+ {
+  "ram": "0xffff29a5",
+  "width": 1,
+  "name": "Fuel Trim #2 - Short Term",
+  "units": "%",
+  "scale": 0.78125,
+  "offset": -107.8125,
+  "relerr": 0.0
+ },
+ {
+  "ram": "0xfffeeeb2",
+  "width": 2,
+  "name": "Mass Airflow Sensor Voltage",
+  "units": "V",
+  "scale": 7.812386433831239e-05,
+  "offset": -0.007467657756453267,
+  "relerr": 0.001107336047775148
+ },
+ {
+  "ram": "0xffffab41",
+  "width": 1,
+  "name": "Battery Voltage",
+  "units": "V",
+  "scale": 0.08000000000000003,
+  "offset": -3.580687802255623e-15,
+  "relerr": 1.1704594867096175e-16
+ },
+ {
+  "ram": "0xffff65a1",
+  "width": 1,
+  "name": "Vehicle Speed",
+  "units": "km/h",
+  "scale": 1.0,
+  "offset": 0.0,
+  "relerr": 0.0
+ },
+ {
+  "ram": "0xffff65a1",
+  "width": 1,
+  "name": "Mass Airflow",
+  "units": "g/s",
+  "scale": 0.010000000000000004,
+  "offset": -4.475859752819529e-16,
+  "relerr": 1.1704594867096175e-16
+ },
+ {
+  "ram": "0xffff0ede",
+  "width": 2,
+  "name": "Fuel Level Sensor Resistance",
+  "units": "ohm",
+  "scale": 0.25,
+  "offset": 0.0,
+  "relerr": 0.0
+ },
+ {
+  "ram": "0xffff102e",
+  "width": 2,
+  "name": "Roughness Monitor Cylinder #1",
+  "units": "misfire count",
+  "scale": 1.0,
+  "offset": 0.0,
+  "relerr": 0.0
+ },
+ {
+  "ram": "0xffff1030",
+  "width": 2,
+  "name": "Roughness Monitor Cylinder #2",
+  "units": "misfire count",
+  "scale": 1.0,
+  "offset": 0.0,
+  "relerr": 0.0
+ },
+ {
+  "ram": "0xffff1032",
+  "width": 2,
+  "name": "Roughness Monitor Cylinder #3",
+  "units": "misfire count",
+  "scale": 1.0,
+  "offset": 0.0,
+  "relerr": 0.0
+ },
+ {
+  "ram": "0xffff1034",
+  "width": 2,
+  "name": "Roughness Monitor Cylinder #4",
+  "units": "misfire count",
+  "scale": 1.0,
+  "offset": 0.0,
+  "relerr": 0.0
+ }
+]

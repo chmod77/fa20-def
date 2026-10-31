@@ -1,0 +1,3 @@
+log4j:WARN No appenders could be found for logger (com.romraider.util.SettingsManager).
+log4j:WARN Please initialize the log4j system properly.
+PASS: 1044 tables, 83107 cells/axis entries match ROM bytes; no faulty tables; all locked; 112 RPM entries match verified physical conversion

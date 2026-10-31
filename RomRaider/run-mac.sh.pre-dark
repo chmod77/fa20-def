@@ -1,0 +1,32 @@
+#!/bin/bash
+# RomRaider launcher for macOS.
+#
+# Runs on an x86_64 JDK under Rosetta 2 ON PURPOSE: RomRaider bundles JNA 3.4.0
+# (2011), whose macOS native library is i386/x86_64 only. On an arm64 JVM, JNA
+# fails to initialize at all, which kills J2534 (OpenPort 2.0) logging. The
+# editor alone would run fine natively; the logger will not.
+#
+# Pairs with ../j2534-osx/j2534-x64.dylib (x86_64), referenced from
+# customize/j2534Libraries.properties.
+#
+# Args are passed through, e.g.:  ./run-mac.sh -logger
+
+cd "$(dirname "$0")" || exit 1
+mkdir -p "$HOME/.RomRaider"
+
+X64_JAVA="$(cd .. && pwd)/.toolchain/jdk-17.0.20+8/Contents/Home/bin/java"
+
+if [ -x "$X64_JAVA" ]; then
+    LAUNCH=(arch -x86_64 "$X64_JAVA")
+else
+    echo "x86_64 JDK missing at $X64_JAVA — falling back to system java." >&2
+    echo "Editor will work; OpenPort 2.0 / J2534 logging will NOT." >&2
+    LAUNCH=(java)
+fi
+
+exec "${LAUNCH[@]}" \
+  -Xdock:name=RomRaider \
+  -Dapple.laf.useScreenMenuBar=true \
+  -Dawt.useSystemAAFontSettings=lcd -Dswing.aatext=true \
+  -Xms64M -Xmx1024M \
+  -jar RomRaider.jar "$@" >> "$HOME/.RomRaider/romraider_sout.log" 2>&1

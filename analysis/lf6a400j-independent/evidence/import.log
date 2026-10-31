@@ -1,0 +1,81 @@
+openjdk version "21.0.12.1" 2026-08-18 LTS
+OpenJDK Runtime Environment Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS)
+OpenJDK 64-Bit Server VM Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS, mixed mode)
+INFO  Using log config file: jar:file:/Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml (LoggingInitialization)  
+INFO  Using log file: /Users/shalomz/Library/ghidra/ghidra_12.1.3_PUBLIC/application.log (LoggingInitialization)  
+INFO  Loading user preferences: /Users/shalomz/Library/ghidra/ghidra_12.1.3_PUBLIC/preferences (Preferences)  
+INFO  Searching for classes... (ClassSearcher)  
+INFO  Class search complete (523 ms) (ClassSearcher)  
+INFO  Initializing SSL Context (DefaultSSLContextInitializer)  
+INFO  Initializing Random Number Generator... (SecureRandomFactory)  
+INFO  Random Number Generator initialization complete: NativePRNGNonBlocking (SecureRandomFactory)  
+INFO  Trust manager disabled, cacerts have not been set (DefaultTrustManagerFactory)  
+INFO  Headless startup complete (1738 ms) (AnalyzeHeadless)  
+INFO  Class searcher loaded 93 extension points (46 false positives) (ClassSearcher)  
+INFO  HEADLESS Script Paths:
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Debug/Debugger-rmi-trace/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Features/SwiftDemangler/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Features/BSim/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Features/FileFormats/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Processors/JVM/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Features/DecompilerDependent/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Features/WildcardAssembler/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Features/PyGhidra/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Features/SystemEmulation/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Processors/8051/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Features/Decompiler/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Processors/Atmel/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Processors/DATA/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Features/VersionTracking/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Features/Base/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Debug/Debugger/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Features/FunctionID/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Features/GnuDemangler/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Features/MicrosoftCodeAnalyzer/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Processors/PIC/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Features/BytePatterns/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Features/PDB/ghidra_scripts (HeadlessAnalyzer)  
+INFO  HEADLESS: execution starts (HeadlessAnalyzer)  
+INFO  Creating project: /Users/shalomz/Projects/ecu/analysis/lf6a400j-independent/ghidra/lf6a400j (HeadlessAnalyzer)  
+INFO  Creating project: /Users/shalomz/Projects/ecu/analysis/lf6a400j-independent/ghidra/lf6a400j (DefaultProject)  
+INFO  REPORT: Processing input files:  (HeadlessAnalyzer)  
+INFO       project: /Users/shalomz/Projects/ecu/analysis/lf6a400j-independent/ghidra/lf6a400j (HeadlessAnalyzer)  
+INFO  IMPORTING: file:///Users/shalomz/Projects/ecu/roms/LF6A400J_A501A14007-20241119-175005.bin (HeadlessAnalyzer)  
+INFO  Successfully applied "-loader-baseAddr" to "Base Address" (old: "null", new: "0") (ProgramLoader)  
+INFO  Using Loader: Raw Binary (ProgramLoader)  
+INFO  Using Language/Compiler: SuperH:BE:32:SH-2A:default (ProgramLoader)  
+INFO  Using Library Search Path: [., /System/Library/dyld/dyld_shared_cache_arm64e, /System/Library/dyld/dyld_shared_cache_x86_64, /System/Library/dyld/dyld_shared_cache_x86_64h, /System/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e, /System/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_x86_64, /System/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_x86_64h, /Users/shalomz/Library/Java/Extensions, /Library/Java/Extensions, /Network/Library/Java/Extensions, /System/Library/Java/Extensions, /usr/lib/java] (ProgramLoader)  
+INFO  IMPORTING: Loaded 0 additional files (HeadlessAnalyzer)  
+INFO  ANALYZING all memory and code: file:///Users/shalomz/Projects/ecu/roms/LF6A400J_A501A14007-20241119-175005.bin (HeadlessAnalyzer)  
+INFO  Packed database cache: /var/tmp/shalomz-ghidra/packed-db-cache (PackedDatabaseCache)  
+INFO  Applied data type archive: generic_clib (ApplyDataArchiveAnalyzer)  
+WARN  Decompiling 00009334, pcode error at 000096a5: Unable to resolve constructor at 000096a5 (DecompileCallback)  
+INFO  -----------------------------------------------------
+    ASCII Strings                              0.261 secs
+    Apply Data Archives                        0.508 secs
+    Basic Constant Reference Analyzer         11.773 secs
+    Call-Fixup Installer                       0.023 secs
+    Create Address Tables                      0.036 secs
+    Create Address Tables - One Time           0.506 secs
+    Create Function                            0.645 secs
+    Data Reference                             0.620 secs
+    Decompiler Switch Analysis                91.691 secs
+    Demangler GNU                              0.000 secs
+    Disassemble Entry Points                   0.001 secs
+    Embedded Media                             0.026 secs
+    External Entry References                  0.000 secs
+    Function ID                                0.023 secs
+    Non-Returning Functions - Discovered       0.054 secs
+    Reference                                  1.153 secs
+    Shared Return Calls                        0.478 secs
+    Stack                                      6.411 secs
+    Subroutine References                      0.409 secs
+    Subroutine References - One Time           0.022 secs
+-----------------------------------------------------
+     Total Time   114 secs
+-----------------------------------------------------
+ (AutoAnalysisManager)  
+INFO  REPORT: Analysis succeeded for file: file:///Users/shalomz/Projects/ecu/roms/LF6A400J_A501A14007-20241119-175005.bin (HeadlessAnalyzer)  
+INFO  /LF6A400J_A501A14007-20241119-175005.bin: file created (shalomz) (LocalFileSystem)  
+INFO  REPORT: Save succeeded for: /LF6A400J_A501A14007-20241119-175005.bin (lf6a400j:/LF6A400J_A501A14007-20241119-175005.bin) (HeadlessAnalyzer)  
+INFO  REPORT: Import succeeded (HeadlessAnalyzer)  

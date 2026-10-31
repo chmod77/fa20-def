@@ -1,0 +1,131 @@
+openjdk version "21.0.12.1" 2026-08-18 LTS
+OpenJDK Runtime Environment Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS)
+OpenJDK 64-Bit Server VM Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS, mixed mode)
+INFO  Using log config file: jar:file:/Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml (LoggingInitialization)  
+INFO  Using log file: /Users/shalomz/Library/ghidra/ghidra_12.1.3_PUBLIC/application.log (LoggingInitialization)  
+INFO  Loading user preferences: /Users/shalomz/Library/ghidra/ghidra_12.1.3_PUBLIC/preferences (Preferences)  
+INFO  Searching for classes... (ClassSearcher)  
+INFO  Class search complete (489 ms) (ClassSearcher)  
+INFO  Initializing SSL Context (DefaultSSLContextInitializer)  
+INFO  Initializing Random Number Generator... (SecureRandomFactory)  
+INFO  Random Number Generator initialization complete: NativePRNGNonBlocking (SecureRandomFactory)  
+INFO  Trust manager disabled, cacerts have not been set (DefaultTrustManagerFactory)  
+INFO  Headless startup complete (1015 ms) (AnalyzeHeadless)  
+INFO  Class searcher loaded 59 extension points (20 false positives) (ClassSearcher)  
+INFO  HEADLESS Script Paths:
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Debug/Debugger-rmi-trace/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Features/SwiftDemangler/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Features/BSim/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Features/FileFormats/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Processors/JVM/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Features/DecompilerDependent/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Features/WildcardAssembler/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Features/PyGhidra/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Features/SystemEmulation/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Processors/8051/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Features/Decompiler/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Processors/Atmel/ghidra_scripts
+    /Users/shalomz/Projects/ecu/analysis/lf6a400j-independent/scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Processors/DATA/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Features/VersionTracking/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Features/Base/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Debug/Debugger/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Features/FunctionID/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Features/GnuDemangler/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Features/MicrosoftCodeAnalyzer/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Processors/PIC/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Features/BytePatterns/ghidra_scripts
+    /Users/shalomz/Projects/ecu/.ghidra-dl/ghidra_12.1.3_PUBLIC/Ghidra/Features/PDB/ghidra_scripts (HeadlessAnalyzer)  
+INFO  HEADLESS: execution starts (HeadlessAnalyzer)  
+INFO  Opening existing project: /Users/shalomz/Projects/ecu/analysis/lf6a400j-independent/ghidra/lf6a400j (HeadlessAnalyzer)  
+INFO  Opening project: /Users/shalomz/Projects/ecu/analysis/lf6a400j-independent/ghidra/lf6a400j (HeadlessProject)  
+INFO  REPORT: Processing project file: /LF6A400J_A501A14007-20241119-175005.bin (HeadlessAnalyzer)  
+INFO  REPORT: Execute script: DecompileTargets.java '/Users/shalomz/Projects/ecu/analysis/lf6a400j-independent/evidence/signals' '/Users/shalomz/Projects/ecu/analysis/lf6a400j-independent/evidence/conversion-targets.txt'  (HeadlessAnalyzer)  
+VerifyRomRaider.java:4: error: package com.romraider.xml does not exist
+import com.romraider.xml.DOMRomUnmarshaller;
+                        ^
+VerifyRomRaider.java:6: error: package com.romraider.swing does not exist
+import com.romraider.swing.JProgressPane;
+                          ^
+VerifyRomRaider.java:9: error: cannot find symbol
+ static void check(Table table,DataCell cell,byte[] b,int index) {
+                   ^
+  symbol:   class Table
+  location: class VerifyRomRaider
+VerifyRomRaider.java:9: error: cannot find symbol
+ static void check(Table table,DataCell cell,byte[] b,int index) {
+                               ^
+  symbol:   class DataCell
+  location: class VerifyRomRaider
+VerifyRomRaider.java:5: error: package com.romraider.maps does not exist
+import com.romraider.maps.*;
+                    ^
+VerifyRomRaider.java:18: error: cannot find symbol
+  DOMRomUnmarshaller u=new DOMRomUnmarshaller();Node match=u.checkDefinitionMatch(d.getDocumentElement(),b);
+  ^
+  symbol:   class DOMRomUnmarshaller
+  location: class VerifyRomRaider
+VerifyRomRaider.java:18: error: cannot find symbol
+  DOMRomUnmarshaller u=new DOMRomUnmarshaller();Node match=u.checkDefinitionMatch(d.getDocumentElement(),b);
+                           ^
+  symbol:   class DOMRomUnmarshaller
+  location: class VerifyRomRaider
+VerifyRomRaider.java:20: error: cannot find symbol
+  JProgressPane progress=new JProgressPane();Rom rom=u.unmarshallXMLDefinition(Paths.get(args[0]).toFile(),d.getDocumentElement(),match,b,progress);
+  ^
+  symbol:   class JProgressPane
+  location: class VerifyRomRaider
+VerifyRomRaider.java:20: error: cannot find symbol
+  JProgressPane progress=new JProgressPane();Rom rom=u.unmarshallXMLDefinition(Paths.get(args[0]).toFile(),d.getDocumentElement(),match,b,progress);
+                             ^
+  symbol:   class JProgressPane
+  location: class VerifyRomRaider
+VerifyRomRaider.java:20: error: cannot find symbol
+  JProgressPane progress=new JProgressPane();Rom rom=u.unmarshallXMLDefinition(Paths.get(args[0]).toFile(),d.getDocumentElement(),match,b,progress);
+                                             ^
+  symbol:   class Rom
+  location: class VerifyRomRaider
+VerifyRomRaider.java:22: error: cannot find symbol
+  for(Table t:rom.getTables()) {
+      ^
+  symbol:   class Table
+  location: class VerifyRomRaider
+VerifyRomRaider.java:24: error: cannot find symbol
+   if(t instanceof Table3D) {
+                   ^
+  symbol:   class Table3D
+  location: class VerifyRomRaider
+VerifyRomRaider.java:25: error: cannot find symbol
+    Table3D t3=(Table3D)t;DataCell[][] cells=t3.get3dData();
+    ^
+  symbol:   class Table3D
+  location: class VerifyRomRaider
+VerifyRomRaider.java:25: error: cannot find symbol
+    Table3D t3=(Table3D)t;DataCell[][] cells=t3.get3dData();
+                ^
+  symbol:   class Table3D
+  location: class VerifyRomRaider
+VerifyRomRaider.java:25: error: cannot find symbol
+    Table3D t3=(Table3D)t;DataCell[][] cells=t3.get3dData();
+                          ^
+  symbol:   class DataCell
+  location: class VerifyRomRaider
+VerifyRomRaider.java:27: error: cannot find symbol
+    Table x=t3.getXAxis(),y=t3.getYAxis();for(int i=0;i<x.getDataSize();i++)check(x,x.getData()[i],b,i);for(int i=0;i<y.getDataSize();i++)check(y,y.getData()[i],b,i);
+    ^
+  symbol:   class Table
+  location: class VerifyRomRaider
+VerifyRomRaider.java:30: error: cannot find symbol
+    Table ax=((Table2D)t).getAxis();for(int i=0;i<ax.getDataSize();i++)check(ax,ax.getData()[i],b,i);
+    ^
+  symbol:   class Table
+  location: class VerifyRomRaider
+VerifyRomRaider.java:30: error: cannot find symbol
+    Table ax=((Table2D)t).getAxis();for(int i=0;i<ax.getDataSize();i++)check(ax,ax.getData()[i],b,i);
+               ^
+  symbol:   class Table2D
+  location: class VerifyRomRaider
+skipping /Users/shalomz/Projects/ecu/analysis/lf6a400j-independent/scripts/VerifyRomRaider.java
+INFO  SCRIPT: /Users/shalomz/Projects/ecu/analysis/lf6a400j-independent/scripts/DecompileTargets.java (HeadlessAnalyzer)  
+INFO  DecompileTargets.java> Decompilation complete (GhidraScript)  
+INFO  REPORT: Save succeeded for processed file: /LF6A400J_A501A14007-20241119-175005.bin (HeadlessAnalyzer)  

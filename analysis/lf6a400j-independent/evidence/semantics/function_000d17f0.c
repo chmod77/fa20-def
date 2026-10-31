@@ -1,0 +1,201 @@
+
+void FUN_000d17f0(void)
+
+{
+  short *psVar1;
+  short *psVar2;
+  byte *pbVar3;
+  char *pcVar4;
+  short *psVar5;
+  byte *pbVar6;
+  byte *pbVar7;
+  short *psVar8;
+  int iVar9;
+  undefined4 uVar10;
+  byte bVar11;
+  uint uVar12;
+  int iVar13;
+  code *pcVar14;
+  undefined1 local_4c [8];
+  undefined1 local_44 [20];
+  undefined4 local_30 [2];
+  byte abStack_28 [4];
+  byte abStack_24 [4];
+  
+  psVar2 = DAT_000d18b0;
+  psVar1 = DAT_000d18a4;
+  (*(code *)PTR_FUN_000d18ac)((int)*DAT_000d18b0,DAT_000d18a8);
+  (*(code *)PTR_FUN_000d18b8)((int)psVar1[0x97],DAT_000d18b4);
+  (*(code *)PTR_FUN_000d18c0)((int)psVar1[0x9a],DAT_000d18bc);
+  pbVar3 = DAT_000d18c4;
+  (*(code *)PTR_FUN_000d18cc)(*DAT_000d18c4 & 1,DAT_000d18c8);
+  (*(code *)PTR_FUN_000d18d4)((*pbVar3 & 2) != 0,DAT_000d18d0);
+  (*(code *)PTR_FUN_000d18dc)((pbVar3[1] & 4) != 0,DAT_000d18d8);
+  (*(code *)PTR_FUN_000d18e4)((*(byte *)((int)psVar1 + 0xe5) & 0x10) != 0,DAT_000d18e0);
+  (*(code *)PTR_FUN_000d18f0)((*DAT_000d18e8 & 0x20) != 0,DAT_000d18ec);
+  (*(code *)PTR_FUN_000d18fc)(((int)*DAT_000d18f4 & 0x80U) != 0,DAT_000d18f8);
+  psVar5 = DAT_000d190c;
+  pcVar4 = DAT_000d1908;
+  (*(code *)PTR_FUN_000d1904)
+            ((*PTR_DAT_000d1900 & 0x10) != 0,*DAT_000d1910,(int)*DAT_000d190c,(int)DAT_000d1908[10],
+             local_4c);
+  for (uVar12 = 0; (uVar12 & 0xff) < 6; uVar12 = uVar12 + 1) {
+    uVar12 = uVar12 & 0xff;
+    *(undefined1 *)(DAT_000d1b14 + uVar12) = local_4c[uVar12];
+  }
+  (*(code *)PTR_FUN_000d1b1c)((pbVar3[1] & 8) != 0,DAT_000d1b18);
+  (*(code *)PTR_FUN_000d1b28)((*DAT_000d1b20 & 2) != 0,DAT_000d1b24);
+  (*(code *)PTR_FUN_000d1b34)((*DAT_000d1b2c & 2) != 0,DAT_000d1b30);
+  (*(code *)PTR_FUN_000d1b40)(*DAT_000d1b38 & 1,DAT_000d1b3c);
+  (*(code *)PTR_FUN_000d1b48)(((int)*(char *)(psVar1 + 0x4c) & 0x80U) != 0,DAT_000d1b44);
+  (*(code *)PTR_FUN_000d1b50)(*(byte *)(psVar1 + 0x4c) & 1,DAT_000d1b4c);
+  (*(code *)PTR_FUN_000d1b58)((int)*DAT_000d1b5c,DAT_000d1b54);
+  (*(code *)PTR_FUN_000d1b64)((int)*DAT_000d1b68,DAT_000d1b60);
+  (*(code *)PTR_FUN_000d1b70)((int)DAT_000d1b68[1],DAT_000d1b6c);
+  (*(code *)PTR_FUN_000d1b78)((int)*psVar2,DAT_000d1b74);
+  (*(code *)PTR_FUN_000d1b80)((int)psVar1[0x21],DAT_000d1b7c);
+  (*(code *)PTR_FUN_000d1b88)((int)*DAT_000d1b8c,DAT_000d1b84);
+  (*(code *)PTR_FUN_000d1b98)((*DAT_000d1b90 & 0x40) != 0,DAT_000d1b94);
+  (*(code *)PTR_FUN_000d1ba4)((*DAT_000d1b9c & 0x10) != 0,DAT_000d1ba0);
+  pbVar6 = DAT_000d1ba8;
+  (*(code *)PTR_FUN_000d1bb0)(DAT_000d1ba8[6] & 1,DAT_000d1bac);
+  (*(code *)PTR_FUN_000d1bb8)((int)*DAT_000d1bbc,DAT_000d1bb4);
+  (*(code *)PTR_FUN_000d1bc4)((int)psVar2[0xc],(int)*(short *)(pbVar6 + 0xe),DAT_000d1bc0);
+  (*(code *)PTR_FUN_000d1bcc)(*DAT_000d1b9c & 1,DAT_000d1bc8);
+  (*(code *)PTR_FUN_000d1bd8)(((int)*DAT_000d1bd0 & 0x80U) != 0,DAT_000d1bd4);
+  (*(code *)PTR_FUN_000d1be0)((int)*(char *)(DAT_000d1be4 + 3),DAT_000d1bdc);
+  (*(code *)PTR_FUN_000d1bec)((int)*DAT_000d1bf0,DAT_000d1be8);
+  (*(code *)PTR_FUN_000d1bf8)((int)*DAT_000d1bfc,DAT_000d1bf4);
+  (*(code *)PTR_FUN_000d1c04)((int)*DAT_000d1c08,DAT_000d1c00);
+  (*(code *)PTR_FUN_000d1c10)((int)*DAT_000d1c14,DAT_000d1c0c);
+  (*(code *)PTR_FUN_000d1c1c)(*pbVar6 & 1,DAT_000d1c18);
+  (*(code *)PTR_FUN_000d1c24)((int)DAT_000d1c28[4],DAT_000d1c20);
+  (*(code *)PTR_FUN_000d1c30)((int)*DAT_000d1c28,DAT_000d1c2c);
+  (*(code *)PTR_FUN_000d1c38)((int)*(short *)(DAT_000d1c3c + 2),DAT_000d1c34);
+  (*(code *)PTR_FUN_000d1c48)((*DAT_000d1c40 & 2) != 0,DAT_000d1c44);
+  (*(code *)PTR_FUN_000d1c50)(*DAT_000d1c40 & 1,DAT_000d1c4c);
+  (*(code *)PTR_FUN_000d1c58)((int)DAT_000d1c5c[1],DAT_000d1c54);
+  (*(code *)PTR_FUN_000d1c64)((int)*DAT_000d1c5c,DAT_000d1c60);
+  (*(code *)PTR_FUN_000d1c6c)((int)*(short *)(DAT_000d1c70 + 0x16),DAT_000d1c68);
+  (*(code *)PTR_FUN_000d1c78)((int)*(short *)(DAT_000d1c70 + 0x14),DAT_000d1c74);
+  (*(code *)PTR_FUN_000d1c84)((*DAT_000d1c7c & 2) != 0,DAT_000d1c80);
+  (*(code *)PTR_FUN_000d1c8c)((int)*DAT_000d1c90,DAT_000d1c88);
+  pbVar7 = DAT_000d1c94;
+  (*(code *)PTR_FUN_000d1c9c)(DAT_000d1c94[1] & 1,DAT_000d1c98);
+  (*(code *)PTR_FUN_000d1ca4)((*pbVar7 & 0x40) != 0,DAT_000d1ca0);
+  (*(code *)PTR_FUN_000d1cac)((*(byte *)(psVar1 + 0x4c) & 4) != 0,DAT_000d1ca8);
+  (*(code *)PTR_FUN_000d1ea4)((int)psVar1[0x62],DAT_000d1cb0);
+  (*(code *)PTR_FUN_000d1eb0)((*DAT_000d1ea8 & 0x20) != 0,DAT_000d1eac);
+  (*(code *)PTR_FUN_000d1eb8)((int)*DAT_000d1ebc,DAT_000d1eb4);
+  (*(code *)PTR_FUN_000d1ec4)((int)*DAT_000d1ec8,DAT_000d1ec0);
+  (*(code *)PTR_FUN_000d1ed0)((int)*pcVar4,DAT_000d1ecc);
+  (*(code *)PTR_FUN_000d1edc)(*(byte *)(DAT_000d1ed4 + 0xc) & 1,DAT_000d1ed8);
+  (*(code *)PTR_FUN_000d1ee4)((int)*psVar1,DAT_000d1ee0);
+  (*(code *)PTR_FUN_000d1eec)((int)*DAT_000d1ef0,DAT_000d1ee8);
+  (*(code *)PTR_FUN_000d1ef8)((int)DAT_000d1ef0[1],DAT_000d1ef4);
+  (*(code *)PTR_FUN_000d1f00)((int)*DAT_000d1f04,DAT_000d1efc);
+  (*(code *)PTR_FUN_000d1f0c)((int)DAT_000d1f10[9],DAT_000d1f08);
+  (*(code *)PTR_FUN_000d1f18)((int)*DAT_000d1f10,DAT_000d1f14);
+  (*(code *)PTR_FUN_000d1f20)((int)*DAT_000d1f24,DAT_000d1f1c);
+  (*(code *)PTR_FUN_000d1f2c)((*pbVar7 & 0x20) != 0,DAT_000d1f28);
+  (*(code *)PTR_FUN_000d1f34)((int)*DAT_000d1f38,DAT_000d1f30);
+  (*(code *)PTR_FUN_000d1f44)((*DAT_000d1f3c & 0x20) != 0,DAT_000d1f40);
+  (*(code *)PTR_FUN_000d1f4c)(*(byte *)(psVar1 + 0x33) & 1,DAT_000d1f48);
+  pbVar7 = DAT_000d1f50;
+  (*(code *)PTR_FUN_000d1f58)((*DAT_000d1f50 & 8) != 0,DAT_000d1f54);
+  (*(code *)PTR_FUN_000d1f60)((int)*DAT_000d1f64,DAT_000d1f5c);
+  (*(code *)PTR_FUN_000d1f6c)((int)*DAT_000d1f70,DAT_000d1f68);
+  (*(code *)PTR_FUN_000d1f78)((int)DAT_000d1f7c[0xe],DAT_000d1f74);
+  (*(code *)PTR_FUN_000d1f88)(DAT_000d1f84,DAT_000d1f80);
+  (*(code *)PTR_FUN_000d1f90)(DAT_000d1f84,DAT_000d1f8c);
+  (*(code *)PTR_FUN_000d1f98)((int)DAT_000d1f9c[1],DAT_000d1f94);
+  (*(code *)PTR_FUN_000d1fa4)((int)*DAT_000d1f9c,DAT_000d1fa0);
+  (*(code *)PTR_FUN_000d1fb0)((*DAT_000d1fa8 & 0x20) != 0,DAT_000d1fac);
+  (*(code *)PTR_FUN_000d1fb8)((int)psVar1[0xfd],DAT_000d1fb4);
+  (*(code *)PTR_FUN_000d1fc4)(((int)*DAT_000d1fbc & 0x80U) != 0,DAT_000d1fc0);
+  (*(code *)PTR_FUN_000d1fcc)((int)psVar2[0xc],DAT_000d1fc8);
+  (*(code *)PTR_FUN_000d1fd4)((int)*DAT_000d1fd8,DAT_000d1fd0);
+  (*(code *)PTR_FUN_000d1fe0)(((int)(char)*pbVar7 & 0x80U) != 0,DAT_000d1fdc);
+  (*(code *)PTR_FUN_000d1fe8)((int)*DAT_000d1fec,DAT_000d1fe4);
+  (*(code *)PTR_FUN_000d1ff4)((int)*(short *)(DAT_000d1ff8 + 10),DAT_000d1ff0);
+  (*(code *)PTR_FUN_000d2000)((int)*(short *)(DAT_000d1ff8 + 0xc),DAT_000d1ffc);
+  (*(code *)PTR_FUN_000d200c)((*DAT_000d2004 & 0x10) != 0,DAT_000d2008);
+  (*(code *)PTR_FUN_000d2014)(*DAT_000d2004 & 1,DAT_000d2010);
+  (*(code *)PTR_FUN_000d201c)((*(byte *)(psVar1 + 0x4c) & 0x20) != 0,DAT_000d2018);
+  (*(code *)PTR_FUN_000d2024)((*(byte *)(psVar1 + 0x3a) & 4) != 0,DAT_000d2020);
+  (*(code *)PTR_FUN_000d202c)((int)*DAT_000d2030,DAT_000d2028);
+  (*(code *)PTR_FUN_000d2038)((int)*DAT_000d1f7c,DAT_000d2034);
+  (*(code *)PTR_FUN_000d2044)(DAT_000d2040,DAT_000d203c);
+  (*(code *)PTR_FUN_000d204c)(DAT_000d2040,DAT_000d2048);
+  (*(code *)PTR_FUN_000d21f0)((int)*DAT_000d21f4,DAT_000d2050);
+  (*(code *)PTR_FUN_000d21fc)((*(byte *)(psVar1 + 0x4c) & 0x40) != 0,DAT_000d21f8);
+  (*(code *)PTR_FUN_000d2208)((*DAT_000d2200 & 0x20) != 0,DAT_000d2204);
+  (*(code *)PTR_FUN_000d2210)((int)*DAT_000d2214,DAT_000d220c);
+  (*(code *)PTR_FUN_000d221c)((int)*(char *)(psVar1 + 0x66),DAT_000d2218);
+  (*(code *)PTR_FUN_000d2224)((*(byte *)(psVar1 + 0x34) & 2) != 0,DAT_000d2220);
+  (*(code *)PTR_FUN_000d222c)((*pbVar7 & 4) != 0,DAT_000d2228);
+  (*(code *)PTR_FUN_000d2234)((int)*DAT_000d2238,DAT_000d2230);
+  (*(code *)PTR_FUN_000d2244)(((int)*(char *)(DAT_000d223c + 5) & 0x80U) != 0,DAT_000d2240);
+  (*(code *)PTR_FUN_000d224c)((int)DAT_000d2238[1],DAT_000d2248);
+  (*(code *)PTR_FUN_000d2258)(DAT_000d2254,DAT_000d2250);
+  (*(code *)PTR_FUN_000d2260)((int)*DAT_000d2268,(int)*DAT_000d2264,DAT_000d225c);
+  (*(code *)PTR_FUN_000d2270)((int)*DAT_000d2274,DAT_000d226c);
+  (*(code *)PTR_FUN_000d227c)((int)*DAT_000d2280,DAT_000d2278);
+  (*(code *)PTR_FUN_000d2288)((int)*DAT_000d228c,DAT_000d2284);
+  (*(code *)PTR_FUN_000d2294)((int)*DAT_000d2298,DAT_000d2290);
+  (*(code *)PTR_FUN_000d22a0)((int)*(char *)(int)DAT_000d21ec,DAT_000d229c);
+  (*(code *)PTR_FUN_000d22a8)((int)*DAT_000d22ac,DAT_000d22a4);
+  (*(code *)PTR_FUN_000d22b4)((int)*DAT_000d22b8,DAT_000d22b0);
+  (*(code *)PTR_FUN_000d22c0)(DAT_000d22bc,local_44);
+  for (uVar12 = 0; (uVar12 & 0xff) < 0x11; uVar12 = uVar12 + 1) {
+    uVar12 = uVar12 & 0xff;
+    *(undefined1 *)(DAT_000d22c4 + uVar12) = local_44[uVar12];
+  }
+  (*(code *)PTR_FUN_000d22d0)(((int)*DAT_000d22c8 & 0x80U) != 0,DAT_000d22cc);
+  pbVar7 = DAT_000d22d4;
+  FUN_000d2488((*(byte *)((int)psVar1 + 0xe5) & 0x20) != 0,DAT_000d22d4 + 1);
+  (*(code *)PTR_FUN_000d22d8)(((int)(char)*pbVar6 & 0x80U) != 0,pbVar7 + 2);
+  (*(code *)PTR_FUN_000d22dc)((pbVar6[2] & 4) != 0,pbVar7 + 3);
+  (*(code *)PTR_FUN_000d22e0)((*pbVar3 & 0x10) != 0,pbVar7 + 4);
+  psVar8 = DAT_000d22e8;
+  (*(code *)PTR_FUN_000d22e4)((int)*DAT_000d22e8,pbVar7 + 5);
+  (*(code *)PTR_FUN_000d22ec)((int)psVar8[1],pbVar7 + 6);
+  (*(code *)PTR_FUN_000d22f0)((int)psVar8[2],pbVar7 + 7);
+  (*(code *)PTR_FUN_000d22f4)((int)psVar8[3],pbVar7 + 8);
+  iVar9 = DAT_000d22f8;
+  (*(code *)PTR_FUN_000d22fc)((int)psVar1[0x6a],DAT_000d22f8,local_30);
+  iVar13 = 0;
+  for (bVar11 = 0; bVar11 < 2; bVar11 = bVar11 + 1) {
+    *(undefined4 *)(iVar9 + iVar13) = *(undefined4 *)((int)local_30 + iVar13);
+    iVar13 = iVar13 + 4;
+  }
+  (*(code *)PTR_FUN_000d240c)((*DAT_000d2408 & 0x10) != 0,pbVar7 + 9);
+  (*(code *)PTR_FUN_000d2414)(((int)*DAT_000d2410 & 0x80U) != 0,pbVar7 + 10);
+  (*(code *)PTR_FUN_000d2418)((pbVar3[1] & 2) != 0,pbVar7 + 0xb);
+  (*(code *)PTR_FUN_000d241c)(pbVar3[1] & 1,pbVar7 + 0xc);
+  (*(code *)PTR_FUN_000d2420)((int)psVar2[0xf],pbVar7 + 0xd);
+  (*(code *)PTR_FUN_000d2428)((int)*DAT_000d242c,DAT_000d2424);
+  (*(code *)PTR_FUN_000d2430)((int)*DAT_000d2434,pbVar7 + 0xe);
+  (*(code *)PTR_FUN_000d2438)((int)*DAT_000d243c,abStack_28);
+  pcVar14 = (code *)(int)DAT_000d2404;
+  uVar10 = (*pcVar14)((int)DAT_000d2406);
+  bVar11 = *pbVar7 | 1;
+  if ((abStack_28[0] & 1) == 0) {
+    bVar11 = *pbVar7 & 0xfe;
+  }
+  *pbVar7 = bVar11;
+  (*pcVar14)(uVar10);
+  (*(code *)PTR_FUN_000d2440)((int)*DAT_000d243c,abStack_24);
+  uVar10 = (*pcVar14)((int)DAT_000d2406);
+  bVar11 = *pbVar7 | 2;
+  if ((abStack_24[0] & 1) == 0) {
+    bVar11 = *pbVar7 & 0xfd;
+  }
+  *pbVar7 = bVar11;
+  (*pcVar14)(uVar10);
+  (*(code *)PTR_FUN_000d2448)(*pbVar7 & 1,DAT_000d2444);
+  (*(code *)PTR_FUN_000d2450)((*pbVar7 & 2) != 0,DAT_000d244c);
+  (*(code *)PTR_FUN_000d2458)(iVar9,(int)psVar5[1],DAT_000d2454);
+  return;
+}
+

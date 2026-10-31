@@ -1,0 +1,7 @@
+.ghidra-dl/
+.disasm-venv/
+__pycache__/
+*.lock
+*.lock~
+.DS_Store
+RomRaider/hs_err_pid*.log

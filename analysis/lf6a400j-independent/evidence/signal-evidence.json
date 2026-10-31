@@ -1,0 +1,114 @@
+{
+  "rom_sha256": "26fe97c8242409ec328aad7e6336b3cba735edcc861073c17384be82985e3548",
+  "protocol_source": "https://raw.githubusercontent.com/RomRaider/RomRaider/master/definitions/log_defs.xml",
+  "signals": [
+    {
+      "address": 4294912404,
+      "storage": "uint16",
+      "name": "Engine Speed",
+      "units": "RPM",
+      "expression": "x*25/128",
+      "evidence": [
+        "A8 handler 0x7BCBA indexes pointer table 0x15F9D8; SSM 0x0E/0x0F map to 0xFFFF0F66/67",
+        "Formatter call 0xD1D8A passes RAM 0xFFFF2994 to converter 0xD0C38; output=floor(raw*25/32); SSM units are output/4 RPM",
+        "Independent load calculation uses literal float 25/128 at 0x7E49C"
+      ],
+      "diagnostic_quantization": "SSM output truncates to quarter RPM; firmware internal scale independently confirmed by exact float literal"
+    },
+    {
+      "address": 4294902892,
+      "storage": "int8",
+      "name": "Diagnostic ignition timing input",
+      "units": "degrees BTDC",
+      "expression": "x/2",
+      "evidence": [
+        "SSM 0x11 maps to 0xFFFF05D0",
+        "Formatter call 0xD1982 passes RAM 0xFFFF046C to converter 0xD0638; byte output=(raw+128) modulo 256",
+        "Standard SSM timing conversion is (output-128)/2"
+      ],
+      "limitation": "Does not establish the role or scaling of upstream calibration tables."
+    }
+  ],
+  "verified_axes": [
+    {
+      "descriptor": 182700,
+      "axis_index": 0,
+      "name": "Engine Speed",
+      "units": "RPM",
+      "expression": "x*25/128",
+      "to_byte": "x*128/25",
+      "format": "0.00",
+      "source_signal": 4294912404,
+      "call_chain": [
+        554234,
+        550784
+      ],
+      "status": "reviewed binary arithmetic and caller chain",
+      "limitation": "Applies to recovered call paths; complete indirect-call coverage is not claimed."
+    },
+    {
+      "descriptor": 182680,
+      "axis_index": 0,
+      "name": "Engine Speed",
+      "units": "RPM",
+      "expression": "x*25/128",
+      "to_byte": "x*128/25",
+      "format": "0.00",
+      "source_signal": 4294912404,
+      "call_chain": [
+        554234,
+        550796
+      ],
+      "status": "reviewed binary arithmetic and caller chain",
+      "limitation": "Applies to recovered call paths; complete indirect-call coverage is not claimed."
+    },
+    {
+      "descriptor": 182740,
+      "axis_index": 0,
+      "name": "Engine Speed",
+      "units": "RPM",
+      "expression": "x*25/128",
+      "to_byte": "x*128/25",
+      "format": "0.00",
+      "source_signal": 4294912404,
+      "call_chain": [
+        554234,
+        550812
+      ],
+      "status": "reviewed binary arithmetic and caller chain",
+      "limitation": "Applies to recovered call paths; complete indirect-call coverage is not claimed."
+    },
+    {
+      "descriptor": 182720,
+      "axis_index": 0,
+      "name": "Engine Speed",
+      "units": "RPM",
+      "expression": "x*25/128",
+      "to_byte": "x*128/25",
+      "format": "0.00",
+      "source_signal": 4294912404,
+      "call_chain": [
+        554234,
+        550824
+      ],
+      "status": "reviewed binary arithmetic and caller chain",
+      "limitation": "Applies to recovered call paths; complete indirect-call coverage is not claimed."
+    },
+    {
+      "descriptor": 182784,
+      "axis_index": 0,
+      "name": "Engine Speed",
+      "units": "RPM",
+      "expression": "x*25/128",
+      "to_byte": "x*128/25",
+      "format": "0.00",
+      "source_signal": 4294912404,
+      "call_chain": [
+        554294,
+        551572
+      ],
+      "status": "reviewed binary arithmetic and caller chain",
+      "limitation": "Applies to recovered call paths; complete indirect-call coverage is not claimed."
+    }
+  ]
+}

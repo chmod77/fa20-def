@@ -1,0 +1,17 @@
+{
+  "analysis/lf6a400j-independent/RR_LF6A400J_INDEPENDENT_RESEARCH.xml": "a9e7dad37b8e8a078b87bb1a1d36f52b3b1ec523ca5f97e40d97662aa0dee778",
+  "analysis/lf6a400j-independent/scripts/build_research_definition.py": "bb5bc03ff27f8196734fd7fd31032a3d1c3859ec755a98128e3e9fe68ddca796",
+  "analysis/lf6a400j-independent/scripts/classify_lookups.py": "fcf1e35daa5b8af055441221ec86916788ceb0238e76af0cb1a5b13b105f2c85",
+  "analysis/lf6a400j-independent/scripts/inventory_scalar_reads.py": "9482e12f15cf81bf4070eb2caba91e9507681e7c00015d6400b5903a4bb5f3e5",
+  "analysis/lf6a400j-independent/scripts/make_fixtures.py": "fc2f24408f739d7e9d774ba609c9f1bd5f01bc80f3d114c1f9d738ea2cd2d333",
+  "analysis/lf6a400j-independent/scripts/scan_rom.py": "31681b10d1e1ac73c5154826ba42f77ad40ee9ccc34d0aef88f9703bab578fe9",
+  "analysis/lf6a400j-independent/scripts/trace_calls.py": "1648d7593a6a6434bb45b3db25894e5cae74b6685d44c6a3bc4a89c50ed3398c",
+  "analysis/lf6a400j-independent/scripts/DecompileTargets.java": "c6d7f61ece8f7bc40b432527c5b29b94ed156c3ef2a4233feec1f4675e5660b7",
+  "analysis/lf6a400j-independent/scripts/ExportEvidence.java": "d86827aaaf3eed2c12fc846ace493860d9d4f0151037102dddbde91f6490c34c",
+  "analysis/lf6a400j-independent/scripts/RestoreExportBoundaries.java": "29b965982e9e3f227c6dc7c2ac6cce862792b3d23fe31bed398d2ae98ae80079",
+  "analysis/lf6a400j-independent/scripts/VerifyLookup.java": "90ae3ffd536f4c2db54038f50fcbdc6cb0bcce0a3c04d2cfaa31c2f0f446c829",
+  "analysis/lf6a400j-independent/scripts/VerifyRomRaider.java": "75b0342737809cf129df4a88e7c98bc872ba11a7e8d807608cdc39ce95e34648",
+  "analysis/lf6a400j-independent/evidence/instructions.tsv": "51d6a647e9619651571bef92c422f855cc4e16f87276c4cb6a9b378150f1537a",
+  "analysis/lf6a400j-independent/evidence/emulation-results.tsv": "14d6cb9a7592a02d50791430a134e0d9922d62d81059e96370dfb6f904ec23d6",
+  "RomRaider/RomRaider.jar": "43f0e92d652a5d2dde57fbe76ef99ff4f18c8147b0cbc20c0c4ccb33a7fe6635"
+}

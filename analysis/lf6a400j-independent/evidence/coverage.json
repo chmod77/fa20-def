@@ -1,0 +1,20 @@
+{
+  "rom_sha256": "26fe97c8242409ec328aad7e6336b3cba735edcc861073c17384be82985e3548",
+  "complete": false,
+  "semantic_names_verified": 0,
+  "physical_scalings_verified": 0,
+  "axis_scalings_verified": 5,
+  "signal_scalings_verified": 2,
+  "lookup_routines": 82,
+  "lookup_routines_node_tested": 82,
+  "emulation_cases": 642,
+  "static_lookup_calls": 1247,
+  "referenced_descriptors": 1182,
+  "accepted_descriptor_layouts": 1181,
+  "unique_raw_table_views": 1044,
+  "unresolved_descriptors": 1,
+  "unresolved_reasons": {
+    "dynamic/RAM descriptor or unknown pointer": 1
+  },
+  "coverage_limitation": "No claim of all calibrations: scalar constants, switches, indirect/dynamic references, undetected code and semantic identification remain unresolved."
+}

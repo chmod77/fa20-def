@@ -1,0 +1,82 @@
+#!/bin/bash
+# RomRaider launcher for macOS.
+#
+# Runs on an x86_64 JDK under Rosetta 2 ON PURPOSE: RomRaider bundles JNA 3.4.0
+# (2011), whose macOS native library is i386/x86_64 only. On an arm64 JVM, JNA
+# fails to initialize at all, which kills J2534 (OpenPort 2.0) logging. The
+# editor alone would run fine natively; the logger will not.
+#
+# Pairs with ../j2534-osx/j2534-x64.dylib (x86_64), referenced from
+# customize/j2534Libraries.properties.
+#
+# Args are passed through, e.g.:  ./run-mac.sh -logger
+
+cd "$(dirname "$0")" || exit 1
+mkdir -p "$HOME/.RomRaider"
+
+LOG="$HOME/.RomRaider/romraider_sout.log"
+
+# Dark theme lives in its own repo now (../romraider-dark). Rebuild it there with
+# ./build.sh after upgrading RomRaider.jar.
+THEME="$(cd .. && pwd)/romraider-dark"
+
+# ./run-mac.sh --quit  — ask RomRaider to exit so DarkLauncher's shutdown hook runs
+# EcuLogger.stopLogging() and closes the J2534 device. RomRaider itself registers no
+# shutdown hook, and killing it outright leaves the OpenPort wedged mid-stream: the
+# next open then reads stale bytes (garbled firmware string in rr_system.log).
+if [ "${1:-}" = "--quit" ]; then
+    PID=$(pgrep -f rrtheme.DarkLauncher | head -1)
+    if [ -z "$PID" ]; then
+        echo "RomRaider is not running."
+        exit 0
+    fi
+    echo "Asking RomRaider (pid $PID) to quit..."
+    kill -TERM "$PID" 2>/dev/null
+    for _ in $(seq 1 20); do
+        kill -0 "$PID" 2>/dev/null || { echo "Exited cleanly; J2534 device closed."; exit 0; }
+        sleep 0.5
+    done
+    echo "Still running after 10s. Quit it from the GUI instead." >&2
+    echo "Avoid kill -9: it skips the shutdown hook and wedges the OpenPort." >&2
+    exit 1
+fi
+
+# Rotate the JVM stdout/stderr log, keeping 3 generations. rr_system.log is capped by
+# log4j's RollingFileAppender (lib/log4j.properties); nothing else bounds this one.
+if [ -f "$LOG" ] && [ "$(stat -f%z "$LOG" 2>/dev/null || echo 0)" -gt 2097152 ]; then
+    rm -f "$LOG.3"
+    [ -f "$LOG.2" ] && mv "$LOG.2" "$LOG.3"
+    [ -f "$LOG.1" ] && mv "$LOG.1" "$LOG.2"
+    mv "$LOG" "$LOG.1"
+fi
+
+X64_JAVA="$(cd .. && pwd)/.toolchain/jdk-17.0.20+8/Contents/Home/bin/java"
+
+if [ -x "$X64_JAVA" ]; then
+    LAUNCH=(arch -x86_64 "$X64_JAVA")
+else
+    echo "x86_64 JDK missing at $X64_JAVA — falling back to system java." >&2
+    echo "Editor will work; OpenPort 2.0 / J2534 logging will NOT." >&2
+    LAUNCH=(java)
+fi
+
+# Dark theme (theme/): rrtheme.DarkLauncher installs FlatLaf dark + the Outfit
+# font, then calls com.romraider.ECUExec.main. We launch with -cp instead of
+# -jar because -jar ignores -cp, which means the jar's manifest Class-Path is
+# ignored too and lib/common must be listed here.
+#
+# $THEME/out MUST come first: it holds a rebuilt com/romraider/Settings.class whose
+# hardcoded `static final` cell text colours are light instead of black, plus the
+# replacement LookAndFeelManager and icons. These only shadow the jar's copies if
+# they are earlier on the classpath.
+
+exec "${LAUNCH[@]}" \
+  -Xdock:name=RomRaider \
+  -Dapple.laf.useScreenMenuBar=true \
+  -Dawt.useSystemAAFontSettings=lcd -Dswing.aatext=true \
+  -Drrtheme.dir="$THEME" \
+  --add-opens java.desktop/sun.awt=ALL-UNNAMED \
+  --add-exports java.desktop/sun.awt=ALL-UNNAMED \
+  -Xms64M -Xmx1024M \
+  -cp "$THEME/out:RomRaider.jar:lib/common/*:$THEME/lib/flatlaf-3.7.2.jar" \
+  rrtheme.DarkLauncher "$@" >> "$LOG" 2>&1

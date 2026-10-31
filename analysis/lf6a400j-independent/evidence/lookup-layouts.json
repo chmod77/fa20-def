@@ -1,0 +1,866 @@
+[
+  {
+    "target": 1259928,
+    "rank": 1,
+    "axes": [
+      "uint8"
+    ],
+    "data": "int8",
+    "evidence": "evidence/lookups/function_00133998.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1259988,
+    "rank": 1,
+    "axes": [
+      "uint8"
+    ],
+    "data": "int16",
+    "evidence": "evidence/lookups/function_001339d4.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1260052,
+    "rank": 1,
+    "axes": [
+      "uint8"
+    ],
+    "data": "int16",
+    "evidence": "evidence/lookups/function_00133a14.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1260116,
+    "rank": 1,
+    "axes": [
+      "uint16"
+    ],
+    "data": "int16",
+    "evidence": "evidence/lookups/function_00133a54.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1260344,
+    "rank": 1,
+    "axes": [
+      "uint8"
+    ],
+    "data": "uint8",
+    "evidence": "evidence/lookups/function_00133b38.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1260492,
+    "rank": 1,
+    "axes": [
+      "uint16"
+    ],
+    "data": "uint8",
+    "evidence": "evidence/lookups/function_00133bcc.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1260648,
+    "rank": 1,
+    "axes": [
+      "int8"
+    ],
+    "data": "uint8",
+    "evidence": "evidence/lookups/function_00133c68.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1260856,
+    "rank": 1,
+    "axes": [
+      "int16"
+    ],
+    "data": "uint8",
+    "evidence": "evidence/lookups/function_00133d38.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1261072,
+    "rank": 1,
+    "axes": [
+      "uint8"
+    ],
+    "data": "uint16",
+    "evidence": "evidence/lookups/function_00133e10.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1261224,
+    "rank": 1,
+    "axes": [
+      "uint8"
+    ],
+    "data": "uint16",
+    "evidence": "evidence/lookups/function_00133ea8.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1261376,
+    "rank": 1,
+    "axes": [
+      "uint16"
+    ],
+    "data": "uint16",
+    "evidence": "evidence/lookups/function_00133f40.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1261528,
+    "rank": 1,
+    "axes": [
+      "uint16"
+    ],
+    "data": "uint16",
+    "evidence": "evidence/lookups/function_00133fd8.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1261680,
+    "rank": 1,
+    "axes": [
+      "uint32"
+    ],
+    "data": "uint16",
+    "evidence": "evidence/lookups/function_00134070.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1262096,
+    "rank": 1,
+    "axes": [
+      "int8"
+    ],
+    "data": "uint16",
+    "evidence": "evidence/lookups/function_00134210.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1262308,
+    "rank": 1,
+    "axes": [
+      "int8"
+    ],
+    "data": "uint16",
+    "evidence": "evidence/lookups/function_001342e4.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1262520,
+    "rank": 1,
+    "axes": [
+      "int16"
+    ],
+    "data": "uint16",
+    "evidence": "evidence/lookups/function_001343b8.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1262732,
+    "rank": 1,
+    "axes": [
+      "int16"
+    ],
+    "data": "uint16",
+    "evidence": "evidence/lookups/function_0013448c.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1262944,
+    "rank": 1,
+    "axes": [
+      "uint8"
+    ],
+    "data": "uint32",
+    "evidence": "evidence/lookups/function_00134560.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1263356,
+    "rank": 1,
+    "axes": [
+      "uint16"
+    ],
+    "data": "uint32",
+    "evidence": "evidence/lookups/function_001346fc.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1263524,
+    "rank": 1,
+    "axes": [
+      "uint32"
+    ],
+    "data": "uint32",
+    "evidence": "evidence/lookups/function_001347a4.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1264136,
+    "rank": 1,
+    "axes": [
+      "uint16"
+    ],
+    "data": "int8",
+    "evidence": "evidence/lookups/function_00134a08.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1264560,
+    "rank": 1,
+    "axes": [
+      "uint8"
+    ],
+    "data": "int16",
+    "evidence": "evidence/lookups/function_00134bb0.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1264772,
+    "rank": 1,
+    "axes": [
+      "uint16"
+    ],
+    "data": "int16",
+    "evidence": "evidence/lookups/function_00134c84.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1264984,
+    "rank": 1,
+    "axes": [
+      "int8"
+    ],
+    "data": "int16",
+    "evidence": "evidence/lookups/function_00134d58.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1265196,
+    "rank": 1,
+    "axes": [
+      "int16"
+    ],
+    "data": "int16",
+    "evidence": "evidence/lookups/function_00134e2c.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1265408,
+    "rank": 1,
+    "axes": [
+      "uint16"
+    ],
+    "data": "int32",
+    "evidence": "evidence/lookups/function_00134f00.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1265576,
+    "rank": 1,
+    "axes": [
+      "uint8"
+    ],
+    "data": "uint8",
+    "evidence": "evidence/lookups/function_00134fa8.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1265724,
+    "rank": 1,
+    "axes": [
+      "uint16"
+    ],
+    "data": "uint8",
+    "evidence": "evidence/lookups/function_0013503c.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1265880,
+    "rank": 1,
+    "axes": [
+      "int16"
+    ],
+    "data": "uint8",
+    "evidence": "evidence/lookups/function_001350d8.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1266020,
+    "rank": 1,
+    "axes": [
+      "uint8"
+    ],
+    "data": "uint16",
+    "evidence": "evidence/lookups/function_00135164.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1266172,
+    "rank": 1,
+    "axes": [
+      "uint16"
+    ],
+    "data": "uint16",
+    "evidence": "evidence/lookups/function_001351fc.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1266324,
+    "rank": 1,
+    "axes": [
+      "uint16"
+    ],
+    "data": "uint16",
+    "evidence": "evidence/lookups/function_00135294.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1266688,
+    "rank": 1,
+    "axes": [
+      "uint8"
+    ],
+    "data": "int8",
+    "evidence": "evidence/lookups/function_00135400.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1266896,
+    "rank": 1,
+    "axes": [
+      "uint16"
+    ],
+    "data": "int8",
+    "evidence": "evidence/lookups/function_001354d0.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1267040,
+    "rank": 1,
+    "axes": [
+      "uint8"
+    ],
+    "data": "int16",
+    "evidence": "evidence/lookups/function_00135560.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1267252,
+    "rank": 1,
+    "axes": [
+      "uint16"
+    ],
+    "data": "int16",
+    "evidence": "evidence/lookups/function_00135634.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1267464,
+    "rank": 1,
+    "axes": [
+      "uint16"
+    ],
+    "data": "int8",
+    "evidence": "evidence/lookups/function_00135708.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1267536,
+    "rank": 1,
+    "axes": [
+      "uint16"
+    ],
+    "data": "int16",
+    "evidence": "evidence/lookups/function_00135750.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1267608,
+    "rank": 2,
+    "axes": [
+      "uint8",
+      "uint8"
+    ],
+    "data": "uint8",
+    "evidence": "evidence/lookups/function_00135798.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1267972,
+    "rank": 2,
+    "axes": [
+      "uint16",
+      "uint8"
+    ],
+    "data": "uint8",
+    "evidence": "evidence/lookups/function_00135904.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1268340,
+    "rank": 2,
+    "axes": [
+      "uint8",
+      "uint16"
+    ],
+    "data": "uint8",
+    "evidence": "evidence/lookups/function_00135a74.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1268712,
+    "rank": 2,
+    "axes": [
+      "uint16",
+      "uint16"
+    ],
+    "data": "uint8",
+    "evidence": "evidence/lookups/function_00135be8.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1269088,
+    "rank": 2,
+    "axes": [
+      "uint16",
+      "uint16"
+    ],
+    "data": "uint8",
+    "evidence": "evidence/lookups/function_00135d60.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1269464,
+    "rank": 2,
+    "axes": [
+      "uint8",
+      "uint8"
+    ],
+    "data": "uint16",
+    "evidence": "evidence/lookups/function_00135ed8.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1269840,
+    "rank": 2,
+    "axes": [
+      "uint16",
+      "uint8"
+    ],
+    "data": "uint16",
+    "evidence": "evidence/lookups/function_00136050.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1270216,
+    "rank": 2,
+    "axes": [
+      "uint8",
+      "uint16"
+    ],
+    "data": "uint16",
+    "evidence": "evidence/lookups/function_001361c8.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1270592,
+    "rank": 2,
+    "axes": [
+      "uint8",
+      "uint16"
+    ],
+    "data": "uint16",
+    "evidence": "evidence/lookups/function_00136340.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1270968,
+    "rank": 2,
+    "axes": [
+      "uint16",
+      "uint16"
+    ],
+    "data": "uint16",
+    "evidence": "evidence/lookups/function_001364b8.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1271344,
+    "rank": 2,
+    "axes": [
+      "int16",
+      "uint16"
+    ],
+    "data": "uint16",
+    "evidence": "evidence/lookups/function_00136630.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1271776,
+    "rank": 2,
+    "axes": [
+      "uint16",
+      "int16"
+    ],
+    "data": "uint16",
+    "evidence": "evidence/lookups/function_001367e0.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1272260,
+    "rank": 2,
+    "axes": [
+      "int16",
+      "int16"
+    ],
+    "data": "uint16",
+    "evidence": "evidence/lookups/function_001369c4.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1272796,
+    "rank": 2,
+    "axes": [
+      "uint8",
+      "uint8"
+    ],
+    "data": "uint32",
+    "evidence": "evidence/lookups/function_00136bdc.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1274188,
+    "rank": 2,
+    "axes": [
+      "uint16",
+      "uint16"
+    ],
+    "data": "uint32",
+    "evidence": "evidence/lookups/function_0013714c.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1274996,
+    "rank": 2,
+    "axes": [
+      "uint8",
+      "uint16"
+    ],
+    "data": "int8",
+    "evidence": "evidence/lookups/function_00137474.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1275528,
+    "rank": 2,
+    "axes": [
+      "uint16",
+      "uint16"
+    ],
+    "data": "int8",
+    "evidence": "evidence/lookups/function_00137688.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1278204,
+    "rank": 2,
+    "axes": [
+      "int16",
+      "uint16"
+    ],
+    "data": "int16",
+    "evidence": "evidence/lookups/function_001380fc.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1279276,
+    "rank": 2,
+    "axes": [
+      "uint8",
+      "uint8"
+    ],
+    "data": "uint8",
+    "evidence": "evidence/lookups/function_0013852c.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1279644,
+    "rank": 2,
+    "axes": [
+      "uint16",
+      "uint8"
+    ],
+    "data": "uint8",
+    "evidence": "evidence/lookups/function_0013869c.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1280016,
+    "rank": 2,
+    "axes": [
+      "uint8",
+      "uint16"
+    ],
+    "data": "uint8",
+    "evidence": "evidence/lookups/function_00138810.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1280388,
+    "rank": 2,
+    "axes": [
+      "uint16",
+      "uint16"
+    ],
+    "data": "uint8",
+    "evidence": "evidence/lookups/function_00138984.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1280764,
+    "rank": 2,
+    "axes": [
+      "uint8",
+      "uint8"
+    ],
+    "data": "uint16",
+    "evidence": "evidence/lookups/function_00138afc.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1281140,
+    "rank": 2,
+    "axes": [
+      "uint16",
+      "uint8"
+    ],
+    "data": "uint16",
+    "evidence": "evidence/lookups/function_00138c74.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1281516,
+    "rank": 2,
+    "axes": [
+      "uint16",
+      "uint8"
+    ],
+    "data": "uint16",
+    "evidence": "evidence/lookups/function_00138dec.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1281892,
+    "rank": 2,
+    "axes": [
+      "uint16",
+      "uint16"
+    ],
+    "data": "uint16",
+    "evidence": "evidence/lookups/function_00138f64.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1282268,
+    "rank": 2,
+    "axes": [
+      "uint16",
+      "uint16"
+    ],
+    "data": "uint16",
+    "evidence": "evidence/lookups/function_001390dc.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1282644,
+    "rank": 2,
+    "axes": [
+      "uint16",
+      "uint32"
+    ],
+    "data": "int16",
+    "evidence": "evidence/lookups/function_00139254.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1282920,
+    "rank": 2,
+    "axes": [
+      "uint16",
+      "int16"
+    ],
+    "data": "uint16",
+    "evidence": "evidence/lookups/function_00139368.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1283548,
+    "rank": 2,
+    "axes": [
+      "uint8",
+      "uint8"
+    ],
+    "data": "int8",
+    "evidence": "evidence/lookups/function_001395dc.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1284076,
+    "rank": 2,
+    "axes": [
+      "uint8",
+      "uint16"
+    ],
+    "data": "int8",
+    "evidence": "evidence/lookups/function_001397ec.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1284608,
+    "rank": 2,
+    "axes": [
+      "uint16",
+      "uint16"
+    ],
+    "data": "int8",
+    "evidence": "evidence/lookups/function_00139a00.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1285144,
+    "rank": 2,
+    "axes": [
+      "uint16",
+      "uint8"
+    ],
+    "data": "int16",
+    "evidence": "evidence/lookups/function_00139c18.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1285684,
+    "rank": 2,
+    "axes": [
+      "uint8",
+      "uint16"
+    ],
+    "data": "int16",
+    "evidence": "evidence/lookups/function_00139e34.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1286052,
+    "rank": 2,
+    "axes": [
+      "uint16",
+      "uint16"
+    ],
+    "data": "int16",
+    "evidence": "evidence/lookups/function_00139fa4.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1286592,
+    "rank": 2,
+    "axes": [
+      "uint8",
+      "int8"
+    ],
+    "data": "int16",
+    "evidence": "evidence/lookups/function_0013a1c0.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1287132,
+    "rank": 2,
+    "axes": [
+      "uint8",
+      "uint8"
+    ],
+    "data": "uint8",
+    "evidence": "evidence/lookups/function_0013a3dc.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1287500,
+    "rank": 2,
+    "axes": [
+      "uint16",
+      "uint8"
+    ],
+    "data": "uint8",
+    "evidence": "evidence/lookups/function_0013a54c.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1287872,
+    "rank": 2,
+    "axes": [
+      "uint8",
+      "uint16"
+    ],
+    "data": "uint8",
+    "evidence": "evidence/lookups/function_0013a6c0.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1288244,
+    "rank": 2,
+    "axes": [
+      "uint16",
+      "uint16"
+    ],
+    "data": "int8",
+    "evidence": "evidence/lookups/function_0013a834.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1288944,
+    "rank": 2,
+    "axes": [
+      "uint8",
+      "uint16"
+    ],
+    "data": "uint16",
+    "evidence": "evidence/lookups/function_0013aaf0.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1289320,
+    "rank": 2,
+    "axes": [
+      "uint8",
+      "uint16"
+    ],
+    "data": "uint16",
+    "evidence": "evidence/lookups/function_0013ac68.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1289696,
+    "rank": 2,
+    "axes": [
+      "uint16",
+      "uint16"
+    ],
+    "data": "uint16",
+    "evidence": "evidence/lookups/function_0013ade0.c",
+    "status": "decompiler type candidate; emulation pending"
+  },
+  {
+    "target": 1290072,
+    "rank": 2,
+    "axes": [
+      "uint8",
+      "uint16"
+    ],
+    "data": "int8",
+    "evidence": "evidence/lookups/function_0013af58.c",
+    "status": "decompiler type candidate; emulation pending"
+  }
+]

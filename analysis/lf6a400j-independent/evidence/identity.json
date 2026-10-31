@@ -1,0 +1,9 @@
+{
+  "file": "/Users/shalomz/Projects/ecu/roms/LF6A400J_A501A14007-20241119-175005.bin",
+  "size": 1572864,
+  "sha256": "26fe97c8242409ec328aad7e6336b3cba735edcc861073c17384be82985e3548",
+  "calibration_id": "LF6A400J",
+  "calibration_id_offset": 103968,
+  "cpu": "SuperH SH-2A hypothesis; exact MCU unverified",
+  "checksum": "unverified"
+}

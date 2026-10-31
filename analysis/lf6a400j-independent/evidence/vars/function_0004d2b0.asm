@@ -1,0 +1,19 @@
+0004d2b0 sts.l pr,@-r15
+0004d2b2 mov.l @(0x4d418,pc),r6
+0004d2b4 mov.b @r6,r2
+0004d2b6 extu.b r2,r1
+0004d2b8 shll8 r1
+0004d2ba shll2 r1
+0004d2bc shll r1
+0004d2be mov.w @(0x4d3d0,pc),r2
+0004d2c0 add r2,r1
+0004d2c2 mov.l @(0x4d41c,pc),r6
+0004d2c4 jsr @r6
+0004d2c6 _mov #0x5,r0
+0004d2c8 mov.l @(0x4d420,pc),r2
+0004d2ca jsr @r2
+0004d2cc _mov r0,r4
+0004d2ce mov.l @(0x4d3f0,pc),r2
+0004d2d0 lds.l @r15+,pr
+0004d2d2 rts
+0004d2d4 _mov.w r0,@r2
