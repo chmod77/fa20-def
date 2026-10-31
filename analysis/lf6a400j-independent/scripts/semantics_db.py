@@ -665,6 +665,13 @@ for d, fl in ((0x2D7D0, 'clear'), (0x2D7DC, 'set')):
     add(d, f'Timing Term 047B Factor (Coolant), FFFEEF76.7 {fl}', IGT, ev7b + f'0x9A660 (from 0x9BDD0): FFFF047F = T(coolant FFFEEEDE) when '
         f'FFFEEF76 bit 7 {fl}; 047F is the (047F/255) factor of 047B.', F255)
 
+_ev9 = ('0x9C94C: 0x9B27C -> FFFF0489, 0x9B308 -> FFFF048A: in engine state FFFEE6AF >= 3 out = min(base timing FFFF03D1 - T(FFFF03D7*128), '
+        'max FFFF0497), both 0.5 deg (03D1 flows to FFFF046C in half-degrees; 0497 caps 0488 in 0x9B384), so T is a retard in 0.5 deg. ')
+add(0x2D884, 'Ignition Retard vs FFFF03D7 [0x9B308 -> 048A]', IGN, _ev9, DEG2)
+add(0x2D86C, 'Ignition Timing (Coolant), Engine State < 3 [0x9B27C -> 0489]', IGN,
+    _ev9 + 'When FFFEE6AF < 3, FFFF0489 = T(coolant FFFEEEDE) directly (same 0.5 deg unit as the other branch).', DEG2)
+add(0x2D878, 'Ignition Retard vs FFFF03D7 [0x9B27C -> 0489]', IGN, _ev9, DEG2)
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

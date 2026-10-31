@@ -999,15 +999,15 @@
         <scaling units="%" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02D86C] (Coolant Temperature (filtered, word))" category="Unidentified - Ignition Timing - Corrections" storageaddress="CB70" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2D86C. Lookup result stored to: FFFF0489. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="CB80" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Ignition Timing (Coolant), Engine State &lt; 3 [0x9B27C -&gt; 0489]" category="Ignition Timing" storageaddress="CB70" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2D86C. Evidence: 0x9C94C: 0x9B27C -&gt; FFFF0489, 0x9B308 -&gt; FFFF048A: in engine state FFFEE6AF &gt;= 3 out = min(base timing FFFF03D1 - T(FFFF03D7*128), max FFFF0497), both 0.5 deg (03D1 flows to FFFF046C in half-degrees; 0497 caps 0488 in 0x9B384), so T is a retard in 0.5 deg. When FFFEE6AF &lt; 3, FFFF0489 = T(coolant FFFEEEDE) directly (same 0.5 deg unit as the other branch). Lookup result stored to: FFFF0489." sizey="16">
+      <scaling units="deg" expression="x/2" to_byte="x*2" format="0.0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="CB80" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02D884]" category="Unidentified - Ignition Timing - Corrections" storageaddress="CBA6" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D884. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="CBAE" elements="8" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Ignition Retard vs FFFF03D7 [0x9B308 -&gt; 048A]" category="Ignition Timing" storageaddress="CBA6" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D884. Evidence: 0x9C94C: 0x9B27C -&gt; FFFF0489, 0x9B308 -&gt; FFFF048A: in engine state FFFEE6AF &gt;= 3 out = min(base timing FFFF03D1 - T(FFFF03D7*128), max FFFF0497), both 0.5 deg (03D1 flows to FFFF046C in half-degrees; 0497 caps 0488 in 0x9B384), so T is a retard in 0.5 deg. " sizey="8">
+      <scaling units="deg" expression="x/2" to_byte="x*2" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="CBAE" elements="8" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -3708,10 +3708,10 @@
         <scaling units="V" expression="x*8/100" to_byte="x*100/8" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Ignition Timing Reduction (vs ratio FFFF0AA8)" category="Ignition Timing" storageaddress="19D5E" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D878, 0x2D890. Evidence: 0x9B384: FFFF0488 = FFFF03D1 - T(FFFF0AA8) (half-degrees) when FFFF03C6 not in {11,12,25,26,27}; input is a ratio (32768 = 1.0); meaning of FFFF0AA8 unresolved." sizey="16">
+    <table type="2D" name="Ignition Retard vs FFFF03D7 [0x9B27C -&gt; 0489]" category="Ignition Timing" storageaddress="19D5E" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D878, 0x2D890. Evidence: 0x9C94C: 0x9B27C -&gt; FFFF0489, 0x9B308 -&gt; FFFF048A: in engine state FFFEE6AF &gt;= 3 out = min(base timing FFFF03D1 - T(FFFF03D7*128), max FFFF0497), both 0.5 deg (03D1 flows to FFFF046C in half-degrees; 0497 caps 0488 in 0x9B384), so T is a retard in 0.5 deg. " sizey="16">
       <scaling units="deg" expression="x/2" to_byte="x*2" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Ratio FFFF0AA8" storageaddress="19D3E" elements="16" storagetype="uint16" endian="big">
-        <scaling units="ratio" expression="x/32768" to_byte="x*32768" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="19D3E" elements="16" storagetype="uint16" endian="big">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
     <table type="3D" name="Ignition Timing Adjustment during Enrichment (Load x RPM)" category="Ignition Timing - Base &amp; Torque Model" storageaddress="19D94" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D9D8. Evidence: 0x9DD10 (from 0x9BDF4): while FFFF03E0.0 set or 0 &lt; FFFF0401 &lt; FFFF0400 (open-loop enrichment, FFFF056B.6 clear), FFFEC058 = (T-128)*64 (ramping back by +1/64 per execution otherwise); FFFF049E = FFFF0C12 + (T-128); 0x96F3C: FFFF0458 = 049E - 32 + knock terms (0.5 deg), and 0458 -&gt; 03D3 is compared with total timing FFFF046C, so T-128 is in 0.5 deg. Lookup result stored to: FFFF049E." sizex="7" sizey="3">

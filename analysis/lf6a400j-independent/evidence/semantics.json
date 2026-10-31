@@ -1937,6 +1937,45 @@
    "format": "0.0"
   }
  },
+ "0x2D86C": {
+  "status": "identified",
+  "name": "Ignition Timing (Coolant), Engine State < 3 [0x9B27C -> 0489]",
+  "category": "Ignition Timing",
+  "evidence": "0x9C94C: 0x9B27C -> FFFF0489, 0x9B308 -> FFFF048A: in engine state FFFEE6AF >= 3 out = min(base timing FFFF03D1 - T(FFFF03D7*128), max FFFF0497), both 0.5 deg (03D1 flows to FFFF046C in half-degrees; 0497 caps 0488 in 0x9B384), so T is a retard in 0.5 deg. When FFFEE6AF < 3, FFFF0489 = T(coolant FFFEEEDE) directly (same 0.5 deg unit as the other branch).",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "x/2",
+   "to_byte": "x*2",
+   "format": "0.0"
+  }
+ },
+ "0x2D878": {
+  "status": "identified",
+  "name": "Ignition Retard vs FFFF03D7 [0x9B27C -> 0489]",
+  "category": "Ignition Timing",
+  "evidence": "0x9C94C: 0x9B27C -> FFFF0489, 0x9B308 -> FFFF048A: in engine state FFFEE6AF >= 3 out = min(base timing FFFF03D1 - T(FFFF03D7*128), max FFFF0497), both 0.5 deg (03D1 flows to FFFF046C in half-degrees; 0497 caps 0488 in 0x9B384), so T is a retard in 0.5 deg. ",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "x/2",
+   "to_byte": "x*2",
+   "format": "0.0"
+  }
+ },
+ "0x2D884": {
+  "status": "identified",
+  "name": "Ignition Retard vs FFFF03D7 [0x9B308 -> 048A]",
+  "category": "Ignition Timing",
+  "evidence": "0x9C94C: 0x9B27C -> FFFF0489, 0x9B308 -> FFFF048A: in engine state FFFEE6AF >= 3 out = min(base timing FFFF03D1 - T(FFFF03D7*128), max FFFF0497), both 0.5 deg (03D1 flows to FFFF046C in half-degrees; 0497 caps 0488 in 0x9B384), so T is a retard in 0.5 deg. ",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "x/2",
+   "to_byte": "x*2",
+   "format": "0.0"
+  }
+ },
  "0x2D890": {
   "status": "identified",
   "name": "Ignition Timing Reduction (vs ratio FFFF0AA8)",
