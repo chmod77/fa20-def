@@ -16,7 +16,7 @@ void FUN_0009dd10(uint param_1,uint param_2,uint param_3,char param_4,byte param
     if (iVar2 < -0x8000) {
       iVar2 = -0x8000;
     }
-    uVar1 = LK_13A6C0(0x2d9d8,param_2,param_3);
+    uVar1 = LK_13A6C0((uint)&T_02D9D8,param_2,param_3);
     _DAT_fffec058 = ((ushort)uVar1 & 0xff) * 0x40 + -0x2000;
     if (_DAT_fffec058 <= (short)iVar2) {
       _DAT_fffec058 = (short)iVar2;

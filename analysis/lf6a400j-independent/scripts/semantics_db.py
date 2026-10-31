@@ -252,6 +252,16 @@ add(0x2D330, 'Injector Latency Adder (Fuel Rail Pressure, flag FFFEF498.1)', INJ
 add(0x2CE90, 'Injector Flow Scaling (Fuel Rail Pressure)', INJ, _inj + '0x8DDA8: FFFF0B44 = T(FRP FFFEED18) multiplies fuel quantity FFFF1544 '
     '(time contribution = q*x*0.003125 us); unit of q not yet anchored.', ('raw (us per 320 q)', 'x', 'x', '0'), status='partial', axes=FRPAX)
 
+add(0x2D4D4, 'Ignition Timing Override (Engine Speed, FFFF04C1 = 1/2)', IGN,
+    '0x972C0: FFFF045C = T(FFFF299C rpm/25) when FFFF04C1 is 1 or 2; 0x98FAC: Ignition Total Timing FFFF046C = FFFF045C - 32 (half-degrees) '
+    'when FFFF66B1.5 and FFFEE710.5 are set, FFFF049C < 1 and rpm FFFF2ADA <= 0x2800 (2000 rpm), then min/max clamped.',
+    ('deg', '(x-32)/2', 'x*2+32', '0.0'), axes={'0': dict(name='Engine Speed', units='rpm', expr='x*25', to_byte='x/25')})
+
+add(0x2D4E0, 'Ignition Timing Override (Engine Speed, other FFFF04C1 modes)', IGN,
+    '0x972C0: FFFF045C = T(FFFF299C rpm/25) when FFFF04C1 is not 1 or 2; used by 0x98FAC exactly as Ignition Timing Override '
+    '(total timing = FFFF045C - 32 half-degrees under the override conditions).',
+    ('deg', '(x-32)/2', 'x*2+32', '0.0'), axes={'0': dict(name='Engine Speed', units='rpm', expr='x*25', to_byte='x/25')})
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

@@ -2022,16 +2022,16 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02D4D4] (Engine Speed (byte, 25 rpm))" category="Unidentified - Ignition Timing - Corrections" storageaddress="12224" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D4D4. Lookup result stored to: FFFF045C. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Engine Speed (byte, 25 rpm)" storageaddress="12244" elements="16" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Ignition Timing Override (Engine Speed, FFFF04C1 = 1/2)" category="Ignition Timing" storageaddress="12224" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D4D4. Evidence: 0x972C0: FFFF045C = T(FFFF299C rpm/25) when FFFF04C1 is 1 or 2; 0x98FAC: Ignition Total Timing FFFF046C = FFFF045C - 32 (half-degrees) when FFFF66B1.5 and FFFEE710.5 are set, FFFF049C &lt; 1 and rpm FFFF2ADA &lt;= 0x2800 (2000 rpm), then min/max clamped. Lookup result stored to: FFFF045C." sizey="16">
+      <scaling units="deg" expression="(x-32)/2" to_byte="x*2+32" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="12244" elements="16" storagetype="uint8" endian="big">
         <scaling units="rpm" expression="x*25" to_byte="x/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02D4E0]" category="Unidentified - Unidentified (no static caller)" storageaddress="12234" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D4E0. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="12254" elements="16" storagetype="uint8" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+    <table type="2D" name="Ignition Timing Override (Engine Speed, other FFFF04C1 modes)" category="Ignition Timing" storageaddress="12234" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D4E0. Evidence: 0x972C0: FFFF045C = T(FFFF299C rpm/25) when FFFF04C1 is not 1 or 2; used by 0x98FAC exactly as Ignition Timing Override (total timing = FFFF045C - 32 half-degrees under the override conditions). Lookup result stored to: FFFF045C." sizey="16">
+      <scaling units="deg" expression="(x-32)/2" to_byte="x*2+32" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="12254" elements="16" storagetype="uint8" endian="big">
+        <scaling units="rpm" expression="x*25" to_byte="x/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
     <table type="2D" name="Unidentified 16 [D02D9C0] (Coolant Temperature (filtered, word))" category="Unidentified - Ignition Timing - Corrections" storageaddress="12264" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2D9C0. Lookup result stored to: FFFEC052. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
@@ -3714,7 +3714,7 @@
         <scaling units="ratio" expression="x/32768" to_byte="x*32768" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 3x7 [D02D9D8] (Engine Load x Engine Speed)" category="Unidentified - Unidentified (no static caller)" storageaddress="19D94" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D9D8. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="7" sizey="3">
+    <table type="3D" name="Unidentified 3x7 [D02D9D8] (Engine Load x Engine Speed)" category="Unidentified - Ignition Timing - Corrections" storageaddress="19D94" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D9D8. Lookup result stored to: FFFF049E. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="7" sizey="3">
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       <table type="Y Axis" name="Engine Load" storageaddress="19D70" elements="3" storagetype="uint8" endian="big" locked="true">
         <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
