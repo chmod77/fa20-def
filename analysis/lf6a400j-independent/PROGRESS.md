@@ -162,6 +162,19 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
   appear in the disassembly (literal pools). 0x49E70 (task 7) period is still unproven: alarm 9 -> task 7 is never set.
   Coverage 539 of 1271.
 - 0x80968 speed-feedback torque terms (T_02C360/C380), torque limits T_02C78C/C7A0/C3D0 (-> 0A5C). Coverage 544 of 1271.
+- 0D06 is reported over SSM via converter 0xD0C50 (rpm*4); 0D06 = 0D10 = T_02DF00(coolant)<<6 or 0D0E = max(0D02, ...). T_02DF00 =
+  alternate target idle speed (rpm = x*12.5). Coverage 545 of 1271.
+- Dead ends this session (documented so they are not repeated):
+  * FFFF12C2 (axis of the pedal-limit T1 tables, compared with 12BE in the torque monitor): only a read literal (0xC50D0); writer not
+    found by literal, GBR (+70 from 127C) or r0-offset searches.
+  * 0D02 comes from 0xAA684 p15 if r11 = 0x0CEA at 0xA8B6C; capstone desyncs in 0xA8800..0xA8B6C (literal pools), so r11 is unproven.
+    Its source is the helper-0x16BB44 secondary tables 0x1C3E4..0x1C464 (vs FFFEE6A6) -> these stay locked until r11 is proven.
+  * T_02D7FC (rpm x battery V) -> 0485 -> 2CBE -> timer ticks 2CC0 = 2CBE*50000/3072 (0x14EF96): dwell, but the timer clock is unproven.
+  * 0446 (T_02D414, battery V x vacuum) is combined as a + (1-a)*b (0x9513C), i.e. a 0..256 fraction; physical meaning unproven.
+  * 0x8B178 (fuel) and 0x105ACC (torque monitor) form products of several tables with one normaliser: per-table scale not separable.
+  * 0x84484 outputs feed 0A6E = T_02C7C8(0A9A) + 09D4, with 09D4 = T_02C200(min(0CD8, T_02C1F4(coolant))); 0CD8 unproven.
+- Remaining locked by subsystem: 0x15307C diagnostics 102, idle 99, task 0x152A40 67, fuel enrichment 34, torque 33, 0xAEBE8 29,
+  0x153568 23, misfire 23, injection 22, crank/cam 21; 119 helper secondary tables.
 - Previous coverage: 452 of 1271 views unlocked (tables + 81 proven scalars). Torque chain: 0ADC/0ADA/0A1E/0A7A/0A78/0A64/0AE8/0AAA/0ABC
   are proven torque type (0x86680 disasm, 0x8267C, 0x8034C, 0x85434, 0x85940). Filter helpers: 0x16B4D8 (y += (x-y)*k/65536),
   0x16B44C (8-bit, k/256), 0x16B520 (signed).
