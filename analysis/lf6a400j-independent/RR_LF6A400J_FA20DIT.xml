@@ -51,9 +51,9 @@
         <scaling units="%" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02C960] (Intake Air Temperature (control))" category="Unidentified - Ignition Timing - Base &amp; Torque Model" storageaddress="86DE" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C960. Lookup result stored to: FFFF0ACE. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Intake Air Temperature (control)" storageaddress="86CE" elements="16" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Air Density Correction vs Intake Air Temperature [-&gt; 0ACE]" category="Driver Demand / Torque Request" storageaddress="86DE" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C960. Evidence: 0x8635C (from 0x87410): FFFF0ACE = T(FFFEE6A5 control IAT, C = x-50). 0x862FC: FFFF0ACC = 32768 * Patm_raw*0xA1BE*0ACE*2^-45 (Patm FFFEE6AA kPa = x/256 -&gt; 0ACC/32768 = (Patm/101.3 kPa) * (0ACE/32768)); 0x868AC multiplies a torque-type value by 0ACC/32768. So T is a dimensionless multiplier (32768 = 1.0) applied with the pressure ratio: an air density correction by temperature. Lookup result stored to: FFFF0ACE." sizey="16">
+      <scaling units="multiplier" expression="x/32768" to_byte="x*32768" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Intake Air Temperature" storageaddress="86CE" elements="16" storagetype="uint8" endian="big">
         <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
@@ -2079,15 +2079,15 @@
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02C8DC]" category="Unidentified - Ignition Timing - Base &amp; Torque Model" storageaddress="1240E" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C8DC, 0x2C918, 0x2C978. Lookup result stored to: 0008637c:*param_12, FFFF0AA8. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="123FE" elements="16" storagetype="uint8" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+    <table type="2D" name="Torque Efficiency vs Ignition Retard" category="Driver Demand / Torque Request" storageaddress="1240E" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C8DC, 0x2C918, 0x2C978. Shared by descriptors 0x2C8DC (0x853C4 -&gt; FFFF0AA8), 0x2C918 (0x857A8 torque multiplier), 0x2C978 (0x8637C). Evidence: Index: 0x857A8 (from 0x87478) uses FFFF0498 - Ignition Total Timing 046C (0498 = copy of 03D1, 0x9D688; 0.5 deg, signed) &gt;= 0; 0x853C4 uses FFFF03D1 - FFFF049E + 32 (or 03D1 - ((04A4+04BB)*180/256 + 049E - 32), knock terms x*45/128 deg -&gt; *180/256 = 0.5 deg) -&gt; FFFF0AA8; 0x8637C uses 03D1 - FFFF03D3 (0.5 deg). Axis = retard below the torque-model reference timing 03D1 in 0.5 deg. Output: 0x857A8 m = T(retard)*16384/FFFF0BF6 (0BF6 = copy of 0AA8 = same table at the reference retard, 0x9A698) and then torque = 16000 + (tq-16000)*m/16384 (form (tq*m&gt;&gt;14) - m*250/256), i.e. T(retard)/T(ref) is a torque multiplier; 0x8637C forms (0AA8&lt;&lt;13)/T, floor 0x2000 (= 1.0); 0x9B384/T_02D890 invert it. Only ratios of T and the inverse map use it; the data hold 32768 at zero retard and the inverse lookup clamps at 32768, so x/32768 = efficiency relative to zero retard. Lookup result stored to: 0008637c:*param_12, FFFF0AA8." sizey="16">
+      <scaling units="ratio" expression="x/32768" to_byte="x*32768" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Ignition Retard from Reference Timing" storageaddress="123FE" elements="16" storagetype="uint8" endian="big">
+        <scaling units="deg" expression="x/2" to_byte="x*2" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02C96C] (Engine Speed)" category="Unidentified - Ignition Timing - Base &amp; Torque Model" storageaddress="12434" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C96C. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="1E42C" elements="8" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Torque Efficiency Filter Coefficient (RPM) [0x8637C -&gt; FFFF19A8]" category="Filters" storageaddress="12434" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C96C. Evidence: 0x8637C: when the efficiency ratio branch is active, FUN_0016B4D8(&amp;FFFF19A8, target, T(rpm FFFF2994)) with 0x16B4D8: y += (x - y)*k/65536, so T is a first-order filter gain (fraction per execution, 65536 = 1.0)." sizey="8">
+      <scaling units="fraction/step" expression="x/65536" to_byte="x*65536" format="0.0000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="1E42C" elements="8" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -2100,9 +2100,9 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 24 [D02C9F4] (Engine Speed)" category="Unidentified - Ignition Timing - Base &amp; Torque Model" storageaddress="12936" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C9F4. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="24">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="12454" elements="24" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Torque Offset Density-Scaled (RPM) [-&gt; 0ADC]" category="Driver Demand / Torque Request" storageaddress="12936" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C9F4. Evidence: 0x868AC (from 0x87410): FFFF0ADC = T_02C9E8(rpm) + 16000 + (T(rpm)-16000)*FFFF0ACC/32768 - 16000 (form (p*T&gt;&gt;15) - p*32000&gt;&gt;16), so T is torque type scaled by the air density ratio FFFF0ACC (32768 = 1.0); 0ADC is torque type (0x8267C). Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW-&gt;Nm via 60000/2pi, stored *80+16000, clamps = u16 range)." sizey="24">
+      <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="12454" elements="24" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>

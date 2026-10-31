@@ -138,10 +138,13 @@ add(0x2D99C, 'Ignition Timing Compensation (Coolant, >= 5000 rpm)', IGN, _b9c, D
 add(0x2D9A8, 'Ignition Timing Compensation (Coolant, < 5000 rpm)', IGN, _b9c, DEG2)
 add(0x2D938, 'Ignition Timing Limit (Base Path)', IGN,
     '0x9D664: FFFF0497 = T(rpm, load FFFF09B4); 0x9B384: FFFF0488 = min(FFFF03D1 - T_02D890, FFFF0497) (half-degrees) -> 048B -> 0473 -> FFFF046C.', DEG2)
-add(0x2D890, 'Ignition Timing Reduction (vs ratio FFFF0AA8)', IGN,
-    '0x9B384: FFFF0488 = FFFF03D1 - T(FFFF0AA8) (half-degrees) when FFFF03C6 not in {11,12,25,26,27}; input is a ratio (32768 = 1.0); '
-    'meaning of FFFF0AA8 unresolved.', ('deg', 'x/2', 'x*2', '0.0'),
-    axes={'0': dict(name='Ratio FFFF0AA8', units='ratio', expr='x/32768', to_byte='x*32768')})
+add(0x2D890, 'Ignition Retard vs Required Torque Efficiency', IGN,
+    '0x9B384: FFFF0488 = FFFF03D1 - T(e) (half-degrees) when FFFF03C6 not in {11,12,25,26,27}, e = FFFF03D7<<7 (or FFFF0AA8 when FFFFE6AF=3), '
+    'clamped 0x66..0x100 (<<7: 0x3300..0x8000). 0x870FC: FFFF03D7 = (FFFF0AA8 * r/32768) >> 7 with r = (FFFF0ABE-16000)*32768/(filtered torque-16000) '
+    '(torque ratio, 32768 = 1.0); FFFF0AA8 = Torque Efficiency vs Ignition Retard (T_02C8DC) at the current retard. So the input is the torque '
+    'efficiency required for the requested torque, in the T_02C8DC scale (32768 = efficiency at zero retard, the clamp maximum), and T is the '
+    'inverse map: retard below the reference timing 03D1.', ('deg', 'x/2', 'x*2', '0.0'),
+    axes={'0': dict(name='Required Torque Efficiency', units='ratio', expr='x/32768', to_byte='x*32768')})
 
 # ---------------------------------------------------------------- sensor scalings (secondary helper tables, keyed by struct address)
 SENS = 'Sensors'
@@ -878,6 +881,33 @@ add(0x2E918, 'Torque Ratio Filter Coefficient (RPM) [0xC2D6C]', 'Driver Demand /
 add(0x2FCAC, 'Filter Coefficient [0x1068D0 -> FFFF19E4]', 'Filters',
     '0x1068D0 (task 0x1011EC): FUN_0016B4D8(&FFFF19E4, target, T) with 0x16B4D8: y += (x - y)*k/65536, so T is a first-order filter gain '
     '(fraction per execution, 65536 = 1.0).', ('fraction/step', 'x/65536', 'x*65536', '0.0000'))
+
+
+# ---- torque efficiency / density (session 4)
+_effev = ('Index: 0x857A8 (from 0x87478) uses FFFF0498 - Ignition Total Timing 046C (0498 = copy of 03D1, 0x9D688; 0.5 deg, signed) >= 0; '
+          '0x853C4 uses FFFF03D1 - FFFF049E + 32 (or 03D1 - ((04A4+04BB)*180/256 + 049E - 32), knock terms x*45/128 deg -> *180/256 = 0.5 deg) '
+          '-> FFFF0AA8; 0x8637C uses 03D1 - FFFF03D3 (0.5 deg). Axis = retard below the torque-model reference timing 03D1 in 0.5 deg. '
+          'Output: 0x857A8 m = T(retard)*16384/FFFF0BF6 (0BF6 = copy of 0AA8 = same table at the reference retard, 0x9A698) and then '
+          'torque = 16000 + (tq-16000)*m/16384 (form (tq*m>>14) - m*250/256), i.e. T(retard)/T(ref) is a torque multiplier; 0x8637C forms '
+          '(0AA8<<13)/T, floor 0x2000 (= 1.0); 0x9B384/T_02D890 invert it. Only ratios of T and the inverse map use it; the data hold 32768 at '
+          'zero retard and the inverse lookup clamps at 32768, so x/32768 = efficiency relative to zero retard.')
+add(0x2C8DC, 'Torque Efficiency vs Ignition Retard', 'Driver Demand / Torque Request', _effev, ('ratio', 'x/32768', 'x*32768', '0.000'),
+    description='Shared by descriptors 0x2C8DC (0x853C4 -> FFFF0AA8), 0x2C918 (0x857A8 torque multiplier), 0x2C978 (0x8637C).',
+    axes={'0': dict(name='Ignition Retard from Reference Timing', units='deg', expr='x/2', to_byte='x*2')})
+add(0x2C9F4, 'Torque Offset Density-Scaled (RPM) [-> 0ADC]', 'Driver Demand / Torque Request',
+    '0x868AC (from 0x87410): FFFF0ADC = T_02C9E8(rpm) + 16000 + (T(rpm)-16000)*FFFF0ACC/32768 - 16000 (form (p*T>>15) - p*32000>>16), so T is '
+    'torque type scaled by the air density ratio FFFF0ACC (32768 = 1.0); 0ADC is torque type (0x8267C).' + TQEV,
+    ('Nm', '(x-16000)/80', 'x*80+16000', '0.0'), axes={'0': dict(name='Engine Speed', units='rpm', expr='x*25/128', to_byte='x*128/25')})
+add(0x2C960, 'Air Density Correction vs Intake Air Temperature [-> 0ACE]', 'Driver Demand / Torque Request',
+    '0x8635C (from 0x87410): FFFF0ACE = T(FFFEE6A5 control IAT, C = x-50). 0x862FC: FFFF0ACC = 32768 * Patm_raw*0xA1BE*0ACE*2^-45 '
+    '(Patm FFFEE6AA kPa = x/256 -> 0ACC/32768 = (Patm/101.3 kPa) * (0ACE/32768)); 0x868AC multiplies a torque-type value by 0ACC/32768. '
+    'So T is a dimensionless multiplier (32768 = 1.0) applied with the pressure ratio: an air density correction by temperature.',
+    ('multiplier', 'x/32768', 'x*32768', '0.000'),
+    axes={'0': dict(name='Intake Air Temperature', units='C', expr='x-50', to_byte='x+50')})
+add(0x2C96C, 'Torque Efficiency Filter Coefficient (RPM) [0x8637C -> FFFF19A8]', 'Filters',
+    '0x8637C: when the efficiency ratio branch is active, FUN_0016B4D8(&FFFF19A8, target, T(rpm FFFF2994)) with 0x16B4D8: y += (x - y)*k/65536, '
+    'so T is a first-order filter gain (fraction per execution, 65536 = 1.0).', ('fraction/step', 'x/65536', 'x*65536', '0.0000'),
+    axes={'0': dict(name='Engine Speed', units='rpm', expr='x*25/128', to_byte='x*128/25')})
 
 
 if __name__ == '__main__':

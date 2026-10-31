@@ -144,7 +144,12 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
 - Injection angles: 0x44EAC uses FFFF2986 (time per 90 deg) and a 720 deg cycle, so 0B8E/0B8A/0B90 are crank angles in 1 deg units
   (tables in 0x909BC/0x907CC). Coverage: 422 unlocked of 1265.
 
-- Latest coverage: 452 of 1271 views unlocked (tables + 81 proven scalars). Torque chain: 0ADC/0ADA/0A1E/0A7A/0A78/0A64/0AE8/0AAA/0ABC
+- Session 4: torque efficiency chain proven. T_02C8DC/918/978 (shared data 0x1240E) = Torque Efficiency vs Ignition Retard
+  (axis = 03D1 reference timing minus actual, 0.5 deg; output used only as ratios T/T_ref (torque multiplier, 16384 = 1.0) and via the
+  inverse map T_02D890, so x/32768 = relative to zero retard). T_02D890 renamed Ignition Retard vs Required Torque Efficiency (0x870FC:
+  03D7 = 0AA8 * torque ratio). T_02C960 IAT air-density multiplier (0x862FC: 0ACC = Patm/101.3 kPa * 0ACE/32768), T_02C9F4 density-scaled
+  torque offset (-> 0ADC), T_02C96C filter gain vs rpm. Coverage 456 of 1271.
+- Previous coverage: 452 of 1271 views unlocked (tables + 81 proven scalars). Torque chain: 0ADC/0ADA/0A1E/0A7A/0A78/0A64/0AE8/0AAA/0ABC
   are proven torque type (0x86680 disasm, 0x8267C, 0x8034C, 0x85434, 0x85940). Filter helpers: 0x16B4D8 (y += (x-y)*k/65536),
   0x16B44C (8-bit, k/256), 0x16B520 (signed).
 - Open threads: FFFF0498 (0x9D688, from base timing) divides T_02C918; FFFF0F0E feeds the idle torque ratio (0xAA4C0); 0A18/0A1A and
