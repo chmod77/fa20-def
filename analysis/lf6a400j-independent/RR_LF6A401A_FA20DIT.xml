@@ -135,9 +135,9 @@
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02CED8]" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="8926" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2CED8. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="1E5E4" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Fuel Enrichment (0B62) Multiplier [0x8EDF0]" category="Fueling - Open Loop &amp; Enrichment" storageaddress="8926" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2CED8. Evidence: 0x8EDF0 (from 0x89E04): FFFF0B62 = max(T_02CEF0*f(T_02CF2C), T_02CF04*f(T_02CF40), T_02CF18*f(T_02CF54)) * T_02CED8/128 * T_02CEE4/128, f(L) = (8*L - FFFF0B98)/(8*L) clamped 0..1 (linear decay over 8*L counts of FFFF0B98); FFFF0B62 is an additive fuel-quantity term (0x9106C/0x910D8: base*(0.5 + (... + 0B62 + ...)/256)). x/128 factor." sizey="16">
+      <scaling units="multiplier" expression="x/128" to_byte="x*128" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="1E5E4" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -147,9 +147,9 @@
         <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02CEE4] (Coolant Temperature)" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="8946" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2CEE4. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature" storageaddress="1E46C" elements="16" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Fuel Enrichment (0B62) Multiplier (Coolant)" category="Fueling - Open Loop &amp; Enrichment" storageaddress="8946" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2CEE4. Evidence: 0x8EDF0 (from 0x89E04): FFFF0B62 = max(T_02CEF0*f(T_02CF2C), T_02CF04*f(T_02CF40), T_02CF18*f(T_02CF54)) * T_02CED8/128 * T_02CEE4/128, f(L) = (8*L - FFFF0B98)/(8*L) clamped 0..1 (linear decay over 8*L counts of FFFF0B98); FFFF0B62 is an additive fuel-quantity term (0x9106C/0x910D8: base*(0.5 + (... + 0B62 + ...)/256)). x/128 factor (0x80 when FFFF0423 flag clear); input coolant FFFF29A5." sizey="16">
+      <scaling units="multiplier" expression="x/128" to_byte="x*128" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature" storageaddress="1E46C" elements="16" storagetype="uint8" endian="big">
         <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
@@ -819,57 +819,57 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 3x16 [D02CEF0]" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="B780" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CEF0. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="3">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="B5CC" elements="3" storagetype="uint8" endian="big" locked="true">
+    <table type="3D" name="Fuel Enrichment (0B62) Amount A" category="Fueling - Open Loop &amp; Enrichment" storageaddress="B780" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CEF0. Evidence: 0x8EDF0 (from 0x89E04): FFFF0B62 = max(T_02CEF0*f(T_02CF2C), T_02CF04*f(T_02CF40), T_02CF18*f(T_02CF54)) * T_02CED8/128 * T_02CEE4/128, f(L) = (8*L - FFFF0B98)/(8*L) clamped 0..1 (linear decay over 8*L counts of FFFF0B98); FFFF0B62 is an additive fuel-quantity term (0x9106C/0x910D8: base*(0.5 + (... + 0B62 + ...)/256)). " sizex="16" sizey="3">
+      <scaling units="%" expression="x*100/256" to_byte="x*256/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="B5CC" elements="3" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 3x16 [D02CF04]" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="B7E0" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CF04. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="3">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="B5CC" elements="3" storagetype="uint8" endian="big" locked="true">
+    <table type="3D" name="Fuel Enrichment (0B62) Amount B" category="Fueling - Open Loop &amp; Enrichment" storageaddress="B7E0" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CF04. Evidence: 0x8EDF0 (from 0x89E04): FFFF0B62 = max(T_02CEF0*f(T_02CF2C), T_02CF04*f(T_02CF40), T_02CF18*f(T_02CF54)) * T_02CED8/128 * T_02CEE4/128, f(L) = (8*L - FFFF0B98)/(8*L) clamped 0..1 (linear decay over 8*L counts of FFFF0B98); FFFF0B62 is an additive fuel-quantity term (0x9106C/0x910D8: base*(0.5 + (... + 0B62 + ...)/256)). " sizex="16" sizey="3">
+      <scaling units="%" expression="x*100/256" to_byte="x*256/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="B5CC" elements="3" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 3x16 [D02CF18]" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="B840" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CF18. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="3">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="B5CC" elements="3" storagetype="uint8" endian="big" locked="true">
+    <table type="3D" name="Fuel Enrichment (0B62) Amount C" category="Fueling - Open Loop &amp; Enrichment" storageaddress="B840" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CF18. Evidence: 0x8EDF0 (from 0x89E04): FFFF0B62 = max(T_02CEF0*f(T_02CF2C), T_02CF04*f(T_02CF40), T_02CF18*f(T_02CF54)) * T_02CED8/128 * T_02CEE4/128, f(L) = (8*L - FFFF0B98)/(8*L) clamped 0..1 (linear decay over 8*L counts of FFFF0B98); FFFF0B62 is an additive fuel-quantity term (0x9106C/0x910D8: base*(0.5 + (... + 0B62 + ...)/256)). " sizex="16" sizey="3">
+      <scaling units="%" expression="x*100/256" to_byte="x*256/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="B5CC" elements="3" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 3x16 [D02CF2C]" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="B8A0" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2CF2C. Lookup result stored to: FFFEBD04. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="3">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="B5CC" elements="3" storagetype="uint8" endian="big" locked="true">
+    <table type="3D" name="Fuel Enrichment (0B62) Decay Length A" category="Fueling - Open Loop &amp; Enrichment" storageaddress="B8A0" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2CF2C. Evidence: 0x8EDF0 (from 0x89E04): FFFF0B62 = max(T_02CEF0*f(T_02CF2C), T_02CF04*f(T_02CF40), T_02CF18*f(T_02CF54)) * T_02CED8/128 * T_02CEE4/128, f(L) = (8*L - FFFF0B98)/(8*L) clamped 0..1 (linear decay over 8*L counts of FFFF0B98); FFFF0B62 is an additive fuel-quantity term (0x9106C/0x910D8: base*(0.5 + (... + 0B62 + ...)/256)). Decay length in units of 8 counts of FFFF0B98. Lookup result stored to: FFFEBD04." sizex="16" sizey="3">
+      <scaling units="counts" expression="x*8" to_byte="x/8" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="B5CC" elements="3" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 3x16 [D02CF40]" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="B8D0" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2CF40. Lookup result stored to: FFFEBD06. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="3">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="B5CC" elements="3" storagetype="uint8" endian="big" locked="true">
+    <table type="3D" name="Fuel Enrichment (0B62) Decay Length B" category="Fueling - Open Loop &amp; Enrichment" storageaddress="B8D0" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2CF40. Evidence: 0x8EDF0 (from 0x89E04): FFFF0B62 = max(T_02CEF0*f(T_02CF2C), T_02CF04*f(T_02CF40), T_02CF18*f(T_02CF54)) * T_02CED8/128 * T_02CEE4/128, f(L) = (8*L - FFFF0B98)/(8*L) clamped 0..1 (linear decay over 8*L counts of FFFF0B98); FFFF0B62 is an additive fuel-quantity term (0x9106C/0x910D8: base*(0.5 + (... + 0B62 + ...)/256)). Decay length in units of 8 counts of FFFF0B98. Lookup result stored to: FFFEBD06." sizex="16" sizey="3">
+      <scaling units="counts" expression="x*8" to_byte="x/8" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="B5CC" elements="3" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 3x16 [D02CF54]" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="B900" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2CF54. Lookup result stored to: FFFEBD05. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="3">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="B5CC" elements="3" storagetype="uint8" endian="big" locked="true">
+    <table type="3D" name="Fuel Enrichment (0B62) Decay Length C" category="Fueling - Open Loop &amp; Enrichment" storageaddress="B900" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2CF54. Evidence: 0x8EDF0 (from 0x89E04): FFFF0B62 = max(T_02CEF0*f(T_02CF2C), T_02CF04*f(T_02CF40), T_02CF18*f(T_02CF54)) * T_02CED8/128 * T_02CEE4/128, f(L) = (8*L - FFFF0B98)/(8*L) clamped 0..1 (linear decay over 8*L counts of FFFF0B98); FFFF0B62 is an additive fuel-quantity term (0x9106C/0x910D8: base*(0.5 + (... + 0B62 + ...)/256)). Decay length in units of 8 counts of FFFF0B98. Lookup result stored to: FFFEBD05." sizex="16" sizey="3">
+      <scaling units="counts" expression="x*8" to_byte="x/8" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="B5CC" elements="3" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>

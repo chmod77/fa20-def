@@ -869,6 +869,110 @@
    }
   }
  },
+ "0x2CED8": {
+  "status": "identified",
+  "name": "Fuel Enrichment (0B62) Multiplier [0x8EDF0]",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x8EDF0 (from 0x89E04): FFFF0B62 = max(T_02CEF0*f(T_02CF2C), T_02CF04*f(T_02CF40), T_02CF18*f(T_02CF54)) * T_02CED8/128 * T_02CEE4/128, f(L) = (8*L - FFFF0B98)/(8*L) clamped 0..1 (linear decay over 8*L counts of FFFF0B98); FFFF0B62 is an additive fuel-quantity term (0x9106C/0x910D8: base*(0.5 + (... + 0B62 + ...)/256)). x/128 factor.",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x/128",
+   "to_byte": "x*128",
+   "format": "0.000"
+  }
+ },
+ "0x2CEE4": {
+  "status": "identified",
+  "name": "Fuel Enrichment (0B62) Multiplier (Coolant)",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x8EDF0 (from 0x89E04): FFFF0B62 = max(T_02CEF0*f(T_02CF2C), T_02CF04*f(T_02CF40), T_02CF18*f(T_02CF54)) * T_02CED8/128 * T_02CEE4/128, f(L) = (8*L - FFFF0B98)/(8*L) clamped 0..1 (linear decay over 8*L counts of FFFF0B98); FFFF0B62 is an additive fuel-quantity term (0x9106C/0x910D8: base*(0.5 + (... + 0B62 + ...)/256)). x/128 factor (0x80 when FFFF0423 flag clear); input coolant FFFF29A5.",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x/128",
+   "to_byte": "x*128",
+   "format": "0.000"
+  }
+ },
+ "0x2CEF0": {
+  "status": "identified",
+  "name": "Fuel Enrichment (0B62) Amount A",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x8EDF0 (from 0x89E04): FFFF0B62 = max(T_02CEF0*f(T_02CF2C), T_02CF04*f(T_02CF40), T_02CF18*f(T_02CF54)) * T_02CED8/128 * T_02CEE4/128, f(L) = (8*L - FFFF0B98)/(8*L) clamped 0..1 (linear decay over 8*L counts of FFFF0B98); FFFF0B62 is an additive fuel-quantity term (0x9106C/0x910D8: base*(0.5 + (... + 0B62 + ...)/256)). ",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/256",
+   "to_byte": "x*256/100",
+   "format": "0.0"
+  }
+ },
+ "0x2CF04": {
+  "status": "identified",
+  "name": "Fuel Enrichment (0B62) Amount B",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x8EDF0 (from 0x89E04): FFFF0B62 = max(T_02CEF0*f(T_02CF2C), T_02CF04*f(T_02CF40), T_02CF18*f(T_02CF54)) * T_02CED8/128 * T_02CEE4/128, f(L) = (8*L - FFFF0B98)/(8*L) clamped 0..1 (linear decay over 8*L counts of FFFF0B98); FFFF0B62 is an additive fuel-quantity term (0x9106C/0x910D8: base*(0.5 + (... + 0B62 + ...)/256)). ",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/256",
+   "to_byte": "x*256/100",
+   "format": "0.0"
+  }
+ },
+ "0x2CF18": {
+  "status": "identified",
+  "name": "Fuel Enrichment (0B62) Amount C",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x8EDF0 (from 0x89E04): FFFF0B62 = max(T_02CEF0*f(T_02CF2C), T_02CF04*f(T_02CF40), T_02CF18*f(T_02CF54)) * T_02CED8/128 * T_02CEE4/128, f(L) = (8*L - FFFF0B98)/(8*L) clamped 0..1 (linear decay over 8*L counts of FFFF0B98); FFFF0B62 is an additive fuel-quantity term (0x9106C/0x910D8: base*(0.5 + (... + 0B62 + ...)/256)). ",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/256",
+   "to_byte": "x*256/100",
+   "format": "0.0"
+  }
+ },
+ "0x2CF2C": {
+  "status": "identified",
+  "name": "Fuel Enrichment (0B62) Decay Length A",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x8EDF0 (from 0x89E04): FFFF0B62 = max(T_02CEF0*f(T_02CF2C), T_02CF04*f(T_02CF40), T_02CF18*f(T_02CF54)) * T_02CED8/128 * T_02CEE4/128, f(L) = (8*L - FFFF0B98)/(8*L) clamped 0..1 (linear decay over 8*L counts of FFFF0B98); FFFF0B62 is an additive fuel-quantity term (0x9106C/0x910D8: base*(0.5 + (... + 0B62 + ...)/256)). Decay length in units of 8 counts of FFFF0B98.",
+  "description": "",
+  "data": {
+   "units": "counts",
+   "expr": "x*8",
+   "to_byte": "x/8",
+   "format": "0"
+  }
+ },
+ "0x2CF40": {
+  "status": "identified",
+  "name": "Fuel Enrichment (0B62) Decay Length B",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x8EDF0 (from 0x89E04): FFFF0B62 = max(T_02CEF0*f(T_02CF2C), T_02CF04*f(T_02CF40), T_02CF18*f(T_02CF54)) * T_02CED8/128 * T_02CEE4/128, f(L) = (8*L - FFFF0B98)/(8*L) clamped 0..1 (linear decay over 8*L counts of FFFF0B98); FFFF0B62 is an additive fuel-quantity term (0x9106C/0x910D8: base*(0.5 + (... + 0B62 + ...)/256)). Decay length in units of 8 counts of FFFF0B98.",
+  "description": "",
+  "data": {
+   "units": "counts",
+   "expr": "x*8",
+   "to_byte": "x/8",
+   "format": "0"
+  }
+ },
+ "0x2CF54": {
+  "status": "identified",
+  "name": "Fuel Enrichment (0B62) Decay Length C",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x8EDF0 (from 0x89E04): FFFF0B62 = max(T_02CEF0*f(T_02CF2C), T_02CF04*f(T_02CF40), T_02CF18*f(T_02CF54)) * T_02CED8/128 * T_02CEE4/128, f(L) = (8*L - FFFF0B98)/(8*L) clamped 0..1 (linear decay over 8*L counts of FFFF0B98); FFFF0B62 is an additive fuel-quantity term (0x9106C/0x910D8: base*(0.5 + (... + 0B62 + ...)/256)). Decay length in units of 8 counts of FFFF0B98.",
+  "description": "",
+  "data": {
+   "units": "counts",
+   "expr": "x*8",
+   "to_byte": "x/8",
+   "format": "0"
+  }
+ },
  "0x2D028": {
   "status": "identified",
   "name": "Primary Open Loop Fueling",

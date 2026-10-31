@@ -720,6 +720,18 @@ add(0x2D0D0, 'Fuel Enrichment (0B80) Target (weight 1-w)', 'Fueling - Open Loop 
 add(0x2D0F8, 'Fuel Enrichment (0B80) Target Multiplier', 'Fueling - Open Loop & Enrichment', _ev80 + 'Factor on the (1-w) term, x/128.',
     ('multiplier', 'x/128', 'x*128', '0.000'))
 
+_ev62 = ('0x8EDF0 (from 0x89E04): FFFF0B62 = max(T_02CEF0*f(T_02CF2C), T_02CF04*f(T_02CF40), T_02CF18*f(T_02CF54)) * T_02CED8/128 * '
+         'T_02CEE4/128, f(L) = (8*L - FFFF0B98)/(8*L) clamped 0..1 (linear decay over 8*L counts of FFFF0B98); FFFF0B62 is an additive '
+         'fuel-quantity term (0x9106C/0x910D8: base*(0.5 + (... + 0B62 + ...)/256)). ')
+FE = 'Fueling - Open Loop & Enrichment'
+for d, n in ((0x2CEF0, 'A'), (0x2CF04, 'B'), (0x2CF18, 'C')):
+    add(d, f'Fuel Enrichment (0B62) Amount {n}', FE, _ev62, FQ)
+for d, n in ((0x2CF2C, 'A'), (0x2CF40, 'B'), (0x2CF54, 'C')):
+    add(d, f'Fuel Enrichment (0B62) Decay Length {n}', FE, _ev62 + 'Decay length in units of 8 counts of FFFF0B98.', ('counts', 'x*8', 'x/8', '0'))
+add(0x2CED8, 'Fuel Enrichment (0B62) Multiplier [0x8EDF0]', FE, _ev62 + 'x/128 factor.', ('multiplier', 'x/128', 'x*128', '0.000'))
+add(0x2CEE4, 'Fuel Enrichment (0B62) Multiplier (Coolant)', FE, _ev62 + 'x/128 factor (0x80 when FFFF0423 flag clear); input coolant FFFF29A5.',
+    ('multiplier', 'x/128', 'x*128', '0.000'))
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
