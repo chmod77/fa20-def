@@ -111,6 +111,13 @@ MANUAL = {
  '0087B6': dict(RPM, width=2, value=0x200, function='085b74', name='Engine Speed Limit Hysteresis',
                 context='0x85B74: once cut, limit is lowered by 0x87B6 until rpm drops below'),
 }
+RAT = dict(units='rpm per km/h', expr='x/256', to_byte='x*256', var='FFFF09D0', var_name='Engine Speed / Vehicle Speed Ratio')
+for g in range(1, 7):
+    a = 0x1B9A4 + 4 * (g - 1)
+    for off, which in ((0, 'upper'), (2, 'lower')):
+        v = int.from_bytes(rom[a + off:a + off + 2], 'big')
+        MANUAL[f'{a + off:06X}'] = dict(RAT, width=2, value=v, function='07f71c', name=f'Gear {g} Detection Ratio, {which} bound',
+            context=f'0x7F71C: gear {g} when lower <= FFFF09D0 (rpm/(km/h), x/256) < upper; disasm 0x7F730.. reads base 0x1B9A4 + {4*(g-1)} (+0 upper, +2 lower)')
 for k, v in MANUAL.items():
     out[k] = v
 json.dump(out, open(f'{ROOT}/evidence/scalar-semantics.json', 'w'), indent=1)

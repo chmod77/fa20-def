@@ -231,15 +231,16 @@
   "context": "(param_8 < 0x3c00"
  },
  "01B9A4": {
-  "width": 2,
-  "value": 35840,
-  "var": "FFFF09D0",
-  "var_name": "Engine Speed / Vehicle Speed Ratio",
   "units": "rpm per km/h",
   "expr": "x/256",
   "to_byte": "x*256",
+  "var": "FFFF09D0",
+  "var_name": "Engine Speed / Vehicle Speed Ratio",
+  "width": 2,
+  "value": 35840,
   "function": "07f71c",
-  "context": "((param_1 < 0x8c00"
+  "name": "Gear 1 Detection Ratio, upper bound",
+  "context": "0x7F71C: gear 1 when lower <= FFFF09D0 (rpm/(km/h), x/256) < upper; disasm 0x7F730.. reads base 0x1B9A4 + 0 (+0 upper, +2 lower)"
  },
  "01D8F2": {
   "width": 2,
@@ -709,5 +710,137 @@
   "function": "085b74",
   "name": "Engine Speed Limit Hysteresis",
   "context": "0x85B74: once cut, limit is lowered by 0x87B6 until rpm drops below"
+ },
+ "01B9A6": {
+  "units": "rpm per km/h",
+  "expr": "x/256",
+  "to_byte": "x*256",
+  "var": "FFFF09D0",
+  "var_name": "Engine Speed / Vehicle Speed Ratio",
+  "width": 2,
+  "value": 23040,
+  "function": "07f71c",
+  "name": "Gear 1 Detection Ratio, lower bound",
+  "context": "0x7F71C: gear 1 when lower <= FFFF09D0 (rpm/(km/h), x/256) < upper; disasm 0x7F730.. reads base 0x1B9A4 + 0 (+0 upper, +2 lower)"
+ },
+ "01B9A8": {
+  "units": "rpm per km/h",
+  "expr": "x/256",
+  "to_byte": "x*256",
+  "var": "FFFF09D0",
+  "var_name": "Engine Speed / Vehicle Speed Ratio",
+  "width": 2,
+  "value": 23040,
+  "function": "07f71c",
+  "name": "Gear 2 Detection Ratio, upper bound",
+  "context": "0x7F71C: gear 2 when lower <= FFFF09D0 (rpm/(km/h), x/256) < upper; disasm 0x7F730.. reads base 0x1B9A4 + 4 (+0 upper, +2 lower)"
+ },
+ "01B9AA": {
+  "units": "rpm per km/h",
+  "expr": "x/256",
+  "to_byte": "x*256",
+  "var": "FFFF09D0",
+  "var_name": "Engine Speed / Vehicle Speed Ratio",
+  "width": 2,
+  "value": 15104,
+  "function": "07f71c",
+  "name": "Gear 2 Detection Ratio, lower bound",
+  "context": "0x7F71C: gear 2 when lower <= FFFF09D0 (rpm/(km/h), x/256) < upper; disasm 0x7F730.. reads base 0x1B9A4 + 4 (+0 upper, +2 lower)"
+ },
+ "01B9AC": {
+  "units": "rpm per km/h",
+  "expr": "x/256",
+  "to_byte": "x*256",
+  "var": "FFFF09D0",
+  "var_name": "Engine Speed / Vehicle Speed Ratio",
+  "width": 2,
+  "value": 15104,
+  "function": "07f71c",
+  "name": "Gear 3 Detection Ratio, upper bound",
+  "context": "0x7F71C: gear 3 when lower <= FFFF09D0 (rpm/(km/h), x/256) < upper; disasm 0x7F730.. reads base 0x1B9A4 + 8 (+0 upper, +2 lower)"
+ },
+ "01B9AE": {
+  "units": "rpm per km/h",
+  "expr": "x/256",
+  "to_byte": "x*256",
+  "var": "FFFF09D0",
+  "var_name": "Engine Speed / Vehicle Speed Ratio",
+  "width": 2,
+  "value": 9472,
+  "function": "07f71c",
+  "name": "Gear 3 Detection Ratio, lower bound",
+  "context": "0x7F71C: gear 3 when lower <= FFFF09D0 (rpm/(km/h), x/256) < upper; disasm 0x7F730.. reads base 0x1B9A4 + 8 (+0 upper, +2 lower)"
+ },
+ "01B9B0": {
+  "units": "rpm per km/h",
+  "expr": "x/256",
+  "to_byte": "x*256",
+  "var": "FFFF09D0",
+  "var_name": "Engine Speed / Vehicle Speed Ratio",
+  "width": 2,
+  "value": 9472,
+  "function": "07f71c",
+  "name": "Gear 4 Detection Ratio, upper bound",
+  "context": "0x7F71C: gear 4 when lower <= FFFF09D0 (rpm/(km/h), x/256) < upper; disasm 0x7F730.. reads base 0x1B9A4 + 12 (+0 upper, +2 lower)"
+ },
+ "01B9B2": {
+  "units": "rpm per km/h",
+  "expr": "x/256",
+  "to_byte": "x*256",
+  "var": "FFFF09D0",
+  "var_name": "Engine Speed / Vehicle Speed Ratio",
+  "width": 2,
+  "value": 7424,
+  "function": "07f71c",
+  "name": "Gear 4 Detection Ratio, lower bound",
+  "context": "0x7F71C: gear 4 when lower <= FFFF09D0 (rpm/(km/h), x/256) < upper; disasm 0x7F730.. reads base 0x1B9A4 + 12 (+0 upper, +2 lower)"
+ },
+ "01B9B4": {
+  "units": "rpm per km/h",
+  "expr": "x/256",
+  "to_byte": "x*256",
+  "var": "FFFF09D0",
+  "var_name": "Engine Speed / Vehicle Speed Ratio",
+  "width": 2,
+  "value": 7424,
+  "function": "07f71c",
+  "name": "Gear 5 Detection Ratio, upper bound",
+  "context": "0x7F71C: gear 5 when lower <= FFFF09D0 (rpm/(km/h), x/256) < upper; disasm 0x7F730.. reads base 0x1B9A4 + 16 (+0 upper, +2 lower)"
+ },
+ "01B9B6": {
+  "units": "rpm per km/h",
+  "expr": "x/256",
+  "to_byte": "x*256",
+  "var": "FFFF09D0",
+  "var_name": "Engine Speed / Vehicle Speed Ratio",
+  "width": 2,
+  "value": 6144,
+  "function": "07f71c",
+  "name": "Gear 5 Detection Ratio, lower bound",
+  "context": "0x7F71C: gear 5 when lower <= FFFF09D0 (rpm/(km/h), x/256) < upper; disasm 0x7F730.. reads base 0x1B9A4 + 16 (+0 upper, +2 lower)"
+ },
+ "01B9B8": {
+  "units": "rpm per km/h",
+  "expr": "x/256",
+  "to_byte": "x*256",
+  "var": "FFFF09D0",
+  "var_name": "Engine Speed / Vehicle Speed Ratio",
+  "width": 2,
+  "value": 6144,
+  "function": "07f71c",
+  "name": "Gear 6 Detection Ratio, upper bound",
+  "context": "0x7F71C: gear 6 when lower <= FFFF09D0 (rpm/(km/h), x/256) < upper; disasm 0x7F730.. reads base 0x1B9A4 + 20 (+0 upper, +2 lower)"
+ },
+ "01B9BA": {
+  "units": "rpm per km/h",
+  "expr": "x/256",
+  "to_byte": "x*256",
+  "var": "FFFF09D0",
+  "var_name": "Engine Speed / Vehicle Speed Ratio",
+  "width": 2,
+  "value": 5120,
+  "function": "07f71c",
+  "name": "Gear 6 Detection Ratio, lower bound",
+  "context": "0x7F71C: gear 6 when lower <= FFFF09D0 (rpm/(km/h), x/256) < upper; disasm 0x7F730.. reads base 0x1B9A4 + 20 (+0 upper, +2 lower)"
  }
 }

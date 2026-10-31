@@ -105,7 +105,7 @@ for p in sorted(glob.glob(f'{ROOT}/cdump/*.c')):
         tail = s[m.end():]
         ra = re.search(r'\b' + re.escape(v) + r'\s*=[^=]', tail); tail = tail[:ra.start()] if ra else tail
         V = r'\(?(?:\(\w+\s*\**\)\s*)*\(?' + re.escape(v) + r'(?:\s*&\s*0xff(?:ff)?)?\)?'
-        for c in re.finditer(OPND + r'\s*[-+]\s*' + V + r'|' + V + r'\s*\+\s*' + OPND, tail):
+        for c in re.finditer(OPND + r'\s*[-+]\s*' + V + r'|' + V + r'\s*[-+]\s*' + OPND, tail):
             tok = c.group(1) or c.group(2)
             if tok == v:
                 continue
