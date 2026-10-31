@@ -1045,6 +1045,14 @@ add(0x2C380, 'Speed Feedback Torque Correction vs RPM Change [-> 0A1A]', 'Driver
     axes={'0': dict(name='Engine Speed 0D06 (reference)', units='rpm', expr='x*25/128', to_byte='x*128/25'),
           '1': dict(name='Engine Speed Change (over 2 executions)', units='rpm', expr='x*25/128', to_byte='x*128/25')})
 
+_tlim = ('0x82028 (from 0x82FA0, call 0x83DBE; p1 FFFF0A40, p2 IAT FFFEEEE2, p3 FFFF03C4, p4 rpm FFFF2994): Torque Ramp Target FFFF0A5C = '
+         'min(0A40, T_02C78C(rpm, IAT), T_02C7A0(03C4, rpm)); 0A5C is torque type (0x81394 compares it with 0A5E; -> Requested Torque '
+         '0A62), so the limits are torque type. 0x810A0 (call 0x83D8C; p1 FFFF0A46, p2 Gear FFFF03AC, p3 FFFEEF76.7, p4 FFFEF32A.0): '
+         'FFFF0A40 = min(0A46, L) with L = T_02C3D0(gear) when p3 set and p4 clear. ')
+add(0x2C78C, 'Torque Limit (RPM x IAT) [-> 0A5C]', 'Driver Demand / Torque Request', _tlim + TQEV, TQ)
+add(0x2C7A0, 'Torque Limit (FFFF03C4 x RPM) [-> 0A5C]', 'Driver Demand / Torque Request', _tlim + 'Input FFFF03C4 unresolved.' + TQEV, TQ)
+add(0x2C3D0, 'Torque Limit vs Gear (FFFEEF76.7 set) [-> 0A40]', 'Driver Demand / Torque Request', _tlim + TQEV, TQ)
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

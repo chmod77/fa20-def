@@ -629,6 +629,19 @@
    }
   }
  },
+ "0x2C3D0": {
+  "status": "identified",
+  "name": "Torque Limit vs Gear (FFFEEF76.7 set) [-> 0A40]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x82028 (from 0x82FA0, call 0x83DBE; p1 FFFF0A40, p2 IAT FFFEEEE2, p3 FFFF03C4, p4 rpm FFFF2994): Torque Ramp Target FFFF0A5C = min(0A40, T_02C78C(rpm, IAT), T_02C7A0(03C4, rpm)); 0A5C is torque type (0x81394 compares it with 0A5E; -> Requested Torque 0A62), so the limits are torque type. 0x810A0 (call 0x83D8C; p1 FFFF0A46, p2 Gear FFFF03AC, p3 FFFEEF76.7, p4 FFFEF32A.0): FFFF0A40 = min(0A46, L) with L = T_02C3D0(gear) when p3 set and p4 clear.  Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range).",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
+  }
+ },
  "0x2C3DC": {
   "status": "identified",
   "name": "Torque Ramp-Down Ceiling (Gear x RPM, B1)",
@@ -1755,6 +1768,32 @@
    "expr": "x/255",
    "to_byte": "x*255",
    "format": "0.00"
+  }
+ },
+ "0x2C78C": {
+  "status": "identified",
+  "name": "Torque Limit (RPM x IAT) [-> 0A5C]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x82028 (from 0x82FA0, call 0x83DBE; p1 FFFF0A40, p2 IAT FFFEEEE2, p3 FFFF03C4, p4 rpm FFFF2994): Torque Ramp Target FFFF0A5C = min(0A40, T_02C78C(rpm, IAT), T_02C7A0(03C4, rpm)); 0A5C is torque type (0x81394 compares it with 0A5E; -> Requested Torque 0A62), so the limits are torque type. 0x810A0 (call 0x83D8C; p1 FFFF0A46, p2 Gear FFFF03AC, p3 FFFEEF76.7, p4 FFFEF32A.0): FFFF0A40 = min(0A46, L) with L = T_02C3D0(gear) when p3 set and p4 clear.  Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range).",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
+  }
+ },
+ "0x2C7A0": {
+  "status": "identified",
+  "name": "Torque Limit (FFFF03C4 x RPM) [-> 0A5C]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x82028 (from 0x82FA0, call 0x83DBE; p1 FFFF0A40, p2 IAT FFFEEEE2, p3 FFFF03C4, p4 rpm FFFF2994): Torque Ramp Target FFFF0A5C = min(0A40, T_02C78C(rpm, IAT), T_02C7A0(03C4, rpm)); 0A5C is torque type (0x81394 compares it with 0A5E; -> Requested Torque 0A62), so the limits are torque type. 0x810A0 (call 0x83D8C; p1 FFFF0A46, p2 Gear FFFF03AC, p3 FFFEEF76.7, p4 FFFEF32A.0): FFFF0A40 = min(0A46, L) with L = T_02C3D0(gear) when p3 set and p4 clear. Input FFFF03C4 unresolved. Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range).",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
   }
  },
  "0x2C7E8": {

@@ -247,3 +247,7 @@ V2.update({
  0xFFFEF33C:('Engine Speed (filtered OBD copy)','rpm','x*25/128','x*128/25','0x4EA64: FFFEF33C = filter 0x16B4D8(FFFEF33C, FFFF2ADA, 0xFFFF) - a first-order filter of Engine Speed (OBD copy) keeps its unit'),
  0xFFFF0D06:('Engine Speed 0D06 (reference)','rpm','x*25/128','x*128/25','0x80968: 0D06 - FFFEF33C (filtered rpm) is a difference, so 0D06 is in rpm (x*25/128)'),
 })
+V2.update({
+ 0xFFFF0A40:('Torque Limit 0A40','Nm','(x-16000)/80','x*80+16000','0x82028: Torque Ramp Target 0A5C = min(0A40, T, T)'+_TQ),
+ 0xFFFF0A46:('Torque 0A46','Nm','(x-16000)/80','x*80+16000','0x810A0: 0A40 = min(0A46, limit)'+_TQ),
+})

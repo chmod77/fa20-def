@@ -161,6 +161,7 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
 - Ghidra constant-folds calibration bytes in ROM: branches gated by e.g. 0x17F4A are dropped as unreachable, so some descriptors only
   appear in the disassembly (literal pools). 0x49E70 (task 7) period is still unproven: alarm 9 -> task 7 is never set.
   Coverage 539 of 1271.
+- 0x80968 speed-feedback torque terms (T_02C360/C380), torque limits T_02C78C/C7A0/C3D0 (-> 0A5C). Coverage 544 of 1271.
 - Previous coverage: 452 of 1271 views unlocked (tables + 81 proven scalars). Torque chain: 0ADC/0ADA/0A1E/0A7A/0A78/0A64/0AE8/0AAA/0ABC
   are proven torque type (0x86680 disasm, 0x8267C, 0x8034C, 0x85434, 0x85940). Filter helpers: 0x16B4D8 (y += (x-y)*k/65536),
   0x16B44C (8-bit, k/256), 0x16B520 (signed).
