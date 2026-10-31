@@ -747,6 +747,45 @@
    }
   }
  },
+ "0x2D488": {
+  "status": "identified",
+  "name": "Ignition Timing Retard (vs FFFF058A, not selected)",
+  "category": "Ignition Timing",
+  "evidence": "0x96DA0: retard FFFF0454 (subtracted from total timing in half-degrees, 0x98FAC) = T(FFFF058A) only when param_2 != 0; caller 0x9CBF8 passes constant 0, so FFFF0454 = 6 (3 deg) while active and this table is not used in this ROM.",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "x/2",
+   "to_byte": "x*2",
+   "format": "0.0"
+  }
+ },
+ "0x2D4AC": {
+  "status": "identified",
+  "name": "Ignition Timing Compensation (Coolant >= 100 C)",
+  "category": "Ignition Timing",
+  "evidence": "0x970E8: FFFF045A (only when FFFF03DF.1 set, else 0) = T_02D4AC when coolant FFFEEEDE >= 0xE000 (100 C) and rpm < 0xF000, T_02D4C0 when coolant < 0xDCCD (97.5 C) or rpm max (hysteresis keeps previous); 0x98FAC adds FFFF045A (unsigned) to Ignition Total Timing FFFF046C in half-degrees. Inputs rpm FFFF2994, load FFFF03A0.",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "x/2",
+   "to_byte": "x*2",
+   "format": "0.0"
+  }
+ },
+ "0x2D4C0": {
+  "status": "identified",
+  "name": "Ignition Timing Compensation (Coolant < 100 C)",
+  "category": "Ignition Timing",
+  "evidence": "0x970E8: FFFF045A (only when FFFF03DF.1 set, else 0) = T_02D4AC when coolant FFFEEEDE >= 0xE000 (100 C) and rpm < 0xF000, T_02D4C0 when coolant < 0xDCCD (97.5 C) or rpm max (hysteresis keeps previous); 0x98FAC adds FFFF045A (unsigned) to Ignition Total Timing FFFF046C in half-degrees. Inputs rpm FFFF2994, load FFFF03A0.",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "x/2",
+   "to_byte": "x*2",
+   "format": "0.0"
+  }
+ },
  "0x2D4D4": {
   "status": "identified",
   "name": "Ignition Timing Override (Engine Speed, FFFF04C1 = 1/2)",

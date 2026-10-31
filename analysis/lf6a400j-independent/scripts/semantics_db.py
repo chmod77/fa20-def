@@ -262,6 +262,15 @@ add(0x2D4E0, 'Ignition Timing Override (Engine Speed, other FFFF04C1 modes)', IG
     '(total timing = FFFF045C - 32 half-degrees under the override conditions).',
     ('deg', '(x-32)/2', 'x*2+32', '0.0'), axes={'0': dict(name='Engine Speed', units='rpm', expr='x*25', to_byte='x/25')})
 
+_45a = ('0x970E8: FFFF045A (only when FFFF03DF.1 set, else 0) = T_02D4AC when coolant FFFEEEDE >= 0xE000 (100 C) and rpm < 0xF000, '
+        'T_02D4C0 when coolant < 0xDCCD (97.5 C) or rpm max (hysteresis keeps previous); 0x98FAC adds FFFF045A (unsigned) to '
+        'Ignition Total Timing FFFF046C in half-degrees. Inputs rpm FFFF2994, load FFFF03A0.')
+add(0x2D4AC, 'Ignition Timing Compensation (Coolant >= 100 C)', IGN, _45a, DEG2)
+add(0x2D4C0, 'Ignition Timing Compensation (Coolant < 100 C)', IGN, _45a, DEG2)
+add(0x2D488, 'Ignition Timing Retard (vs FFFF058A, not selected)', IGN,
+    '0x96DA0: retard FFFF0454 (subtracted from total timing in half-degrees, 0x98FAC) = T(FFFF058A) only when param_2 != 0; caller 0x9CBF8 '
+    'passes constant 0, so FFFF0454 = 6 (3 deg) while active and this table is not used in this ROM.', DEG2)
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
