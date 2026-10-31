@@ -4,342 +4,370 @@
   "g/s",
   "x*75/16384",
   "x*16384/75",
-  "copy of FFFFEEE4/FFFEEEE4 in 0004c53c"
+  "('id',) of FFFEEEE4 in 0004c53c"
  ],
  "FFFEEEE8": [
   "Mass Airflow (copy)",
   "g/s",
   "x*75/16384",
   "x*16384/75",
-  "copy of FFFFEEE4/FFFEEEE4 in 0004c53c"
+  "('id',) of FFFEEEE4 in 0004c53c"
+ ],
+ "FFFF00A2": [
+  "Main Accelerator Sensor (scaled)",
+  "V",
+  "(x*64)*5/65536",
+  "(x*65536/5)/64",
+  "('shr', 6) of FFFF00C2 in 00064144"
+ ],
+ "FFFF00A4": [
+  "Sub Accelerator Sensor (scaled)",
+  "V",
+  "(x*64)*5/65536",
+  "(x*65536/5)/64",
+  "('shr', 6) of FFFF00C4 in 00064144"
  ],
  "FFFF017A": [
   "Sub Throttle Sensor (copy)",
   "%",
   "x*100/65535",
   "x*65535/100",
-  "copy of FFFF00BA/FFFF00BA in 00066c52"
+  "('id',) of FFFF00BA in 00066c52"
  ],
  "FFFEF196": [
   "Engine Speed (OBD copy) (copy)",
   "rpm",
   "x*25/128",
   "x*128/25",
-  "copy of FFFF2ADA/FFFF2ADA in 0004d04c"
+  "('id',) of FFFF2ADA in 0004d04c"
  ],
  "FFFEED02": [
   "Accelerator Pedal Angle (copy)",
   "%",
   "x*100/65280",
   "x*65280/100",
-  "copy of FFFFEEF8/FFFEEEF8 in 00069f44"
+  "('id',) of FFFEEEF8 in 00069f44"
  ],
  "FFFEEEFA": [
   "Accelerator Pedal Angle (copy)",
   "%",
   "x*100/65280",
   "x*65280/100",
-  "copy of FFFFEEF8/FFFEEEF8 in 0004c9c8"
+  "('id',) of FFFEEEF8 in 0004c9c8"
  ],
  "FFFEF14E": [
   "Accelerator Pedal Angle (copy)",
   "%",
   "x*100/65280",
   "x*65280/100",
-  "copy of FFFFEEF8/FFFEEEF8 in 0006825a"
+  "('id',) of FFFEEEF8 in 0006825a"
  ],
  "FFFEF328": [
   "Engine Oil Temperature (copy)",
   "C",
   "x*205/65536-40",
   "(x+40)*65536/205",
-  "copy of FFFFF326/FFFEF326 in 0003c90e"
+  "('id',) of FFFEF326 in 0003c90e"
  ],
  "FFFF2FAA": [
   "Coolant Temperature (OBD) (copy)",
   "C",
   "x*5/2048-40",
   "(x+40)*2048/5",
-  "copy of FFFFF322/FFFEF322 in 0004e6d4,0004eb32"
+  "('id',) of FFFEF322 in 0004e6d4,0004eb32"
  ],
  "FFFEF190": [
   "Engine Speed (filtered) (copy)",
   "rpm",
   "x*25/128",
   "x*128/25",
-  "copy of FFFF2AF0/FFFF2AF0 in 0004d080"
+  "('id',) of FFFF2AF0 in 0004d080"
  ],
  "FFFEF19C": [
   "Engine Speed (OBD copy) (copy)",
   "rpm",
   "x*25/128",
   "x*128/25",
-  "copy of FFFF2ADA/FFFF2ADA in 0004cebc"
+  "('id',) of FFFF2ADA in 0004cebc"
  ],
  "FFFF2FAC": [
   "Coolant Temperature (filtered, word) (copy)",
   "C",
   "x*5/2048-40",
   "(x+40)*2048/5",
-  "copy of FFFFEEDE/FFFEEEDE in 0004e6d4,0004eb74"
+  "('id',) of FFFEEEDE in 0004e6d4,0004eb74"
  ],
  "FFFF2FCA": [
   "Ambient Air Temperature (copy)",
   "C",
   "x*5/2048-40",
   "(x+40)*2048/5",
-  "copy of FFFFF344/FFFEF344 in 0005064c"
+  "('id',) of FFFEF344 in 0005064c"
  ],
  "FFFF2B26": [
   "Manifold Absolute Pressure (control) (copy)",
   "kPa",
   "x/256",
   "x*256",
-  "copy of FFFFE6F8/FFFEE6F8 in 0003ddc8"
+  "('id',) of FFFEE6F8 in 0003ddc8"
  ],
  "FFFF2B28": [
   "Manifold Absolute Pressure (control) (copy)",
   "kPa",
   "x/256",
   "x*256",
-  "copy of FFFFE6F8/FFFEE6F8 in 0003ddc8"
+  "('id',) of FFFEE6F8 in 0003ddc8"
  ],
  "FFFF2FDA": [
   "Coolant Temperature (copy)",
   "C",
   "x-50",
   "x+50",
-  "copy of FFFF29A5/FFFF29A5 in 0003c578"
+  "('id',) of FFFF29A5 in 0003c578"
  ],
  "FFFF2FD5": [
   "Coolant Temperature (sampled) (copy)",
   "C",
   "x-50",
   "x+50",
-  "copy of FFFF29A7/FFFF29A7 in 0003c578"
+  "('id',) of FFFF29A7 in 0003c578"
  ],
  "FFFEE7C6": [
   "Rear O2 Heater Current (copy)",
   "A",
   "x*179*1004/6553600",
   "x*6553600/(179*1004)",
-  "copy of FFFFE6D0/FFFEE6D0 in 0006a444"
+  "('id',) of FFFEE6D0 in 0006a444"
  ],
  "FFFEEEDC": [
   "Atmospheric Pressure (copy)",
   "kPa",
   "x/256",
   "x*256",
-  "copy of FFFFE6AA/FFFEE6AA in 0004d042"
+  "('id',) of FFFEE6AA in 0004d042"
  ],
  "FFFFB396": [
   "Engine Speed (copy)",
   "rpm",
   "x*25/128",
   "x*128/25",
-  "copy of FFFF2994/FFFF2994 in 0013b930"
+  "('id',) of FFFF2994 in 0013b930"
  ],
  "FFFF2AD3": [
   "Engine Speed (byte, 25 rpm) (copy)",
   "rpm",
   "x*25",
   "x/25",
-  "copy of FFFF299C/FFFF299C in 0003bf24"
+  "('id',) of FFFF299C in 0003bf24"
  ],
  "FFFF2AD4": [
   "Engine Speed (copy)",
   "rpm",
   "x*25/128",
   "x*128/25",
-  "copy of FFFF2994/FFFF2994 in 0003bf24"
+  "('id',) of FFFF2994 in 0003bf24"
+ ],
+ "FFFF00A8": [
+  "Main Throttle Sensor (scaled)",
+  "%",
+  "(x*64)*100/65535",
+  "(x*65535/100)/64",
+  "('shr', 6) of FFFF00B8 in 0006468e"
+ ],
+ "FFFF00AA": [
+  "Sub Throttle Sensor (scaled)",
+  "%",
+  "(x*64)*100/65535",
+  "(x*65535/100)/64",
+  "('shr', 6) of FFFF00BA in 0006468e"
  ],
  "FFFEF218": [
   "Manifold Absolute Pressure (control) (copy)",
   "kPa",
   "x/256",
   "x*256",
-  "copy of FFFFE6F8/FFFEE6F8 in 0003dbfe"
+  "('id',) of FFFEE6F8 in 0003dbfe"
  ],
  "FFFEF21A": [
   "Manifold Absolute Pressure (control) (copy)",
   "kPa",
   "x/256",
   "x*256",
-  "copy of FFFFE6F8/FFFEE6F8 in 0003dbfe"
+  "('id',) of FFFEE6F8 in 0003dbfe"
  ],
  "FFFEF17C": [
   "Target Fuel Rail Pressure (copy)",
   "kPa",
   "x*1250/2048",
   "x*2048/1250",
-  "copy of FFFF1276/FFFF1276 in 00044544"
+  "('id',) of FFFF1276 in 00044544"
  ],
  "FFFEF14C": [
   "Accelerator Pedal Angle (copy) (copy)",
   "%",
   "x*100/65280",
   "x*65280/100",
-  "copy of FFFFF14E/FFFEF14E in 00068b96"
+  "('id',) of FFFEF14E in 00068b96"
  ],
  "FFFEF150": [
   "Accelerator Pedal Angle (copy) (copy)",
   "%",
   "x*100/65280",
   "x*65280/100",
-  "copy of FFFFF14E/FFFEF14E in 0006825a"
+  "('id',) of FFFEF14E in 0006825a"
  ],
  "FFFEF19E": [
   "Engine Speed (OBD copy) (copy) (copy)",
   "rpm",
   "x*25/128",
   "x*128/25",
-  "copy of FFFFF19C/FFFEF19C in 0004cebc"
+  "('id',) of FFFEF19C in 0004cebc"
  ],
  "FFFEE69C": [
   "Coolant Temperature (copy) (copy)",
   "C",
   "x-50",
   "x+50",
-  "copy of FFFF2FDA/FFFF2FDA in 0003c578"
+  "('id',) of FFFF2FDA in 0003c578"
  ],
  "FFFF2998": [
   "Engine Speed (copy) (copy)",
   "rpm",
   "x*25/128",
   "x*128/25",
-  "copy of FFFF2AD4/FFFF2AD4 in 0003bf24"
+  "('id',) of FFFF2AD4 in 0003bf24"
  ],
  "FFFF299D": [
   "Engine Speed (byte, 25 rpm) (copy) (copy)",
   "rpm",
   "x*25",
   "x/25",
-  "copy of FFFF2AD3/FFFF2AD3 in 0003bf24"
+  "('id',) of FFFF2AD3 in 0003bf24"
  ],
  "FFFEF148": [
   "Accelerator Pedal Angle (copy) (copy) (copy)",
   "%",
   "x*100/65280",
   "x*65280/100",
-  "copy of FFFFF150/FFFEF150 in 00068b96"
+  "('id',) of FFFEF150 in 00068b96"
  ],
  "FFFEF1A0": [
   "Engine Speed (OBD copy) (copy) (copy) (copy)",
   "rpm",
   "x*25/128",
   "x*128/25",
-  "copy of FFFFF19E/FFFEF19E in 0004cebc"
+  "('id',) of FFFEF19E in 0004cebc"
  ],
  "FFFF299A": [
   "Engine Speed (copy) (copy) (copy)",
   "rpm",
   "x*25/128",
   "x*128/25",
-  "copy of FFFF2998/FFFF2998 in 0003bf24"
+  "('id',) of FFFF2998 in 0003bf24"
  ],
  "FFFF299E": [
   "Engine Speed (byte, 25 rpm) (copy) (copy) (copy)",
   "rpm",
   "x*25",
   "x/25",
-  "copy of FFFF299D/FFFF299D in 0003bf24"
+  "('id',) of FFFF299D in 0003bf24"
  ],
  "FFFEF1A2": [
   "Engine Speed (OBD copy) (copy) (copy) (copy) (copy)",
   "rpm",
   "x*25/128",
   "x*128/25",
-  "copy of FFFFF1A0/FFFEF1A0 in 0004cebc"
+  "('id',) of FFFEF1A0 in 0004cebc"
  ],
  "FFFF299F": [
   "Engine Speed (byte, 25 rpm) (copy) (copy) (copy) (copy)",
   "rpm",
   "x*25",
   "x/25",
-  "copy of FFFF299E/FFFF299E in 0003bf24"
+  "('id',) of FFFF299E in 0003bf24"
  ],
  "FFFEF1A4": [
   "Engine Speed (OBD copy) (copy) (copy) (copy) (copy) (copy)",
   "rpm",
   "x*25/128",
   "x*128/25",
-  "copy of FFFFF1A2/FFFEF1A2 in 0004cebc"
+  "('id',) of FFFEF1A2 in 0004cebc"
  ],
  "FFFF29A0": [
   "Engine Speed (byte, 25 rpm) (copy) (copy) (copy) (copy) (copy)",
   "rpm",
   "x*25",
   "x/25",
-  "copy of FFFF299F/FFFF299F in 0003bf24"
+  "('id',) of FFFF299F in 0003bf24"
  ],
  "FFFEF1A6": [
   "Engine Speed (OBD copy) (copy) (copy) (copy) (copy) (copy) (copy)",
   "rpm",
   "x*25/128",
   "x*128/25",
-  "copy of FFFFF1A4/FFFEF1A4 in 0004cebc"
+  "('id',) of FFFEF1A4 in 0004cebc"
  ],
  "FFFF29A1": [
   "Engine Speed (byte, 25 rpm) (copy) (copy) (copy) (copy) (copy) (copy)",
   "rpm",
   "x*25",
   "x/25",
-  "copy of FFFF29A0/FFFF29A0 in 0003bf24"
+  "('id',) of FFFF29A0 in 0003bf24"
  ],
  "FFFEF1A8": [
   "Engine Speed (OBD copy) (copy) (copy) (copy) (copy) (copy) (copy) (copy)",
   "rpm",
   "x*25/128",
   "x*128/25",
-  "copy of FFFFF1A6/FFFEF1A6 in 0004cebc"
+  "('id',) of FFFEF1A6 in 0004cebc"
  ],
  "FFFEF1AA": [
   "Engine Speed (OBD copy) (copy) (copy) (copy) (copy) (copy) (copy) (copy) (copy)",
   "rpm",
   "x*25/128",
   "x*128/25",
-  "copy of FFFFF1A8/FFFEF1A8 in 0004cebc"
+  "('id',) of FFFEF1A8 in 0004cebc"
  ],
  "FFFEF1AC": [
   "Engine Speed (OBD copy) (copy) (copy) (copy) (copy) (copy) (copy) (copy) (copy) (copy)",
   "rpm",
   "x*25/128",
   "x*128/25",
-  "copy of FFFFF1AA/FFFEF1AA in 0004cebc"
+  "('id',) of FFFEF1AA in 0004cebc"
  ],
  "FFFEF1AE": [
   "Engine Speed (OBD copy) (copy) (copy) (copy) (copy) (copy) (copy) (copy) (copy) (copy) (copy)",
   "rpm",
   "x*25/128",
   "x*128/25",
-  "copy of FFFFF1AC/FFFEF1AC in 0004cebc"
+  "('id',) of FFFEF1AC in 0004cebc"
  ],
  "FFFEF1B0": [
   "Engine Speed (OBD copy) (copy) (copy) (copy) (copy) (copy) (copy) (copy) (copy) (copy) (copy) (copy)",
   "rpm",
   "x*25/128",
   "x*128/25",
-  "copy of FFFFF1AE/FFFEF1AE in 0004cebc"
+  "('id',) of FFFEF1AE in 0004cebc"
  ],
  "FFFEF1B2": [
   "Engine Speed (OBD copy) (copy) (copy) (copy) (copy) (copy) (copy) (copy) (copy) (copy) (copy) (copy) (copy)",
   "rpm",
   "x*25/128",
   "x*128/25",
-  "copy of FFFFF1B0/FFFEF1B0 in 0004cebc"
+  "('id',) of FFFEF1B0 in 0004cebc"
  ],
  "FFFEF1B4": [
   "Engine Speed (OBD copy) (copy) (copy) (copy) (copy) (copy) (copy) (copy) (copy) (copy) (copy) (copy) (copy) (copy)",
   "rpm",
   "x*25/128",
   "x*128/25",
-  "copy of FFFFF1B2/FFFEF1B2 in 0004cebc"
+  "('id',) of FFFEF1B2 in 0004cebc"
  ],
  "FFFEF1B6": [
   "Engine Speed (OBD copy) (copy) (copy) (copy) (copy) (copy) (copy) (copy) (copy) (copy) (copy) (copy) (copy) (copy) (copy)",
   "rpm",
   "x*25/128",
   "x*128/25",
-  "copy of FFFFF1B4/FFFEF1B4 in 0004cebc"
+  "('id',) of FFFEF1B4 in 0004cebc"
  ]
 }

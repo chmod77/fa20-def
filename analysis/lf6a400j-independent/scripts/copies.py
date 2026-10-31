@@ -27,12 +27,35 @@ for p in glob.glob(f'{ROOT}/cdump/*.c'):
             asg[x].append((fn, m.group(2).strip()))
 
 
-def addr_of(rhs):
-    r = re.fullmatch(r'(?:\(\w+\)\s*)*\(?' + TOK + r'(?:\s*&\s*0xff(?:ff)?)?\)?', rhs)
-    if not r:
-        return None
-    t = r.group(1)
+def _a(t):
     return int(t[4:], 16) if t.startswith('DAT_') else lab.get(t)
+
+
+def addr_of(rhs):
+    """returns (Y, op) where op maps X = op(Y): ('id',), ('shr', n), ('shl', n), ('mul', k), ('add', c)"""
+    C = r'(?:\((?:u?int|ushort|short|uint|int)\)\s*)*'
+    V = C + r'\(?' + C + TOK + r'(?:\s*&\s*0xff(?:ff)?)?\)?'
+    r = re.fullmatch(V, rhs)
+    if r:
+        return _a(r.group(1)), ('id',)
+    r = re.fullmatch(C + r'\(?' + V + r'\s*(>>|<<|\*|\+|-)\s*(0x[0-9a-f]+|\d+)\s*\)?', rhs)
+    if r:
+        n = int(r.group(3), 0); op = r.group(2)
+        return _a(r.group(1)), {'>>': ('shr', n), '<<': ('shl', n), '*': ('mul', n), '+': ('add', n), '-': ('add', -n)}[op]
+    return None, None
+
+
+def derive(ent, op):
+    nm, u, e, tb = ent[:4]
+    if op[0] == 'id':
+        return nm + ' (copy)', u, e, tb
+    if op[0] in ('shr', 'shl', 'mul'):
+        f = 2 ** op[1] if op[0] == 'shr' else (1 / 2 ** op[1] if op[0] == 'shl' else 1 / op[1])
+        fx = repr(f)
+        return (f'{nm} (scaled)', u, e.replace('x', f'(x*{fx})'), f'({tb})/{fx}')
+    if op[0] == 'add':
+        c = op[1]
+        return (f'{nm} (offset)', u, e.replace('x', f'(x-({c}))'), f'({tb})+({c})')
 
 
 out = {}
@@ -46,17 +69,18 @@ while changed:
         for fn, rhs in lst:
             if re.fullmatch(r'-?(0x[0-9a-f]+|\d+)', rhs):
                 continue
-            y = addr_of(rhs)
+            y, op = addr_of(rhs)
             if y is None or y not in known:
                 ok = False; break
-            srcs.add(y); fns.add(fn)
+            srcs.add((y, op)); fns.add(fn)
         if not ok or len(srcs) != 1:
             continue
         initf = {fn for fn, rhs in lst if re.fullmatch(r'-?(0x[0-9a-f]+|\d+)', rhs)}
         if not writers.get(x, set()) <= (fns | initf):
             continue
-        y = srcs.pop(); nm, u, e, tb, ev = known[y][:5]
-        known[x] = (f'{nm} (copy)', u, e, tb, f'copy of FFFF{y & 0xffff:04X}/{y:08X} in ' + ','.join(sorted(fns)))
+        y, op = srcs.pop()
+        nm, u, e, tb = derive(known[y], op)
+        known[x] = (nm, u, e, tb, f'{op} of {y:08X} in ' + ','.join(sorted(fns)))
         out[f'{x:08X}'] = list(known[x]); changed = True
 json.dump(out, open(f'{ROOT}/evidence/derived-copies.json', 'w'), indent=1)
 print('derived copies', len(out))
