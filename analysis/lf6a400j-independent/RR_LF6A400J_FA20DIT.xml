@@ -4461,15 +4461,15 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02DAFC] (Coolant Temperature (filtered, word))" category="Unidentified - Idle Speed Control" storageaddress="1C2DC" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2DAFC. Lookup result stored to: FFFEC37B. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Time Threshold [0xA562C] @1C2DC" category="Timers" storageaddress="1C2DC" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2DAFC. Evidence: 0xA562C: lookup result compared with counter FFFEC37F (&quot;(uVar2 &amp; 0xff) &lt;= (uint)DAT_fffec37f [application mode 2 also runs this function every 20 ms via 0x153B4E]&quot;), which is only reset or incremented by 1 per execution; task 0x152A40 = 10 ms (OS: TCB 0x169768 + 16*id; startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 4 -&gt; task 8 (0x1517A4 -&gt; 0x152A40) cycle 10, alarm 6 -&gt; task 9 (0x1517D2 -&gt; 0x15307C) cycle 20, alarm 7 -&gt; task 10 (0x1517FA -&gt; 0x153248) cycle 40, alarm 2 -&gt; task 4 (-&gt; 0x1528A2) cycle 4, alarm 1 -&gt; task 3 (-&gt; 0x152882) cycle 2; 0x153248 = 40 ms (OBD PID 0x1F/0x4E) -&gt; 1 ms tick; 0x49E70 called unconditionally at 0x152BC6). Lookup result stored to: FFFEC37B." sizey="16">
+      <scaling units="s" expression="x*0.01" to_byte="x/0.01" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02DB08] (Coolant Temperature (filtered, word))" category="Unidentified - Idle Speed Control" storageaddress="1C2EC" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2DB08. Lookup result stored to: FFFEC378. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Time Threshold [0xA562C] @1C2EC" category="Timers" storageaddress="1C2EC" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2DB08. Evidence: 0xA562C: lookup result compared with counter FFFEC37D (&quot;(uVar1 &amp; 0xff) &lt;= (uint)DAT_fffec37d [application mode 2 also runs this function every 20 ms via 0x153B4E]&quot;), which is only reset or incremented by 1 per execution; task 0x152A40 = 10 ms (OS: TCB 0x169768 + 16*id; startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 4 -&gt; task 8 (0x1517A4 -&gt; 0x152A40) cycle 10, alarm 6 -&gt; task 9 (0x1517D2 -&gt; 0x15307C) cycle 20, alarm 7 -&gt; task 10 (0x1517FA -&gt; 0x153248) cycle 40, alarm 2 -&gt; task 4 (-&gt; 0x1528A2) cycle 4, alarm 1 -&gt; task 3 (-&gt; 0x152882) cycle 2; 0x153248 = 40 ms (OBD PID 0x1F/0x4E) -&gt; 1 ms tick; 0x49E70 called unconditionally at 0x152BC6). Lookup result stored to: FFFEC378." sizey="16">
+      <scaling units="s" expression="x*0.01" to_byte="x/0.01" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -4485,9 +4485,9 @@
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02DB2C] (Coolant Temperature (filtered, word))" category="Unidentified - Idle Speed Control" storageaddress="1C31C" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2DB2C. Lookup result stored to: FFFEC37A. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Time Threshold [0xA562C] @1C31C" category="Timers" storageaddress="1C31C" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2DB2C. Evidence: 0xA562C: lookup result compared with counter FFFEC37E (&quot;(uVar3 &amp; 0xff) &lt;= (uint)DAT_fffec37e [application mode 2 also runs this function every 20 ms via 0x153B4E]&quot;), which is only reset or incremented by 1 per execution; task 0x152A40 = 10 ms (OS: TCB 0x169768 + 16*id; startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 4 -&gt; task 8 (0x1517A4 -&gt; 0x152A40) cycle 10, alarm 6 -&gt; task 9 (0x1517D2 -&gt; 0x15307C) cycle 20, alarm 7 -&gt; task 10 (0x1517FA -&gt; 0x153248) cycle 40, alarm 2 -&gt; task 4 (-&gt; 0x1528A2) cycle 4, alarm 1 -&gt; task 3 (-&gt; 0x152882) cycle 2; 0x153248 = 40 ms (OBD PID 0x1F/0x4E) -&gt; 1 ms tick; 0x49E70 called unconditionally at 0x152BC6). Lookup result stored to: FFFEC37A." sizey="16">
+      <scaling units="s" expression="x*0.01" to_byte="x/0.01" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -4533,9 +4533,9 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 7 [D02DBE4]" category="Unidentified - Idle Speed Control" storageaddress="1C6D0" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2DBE4. Lookup result stored to: FFFEC3F4. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="7">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0552)" storageaddress="1C6DE" elements="7" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Time Threshold [0xA6A3C]" category="Timers" storageaddress="1C6D0" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2DBE4. Evidence: 0xA6A3C: lookup result compared with counter FFFEC3FA (&quot;uVar7 &lt; (uVar5 &amp; 0xffff) [application mode 2 also runs this function every 20 ms via 0x153B4E]&quot;), which is only reset or incremented by 1 per execution; task 0x152A40 = 10 ms (OS: TCB 0x169768 + 16*id; startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 4 -&gt; task 8 (0x1517A4 -&gt; 0x152A40) cycle 10, alarm 6 -&gt; task 9 (0x1517D2 -&gt; 0x15307C) cycle 20, alarm 7 -&gt; task 10 (0x1517FA -&gt; 0x153248) cycle 40, alarm 2 -&gt; task 4 (-&gt; 0x1528A2) cycle 4, alarm 1 -&gt; task 3 (-&gt; 0x152882) cycle 2; 0x153248 = 40 ms (OBD PID 0x1F/0x4E) -&gt; 1 ms tick; 0x49E70 called unconditionally at 0x152BC6). Lookup result stored to: FFFEC3F4." sizey="7">
+      <scaling units="s" expression="x*0.01" to_byte="x/0.01" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0552)" storageaddress="1C6DE" elements="7" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>

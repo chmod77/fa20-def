@@ -6,6 +6,10 @@ descriptor	function	task	period	counter	context
 02F838	000ff334	0015307c	0.02	FFFED998	(uVar4 & 0xffff) <= (uint)_DAT_fffed998
 02F85C	000ff438	0015307c	0.02	FFFED99C	(uVar4 & 0xffff) <= (uint)_DAT_fffed99c
 02D01C	0008f6ec	00152a40	0.01	FFFEBD35	((uint)DAT_fffebd35 < (uVar4 & 0xff)
+02DB08	000a562c	00152a40	0.01	FFFEC37D	(uVar1 & 0xff) <= (uint)DAT_fffec37d [application mode 2 also runs this function every 20 ms via 0x153B4E]
+02DAFC	000a562c	00152a40	0.01	FFFEC37F	(uVar2 & 0xff) <= (uint)DAT_fffec37f [application mode 2 also runs this function every 20 ms via 0x153B4E]
+02DB2C	000a562c	00152a40	0.01	FFFEC37E	(uVar3 & 0xff) <= (uint)DAT_fffec37e [application mode 2 also runs this function every 20 ms via 0x153B4E]
+02DBE4	000a6a3c	00152a40	0.01	FFFEC3FA	uVar7 < (uVar5 & 0xffff) [application mode 2 also runs this function every 20 ms via 0x153B4E]
 02E758	000beea8	00152a40	0.01	FFFEC92E	(uVar7 & 0xffff) <= (uint)_DAT_fffec92e
 02EE24	000d9378	00152a40	0.01	FFFECF92	(uVar3 & 0xffff) <= uVar9)
 02EE3C	000d9378	00152a40	0.01	FFFECF94	(uVar5 & 0xffff) <= uVar8)

@@ -19,6 +19,7 @@ import re, os, glob, json, collections
 H = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(H)
 PERIOD = {'0015307c': 0.02, '00153248': 0.04, '00153568': 0.08, '001528a2': 0.004, '00152882': 0.002, '00152a40': 0.01,
           '00123600': 0.04, '0012560c': 0.04, '0012367c': 0.04, '0009bdd0': 1.0}
+ALT = {'00153b4e': 0.02}   # application mode 2: task 55 (alarm 27, cycle 20) -> 0x151C8C -> 0x153B4E (also reaches idle 0xA8230)
 CUT = {'00049e70': {'00123600', '0012560c', '0012367c', '0009bdd0'}}
 S = json.load(open(f'{ROOT}/evidence/semantics.json'))
 
@@ -72,7 +73,7 @@ def _tops(f, seen=None):
     seen = seen if seen is not None else set()
     if f in seen: return set()
     seen.add(f)
-    if f in PERIOD: return {f}
+    if f in PERIOD or f in ALT: return {f}
     cs = _callers.get(f)
     if not cs: return {f}
     out = set()
@@ -82,7 +83,10 @@ def _tops(f, seen=None):
     return out
 def unique_period(fn):
     t = _tops(fn)
-    return len(t) > 0 and all(x in PERIOD for x in t) and len({PERIOD[x] for x in t}) == 1
+    main = {x for x in t if x in PERIOD}
+    return len(main) > 0 and all(x in PERIOD or x in ALT for x in t) and len({PERIOD[x] for x in main}) == 1
+def alt_note(fn):
+    return sorted(x for x in _tops(fn) if x in ALT)
 rows = []
 for root, per in PERIOD.items():
     for fn in sorted(TREES[root]):
@@ -100,7 +104,7 @@ for root, per in PERIOD.items():
                 Cp = r'\(?(?:\(\w+\s*\**\)\s*)*\(?_?(?:' + '|'.join(map(re.escape, alias)) + r')(?:\s*&\s*0xff(?:ff)?)?\)?'
                 cm = re.search(V + r'\s*(<=?|>=?)\s*' + Cp + '|' + Cp + r'\s*(<=?|>=?)\s*' + V, tail)
                 if cm and counter_ok(c, fn):
-                    rows.append((d, fn, root, per, 'FFFF' + c[-4:].upper() if c.startswith('DAT_ffff') else c[4:].upper(), cm.group(0)))
+                    rows.append((d, fn, root, per, 'FFFF' + c[-4:].upper() if c.startswith('DAT_ffff') else c[4:].upper(), cm.group(0) + (' [application mode 2 also runs this function every 20 ms via 0x153B4E]' if alt_note(fn) else '')))
                     break
 # countdown timers: C = v (lookup result) and C - 1 elsewhere in the same function; every C write in cdump/ is in F
 # and is a constant, v, C - 1, or a single-assignment local holding C - 1
@@ -128,7 +132,7 @@ for root, per in PERIOD.items():
                         continue
                     ok = False; break
                 if ok:
-                    rows.append((d, fn, root, per, c[4:].upper(), f'{c} = {v} (countdown, {c} - 1 per execution)'))
+                    rows.append((d, fn, root, per, c[4:].upper(), f'{c} = {v} (countdown, {c} - 1 per execution)' + (' [application mode 2 also runs this function every 20 ms via 0x153B4E]' if alt_note(fn) else '')))
 seen = set()
 with open(f'{ROOT}/evidence/timer-tables.tsv', 'w') as f:
     f.write('descriptor\tfunction\ttask\tperiod\tcounter\tcontext\n')
