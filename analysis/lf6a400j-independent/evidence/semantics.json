@@ -1950,6 +1950,19 @@
    "format": "0.0"
   }
  },
+ "0x2D9D8": {
+  "status": "identified",
+  "name": "Ignition Timing Adjustment during Enrichment (Load x RPM)",
+  "category": "Ignition Timing - Base & Torque Model",
+  "evidence": "0x9DD10 (from 0x9BDF4): while FFFF03E0.0 set or 0 < FFFF0401 < FFFF0400 (open-loop enrichment, FFFF056B.6 clear), FFFEC058 = (T-128)*64 (ramping back by +1/64 per execution otherwise); FFFF049E = FFFF0C12 + (T-128); 0x96F3C: FFFF0458 = 049E - 32 + knock terms (0.5 deg), and 0458 -> 03D3 is compared with total timing FFFF046C, so T-128 is in 0.5 deg.",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "(x-128)/2",
+   "to_byte": "x*2+128",
+   "format": "0.0"
+  }
+ },
  "0x2DA80": {
   "status": "identified",
   "name": "Knock Correction Advance Max (weight 1-w, w=FFFF0E90)",

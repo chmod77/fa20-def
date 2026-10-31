@@ -3714,12 +3714,12 @@
         <scaling units="ratio" expression="x/32768" to_byte="x*32768" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 3x7 [D02D9D8] (Engine Load x Engine Speed)" category="Unidentified - Ignition Timing - Corrections" storageaddress="19D94" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D9D8. Lookup result stored to: FFFF049E. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="7" sizey="3">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Engine Load" storageaddress="19D70" elements="3" storagetype="uint8" endian="big" locked="true">
+    <table type="3D" name="Ignition Timing Adjustment during Enrichment (Load x RPM)" category="Ignition Timing - Base &amp; Torque Model" storageaddress="19D94" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D9D8. Evidence: 0x9DD10 (from 0x9BDF4): while FFFF03E0.0 set or 0 &lt; FFFF0401 &lt; FFFF0400 (open-loop enrichment, FFFF056B.6 clear), FFFEC058 = (T-128)*64 (ramping back by +1/64 per execution otherwise); FFFF049E = FFFF0C12 + (T-128); 0x96F3C: FFFF0458 = 049E - 32 + knock terms (0.5 deg), and 0458 -&gt; 03D3 is compared with total timing FFFF046C, so T-128 is in 0.5 deg. Lookup result stored to: FFFF049E." sizex="7" sizey="3">
+      <scaling units="deg" expression="(x-128)/2" to_byte="x*2+128" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Engine Load" storageaddress="19D70" elements="3" storagetype="uint8" endian="big">
         <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Speed" storageaddress="19D74" elements="7" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Engine Speed" storageaddress="19D74" elements="7" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>

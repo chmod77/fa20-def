@@ -543,6 +543,11 @@ add(0x2E634, 'Ignition Timing, Mode FFFF0541=0 (RPM x Load)', 'Ignition Timing -
     'to FFFF0530 = 0, and 0x86B58 then selects 0531 into FFFF03D3, which 0x88478 compares with Ignition Total Timing FFFF046C '
     '(deg = x/2).', DEG2)
 
+add(0x2D9D8, 'Ignition Timing Adjustment during Enrichment (Load x RPM)', 'Ignition Timing - Base & Torque Model',
+    '0x9DD10 (from 0x9BDF4): while FFFF03E0.0 set or 0 < FFFF0401 < FFFF0400 (open-loop enrichment, FFFF056B.6 clear), FFFEC058 = (T-128)*64 '
+    '(ramping back by +1/64 per execution otherwise); FFFF049E = FFFF0C12 + (T-128); 0x96F3C: FFFF0458 = 049E - 32 + knock terms (0.5 deg), '
+    'and 0458 -> 03D3 is compared with total timing FFFF046C, so T-128 is in 0.5 deg.', ('deg', '(x-128)/2', 'x*2+128', '0.0'))
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
