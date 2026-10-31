@@ -5216,6 +5216,174 @@
    "format": "0.00"
   }
  },
+ "0x2EBF0": {
+  "status": "identified",
+  "name": "MAP Transient Rise Hysteresis (A: FFFEEF76.6=0)",
+  "category": "Manifold Pressure - Transient Detection",
+  "evidence": "0xCEF4C (from 0xCF4B4): FFFF19D0 = filter(FFFF09B8 MAP, k=0x199A/65536 via 0x16B4D8) -> FFFF0F52; FFFF0F50 = FFFEE6F8 (MAP, kPa x/256) - FFFF19D0, i.e. a MAP change in kPa (x/256, signed). Lookups use p1 = FFFF09B8 (MAP, kPa x/256). Variant by p9 = FFFEEF76.6 (A = clear, B = set). Rise: flag ECD3D = (R <= 0F50) with R = T_rise - T_rise_hys while ECD3D was set; drop: flag ECD40 = (0F50 <= D) with D = T_drop + T_drop_hys while ECD40 was set. Comparisons/sums with 0F50 give kPa x/256. ",
+  "description": "",
+  "data": {
+   "units": "kPa",
+   "expr": "x/256",
+   "to_byte": "x*256",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Manifold Absolute Pressure (filtered)",
+    "units": "kPa",
+    "expr": "x/256",
+    "to_byte": "x*256"
+   }
+  }
+ },
+ "0x2EBFC": {
+  "status": "identified",
+  "name": "MAP Transient Rise Hysteresis (B: FFFEEF76.6=1)",
+  "category": "Manifold Pressure - Transient Detection",
+  "evidence": "0xCEF4C (from 0xCF4B4): FFFF19D0 = filter(FFFF09B8 MAP, k=0x199A/65536 via 0x16B4D8) -> FFFF0F52; FFFF0F50 = FFFEE6F8 (MAP, kPa x/256) - FFFF19D0, i.e. a MAP change in kPa (x/256, signed). Lookups use p1 = FFFF09B8 (MAP, kPa x/256). Variant by p9 = FFFEEF76.6 (A = clear, B = set). Rise: flag ECD3D = (R <= 0F50) with R = T_rise - T_rise_hys while ECD3D was set; drop: flag ECD40 = (0F50 <= D) with D = T_drop + T_drop_hys while ECD40 was set. Comparisons/sums with 0F50 give kPa x/256. ",
+  "description": "",
+  "data": {
+   "units": "kPa",
+   "expr": "x/256",
+   "to_byte": "x*256",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Manifold Absolute Pressure (filtered)",
+    "units": "kPa",
+    "expr": "x/256",
+    "to_byte": "x*256"
+   }
+  }
+ },
+ "0x2EC08": {
+  "status": "identified",
+  "name": "MAP Transient Rise Threshold (A: FFFEEF76.6=0)",
+  "category": "Manifold Pressure - Transient Detection",
+  "evidence": "0xCEF4C (from 0xCF4B4): FFFF19D0 = filter(FFFF09B8 MAP, k=0x199A/65536 via 0x16B4D8) -> FFFF0F52; FFFF0F50 = FFFEE6F8 (MAP, kPa x/256) - FFFF19D0, i.e. a MAP change in kPa (x/256, signed). Lookups use p1 = FFFF09B8 (MAP, kPa x/256). Variant by p9 = FFFEEF76.6 (A = clear, B = set). Rise: flag ECD3D = (R <= 0F50) with R = T_rise - T_rise_hys while ECD3D was set; drop: flag ECD40 = (0F50 <= D) with D = T_drop + T_drop_hys while ECD40 was set. Comparisons/sums with 0F50 give kPa x/256. ",
+  "description": "",
+  "data": {
+   "units": "kPa",
+   "expr": "x/256",
+   "to_byte": "x*256",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Manifold Absolute Pressure (filtered)",
+    "units": "kPa",
+    "expr": "x/256",
+    "to_byte": "x*256"
+   }
+  }
+ },
+ "0x2EC14": {
+  "status": "identified",
+  "name": "MAP Transient Rise Threshold (B: FFFEEF76.6=1)",
+  "category": "Manifold Pressure - Transient Detection",
+  "evidence": "0xCEF4C (from 0xCF4B4): FFFF19D0 = filter(FFFF09B8 MAP, k=0x199A/65536 via 0x16B4D8) -> FFFF0F52; FFFF0F50 = FFFEE6F8 (MAP, kPa x/256) - FFFF19D0, i.e. a MAP change in kPa (x/256, signed). Lookups use p1 = FFFF09B8 (MAP, kPa x/256). Variant by p9 = FFFEEF76.6 (A = clear, B = set). Rise: flag ECD3D = (R <= 0F50) with R = T_rise - T_rise_hys while ECD3D was set; drop: flag ECD40 = (0F50 <= D) with D = T_drop + T_drop_hys while ECD40 was set. Comparisons/sums with 0F50 give kPa x/256. ",
+  "description": "",
+  "data": {
+   "units": "kPa",
+   "expr": "x/256",
+   "to_byte": "x*256",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Manifold Absolute Pressure (filtered)",
+    "units": "kPa",
+    "expr": "x/256",
+    "to_byte": "x*256"
+   }
+  }
+ },
+ "0x2EC20": {
+  "status": "identified",
+  "name": "MAP Transient Drop Hysteresis (A: FFFEEF76.6=0)",
+  "category": "Manifold Pressure - Transient Detection",
+  "evidence": "0xCEF4C (from 0xCF4B4): FFFF19D0 = filter(FFFF09B8 MAP, k=0x199A/65536 via 0x16B4D8) -> FFFF0F52; FFFF0F50 = FFFEE6F8 (MAP, kPa x/256) - FFFF19D0, i.e. a MAP change in kPa (x/256, signed). Lookups use p1 = FFFF09B8 (MAP, kPa x/256). Variant by p9 = FFFEEF76.6 (A = clear, B = set). Rise: flag ECD3D = (R <= 0F50) with R = T_rise - T_rise_hys while ECD3D was set; drop: flag ECD40 = (0F50 <= D) with D = T_drop + T_drop_hys while ECD40 was set. Comparisons/sums with 0F50 give kPa x/256. ",
+  "description": "",
+  "data": {
+   "units": "kPa",
+   "expr": "x/256",
+   "to_byte": "x*256",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Manifold Absolute Pressure (filtered)",
+    "units": "kPa",
+    "expr": "x/256",
+    "to_byte": "x*256"
+   }
+  }
+ },
+ "0x2EC2C": {
+  "status": "identified",
+  "name": "MAP Transient Drop Hysteresis (B: FFFEEF76.6=1)",
+  "category": "Manifold Pressure - Transient Detection",
+  "evidence": "0xCEF4C (from 0xCF4B4): FFFF19D0 = filter(FFFF09B8 MAP, k=0x199A/65536 via 0x16B4D8) -> FFFF0F52; FFFF0F50 = FFFEE6F8 (MAP, kPa x/256) - FFFF19D0, i.e. a MAP change in kPa (x/256, signed). Lookups use p1 = FFFF09B8 (MAP, kPa x/256). Variant by p9 = FFFEEF76.6 (A = clear, B = set). Rise: flag ECD3D = (R <= 0F50) with R = T_rise - T_rise_hys while ECD3D was set; drop: flag ECD40 = (0F50 <= D) with D = T_drop + T_drop_hys while ECD40 was set. Comparisons/sums with 0F50 give kPa x/256. ",
+  "description": "",
+  "data": {
+   "units": "kPa",
+   "expr": "x/256",
+   "to_byte": "x*256",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Manifold Absolute Pressure (filtered)",
+    "units": "kPa",
+    "expr": "x/256",
+    "to_byte": "x*256"
+   }
+  }
+ },
+ "0x2EC38": {
+  "status": "identified",
+  "name": "MAP Transient Drop Threshold (A: FFFEEF76.6=0)",
+  "category": "Manifold Pressure - Transient Detection",
+  "evidence": "0xCEF4C (from 0xCF4B4): FFFF19D0 = filter(FFFF09B8 MAP, k=0x199A/65536 via 0x16B4D8) -> FFFF0F52; FFFF0F50 = FFFEE6F8 (MAP, kPa x/256) - FFFF19D0, i.e. a MAP change in kPa (x/256, signed). Lookups use p1 = FFFF09B8 (MAP, kPa x/256). Variant by p9 = FFFEEF76.6 (A = clear, B = set). Rise: flag ECD3D = (R <= 0F50) with R = T_rise - T_rise_hys while ECD3D was set; drop: flag ECD40 = (0F50 <= D) with D = T_drop + T_drop_hys while ECD40 was set. Comparisons/sums with 0F50 give kPa x/256. ",
+  "description": "",
+  "data": {
+   "units": "kPa",
+   "expr": "x/256",
+   "to_byte": "x*256",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Manifold Absolute Pressure (filtered)",
+    "units": "kPa",
+    "expr": "x/256",
+    "to_byte": "x*256"
+   }
+  }
+ },
+ "0x2EC44": {
+  "status": "identified",
+  "name": "MAP Transient Drop Threshold (B: FFFEEF76.6=1)",
+  "category": "Manifold Pressure - Transient Detection",
+  "evidence": "0xCEF4C (from 0xCF4B4): FFFF19D0 = filter(FFFF09B8 MAP, k=0x199A/65536 via 0x16B4D8) -> FFFF0F52; FFFF0F50 = FFFEE6F8 (MAP, kPa x/256) - FFFF19D0, i.e. a MAP change in kPa (x/256, signed). Lookups use p1 = FFFF09B8 (MAP, kPa x/256). Variant by p9 = FFFEEF76.6 (A = clear, B = set). Rise: flag ECD3D = (R <= 0F50) with R = T_rise - T_rise_hys while ECD3D was set; drop: flag ECD40 = (0F50 <= D) with D = T_drop + T_drop_hys while ECD40 was set. Comparisons/sums with 0F50 give kPa x/256. ",
+  "description": "",
+  "data": {
+   "units": "kPa",
+   "expr": "x/256",
+   "to_byte": "x*256",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Manifold Absolute Pressure (filtered)",
+    "units": "kPa",
+    "expr": "x/256",
+    "to_byte": "x*256"
+   }
+  }
+ },
  "0x2ECE0": {
   "status": "identified",
   "name": "Throttle Flow Correction (vs FFFF05BB)",

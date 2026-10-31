@@ -3252,52 +3252,52 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02EC08]" category="Unidentified - Airflow Model (Speed Density)" storageaddress="172B0" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2EC08. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="172D0" elements="16" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    <table type="2D" name="MAP Transient Rise Threshold (A: FFFEEF76.6=0)" category="Manifold Pressure - Transient Detection" storageaddress="172B0" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2EC08. Evidence: 0xCEF4C (from 0xCF4B4): FFFF19D0 = filter(FFFF09B8 MAP, k=0x199A/65536 via 0x16B4D8) -&gt; FFFF0F52; FFFF0F50 = FFFEE6F8 (MAP, kPa x/256) - FFFF19D0, i.e. a MAP change in kPa (x/256, signed). Lookups use p1 = FFFF09B8 (MAP, kPa x/256). Variant by p9 = FFFEEF76.6 (A = clear, B = set). Rise: flag ECD3D = (R &lt;= 0F50) with R = T_rise - T_rise_hys while ECD3D was set; drop: flag ECD40 = (0F50 &lt;= D) with D = T_drop + T_drop_hys while ECD40 was set. Comparisons/sums with 0F50 give kPa x/256. " sizey="16">
+      <scaling units="kPa" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Manifold Absolute Pressure (filtered)" storageaddress="172D0" elements="16" storagetype="uint16" endian="big">
+        <scaling units="kPa" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02EC38]" category="Unidentified - Airflow Model (Speed Density)" storageaddress="172F0" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2EC38. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="17310" elements="16" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    <table type="2D" name="MAP Transient Drop Threshold (A: FFFEEF76.6=0)" category="Manifold Pressure - Transient Detection" storageaddress="172F0" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2EC38. Evidence: 0xCEF4C (from 0xCF4B4): FFFF19D0 = filter(FFFF09B8 MAP, k=0x199A/65536 via 0x16B4D8) -&gt; FFFF0F52; FFFF0F50 = FFFEE6F8 (MAP, kPa x/256) - FFFF19D0, i.e. a MAP change in kPa (x/256, signed). Lookups use p1 = FFFF09B8 (MAP, kPa x/256). Variant by p9 = FFFEEF76.6 (A = clear, B = set). Rise: flag ECD3D = (R &lt;= 0F50) with R = T_rise - T_rise_hys while ECD3D was set; drop: flag ECD40 = (0F50 &lt;= D) with D = T_drop + T_drop_hys while ECD40 was set. Comparisons/sums with 0F50 give kPa x/256. " sizey="16">
+      <scaling units="kPa" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Manifold Absolute Pressure (filtered)" storageaddress="17310" elements="16" storagetype="uint16" endian="big">
+        <scaling units="kPa" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02EC14]" category="Unidentified - Airflow Model (Speed Density)" storageaddress="17330" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2EC14. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="17350" elements="16" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    <table type="2D" name="MAP Transient Rise Threshold (B: FFFEEF76.6=1)" category="Manifold Pressure - Transient Detection" storageaddress="17330" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2EC14. Evidence: 0xCEF4C (from 0xCF4B4): FFFF19D0 = filter(FFFF09B8 MAP, k=0x199A/65536 via 0x16B4D8) -&gt; FFFF0F52; FFFF0F50 = FFFEE6F8 (MAP, kPa x/256) - FFFF19D0, i.e. a MAP change in kPa (x/256, signed). Lookups use p1 = FFFF09B8 (MAP, kPa x/256). Variant by p9 = FFFEEF76.6 (A = clear, B = set). Rise: flag ECD3D = (R &lt;= 0F50) with R = T_rise - T_rise_hys while ECD3D was set; drop: flag ECD40 = (0F50 &lt;= D) with D = T_drop + T_drop_hys while ECD40 was set. Comparisons/sums with 0F50 give kPa x/256. " sizey="16">
+      <scaling units="kPa" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Manifold Absolute Pressure (filtered)" storageaddress="17350" elements="16" storagetype="uint16" endian="big">
+        <scaling units="kPa" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02EBFC]" category="Unidentified - Airflow Model (Speed Density)" storageaddress="17370" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2EBFC. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="17390" elements="16" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    <table type="2D" name="MAP Transient Rise Hysteresis (B: FFFEEF76.6=1)" category="Manifold Pressure - Transient Detection" storageaddress="17370" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2EBFC. Evidence: 0xCEF4C (from 0xCF4B4): FFFF19D0 = filter(FFFF09B8 MAP, k=0x199A/65536 via 0x16B4D8) -&gt; FFFF0F52; FFFF0F50 = FFFEE6F8 (MAP, kPa x/256) - FFFF19D0, i.e. a MAP change in kPa (x/256, signed). Lookups use p1 = FFFF09B8 (MAP, kPa x/256). Variant by p9 = FFFEEF76.6 (A = clear, B = set). Rise: flag ECD3D = (R &lt;= 0F50) with R = T_rise - T_rise_hys while ECD3D was set; drop: flag ECD40 = (0F50 &lt;= D) with D = T_drop + T_drop_hys while ECD40 was set. Comparisons/sums with 0F50 give kPa x/256. " sizey="16">
+      <scaling units="kPa" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Manifold Absolute Pressure (filtered)" storageaddress="17390" elements="16" storagetype="uint16" endian="big">
+        <scaling units="kPa" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02EBF0]" category="Unidentified - Airflow Model (Speed Density)" storageaddress="173B0" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2EBF0. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="173D0" elements="16" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    <table type="2D" name="MAP Transient Rise Hysteresis (A: FFFEEF76.6=0)" category="Manifold Pressure - Transient Detection" storageaddress="173B0" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2EBF0. Evidence: 0xCEF4C (from 0xCF4B4): FFFF19D0 = filter(FFFF09B8 MAP, k=0x199A/65536 via 0x16B4D8) -&gt; FFFF0F52; FFFF0F50 = FFFEE6F8 (MAP, kPa x/256) - FFFF19D0, i.e. a MAP change in kPa (x/256, signed). Lookups use p1 = FFFF09B8 (MAP, kPa x/256). Variant by p9 = FFFEEF76.6 (A = clear, B = set). Rise: flag ECD3D = (R &lt;= 0F50) with R = T_rise - T_rise_hys while ECD3D was set; drop: flag ECD40 = (0F50 &lt;= D) with D = T_drop + T_drop_hys while ECD40 was set. Comparisons/sums with 0F50 give kPa x/256. " sizey="16">
+      <scaling units="kPa" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Manifold Absolute Pressure (filtered)" storageaddress="173D0" elements="16" storagetype="uint16" endian="big">
+        <scaling units="kPa" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02EC44]" category="Unidentified - Airflow Model (Speed Density)" storageaddress="173F0" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2EC44. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="17410" elements="16" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    <table type="2D" name="MAP Transient Drop Threshold (B: FFFEEF76.6=1)" category="Manifold Pressure - Transient Detection" storageaddress="173F0" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2EC44. Evidence: 0xCEF4C (from 0xCF4B4): FFFF19D0 = filter(FFFF09B8 MAP, k=0x199A/65536 via 0x16B4D8) -&gt; FFFF0F52; FFFF0F50 = FFFEE6F8 (MAP, kPa x/256) - FFFF19D0, i.e. a MAP change in kPa (x/256, signed). Lookups use p1 = FFFF09B8 (MAP, kPa x/256). Variant by p9 = FFFEEF76.6 (A = clear, B = set). Rise: flag ECD3D = (R &lt;= 0F50) with R = T_rise - T_rise_hys while ECD3D was set; drop: flag ECD40 = (0F50 &lt;= D) with D = T_drop + T_drop_hys while ECD40 was set. Comparisons/sums with 0F50 give kPa x/256. " sizey="16">
+      <scaling units="kPa" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Manifold Absolute Pressure (filtered)" storageaddress="17410" elements="16" storagetype="uint16" endian="big">
+        <scaling units="kPa" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02EC2C]" category="Unidentified - Airflow Model (Speed Density)" storageaddress="17430" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2EC2C. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="17450" elements="16" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    <table type="2D" name="MAP Transient Drop Hysteresis (B: FFFEEF76.6=1)" category="Manifold Pressure - Transient Detection" storageaddress="17430" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2EC2C. Evidence: 0xCEF4C (from 0xCF4B4): FFFF19D0 = filter(FFFF09B8 MAP, k=0x199A/65536 via 0x16B4D8) -&gt; FFFF0F52; FFFF0F50 = FFFEE6F8 (MAP, kPa x/256) - FFFF19D0, i.e. a MAP change in kPa (x/256, signed). Lookups use p1 = FFFF09B8 (MAP, kPa x/256). Variant by p9 = FFFEEF76.6 (A = clear, B = set). Rise: flag ECD3D = (R &lt;= 0F50) with R = T_rise - T_rise_hys while ECD3D was set; drop: flag ECD40 = (0F50 &lt;= D) with D = T_drop + T_drop_hys while ECD40 was set. Comparisons/sums with 0F50 give kPa x/256. " sizey="16">
+      <scaling units="kPa" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Manifold Absolute Pressure (filtered)" storageaddress="17450" elements="16" storagetype="uint16" endian="big">
+        <scaling units="kPa" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02EC20]" category="Unidentified - Airflow Model (Speed Density)" storageaddress="17470" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2EC20. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="17490" elements="16" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    <table type="2D" name="MAP Transient Drop Hysteresis (A: FFFEEF76.6=0)" category="Manifold Pressure - Transient Detection" storageaddress="17470" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2EC20. Evidence: 0xCEF4C (from 0xCF4B4): FFFF19D0 = filter(FFFF09B8 MAP, k=0x199A/65536 via 0x16B4D8) -&gt; FFFF0F52; FFFF0F50 = FFFEE6F8 (MAP, kPa x/256) - FFFF19D0, i.e. a MAP change in kPa (x/256, signed). Lookups use p1 = FFFF09B8 (MAP, kPa x/256). Variant by p9 = FFFEEF76.6 (A = clear, B = set). Rise: flag ECD3D = (R &lt;= 0F50) with R = T_rise - T_rise_hys while ECD3D was set; drop: flag ECD40 = (0F50 &lt;= D) with D = T_drop + T_drop_hys while ECD40 was set. Comparisons/sums with 0F50 give kPa x/256. " sizey="16">
+      <scaling units="kPa" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Manifold Absolute Pressure (filtered)" storageaddress="17490" elements="16" storagetype="uint16" endian="big">
+        <scaling units="kPa" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
     <table type="3D" name="Unidentified 4x4 [D02EC7C] (Engine Speed x ?)" category="Unidentified - Airflow Model (Speed Density)" storageaddress="174B0" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2EC7C. Lookup result stored to: FFFF05B4. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="4" sizey="4">

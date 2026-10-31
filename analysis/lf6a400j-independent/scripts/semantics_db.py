@@ -958,6 +958,19 @@ for v, (f, s1, h, s2) in {'V<4': (0x2C4A4, 0x2C404, 0x2C4B8, 0x2C418), 'B0': (0x
         ('Nm/step', '(x-16000)/80', 'x*80+16000', '0.0'), axes=_GR)
 
 
+# ---- MAP transient detection 0xCEF4C (session 4)
+_MAPX = {'0': dict(name='Manifold Absolute Pressure (filtered)', units='kPa', expr='x/256', to_byte='x*256')}
+_mtr = ('0xCEF4C (from 0xCF4B4): FFFF19D0 = filter(FFFF09B8 MAP, k=0x199A/65536 via 0x16B4D8) -> FFFF0F52; FFFF0F50 = FFFEE6F8 (MAP, kPa '
+        'x/256) - FFFF19D0, i.e. a MAP change in kPa (x/256, signed). Lookups use p1 = FFFF09B8 (MAP, kPa x/256). Variant by p9 = '
+        'FFFEEF76.6 (A = clear, B = set). Rise: flag ECD3D = (R <= 0F50) with R = T_rise - T_rise_hys while ECD3D was set; drop: flag ECD40 = '
+        '(0F50 <= D) with D = T_drop + T_drop_hys while ECD40 was set. Comparisons/sums with 0F50 give kPa x/256. ')
+for d, nm, v in ((0x2EC08, 'Rise Threshold', 'A'), (0x2EC14, 'Rise Threshold', 'B'), (0x2EBF0, 'Rise Hysteresis', 'A'),
+                 (0x2EBFC, 'Rise Hysteresis', 'B'), (0x2EC38, 'Drop Threshold', 'A'), (0x2EC44, 'Drop Threshold', 'B'),
+                 (0x2EC20, 'Drop Hysteresis', 'A'), (0x2EC2C, 'Drop Hysteresis', 'B')):
+    add(d, f'MAP Transient {nm} ({v}: FFFEEF76.6={"0" if v == "A" else "1"})', 'Manifold Pressure - Transient Detection', _mtr,
+        ('kPa', 'x/256', 'x*256', '0.00'), axes=_MAPX)
+
+
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
     print(len(S), 'entries')
