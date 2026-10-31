@@ -549,6 +549,19 @@ add(0x2D9D8, 'Ignition Timing Adjustment during Enrichment (Load x RPM)', 'Ignit
     'and 0458 -> 03D3 is compared with total timing FFFF046C, so T-128 is in 0.5 deg.', ('deg', '(x-128)/2', 'x*2+128', '0.0'))
 
 
+# ---------------------------------------------------------------- target lambda (task 0xB42AC, 0xB5B38)
+# 0xB5B38: AFR = (T + FFFF0DCC - 0x8000) * 0.00033569336 - 14.5*FFFF0B9A/(32768+FFFF0B9A), 0.00033569336 = 14.5/43194, result*2978.909
+#   (= 65536/22, i.e. lambda*43194) -> FFFF0DBA (or T_02E37C directly when FFFF06CE.3 set).  0xB3260: FFFF0D80 = 0DBA + FFFF38F8, and
+#   FFFF0D80 is SSM 0xD1 A/F Learning #3 with converter 0xD0B8C % = (x/43194 - 1)*100.  So T is lambda*43194 (AFR = 14.5*lambda).
+LAMT = ('lambda', 'x/43194', 'x*43194', '0.000')
+evl = ('0xB5B38 (task 0xB42AC): AFR = (T + FFFF0DCC - 0x8000)*14.5/43194 - ..., stored *65536/22 (= lambda*43194) in FFFF0DBA -> 0xB3260 '
+       'FFFF0D80 (SSM 0xD1, x/43194 multiplier). Inputs FFFF2996 rpm, FFFF03A0 load. ')
+for d, cond in ((0x2E32C, 'param_5 set, FFFF0D70 < 1000'), (0x2E340, 'param_5 set, FFFF0D70 >= 1000'),
+                (0x2E354, 'param_5 clear, FFFF0D70 < 1000'), (0x2E368, 'param_5 clear, FFFF0D70 >= 1000')):
+    add(d, f'Target Lambda ({cond})', 'Fueling - Target Lambda', evl + f'Selected when {cond}.', LAMT)
+add(0x2E37C, 'Target Lambda (FFFF06CE.3 set, direct)', 'Fueling - Target Lambda', evl + 'Written directly to FFFF0DBA when FFFF06CE bit 3 set.', LAMT)
+
+
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
     print(len(S), 'entries')

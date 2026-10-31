@@ -184,3 +184,7 @@ V2.update({
  0xFFFF03D3:('Ignition Timing (torque-model selected)','deg','x/2','x*2','0x86B58 selects 0458/0531/0532/0533; 0x88478 compares |03D3 - 046C|'),
  0xFFFF0458:('Ignition Timing (knock-advance path)','deg','x/2','x*2','0x96F3C; selected into 03D3 by 0x86B58'),
 })
+V2.update({
+ 0xFFFF0DBA:('Target Lambda (A/F #3 base)','lambda','x/43194','x*43194','0xB5B38 AFR*65536/22; 0xB3260 0D80 = 0DBA + 38F8'),
+ 0xFFFF0D80:('A/F Learning #3 (target lambda incl. learning)','lambda','x/43194','x*43194','SSM 0xD1 converter 0xD0B8C % = (x/43194-1)*100'),
+})
