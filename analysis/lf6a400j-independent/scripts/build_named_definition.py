@@ -199,6 +199,18 @@ def build(rid, path, sha):
                 ET.SubElement(a, 'data').text = str(v)
         stats['secondary_tables'] += 1
         stats['identified'] += ident
+    # scalar calibrations proven by comparison with a proven variable (scripts/scalar_semantics.py)
+    sp = f'{ROOT}/evidence/scalar-semantics.json'
+    for addr, sc in (sorted(json.load(open(sp)).items()) if os.path.exists(sp) else []):
+        st_ = {1: 'uint8', 2: 'uint16', 4: 'uint32'}[sc['width']]
+        nm = f"{sc['var_name']} Threshold [0x{addr}] (0x{int(sc['function'], 16):X})"
+        cat = 'Scalars - ' + subsystems.category(HROOT.get(sc['function'].zfill(8), set()) or set())
+        desc = (f"Scalar at 0x{addr} read by 0x{int(sc['function'], 16):X} and compared with {sc['var_name']} (FFFF{sc['var'][4:]}): "
+                f"\"{sc['context']}\" (ROM value folded by the decompiler). Scaling is that of the compared variable.")
+        tab = ET.SubElement(rom, 'table', type='1D', name=nm, category=cat, storageaddress=addr, storagetype=st_, endian='big',
+                            userlevel='1', description=desc)
+        scaling(tab, st_, sc['units'], sc['expr'], sc['to_byte'], '0.00')
+        stats['scalars'] += 1
     ET.indent(root, space='  ')
     out = f'{ROOT}/RR_{rid}_FA20DIT.xml'
     ET.ElementTree(root).write(out, encoding='utf-8', xml_declaration=True)

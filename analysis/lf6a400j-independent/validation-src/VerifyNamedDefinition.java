@@ -49,6 +49,7 @@ public class VerifyNamedDefinition {
     for (int i = 0; i < y.getDataSize(); i++) check(y, y.getData()[i], b, i);
    } else {
     for (int i = 0; i < t.getDataSize(); i++) check(t, t.getData()[i], b, i);
+    if (t instanceof Table1D) { tables++; continue; }
     Table ax = ((Table2D) t).getAxis();
     if (ax.isStaticDataTable()) { if (ax.getDataSize() != t.getDataSize()) throw new AssertionError(t.getName() + " static axis size"); statics++; }
     else for (int i = 0; i < ax.getDataSize(); i++) check(ax, ax.getData()[i], b, i);

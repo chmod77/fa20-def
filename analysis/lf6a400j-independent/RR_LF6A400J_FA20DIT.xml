@@ -9207,5 +9207,164 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
+    <table type="1D" name="Engine Speed (OBD copy) Threshold [0x008EF8] (0x9340C)" category="Scalars - Fueling - Open Loop &amp; Enrichment" storageaddress="008EF8" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x008EF8 read by 0x9340C and compared with Engine Speed (OBD copy) (FFFF2ADA): &quot;0x1000 &lt; param_5&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Vehicle Speed (copy) Threshold [0x00A1B4] (0x8C5EC)" category="Scalars - Task 0x153568" storageaddress="00A1B4" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x00A1B4 read by 0x8C5EC and compared with Vehicle Speed (copy) (FFFFF0DA): &quot;param_3 &lt; 0x379&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="km/h" expression="x*9/160" to_byte="x*160/9" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Coolant Temperature (filtered, word) Threshold [0x00A5B2] (0x8CBE4)" category="Scalars - Fueling - Open Loop &amp; Enrichment" storageaddress="00A5B2" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x00A5B2 read by 0x8CBE4 and compared with Coolant Temperature (filtered, word) (FFFFEEDE): &quot;param_2 &lt; 0xe000&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Coolant Temperature (filtered, word) Threshold [0x00A5B4] (0x970E8)" category="Scalars - Ignition Timing - Corrections" storageaddress="00A5B4" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x00A5B4 read by 0x970E8 and compared with Coolant Temperature (filtered, word) (FFFFEEDE): &quot;param_2 &lt; 0xdccd&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Control Module Voltage Threshold [0x00A5FA] (0x93044)" category="Scalars - Task 0x153248" storageaddress="00A5FA" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x00A5FA read by 0x93044 and compared with Control Module Voltage (FFFFEF18): &quot;param_3 &lt; 0x8ccd&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="V" expression="x*625/2048000" to_byte="x*2048000/625" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Engine Speed Threshold [0x00D696] (0x92410)" category="Scalars - Task 0x89A78" storageaddress="00D696" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x00D696 read by 0x92410 and compared with Engine Speed (FFFF2994): &quot;0x5000 &lt; param_1&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Atmospheric Pressure (copy) Threshold [0x00DA8E] (0x10D63C)" category="Scalars - Task 0x153568" storageaddress="00DA8E" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x00DA8E read by 0x10D63C and compared with Atmospheric Pressure (copy) (FFFFEED0): &quot;param_1 &lt; 0x4b0f&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="kPa" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Engine Speed (OBD copy) Threshold [0x00E73E] (0x84CF4)" category="Scalars - Task 0x153568" storageaddress="00E73E" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x00E73E read by 0x84CF4 and compared with Engine Speed (OBD copy) (FFFF2ADA): &quot;param_2 &lt; 0x5000&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Coolant Temperature (sampled) Threshold [0x0122A8] (0x99614)" category="Scalars - Ignition Timing - Final" storageaddress="0122A8" storagetype="uint8" endian="big" userlevel="1" description="Scalar at 0x0122A8 read by 0x99614 and compared with Coolant Temperature (sampled) (FFFF29A7): &quot;0x8a &lt; param_1&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+    </table>
+    <table type="1D" name="Engine Speed (OBD copy) Threshold [0x0147AC] (0xA68B0)" category="Scalars - Idle Speed Control" storageaddress="0147AC" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x0147AC read by 0xA68B0 and compared with Engine Speed (OBD copy) (FFFF2ADA): &quot;param_2 &lt; 0x2800&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Coolant Temperature (filtered, word) Threshold [0x014810] (0xA7BB0)" category="Scalars - Idle Speed Control" storageaddress="014810" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x014810 read by 0xA7BB0 and compared with Coolant Temperature (filtered, word) (FFFFEEDE): &quot;param_1 &lt; 0xc000&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Coolant Temperature (sampled) Threshold [0x015977] (0xBFA18)" category="Scalars - Task 0xBE0E8" storageaddress="015977" storagetype="uint8" endian="big" userlevel="1" description="Scalar at 0x015977 read by 0xBFA18 and compared with Coolant Temperature (sampled) (FFFF29A7): &quot;param_2 &lt; 0xfe&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+    </table>
+    <table type="1D" name="Throttle Motor Voltage Threshold [0x019898] (0x66FB8)" category="Scalars - Task 0x152882 / Task 0x15307C / Task 0x153B2C / Task 0x153CCC / Task 0x153CE0 / Task 0x153D12 / Task 0x15B5D2 / Task 0x15B688 / Task 0x15B6F0 / Task 0x2C88 / Task 0x31C2 / Task 0x6E2" storageaddress="019898" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x019898 read by 0x66FB8 and compared with Throttle Motor Voltage (FFFF008E): &quot;_DAT_ffff008e &lt; 0xa0&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="V" expression="x/10" to_byte="x*10" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Main Throttle Sensor Threshold [0x0199BC] (0x66ED8)" category="Scalars - Task 0x152882 / Task 0x15307C / Task 0x153B2C / Task 0x153CCC / Task 0x153CE0 / Task 0x153D12 / Task 0x15B5D2 / Task 0x15B688 / Task 0x15B6F0 / Task 0x2C88 / Task 0x31C2 / Task 0x6E2" storageaddress="0199BC" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x0199BC read by 0x66ED8 and compared with Main Throttle Sensor (FFFF00B8): &quot;0xef9 &lt; _v_Main_Throttle_Sensor_00B8&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="%" expression="x*100/65535" to_byte="x*65535/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Main Throttle Sensor Threshold [0x0199BE] (0x66ED8)" category="Scalars - Task 0x152882 / Task 0x15307C / Task 0x153B2C / Task 0x153CCC / Task 0x153CE0 / Task 0x153D12 / Task 0x15B5D2 / Task 0x15B688 / Task 0x15B6F0 / Task 0x2C88 / Task 0x31C2 / Task 0x6E2" storageaddress="0199BE" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x0199BE read by 0x66ED8 and compared with Main Throttle Sensor (FFFF00B8): &quot;_v_Main_Throttle_Sensor_00B8 &lt; 0x489a&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="%" expression="x*100/65535" to_byte="x*65535/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Throttle Motor Voltage Threshold [0x019AAE] (0x6315E)" category="Scalars - Task 0x152882 / Task 0x153B2C / Task 0x153CCC" storageaddress="019AAE" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x019AAE read by 0x6315E and compared with Throttle Motor Voltage (FFFF008E): &quot;_DAT_ffff008e &lt; 0xa0&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="V" expression="x/10" to_byte="x*10" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Engine Speed (OBD copy) Threshold [0x019E0C] (0x96DA0)" category="Scalars - Ignition Timing - Final" storageaddress="019E0C" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x019E0C read by 0x96DA0 and compared with Engine Speed (OBD copy) (FFFF2ADA): &quot;param_5 &lt; 0xa00&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Engine Speed Threshold [0x019EB2] (0x9B520)" category="Scalars - Ignition Timing - Corrections" storageaddress="019EB2" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x019EB2 read by 0x9B520 and compared with Engine Speed (FFFF2994): &quot;param_5 &lt; 0x3200&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Engine Speed (OBD copy) Threshold [0x01A648] (0x9A05C)" category="Scalars - Ignition Timing - Corrections" storageaddress="01A648" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x01A648 read by 0x9A05C and compared with Engine Speed (OBD copy) (FFFF2ADA): &quot;param_8 &lt; 0x3c00&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Engine Speed / Vehicle Speed Ratio Threshold [0x01B9A4] (0x7F71C)" category="Scalars - Gear Calculation" storageaddress="01B9A4" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x01B9A4 read by 0x7F71C and compared with Engine Speed / Vehicle Speed Ratio (FFFF09D0): &quot;param_1 &lt; 0x8c00&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="rpm per km/h" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Control Module Voltage Threshold [0x01CF7C] (0xCBB48)" category="Scalars - Task 0x153248" storageaddress="01CF7C" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x01CF7C read by 0xCBB48 and compared with Control Module Voltage (FFFFEF18): &quot;param_3 &lt; 0x6666&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="V" expression="x*625/2048000" to_byte="x*2048000/625" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Accelerator Pedal Angle Threshold [0x01D88C] (0xCE3B8)" category="Scalars - Task 0x152A40" storageaddress="01D88C" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x01D88C read by 0xCE3B8 and compared with Accelerator Pedal Angle (FFFFEEF8): &quot;param_1 &lt; 0xbfff&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Accelerator Pedal Angle Threshold [0x01D89E] (0xCE450)" category="Scalars - Task 0x152A40" storageaddress="01D89E" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x01D89E read by 0xCE450 and compared with Accelerator Pedal Angle (FFFFEEF8): &quot;param_1 &lt; 0x5999&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Engine Speed (OBD copy) Threshold [0x01D8F2] (0xC9F58)" category="Scalars - Task 0x152A40" storageaddress="01D8F2" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x01D8F2 read by 0xC9F58 and compared with Engine Speed (OBD copy) (FFFF2ADA): &quot;param_14 &lt; 0x3c00&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Engine Speed (OBD copy) Threshold [0x01D8F6] (0xC9F58)" category="Scalars - Task 0x152A40" storageaddress="01D8F6" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x01D8F6 read by 0xC9F58 and compared with Engine Speed (OBD copy) (FFFF2ADA): &quot;param_14 &lt; 0x3200&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="A/F Sensor #1 Threshold [0x01E9B0] (0xD7638)" category="Scalars - Task 0x15307C" storageaddress="01E9B0" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x01E9B0 read by 0xD7638 and compared with A/F Sensor #1 (FFFFEF96): &quot;0x24cd &lt; param_2&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="lambda" expression="x/8192" to_byte="x*8192" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="A/F Sensor #1 Threshold [0x01E9B6] (0xD7688)" category="Scalars - Task 0x15307C" storageaddress="01E9B6" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x01E9B6 read by 0xD7688 and compared with A/F Sensor #1 (FFFFEF96): &quot;param_2 &lt; 0x1b33&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="lambda" expression="x/8192" to_byte="x*8192" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Coolant Temperature Threshold [0x01EF56] (0xD3CA4)" category="Scalars - Task 0x15382C" storageaddress="01EF56" storagetype="uint8" endian="big" userlevel="1" description="Scalar at 0x01EF56 read by 0xD3CA4 and compared with Coolant Temperature (FFFF29A5): &quot;param_2 &lt; 0x94&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+    </table>
+    <table type="1D" name="Atmospheric Pressure Threshold [0x01EF5C] (0xD2ABC)" category="Scalars - Task 0x153568" storageaddress="01EF5C" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x01EF5C read by 0xD2ABC and compared with Atmospheric Pressure (FFFFE6AA): &quot;param_7 &lt; 0x5d53&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="kPa" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Atmospheric Pressure Threshold [0x01EF5E] (0xD2ABC)" category="Scalars - Task 0x153568" storageaddress="01EF5E" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x01EF5E read by 0xD2ABC and compared with Atmospheric Pressure (FFFFE6AA): &quot;param_7 &lt; 0x4ffe&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="kPa" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Engine Speed Threshold [0x01EF88] (0xD3690)" category="Scalars - Task 0x153568" storageaddress="01EF88" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x01EF88 read by 0xD3690 and compared with Engine Speed (FFFF2994): &quot;param_15 &lt; 0x3c00&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Coolant Temperature Threshold [0x01EF8B] (0xD3868)" category="Scalars - Task 0x153568" storageaddress="01EF8B" storagetype="uint8" endian="big" userlevel="1" description="Scalar at 0x01EF8B read by 0xD3868 and compared with Coolant Temperature (FFFF29A5): &quot;0xa1 &lt; param_3&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+    </table>
+    <table type="1D" name="Coolant Temperature Threshold [0x01EFA1] (0xD3F0C)" category="Scalars - Task 0x153568" storageaddress="01EFA1" storagetype="uint8" endian="big" userlevel="1" description="Scalar at 0x01EFA1 read by 0xD3F0C and compared with Coolant Temperature (FFFF29A5): &quot;0xf9 &lt; param_3&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+    </table>
+    <table type="1D" name="Manifold Vacuum (Atmospheric - MAP) Threshold [0x01EFA4] (0xD409C)" category="Scalars - Task 0x153568" storageaddress="01EFA4" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x01EFA4 read by 0xD409C and compared with Manifold Vacuum (Atmospheric - MAP) (FFFF2A3C): &quot;param_3 &lt; 0x2ea9&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="kPa" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Alternator Duty Threshold [0x01F0AE] (0xE3814)" category="Scalars - Task 0x153568" storageaddress="01F0AE" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x01F0AE read by 0xE3814 and compared with Alternator Duty (FFFF10D6): &quot;param_1 &lt; 0x29a&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="%" expression="x*0.06" to_byte="x/0.06" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Engine Speed (OBD copy) Threshold [0x01FCB4] (0xFCFBC)" category="Scalars - AVCS (Cam Timing) Control" storageaddress="01FCB4" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x01FCB4 read by 0xFCFBC and compared with Engine Speed (OBD copy) (FFFF2ADA): &quot;0x3a00 &lt; param_1&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Engine Speed (OBD copy) Threshold [0x02126E] (0xEF83C)" category="Scalars - Task 0x153568" storageaddress="02126E" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x02126E read by 0xEF83C and compared with Engine Speed (OBD copy) (FFFF2ADA): &quot;param_2 &lt; 0xa00&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Engine Speed (OBD copy) Threshold [0x021294] (0xED640)" category="Scalars - Task 0x153568" storageaddress="021294" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x021294 read by 0xED640 and compared with Engine Speed (OBD copy) (FFFF2ADA): &quot;param_2 &lt; 0xa00&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Engine Speed (OBD copy) Threshold [0x0212EC] (0xF23A0)" category="Scalars - Task 0x153568" storageaddress="0212EC" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x0212EC read by 0xF23A0 and compared with Engine Speed (OBD copy) (FFFF2ADA): &quot;param_2 &lt; 0xa00&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Alternator Duty Threshold [0x023A10] (0x10ACBC)" category="Scalars - Task 0x153248" storageaddress="023A10" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x023A10 read by 0x10ACBC and compared with Alternator Duty (FFFF10D6): &quot;param_2 &lt; 0x29b&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="%" expression="x*0.06" to_byte="x/0.06" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Battery Voltage Threshold [0x023A16] (0x10A0FC)" category="Scalars - Task 0x153248" storageaddress="023A16" storagetype="uint8" endian="big" userlevel="1" description="Scalar at 0x023A16 read by 0x10A0FC and compared with Battery Voltage (FFFFAB41): &quot;param_6 &lt; 0xa5&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="V" expression="x*8/100" to_byte="x*100/8" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+    </table>
+    <table type="1D" name="Engine Speed (OBD copy) Threshold [0x023A96] (0x10EE20)" category="Scalars - Task 0x152A40 / Task 0x153954 / Task 0x158F6C" storageaddress="023A96" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x023A96 read by 0x10EE20 and compared with Engine Speed (OBD copy) (FFFF2ADA): &quot;param_5 &lt; 0x100&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Coolant Temperature (filtered, word) Threshold [0x023A9C] (0x10FDBC)" category="Scalars - Task 0x15307C" storageaddress="023A9C" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x023A9C read by 0x10FDBC and compared with Coolant Temperature (filtered, word) (FFFFEEDE): &quot;param_10 &lt; 0xb19a&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Coolant Temperature (filtered, word) Threshold [0x02443C] (0x118FFC)" category="Scalars - Task 0x153248" storageaddress="02443C" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x02443C read by 0x118FFC and compared with Coolant Temperature (filtered, word) (FFFFEEDE): &quot;param_2 &lt; 0x4000&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Mass Airflow (load-path copy) Threshold [0x02501A] (0x11A060)" category="Scalars - Task 0x11A89C" storageaddress="02501A" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x02501A read by 0x11A060 and compared with Mass Airflow (load-path copy) (FFFFEEF4): &quot;param_2 &lt; 0x7ae&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="g/s" expression="x*75/16384" to_byte="x*16384/75" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Coolant Temperature Threshold [0x0297C0] (0xB6258)" category="Scalars - Task 0x15307C" storageaddress="0297C0" storagetype="uint8" endian="big" userlevel="1" description="Scalar at 0x0297C0 read by 0xB6258 and compared with Coolant Temperature (FFFF29A5): &quot;param_1 &lt; 0x91&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+    </table>
+    <table type="1D" name="Engine Speed Threshold [0x029946] (0xF12E8)" category="Scalars - Task 0x152A40" storageaddress="029946" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x029946 read by 0xF12E8 and compared with Engine Speed (FFFF2994): &quot;param_3 &lt; 0x2600&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Coolant Temperature (filtered, word) Threshold [0x029948] (0xF12E8)" category="Scalars - Task 0x152A40" storageaddress="029948" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x029948 read by 0xF12E8 and compared with Coolant Temperature (filtered, word) (FFFFEEDE): &quot;param_8 &lt; 0xc000&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Engine Speed Threshold [0x029A4A] (0xF6214)" category="Scalars - Task 0x152A40" storageaddress="029A4A" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x029A4A read by 0xF6214 and compared with Engine Speed (FFFF2994): &quot;param_3 &lt; 0xa00&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Coolant Temperature (filtered, word) Threshold [0x02AA72] (0x131D8C)" category="Scalars - Task 0x152A40 / Task 0x15307C / Task 0x153D12" storageaddress="02AA72" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x02AA72 read by 0x131D8C and compared with Coolant Temperature (filtered, word) (FFFFEEDE): &quot;param_3 &lt; 0xfffc&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Coolant Temperature (filtered, word) Threshold [0x02AA76] (0x12A314)" category="Scalars - Task 0x152A40 / Task 0x15307C / Task 0x153D12" storageaddress="02AA76" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x02AA76 read by 0x12A314 and compared with Coolant Temperature (filtered, word) (FFFFEEDE): &quot;param_1 &lt; 0xfe66&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
+    <table type="1D" name="Engine Speed (byte, 25 rpm) Threshold [0x02AA90] (0x3AC84)" category="Scalars - Task 0x3ADE6" storageaddress="02AA90" storagetype="uint8" endian="big" userlevel="1" description="Scalar at 0x02AA90 read by 0x3AC84 and compared with Engine Speed (byte, 25 rpm) (FFFF299C): &quot;DAT_ffff299c &lt; 0xff&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="rpm" expression="x*25" to_byte="x/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+    </table>
+    <table type="1D" name="Coolant Temperature (filtered, word) Threshold [0x02AD04] (0x4D23A)" category="Scalars - Task 0x153568 / Task 0x153D52" storageaddress="02AD04" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x02AD04 read by 0x4D23A and compared with Coolant Temperature (filtered, word) (FFFFEEDE): &quot;_DAT_fffeeede &lt; 0x8000&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+      <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    </table>
   </rom>
 </roms>
