@@ -806,6 +806,11 @@ add(0x2CDCC, 'Engine Speed Threshold Hysteresis (Gear, FFFEE710.7 set) [0x8C790]
 add(0x2CDD8, 'Engine Speed Threshold (Gear) [0x8C790]', FE, _evc79, RPM16)
 add(0x2CDE4, 'Engine Speed Threshold Hysteresis (Gear) [0x8C790]', FE, _evc79, RPM16)
 
+_ev9a = ('0x91008 (from 0x89E04): FFFF0B9A = T_02D2A8(rpm FFFF2994, load FFFF03A0) * T_02D2BC(IAM FFFF3669)/128; 0xB5B38 target AFR = '
+         '(...)*14.5/43194 - 14.5*0B9A/(32768 + 0B9A), i.e. 0B9A is an enrichment (phi-1)*32768: lambda = 32768/(32768 + x). ')
+add(0x2D2A8, 'Open Loop Enrichment for Target Lambda (RPM x Load) [-> 0B9A]', FE, _ev9a, ('lambda', '32768/(32768+x)', '32768/x-32768', '0.000'))
+add(0x2D2BC, 'Open Loop Enrichment Multiplier (IAM) [-> 0B9A]', FE, _ev9a + 'x/128 factor indexed by IAM.', ('multiplier', 'x/128', 'x*128', '0.000'))
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

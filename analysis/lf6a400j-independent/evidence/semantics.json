@@ -1779,6 +1779,32 @@
    "format": "0"
   }
  },
+ "0x2D2A8": {
+  "status": "identified",
+  "name": "Open Loop Enrichment for Target Lambda (RPM x Load) [-> 0B9A]",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x91008 (from 0x89E04): FFFF0B9A = T_02D2A8(rpm FFFF2994, load FFFF03A0) * T_02D2BC(IAM FFFF3669)/128; 0xB5B38 target AFR = (...)*14.5/43194 - 14.5*0B9A/(32768 + 0B9A), i.e. 0B9A is an enrichment (phi-1)*32768: lambda = 32768/(32768 + x). ",
+  "description": "",
+  "data": {
+   "units": "lambda",
+   "expr": "32768/(32768+x)",
+   "to_byte": "32768/x-32768",
+   "format": "0.000"
+  }
+ },
+ "0x2D2BC": {
+  "status": "identified",
+  "name": "Open Loop Enrichment Multiplier (IAM) [-> 0B9A]",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x91008 (from 0x89E04): FFFF0B9A = T_02D2A8(rpm FFFF2994, load FFFF03A0) * T_02D2BC(IAM FFFF3669)/128; 0xB5B38 target AFR = (...)*14.5/43194 - 14.5*0B9A/(32768 + 0B9A), i.e. 0B9A is an enrichment (phi-1)*32768: lambda = 32768/(32768 + x). x/128 factor indexed by IAM.",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x/128",
+   "to_byte": "x*128",
+   "format": "0.000"
+  }
+ },
  "0x2D2C8": {
   "status": "identified",
   "name": "Fuel Quantity Multiplier, Channel 1 (Fuel Quantity x RPM)",

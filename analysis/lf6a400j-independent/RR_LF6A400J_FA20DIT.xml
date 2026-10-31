@@ -966,18 +966,18 @@
         <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x16 [D02D2A8] (Engine Speed x Engine Load)" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="C646" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2D2A8. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="C50E" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Open Loop Enrichment for Target Lambda (RPM x Load) [-&gt; 0B9A]" category="Fueling - Open Loop &amp; Enrichment" storageaddress="C646" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2D2A8. Evidence: 0x91008 (from 0x89E04): FFFF0B9A = T_02D2A8(rpm FFFF2994, load FFFF03A0) * T_02D2BC(IAM FFFF3669)/128; 0xB5B38 target AFR = (...)*14.5/43194 - 14.5*0B9A/(32768 + 0B9A), i.e. 0B9A is an enrichment (phi-1)*32768: lambda = 32768/(32768 + x). " sizex="16" sizey="16">
+      <scaling units="lambda" expression="32768/(32768+x)" to_byte="32768/x-32768" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="C50E" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Load" storageaddress="C52E" elements="16" storagetype="uint8" endian="big" locked="true">
+      <table type="X Axis" name="Engine Load" storageaddress="C52E" elements="16" storagetype="uint8" endian="big">
         <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02D2BC] (IAM (Ignition Advance Multiplier))" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="C846" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D2BC. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="IAM (Ignition Advance Multiplier)" storageaddress="C53E" elements="8" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Open Loop Enrichment Multiplier (IAM) [-&gt; 0B9A]" category="Fueling - Open Loop &amp; Enrichment" storageaddress="C846" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D2BC. Evidence: 0x91008 (from 0x89E04): FFFF0B9A = T_02D2A8(rpm FFFF2994, load FFFF03A0) * T_02D2BC(IAM FFFF3669)/128; 0xB5B38 target AFR = (...)*14.5/43194 - 14.5*0B9A/(32768 + 0B9A), i.e. 0B9A is an enrichment (phi-1)*32768: lambda = 32768/(32768 + x). x/128 factor indexed by IAM." sizey="8">
+      <scaling units="multiplier" expression="x/128" to_byte="x*128" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="IAM (Ignition Advance Multiplier)" storageaddress="C53E" elements="8" storagetype="uint8" endian="big">
         <scaling units="multiplier" expression="x/16" to_byte="x*16" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
