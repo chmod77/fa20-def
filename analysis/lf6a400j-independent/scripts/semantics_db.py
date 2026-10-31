@@ -816,6 +816,12 @@ _ev885 = ('0x88588 (from 0x888C0): total enrichment = FFFF0507 + FFFF0407 + FFFF
 add(0x2CAD8, 'Fuel Enrichment, Torque Mode 0x0E [0x88588]', FE, _ev885 + 'Input FFFF03DA.', FQ)
 add(0x2CAE4, 'Fuel Enrichment Adder [0x88588]', FE, _ev885 + 'Signed; inputs FFFF03A0 load x FFFF2994 rpm (when enabled).', FQ)
 
+add(0x2D198, 'Injection Angle D (Coolant x RPM) [-> 0B88]', INJ, '0x90758 (from 0x888C0): FFFF0B88 = T(coolant FFFEEEDE, rpm FFFF2996) clamped '
+    '1080..1439 while running; 0x8DEA0 compares FFFF0B88 with 1080 next to the proven crank-angle values 0B8A/0B8E (1 deg CA).', CA)
+add(0x2CCF0, 'Open Loop Enrichment Adder (Load x Mode) [0x8BCAC]', FE,
+    '0x8BCAC (from 0x89E04): out = T + FFFF0B9A/128; 0B9A is (phi-1)*32768 (target-lambda path 0xB5B38), so 0B9A/128 and T are (phi-1)*256: '
+    'lambda = 256/(256+x).', LAM)
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

@@ -952,6 +952,19 @@
    "format": "0.00"
   }
  },
+ "0x2CCF0": {
+  "status": "identified",
+  "name": "Open Loop Enrichment Adder (Load x Mode) [0x8BCAC]",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x8BCAC (from 0x89E04): out = T + FFFF0B9A/128; 0B9A is (phi-1)*32768 (target-lambda path 0xB5B38), so 0B9A/128 and T are (phi-1)*256: lambda = 256/(256+x).",
+  "description": "",
+  "data": {
+   "units": "lambda",
+   "expr": "256/(256+x)",
+   "to_byte": "256/x-256",
+   "format": "0.000"
+  }
+ },
  "0x2CD1C": {
   "status": "identified",
   "name": "Transient Fuel (0B38) Multiplier",
@@ -1699,6 +1712,19 @@
    "expr": "x*100/128",
    "to_byte": "x*128/100",
    "format": "0.0"
+  }
+ },
+ "0x2D198": {
+  "status": "identified",
+  "name": "Injection Angle D (Coolant x RPM) [-> 0B88]",
+  "category": "Fuel Injection",
+  "evidence": "0x90758 (from 0x888C0): FFFF0B88 = T(coolant FFFEEEDE, rpm FFFF2996) clamped 1080..1439 while running; 0x8DEA0 compares FFFF0B88 with 1080 next to the proven crank-angle values 0B8A/0B8E (1 deg CA).",
+  "description": "",
+  "data": {
+   "units": "deg CA",
+   "expr": "x",
+   "to_byte": "x",
+   "format": "0"
   }
  },
  "0x2D1AC": {

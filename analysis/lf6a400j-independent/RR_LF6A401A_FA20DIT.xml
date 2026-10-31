@@ -165,12 +165,12 @@
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 8x16 [D02D198] (Engine Speed (high byte) x Coolant Temperature (filtered, word))" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="89A6" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2D198. Lookup result stored to: FFFF0B58. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Engine Speed (high byte)" storageaddress="899E" elements="8" storagetype="uint8" endian="big" locked="true">
+    <table type="3D" name="Injection Angle D (Coolant x RPM) [-&gt; 0B88]" category="Fuel Injection" storageaddress="89A6" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2D198. Evidence: 0x90758 (from 0x888C0): FFFF0B88 = T(coolant FFFEEEDE, rpm FFFF2996) clamped 1080..1439 while running; 0x8DEA0 compares FFFF0B88 with 1080 next to the proven crank-angle values 0B8A/0B8E (1 deg CA). Lookup result stored to: FFFF0B58." sizex="16" sizey="8">
+      <scaling units="deg CA" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Engine Speed (high byte)" storageaddress="899E" elements="8" storagetype="uint8" endian="big">
         <scaling units="rpm" expression="x*50" to_byte="x/50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -957,12 +957,12 @@
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x16 [D02CCF0] (Engine Speed x Engine Load)" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="C546" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2CCF0. Lookup result stored to: FFFF03EB. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="C4DE" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Open Loop Enrichment Adder (Load x Mode) [0x8BCAC]" category="Fueling - Open Loop &amp; Enrichment" storageaddress="C546" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2CCF0. Evidence: 0x8BCAC (from 0x89E04): out = T + FFFF0B9A/128; 0B9A is (phi-1)*32768 (target-lambda path 0xB5B38), so 0B9A/128 and T are (phi-1)*256: lambda = 256/(256+x). Lookup result stored to: FFFF03EB." sizex="16" sizey="16">
+      <scaling units="lambda" expression="256/(256+x)" to_byte="256/x-256" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="C4DE" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Load" storageaddress="C4FE" elements="16" storagetype="uint8" endian="big" locked="true">
+      <table type="X Axis" name="Engine Load" storageaddress="C4FE" elements="16" storagetype="uint8" endian="big">
         <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
