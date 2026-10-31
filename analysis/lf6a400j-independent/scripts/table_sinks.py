@@ -9,6 +9,12 @@ LAB = {}
 for l in open(f'{ROOT}/evidence/ghidra-labels.tsv'):
     a, n = l.split(); LAB[n] = int(a, 16)
 out = collections.defaultdict(set)
+SA = collections.defaultdict(set)   # (callee, param) -> constant RAM pointers from instruction-level call-site analysis
+if os.path.exists(f'{ROOT}/evidence/stack-args.tsv'):
+    for l in list(open(f'{ROOT}/evidence/stack-args.tsv'))[1:]:
+        ce, cr, ia, k, v = l.split()
+        if int(v, 16) >= 0xFFFE0000:
+            SA[(ce.zfill(8), int(k))].add(v)
 ASG = re.compile(r'(\w+)\s*=\s*(?:\(\w+\)\s*)?LK_[0-9A-F]+\(\(uint\)&T_([0-9A-F]{6})')
 
 
@@ -40,6 +46,7 @@ for p in glob.glob(f'{ROOT}/cdump/*.c'):
                         r = var_of(am.group(1))
                         if r:
                             res.add(r)
+                res |= SA.get((fn, n + 1), set())
                 out[d] |= res or {f'{fn}:*param_{n+1}'}
             else:
                 r = var_of(tgt.lstrip('_') if tgt.startswith('_v_') else tgt)

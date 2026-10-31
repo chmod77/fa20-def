@@ -940,6 +940,553 @@
    "format": "0.0"
   }
  },
+ "0x2D65C": {
+  "status": "identified",
+  "name": "Timing Term 047B Factor C, Gear 1, FFFEEF76.7 clear (vs Oscillation Count FFFF0481)",
+  "category": "Ignition Timing - Term 047B",
+  "evidence": "0x9A05C: FFFF047B (0.5 deg, added to FFFF046C in 0x98FAC) = 2*min(63.5, 127.5*(T734/255)*(D/255)*(C/255)*(047F/255)*(E/255)) deg; gear = FFFEF51A. Factor C, set A.",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  },
+  "axes": {
+   "0": {
+    "name": "Oscillation Count FFFF0481",
+    "units": "count",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x2D668": {
+  "status": "identified",
+  "name": "Timing Term 047B Factor C, Gear 1, below 3000 rpm (vs Oscillation Count FFFF0481)",
+  "category": "Ignition Timing - Term 047B",
+  "evidence": "0x9A05C: FFFF047B (0.5 deg, added to FFFF046C in 0x98FAC) = 2*min(63.5, 127.5*(T734/255)*(D/255)*(C/255)*(047F/255)*(E/255)) deg; gear = FFFEF51A. Factor C, set B (FFFEEF76.7 set, FFFF2ADA < 0x3C00).",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  },
+  "axes": {
+   "0": {
+    "name": "Oscillation Count FFFF0481",
+    "units": "count",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x2D674": {
+  "status": "identified",
+  "name": "Timing Term 047B Factor C, Gear 1, 3000 rpm and above (vs Oscillation Count FFFF0481)",
+  "category": "Ignition Timing - Term 047B",
+  "evidence": "0x9A05C: FFFF047B (0.5 deg, added to FFFF046C in 0x98FAC) = 2*min(63.5, 127.5*(T734/255)*(D/255)*(C/255)*(047F/255)*(E/255)) deg; gear = FFFEF51A. Factor C, set C (FFFEEF76.7 set, FFFF2ADA >= 0x3C00).",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  },
+  "axes": {
+   "0": {
+    "name": "Oscillation Count FFFF0481",
+    "units": "count",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x2D680": {
+  "status": "identified",
+  "name": "Timing Term 047B Factor C, Gear 2, FFFEEF76.7 clear (vs Oscillation Count FFFF0481)",
+  "category": "Ignition Timing - Term 047B",
+  "evidence": "0x9A05C: FFFF047B (0.5 deg, added to FFFF046C in 0x98FAC) = 2*min(63.5, 127.5*(T734/255)*(D/255)*(C/255)*(047F/255)*(E/255)) deg; gear = FFFEF51A. Factor C, set A.",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  },
+  "axes": {
+   "0": {
+    "name": "Oscillation Count FFFF0481",
+    "units": "count",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x2D68C": {
+  "status": "identified",
+  "name": "Timing Term 047B Factor C, Gear 2, below 3000 rpm (vs Oscillation Count FFFF0481)",
+  "category": "Ignition Timing - Term 047B",
+  "evidence": "0x9A05C: FFFF047B (0.5 deg, added to FFFF046C in 0x98FAC) = 2*min(63.5, 127.5*(T734/255)*(D/255)*(C/255)*(047F/255)*(E/255)) deg; gear = FFFEF51A. Factor C, set B (FFFEEF76.7 set, FFFF2ADA < 0x3C00).",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  },
+  "axes": {
+   "0": {
+    "name": "Oscillation Count FFFF0481",
+    "units": "count",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x2D698": {
+  "status": "identified",
+  "name": "Timing Term 047B Factor C, Gear 2, 3000 rpm and above (vs Oscillation Count FFFF0481)",
+  "category": "Ignition Timing - Term 047B",
+  "evidence": "0x9A05C: FFFF047B (0.5 deg, added to FFFF046C in 0x98FAC) = 2*min(63.5, 127.5*(T734/255)*(D/255)*(C/255)*(047F/255)*(E/255)) deg; gear = FFFEF51A. Factor C, set C (FFFEEF76.7 set, FFFF2ADA >= 0x3C00).",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  },
+  "axes": {
+   "0": {
+    "name": "Oscillation Count FFFF0481",
+    "units": "count",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x2D6A4": {
+  "status": "identified",
+  "name": "Timing Term 047B Factor C, Gear 3, FFFEEF76.7 clear (vs Oscillation Count FFFF0481)",
+  "category": "Ignition Timing - Term 047B",
+  "evidence": "0x9A05C: FFFF047B (0.5 deg, added to FFFF046C in 0x98FAC) = 2*min(63.5, 127.5*(T734/255)*(D/255)*(C/255)*(047F/255)*(E/255)) deg; gear = FFFEF51A. Factor C, set A.",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  },
+  "axes": {
+   "0": {
+    "name": "Oscillation Count FFFF0481",
+    "units": "count",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x2D6B0": {
+  "status": "identified",
+  "name": "Timing Term 047B Factor C, Gear 3, below 3000 rpm (vs Oscillation Count FFFF0481)",
+  "category": "Ignition Timing - Term 047B",
+  "evidence": "0x9A05C: FFFF047B (0.5 deg, added to FFFF046C in 0x98FAC) = 2*min(63.5, 127.5*(T734/255)*(D/255)*(C/255)*(047F/255)*(E/255)) deg; gear = FFFEF51A. Factor C, set B (FFFEEF76.7 set, FFFF2ADA < 0x3C00).",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  },
+  "axes": {
+   "0": {
+    "name": "Oscillation Count FFFF0481",
+    "units": "count",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x2D6BC": {
+  "status": "identified",
+  "name": "Timing Term 047B Factor C, Gear 3, 3000 rpm and above (vs Oscillation Count FFFF0481)",
+  "category": "Ignition Timing - Term 047B",
+  "evidence": "0x9A05C: FFFF047B (0.5 deg, added to FFFF046C in 0x98FAC) = 2*min(63.5, 127.5*(T734/255)*(D/255)*(C/255)*(047F/255)*(E/255)) deg; gear = FFFEF51A. Factor C, set C (FFFEEF76.7 set, FFFF2ADA >= 0x3C00).",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  },
+  "axes": {
+   "0": {
+    "name": "Oscillation Count FFFF0481",
+    "units": "count",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x2D6C8": {
+  "status": "identified",
+  "name": "Timing Term 047B Factor C, Gear 4, FFFEEF76.7 clear (vs Oscillation Count FFFF0481)",
+  "category": "Ignition Timing - Term 047B",
+  "evidence": "0x9A05C: FFFF047B (0.5 deg, added to FFFF046C in 0x98FAC) = 2*min(63.5, 127.5*(T734/255)*(D/255)*(C/255)*(047F/255)*(E/255)) deg; gear = FFFEF51A. Factor C, set A.",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  },
+  "axes": {
+   "0": {
+    "name": "Oscillation Count FFFF0481",
+    "units": "count",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x2D6D4": {
+  "status": "identified",
+  "name": "Timing Term 047B Factor C, Gear 4, below 3000 rpm (vs Oscillation Count FFFF0481)",
+  "category": "Ignition Timing - Term 047B",
+  "evidence": "0x9A05C: FFFF047B (0.5 deg, added to FFFF046C in 0x98FAC) = 2*min(63.5, 127.5*(T734/255)*(D/255)*(C/255)*(047F/255)*(E/255)) deg; gear = FFFEF51A. Factor C, set B (FFFEEF76.7 set, FFFF2ADA < 0x3C00).",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  },
+  "axes": {
+   "0": {
+    "name": "Oscillation Count FFFF0481",
+    "units": "count",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x2D6E0": {
+  "status": "identified",
+  "name": "Timing Term 047B Factor C, Gear 4, 3000 rpm and above (vs Oscillation Count FFFF0481)",
+  "category": "Ignition Timing - Term 047B",
+  "evidence": "0x9A05C: FFFF047B (0.5 deg, added to FFFF046C in 0x98FAC) = 2*min(63.5, 127.5*(T734/255)*(D/255)*(C/255)*(047F/255)*(E/255)) deg; gear = FFFEF51A. Factor C, set C (FFFEEF76.7 set, FFFF2ADA >= 0x3C00).",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  },
+  "axes": {
+   "0": {
+    "name": "Oscillation Count FFFF0481",
+    "units": "count",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x2D6EC": {
+  "status": "identified",
+  "name": "Timing Term 047B Factor C, Gear 5, FFFEEF76.7 clear (vs Oscillation Count FFFF0481)",
+  "category": "Ignition Timing - Term 047B",
+  "evidence": "0x9A05C: FFFF047B (0.5 deg, added to FFFF046C in 0x98FAC) = 2*min(63.5, 127.5*(T734/255)*(D/255)*(C/255)*(047F/255)*(E/255)) deg; gear = FFFEF51A. Factor C, set A.",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  },
+  "axes": {
+   "0": {
+    "name": "Oscillation Count FFFF0481",
+    "units": "count",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x2D6F8": {
+  "status": "identified",
+  "name": "Timing Term 047B Factor C, Gear 5, below 3000 rpm (vs Oscillation Count FFFF0481)",
+  "category": "Ignition Timing - Term 047B",
+  "evidence": "0x9A05C: FFFF047B (0.5 deg, added to FFFF046C in 0x98FAC) = 2*min(63.5, 127.5*(T734/255)*(D/255)*(C/255)*(047F/255)*(E/255)) deg; gear = FFFEF51A. Factor C, set B (FFFEEF76.7 set, FFFF2ADA < 0x3C00).",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  },
+  "axes": {
+   "0": {
+    "name": "Oscillation Count FFFF0481",
+    "units": "count",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x2D704": {
+  "status": "identified",
+  "name": "Timing Term 047B Factor C, Gear 5, 3000 rpm and above (vs Oscillation Count FFFF0481)",
+  "category": "Ignition Timing - Term 047B",
+  "evidence": "0x9A05C: FFFF047B (0.5 deg, added to FFFF046C in 0x98FAC) = 2*min(63.5, 127.5*(T734/255)*(D/255)*(C/255)*(047F/255)*(E/255)) deg; gear = FFFEF51A. Factor C, set C (FFFEEF76.7 set, FFFF2ADA >= 0x3C00).",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  },
+  "axes": {
+   "0": {
+    "name": "Oscillation Count FFFF0481",
+    "units": "count",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x2D710": {
+  "status": "identified",
+  "name": "Timing Term 047B Factor C, Gear 6, FFFEEF76.7 clear (vs Oscillation Count FFFF0481)",
+  "category": "Ignition Timing - Term 047B",
+  "evidence": "0x9A05C: FFFF047B (0.5 deg, added to FFFF046C in 0x98FAC) = 2*min(63.5, 127.5*(T734/255)*(D/255)*(C/255)*(047F/255)*(E/255)) deg; gear = FFFEF51A. Factor C, set A.",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  },
+  "axes": {
+   "0": {
+    "name": "Oscillation Count FFFF0481",
+    "units": "count",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x2D71C": {
+  "status": "identified",
+  "name": "Timing Term 047B Factor C, Gear 6, below 3000 rpm (vs Oscillation Count FFFF0481)",
+  "category": "Ignition Timing - Term 047B",
+  "evidence": "0x9A05C: FFFF047B (0.5 deg, added to FFFF046C in 0x98FAC) = 2*min(63.5, 127.5*(T734/255)*(D/255)*(C/255)*(047F/255)*(E/255)) deg; gear = FFFEF51A. Factor C, set B (FFFEEF76.7 set, FFFF2ADA < 0x3C00).",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  },
+  "axes": {
+   "0": {
+    "name": "Oscillation Count FFFF0481",
+    "units": "count",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x2D728": {
+  "status": "identified",
+  "name": "Timing Term 047B Factor C, Gear 6, 3000 rpm and above (vs Oscillation Count FFFF0481)",
+  "category": "Ignition Timing - Term 047B",
+  "evidence": "0x9A05C: FFFF047B (0.5 deg, added to FFFF046C in 0x98FAC) = 2*min(63.5, 127.5*(T734/255)*(D/255)*(C/255)*(047F/255)*(E/255)) deg; gear = FFFEF51A. Factor C, set C (FFFEEF76.7 set, FFFF2ADA >= 0x3C00).",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  },
+  "axes": {
+   "0": {
+    "name": "Oscillation Count FFFF0481",
+    "units": "count",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x2D734": {
+  "status": "identified",
+  "name": "Timing Term 047B Factor (vs FFFF0541)",
+  "category": "Ignition Timing - Term 047B",
+  "evidence": "0x9A05C: FFFF047B (0.5 deg, added to FFFF046C in 0x98FAC) = 2*min(63.5, 127.5*(T734/255)*(D/255)*(C/255)*(047F/255)*(E/255)) deg; gear = FFFEF51A. Factor T734.",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  }
+ },
+ "0x2D740": {
+  "status": "identified",
+  "name": "Timing Term 047B Factor D, Gear 1, FFFEEF76.7 clear (vs FFFF0BFE)",
+  "category": "Ignition Timing - Term 047B",
+  "evidence": "0x9A05C: FFFF047B (0.5 deg, added to FFFF046C in 0x98FAC) = 2*min(63.5, 127.5*(T734/255)*(D/255)*(C/255)*(047F/255)*(E/255)) deg; gear = FFFEF51A. Factor D (signed), FFFEEF76.7 clear.",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  }
+ },
+ "0x2D74C": {
+  "status": "identified",
+  "name": "Timing Term 047B Factor D, Gear 1, FFFEEF76.7 set (vs FFFF0BFE)",
+  "category": "Ignition Timing - Term 047B",
+  "evidence": "0x9A05C: FFFF047B (0.5 deg, added to FFFF046C in 0x98FAC) = 2*min(63.5, 127.5*(T734/255)*(D/255)*(C/255)*(047F/255)*(E/255)) deg; gear = FFFEF51A. Factor D (signed), FFFEEF76.7 set.",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  }
+ },
+ "0x2D758": {
+  "status": "identified",
+  "name": "Timing Term 047B Factor D, Gear 2, FFFEEF76.7 clear (vs FFFF0BFE)",
+  "category": "Ignition Timing - Term 047B",
+  "evidence": "0x9A05C: FFFF047B (0.5 deg, added to FFFF046C in 0x98FAC) = 2*min(63.5, 127.5*(T734/255)*(D/255)*(C/255)*(047F/255)*(E/255)) deg; gear = FFFEF51A. Factor D (signed), FFFEEF76.7 clear.",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  }
+ },
+ "0x2D764": {
+  "status": "identified",
+  "name": "Timing Term 047B Factor D, Gear 2, FFFEEF76.7 set (vs FFFF0BFE)",
+  "category": "Ignition Timing - Term 047B",
+  "evidence": "0x9A05C: FFFF047B (0.5 deg, added to FFFF046C in 0x98FAC) = 2*min(63.5, 127.5*(T734/255)*(D/255)*(C/255)*(047F/255)*(E/255)) deg; gear = FFFEF51A. Factor D (signed), FFFEEF76.7 set.",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  }
+ },
+ "0x2D770": {
+  "status": "identified",
+  "name": "Timing Term 047B Factor D, Gear 3, FFFEEF76.7 clear (vs FFFF0BFE)",
+  "category": "Ignition Timing - Term 047B",
+  "evidence": "0x9A05C: FFFF047B (0.5 deg, added to FFFF046C in 0x98FAC) = 2*min(63.5, 127.5*(T734/255)*(D/255)*(C/255)*(047F/255)*(E/255)) deg; gear = FFFEF51A. Factor D (signed), FFFEEF76.7 clear.",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  }
+ },
+ "0x2D77C": {
+  "status": "identified",
+  "name": "Timing Term 047B Factor D, Gear 3, FFFEEF76.7 set (vs FFFF0BFE)",
+  "category": "Ignition Timing - Term 047B",
+  "evidence": "0x9A05C: FFFF047B (0.5 deg, added to FFFF046C in 0x98FAC) = 2*min(63.5, 127.5*(T734/255)*(D/255)*(C/255)*(047F/255)*(E/255)) deg; gear = FFFEF51A. Factor D (signed), FFFEEF76.7 set.",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  }
+ },
+ "0x2D788": {
+  "status": "identified",
+  "name": "Timing Term 047B Factor D, Gear 4, FFFEEF76.7 clear (vs FFFF0BFE)",
+  "category": "Ignition Timing - Term 047B",
+  "evidence": "0x9A05C: FFFF047B (0.5 deg, added to FFFF046C in 0x98FAC) = 2*min(63.5, 127.5*(T734/255)*(D/255)*(C/255)*(047F/255)*(E/255)) deg; gear = FFFEF51A. Factor D (signed), FFFEEF76.7 clear.",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  }
+ },
+ "0x2D794": {
+  "status": "identified",
+  "name": "Timing Term 047B Factor D, Gear 4, FFFEEF76.7 set (vs FFFF0BFE)",
+  "category": "Ignition Timing - Term 047B",
+  "evidence": "0x9A05C: FFFF047B (0.5 deg, added to FFFF046C in 0x98FAC) = 2*min(63.5, 127.5*(T734/255)*(D/255)*(C/255)*(047F/255)*(E/255)) deg; gear = FFFEF51A. Factor D (signed), FFFEEF76.7 set.",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  }
+ },
+ "0x2D7A0": {
+  "status": "identified",
+  "name": "Timing Term 047B Factor D, Gear 5, FFFEEF76.7 clear (vs FFFF0BFE)",
+  "category": "Ignition Timing - Term 047B",
+  "evidence": "0x9A05C: FFFF047B (0.5 deg, added to FFFF046C in 0x98FAC) = 2*min(63.5, 127.5*(T734/255)*(D/255)*(C/255)*(047F/255)*(E/255)) deg; gear = FFFEF51A. Factor D (signed), FFFEEF76.7 clear.",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  }
+ },
+ "0x2D7AC": {
+  "status": "identified",
+  "name": "Timing Term 047B Factor D, Gear 5, FFFEEF76.7 set (vs FFFF0BFE)",
+  "category": "Ignition Timing - Term 047B",
+  "evidence": "0x9A05C: FFFF047B (0.5 deg, added to FFFF046C in 0x98FAC) = 2*min(63.5, 127.5*(T734/255)*(D/255)*(C/255)*(047F/255)*(E/255)) deg; gear = FFFEF51A. Factor D (signed), FFFEEF76.7 set.",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  }
+ },
+ "0x2D7B8": {
+  "status": "identified",
+  "name": "Timing Term 047B Factor D, Gear 6, FFFEEF76.7 clear (vs FFFF0BFE)",
+  "category": "Ignition Timing - Term 047B",
+  "evidence": "0x9A05C: FFFF047B (0.5 deg, added to FFFF046C in 0x98FAC) = 2*min(63.5, 127.5*(T734/255)*(D/255)*(C/255)*(047F/255)*(E/255)) deg; gear = FFFEF51A. Factor D (signed), FFFEEF76.7 clear.",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  }
+ },
+ "0x2D7C4": {
+  "status": "identified",
+  "name": "Timing Term 047B Factor D, Gear 6, FFFEEF76.7 set (vs FFFF0BFE)",
+  "category": "Ignition Timing - Term 047B",
+  "evidence": "0x9A05C: FFFF047B (0.5 deg, added to FFFF046C in 0x98FAC) = 2*min(63.5, 127.5*(T734/255)*(D/255)*(C/255)*(047F/255)*(E/255)) deg; gear = FFFEF51A. Factor D (signed), FFFEEF76.7 set.",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  }
+ },
  "0x2D890": {
   "status": "identified",
   "name": "Ignition Timing Reduction (vs ratio FFFF0AA8)",

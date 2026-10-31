@@ -384,6 +384,30 @@ add(0x2D494, 'Ignition Retard FFFF0454 Hold Count (RPM)', 'Ignition Timing - Fin
     ('executions', 'x', 'x', '0'), axes={'0': dict(name='Engine Speed', units='rpm', expr='x*25/128', to_byte='x*128/25')})
 
 
+# ---------------------------------------------------------------- ignition timing term FFFF047B (0x9A05C, from 0x9BDF4)
+# 0x98FAC adds FFFF047B (0.5 deg units) to total timing FFFF046C.  0x9A05C: FFFF047B = 2*min(63.5,
+#   T_02D734(FFFF0541)*D*C*FFFF047F*E * 1.1825217e-10)  where 1.1825217e-10 = 1/(2*255^4), i.e.
+#   deg = 127.5 * (T734/255)*(D/255)*(C/255)*(047F/255)*(E/255); zero unless FFFF04B4.2 and FFFF0BF8 <= limit(index).
+#   C (-> FFFF047C) = gear-set table vs FFFF0481; D (-> FFFF047D) = gear-set table vs FFFF0BFE; E (-> FFFF047E) = 0xFE/0xCC constant.
+#   Gear = FFFEF51A (0x50854: = Gear FFFF03AC when FFFEEF76.7 set, else TCU range FFFF0560 mapped to 1..6).
+#   FFFF0481 (0x9A7E4) counts alternating crossings of a speed difference (FFFEF19E.. minus FFFEF1A4.., gear thresholds -0x66..-0x9A / 0),
+#   i.e. an oscillation half-cycle counter.  C set: A = FFFEEF76.7 clear; B = set and FFFF2ADA < 3000 rpm; C = set and >= 3000 rpm.
+IGT = 'Ignition Timing - Term 047B'
+F255 = ('factor', 'x/255', 'x*255', '0.000')
+OSCAX = {'0': dict(name='Oscillation Count FFFF0481', units='count', expr='x', to_byte='x')}
+ev7b = ('0x9A05C: FFFF047B (0.5 deg, added to FFFF046C in 0x98FAC) = 2*min(63.5, 127.5*(T734/255)*(D/255)*(C/255)*(047F/255)*(E/255)) deg; '
+        'gear = FFFEF51A. ')
+for g, (a, b, c, d0, d1) in enumerate(((0x2D65C, 0x2D668, 0x2D674, 0x2D740, 0x2D74C), (0x2D680, 0x2D68C, 0x2D698, 0x2D758, 0x2D764),
+                                       (0x2D6A4, 0x2D6B0, 0x2D6BC, 0x2D770, 0x2D77C), (0x2D6C8, 0x2D6D4, 0x2D6E0, 0x2D788, 0x2D794),
+                                       (0x2D6EC, 0x2D6F8, 0x2D704, 0x2D7A0, 0x2D7AC), (0x2D710, 0x2D71C, 0x2D728, 0x2D7B8, 0x2D7C4)), 1):
+    add(a, f'Timing Term 047B Factor C, Gear {g}, FFFEEF76.7 clear (vs Oscillation Count FFFF0481)', IGT, ev7b + 'Factor C, set A.', F255, axes=OSCAX)
+    add(b, f'Timing Term 047B Factor C, Gear {g}, below 3000 rpm (vs Oscillation Count FFFF0481)', IGT, ev7b + 'Factor C, set B (FFFEEF76.7 set, FFFF2ADA < 0x3C00).', F255, axes=OSCAX)
+    add(c, f'Timing Term 047B Factor C, Gear {g}, 3000 rpm and above (vs Oscillation Count FFFF0481)', IGT, ev7b + 'Factor C, set C (FFFEEF76.7 set, FFFF2ADA >= 0x3C00).', F255, axes=OSCAX)
+    add(d0, f'Timing Term 047B Factor D, Gear {g}, FFFEEF76.7 clear (vs FFFF0BFE)', IGT, ev7b + 'Factor D (signed), FFFEEF76.7 clear.', F255)
+    add(d1, f'Timing Term 047B Factor D, Gear {g}, FFFEEF76.7 set (vs FFFF0BFE)', IGT, ev7b + 'Factor D (signed), FFFEEF76.7 set.', F255)
+add(0x2D734, 'Timing Term 047B Factor (vs FFFF0541)', IGT, ev7b + 'Factor T734.', F255)
+
+
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
     print(len(S), 'entries')
