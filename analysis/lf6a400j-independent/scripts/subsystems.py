@@ -22,6 +22,12 @@ LABELS = {
  '0006a1f8': ('Electronic Throttle Control', 'writes Throttle Motor Duty FFFF0128 (SSM 0xFA) and throttle sensors'),
  '00153928': ('Crank/Cam Signal Processing', 'writes cam angles FFFEF2B8/F2BA, FFFF0DFC and rpm copy FFFF2ADA'),
  '0007f324': ('Gear Calculation', 'writes Gear FFFF03AC'),
+ '000888c0': ('Fueling - Open Loop & Enrichment', 'writes Open Loop Fuel Enrichment FFFF0400/FFFF0401 (OBD PID44 term)'),
+ '00089e04': ('Fueling - Open Loop & Enrichment', 'writes decaying enrichment FFFF0B84 (OBD PID44 term) via 0x90390'),
+ '0008a274': ('Fueling - Open Loop & Enrichment', 'writes coolant enrichment FFFF0B42 (OBD PID44 term) via 0x8CBE4'),
+ '000dce34': ('Misfire Detection', 'maintains SSM roughness monitor counters FFFF102E..FFFF1034 (SSM 0xCE/0xCF/0xD8/0xD9) via struct base FFFF1020'),
+ '000e2938': ('Alternator Control', 'writes Alternator Duty FFFF10D6 (SSM 0x3A) via 0xE331C'),
+ '000d7bc0': ('Fuel Pump Control', 'writes Fuel Pump Duty FFFF0FDC (SSM 0x3B) via 0xD7B60'),
 }
 
 
