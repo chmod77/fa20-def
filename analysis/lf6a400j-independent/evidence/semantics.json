@@ -1,0 +1,28 @@
+{
+ "0x2ED10": {
+  "status": "identified",
+  "name": "Volumetric Efficiency (Primary)",
+  "category": "Airflow - Speed Density",
+  "evidence": "0xD0214 T_02ED10(FFFF2994 rpm, FFFF09B8 MAP) -> FFFF0F5A; 0xD025C ratio=x*3.0517578e-05 (1/32768) -> FFFF16A4 (VE) used in 0xCFEDC air mass = VE*rpm*P/(287*(T+273)) and 0x7E3F8 Engine Load. Selected path: 0xCF4B4 passes param_2=0 so 0xD025C always takes param_3 (this table).",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/32768",
+   "to_byte": "x*32768/100",
+   "format": "0.00"
+  }
+ },
+ "0x2ED24": {
+  "status": "identified",
+  "name": "Volumetric Efficiency (Alternate)",
+  "category": "Airflow - Speed Density",
+  "evidence": "0xD0238 T_02ED24(rpm, FFFF09B8 MAP) -> FFFF0F5C; 0xD025C would select it only when param_2!=0 and flag FFFF0519.7==0, but caller 0xCF4B4 passes param_2=0 (constant), so it is not used for FFFF16A4 in this ROM.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/32768",
+   "to_byte": "x*32768/100",
+   "format": "0.00"
+  }
+ }
+}

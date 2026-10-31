@@ -45,3 +45,62 @@ V={
  0xFFFF046D:('Ignition Timing (OBD)','deg BTDC','x/2','x*2','OBD PID 0E via 0x10BB58 (signed int8)'),
  0xFFFF043B:('CPC Valve Duty Ratio','%','x*100/255','x*255/100','SSM 0x32 via 0xD0754'),
 }
+
+# ---- V2: anchors added 2026-10-31 (session 2). Exact converter constants read from GBR-aware decompilation
+# (cdump/), composed with the public SSM standard-parameter conversion for the SSM address that the ECU's own
+# address table (0x15F9D8) maps to the converter's shadow byte (evidence/ssm-join.tsv, ssm-derived-anchors.tsv).
+V2={
+ 0xFFFEEEDE:('Coolant Temperature (filtered, word)','C','x*5/2048-40','(x+40)*2048/5','0x4D2D6: x=(FFFEEF86*8-0x5000)/5; 0x3C578: SSM-coolant FFFF29A5=FFFEEF86>>8 (SSM 0x08 x-50) => C=x*5/2048-40 (same form as OBD PID05 F322)'),
+ 0xFFFEEF86:('Coolant Temperature (filtered, 1/256 C)','C','x/256-50','(x+50)*256','0x3C578: FFFF29A5 (SSM 0x08, C=x-50) = x>>8'),
+ 0xFFFEEEB6:('A/F Sensor #1 Resistance','ohm','x/128','x*128','SSM 0x44 conv 0xD065C y=x*2^25>>32'),
+ 0xFFFF008E:('Throttle Motor Voltage','V','x/10','x*10','SSM 0xFB conv 0xD06CC y=x*5/4, V=y*8/100'),
+ 0xFFFF3691:('A/F Learning #1','%','(x-128)*100/256','x*256/100+128','SSM 0x0A conv 0xD0A3C y=x/2+64, %=(y-128)*100/128'),
+ 0xFFFEEF2A:('Front O2 Heater Current #1','A','x*179*1004/6553600','x*6553600/(179*1004)','SSM 0x2B conv 0xD0B0C y=x*179>>8, A=y*1004/25600'),
+ 0xFFFEE6D0:('Rear O2 Heater Current','A','x*179*1004/6553600','x*6553600/(179*1004)','SSM 0x2C conv 0xD0E58 (probe-identical to 0xD0B0C)'),
+ 0xFFFEE6DE:('Rear O2 Sensor','V','x/400','x*400','SSM 0x18 conv 0xD0C68 y=x>>1, V=y/200'),
+ 0xFFFEED6C:('Tumble Valve Position Sensor Left','V','x/200','x*200','SSM 0x34 conv 0xD0F80 y=x>>2, V=y/50'),
+ 0xFFFEED6E:('Tumble Valve Position Sensor Right','V','x/200','x*200','SSM 0x33 conv 0xD0FB0 y=x>>2, V=y/50'),
+ 0xFFFFAB41:('Battery Voltage','V','x*8/100','x*100/8','SSM 0x1C conv 0xD10B8 y=x, V=y*8/100'),
+ 0xFFFF0EDE:('Fuel Level Sensor Resistance','ohm','x/4','x*4','SSM 0x10D conv 0xD05A8 y=x>>3, ohm=y*4/2'),
+ 0xFFFEF2B8:('Exhaust AVCS Advance Angle Right','deg','x*45/16384','x*16384/45','SSM 0x118 conv 0xD08F8 (=0xD08CC form) y=(x*45>>14)+50, deg=y-50; signed'),
+ 0xFFFEF2BA:('Exhaust AVCS Advance Angle Left','deg','x*45/16384','x*16384/45','SSM 0x119 conv 0xD08CC y=(x*45>>14)+50, deg=y-50; signed'),
+ 0xFFFEF280:('Exhaust OCV Current Right','mA','x*625/16384','x*16384/625','SSM 0x11C conv 0xD093C y=x*625>>19, mA=y*32'),
+ 0xFFFEF282:('Exhaust OCV Current Left','mA','x*625/16384','x*16384/625','SSM 0x11D conv 0xD0924 y=x*625>>19, mA=y*32'),
+ 0xFFFEF26C:('Intake OCV Current Right','mA','x*625/16384','x*16384/625','SSM 0x40 conv 0xD0CF0 y=x*625>>19, mA=y*32'),
+ 0xFFFEF26E:('Intake OCV Current Left','mA','x*625/16384','x*16384/625','SSM 0x41 conv 0xD0CD8 y=x*625>>19, mA=y*32'),
+ 0xFFFEF006:('A/F Sensor #1 Current','mA','x/1000','x*1000','SSM 0x42 conv 0xD0A5C y=x/125+128, mA=(y-128)/8; signed'),
+ 0xFFFF0DFC:('Intake AVCS Advance Angle Right','deg','x-104','x+104','SSM 0x3C conv 0xD0EA8 y=x-0x68+50, deg=y-50 (byte)'),
+ 0xFFFF0DFD:('Intake AVCS Advance Angle Left','deg','x-104','x+104','SSM 0x3D conv 0xD0E74 y=x-0x68+50, deg=y-50 (byte)'),
+ 0xFFFF0E06:('Intake OCV Duty Right','%','x*65*100/(64*255)','x*64*255/(65*100)','SSM 0x3E conv 0xD0CA4 y=x*65>>6, %=y*100/255 (byte)'),
+ 0xFFFF0E07:('Intake OCV Duty Left','%','x*65*100/(64*255)','x*64*255/(65*100)','SSM 0x3F conv 0xD0C70 y=x*65>>6, %=y*100/255 (byte)'),
+ 0xFFFF2B4E:('Fuel Injector #1 Pulse Width','ms','x*0.0032','x/0.0032','SSM 0x20 conv 0xD0FCC y=x*0x3333>>20 (=x/80), ms=y*256/1000'),
+ 0xFFFF04BB:('Fine Learning Knock Correction','deg','x*45/128','x*128/45','SSM 0x199 conv 0xD0D50 y=(x*45>>5)-128, deg=y*0.25-32; signed'),
+ 0xFFFF3669:('IAM (Ignition Advance Multiplier)','multiplier','x/16','x*16','SSM 0xF9 maps directly to RAM FFFF3669 (ECU table 0x15F9D8), public x/16'),
+ 0xFFFF0586:('SI-Drive Mode','index','x','x','SSM 0x16A maps directly to RAM FFFF0586 (ECU table 0x15F9D8)'),
+ 0xFFFF312E:('Idle Speed User Adjustment (A/C off)','rpm','x*25-3200','(x+3200)/25','SSM 0x70 direct RAM (ECU table)'),
+ 0xFFFF312F:('Idle Speed User Adjustment (A/C on)','rpm','x*25-3200','(x+3200)/25','SSM 0x71 direct RAM (ECU table)'),
+ 0xFFFF102E:('Roughness Monitor Cylinder #1','count','x','x','SSM 0xCE conv 0xD267C'),
+ 0xFFFF1030:('Roughness Monitor Cylinder #2','count','x','x','SSM 0xCF conv 0xD2690'),
+ 0xFFFF1032:('Roughness Monitor Cylinder #3','count','x','x','SSM 0xD8 conv 0xD26A4'),
+ 0xFFFF1034:('Roughness Monitor Cylinder #4','count','x','x','SSM 0xD9 conv 0xD26B8'),
+ 0xFFFEEEF4:('Mass Airflow (load-path copy)','g/s','x*75/16384','x*16384/75','OBD PID 43 conv 0x10B91C: x*0.0045776367 g/s / (rpm/60) /2 / 0.59142184 g *100 = absolute load %; 0x4E6D4 copies MAF EEE4'),
+}
+
+V2.update({
+ 0xFFFF2996:('Engine Speed (high byte)','rpm','x*50','x/50','0x3BF24: x = FFFF2994>>8; FFFF2994 rpm=x*25/128 => rpm = x*256*25/128'),
+ 0xFFFEF0DA:('Vehicle Speed (copy)','km/h','x*9/160','x*160/9','0x3CCF6: x = FFFEF324 (OBD PID0D km/h=x*9/160); failsafe 0xB2'),
+ 0xFFFEEEE0:('Coolant Temperature (OBD copy)','C','x*5/2048-40','(x+40)*2048/5','0x4D2FA/0x4E6D4: x = FFFEF322 (OBD PID05); failsafe 0xB000'),
+ 0xFFFEEED0:('Atmospheric Pressure (copy)','kPa','x/256','x*256','0x4D034: x=FFFEEEDC; 0x4D042: FFFEEEDC = FFFEE6AA (SSM 0x23 kPa)'),
+ 0xFFFEE6A5:('Intake Air Temperature (control)','C','x-50','x+50','0x3BAF2: same thermistor table 0x1638A4 applied to FFFEF480 (=copy of IAT A/D FFFEF482, failsafe 0xAA00, update held by soak counter); SSM IAT FFFF2B23 = same table of FFFEF482 (SSM 0x12 x-50)'),
+ 0xFFFEEEE2:('Intake Air Temperature (control, word)','C','x*5/2048-40','(x+40)*2048/5','0x4D2B0: x=(FFFEE6A5*2048-0x5000)/5; FFFEE6A5 C=x-50'),
+ 0xFFFEF643:('Intake Air Temperature (sensor)','C','x-50','x+50','0x3BAF2: FFFF2B23 (SSM 0x12) = x'),
+ 0xFFFEED6A:('Intake Air Temperature Sensor 2','C','x-50','x+50','OBD PID 68 byte C (sensor 2) conv 0x10C0B8 y=x-10, C=y-40; written 0x3BDC6 from table 0x1638B0'),
+ 0xFFFF29A7:('Coolant Temperature (sampled)','C','x-50','x+50','0x3C578: x = FFFF29A5 (SSM 0x08) when FFFF66B0==1 or FFFEEF80==0, else held'),
+})
+
+V2.update({
+ 0xFFFEE6F8:('Manifold Absolute Pressure (control)','kPa','x/256','x*256','0x153E70: x=FFFF1FA8; 0x14AE50: FFFF1FA8 and OBD-MAP source FFFF1FB8 (->FFFEF648, PID 0B kPa=x/256) are the same conversion 0x14AE38 of A/D channel 0x12 (FFFFF82C)'),
+ 0xFFFF09B8:('Manifold Absolute Pressure (filtered)','kPa','x/256','x*256','0x7E298->0x7E568(1,FFFEE6F8,..): filtered copy of FFFEE6F8'),
+ 0xFFFF09B4:('Engine Load','%','x/256','x*256','0x7E3F8: %=(airflow/2586*200000)/rpm, airflow FFFF169C=VE*rpm*P[Pa]/(287*(IAT+273)) (0xCFEDC; P from 0xCF8C8 in Pa: fallback FFFEE6F8*3.90625), VE FFFF16A4 = T_02ED10/T_02ED24/32768 (0xD025C) => %=VE*rho/1.293 g/L*100 (air density at 0 C, 101.325 kPa); stored *256'),
+ 0xFFFF03A0:('Engine Load','%','x','x','0x7E3E8: x = FFFF09B4>>8 (Engine Load %, x/256)'),
+})
