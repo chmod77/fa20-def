@@ -21,6 +21,8 @@ STRUCT = {'0016bc08': ('uint16', 'int16', False), '0016b14c': ('uint16', 'int16'
           '00052b4a': ('uint16', 'uint32', False), '0016bbc4': ('uint8', 'int16', False)}
 FIXED = {'0016bc68': ('uint16', 16, 0, 0x1000), '0016bb44': ('uint16', 16, 0, 16), '0016ba04': ('uint8', 16, 0, 16),
          '0016b0ac': ('uint32', 64, 0, 0x100), '0016acd6': ('int8', 16, 0, 16), '0016aeb4': ('uint16', 16, 0, 0x1000)}
+MAP = {'0016b650': ('uint8', 'uint8', 'int8'), '0016b73c': ('uint16', 'uint8', 'uint8'), '0016b828': ('uint16', 'uint16', 'int16')}
+# map helpers: param_1 -> {u32 data, u32 axis1, u32 axis2, u8 n1 @+0xC, u8 n2 @+0xD}; data index = i1*n2 + i2
 W = {'uint8': 1, 'int8': 1, 'uint16': 2, 'int16': 2, 'uint32': 4}
 F = {'uint8': 'B', 'int8': 'b', 'uint16': 'H', 'int16': 'h', 'uint32': 'I'}
 sys_path = H
@@ -29,7 +31,14 @@ sys.path.insert(0, H)
 from callargs import split_args
 out = {}
 def fill(rec, a, h):
-    if h in STRUCT:
+    if h in MAP:
+        a1t, a2t, dt = MAP[h]
+        dp, p1, p2 = struct.unpack_from('>III', rom, a); n1, n2 = rom[a + 12], rom[a + 13]
+        rec.update(kind='map', data_address=dp, axis_address=p1, axis2_address=p2, count=n1 * n2, n1=n1, n2=n2, axis_storage=a1t,
+                   axis2_storage=a2t, data_storage=dt, step=False,
+                   axis=list(struct.unpack_from('>' + str(n1) + F[a1t], rom, p1)), axis2=list(struct.unpack_from('>' + str(n2) + F[a2t], rom, p2)),
+                   data=list(struct.unpack_from('>' + str(n1 * n2) + F[dt], rom, dp)))
+    elif h in STRUCT:
         at, dt, step = STRUCT[h]
         dp, ap = struct.unpack_from('>II', rom, a); n = rom[a + 8]
         rec.update(kind='struct', data_address=dp, axis_address=ap, count=n, axis_storage=at, data_storage=dt, step=step,
@@ -46,7 +55,7 @@ for p in sorted(glob.glob(f'{ROOT}/cdump/*.c')):
     fn = os.path.basename(p)[:-2]; s = open(p).read()
     for m in re.finditer(r'FUN_([0-9a-f]{8})\(', s):
         h = m.group(1)
-        if h not in STRUCT and h not in FIXED:
+        if h not in STRUCT and h not in FIXED and h not in MAP:
             continue
         args = split_args(s, m.end())
         if len(args) < 2:
@@ -66,7 +75,7 @@ for l in list(open(f'{ROOT}/evidence/stack-args.tsv'))[1:]:
     if v.startswith('V'):
         continue
     h = ce.zfill(8); a = int(v, 16)
-    if k != '1' or (h not in STRUCT and h not in FIXED) or a >= len(rom) or a < 0x8000:
+    if k != '1' or (h not in STRUCT and h not in FIXED and h not in MAP) or a >= len(rom) or a < 0x8000:
         continue
     rec = out.setdefault(a, dict(table=a, helper=h, sites=[]))
     if not any(x['function'] == cr.zfill(8) for x in rec['sites']):

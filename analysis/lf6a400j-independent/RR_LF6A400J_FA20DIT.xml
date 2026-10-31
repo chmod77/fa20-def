@@ -9129,6 +9129,15 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
+    <table type="3D" name="Unidentified secondary 64 @0x02AB32 [H163A04]" category="Unidentified - Task 0x152A40" storageaddress="2AB32" storagetype="uint8" endian="big" userlevel="1" sizey="8" description="Secondary table read by helper 0x16B73C (structure/array at 0x163A04); call sites: 00048eba. Function/output scaling not yet proven from the binary; locked." sizex="8" locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1 (see call sites)" storageaddress="2AB1A" elements="8" storagetype="uint16" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+      <table type="X Axis" name="Unidentified input 2 (see call sites)" storageaddress="2AB2A" elements="8" storagetype="uint8" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      </table>
+    </table>
     <table type="2D" name="Unidentified secondary 8 @0x02AB83 [H1639EC]" category="Unidentified - Task 0x153248 / Task 0x153B80" storageaddress="2AB83" storagetype="uint8" endian="big" userlevel="1" sizey="8" description="Secondary table read by helper 0x16B9A4 (structure/array at 0x1639EC); call sites: 00041a38. Function/output scaling not yet proven from the binary; locked." locked="true">
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2AB7B" elements="8" storagetype="uint8" endian="big" locked="true">
@@ -9159,10 +9168,19 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified secondary 16 @0x02AF74 [H163A84]" category="Unidentified - Task 0x15307C / Task 0x153CE0 / Task 0x153D12 / Task 0x15B5D2 / Task 0x15B688 / Task 0x15B6F0 / Task 0x2C88 / Task 0x31C2 / Task 0x6E2" storageaddress="2AF74" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC08 (structure/array at 0x163A84); call sites: 0004e6d4. Function/output scaling not yet proven from the binary; locked." locked="true">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2AF54" elements="16" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    <table type="3D" name="MAF Load-Path Correction (MAF x IAT)" category="Airflow Model (MAF)" storageaddress="2AD14" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16B828 (structure/array at 0x163A38); call sites: 0004d3ae. Evidence: 0x4D3AE: FFFEEEF2 = map helper 0x16B828(0x163A38, FFFEEEF0, IAT FFFEEEE2) (data index i1*n2 + i2). 0x4D4BA: FFFEEEF0 = (FFFEEEEC + FFFEEEEE)/2 with EEEC/EEEE = max/min of Mass Airflow FFFEEEE4 (0x4C53C, 0x4D4DA/0x4D4FC; OBD PID10 g/s = x*75/16384). 0x4D46C: FFFEEEF4 (Mass Airflow load-path copy, OBD PID43 source, g/s) = EEF2*EEF0/256 + EEF6, so EEF2/256 is a multiplier on MAF." sizex="16">
+      <scaling units="multiplier" expression="x/256" to_byte="x*256" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Mass Airflow (averaged)" storageaddress="2AF14" elements="16" storagetype="uint16" endian="big">
+        <scaling units="g/s" expression="x*75/16384" to_byte="x*16384/75" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+      <table type="X Axis" name="Intake Air Temperature (control, word)" storageaddress="2AF34" elements="16" storagetype="uint16" endian="big">
+        <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="2D" name="Initial Mass Airflow vs Coolant (initialisation)" category="Airflow Model (MAF)" storageaddress="2AF74" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC08 (structure/array at 0x163A84); call sites: 0004e6d4. Evidence: 0x4E6D4 (initialisation path 0x152744/0x153C6C): Mass Airflow FFFEEEE4 (OBD PID10, g/s = x*75/16384) = helper 0x16BC08(0x163A84, Coolant FFFEEEDE) / 75 (signed division), also copied to EEEC/EEEE/EEF0/EEF4, so the table is g/s = x/16384 (truncated by the integer division).">
+      <scaling units="g/s" expression="x/16384" to_byte="x*16384" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="2AF54" elements="16" storagetype="uint16" endian="big">
+        <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
     <table type="2D" name="Unidentified secondary 16 @0x02AF96 [H168B98]" category="Unidentified - Task 0x153B4E" storageaddress="2AF96" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BAE4 (structure/array at 0x168B98); call sites: 0013bd70. Function/output scaling not yet proven from the binary; locked." locked="true">
@@ -9439,6 +9457,15 @@
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="1E674" elements="16" storagetype="uint16" endian="big" locked="true">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      </table>
+    </table>
+    <table type="3D" name="Unidentified secondary 256 @0x02BD32 [H1639C4]" category="Unidentified - Task 0x3E9A0" storageaddress="2BD32" storagetype="uint8" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16B650 (structure/array at 0x1639C4); call sites: 0003e9a0. Function/output scaling not yet proven from the binary; locked." sizex="16" locked="true">
+      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1 (see call sites)" storageaddress="1E45C" elements="16" storagetype="uint8" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      </table>
+      <table type="X Axis" name="Unidentified input 2 (see call sites)" storageaddress="2BE32" elements="16" storagetype="uint8" endian="big" locked="true">
+        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
     <table type="2D" name="Manifold Pressure Filter Coefficient (RPM)" category="Sensors" storageaddress="2BE5C" storagetype="uint16" endian="big" userlevel="1" sizey="8" description="Secondary table read by helper 0x16BC08 (structure/array at 0x163898); call sites: 0003b634. Evidence: 0x3B634: FFFEF59E = filter(FFFEF59E, MAP FFFEE6F8, T(rpm FFFF2ADA)). Filter helper 0x16B4D8: new = old + (in - old)*coef/65536 (assembly: mul.l, +rounding, swap.w), so coefficient fraction = x/65536 (65535 = no filtering).">

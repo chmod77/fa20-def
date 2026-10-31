@@ -1147,6 +1147,20 @@ for _t, _fn, _nm in ((0x14DB0, '0x14F35C', 'A'), (0x14DA0, '0x14F4AE', 'B')):
         'speed source byte, rpm = x*25; 0x143640: 1A3C = 1A3A/128 with 1A3A -> FFFF2994 rpm x*25/128). Input FFFF2C71 unresolved.',
         ('rpm', 'x*25', 'x/25', '0'))
 
+add(0x163A38, 'MAF Load-Path Correction (MAF x IAT)', 'Airflow Model (MAF)',
+    '0x4D3AE: FFFEEEF2 = map helper 0x16B828(0x163A38, FFFEEEF0, IAT FFFEEEE2) (data index i1*n2 + i2). 0x4D4BA: FFFEEEF0 = (FFFEEEEC + '
+    'FFFEEEEE)/2 with EEEC/EEEE = max/min of Mass Airflow FFFEEEE4 (0x4C53C, 0x4D4DA/0x4D4FC; OBD PID10 g/s = x*75/16384). 0x4D46C: '
+    'FFFEEEF4 (Mass Airflow load-path copy, OBD PID43 source, g/s) = EEF2*EEF0/256 + EEF6, so EEF2/256 is a multiplier on MAF.',
+    ('multiplier', 'x/256', 'x*256', '0.000'),
+    axes={'0': dict(name='Mass Airflow (averaged)', units='g/s', expr='x*75/16384', to_byte='x*16384/75'),
+          '1': dict(name='Intake Air Temperature (control, word)', units='C', expr='x*5/2048-40', to_byte='(x+40)*2048/5')})
+
+add(0x163A84, 'Initial Mass Airflow vs Coolant (initialisation)', 'Airflow Model (MAF)',
+    '0x4E6D4 (initialisation path 0x152744/0x153C6C): Mass Airflow FFFEEEE4 (OBD PID10, g/s = x*75/16384) = helper 0x16BC08(0x163A84, '
+    'Coolant FFFEEEDE) / 75 (signed division), also copied to EEEC/EEEE/EEF0/EEF4, so the table is g/s = x/16384 (truncated by the '
+    'integer division).', ('g/s', 'x/16384', 'x*16384', '0.000'),
+    axes={'0': dict(name='Coolant Temperature (filtered, word)', units='C', expr='x*5/2048-40', to_byte='(x+40)*2048/5')})
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

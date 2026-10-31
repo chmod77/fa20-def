@@ -175,7 +175,9 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
   0x16AEB4 (16 x u16) add 10 secondary tables -> 1281 views. Proven: 0x163AA8 MAF threshold vs rpm (g/s), 0x163AB4 gauge pressure
   threshold vs coolant (kPa x/128), 0x14DB0/0x14DA0 engine speed thresholds (rpm x*25). Still missing: 3 map tables read by the 3D
   helpers 0x16B650 (0x1639C4), 0x16B73C (0x163A04), 0x16B828 (0x163A38) {data, axisX, axisY, nX@+0xC, nY@+0xD}; the builder needs a
-  3D secondary kind (check the cell order against the verifier first). Coverage 571 of 1281.
+  3D secondary kind.
+- Map helpers added (kind "map", 3D, first input = Y axis since data index = i1*n2 + i2): 1284 views. Proven: 0x163A38 MAF
+  load-path correction (MAF x IAT, x/256) and 0x163A84 initial MAF vs coolant (g/s). Coverage 573 of 1284.
 - Dead ends this session (documented so they are not repeated):
   * FFFF12C2 (axis of the pedal-limit T1 tables, compared with 12BE in the torque monitor): only a read literal (0xC50D0); writer not
     found by literal, GBR (+70 from 127C) or r0-offset searches.

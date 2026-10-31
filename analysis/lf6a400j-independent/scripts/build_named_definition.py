@@ -174,6 +174,8 @@ def build(rid, path, sha):
             desc.append('Function/output scaling not yet proven from the binary; locked.')
         attrs = dict(type='2D', name=name, category=cat, storageaddress=f'{t["data_address"]:X}', storagetype=dst, endian='big',
                      userlevel='1', sizey=str(n), description=' '.join(x for x in desc if x))
+        if t['kind'] == 'map':
+            attrs.update(type='3D', sizex=str(t['n2']), sizey=str(t['n1']))
         if not ident:
             attrs['locked'] = 'true'
         tab = ET.SubElement(rom, 'table', **attrs)
@@ -184,7 +186,17 @@ def build(rid, path, sha):
         else:
             scaling(tab, dst)
         ov = (sem or {}).get('axes', {}).get('0')
-        if t['kind'] == 'struct':
+        if t['kind'] == 'map':
+            # helper data index = i1*n2 + i2: first input = Y axis (rows), second input = X axis (columns, fastest)
+            for typ, adr, cnt, st, k in (('Y Axis', t['axis_address'], t['n1'], t['axis_storage'], '0'),
+                                         ('X Axis', t['axis2_address'], t['n2'], t['axis2_storage'], '1')):
+                o = (sem or {}).get('axes', {}).get(k)
+                nm, units, ex, tb = (o['name'], o['units'], o['expr'], o['to_byte']) if o else (f'Unidentified input {int(k)+1} (see call sites)', 'raw', 'x', 'x')
+                a = ET.SubElement(tab, 'table', type=typ, name=nm, storageaddress=f'{adr:X}', elements=str(cnt), storagetype=st, endian='big')
+                if not ident:
+                    a.set('locked', 'true')
+                scaling(a, st, units, ex, tb, '0.00' if units != 'raw' else '0')
+        elif t['kind'] == 'struct':
             nm, units, ex, tb = (ov['name'], ov['units'], ov['expr'], ov['to_byte']) if ov else ('Unidentified input (see call sites)', 'raw', 'x', 'x')
             a = ET.SubElement(tab, 'table', type='Y Axis', name=nm, storageaddress=f'{t["axis_address"]:X}', elements=str(n),
                               storagetype=t['axis_storage'], endian='big')
