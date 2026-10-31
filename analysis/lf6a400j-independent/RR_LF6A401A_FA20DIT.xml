@@ -192,12 +192,12 @@
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 8x16 [D02D260] (Engine Speed (high byte) x ?)" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="8C8E" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2D260. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Engine Speed (high byte)" storageaddress="8C76" elements="8" storagetype="uint8" endian="big" locked="true">
+    <table type="3D" name="Injection Angle C Base [-&gt; 0B90]" category="Fuel Injection" storageaddress="8C8E" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2D260. Evidence: 0x90AF0 (from 0x888C0): FFFF0B90 = T_02D260(rpm FFFF2996, FFFF0489) + T_02D24C(rpm, 0489)*T_02D274(FFFEEF33, IAT FFFEE6A5)/255, clamped 1080..1439 while running; 0x44EAC uses (0B90 - 0B8E) and (0B8E - 0B90 + 720) with FFFF2986 (time per 90 deg) -&gt; 1 deg CA. " sizex="16" sizey="8">
+      <scaling units="deg CA" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Engine Speed (high byte)" storageaddress="8C76" elements="8" storagetype="uint8" endian="big">
         <scaling units="rpm" expression="x*50" to_byte="x/50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2 (RAM 0xFFFF0489)" storageaddress="8C7E" elements="16" storagetype="int8" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2 (RAM 0xFFFF0489)" storageaddress="8C7E" elements="16" storagetype="int8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
       </table>
     </table>
@@ -711,21 +711,21 @@
         <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 8x16 [D02D24C] (Engine Speed (high byte) x ?)" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="B412" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2D24C. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
-      <table type="Y Axis" name="Engine Speed (high byte)" storageaddress="B3FA" elements="8" storagetype="uint8" endian="big" locked="true">
+    <table type="3D" name="Injection Angle C Adder [-&gt; 0B90]" category="Fuel Injection" storageaddress="B412" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2D24C. Evidence: 0x90AF0 (from 0x888C0): FFFF0B90 = T_02D260(rpm FFFF2996, FFFF0489) + T_02D24C(rpm, 0489)*T_02D274(FFFEEF33, IAT FFFEE6A5)/255, clamped 1080..1439 while running; 0x44EAC uses (0B90 - 0B8E) and (0B8E - 0B90 + 720) with FFFF2986 (time per 90 deg) -&gt; 1 deg CA. " sizex="16" sizey="8">
+      <scaling units="deg CA" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+      <table type="Y Axis" name="Engine Speed (high byte)" storageaddress="B3FA" elements="8" storagetype="uint8" endian="big">
         <scaling units="rpm" expression="x*50" to_byte="x/50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2 (RAM 0xFFFF0489)" storageaddress="B402" elements="16" storagetype="int8" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2 (RAM 0xFFFF0489)" storageaddress="B402" elements="16" storagetype="int8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 8x8 [D02D274] (Engine Oil Temperature x Intake Air Temperature (control))" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="B512" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D274. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="8" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Engine Oil Temperature" storageaddress="B3EA" elements="8" storagetype="uint8" endian="big" locked="true">
+    <table type="3D" name="Injection Angle C Adder Factor [-&gt; 0B90]" category="Fuel Injection" storageaddress="B512" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D274. Evidence: 0x90AF0 (from 0x888C0): FFFF0B90 = T_02D260(rpm FFFF2996, FFFF0489) + T_02D24C(rpm, 0489)*T_02D274(FFFEEF33, IAT FFFEE6A5)/255, clamped 1080..1439 while running; 0x44EAC uses (0B90 - 0B8E) and (0B8E - 0B90 + 720) with FFFF2986 (time per 90 deg) -&gt; 1 deg CA. x/255 factor." sizex="8" sizey="8">
+      <scaling units="factor" expression="x/255" to_byte="x*255" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Engine Oil Temperature" storageaddress="B3EA" elements="8" storagetype="uint8" endian="big">
         <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Intake Air Temperature (control)" storageaddress="B3F2" elements="8" storagetype="uint8" endian="big" locked="true">
+      <table type="X Axis" name="Intake Air Temperature (control)" storageaddress="B3F2" elements="8" storagetype="uint8" endian="big">
         <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>

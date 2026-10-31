@@ -822,6 +822,12 @@ add(0x2CCF0, 'Open Loop Enrichment Adder (Load x Mode) [0x8BCAC]', FE,
     '0x8BCAC (from 0x89E04): out = T + FFFF0B9A/128; 0B9A is (phi-1)*32768 (target-lambda path 0xB5B38), so 0B9A/128 and T are (phi-1)*256: '
     'lambda = 256/(256+x).', LAM)
 
+_ev90 = ('0x90AF0 (from 0x888C0): FFFF0B90 = T_02D260(rpm FFFF2996, FFFF0489) + T_02D24C(rpm, 0489)*T_02D274(FFFEEF33, IAT FFFEE6A5)/255, '
+         'clamped 1080..1439 while running; 0x44EAC uses (0B90 - 0B8E) and (0B8E - 0B90 + 720) with FFFF2986 (time per 90 deg) -> 1 deg CA. ')
+add(0x2D260, 'Injection Angle C Base [-> 0B90]', INJ, _ev90, CA)
+add(0x2D24C, 'Injection Angle C Adder [-> 0B90]', INJ, _ev90, CA)
+add(0x2D274, 'Injection Angle C Adder Factor [-> 0B90]', INJ, _ev90 + 'x/255 factor.', ('factor', 'x/255', 'x*255', '0.000'))
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

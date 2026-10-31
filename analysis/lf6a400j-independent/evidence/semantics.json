@@ -1831,6 +1831,45 @@
    "format": "0"
   }
  },
+ "0x2D24C": {
+  "status": "identified",
+  "name": "Injection Angle C Adder [-> 0B90]",
+  "category": "Fuel Injection",
+  "evidence": "0x90AF0 (from 0x888C0): FFFF0B90 = T_02D260(rpm FFFF2996, FFFF0489) + T_02D24C(rpm, 0489)*T_02D274(FFFEEF33, IAT FFFEE6A5)/255, clamped 1080..1439 while running; 0x44EAC uses (0B90 - 0B8E) and (0B8E - 0B90 + 720) with FFFF2986 (time per 90 deg) -> 1 deg CA. ",
+  "description": "",
+  "data": {
+   "units": "deg CA",
+   "expr": "x",
+   "to_byte": "x",
+   "format": "0"
+  }
+ },
+ "0x2D260": {
+  "status": "identified",
+  "name": "Injection Angle C Base [-> 0B90]",
+  "category": "Fuel Injection",
+  "evidence": "0x90AF0 (from 0x888C0): FFFF0B90 = T_02D260(rpm FFFF2996, FFFF0489) + T_02D24C(rpm, 0489)*T_02D274(FFFEEF33, IAT FFFEE6A5)/255, clamped 1080..1439 while running; 0x44EAC uses (0B90 - 0B8E) and (0B8E - 0B90 + 720) with FFFF2986 (time per 90 deg) -> 1 deg CA. ",
+  "description": "",
+  "data": {
+   "units": "deg CA",
+   "expr": "x",
+   "to_byte": "x",
+   "format": "0"
+  }
+ },
+ "0x2D274": {
+  "status": "identified",
+  "name": "Injection Angle C Adder Factor [-> 0B90]",
+  "category": "Fuel Injection",
+  "evidence": "0x90AF0 (from 0x888C0): FFFF0B90 = T_02D260(rpm FFFF2996, FFFF0489) + T_02D24C(rpm, 0489)*T_02D274(FFFEEF33, IAT FFFEE6A5)/255, clamped 1080..1439 while running; 0x44EAC uses (0B90 - 0B8E) and (0B8E - 0B90 + 720) with FFFF2986 (time per 90 deg) -> 1 deg CA. x/255 factor.",
+  "description": "",
+  "data": {
+   "units": "factor",
+   "expr": "x/255",
+   "to_byte": "x*255",
+   "format": "0.000"
+  }
+ },
  "0x2D2A8": {
   "status": "identified",
   "name": "Open Loop Enrichment for Target Lambda (RPM x Load) [-> 0B9A]",
