@@ -5543,6 +5543,19 @@
    }
   }
  },
+ "0x2DDC0": {
+  "status": "identified",
+  "name": "Time Since FFFEEEC1.0 Cleared Threshold (0xAAB08)",
+  "category": "Thresholds - Time Since FFFEEEC1.0 Cleared",
+  "evidence": "0xAAB08: lookup result compared with Time Since FFFEEEC1.0 Cleared (FFFFEF10): \"(uint)param_4 < (uVar6 & 0xffff)\"; a comparison requires the same unit, so the output carries that scaling.",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.01",
+   "to_byte": "x/0.01",
+   "format": "0.00"
+  }
+ },
  "0x2DDF8": {
   "status": "identified",
   "name": "Target Idle Speed Ramp Rate (transition index 2)",
@@ -6187,6 +6200,19 @@
    "expr": "(x-32768)/43194",
    "to_byte": "x*43194+32768",
    "format": "0.000"
+  }
+ },
+ "0x2E400": {
+  "status": "identified",
+  "name": "Time Since FFFEEEC1.0 Cleared Threshold (0xB6078)",
+  "category": "Thresholds - Time Since FFFEEEC1.0 Cleared",
+  "evidence": "0xB6078: lookup result compared with Time Since FFFEEEC1.0 Cleared (FFFFEF10): \"((uVar1 & 0xffff) <= (param_4 & 0xffff)\"; a comparison requires the same unit, so the output carries that scaling.",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.01",
+   "to_byte": "x/0.01",
+   "format": "0.00"
   }
  },
  "0x2E418": {
@@ -8886,6 +8912,19 @@
    "format": "0.00"
   }
  },
+ "0x2F888": {
+  "status": "identified",
+  "name": "Time Since FFFEEEC1.0 Cleared Threshold (0xFF638)",
+  "category": "Thresholds - Time Since FFFEEEC1.0 Cleared",
+  "evidence": "0xFF638: lookup result compared with Time Since FFFEEEC1.0 Cleared (FFFFEF10): \"((param_2 & 0xffff) < (uVar5 & 0xffff)\"; a comparison requires the same unit, so the output carries that scaling.",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.01",
+   "to_byte": "x/0.01",
+   "format": "0.00"
+  }
+ },
  "0x2F900": {
   "status": "identified",
   "name": "Target Fuel Rail Pressure (Base)",
@@ -9238,6 +9277,84 @@
    "expr": "x/43194",
    "to_byte": "x*43194",
    "format": "0.0000"
+  }
+ },
+ "0x2FEE4": {
+  "status": "identified",
+  "name": "Accelerator Pedal Angle (unlimited) Threshold (0x12098C)",
+  "category": "Thresholds - Accelerator Pedal Angle (unlimited)",
+  "evidence": "0x12098C: lookup result compared with Accelerator Pedal Angle (unlimited) (FFFFF406): \"(uVar1 & 0xffff) <= param_3)\"; a comparison requires the same unit, so the output carries that scaling.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/65280",
+   "to_byte": "x*65280/100",
+   "format": "0.00"
+  }
+ },
+ "0x2FEF0": {
+  "status": "identified",
+  "name": "Time While FFFF0935.6 Set Threshold (0x12098C)",
+  "category": "Thresholds - Time While FFFF0935.6 Set",
+  "evidence": "0x12098C: lookup result compared with Time While FFFF0935.6 Set (FFFF13AC): \"((uVar2 & 0xffff) <= (param_2 & 0xffff)\"; a comparison requires the same unit, so the output carries that scaling.",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.01",
+   "to_byte": "x/0.01",
+   "format": "0.00"
+  }
+ },
+ "0x2FF04": {
+  "status": "identified",
+  "name": "Time While FFFF0935.6 Set Threshold (0x12098C)",
+  "category": "Thresholds - Time While FFFF0935.6 Set",
+  "evidence": "0x12098C: lookup result compared with Time While FFFF0935.6 Set (FFFF13AC): \"((uVar1 & 0xffff) <= (param_2 & 0xffff)\"; a comparison requires the same unit, so the output carries that scaling.",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.01",
+   "to_byte": "x/0.01",
+   "format": "0.00"
+  }
+ },
+ "0x2FF2C": {
+  "status": "identified",
+  "name": "Time While FFFF0935.5 Set Threshold (0x120D40)",
+  "category": "Thresholds - Time While FFFF0935.5 Set",
+  "evidence": "0x120D40: lookup result compared with Time While FFFF0935.5 Set (FFFF13B2): \"((uVar2 & 0xffff) <= (param_2 & 0xffff)\"; a comparison requires the same unit, so the output carries that scaling.",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.01",
+   "to_byte": "x/0.01",
+   "format": "0.00"
+  }
+ },
+ "0x2FF40": {
+  "status": "identified",
+  "name": "Time While FFFF0935.5 Set Threshold (0x120D40)",
+  "category": "Thresholds - Time While FFFF0935.5 Set",
+  "evidence": "0x120D40: lookup result compared with Time While FFFF0935.5 Set (FFFF13B2): \"((uVar1 & 0xffff) <= (param_2 & 0xffff)\"; a comparison requires the same unit, so the output carries that scaling.",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.01",
+   "to_byte": "x/0.01",
+   "format": "0.00"
+  }
+ },
+ "0x2FF54": {
+  "status": "identified",
+  "name": "Accelerator Pedal Angle (unlimited) Threshold (0x120E2C)",
+  "category": "Thresholds - Accelerator Pedal Angle (unlimited)",
+  "evidence": "0x120E2C: lookup result compared with Accelerator Pedal Angle (unlimited) (FFFFF406): \"(uVar1 & 0xffff) <= (param_1 & 0xffff)\"; a comparison requires the same unit, so the output carries that scaling.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/65280",
+   "to_byte": "x*65280/100",
+   "format": "0.00"
   }
  },
  "0x30568": {

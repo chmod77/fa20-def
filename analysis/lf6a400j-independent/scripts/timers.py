@@ -18,7 +18,8 @@ and appears only in F (plus constant-only writers), and F is reached from the ta
 import re, os, glob, json, collections
 H = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(H)
 PERIOD = {'0015307c': 0.02, '00153248': 0.04, '00153568': 0.08, '001528a2': 0.004, '00152882': 0.002, '00152a40': 0.01,
-          '00123600': 0.04, '0012560c': 0.04, '0012367c': 0.04, '0009bdd0': 1.0}
+          '00123600': 0.04, '0012560c': 0.04, '0012367c': 0.04, '0009bdd0': 1.0,
+          '00153ce0': 0.01}   # application mode 1: task 28 (0x152490, alarm 15, cycle 10) -> 0x153CE0
 ALT = {'00153b4e': 0.02}   # application mode 2: task 55 (alarm 27, cycle 20) -> 0x151C8C -> 0x153B4E (also reaches idle 0xA8230)
 CUT = {'00049e70': {'00123600', '0012560c', '0012367c', '0009bdd0'}}
 S = json.load(open(f'{ROOT}/evidence/semantics.json'))

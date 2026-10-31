@@ -2499,12 +2499,12 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 3x16 [D02DDC0] (? x Coolant Temperature (OBD copy))" category="Unidentified - Idle Speed Control" storageaddress="14142" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2DDC0. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="3">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0423)" storageaddress="1411E" elements="3" storagetype="uint8" endian="big" locked="true">
+    <table type="3D" name="Time Since FFFEEEC1.0 Cleared Threshold (0xAAB08)" category="Thresholds - Time Since FFFEEEC1.0 Cleared" storageaddress="14142" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2DDC0. Evidence: 0xAAB08: lookup result compared with Time Since FFFEEEC1.0 Cleared (FFFFEF10): &quot;(uint)param_4 &lt; (uVar6 &amp; 0xffff)&quot;; a comparison requires the same unit, so the output carries that scaling." sizex="16" sizey="3">
+      <scaling units="s" expression="x*0.01" to_byte="x/0.01" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0423)" storageaddress="1411E" elements="3" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Coolant Temperature (OBD copy)" storageaddress="14122" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Coolant Temperature (OBD copy)" storageaddress="14122" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -3588,9 +3588,9 @@
         <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02E400] (Coolant Temperature (OBD copy))" category="Unidentified - Task 0x15307C" storageaddress="185F8" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E400, 0x2E40C. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (OBD copy)" storageaddress="185D8" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Time Since FFFEEEC1.0 Cleared Threshold (0xB6078)" category="Thresholds - Time Since FFFEEEC1.0 Cleared" storageaddress="185F8" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E400, 0x2E40C. Evidence: 0xB6078: lookup result compared with Time Since FFFEEEC1.0 Cleared (FFFFEF10): &quot;((uVar1 &amp; 0xffff) &lt;= (param_4 &amp; 0xffff)&quot;; a comparison requires the same unit, so the output carries that scaling." sizey="16">
+      <scaling units="s" expression="x*0.01" to_byte="x/0.01" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (OBD copy)" storageaddress="185D8" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -5784,9 +5784,9 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02F888]" category="Unidentified - Task 0x153248" storageaddress="21172" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F888. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="21142" elements="16" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Time Since FFFEEEC1.0 Cleared Threshold (0xFF638)" category="Thresholds - Time Since FFFEEEC1.0 Cleared" storageaddress="21172" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F888. Evidence: 0xFF638: lookup result compared with Time Since FFFEEEC1.0 Cleared (FFFFEF10): &quot;((param_2 &amp; 0xffff) &lt; (uVar5 &amp; 0xffff)&quot;; a comparison requires the same unit, so the output carries that scaling." sizey="16">
+      <scaling units="s" expression="x*0.01" to_byte="x/0.01" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="21142" elements="16" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
@@ -6573,27 +6573,27 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 5x4 [D02FEF0]" category="Unidentified - Task 0x152A40" storageaddress="25482" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FEF0. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="4" sizey="5">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFEF406)" storageaddress="25466" elements="5" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    <table type="3D" name="Time While FFFF0935.6 Set Threshold (0x12098C) @25482" category="Thresholds - Time While FFFF0935.6 Set" storageaddress="25482" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FEF0. Evidence: 0x12098C: lookup result compared with Time While FFFF0935.6 Set (FFFF13AC): &quot;((uVar2 &amp; 0xffff) &lt;= (param_2 &amp; 0xffff)&quot;; a comparison requires the same unit, so the output carries that scaling." sizex="4" sizey="5">
+      <scaling units="s" expression="x*0.01" to_byte="x/0.01" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Accelerator Pedal Angle (unlimited)" storageaddress="25466" elements="5" storagetype="uint16" endian="big">
+        <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="25470" elements="4" storagetype="uint8" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2" storageaddress="25470" elements="4" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 5x4 [D02FF04]" category="Unidentified - Task 0x152A40" storageaddress="254AA" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FF04. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="4" sizey="5">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFEF406)" storageaddress="25474" elements="5" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    <table type="3D" name="Time While FFFF0935.6 Set Threshold (0x12098C) @254AA" category="Thresholds - Time While FFFF0935.6 Set" storageaddress="254AA" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FF04. Evidence: 0x12098C: lookup result compared with Time While FFFF0935.6 Set (FFFF13AC): &quot;((uVar1 &amp; 0xffff) &lt;= (param_2 &amp; 0xffff)&quot;; a comparison requires the same unit, so the output carries that scaling." sizex="4" sizey="5">
+      <scaling units="s" expression="x*0.01" to_byte="x/0.01" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Accelerator Pedal Angle (unlimited)" storageaddress="25474" elements="5" storagetype="uint16" endian="big">
+        <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="2547E" elements="4" storagetype="uint8" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2" storageaddress="2547E" elements="4" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 2 [D02FEE4]" category="Unidentified - Task 0x152A40" storageaddress="254D2" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FEE4. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="2">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="25463" elements="2" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Accelerator Pedal Angle (unlimited) Threshold (0x12098C)" category="Thresholds - Accelerator Pedal Angle (unlimited)" storageaddress="254D2" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FEE4. Evidence: 0x12098C: lookup result compared with Accelerator Pedal Angle (unlimited) (FFFFF406): &quot;(uVar1 &amp; 0xffff) &lt;= param_3)&quot;; a comparison requires the same unit, so the output carries that scaling." sizey="2">
+      <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="25463" elements="2" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
@@ -6606,21 +6606,21 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 5x4 [D02FF2C]" category="Unidentified - Task 0x152A40" storageaddress="2552C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FF2C. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="4" sizey="5">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFEF406)" storageaddress="25510" elements="5" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    <table type="3D" name="Time While FFFF0935.5 Set Threshold (0x120D40) @2552C" category="Thresholds - Time While FFFF0935.5 Set" storageaddress="2552C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FF2C. Evidence: 0x120D40: lookup result compared with Time While FFFF0935.5 Set (FFFF13B2): &quot;((uVar2 &amp; 0xffff) &lt;= (param_2 &amp; 0xffff)&quot;; a comparison requires the same unit, so the output carries that scaling." sizex="4" sizey="5">
+      <scaling units="s" expression="x*0.01" to_byte="x/0.01" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Accelerator Pedal Angle (unlimited)" storageaddress="25510" elements="5" storagetype="uint16" endian="big">
+        <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="2551A" elements="4" storagetype="uint8" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2" storageaddress="2551A" elements="4" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 5x4 [D02FF40]" category="Unidentified - Task 0x152A40" storageaddress="25554" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FF40. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="4" sizey="5">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFEF406)" storageaddress="2551E" elements="5" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    <table type="3D" name="Time While FFFF0935.5 Set Threshold (0x120D40) @25554" category="Thresholds - Time While FFFF0935.5 Set" storageaddress="25554" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FF40. Evidence: 0x120D40: lookup result compared with Time While FFFF0935.5 Set (FFFF13B2): &quot;((uVar1 &amp; 0xffff) &lt;= (param_2 &amp; 0xffff)&quot;; a comparison requires the same unit, so the output carries that scaling." sizex="4" sizey="5">
+      <scaling units="s" expression="x*0.01" to_byte="x/0.01" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Accelerator Pedal Angle (unlimited)" storageaddress="2551E" elements="5" storagetype="uint16" endian="big">
+        <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="25528" elements="4" storagetype="uint8" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2" storageaddress="25528" elements="4" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
@@ -6630,9 +6630,9 @@
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 6 [D02FF54]" category="Unidentified - Task 0x152A40" storageaddress="255A0" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FF54. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="6">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF093A)" storageaddress="25590" elements="6" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Accelerator Pedal Angle (unlimited) Threshold (0x120E2C)" category="Thresholds - Accelerator Pedal Angle (unlimited)" storageaddress="255A0" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FF54. Evidence: 0x120E2C: lookup result compared with Accelerator Pedal Angle (unlimited) (FFFFF406): &quot;(uVar1 &amp; 0xffff) &lt;= (param_1 &amp; 0xffff)&quot;; a comparison requires the same unit, so the output carries that scaling." sizey="6">
+      <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF093A)" storageaddress="25590" elements="6" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
@@ -6642,10 +6642,10 @@
         <scaling units="kPa" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 3x4 [D02FF78]" category="Unidentified - Task 0x152A40" storageaddress="255D6" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FF78. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="4" sizey="3">
+    <table type="3D" name="Unidentified 3x4 [D02FF78] (Accelerator Pedal Angle (unlimited) x ?)" category="Unidentified - Task 0x152A40" storageaddress="255D6" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FF78. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="4" sizey="3">
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFEF406)" storageaddress="255CC" elements="3" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Accelerator Pedal Angle (unlimited)" storageaddress="255CC" elements="3" storagetype="uint16" endian="big" locked="true">
+        <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
       <table type="X Axis" name="Unidentified input 2 (RAM 0xFFFF093A)" storageaddress="255D2" elements="4" storagetype="uint8" endian="big" locked="true">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />

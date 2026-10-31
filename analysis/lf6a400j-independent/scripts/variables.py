@@ -281,3 +281,16 @@ V2.update({
  0xFFFF2B0C:('Engine Speed Fluctuation (2nd difference, 2B0C)','rpm','x*25/128','x*128/25','0x4E098: sat16((2B02-2B00)-(2B06-2B04)), segment speeds 2B00.. (rpm x*25/128)'),
  0xFFFF2B0E:('Engine Speed Fluctuation (2nd difference, 2B0E)','rpm','x*25/128','x*128/25','0x4E0C6: sat16((2B02-2B00)-(2B0A-2B08))'),
 })
+V2.update({
+ 0xFFFEEF10:('Time Since FFFEEEC1.0 Cleared','s','x*0.01','x/0.01','0x4CA56 (from 0x4C10A): +1 per call (saturating) while FFFEEEC1.0 clear, else 0; 0x4C10A runs every 10 ms (task 8 via 0x152A40 / task 28 via 0x153CE0, alarm cycles 10 x 1 ms tick)'),
+})
+V2.update({
+ 0xFFFEF406:('Accelerator Pedal Angle (unlimited)','%','x*100/65280','x*65280/100','0x6825A: SSM pedal FFFEEEF8 = min(F406, FFFF13C2) (0x16BD78 = min)'),
+ 0xFFFF13C2:('Accelerator Pedal Angle Limit 13C2','%','x*100/65280','x*65280/100','0x6825A: SSM pedal FFFEEEF8 = min(FFFEF406, 13C2)'),
+ 0xFFFEF134:('Accelerator Pedal Angle Sensor 1','%','x*100/65280','x*65280/100','0x6825A: F406 = min(F134, F13A) -> SSM pedal EEF8 = min(F406, 13C2)'),
+ 0xFFFEF13A:('Accelerator Pedal Angle Sensor 2','%','x*100/65280','x*65280/100','0x6825A: F406 = min(F134, F13A)'),
+})
+V2.update({
+ 0xFFFF13AC:('Time While FFFF0935.6 Set','s','x*0.01','x/0.01','0x11EE38 (from 0x11F134, called unconditionally by the 10 ms task 0x152A40): counter +1 per call while the flag is set, else 0; output FFFF13A6+6'),
+ 0xFFFF13B2:('Time While FFFF0935.5 Set','s','x*0.01','x/0.01','0x11EF0C (from 0x11F134, 10 ms): counter +1 per call while the flag is set, else 0; output FFFF13B0+2'),
+})

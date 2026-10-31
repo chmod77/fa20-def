@@ -2,7 +2,7 @@
 Each entry: status 'identified' (name AND output scaling proven) or 'partial' (role proven, output
 units not), name, category, data scaling {units, expr, to_byte, format}, axis overrides, evidence.
 Evidence strings cite the decompiled function(s) in cdump/ and the anchor chain."""
-import json, os
+import json, os, re
 H = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(H)
 S = {}
 
@@ -551,6 +551,8 @@ if os.path.exists(f'{ROOT}/evidence/table-compare.tsv'):
         _seen.add(_d)
         _tb = {'x': 'x', 'x*25/128': 'x*128/25', 'x*5/2048-40': '(x+40)*2048/5', 'x*639630/1048576': 'x*1048576/639630',
                'x*100/65280': 'x*65280/100', 'x*625/2048000': 'x*2048000/625'}.get(_r['expr'])
+        if _tb is None and re.fullmatch(r'x\*[0-9.]+', _r['expr']):
+            _tb = 'x/' + _r['expr'][2:]
         if _tb is None:
             continue
         add(_d, f"{_r['var_name']} Threshold (0x{int(_r['function'], 16):X})", 'Thresholds - ' + _r['var_name'],
