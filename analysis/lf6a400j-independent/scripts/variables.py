@@ -311,3 +311,7 @@ V2.update({
  0xFFFF0DAE:('A/F Correction #1 Lower Limit (0DAE)','%','x/327.68-100','(x+100)*327.68','0xB538C: 0DA4 = min(max(0DAE, 0D9A), 0xACCD); 0xB5A24 writes 0DAE (emulation)'),
  0xFFFF0D9A:('A/F Correction #1 (unclamped, 0D9A)','%','x/327.68-100','(x+100)*327.68','0xB538C: 0DA4 = min(max(0DAE, 0D9A), 0xACCD); 0xB5088 copies it (emulation)'),
 })
+V2.update({
+ 0xFFFF0DA6:('A/F Correction #1 Integrator (signed)','%','x/327.68','x*327.68','0xB518C (writer of 0D9E, found by emulation): 0D9E = 0DA6 + p6 + 32768 (16-bit), clamped 0x3334..0xA53F, then 0D9A -> 0DA4 -> A/F Correction #1 0D92 (SSM 0x09, % = x/327.68 - 100); 0xB53D4 p22 = 0DA6'),
+ 0xFFFF0D86:('A/F Correction #1 Integrator (filtered)','%','x/327.68','x*327.68','0xB508C: first-order filter (0x16B520) of 0DA6; 0xB518C uses it as the P-term source'),
+})
