@@ -3,6 +3,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 python3 scripts/semantics_db.py
+python3 scripts/table_sinks.py
 python3 scripts/build_named_definition.py
 cd ../../RomRaider
 CP="RomRaider.jar:lib/*:i18n:../analysis/lf6a400j-independent/validation-classes"

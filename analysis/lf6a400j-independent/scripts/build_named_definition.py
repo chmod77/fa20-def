@@ -28,6 +28,7 @@ ROMS = {
 }
 cal = json.load(open(f'{E}/calibrations.json'))
 HT = json.load(open(f'{E}/helper-tables.json'))
+SINK = {int(k, 16): v for k, v in json.load(open(f'{E}/table-sinks.json')).items()} if os.path.exists(f'{E}/table-sinks.json') else {}
 SEM = json.load(open(f'{E}/semantics.json')) if os.path.exists(f'{E}/semantics.json') else {}
 SEM = {int(k, 16): v for k, v in SEM.items()}
 
@@ -121,6 +122,10 @@ def build(rid, path, sha):
         if sem:
             desc.append(sem.get('description', ''))
             desc.append('Evidence: ' + sem.get('evidence', ''))
+        sinks = sorted(set().union(*[set(SINK.get(d, [])) for d in view['aliases']]))
+        if sinks:
+            desc.append('Lookup result stored to: ' + ', '.join(
+                (x + (f' ({VV[int(x,16)][0]})' if ':' not in x and int(x, 16) in VV else '')) for x in sinks) + '.')
         if not ident:
             desc.append('Function/output scaling not yet proven from the binary; locked.')
         attrs = dict(type='3D' if rank == 2 else '2D', name=name, category=cat, storageaddress=f'{view["data_address"]:X}',
