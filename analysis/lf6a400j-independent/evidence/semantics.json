@@ -1247,6 +1247,58 @@
    }
   }
  },
+ "0x2D56C": {
+  "status": "identified",
+  "name": "Ignition Timing Target Map A1 [-> 0467]",
+  "category": "Ignition Timing",
+  "evidence": "0x98BBC (from 0x9BDF4): FFFF0467 = blend of (T_02D56C|T_02D594 weighted by counter b) and (T_02D580|T_02D5A8 weighted by 255-b), each term b*(T-32)/255 + 32, then blended by w = FFFF0E90; 0x9DE28 uses (FFFF0467 + FFFF0486 + FFFF049C + FFFF049B - 160) as a timing value in 0.5 deg next to (045C + 049D + 049B - 32), with 0486 offset 128 -> 0467 is 0.5 deg with offset 32. ",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "(x-32)/2",
+   "to_byte": "x*2+32",
+   "format": "0.0"
+  }
+ },
+ "0x2D580": {
+  "status": "identified",
+  "name": "Ignition Timing Target Map A2 [-> 0467]",
+  "category": "Ignition Timing",
+  "evidence": "0x98BBC (from 0x9BDF4): FFFF0467 = blend of (T_02D56C|T_02D594 weighted by counter b) and (T_02D580|T_02D5A8 weighted by 255-b), each term b*(T-32)/255 + 32, then blended by w = FFFF0E90; 0x9DE28 uses (FFFF0467 + FFFF0486 + FFFF049C + FFFF049B - 160) as a timing value in 0.5 deg next to (045C + 049D + 049B - 32), with 0486 offset 128 -> 0467 is 0.5 deg with offset 32. ",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "(x-32)/2",
+   "to_byte": "x*2+32",
+   "format": "0.0"
+  }
+ },
+ "0x2D594": {
+  "status": "identified",
+  "name": "Ignition Timing Target Map B1 [-> 0467]",
+  "category": "Ignition Timing",
+  "evidence": "0x98BBC (from 0x9BDF4): FFFF0467 = blend of (T_02D56C|T_02D594 weighted by counter b) and (T_02D580|T_02D5A8 weighted by 255-b), each term b*(T-32)/255 + 32, then blended by w = FFFF0E90; 0x9DE28 uses (FFFF0467 + FFFF0486 + FFFF049C + FFFF049B - 160) as a timing value in 0.5 deg next to (045C + 049D + 049B - 32), with 0486 offset 128 -> 0467 is 0.5 deg with offset 32. ",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "(x-32)/2",
+   "to_byte": "x*2+32",
+   "format": "0.0"
+  }
+ },
+ "0x2D5A8": {
+  "status": "identified",
+  "name": "Ignition Timing Target Map B2 [-> 0467]",
+  "category": "Ignition Timing",
+  "evidence": "0x98BBC (from 0x9BDF4): FFFF0467 = blend of (T_02D56C|T_02D594 weighted by counter b) and (T_02D580|T_02D5A8 weighted by 255-b), each term b*(T-32)/255 + 32, then blended by w = FFFF0E90; 0x9DE28 uses (FFFF0467 + FFFF0486 + FFFF049C + FFFF049B - 160) as a timing value in 0.5 deg next to (045C + 049D + 049B - 32), with 0486 offset 128 -> 0467 is 0.5 deg with offset 32. ",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "(x-32)/2",
+   "to_byte": "x*2+32",
+   "format": "0.0"
+  }
+ },
  "0x2D5BC": {
   "status": "identified",
   "name": "Minimum Ignition Timing (Coolant)",
@@ -2228,6 +2280,19 @@
    "units": "deg",
    "expr": "(x-128)/2",
    "to_byte": "x*2+128",
+   "format": "0.0"
+  }
+ },
+ "0x2D9EC": {
+  "status": "identified",
+  "name": "Ignition Timing Ramp Rate [0x9DE28]",
+  "category": "Ignition Timing",
+  "evidence": "0x9DE28: the ramped timing FFFEC05C (0.5 deg, offset 32) increases by T per execution while ramping (vs FFFF2A04), so T is 0.5 deg per step.",
+  "description": "",
+  "data": {
+   "units": "deg/step",
+   "expr": "x/2",
+   "to_byte": "x*2",
    "format": "0.0"
   }
  },

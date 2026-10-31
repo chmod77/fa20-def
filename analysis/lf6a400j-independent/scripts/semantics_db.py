@@ -680,6 +680,15 @@ add(0x2D838, 'Ignition Timing Adder Map (weight 1-w, w=FFFF0E90) [-> 0487]', IGN
 add(0x2D84C, 'Ignition Timing Adder Map (weight w=FFFF0E90) [-> 0487]', IGN, _ev487, ('deg', '(x-128)/2', 'x*2+128', '0.0'))
 add(0x2D860, 'Ignition Timing Adder Map Factor (Coolant) [-> 0487]', IGN, _ev487 + 'Input coolant FFFEEEDE.', ('factor', 'x/255', 'x*255', '0.000'))
 
+_ev467 = ('0x98BBC (from 0x9BDF4): FFFF0467 = blend of (T_02D56C|T_02D594 weighted by counter b) and (T_02D580|T_02D5A8 weighted by 255-b), each '
+          'term b*(T-32)/255 + 32, then blended by w = FFFF0E90; 0x9DE28 uses (FFFF0467 + FFFF0486 + FFFF049C + FFFF049B - 160) as a timing value in '
+          '0.5 deg next to (045C + 049D + 049B - 32), with 0486 offset 128 -> 0467 is 0.5 deg with offset 32. ')
+for d, nm in ((0x2D56C, 'A1'), (0x2D594, 'B1'), (0x2D580, 'A2'), (0x2D5A8, 'B2')):
+    add(d, f'Ignition Timing Target Map {nm} [-> 0467]', IGN, _ev467, ('deg', '(x-32)/2', 'x*2+32', '0.0'))
+add(0x2D9EC, 'Ignition Timing Ramp Rate [0x9DE28]', IGN,
+    '0x9DE28: the ramped timing FFFEC05C (0.5 deg, offset 32) increases by T per execution while ramping (vs FFFF2A04), so T is 0.5 deg per step.',
+    ('deg/step', 'x/2', 'x*2', '0.0'))
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

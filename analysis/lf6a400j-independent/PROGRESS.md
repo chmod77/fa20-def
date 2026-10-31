@@ -134,6 +134,10 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
 - Fixed: scanners now bound functions by the next function start. Ghidra sizes truncated large functions, e.g. 0x9CBF8 missed its
   0x98FAC call.
 
+- Ignition corrections traced through their sums: 0C06->0C02->0458 (coolant retard), 0x9AE9C->0486 and 0x9DFD0->049F (override-path maps),
+  0x9B058->0487->049C->03D1, 0x98BBC->0467 (four target maps, offset 32, values -16..27 deg), 0x9DBF8 049D adder, 0x9B27C/0x9B308 retards,
+  047F factor tables. Coverage: 366 unlocked of 1265.
+
 ## Next steps (session 3)
 - A/F Learning #3 FFFF0D80 (SSM 0xD1, multiplier 1.0 = 43194) = clamp(FFFF0DBA + FFFF38F8) (0xB3260, task 0xB42AC): trace 0DBA/38F8 to the tables.
 - Idle: 0xAAB08 (11 tables) and the ISC feedback that uses the final target FFFF0CFE.
