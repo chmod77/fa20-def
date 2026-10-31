@@ -180,3 +180,7 @@ V2.update({
  0xFFFF0CFE:('Target Idle Speed (final)','rpm','x*25/128','x*128/25','0xAB09C out (stack slot 0x8C = FFFF0CEA, +20; disasm 0xA884A..0xA8C44) = 0D0A/4 + adjustment'),
  0xFFFF0D0C:('Target Idle Speed Ramp Step','rpm/step','x*25/512','x*512/25','0xAB3C4; 0xAB2FC rate limit on FFFF0D0A'),
 })
+V2.update({
+ 0xFFFF03D3:('Ignition Timing (torque-model selected)','deg','x/2','x*2','0x86B58 selects 0458/0531/0532/0533; 0x88478 compares |03D3 - 046C|'),
+ 0xFFFF0458:('Ignition Timing (knock-advance path)','deg','x/2','x*2','0x96F3C; selected into 03D3 by 0x86B58'),
+})

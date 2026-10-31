@@ -2442,6 +2442,19 @@
    "format": "0.0"
   }
  },
+ "0x2E634": {
+  "status": "identified",
+  "name": "Ignition Timing, Mode FFFF0541=0 (RPM x Load)",
+  "category": "Ignition Timing - Base & Torque Model",
+  "evidence": "0xBDD0C (task 0xBE0E8): FFFF0531 = T(FFFF299C rpm/25, load FFFF03A0) while FFFF2994 <= 0x5000 (4000 rpm); 0xBDCB8 maps FFFF0541 = 0 to FFFF0530 = 0, and 0x86B58 then selects 0531 into FFFF03D3, which 0x88478 compares with Ignition Total Timing FFFF046C (deg = x/2).",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "x/2",
+   "to_byte": "x*2",
+   "format": "0.0"
+  }
+ },
  "0x2E7BC": {
   "status": "identified",
   "name": "Fuel Rail Pressure (gauge) Threshold (0xC0150)",

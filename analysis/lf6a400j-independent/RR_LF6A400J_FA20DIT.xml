@@ -2952,12 +2952,12 @@
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 8x8 [D02E634] (Engine Speed (byte, 25 rpm) x Engine Load)" category="Unidentified - Task 0xBE0E8" storageaddress="15A34" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2E634. Lookup result stored to: FFFEC8FC. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="8" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
-      <table type="Y Axis" name="Engine Speed (byte, 25 rpm)" storageaddress="15A24" elements="8" storagetype="uint8" endian="big" locked="true">
+    <table type="3D" name="Ignition Timing, Mode FFFF0541=0 (RPM x Load)" category="Ignition Timing - Base &amp; Torque Model" storageaddress="15A34" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2E634. Evidence: 0xBDD0C (task 0xBE0E8): FFFF0531 = T(FFFF299C rpm/25, load FFFF03A0) while FFFF2994 &lt;= 0x5000 (4000 rpm); 0xBDCB8 maps FFFF0541 = 0 to FFFF0530 = 0, and 0x86B58 then selects 0531 into FFFF03D3, which 0x88478 compares with Ignition Total Timing FFFF046C (deg = x/2). Lookup result stored to: FFFEC8FC." sizex="8" sizey="8">
+      <scaling units="deg" expression="x/2" to_byte="x*2" format="0.0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
+      <table type="Y Axis" name="Engine Speed (byte, 25 rpm)" storageaddress="15A24" elements="8" storagetype="uint8" endian="big">
         <scaling units="rpm" expression="x*25" to_byte="x/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Load" storageaddress="15A2C" elements="8" storagetype="uint8" endian="big" locked="true">
+      <table type="X Axis" name="Engine Load" storageaddress="15A2C" elements="8" storagetype="uint8" endian="big">
         <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>

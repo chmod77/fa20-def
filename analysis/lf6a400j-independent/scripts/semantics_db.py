@@ -538,6 +538,11 @@ add(0x2D4A0, 'Minimum Ignition Timing (Coolant)', IGN,
     'Same storage as T_02D5BC (lower clamp of FFFF046C in 0x98FAC): independent confirmation.',
     DEG2)
 
+add(0x2E634, 'Ignition Timing, Mode FFFF0541=0 (RPM x Load)', 'Ignition Timing - Base & Torque Model',
+    '0xBDD0C (task 0xBE0E8): FFFF0531 = T(FFFF299C rpm/25, load FFFF03A0) while FFFF2994 <= 0x5000 (4000 rpm); 0xBDCB8 maps FFFF0541 = 0 '
+    'to FFFF0530 = 0, and 0x86B58 then selects 0531 into FFFF03D3, which 0x88478 compares with Ignition Total Timing FFFF046C '
+    '(deg = x/2).', DEG2)
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
