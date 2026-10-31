@@ -3630,21 +3630,21 @@
         <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x8 [D02E390] (Coolant Temperature (filtered, word) x Engine Load)" category="Unidentified - Task 0x15307C" storageaddress="18CDA" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E390. Lookup result stored to: FFFF0DCA. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="8" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="18CB2" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Target Lambda Limit Offset (Coolant x Load, FFFF054A.4 set)" category="Fueling - Target Lambda" storageaddress="18CDA" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E390. Evidence: 0xB5E34 -&gt; FFFF0DCA; 0xB5B38: limit = 43194 + 0DCA - 0x8000 (lambda*43194, same as FFFF0DBA) and FFFF0DBA = min(limit, target), so T is a lambda offset with 32768 = 0. Inputs coolant FFFEEEDE, load FFFF03A0. Lookup result stored to: FFFF0DCA." sizex="8" sizey="16">
+      <scaling units="lambda offset" expression="(x-32768)/43194" to_byte="x*43194+32768" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="18CB2" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Load" storageaddress="18CD2" elements="8" storagetype="uint8" endian="big" locked="true">
+      <table type="X Axis" name="Engine Load" storageaddress="18CD2" elements="8" storagetype="uint8" endian="big">
         <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x8 [D02E3A4] (Coolant Temperature (filtered, word) x Engine Load)" category="Unidentified - Task 0x15307C" storageaddress="18DDA" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E3A4. Lookup result stored to: FFFF0DCA. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="8" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="18CB2" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Target Lambda Limit Offset (Coolant x Load, FFFF054A.4 clear)" category="Fueling - Target Lambda" storageaddress="18DDA" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E3A4. Evidence: 0xB5E34 -&gt; FFFF0DCA; 0xB5B38: limit = 43194 + 0DCA - 0x8000 (lambda*43194, same as FFFF0DBA) and FFFF0DBA = min(limit, target), so T is a lambda offset with 32768 = 0. Inputs coolant FFFEEEDE, load FFFF03A0. Lookup result stored to: FFFF0DCA." sizex="8" sizey="16">
+      <scaling units="lambda offset" expression="(x-32768)/43194" to_byte="x*43194+32768" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="18CB2" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Load" storageaddress="18CD2" elements="8" storagetype="uint8" endian="big" locked="true">
+      <table type="X Axis" name="Engine Load" storageaddress="18CD2" elements="8" storagetype="uint8" endian="big">
         <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>

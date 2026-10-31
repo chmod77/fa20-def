@@ -2366,6 +2366,32 @@
    "format": "0.000"
   }
  },
+ "0x2E390": {
+  "status": "identified",
+  "name": "Target Lambda Limit Offset (Coolant x Load, FFFF054A.4 set)",
+  "category": "Fueling - Target Lambda",
+  "evidence": "0xB5E34 -> FFFF0DCA; 0xB5B38: limit = 43194 + 0DCA - 0x8000 (lambda*43194, same as FFFF0DBA) and FFFF0DBA = min(limit, target), so T is a lambda offset with 32768 = 0. Inputs coolant FFFEEEDE, load FFFF03A0.",
+  "description": "",
+  "data": {
+   "units": "lambda offset",
+   "expr": "(x-32768)/43194",
+   "to_byte": "x*43194+32768",
+   "format": "0.000"
+  }
+ },
+ "0x2E3A4": {
+  "status": "identified",
+  "name": "Target Lambda Limit Offset (Coolant x Load, FFFF054A.4 clear)",
+  "category": "Fueling - Target Lambda",
+  "evidence": "0xB5E34 -> FFFF0DCA; 0xB5B38: limit = 43194 + 0DCA - 0x8000 (lambda*43194, same as FFFF0DBA) and FFFF0DBA = min(limit, target), so T is a lambda offset with 32768 = 0. Inputs coolant FFFEEEDE, load FFFF03A0.",
+  "description": "",
+  "data": {
+   "units": "lambda offset",
+   "expr": "(x-32768)/43194",
+   "to_byte": "x*43194+32768",
+   "format": "0.000"
+  }
+ },
  "0x2E418": {
   "status": "identified",
   "name": "Engine Load Threshold (0xB6258)",

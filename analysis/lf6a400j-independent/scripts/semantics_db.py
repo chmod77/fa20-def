@@ -562,6 +562,11 @@ for d, cond in ((0x2E32C, 'param_5 set, FFFF0D70 < 1000'), (0x2E340, 'param_5 se
     add(d, f'Target Lambda ({cond})', 'Fueling - Target Lambda', evl + f'Selected when {cond}.', LAMT)
 add(0x2E37C, 'Target Lambda (FFFF06CE.3 set, direct)', 'Fueling - Target Lambda', evl + 'Written directly to FFFF0DBA when FFFF06CE bit 3 set.', LAMT)
 
+for d, cond in ((0x2E3A4, 'FFFF054A.4 clear'), (0x2E390, 'FFFF054A.4 set')):
+    add(d, f'Target Lambda Limit Offset (Coolant x Load, {cond})', 'Fueling - Target Lambda',
+        '0xB5E34 -> FFFF0DCA; 0xB5B38: limit = 43194 + 0DCA - 0x8000 (lambda*43194, same as FFFF0DBA) and FFFF0DBA = min(limit, target), '
+        'so T is a lambda offset with 32768 = 0. Inputs coolant FFFEEEDE, load FFFF03A0.', ('lambda offset', '(x-32768)/43194', 'x*43194+32768', '0.000'))
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
