@@ -42,7 +42,7 @@ for l in list(open(f'{ROOT}/evidence/scalar-reads.tsv'))[1:]:
     a, w, v, fs = l.split()
     for f in fs.split(','):
         reads[f].append((int(a, 16), int(w), int(v, 16)))
-VARRE = r'(?:\(\w+\)\s*)?_?(DAT_f{3}[0-9a-f]{5}|v_\w+|param_\d+)'
+VARRE = r'\(?(?:\(\w+\)\s*)?\(?_?(DAT_f{3}[0-9a-f]{5}|v_\w+|param_\d+)(?:\s*&\s*0xff(?:ff)?)?\)?'
 CA = json.load(open(f'{ROOT}/evidence/callargs.json'))
 
 

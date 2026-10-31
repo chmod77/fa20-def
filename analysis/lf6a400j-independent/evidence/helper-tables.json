@@ -1,4 +1,160 @@
 {
+ "0xCBCE": {
+  "table": 52174,
+  "helper": "0016bb44",
+  "sites": [
+   {
+    "function": "000a33a4",
+    "input": "r5 at 0x0a33b4 (instruction-level call site)"
+   }
+  ],
+  "kind": "fixed",
+  "data_address": 52174,
+  "count": 16,
+  "data_storage": "uint16",
+  "step": false,
+  "axis_static": [
+   0,
+   16,
+   32,
+   48,
+   64,
+   80,
+   96,
+   112,
+   128,
+   144,
+   160,
+   176,
+   192,
+   208,
+   224,
+   240
+  ],
+  "data": [
+   2304,
+   2304,
+   2432,
+   2662,
+   2842,
+   2995,
+   3072,
+   3098,
+   3072,
+   3072,
+   3072,
+   3072,
+   3072,
+   3072,
+   3072,
+   3072
+  ],
+  "data_sha256": "5a8447c249bbf5f9c64210f75d7b2b76dda323eef469731717f27d8b6bc093ec"
+ },
+ "0xCBEE": {
+  "table": 52206,
+  "helper": "0016bb44",
+  "sites": [
+   {
+    "function": "000a33a4",
+    "input": "r5 at 0x0a33bc (instruction-level call site)"
+   }
+  ],
+  "kind": "fixed",
+  "data_address": 52206,
+  "count": 16,
+  "data_storage": "uint16",
+  "step": false,
+  "axis_static": [
+   0,
+   16,
+   32,
+   48,
+   64,
+   80,
+   96,
+   112,
+   128,
+   144,
+   160,
+   176,
+   192,
+   208,
+   224,
+   240
+  ],
+  "data": [
+   2611,
+   2611,
+   2560,
+   2330,
+   2048,
+   2944,
+   3072,
+   2944,
+   2637,
+   2432,
+   3072,
+   2586,
+   2586,
+   2586,
+   2586,
+   2586
+  ],
+  "data_sha256": "16443b5cef3f353637026e7187dfa201be82b8c5a86b6074241dec49c198dce7"
+ },
+ "0xCC0E": {
+  "table": 52238,
+  "helper": "0016bb44",
+  "sites": [
+   {
+    "function": "000a33a4",
+    "input": "r5 at 0x0a33c4 (instruction-level call site)"
+   }
+  ],
+  "kind": "fixed",
+  "data_address": 52238,
+  "count": 16,
+  "data_storage": "uint16",
+  "step": false,
+  "axis_static": [
+   0,
+   16,
+   32,
+   48,
+   64,
+   80,
+   96,
+   112,
+   128,
+   144,
+   160,
+   176,
+   192,
+   208,
+   224,
+   240
+  ],
+  "data": [
+   2611,
+   2611,
+   2637,
+   2560,
+   2458,
+   2995,
+   3072,
+   2944,
+   2867,
+   2842,
+   3072,
+   2662,
+   2662,
+   2662,
+   2662,
+   2662
+  ],
+  "data_sha256": "23409abbd9f389c8cdc2753731e925e318f98ebdac234b32db3d09cb138fce75"
+ },
  "0xCC2E": {
   "table": 52270,
   "helper": "0016bb44",
@@ -50,6 +206,58 @@
    2586
   ],
   "data_sha256": "6232b24a902ec32319cbf203df5906656f262aec1a8d6243a94a6ea7633f46f5"
+ },
+ "0xD05A": {
+  "table": 53338,
+  "helper": "0016bb44",
+  "sites": [
+   {
+    "function": "000a33f0",
+    "input": "r5 at 0x0a3400 (instruction-level call site)"
+   }
+  ],
+  "kind": "fixed",
+  "data_address": 53338,
+  "count": 16,
+  "data_storage": "uint16",
+  "step": false,
+  "axis_static": [
+   0,
+   16,
+   32,
+   48,
+   64,
+   80,
+   96,
+   112,
+   128,
+   144,
+   160,
+   176,
+   192,
+   208,
+   224,
+   240
+  ],
+  "data": [
+   65535,
+   65535,
+   65535,
+   65535,
+   65535,
+   65535,
+   65535,
+   65535,
+   65535,
+   65535,
+   65535,
+   65535,
+   65535,
+   65535,
+   65535,
+   65535
+  ],
+  "data_sha256": "af9613760f72635fbdb44a5a0a63c39f12af30f950a6ee5c971be188e89c4051"
  },
  "0xD07A": {
   "table": 53370,
@@ -206,6 +414,58 @@
    65535
   ],
   "data_sha256": "af9613760f72635fbdb44a5a0a63c39f12af30f950a6ee5c971be188e89c4051"
+ },
+ "0x1348C": {
+  "table": 78988,
+  "helper": "0016bc68",
+  "sites": [
+   {
+    "function": "000ab238",
+    "input": "r5 at 0x0ab24a (instruction-level call site)"
+   }
+  ],
+  "kind": "fixed",
+  "data_address": 78988,
+  "count": 16,
+  "data_storage": "uint16",
+  "step": false,
+  "axis_static": [
+   0,
+   4096,
+   8192,
+   12288,
+   16384,
+   20480,
+   24576,
+   28672,
+   32768,
+   36864,
+   40960,
+   45056,
+   49152,
+   53248,
+   57344,
+   61440
+  ],
+  "data": [
+   9216,
+   9216,
+   9216,
+   9216,
+   9216,
+   9216,
+   9216,
+   9216,
+   8448,
+   7680,
+   7424,
+   7424,
+   7424,
+   3584,
+   3584,
+   3584
+  ],
+  "data_sha256": "d3f61c2c71c9c7b1ece0d37ff853d399bd5bb63dd6bd04742b913c98951cda16"
  },
  "0x134AC": {
   "table": 79020,
@@ -1611,6 +1871,58 @@
   ],
   "data_sha256": "67d4aad693d25a922c093efab6c1df85f073949cbb271ba99684479d77d7e013"
  },
+ "0x145B4": {
+  "table": 83380,
+  "helper": "0016bc68",
+  "sites": [
+   {
+    "function": "000acacc",
+    "input": "r5 at 0x0acbd4 (instruction-level call site)"
+   }
+  ],
+  "kind": "fixed",
+  "data_address": 83380,
+  "count": 16,
+  "data_storage": "uint16",
+  "step": false,
+  "axis_static": [
+   0,
+   4096,
+   8192,
+   12288,
+   16384,
+   20480,
+   24576,
+   28672,
+   32768,
+   36864,
+   40960,
+   45056,
+   49152,
+   53248,
+   57344,
+   61440
+  ],
+  "data": [
+   5120,
+   5120,
+   5120,
+   5120,
+   5120,
+   5120,
+   5120,
+   5120,
+   5120,
+   5120,
+   5120,
+   5120,
+   5120,
+   5120,
+   5120,
+   5120
+  ],
+  "data_sha256": "75eb17ea33fa6415ac81e6cff37f6b76b7db56663579523fbc53847fcd111889"
+ },
  "0x148F0": {
   "table": 84208,
   "helper": "0016bc68",
@@ -1662,6 +1974,110 @@
    60
   ],
   "data_sha256": "6a78137f0d1d446b9705eba5f4cdf3ba07703353f0efc387a9e0e6980974ab66"
+ },
+ "0x14912": {
+  "table": 84242,
+  "helper": "0016bc68",
+  "sites": [
+   {
+    "function": "000a5b24",
+    "input": "r5 at 0x0a5b80 (instruction-level call site)"
+   }
+  ],
+  "kind": "fixed",
+  "data_address": 84242,
+  "count": 16,
+  "data_storage": "uint16",
+  "step": false,
+  "axis_static": [
+   0,
+   4096,
+   8192,
+   12288,
+   16384,
+   20480,
+   24576,
+   28672,
+   32768,
+   36864,
+   40960,
+   45056,
+   49152,
+   53248,
+   57344,
+   61440
+  ],
+  "data": [
+   2048,
+   2048,
+   2048,
+   2048,
+   2048,
+   2048,
+   2048,
+   2048,
+   2048,
+   2048,
+   2048,
+   2048,
+   2048,
+   2048,
+   2048,
+   2048
+  ],
+  "data_sha256": "c6c2a05cf619ed0920734780028abcb0602a087894bb981deb3b67d0dd98ec84"
+ },
+ "0x14932": {
+  "table": 84274,
+  "helper": "0016bc68",
+  "sites": [
+   {
+    "function": "000a5b24",
+    "input": "r5 at 0x0a5b48 (instruction-level call site)"
+   }
+  ],
+  "kind": "fixed",
+  "data_address": 84274,
+  "count": 16,
+  "data_storage": "uint16",
+  "step": false,
+  "axis_static": [
+   0,
+   4096,
+   8192,
+   12288,
+   16384,
+   20480,
+   24576,
+   28672,
+   32768,
+   36864,
+   40960,
+   45056,
+   49152,
+   53248,
+   57344,
+   61440
+  ],
+  "data": [
+   205,
+   205,
+   205,
+   205,
+   205,
+   205,
+   205,
+   328,
+   328,
+   328,
+   410,
+   410,
+   410,
+   410,
+   410,
+   410
+  ],
+  "data_sha256": "91c703b0c69e2afa8017ba9e646409f29228afa70dbcda20317498cf7029be89"
  },
  "0x14952": {
   "table": 84306,

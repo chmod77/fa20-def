@@ -1,4 +1,277 @@
 {
+ "0x1348C": {
+  "status": "identified",
+  "name": "Target Idle Speed (Modes 1-2, FFFF04D7)",
+  "category": "Idle Speed Control - Target",
+  "evidence": "0xAB238 -> FFFF0D08 -> 0xAB2FC FFFF0D0A (<<2, rate-limited) -> 0xAB09C idle target = 0D0A/4 + SSM 0x70/0x71 user adjustment (rpm*128/25); rpm = x*25/128; index coolant FFFEEEDE (0..0xF000 = -40..110 C). Modes 1-2 of FFFF04D7.",
+  "description": "",
+  "data": {
+   "units": "rpm",
+   "expr": "x*25/128",
+   "to_byte": "x*128/25",
+   "format": "0"
+  },
+  "axes": {
+   "0": {
+    "name": "Coolant Temperature",
+    "units": "C",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  },
+  "static_values": [
+   "-40",
+   "-30",
+   "-20",
+   "-10",
+   "0",
+   "10",
+   "20",
+   "30",
+   "40",
+   "50",
+   "60",
+   "70",
+   "80",
+   "90",
+   "100",
+   "110"
+  ]
+ },
+ "0x134AC": {
+  "status": "identified",
+  "name": "Target Idle Speed (Mode 3, FFFF04D7)",
+  "category": "Idle Speed Control - Target",
+  "evidence": "0xAB238 -> FFFF0D08 -> 0xAB2FC FFFF0D0A (<<2, rate-limited) -> 0xAB09C idle target = 0D0A/4 + SSM 0x70/0x71 user adjustment (rpm*128/25); rpm = x*25/128; index coolant FFFEEEDE (0..0xF000 = -40..110 C). Mode 3 of FFFF04D7.",
+  "description": "",
+  "data": {
+   "units": "rpm",
+   "expr": "x*25/128",
+   "to_byte": "x*128/25",
+   "format": "0"
+  },
+  "axes": {
+   "0": {
+    "name": "Coolant Temperature",
+    "units": "C",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  },
+  "static_values": [
+   "-40",
+   "-30",
+   "-20",
+   "-10",
+   "0",
+   "10",
+   "20",
+   "30",
+   "40",
+   "50",
+   "60",
+   "70",
+   "80",
+   "90",
+   "100",
+   "110"
+  ]
+ },
+ "0x134CC": {
+  "status": "identified",
+  "name": "Target Idle Speed (Mode 4, FFFF04D7)",
+  "category": "Idle Speed Control - Target",
+  "evidence": "0xAB238 -> FFFF0D08 -> 0xAB2FC FFFF0D0A (<<2, rate-limited) -> 0xAB09C idle target = 0D0A/4 + SSM 0x70/0x71 user adjustment (rpm*128/25); rpm = x*25/128; index coolant FFFEEEDE (0..0xF000 = -40..110 C). Mode 4 of FFFF04D7.",
+  "description": "",
+  "data": {
+   "units": "rpm",
+   "expr": "x*25/128",
+   "to_byte": "x*128/25",
+   "format": "0"
+  },
+  "axes": {
+   "0": {
+    "name": "Coolant Temperature",
+    "units": "C",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  },
+  "static_values": [
+   "-40",
+   "-30",
+   "-20",
+   "-10",
+   "0",
+   "10",
+   "20",
+   "30",
+   "40",
+   "50",
+   "60",
+   "70",
+   "80",
+   "90",
+   "100",
+   "110"
+  ]
+ },
+ "0x134EC": {
+  "status": "identified",
+  "name": "Target Idle Speed (Mode 5, FFFF04D7)",
+  "category": "Idle Speed Control - Target",
+  "evidence": "0xAB238 -> FFFF0D08 -> 0xAB2FC FFFF0D0A (<<2, rate-limited) -> 0xAB09C idle target = 0D0A/4 + SSM 0x70/0x71 user adjustment (rpm*128/25); rpm = x*25/128; index coolant FFFEEEDE (0..0xF000 = -40..110 C). Mode 5 of FFFF04D7.",
+  "description": "",
+  "data": {
+   "units": "rpm",
+   "expr": "x*25/128",
+   "to_byte": "x*128/25",
+   "format": "0"
+  },
+  "axes": {
+   "0": {
+    "name": "Coolant Temperature",
+    "units": "C",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  },
+  "static_values": [
+   "-40",
+   "-30",
+   "-20",
+   "-10",
+   "0",
+   "10",
+   "20",
+   "30",
+   "40",
+   "50",
+   "60",
+   "70",
+   "80",
+   "90",
+   "100",
+   "110"
+  ]
+ },
+ "0x1350C": {
+  "status": "identified",
+  "name": "Target Idle Speed (Mode 6, FFFF04D7)",
+  "category": "Idle Speed Control - Target",
+  "evidence": "0xAB238 -> FFFF0D08 -> 0xAB2FC FFFF0D0A (<<2, rate-limited) -> 0xAB09C idle target = 0D0A/4 + SSM 0x70/0x71 user adjustment (rpm*128/25); rpm = x*25/128; index coolant FFFEEEDE (0..0xF000 = -40..110 C). Mode 6 of FFFF04D7.",
+  "description": "",
+  "data": {
+   "units": "rpm",
+   "expr": "x*25/128",
+   "to_byte": "x*128/25",
+   "format": "0"
+  },
+  "axes": {
+   "0": {
+    "name": "Coolant Temperature",
+    "units": "C",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  },
+  "static_values": [
+   "-40",
+   "-30",
+   "-20",
+   "-10",
+   "0",
+   "10",
+   "20",
+   "30",
+   "40",
+   "50",
+   "60",
+   "70",
+   "80",
+   "90",
+   "100",
+   "110"
+  ]
+ },
+ "0x1352C": {
+  "status": "identified",
+  "name": "Target Idle Speed (Mode 7, FFFF04D7)",
+  "category": "Idle Speed Control - Target",
+  "evidence": "0xAB238 -> FFFF0D08 -> 0xAB2FC FFFF0D0A (<<2, rate-limited) -> 0xAB09C idle target = 0D0A/4 + SSM 0x70/0x71 user adjustment (rpm*128/25); rpm = x*25/128; index coolant FFFEEEDE (0..0xF000 = -40..110 C). Mode 7 of FFFF04D7.",
+  "description": "",
+  "data": {
+   "units": "rpm",
+   "expr": "x*25/128",
+   "to_byte": "x*128/25",
+   "format": "0"
+  },
+  "axes": {
+   "0": {
+    "name": "Coolant Temperature",
+    "units": "C",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  },
+  "static_values": [
+   "-40",
+   "-30",
+   "-20",
+   "-10",
+   "0",
+   "10",
+   "20",
+   "30",
+   "40",
+   "50",
+   "60",
+   "70",
+   "80",
+   "90",
+   "100",
+   "110"
+  ]
+ },
+ "0x1354C": {
+  "status": "identified",
+  "name": "Target Idle Speed (Mode 8, FFFF04D7)",
+  "category": "Idle Speed Control - Target",
+  "evidence": "0xAB238 -> FFFF0D08 -> 0xAB2FC FFFF0D0A (<<2, rate-limited) -> 0xAB09C idle target = 0D0A/4 + SSM 0x70/0x71 user adjustment (rpm*128/25); rpm = x*25/128; index coolant FFFEEEDE (0..0xF000 = -40..110 C). Mode 8 of FFFF04D7.",
+  "description": "",
+  "data": {
+   "units": "rpm",
+   "expr": "x*25/128",
+   "to_byte": "x*128/25",
+   "format": "0"
+  },
+  "axes": {
+   "0": {
+    "name": "Coolant Temperature",
+    "units": "C",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  },
+  "static_values": [
+   "-40",
+   "-30",
+   "-20",
+   "-10",
+   "0",
+   "10",
+   "20",
+   "30",
+   "40",
+   "50",
+   "60",
+   "70",
+   "80",
+   "90",
+   "100",
+   "110"
+  ]
+ },
  "0x14B7C": {
   "status": "identified",
   "name": "MAF Sensor Scaling",

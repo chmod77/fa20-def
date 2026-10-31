@@ -448,6 +448,23 @@ add(0x2DA80, 'Knock Correction Advance Max (weight 1-w, w=FFFF0E90)', KN, evk + 
 add(0x2DA94, 'Knock Correction Advance Max (weight w=FFFF0E90)', KN, evk + 'Map B.', DEGK)
 
 
+# ---------------------------------------------------------------- target idle speed (idle task 0xA8230)
+# 0xAB210: FFFF04D4 = clamp(SSM 0x70/0x71 idle user adjustment FFFF312E/312F, 0x7C..0x8C) (rpm = x*25-3200).
+# 0xAB09C: target = (FFFF0D0A>>2) + 04D4*128 - 0x4000 -> the adjustment term is rpm*128/25, so FFFF0D0A>>2 is in rpm*128/25
+#   (rpm = x*25/128 for 0D0A>>2).  0xAB2FC: FFFF0D0A = rate-limited FFFF0D08<<2.  0xAB238: FFFF0D08 = helper 0x16BC68 table selected by
+#   mode FFFF04D7 (0xAC00C from FFFF04DC; modes 1-2 -> 0x1348C, 3..8 -> 0x134AC..0x1354C), index coolant FFFEEEDE
+#   (axis 0..0xF000 step 0x1000 = -40..110 C, C = x*5/2048-40).  rpm = x*25/128.
+IDL = 'Idle Speed Control - Target'
+ECT16 = [str(-40 + 10 * k) for k in range(16)]
+ECTAX = {'0': dict(name='Coolant Temperature', units='C', expr='x', to_byte='x')}
+evi = ('0xAB238 -> FFFF0D08 -> 0xAB2FC FFFF0D0A (<<2, rate-limited) -> 0xAB09C idle target = 0D0A/4 + SSM 0x70/0x71 user adjustment '
+       '(rpm*128/25); rpm = x*25/128; index coolant FFFEEEDE (0..0xF000 = -40..110 C). ')
+for a, md in ((0x1348C, 'Modes 1-2'), (0x134AC, 'Mode 3'), (0x134CC, 'Mode 4'), (0x134EC, 'Mode 5'), (0x1350C, 'Mode 6'),
+              (0x1352C, 'Mode 7'), (0x1354C, 'Mode 8')):
+    add(a, f'Target Idle Speed ({md}, FFFF04D7)', IDL, evi + f'{md} of FFFF04D7.', ('rpm', 'x*25/128', 'x*128/25', '0'),
+        static_values=ECT16, axes=ECTAX)
+
+
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
     print(len(S), 'entries')

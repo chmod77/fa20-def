@@ -25,6 +25,20 @@ import sys
 sys.path.insert(0, H)
 from callargs import split_args
 out = {}
+def fill(rec, a, h):
+    if h in STRUCT:
+        at, dt, step = STRUCT[h]
+        dp, ap = struct.unpack_from('>II', rom, a); n = rom[a + 8]
+        rec.update(kind='struct', data_address=dp, axis_address=ap, count=n, axis_storage=at, data_storage=dt, step=step,
+                   axis=list(struct.unpack_from('>' + str(n) + F[at], rom, ap)),
+                   data=list(struct.unpack_from('>' + str(n) + F[dt], rom, dp)))
+    else:
+        dt, n, a0, st = FIXED[h]
+        rec.update(kind='fixed', data_address=a, count=n, data_storage=dt, step=False, axis_static=[a0 + i * st for i in range(n)],
+                   data=list(struct.unpack_from('>' + str(n) + F[dt], rom, a)))
+    rec['data_sha256'] = hashlib.sha256(rom[rec['data_address']:rec['data_address'] + rec['count'] * W[rec['data_storage']]]).hexdigest()
+
+
 for p in sorted(glob.glob(f'{ROOT}/cdump/*.c')):
     fn = os.path.basename(p)[:-2]; s = open(p).read()
     for m in re.finditer(r'FUN_(0016[bc][0-9a-f]{3})\(', s):
@@ -42,17 +56,18 @@ for p in sorted(glob.glob(f'{ROOT}/cdump/*.c')):
             continue
         rec = out.setdefault(a, dict(table=a, helper=h, sites=[]))
         rec['sites'].append(dict(function=fn, input=args[1]))
-        if h in STRUCT:
-            at, dt, step = STRUCT[h]
-            dp, ap = struct.unpack_from('>II', rom, a); n = rom[a + 8]
-            rec.update(kind='struct', data_address=dp, axis_address=ap, count=n, axis_storage=at, data_storage=dt, step=step,
-                       axis=list(struct.unpack_from('>' + str(n) + F[at], rom, ap)),
-                       data=list(struct.unpack_from('>' + str(n) + F[dt], rom, dp)))
-        else:
-            dt, n, a0, st = FIXED[h]
-            rec.update(kind='fixed', data_address=a, count=n, data_storage=dt, step=False, axis_static=[a0 + i * st for i in range(n)],
-                       data=list(struct.unpack_from('>' + str(n) + F[dt], rom, a)))
-        rec['data_sha256'] = hashlib.sha256(rom[rec['data_address']:rec['data_address'] + rec['count'] * W[rec['data_storage']]]).hexdigest()
+        fill(rec, a, h)
+# instruction-level call sites (evidence/stack-args.tsv: r4 = table pointer) catch calls whose C prototype lost arguments
+for l in list(open(f'{ROOT}/evidence/stack-args.tsv'))[1:]:
+    ce, cr, ia, k, v = l.split()
+    h = ce.zfill(8); a = int(v, 16)
+    if k != '1' or (h not in STRUCT and h not in FIXED) or a >= len(rom) or a < 0x8000:
+        continue
+    rec = out.setdefault(a, dict(table=a, helper=h, sites=[]))
+    if not any(x['function'] == cr.zfill(8) for x in rec['sites']):
+        rec['sites'].append(dict(function=cr.zfill(8), input=f'r5 at 0x{ia} (instruction-level call site)'))
+    fill(rec, a, h)
+
 json.dump({f'0x{k:X}': v for k, v in sorted(out.items())}, open(f'{ROOT}/evidence/helper-tables.json', 'w'), indent=1)
 print(len(out), 'secondary tables;', collections.Counter(v['helper'] for v in out.values()))
 for k, v in sorted(out.items()):

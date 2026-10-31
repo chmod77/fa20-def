@@ -160,3 +160,16 @@ V2.update({
 V2.update({
  0xFFFEF18E:('Control Module Voltage (copy)','V','x*625/2048000','x*2048000/625','0x4C0E8/0x4CDB2: x = FFFEEF18 (OBD PID42 V = x*625/2048000) or substitute'),
 })
+
+V2.update({
+ 0xFFFF0D08:('Target Idle Speed (base, table)','rpm','x*25/128','x*128/25','0xAB238 helper table by mode FFFF04D7; see 0xAB09C proof'),
+ 0xFFFF0D0A:('Target Idle Speed (base, rate-limited)','rpm','x*25/512','x*512/25','0xAB2FC = FFFF0D08<<2; 0xAB09C adds SSM 0x70 adjustment *128 (rpm*128/25) to 0D0A>>2'),
+ 0xFFFF04D4:('Idle Speed User Adjustment (clamped)','rpm','x*25-3200','(x+3200)/25','0xAB210 clamp(FFFF312E/312F, 0x7C..0x8C)'),
+ 0xFFFF04BA:('Knock Correction Advance Max (blended)','deg','x*45/128','x*128/45','0xA2F20 blend of T_02DA80/T_02DA94; unit via 0x96F3C (x*90/128 in 0.5 deg) and SSM 0x199'),
+ 0xFFFF04A4:('Knock Correction Advance (IAM applied)','deg','x*45/128','x*128/45','0x9EEE0 = IAM FFFF3669 * 04BA / 16'),
+ 0xFFFF04AD:('Knock Correction Retard','deg','x*45/128','x*128/45','0x98FAC adds x*180/256 in 0.5 deg; written by 0x9F368 (signed)'),
+ 0xFFFF11B8:('Intake AVCS Target (raw)','deg','x*180/65536','x*65536/180','0xF8EE0 param_13; 0xF92CC converts with 0.0027465818 deg/count'),
+ 0xFFFF1208:('Exhaust AVCS Target (raw)','deg','x*180/65536','x*65536/180','0xFC52C param_13; 0xFC918 same conversion'),
+ 0xFFFF047B:('Ignition Timing Term 047B','deg','x/2','x*2','0x98FAC adds to FFFF046C in 0.5 deg'),
+ 0xFFFF0479:('Ignition Timing IAT Adder','deg','x/2','x*2','0x99558 sums into 0473 (0.5 deg)'),
+})
