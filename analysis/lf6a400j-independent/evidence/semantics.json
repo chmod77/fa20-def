@@ -826,7 +826,7 @@
   "status": "identified",
   "name": "Ignition Timing Compensation (IAT) Activation (RPM x Load)",
   "category": "Ignition Timing",
-  "evidence": "0x9D9F0: FFFF049B = T_02D990(IAT FFFEEEE2) * T_02D97C(rpm, load FFFF09B4) / 128 (half-degrees), only when FFFEE6AF==3 and FFFF299C > 0x1F; 0x86758 adds FFFF049B to base timing FFFF03D1 -> Ignition Total Timing FFFF046C (SSM 0x11).",
+  "evidence": "0x9D9F0: FFFF049B = T_02D990(IAT FFFEEEE2) * T_02D97C(rpm, load FFFF09B4) / 128 (half-degrees), only when FFFEE6AF==3 and FFFF299C (rpm/25) > 0x1F (775 rpm); 0x86758 adds FFFF049B to base timing FFFF03D1 -> Ignition Total Timing FFFF046C (SSM 0x11).",
   "description": "",
   "data": {
    "units": "%",
@@ -839,7 +839,7 @@
   "status": "identified",
   "name": "Ignition Timing Compensation (IAT)",
   "category": "Ignition Timing",
-  "evidence": "0x9D9F0: FFFF049B = T_02D990(IAT FFFEEEE2) * T_02D97C(rpm, load FFFF09B4) / 128 (half-degrees), only when FFFEE6AF==3 and FFFF299C > 0x1F; 0x86758 adds FFFF049B to base timing FFFF03D1 -> Ignition Total Timing FFFF046C (SSM 0x11).",
+  "evidence": "0x9D9F0: FFFF049B = T_02D990(IAT FFFEEEE2) * T_02D97C(rpm, load FFFF09B4) / 128 (half-degrees), only when FFFEE6AF==3 and FFFF299C (rpm/25) > 0x1F (775 rpm); 0x86758 adds FFFF049B to base timing FFFF03D1 -> Ignition Total Timing FFFF046C (SSM 0x11).",
   "description": "",
   "data": {
    "units": "deg",
@@ -850,9 +850,9 @@
  },
  "0x2D99C": {
   "status": "identified",
-  "name": "Ignition Timing Compensation (Coolant, FFFF299C >= 200)",
+  "name": "Ignition Timing Compensation (Coolant, >= 5000 rpm)",
   "category": "Ignition Timing",
-  "evidence": "0x9DAC8: FFFF049C = FFFF0487 + T(coolant FFFEEEDE) - 128 (half-degrees; FFFF0487 is the 128-biased output of 0x9B058), only when FFFEE6AF==3 and FFFF299C > 0x1F; T_02D99C when FFFF299C >= 200 (192 hysteresis), else T_02D9A8; 0x86758 adds FFFF049C to base timing.",
+  "evidence": "0x9DAC8: FFFF049C = FFFF0487 + T(coolant FFFEEEDE) - 128 (half-degrees; FFFF0487 is the 128-biased output of 0x9B058), only when FFFEE6AF==3 and FFFF299C (rpm/25) > 0x1F (775 rpm); T_02D99C when FFFF299C >= 200 (5000 rpm; 192 = 4800 rpm hysteresis), else T_02D9A8; 0x86758 adds FFFF049C to base timing.",
   "description": "",
   "data": {
    "units": "deg",
@@ -863,9 +863,9 @@
  },
  "0x2D9A8": {
   "status": "identified",
-  "name": "Ignition Timing Compensation (Coolant, FFFF299C < 200)",
+  "name": "Ignition Timing Compensation (Coolant, < 5000 rpm)",
   "category": "Ignition Timing",
-  "evidence": "0x9DAC8: FFFF049C = FFFF0487 + T(coolant FFFEEEDE) - 128 (half-degrees; FFFF0487 is the 128-biased output of 0x9B058), only when FFFEE6AF==3 and FFFF299C > 0x1F; T_02D99C when FFFF299C >= 200 (192 hysteresis), else T_02D9A8; 0x86758 adds FFFF049C to base timing.",
+  "evidence": "0x9DAC8: FFFF049C = FFFF0487 + T(coolant FFFEEEDE) - 128 (half-degrees; FFFF0487 is the 128-biased output of 0x9B058), only when FFFEE6AF==3 and FFFF299C (rpm/25) > 0x1F (775 rpm); T_02D99C when FFFF299C >= 200 (5000 rpm; 192 = 4800 rpm hysteresis), else T_02D9A8; 0x86758 adds FFFF049C to base timing.",
   "description": "",
   "data": {
    "units": "deg",

@@ -136,3 +136,8 @@ V2.update({
  0xFFFF0A56:('Requested Torque D (pedal)','Nm','(x-16000)/80','x*80+16000','0x815A0 out.'+_TQ),
 })
 
+
+V2.update({
+ 0xFFFF299C:('Engine Speed (byte, 25 rpm)','rpm','x*25','x/25','0x143640: FFFF1A3A = 48e6/period (-> FFFF2994 rpm, x*25/128, copied at 0x154C8C/0x157038/0x15824E) and FFFF1A3C = ((3e6/period)+4)>>3 = FFFF1A3A/128 (rounded); FFFF299C = FFFF1A3C (0x154C9A/0x157042/0x15825A) => rpm = x*128*25/128 = x*25'),
+ 0xFFFF1A3C:('Engine Speed (byte, 25 rpm, source)','rpm','x*25','x/25','0x143640, see FFFF299C'),
+})

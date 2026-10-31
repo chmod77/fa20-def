@@ -129,13 +129,13 @@ add(0x2D158, 'Decaying Fuel Enrichment B (Load x Coolant)', FUEL, _e84, LAM)
 add(0x2D16C, 'Decaying Fuel Enrichment Multiplier (RPM)', FUEL, _e84, ('%', 'x*100/128', 'x*128/100', '0.0'))
 
 _b9b = ('0x9D9F0: FFFF049B = T_02D990(IAT FFFEEEE2) * T_02D97C(rpm, load FFFF09B4) / 128 (half-degrees), only when FFFEE6AF==3 and '
-        'FFFF299C > 0x1F; 0x86758 adds FFFF049B to base timing FFFF03D1 -> Ignition Total Timing FFFF046C (SSM 0x11).')
+        'FFFF299C (rpm/25) > 0x1F (775 rpm); 0x86758 adds FFFF049B to base timing FFFF03D1 -> Ignition Total Timing FFFF046C (SSM 0x11).')
 add(0x2D990, 'Ignition Timing Compensation (IAT)', IGN, _b9b, DEG2)
 add(0x2D97C, 'Ignition Timing Compensation (IAT) Activation (RPM x Load)', IGN, _b9b, ('%', 'x*100/128', 'x*128/100', '0.0'))
 _b9c = ('0x9DAC8: FFFF049C = FFFF0487 + T(coolant FFFEEEDE) - 128 (half-degrees; FFFF0487 is the 128-biased output of 0x9B058), only when '
-        'FFFEE6AF==3 and FFFF299C > 0x1F; T_02D99C when FFFF299C >= 200 (192 hysteresis), else T_02D9A8; 0x86758 adds FFFF049C to base timing.')
-add(0x2D99C, 'Ignition Timing Compensation (Coolant, FFFF299C >= 200)', IGN, _b9c, DEG2)
-add(0x2D9A8, 'Ignition Timing Compensation (Coolant, FFFF299C < 200)', IGN, _b9c, DEG2)
+        'FFFEE6AF==3 and FFFF299C (rpm/25) > 0x1F (775 rpm); T_02D99C when FFFF299C >= 200 (5000 rpm; 192 = 4800 rpm hysteresis), else T_02D9A8; 0x86758 adds FFFF049C to base timing.')
+add(0x2D99C, 'Ignition Timing Compensation (Coolant, >= 5000 rpm)', IGN, _b9c, DEG2)
+add(0x2D9A8, 'Ignition Timing Compensation (Coolant, < 5000 rpm)', IGN, _b9c, DEG2)
 add(0x2D938, 'Ignition Timing Limit (Base Path)', IGN,
     '0x9D664: FFFF0497 = T(rpm, load FFFF09B4); 0x9B384: FFFF0488 = min(FFFF03D1 - T_02D890, FFFF0497) (half-degrees) -> 048B -> 0473 -> FFFF046C.', DEG2)
 add(0x2D890, 'Ignition Timing Reduction (vs ratio FFFF0AA8)', IGN,
