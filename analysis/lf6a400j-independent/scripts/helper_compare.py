@@ -12,7 +12,7 @@ keys = {int(k, 16) for k in HT}
 rows = []
 for p in sorted(glob.glob(f'{ROOT}/cdump/*.c')):
     fn = os.path.basename(p)[:-2]; s = open(p).read()
-    for m in re.finditer(r'(\w+)\s*=\s*(?:\(\w+\)\s*)?FUN_0016[0-9a-f]{4}\(\s*(?:\(\w+\s*\*?\)\s*)?&(?:DAT|UNK|PTR_DAT)_0*([0-9a-f]+)\s*,\s*([^;]*)\);', s):
+    for m in re.finditer(r'(\w+)\s*=\s*(?:\(\w+\)\s*)?FUN_[0-9a-f]{8}\(\s*(?:\(\w+\s*\*?\)\s*)?&(?:DAT|UNK|PTR_DAT)_0*([0-9a-f]+)\s*,\s*([^;]*)\);', s):
         v, t = m.group(1), int(m.group(2), 16)
         if t not in keys or f'0x{t:X}' in S:
             continue

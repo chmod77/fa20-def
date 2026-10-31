@@ -1132,6 +1132,21 @@ add(0x158FE, 'Fuel Rail Pressure Threshold vs Coolant [0xC02D4]', 'Fuel System -
     axes={'0': dict(name='Coolant Temperature (filtered, word)', units='C', expr='x*5/2048-40', to_byte='(x+40)*2048/5')},
     static_values=[f'{v*5/2048-40:.1f}' for v in range(0, 65536, 4096)])
 
+add(0x163AA8, 'Mass Airflow Threshold vs RPM [0x5036C]', 'Diagnostics',
+    '0x5036C: u = helper 0x52B4A(0x163AA8, Engine Speed (OBD copy) FFFF2ADA) (u16 axis, u32 data); condition u < FFFEECB0 (MAF curve '
+    'value, g/s = x/76800; 0x4C53C: OBD PID10 MAF = 16*ECB0/5625) is a direct comparison. 0xFFFFFF00 = never.',
+    ('g/s', 'x/76800', 'x*76800', '0.00'),
+    axes={'0': dict(name='Engine Speed (OBD copy)', units='rpm', expr='x*25/128', to_byte='x*128/25')})
+add(0x163AB4, 'Manifold Gauge Pressure Threshold vs Coolant [0x5036C]', 'Diagnostics',
+    '0x5036C: v = helper 0x16BBC4(0x163AB4, Coolant (sampled) FFFF29A7, C = x-50); condition v < FFFEEED2 (= (MAP - atmospheric)/2, '
+    'kPa = x/128) is a direct comparison. 32640 = never.', ('kPa', 'x/128', 'x*128', '0.00'),
+    axes={'0': dict(name='Coolant Temperature (sampled)', units='C', expr='x-50', to_byte='x+50')})
+for _t, _fn, _nm in ((0x14DB0, '0x14F35C', 'A'), (0x14DA0, '0x14F4AE', 'B')):
+    add(_t, f'Engine Speed Threshold {_nm} vs FFFF2C71 [{_fn}]', 'Crank/Cam Signal Processing',
+        f'{_fn}: t = helper 0x16ACD6({_t:#x}, FFFF2C71) (16 x s8, implicit axis 0..240 step 16) compared directly with FFFF1A3C (engine '
+        'speed source byte, rpm = x*25; 0x143640: 1A3C = 1A3A/128 with 1A3A -> FFFF2994 rpm x*25/128). Input FFFF2C71 unresolved.',
+        ('rpm', 'x*25', 'x/25', '0'))
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

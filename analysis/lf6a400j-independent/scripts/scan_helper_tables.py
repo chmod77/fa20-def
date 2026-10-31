@@ -8,6 +8,8 @@ Layouts established from each helper's decompiled code (cdump/0016xxxx.c):
   fixed-step helpers  param_1 -> data array, implicit axis
     0x16BC68 16 x u16, input 0..0xF000 step 0x1000     0x16BB44 16 x u16, input 0..240 step 16
     0x16BA04 16 x u8,  input 0..240 step 16            0x16B0AC 64 x u32, input 0..0x3F00 step 0x100
+    0x52B4A axis u16 / data u32 ('<' search)       0x16BBC4 axis u8 / data s16 (0x16BD98/0x16BE0C)
+    0x16ACD6 16 x s8, input 0..240 step 16         0x16AEB4 16 x u16, input 0..0xF000 step 0x1000
 Only call sites whose table argument is a constant ROM address are recorded.
 Output: evidence/helper-tables.json"""
 import re, os, glob, json, struct, collections, hashlib
@@ -15,9 +17,10 @@ H = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(H)
 rom = open(f'{ROOT}/../../roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin', 'rb').read()
 STRUCT = {'0016bc08': ('uint16', 'int16', False), '0016b14c': ('uint16', 'int16', False), '0016b1a8': ('int16', 'int16', False),
           '0016ba80': ('uint16', 'int8', False), '0016b9a4': ('uint8', 'int8', False), '0016bae4': ('uint8', 'int16', False),
-          '0016b238': ('uint8', 'int16', True), '0016bcec': ('uint16', 'int8', True)}
+          '0016b238': ('uint8', 'int16', True), '0016bcec': ('uint16', 'int8', True),
+          '00052b4a': ('uint16', 'uint32', False), '0016bbc4': ('uint8', 'int16', False)}
 FIXED = {'0016bc68': ('uint16', 16, 0, 0x1000), '0016bb44': ('uint16', 16, 0, 16), '0016ba04': ('uint8', 16, 0, 16),
-         '0016b0ac': ('uint32', 64, 0, 0x100)}
+         '0016b0ac': ('uint32', 64, 0, 0x100), '0016acd6': ('int8', 16, 0, 16), '0016aeb4': ('uint16', 16, 0, 0x1000)}
 W = {'uint8': 1, 'int8': 1, 'uint16': 2, 'int16': 2, 'uint32': 4}
 F = {'uint8': 'B', 'int8': 'b', 'uint16': 'H', 'int16': 'h', 'uint32': 'I'}
 sys_path = H
@@ -41,7 +44,7 @@ def fill(rec, a, h):
 
 for p in sorted(glob.glob(f'{ROOT}/cdump/*.c')):
     fn = os.path.basename(p)[:-2]; s = open(p).read()
-    for m in re.finditer(r'FUN_(0016[bc][0-9a-f]{3})\(', s):
+    for m in re.finditer(r'FUN_([0-9a-f]{8})\(', s):
         h = m.group(1)
         if h not in STRUCT and h not in FIXED:
             continue

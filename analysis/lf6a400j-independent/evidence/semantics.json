@@ -359,6 +359,32 @@
    "4.9219"
   ]
  },
+ "0x14DA0": {
+  "status": "identified",
+  "name": "Engine Speed Threshold B vs FFFF2C71 [0x14F4AE]",
+  "category": "Crank/Cam Signal Processing",
+  "evidence": "0x14F4AE: t = helper 0x16ACD6(0x14da0, FFFF2C71) (16 x s8, implicit axis 0..240 step 16) compared directly with FFFF1A3C (engine speed source byte, rpm = x*25; 0x143640: 1A3C = 1A3A/128 with 1A3A -> FFFF2994 rpm x*25/128). Input FFFF2C71 unresolved.",
+  "description": "",
+  "data": {
+   "units": "rpm",
+   "expr": "x*25",
+   "to_byte": "x/25",
+   "format": "0"
+  }
+ },
+ "0x14DB0": {
+  "status": "identified",
+  "name": "Engine Speed Threshold A vs FFFF2C71 [0x14F35C]",
+  "category": "Crank/Cam Signal Processing",
+  "evidence": "0x14F35C: t = helper 0x16ACD6(0x14db0, FFFF2C71) (16 x s8, implicit axis 0..240 step 16) compared directly with FFFF1A3C (engine speed source byte, rpm = x*25; 0x143640: 1A3C = 1A3A/128 with 1A3A -> FFFF2994 rpm x*25/128). Input FFFF2C71 unresolved.",
+  "description": "",
+  "data": {
+   "units": "rpm",
+   "expr": "x*25",
+   "to_byte": "x/25",
+   "format": "0"
+  }
+ },
  "0x152DC": {
   "status": "identified",
   "name": "Wastegate Duty Compensation (IAT)",
@@ -8537,6 +8563,48 @@
     "units": "C",
     "expr": "x*5/2048-40",
     "to_byte": "(x+40)*2048/5"
+   }
+  }
+ },
+ "0x163AA8": {
+  "status": "identified",
+  "name": "Mass Airflow Threshold vs RPM [0x5036C]",
+  "category": "Diagnostics",
+  "evidence": "0x5036C: u = helper 0x52B4A(0x163AA8, Engine Speed (OBD copy) FFFF2ADA) (u16 axis, u32 data); condition u < FFFEECB0 (MAF curve value, g/s = x/76800; 0x4C53C: OBD PID10 MAF = 16*ECB0/5625) is a direct comparison. 0xFFFFFF00 = never.",
+  "description": "",
+  "data": {
+   "units": "g/s",
+   "expr": "x/76800",
+   "to_byte": "x*76800",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed (OBD copy)",
+    "units": "rpm",
+    "expr": "x*25/128",
+    "to_byte": "x*128/25"
+   }
+  }
+ },
+ "0x163AB4": {
+  "status": "identified",
+  "name": "Manifold Gauge Pressure Threshold vs Coolant [0x5036C]",
+  "category": "Diagnostics",
+  "evidence": "0x5036C: v = helper 0x16BBC4(0x163AB4, Coolant (sampled) FFFF29A7, C = x-50); condition v < FFFEEED2 (= (MAP - atmospheric)/2, kPa = x/128) is a direct comparison. 32640 = never.",
+  "description": "",
+  "data": {
+   "units": "kPa",
+   "expr": "x/128",
+   "to_byte": "x*128",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Coolant Temperature (sampled)",
+    "units": "C",
+    "expr": "x-50",
+    "to_byte": "x+50"
    }
   }
  },
