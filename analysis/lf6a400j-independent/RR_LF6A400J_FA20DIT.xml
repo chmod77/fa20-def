@@ -3693,7 +3693,7 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Minimum Ignition Timing (Coolant)" category="Ignition Timing" storageaddress="19BF8" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2D4A0, 0x2D5BC. Evidence: 0x98FAC: lower clamp of Ignition Total Timing FFFF046C (half-degrees) when FFFEE710.5 clear and 4 &lt; FFFF29B4/4 &lt; 81; input coolant FFFEEEDE; otherwise floor is -25 deg." sizey="16">
+    <table type="2D" name="Minimum Ignition Timing (Coolant)" category="Ignition Timing" storageaddress="19BF8" storagetype="int8" endian="big" userlevel="1" description="Descriptor(s): 0x2D4A0, 0x2D5BC. Evidence: 0x96F3C: FFFF0458 = max(T(coolant FFFEEEDE) [or -0x32], computed advance) (signed 0.5 deg); 0x86B58 selects 0458/0531/0532/0533 into FFFF03D3, and 0x88478 compares |03D3 - FFFF046C (Ignition Total Timing, SSM 0x11)|, so the unit is that of 046C (deg = x/2). Same storage as T_02D5BC (lower clamp of FFFF046C in 0x98FAC): independent confirmation." sizey="16">
       <scaling units="deg" expression="x/2" to_byte="x*2" format="0.0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
       <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1E654" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />

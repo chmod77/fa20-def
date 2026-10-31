@@ -532,6 +532,12 @@ for d, nm, how in ((0x2E954, 'Torque Limit Upper (RPM) [0xC3FA8]', 'min(torque, 
         ('Nm', '(x-16000)/80', 'x*80+16000', '0.0'),
         axes={'0': dict(name='Engine Speed', units='rpm', expr='x*25/128', to_byte='x*128/25')})
 
+add(0x2D4A0, 'Minimum Ignition Timing (Coolant)', IGN,
+    '0x96F3C: FFFF0458 = max(T(coolant FFFEEEDE) [or -0x32], computed advance) (signed 0.5 deg); 0x86B58 selects 0458/0531/0532/0533 '
+    'into FFFF03D3, and 0x88478 compares |03D3 - FFFF046C (Ignition Total Timing, SSM 0x11)|, so the unit is that of 046C (deg = x/2). '
+    'Same storage as T_02D5BC (lower clamp of FFFF046C in 0x98FAC): independent confirmation.',
+    DEG2)
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
