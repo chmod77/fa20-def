@@ -8883,16 +8883,16 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified secondary 64 @0x02B136 [H1638E0]" category="Unidentified - Task 0x1528A2" storageaddress="2B136" storagetype="uint16" endian="big" userlevel="1" sizey="64" description="Secondary table read by helper 0x16B1A8 (structure/array at 0x1638E0); call sites: 0003cbd6. Function/output scaling not yet proven from the binary; locked." locked="true">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2B236" elements="64" storagetype="int16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+    <table type="2D" name="A/F Sensor #1 Scaling (Current to Lambda)" category="Sensors" storageaddress="2B136" storagetype="uint16" endian="big" userlevel="1" sizey="64" description="Secondary table read by helper 0x16B1A8 (structure/array at 0x1638E0); call sites: 0003cbd6. Evidence: 0x3CBD6: FFFEEF94 = helper 0x16B1A8(table, A/F Sensor #1 Current FFFEF006 (SSM 0x42, mA = x/1000, signed)); 0x3CC16: A/F Sensor #1 FFFEEF96 (SSM 0x46, lambda = x/8192) = (FFFEEF94&lt;&lt;13)/0xA8BA =&gt; lambda = x/43194. Variant selected by FFFEEF99.4. Used when FFFEEF99.4 = 0.">
+      <scaling units="lambda" expression="x/43194" to_byte="x*43194" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="A/F Sensor #1 Current" storageaddress="2B236" elements="64" storagetype="int16" endian="big">
+        <scaling units="mA" expression="x/1000" to_byte="x*1000" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified secondary 64 @0x02B1B6 [H1638EC]" category="Unidentified - Task 0x1528A2" storageaddress="2B1B6" storagetype="uint16" endian="big" userlevel="1" sizey="64" description="Secondary table read by helper 0x16B1A8 (structure/array at 0x1638EC); call sites: 0003cbd6. Function/output scaling not yet proven from the binary; locked." locked="true">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2B236" elements="64" storagetype="int16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
+    <table type="2D" name="A/F Sensor #1 Scaling (Current to Lambda, alternate)" category="Sensors" storageaddress="2B1B6" storagetype="uint16" endian="big" userlevel="1" sizey="64" description="Secondary table read by helper 0x16B1A8 (structure/array at 0x1638EC); call sites: 0003cbd6. Evidence: 0x3CBD6: FFFEEF94 = helper 0x16B1A8(table, A/F Sensor #1 Current FFFEF006 (SSM 0x42, mA = x/1000, signed)); 0x3CC16: A/F Sensor #1 FFFEEF96 (SSM 0x46, lambda = x/8192) = (FFFEEF94&lt;&lt;13)/0xA8BA =&gt; lambda = x/43194. Variant selected by FFFEEF99.4. Used when FFFEEF99.4 = 1.">
+      <scaling units="lambda" expression="x/43194" to_byte="x*43194" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="A/F Sensor #1 Current" storageaddress="2B236" elements="64" storagetype="int16" endian="big">
+        <scaling units="mA" expression="x/1000" to_byte="x*1000" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
     <table type="2D" name="Unidentified secondary 24 @0x02B2BB [H163AE4]" category="Unidentified - Task 0x152A40" storageaddress="2B2BB" storagetype="uint8" endian="big" userlevel="1" sizey="24" description="Secondary table read by helper 0x16BCEC (structure/array at 0x163AE4); call sites: 0005109c. Function/output scaling not yet proven from the binary; locked." locked="true">
@@ -8919,15 +8919,15 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified secondary 16 @0x02B4D0 [H168B20]" category="Unidentified - Task 0x152A40 / Task 0x153B4E" storageaddress="2B4D0" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC08 (structure/array at 0x168B20); call sites: 0006825a. Function/output scaling not yet proven from the binary; locked." locked="true">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2B4F0" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Accelerator Pedal Position Scaling (Sensor 1)" category="Electronic Throttle - Pedal" storageaddress="2B4D0" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC08 (structure/array at 0x168B20); call sites: 0006825a. Evidence: 0x6825A: FFFEF134 = helper 0x16BC08(0x168B20, FFFEF142) and FFFEF13A from 0x168B2C(FFFEF140); 0x69F44 selects FFFEF134 (or min(F134,F13A)) into the accelerator pedal angle FFFEECB4, interchangeable with SSM pedal angle FFFEEEF8 (SSM 0x29, % = x*100/65280).">
+      <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Accelerator Pedal Sensor 1 Signal (FFFEF142, raw)" storageaddress="2B4F0" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified secondary 16 @0x02B4D0 [H168B2C]" category="Unidentified - Task 0x152A40 / Task 0x153B4E" storageaddress="2B4D0" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC08 (structure/array at 0x168B2C); call sites: 0006825a. Function/output scaling not yet proven from the binary; locked." locked="true">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="2B510" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Accelerator Pedal Position Scaling (Sensor 2)" category="Electronic Throttle - Pedal" storageaddress="2B4D0" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC08 (structure/array at 0x168B2C); call sites: 0006825a. Evidence: 0x6825A: FFFEF134 = helper 0x16BC08(0x168B20, FFFEF142) and FFFEF13A from 0x168B2C(FFFEF140); 0x69F44 selects FFFEF134 (or min(F134,F13A)) into the accelerator pedal angle FFFEECB4, interchangeable with SSM pedal angle FFFEEEF8 (SSM 0x29, % = x*100/65280).">
+      <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Accelerator Pedal Sensor 2 Signal (FFFEF140, raw)" storageaddress="2B510" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>

@@ -1125,6 +1125,48 @@
    }
   }
  },
+ "0x1638E0": {
+  "status": "identified",
+  "name": "A/F Sensor #1 Scaling (Current to Lambda)",
+  "category": "Sensors",
+  "evidence": "0x3CBD6: FFFEEF94 = helper 0x16B1A8(table, A/F Sensor #1 Current FFFEF006 (SSM 0x42, mA = x/1000, signed)); 0x3CC16: A/F Sensor #1 FFFEEF96 (SSM 0x46, lambda = x/8192) = (FFFEEF94<<13)/0xA8BA => lambda = x/43194. Variant selected by FFFEEF99.4. Used when FFFEEF99.4 = 0.",
+  "description": "",
+  "data": {
+   "units": "lambda",
+   "expr": "x/43194",
+   "to_byte": "x*43194",
+   "format": "0.000"
+  },
+  "axes": {
+   "0": {
+    "name": "A/F Sensor #1 Current",
+    "units": "mA",
+    "expr": "x/1000",
+    "to_byte": "x*1000"
+   }
+  }
+ },
+ "0x1638EC": {
+  "status": "identified",
+  "name": "A/F Sensor #1 Scaling (Current to Lambda, alternate)",
+  "category": "Sensors",
+  "evidence": "0x3CBD6: FFFEEF94 = helper 0x16B1A8(table, A/F Sensor #1 Current FFFEF006 (SSM 0x42, mA = x/1000, signed)); 0x3CC16: A/F Sensor #1 FFFEEF96 (SSM 0x46, lambda = x/8192) = (FFFEEF94<<13)/0xA8BA => lambda = x/43194. Variant selected by FFFEEF99.4. Used when FFFEEF99.4 = 1.",
+  "description": "",
+  "data": {
+   "units": "lambda",
+   "expr": "x/43194",
+   "to_byte": "x*43194",
+   "format": "0.000"
+  },
+  "axes": {
+   "0": {
+    "name": "A/F Sensor #1 Current",
+    "units": "mA",
+    "expr": "x/1000",
+    "to_byte": "x*1000"
+   }
+  }
+ },
  "0x1638F8": {
   "status": "identified",
   "name": "Fuel Level Sensor Scaling",
@@ -1161,6 +1203,48 @@
   "axes": {
    "0": {
     "name": "Battery Temp Sensor Signal (raw)",
+    "units": "raw",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x168B20": {
+  "status": "identified",
+  "name": "Accelerator Pedal Position Scaling (Sensor 1)",
+  "category": "Electronic Throttle - Pedal",
+  "evidence": "0x6825A: FFFEF134 = helper 0x16BC08(0x168B20, FFFEF142) and FFFEF13A from 0x168B2C(FFFEF140); 0x69F44 selects FFFEF134 (or min(F134,F13A)) into the accelerator pedal angle FFFEECB4, interchangeable with SSM pedal angle FFFEEEF8 (SSM 0x29, % = x*100/65280).",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/65280",
+   "to_byte": "x*65280/100",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Accelerator Pedal Sensor 1 Signal (FFFEF142, raw)",
+    "units": "raw",
+    "expr": "x",
+    "to_byte": "x"
+   }
+  }
+ },
+ "0x168B2C": {
+  "status": "identified",
+  "name": "Accelerator Pedal Position Scaling (Sensor 2)",
+  "category": "Electronic Throttle - Pedal",
+  "evidence": "0x6825A: FFFEF134 = helper 0x16BC08(0x168B20, FFFEF142) and FFFEF13A from 0x168B2C(FFFEF140); 0x69F44 selects FFFEF134 (or min(F134,F13A)) into the accelerator pedal angle FFFEECB4, interchangeable with SSM pedal angle FFFEEEF8 (SSM 0x29, % = x*100/65280).",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/65280",
+   "to_byte": "x*65280/100",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Accelerator Pedal Sensor 2 Signal (FFFEF140, raw)",
     "units": "raw",
     "expr": "x",
     "to_byte": "x"

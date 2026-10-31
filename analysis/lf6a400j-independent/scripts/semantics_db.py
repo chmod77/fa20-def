@@ -217,6 +217,18 @@ add(0x2CA14, 'Target Throttle Opening (vs max(FFFF09D4, FFFF0B16))', 'Electronic
     '= T(max(FFFF09D4, FFFF0B16))*400/689 in normal running (param_1..3 = 0, engine state != 1) => % = x*400/(689*256); max entry 44096 = 100.0 %. '
     'Inputs: FFFF09D4 (written by 0x7FAA0 = T_02C200(min(FFFF0CD8, T_02C1F4(coolant))), range 0..2982) and FFFF0B16; the larger is used. Physical unit of the input unresolved.', ('%', 'x*400/176384', 'x*176384/400', '0.00'))
 
+_af = ('0x3CBD6: FFFEEF94 = helper 0x16B1A8(table, A/F Sensor #1 Current FFFEF006 (SSM 0x42, mA = x/1000, signed)); 0x3CC16: '
+       'A/F Sensor #1 FFFEEF96 (SSM 0x46, lambda = x/8192) = (FFFEEF94<<13)/0xA8BA => lambda = x/43194. Variant selected by FFFEEF99.4.')
+AFAX = {'0': dict(name='A/F Sensor #1 Current', units='mA', expr='x/1000', to_byte='x*1000')}
+add(0x1638E0, 'A/F Sensor #1 Scaling (Current to Lambda)', SENS, _af + ' Used when FFFEEF99.4 = 0.', ('lambda', 'x/43194', 'x*43194', '0.000'), axes=AFAX)
+add(0x1638EC, 'A/F Sensor #1 Scaling (Current to Lambda, alternate)', SENS, _af + ' Used when FFFEEF99.4 = 1.', ('lambda', 'x/43194', 'x*43194', '0.000'), axes=AFAX)
+_ped = ('0x6825A: FFFEF134 = helper 0x16BC08(0x168B20, FFFEF142) and FFFEF13A from 0x168B2C(FFFEF140); 0x69F44 selects FFFEF134 (or min(F134,F13A)) '
+        'into the accelerator pedal angle FFFEECB4, interchangeable with SSM pedal angle FFFEEEF8 (SSM 0x29, % = x*100/65280).')
+add(0x168B20, 'Accelerator Pedal Position Scaling (Sensor 1)', 'Electronic Throttle - Pedal', _ped, ('%', 'x*100/65280', 'x*65280/100', '0.00'),
+    axes={'0': dict(name='Accelerator Pedal Sensor 1 Signal (FFFEF142, raw)', units='raw', expr='x', to_byte='x')})
+add(0x168B2C, 'Accelerator Pedal Position Scaling (Sensor 2)', 'Electronic Throttle - Pedal', _ped, ('%', 'x*100/65280', 'x*65280/100', '0.00'),
+    axes={'0': dict(name='Accelerator Pedal Sensor 2 Signal (FFFEF140, raw)', units='raw', expr='x', to_byte='x')})
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
