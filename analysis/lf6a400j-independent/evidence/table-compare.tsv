@@ -11,6 +11,8 @@ descriptor	function	var	var_name	units	expr	context
 02EB34	000cc1a0	FFFEEEF8	Accelerator Pedal Angle	%	x*100/65280	((param_3 & 0xffff) < (uVar3 & 0xffff)
 02EB40	000cd150	FFFF2ADA	Engine Speed (OBD copy)	rpm	x*25/128	((param_7 & 0xffff) < (uVar6 & 0xffff)
 02EB4C	000cd150	FFFF03A0	Engine Load	%	x	(param_8 & 0xff) < (uVar6 & 0xff)
+02ED44	000d3434	FFFEED02	Accelerator Pedal Angle (copy)	%	x*100/65280	(puVar2 < (undefined *)(uVar1 & 0xffff)
+02ED50	000d38c8	FFFEED02	Accelerator Pedal Angle (copy)	%	x*100/65280	(uVar1 & 0xffff) <= (param_3 & 0xffff)
 02EDE8	000d6bfc	FFFF03A0	Engine Load	%	x	((param_11 & 0xff) < (uVar5 & 0xff)
 02EE18	000d9378	FFFF2ADA	Engine Speed (OBD copy)	rpm	x*25/128	((uVar4 & 0xffff) <= param_2
 02EE18	000d9378	FFFF2ADA	Engine Speed (OBD copy)	rpm	x*25/128	(param_2 < (uVar5 & 0xffff)

@@ -2893,6 +2893,32 @@
    "format": "0.00"
   }
  },
+ "0x2ED44": {
+  "status": "identified",
+  "name": "Accelerator Pedal Angle (copy) Threshold (0xD3434)",
+  "category": "Thresholds - Accelerator Pedal Angle (copy)",
+  "evidence": "0xD3434: lookup result compared with Accelerator Pedal Angle (copy) (FFFFED02): \"(puVar2 < (undefined *)(uVar1 & 0xffff)\"; a comparison requires the same unit, so the output carries that scaling.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/65280",
+   "to_byte": "x*65280/100",
+   "format": "0.00"
+  }
+ },
+ "0x2ED50": {
+  "status": "identified",
+  "name": "Accelerator Pedal Angle (copy) Threshold (0xD38C8)",
+  "category": "Thresholds - Accelerator Pedal Angle (copy)",
+  "evidence": "0xD38C8: lookup result compared with Accelerator Pedal Angle (copy) (FFFFED02): \"(uVar1 & 0xffff) <= (param_3 & 0xffff)\"; a comparison requires the same unit, so the output carries that scaling.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/65280",
+   "to_byte": "x*65280/100",
+   "format": "0.00"
+  }
+ },
  "0x2EDE8": {
   "status": "identified",
   "name": "Engine Load Threshold (0xD6BFC)",

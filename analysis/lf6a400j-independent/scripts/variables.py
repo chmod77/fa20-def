@@ -187,3 +187,10 @@ V2.update({
 V2.update({
  0xFFFF0DBA:('Target Lambda (A/F #3 base)','lambda','x/43194','x*43194','0xB5B38 AFR*65536/22 = lambda*43194 (14.5/43194 constant)'),
 })
+
+# derived pure copies of proven variables (scripts/copies.py -> evidence/derived-copies.json)
+import os as _os, json as _json
+_dc = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), '..', 'evidence', 'derived-copies.json')
+if not _os.environ.get('NO_V3') and _os.path.exists(_dc):
+    for _k, _v in _json.load(open(_dc)).items():
+        V2.setdefault(int(_k, 16), tuple(_v))
