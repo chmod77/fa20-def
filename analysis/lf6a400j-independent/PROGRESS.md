@@ -138,6 +138,12 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
   0x9B058->0487->049C->03D1, 0x98BBC->0467 (four target maps, offset 32, values -16..27 deg), 0x9DBF8 049D adder, 0x9B27C/0x9B308 retards,
   047F factor tables. Coverage: 366 unlocked of 1265.
 
+- Fuel quantity terms: 0x9106C/0x910D8 compute base*(0.5 + (0507 + 0B62 + 0B80 + 0407 + 03EC ...)/256 + (0B72 + 0B38)/65536). These proved
+  the enrichment blocks 0x8EDF0 (0B62), 0x8F250 (0B60, via the 0x88588 sum with PID44 0B84), 0x900C8 (0B80), 0x902CC (0B82),
+  0x8FDC0 (0407), 0x8F6EC (0B72), 0x8BF1C (0B38 transient), the 0507/0508 multipliers and the start-fuel decay factors.
+- Injection angles: 0x44EAC uses FFFF2986 (time per 90 deg) and a 720 deg cycle, so 0B8E/0B8A/0B90 are crank angles in 1 deg units
+  (tables in 0x909BC/0x907CC). Coverage: 422 unlocked of 1265.
+
 ## Next steps (session 3)
 - A/F Learning #3 FFFF0D80 (SSM 0xD1, multiplier 1.0 = 43194) = clamp(FFFF0DBA + FFFF38F8) (0xB3260, task 0xB42AC): trace 0DBA/38F8 to the tables.
 - Idle: 0xAAB08 (11 tables) and the ISC feedback that uses the final target FFFF0CFE.
