@@ -3210,6 +3210,45 @@
    }
   }
  },
+ "0x2F158": {
+  "status": "identified",
+  "name": "Alternator Control Accelerator Pedal Threshold (Vehicle Speed)",
+  "category": "Alternator Control",
+  "evidence": "0xE3888 (from 0xE2938): flag FFFEED28E = (T - [T_02F164 while latched]) <= accelerator pedal FFFEEEF8 (SSM 0x29, % = x*100/65280); a comparison requires the same unit. Input vehicle speed FFFF65A1.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/65280",
+   "to_byte": "x*65280/100",
+   "format": "0.0"
+  }
+ },
+ "0x2F164": {
+  "status": "identified",
+  "name": "Alternator Control Accelerator Pedal Threshold Hysteresis (Vehicle Speed)",
+  "category": "Alternator Control",
+  "evidence": "0xE3888: subtracted from T_02F158 while the flag is set (same pedal-angle unit).",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/65280",
+   "to_byte": "x*65280/100",
+   "format": "0.0"
+  }
+ },
+ "0x2F170": {
+  "status": "identified",
+  "name": "Alternator Control MAP Threshold (RPM)",
+  "category": "Alternator Control",
+  "evidence": "0xE39CC (from 0xE2938): condition (FFFF09B8 MAP - T) < 0, MAP FFFF09B8 kPa = x/256; input rpm FFFF2994.",
+  "description": "",
+  "data": {
+   "units": "kPa",
+   "expr": "x/256",
+   "to_byte": "x*256",
+   "format": "0.0"
+  }
+ },
  "0x2F17C": {
   "status": "identified",
   "name": "Control Module Voltage Threshold (0xE3AF0)",

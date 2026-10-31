@@ -5298,21 +5298,21 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02F170] (Engine Speed)" category="Unidentified - Alternator Control" storageaddress="1F118" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F170. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="1F128" elements="8" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Alternator Control MAP Threshold (RPM)" category="Alternator Control" storageaddress="1F118" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F170. Evidence: 0xE39CC (from 0xE2938): condition (FFFF09B8 MAP - T) &lt; 0, MAP FFFF09B8 kPa = x/256; input rpm FFFF2994." sizey="8">
+      <scaling units="kPa" expression="x/256" to_byte="x*256" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="1F128" elements="8" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02F158] (Vehicle Speed (byte))" category="Unidentified - Alternator Control" storageaddress="1F13C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F158. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Vehicle Speed (byte)" storageaddress="1F17C" elements="16" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Alternator Control Accelerator Pedal Threshold (Vehicle Speed)" category="Alternator Control" storageaddress="1F13C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F158. Evidence: 0xE3888 (from 0xE2938): flag FFFEED28E = (T - [T_02F164 while latched]) &lt;= accelerator pedal FFFEEEF8 (SSM 0x29, % = x*100/65280); a comparison requires the same unit. Input vehicle speed FFFF65A1." sizey="16">
+      <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Vehicle Speed (byte)" storageaddress="1F17C" elements="16" storagetype="uint8" endian="big">
         <scaling units="km/h" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02F164] (Vehicle Speed (byte))" category="Unidentified - Alternator Control" storageaddress="1F15C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F164. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Vehicle Speed (byte)" storageaddress="1F17C" elements="16" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Alternator Control Accelerator Pedal Threshold Hysteresis (Vehicle Speed)" category="Alternator Control" storageaddress="1F15C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F164. Evidence: 0xE3888: subtracted from T_02F158 while the flag is set (same pedal-angle unit)." sizey="16">
+      <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Vehicle Speed (byte)" storageaddress="1F17C" elements="16" storagetype="uint8" endian="big">
         <scaling units="km/h" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>

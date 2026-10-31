@@ -64,8 +64,10 @@ for p in sorted(glob.glob(f'{ROOT}/cdump/*.c')):
         re_asg = re.search(r'\b' + re.escape(v) + r'\s*=[^=]', tail)
         tail = tail[:re_asg.start()] if re_asg else tail
         V = r'\(?(?:\(\w+\s*\**\)\s*)*\(?' + re.escape(v) + r'(?:\s*&\s*0xff(?:ff)?)?\)?'
-        for c in re.finditer(V + r'\s*(<=?|>=?)\s*' + OPND + '|' + OPND + r'\s*(<=?|>=?)\s*' + V, tail):
-            tok = c.group(2) or c.group(3)
+        DIFF = r'|\(\s*(?:\(\w+\s*\**\)\s*)*\(?\s*' + OPND.replace('(DAT', '(?P<d1>DAT', 1) + r'\s*-\s*' + V + r'\s*\)?\s*\)?\s*(<=?|>=?)\s*0\b' \
+               + r'|\(\s*(?:\(\w+\s*\**\)\s*)*\(?\s*' + V + r'\s*-\s*' + OPND.replace('(DAT', '(?P<d2>DAT', 1) + r'\s*\)?\s*\)?\s*(<=?|>=?)\s*0\b'
+        for c in re.finditer(V + r'\s*(<=?|>=?)\s*' + OPND + '|' + OPND + r'\s*(<=?|>=?)\s*' + V + DIFF, tail):
+            tok = c.group(2) or c.group(3) or c.group('d1') or c.group('d2')
             a = resolve(fn, tok, s) if tok != v else None
             if a in known:
                 rows.append((d, fn, f'{a:08X}', known[a][0], known[a][1], known[a][2], c.group(0).replace('\t', ' ')))

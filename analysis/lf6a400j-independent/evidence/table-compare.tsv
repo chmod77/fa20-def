@@ -18,5 +18,6 @@ descriptor	function	var	var_name	units	expr	context
 02EE30	000d9378	FFFF2ADA	Engine Speed (OBD copy)	rpm	x*25/128	(param_2 < (uVar7 & 0xffff)
 02EE48	000d9378	FFFF2ADA	Engine Speed (OBD copy)	rpm	x*25/128	(uVar7 & 0xffff) <= param_2
 02EE48	000d9378	FFFF2ADA	Engine Speed (OBD copy)	rpm	x*25/128	(param_2 < (uVar7 & 0xffff)
+02F170	000e39cc	FFFF09B8	Manifold Absolute Pressure (filtered)	kPa	x/256	((int)((param_4 & 0xffff) - (uVar1 & 0xffff)) < 0
 02F17C	000e3af0	FFFEEF18	Control Module Voltage	V	x*625/2048000	(param_3 & 0xffff) < (uVar3 & 0xffff)
 02F1C0	000e4cc4	FFFF03A0	Engine Load	%	x	(param_3 <= (uVar4 & 0xff)

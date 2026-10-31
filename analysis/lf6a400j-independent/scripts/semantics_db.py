@@ -593,6 +593,15 @@ for d, nm, base in ((0x2F11C, 'Alternator Duty Adder, Mode 0 (Battery Temp)', 0x
 add(0x2F14C, 'Alternator Duty Adder, Mode 3 Base Path (Battery Temp)', ALT, eva + 'Mode 3: 10E0 = T_02F104(FFFF3950) + T.', DUTY, axes=BTAX)
 add(0x2F104, 'Alternator Duty Base, Mode 3 (FFFF3950)', ALT, eva + 'Mode 3: 10E0 = T(FFFF3950) + T_02F14C (when FFFF3950 < T_02F110 or FFFF0583 1..6).', DUTY)
 
+PED = ('%', 'x*100/65280', 'x*65280/100', '0.0')
+add(0x2F158, 'Alternator Control Accelerator Pedal Threshold (Vehicle Speed)', ALT,
+    '0xE3888 (from 0xE2938): flag FFFEED28E = (T - [T_02F164 while latched]) <= accelerator pedal FFFEEEF8 (SSM 0x29, % = x*100/65280); '
+    'a comparison requires the same unit. Input vehicle speed FFFF65A1.', PED)
+add(0x2F164, 'Alternator Control Accelerator Pedal Threshold Hysteresis (Vehicle Speed)', ALT,
+    '0xE3888: subtracted from T_02F158 while the flag is set (same pedal-angle unit).', PED)
+add(0x2F170, 'Alternator Control MAP Threshold (RPM)', ALT,
+    '0xE39CC (from 0xE2938): condition (FFFF09B8 MAP - T) < 0, MAP FFFF09B8 kPa = x/256; input rpm FFFF2994.', ('kPa', 'x/256', 'x*256', '0.0'))
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
