@@ -1240,6 +1240,474 @@
    "format": "0.00"
   }
  },
+ "0x2F3FC": {
+  "status": "identified",
+  "name": "Intake Right AVCS OCV Feedback A Gain (vs FFFF11B6)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFA7B0: Intake Right AVCS OCV duty controller (see block comment for output chain). term A weight.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/128",
+   "to_byte": "x*128/100",
+   "format": "0.0"
+  }
+ },
+ "0x2F408": {
+  "status": "identified",
+  "name": "Intake Right AVCS OCV Feedback Gain, Positive Error (vs FFFF11B6)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFA7B0: Intake Right AVCS OCV duty controller (see block comment for output chain). term B weight, normal operation, err >= 0.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/128",
+   "to_byte": "x*128/100",
+   "format": "0.0"
+  }
+ },
+ "0x2F414": {
+  "status": "identified",
+  "name": "Intake Right AVCS OCV Feedback Gain, Low Speed, Positive Error (vs FFFF11B6)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFA7B0: Intake Right AVCS OCV duty controller (see block comment for output chain). term B weight when vehicle speed FFFEF0DA*9/160 < 4 km/h with flag, err >= 0.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/128",
+   "to_byte": "x*128/100",
+   "format": "0.0"
+  }
+ },
+ "0x2F420": {
+  "status": "identified",
+  "name": "Intake Right AVCS OCV Feedback Gain, Low Speed, Negative Error (vs FFFF11B6)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFA7B0: Intake Right AVCS OCV duty controller (see block comment for output chain). term B weight when vehicle speed FFFEF0DA*9/160 < 4 km/h with flag, err < 0.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/128",
+   "to_byte": "x*128/100",
+   "format": "0.0"
+  }
+ },
+ "0x2F42C": {
+  "status": "identified",
+  "name": "Intake Right AVCS OCV Feedback Gain, Negative Error (vs FFFF11B6)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFA7B0: Intake Right AVCS OCV duty controller (see block comment for output chain). term B weight, normal operation, err < 0.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/128",
+   "to_byte": "x*128/100",
+   "format": "0.0"
+  }
+ },
+ "0x2F438": {
+  "status": "identified",
+  "name": "Intake Right AVCS OCV Feedback, Low Speed (RPM x Cam Error)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFA7B0: Intake Right AVCS OCV duty controller (see block comment for output chain). term B map used when vehicle speed FFFEF0DA*9/160 < 4 km/h with flag.",
+  "description": "",
+  "data": {
+   "units": "% duty",
+   "expr": "x*100/32768-100",
+   "to_byte": "(x+100)*32768/100",
+   "format": "0.00"
+  }
+ },
+ "0x2F44C": {
+  "status": "identified",
+  "name": "Intake Right AVCS OCV Feedback (RPM x Cam Error)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFA7B0: Intake Right AVCS OCV duty controller (see block comment for output chain). term B map, normal operation.",
+  "description": "",
+  "data": {
+   "units": "% duty",
+   "expr": "x*100/32768-100",
+   "to_byte": "(x+100)*32768/100",
+   "format": "0.00"
+  }
+ },
+ "0x2F460": {
+  "status": "identified",
+  "name": "Intake Right AVCS OCV Feedback A Gain (vs Cam Error)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFA7B0: Intake Right AVCS OCV duty controller (see block comment for output chain). term A weight indexed by the first error input.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/128",
+   "to_byte": "x*128/100",
+   "format": "0.0"
+  }
+ },
+ "0x2F46C": {
+  "status": "identified",
+  "name": "Intake Right AVCS OCV Feedback A (RPM x Error 2)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFA7B0: Intake Right AVCS OCV duty controller (see block comment for output chain). term A map (second error input), active when |err2| > 0xB6.",
+  "description": "",
+  "data": {
+   "units": "% duty",
+   "expr": "x*100/32768-100",
+   "to_byte": "(x+100)*32768/100",
+   "format": "0.00"
+  }
+ },
+ "0x2F480": {
+  "status": "identified",
+  "name": "Intake Left AVCS OCV Feedback A Gain (vs FFFF11B6)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFADC0: Intake Left AVCS OCV duty controller (see block comment for output chain). term A weight.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/128",
+   "to_byte": "x*128/100",
+   "format": "0.0"
+  }
+ },
+ "0x2F48C": {
+  "status": "identified",
+  "name": "Intake Left AVCS OCV Feedback Gain, Positive Error (vs FFFF11B6)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFADC0: Intake Left AVCS OCV duty controller (see block comment for output chain). term B weight, normal operation, err >= 0.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/128",
+   "to_byte": "x*128/100",
+   "format": "0.0"
+  }
+ },
+ "0x2F498": {
+  "status": "identified",
+  "name": "Intake Left AVCS OCV Feedback Gain, Low Speed, Positive Error (vs FFFF11B6)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFADC0: Intake Left AVCS OCV duty controller (see block comment for output chain). term B weight when vehicle speed FFFEF0DA*9/160 < 4 km/h with flag, err >= 0.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/128",
+   "to_byte": "x*128/100",
+   "format": "0.0"
+  }
+ },
+ "0x2F4A4": {
+  "status": "identified",
+  "name": "Intake Left AVCS OCV Feedback Gain, Low Speed, Negative Error (vs FFFF11B6)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFADC0: Intake Left AVCS OCV duty controller (see block comment for output chain). term B weight when vehicle speed FFFEF0DA*9/160 < 4 km/h with flag, err < 0.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/128",
+   "to_byte": "x*128/100",
+   "format": "0.0"
+  }
+ },
+ "0x2F4B0": {
+  "status": "identified",
+  "name": "Intake Left AVCS OCV Feedback Gain, Negative Error (vs FFFF11B6)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFADC0: Intake Left AVCS OCV duty controller (see block comment for output chain). term B weight, normal operation, err < 0.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/128",
+   "to_byte": "x*128/100",
+   "format": "0.0"
+  }
+ },
+ "0x2F4BC": {
+  "status": "identified",
+  "name": "Intake Left AVCS OCV Feedback, Low Speed (RPM x Cam Error)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFADC0: Intake Left AVCS OCV duty controller (see block comment for output chain). term B map used when vehicle speed FFFEF0DA*9/160 < 4 km/h with flag.",
+  "description": "",
+  "data": {
+   "units": "% duty",
+   "expr": "x*100/32768-100",
+   "to_byte": "(x+100)*32768/100",
+   "format": "0.00"
+  }
+ },
+ "0x2F4D0": {
+  "status": "identified",
+  "name": "Intake Left AVCS OCV Feedback (RPM x Cam Error)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFADC0: Intake Left AVCS OCV duty controller (see block comment for output chain). term B map, normal operation.",
+  "description": "",
+  "data": {
+   "units": "% duty",
+   "expr": "x*100/32768-100",
+   "to_byte": "(x+100)*32768/100",
+   "format": "0.00"
+  }
+ },
+ "0x2F4E4": {
+  "status": "identified",
+  "name": "Intake Left AVCS OCV Feedback A Gain (vs Cam Error)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFADC0: Intake Left AVCS OCV duty controller (see block comment for output chain). term A weight indexed by the first error input.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/128",
+   "to_byte": "x*128/100",
+   "format": "0.0"
+  }
+ },
+ "0x2F4F0": {
+  "status": "identified",
+  "name": "Intake Left AVCS OCV Feedback A (RPM x Error 2)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFADC0: Intake Left AVCS OCV duty controller (see block comment for output chain). term A map (second error input), active when |err2| > 0xB6.",
+  "description": "",
+  "data": {
+   "units": "% duty",
+   "expr": "x*100/32768-100",
+   "to_byte": "(x+100)*32768/100",
+   "format": "0.00"
+  }
+ },
+ "0x2F688": {
+  "status": "identified",
+  "name": "Exhaust Right AVCS OCV Feedback A Gain (vs FFFF11B6)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFDF34: Exhaust Right AVCS OCV duty controller (see block comment for output chain). term A weight.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/128",
+   "to_byte": "x*128/100",
+   "format": "0.0"
+  }
+ },
+ "0x2F694": {
+  "status": "identified",
+  "name": "Exhaust Right AVCS OCV Feedback Gain, Positive Error (vs FFFF11B6)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFDF34: Exhaust Right AVCS OCV duty controller (see block comment for output chain). term B weight, normal operation, err >= 0.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/128",
+   "to_byte": "x*128/100",
+   "format": "0.0"
+  }
+ },
+ "0x2F6A0": {
+  "status": "identified",
+  "name": "Exhaust Right AVCS OCV Feedback Gain, Low Speed, Positive Error (vs FFFF11B6)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFDF34: Exhaust Right AVCS OCV duty controller (see block comment for output chain). term B weight when FFFEF394 <= 0x1FF with flag, err >= 0.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/128",
+   "to_byte": "x*128/100",
+   "format": "0.0"
+  }
+ },
+ "0x2F6AC": {
+  "status": "identified",
+  "name": "Exhaust Right AVCS OCV Feedback Gain, Low Speed, Negative Error (vs FFFF11B6)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFDF34: Exhaust Right AVCS OCV duty controller (see block comment for output chain). term B weight when FFFEF394 <= 0x1FF with flag, err < 0.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/128",
+   "to_byte": "x*128/100",
+   "format": "0.0"
+  }
+ },
+ "0x2F6B8": {
+  "status": "identified",
+  "name": "Exhaust Right AVCS OCV Feedback Gain, Negative Error (vs FFFF11B6)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFDF34: Exhaust Right AVCS OCV duty controller (see block comment for output chain). term B weight, normal operation, err < 0.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/128",
+   "to_byte": "x*128/100",
+   "format": "0.0"
+  }
+ },
+ "0x2F6C4": {
+  "status": "identified",
+  "name": "Exhaust Right AVCS OCV Feedback, Low Speed (RPM x Cam Error)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFDF34: Exhaust Right AVCS OCV duty controller (see block comment for output chain). term B map used when FFFEF394 <= 0x1FF with flag.",
+  "description": "",
+  "data": {
+   "units": "% duty",
+   "expr": "x*100/32768-100",
+   "to_byte": "(x+100)*32768/100",
+   "format": "0.00"
+  }
+ },
+ "0x2F6D8": {
+  "status": "identified",
+  "name": "Exhaust Right AVCS OCV Feedback (RPM x Cam Error)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFDF34: Exhaust Right AVCS OCV duty controller (see block comment for output chain). term B map, normal operation.",
+  "description": "",
+  "data": {
+   "units": "% duty",
+   "expr": "x*100/32768-100",
+   "to_byte": "(x+100)*32768/100",
+   "format": "0.00"
+  }
+ },
+ "0x2F6EC": {
+  "status": "identified",
+  "name": "Exhaust Right AVCS OCV Feedback A Gain (vs Cam Error)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFDF34: Exhaust Right AVCS OCV duty controller (see block comment for output chain). term A weight indexed by the first error input.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/128",
+   "to_byte": "x*128/100",
+   "format": "0.0"
+  }
+ },
+ "0x2F6F8": {
+  "status": "identified",
+  "name": "Exhaust Right AVCS OCV Feedback A (RPM x Error 2)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFDF34: Exhaust Right AVCS OCV duty controller (see block comment for output chain). term A map (second error input), active when |err2| > 0xB6.",
+  "description": "",
+  "data": {
+   "units": "% duty",
+   "expr": "x*100/32768-100",
+   "to_byte": "(x+100)*32768/100",
+   "format": "0.00"
+  }
+ },
+ "0x2F70C": {
+  "status": "identified",
+  "name": "Exhaust Left AVCS OCV Feedback A Gain (vs FFFF11B6)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFE55C: Exhaust Left AVCS OCV duty controller (see block comment for output chain). term A weight.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/128",
+   "to_byte": "x*128/100",
+   "format": "0.0"
+  }
+ },
+ "0x2F718": {
+  "status": "identified",
+  "name": "Exhaust Left AVCS OCV Feedback Gain, Positive Error (vs FFFF11B6)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFE55C: Exhaust Left AVCS OCV duty controller (see block comment for output chain). term B weight, normal operation, err >= 0.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/128",
+   "to_byte": "x*128/100",
+   "format": "0.0"
+  }
+ },
+ "0x2F724": {
+  "status": "identified",
+  "name": "Exhaust Left AVCS OCV Feedback Gain, Low Speed, Positive Error (vs FFFF11B6)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFE55C: Exhaust Left AVCS OCV duty controller (see block comment for output chain). term B weight when FFFEF394 <= 0x1FF with flag, err >= 0.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/128",
+   "to_byte": "x*128/100",
+   "format": "0.0"
+  }
+ },
+ "0x2F730": {
+  "status": "identified",
+  "name": "Exhaust Left AVCS OCV Feedback Gain, Low Speed, Negative Error (vs FFFF11B6)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFE55C: Exhaust Left AVCS OCV duty controller (see block comment for output chain). term B weight when FFFEF394 <= 0x1FF with flag, err < 0.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/128",
+   "to_byte": "x*128/100",
+   "format": "0.0"
+  }
+ },
+ "0x2F73C": {
+  "status": "identified",
+  "name": "Exhaust Left AVCS OCV Feedback Gain, Negative Error (vs FFFF11B6)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFE55C: Exhaust Left AVCS OCV duty controller (see block comment for output chain). term B weight, normal operation, err < 0.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/128",
+   "to_byte": "x*128/100",
+   "format": "0.0"
+  }
+ },
+ "0x2F748": {
+  "status": "identified",
+  "name": "Exhaust Left AVCS OCV Feedback, Low Speed (RPM x Cam Error)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFE55C: Exhaust Left AVCS OCV duty controller (see block comment for output chain). term B map used when FFFEF394 <= 0x1FF with flag.",
+  "description": "",
+  "data": {
+   "units": "% duty",
+   "expr": "x*100/32768-100",
+   "to_byte": "(x+100)*32768/100",
+   "format": "0.00"
+  }
+ },
+ "0x2F75C": {
+  "status": "identified",
+  "name": "Exhaust Left AVCS OCV Feedback (RPM x Cam Error)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFE55C: Exhaust Left AVCS OCV duty controller (see block comment for output chain). term B map, normal operation.",
+  "description": "",
+  "data": {
+   "units": "% duty",
+   "expr": "x*100/32768-100",
+   "to_byte": "(x+100)*32768/100",
+   "format": "0.00"
+  }
+ },
+ "0x2F770": {
+  "status": "identified",
+  "name": "Exhaust Left AVCS OCV Feedback A Gain (vs Cam Error)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFE55C: Exhaust Left AVCS OCV duty controller (see block comment for output chain). term A weight indexed by the first error input.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/128",
+   "to_byte": "x*128/100",
+   "format": "0.0"
+  }
+ },
+ "0x2F77C": {
+  "status": "identified",
+  "name": "Exhaust Left AVCS OCV Feedback A (RPM x Error 2)",
+  "category": "AVCS - OCV Feedback",
+  "evidence": "0xFE55C: Exhaust Left AVCS OCV duty controller (see block comment for output chain). term A map (second error input), active when |err2| > 0xB6.",
+  "description": "",
+  "data": {
+   "units": "% duty",
+   "expr": "x*100/32768-100",
+   "to_byte": "(x+100)*32768/100",
+   "format": "0.00"
+  }
+ },
  "0x163898": {
   "status": "identified",
   "name": "Manifold Pressure Filter Coefficient (RPM)",

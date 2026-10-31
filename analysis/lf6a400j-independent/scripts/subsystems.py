@@ -22,6 +22,7 @@ LABELS = {
  '0006a1f8': ('Electronic Throttle Control', 'writes Throttle Motor Duty FFFF0128 (SSM 0xFA) and throttle sensors'),
  '00153928': ('Crank/Cam Signal Processing', 'writes cam angles FFFEF2B8/F2BA, FFFF0DFC and rpm copy FFFF2ADA'),
  '0007f324': ('Gear Calculation', 'writes Gear FFFF03AC'),
+ '000f6b24': ('AVCS (Cam Timing) Control', 'calls the intake/exhaust OCV duty controllers 0xFA7B0/0xFADC0/0xFDF34/0xFE55C that write FFFF11D8/11E0 -> SSM intake OCV duty 0x3E/0x3F and FFFF1228/1230 = SSM 0x11A/0x11B'),
  '000888c0': ('Fueling - Open Loop & Enrichment', 'writes Open Loop Fuel Enrichment FFFF0400/FFFF0401 (OBD PID44 term)'),
  '00089e04': ('Fueling - Open Loop & Enrichment', 'writes decaying enrichment FFFF0B84 (OBD PID44 term) via 0x90390'),
  '0008a274': ('Fueling - Open Loop & Enrichment', 'writes coolant enrichment FFFF0B42 (OBD PID44 term) via 0x8CBE4'),

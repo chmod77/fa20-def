@@ -1092,39 +1092,39 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 9x9 [D02E4EC] (Engine Speed (OBD copy) x ?)" category="Unidentified - Task 0x15307C / Task 0xB9BAC" storageaddress="D74A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E4EC, 0x2F4D0. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="9" sizey="9">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="D7EC" elements="9" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Intake Left AVCS OCV Feedback (RPM x Cam Error)" category="AVCS - OCV Feedback" storageaddress="D74A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E4EC, 0x2F4D0. Evidence: 0xFADC0: Intake Left AVCS OCV duty controller (see block comment for output chain). term B map, normal operation." sizex="9" sizey="9">
+      <scaling units="% duty" expression="x*100/32768-100" to_byte="(x+100)*32768/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="D7EC" elements="9" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="D7FE" elements="9" storagetype="int16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2" storageaddress="D7FE" elements="9" storagetype="int16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 9x9 [D02E4D8] (Engine Speed (OBD copy) x ?)" category="Unidentified - Task 0x15307C / Task 0xB9BAC" storageaddress="D810" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E4D8, 0x2F44C. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="9" sizey="9">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="D8B2" elements="9" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Intake Right AVCS OCV Feedback (RPM x Cam Error)" category="AVCS - OCV Feedback" storageaddress="D810" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E4D8, 0x2F44C. Evidence: 0xFA7B0: Intake Right AVCS OCV duty controller (see block comment for output chain). term B map, normal operation." sizex="9" sizey="9">
+      <scaling units="% duty" expression="x*100/32768-100" to_byte="(x+100)*32768/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="D8B2" elements="9" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="D8C4" elements="9" storagetype="int16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2" storageaddress="D8C4" elements="9" storagetype="int16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 10x9 [D02E574] (Engine Speed (OBD copy) x ?)" category="Unidentified - Task 0x15307C / Task 0xBBE98" storageaddress="D8D6" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E574, 0x2F75C. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="9" sizey="10">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="D98A" elements="10" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Exhaust Left AVCS OCV Feedback (RPM x Cam Error)" category="AVCS - OCV Feedback" storageaddress="D8D6" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E574, 0x2F75C. Evidence: 0xFE55C: Exhaust Left AVCS OCV duty controller (see block comment for output chain). term B map, normal operation." sizex="9" sizey="10">
+      <scaling units="% duty" expression="x*100/32768-100" to_byte="(x+100)*32768/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="D98A" elements="10" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="D99E" elements="9" storagetype="int16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2" storageaddress="D99E" elements="9" storagetype="int16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 10x9 [D02E560] (Engine Speed (OBD copy) x ?)" category="Unidentified - Task 0x15307C / Task 0xBBE98" storageaddress="D9B0" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E560, 0x2F6D8. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="9" sizey="10">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="DA64" elements="10" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Exhaust Right AVCS OCV Feedback (RPM x Cam Error)" category="AVCS - OCV Feedback" storageaddress="D9B0" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E560, 0x2F6D8. Evidence: 0xFDF34: Exhaust Right AVCS OCV duty controller (see block comment for output chain). term B map, normal operation." sizex="9" sizey="10">
+      <scaling units="% duty" expression="x*100/32768-100" to_byte="(x+100)*32768/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="DA64" elements="10" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="DA78" elements="9" storagetype="int16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2" storageaddress="DA78" elements="9" storagetype="int16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
@@ -5430,81 +5430,81 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 4x4 [D02F46C] (Engine Speed (OBD copy) x ?)" category="Unidentified - Task 0x15307C" storageaddress="1FDF6" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F46C. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="4" sizey="4">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="1FD1A" elements="4" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Intake Right AVCS OCV Feedback A (RPM x Error 2)" category="AVCS - OCV Feedback" storageaddress="1FDF6" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F46C. Evidence: 0xFA7B0: Intake Right AVCS OCV duty controller (see block comment for output chain). term A map (second error input), active when |err2| &gt; 0xB6." sizex="4" sizey="4">
+      <scaling units="% duty" expression="x*100/32768-100" to_byte="(x+100)*32768/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="1FD1A" elements="4" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="1FD22" elements="4" storagetype="int16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2" storageaddress="1FD22" elements="4" storagetype="int16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 9x9 [D02F438] (Engine Speed (OBD copy) x ?)" category="Unidentified - Task 0x15307C" storageaddress="1FE16" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F438. Lookup result stored to: FFFED868. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="9" sizey="9">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="1FD2A" elements="9" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Intake Right AVCS OCV Feedback, Low Speed (RPM x Cam Error)" category="AVCS - OCV Feedback" storageaddress="1FE16" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F438. Evidence: 0xFA7B0: Intake Right AVCS OCV duty controller (see block comment for output chain). term B map used when vehicle speed FFFEF0DA*9/160 &lt; 4 km/h with flag. Lookup result stored to: FFFED868." sizex="9" sizey="9">
+      <scaling units="% duty" expression="x*100/32768-100" to_byte="(x+100)*32768/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="1FD2A" elements="9" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="1FD3C" elements="9" storagetype="int16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2" storageaddress="1FD3C" elements="9" storagetype="int16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 4 [D02F460]" category="Unidentified - Task 0x15307C" storageaddress="1FEB8" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F460. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="4">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="1FD4E" elements="4" storagetype="int16" endian="big" locked="true">
+    <table type="2D" name="Intake Right AVCS OCV Feedback A Gain (vs Cam Error)" category="AVCS - OCV Feedback" storageaddress="1FEB8" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F460. Evidence: 0xFA7B0: Intake Right AVCS OCV duty controller (see block comment for output chain). term A weight indexed by the first error input." sizey="4">
+      <scaling units="%" expression="x*100/128" to_byte="x*128/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="1FD4E" elements="4" storagetype="int16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02F3FC]" category="Unidentified - Task 0x15307C" storageaddress="1FEBC" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F3FC, 0x2F480. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="1FD56" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Intake Right AVCS OCV Feedback A Gain (vs FFFF11B6)" category="AVCS - OCV Feedback" storageaddress="1FEBC" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F3FC, 0x2F480. Evidence: 0xFA7B0: Intake Right AVCS OCV duty controller (see block comment for output chain). term A weight." sizey="16">
+      <scaling units="%" expression="x*100/128" to_byte="x*128/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="1FD56" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02F408]" category="Unidentified - Task 0x15307C" storageaddress="1FECC" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F408, 0x2F48C. Lookup result stored to: FFFED868, FFFED880. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="1FD76" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Intake Right AVCS OCV Feedback Gain, Positive Error (vs FFFF11B6)" category="AVCS - OCV Feedback" storageaddress="1FECC" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F408, 0x2F48C. Evidence: 0xFA7B0: Intake Right AVCS OCV duty controller (see block comment for output chain). term B weight, normal operation, err &gt;= 0. Lookup result stored to: FFFED868, FFFED880." sizey="16">
+      <scaling units="%" expression="x*100/128" to_byte="x*128/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="1FD76" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02F414]" category="Unidentified - Task 0x15307C" storageaddress="1FEDC" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F414, 0x2F498. Lookup result stored to: FFFED868, FFFED880. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="1FD96" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Intake Right AVCS OCV Feedback Gain, Low Speed, Positive Error (vs FFFF11B6)" category="AVCS - OCV Feedback" storageaddress="1FEDC" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F414, 0x2F498. Evidence: 0xFA7B0: Intake Right AVCS OCV duty controller (see block comment for output chain). term B weight when vehicle speed FFFEF0DA*9/160 &lt; 4 km/h with flag, err &gt;= 0. Lookup result stored to: FFFED868, FFFED880." sizey="16">
+      <scaling units="%" expression="x*100/128" to_byte="x*128/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="1FD96" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02F420]" category="Unidentified - Task 0x15307C" storageaddress="1FEEC" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F420, 0x2F4A4. Lookup result stored to: FFFED868, FFFED880. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="1FDB6" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Intake Right AVCS OCV Feedback Gain, Low Speed, Negative Error (vs FFFF11B6)" category="AVCS - OCV Feedback" storageaddress="1FEEC" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F420, 0x2F4A4. Evidence: 0xFA7B0: Intake Right AVCS OCV duty controller (see block comment for output chain). term B weight when vehicle speed FFFEF0DA*9/160 &lt; 4 km/h with flag, err &lt; 0. Lookup result stored to: FFFED868, FFFED880." sizey="16">
+      <scaling units="%" expression="x*100/128" to_byte="x*128/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="1FDB6" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02F42C]" category="Unidentified - Task 0x15307C" storageaddress="1FEFC" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F42C, 0x2F4B0. Lookup result stored to: FFFED868, FFFED880. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="1FDD6" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Intake Right AVCS OCV Feedback Gain, Negative Error (vs FFFF11B6)" category="AVCS - OCV Feedback" storageaddress="1FEFC" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F42C, 0x2F4B0. Evidence: 0xFA7B0: Intake Right AVCS OCV duty controller (see block comment for output chain). term B weight, normal operation, err &lt; 0. Lookup result stored to: FFFED868, FFFED880." sizey="16">
+      <scaling units="%" expression="x*100/128" to_byte="x*128/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="1FDD6" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 4x4 [D02F4F0] (Engine Speed (OBD copy) x ?)" category="Unidentified - Task 0x15307C" storageaddress="1FF48" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F4F0. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="4" sizey="4">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="1FF0C" elements="4" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Intake Left AVCS OCV Feedback A (RPM x Error 2)" category="AVCS - OCV Feedback" storageaddress="1FF48" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F4F0. Evidence: 0xFADC0: Intake Left AVCS OCV duty controller (see block comment for output chain). term A map (second error input), active when |err2| &gt; 0xB6." sizex="4" sizey="4">
+      <scaling units="% duty" expression="x*100/32768-100" to_byte="(x+100)*32768/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="1FF0C" elements="4" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="1FF14" elements="4" storagetype="int16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2" storageaddress="1FF14" elements="4" storagetype="int16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 9x9 [D02F4BC] (Engine Speed (OBD copy) x ?)" category="Unidentified - Task 0x15307C" storageaddress="1FF68" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F4BC. Lookup result stored to: FFFED880. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="9" sizey="9">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="1FF1C" elements="9" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Intake Left AVCS OCV Feedback, Low Speed (RPM x Cam Error)" category="AVCS - OCV Feedback" storageaddress="1FF68" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F4BC. Evidence: 0xFADC0: Intake Left AVCS OCV duty controller (see block comment for output chain). term B map used when vehicle speed FFFEF0DA*9/160 &lt; 4 km/h with flag. Lookup result stored to: FFFED880." sizex="9" sizey="9">
+      <scaling units="% duty" expression="x*100/32768-100" to_byte="(x+100)*32768/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="1FF1C" elements="9" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="1FF2E" elements="9" storagetype="int16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2" storageaddress="1FF2E" elements="9" storagetype="int16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 4 [D02F4E4]" category="Unidentified - Task 0x15307C" storageaddress="2000A" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F4E4. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="4">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="1FF40" elements="4" storagetype="int16" endian="big" locked="true">
+    <table type="2D" name="Intake Left AVCS OCV Feedback A Gain (vs Cam Error)" category="AVCS - OCV Feedback" storageaddress="2000A" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F4E4. Evidence: 0xFADC0: Intake Left AVCS OCV duty controller (see block comment for output chain). term A weight indexed by the first error input." sizey="4">
+      <scaling units="%" expression="x*100/128" to_byte="x*128/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="1FF40" elements="4" storagetype="int16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
@@ -5637,81 +5637,81 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 4x4 [D02F6F8] (Engine Speed (OBD copy) x ?)" category="Unidentified - Task 0x15307C" storageaddress="20CD0" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F6F8. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="4" sizey="4">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="20C9A" elements="4" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Exhaust Right AVCS OCV Feedback A (RPM x Error 2)" category="AVCS - OCV Feedback" storageaddress="20CD0" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F6F8. Evidence: 0xFDF34: Exhaust Right AVCS OCV duty controller (see block comment for output chain). term A map (second error input), active when |err2| &gt; 0xB6." sizex="4" sizey="4">
+      <scaling units="% duty" expression="x*100/32768-100" to_byte="(x+100)*32768/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="20C9A" elements="4" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="20CA2" elements="4" storagetype="int16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2" storageaddress="20CA2" elements="4" storagetype="int16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 10x9 [D02F6C4] (Engine Speed (OBD copy) x ?)" category="Unidentified - Task 0x15307C" storageaddress="20CF0" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F6C4. Lookup result stored to: FFFED940. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="9" sizey="10">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="20CAA" elements="10" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Exhaust Right AVCS OCV Feedback, Low Speed (RPM x Cam Error)" category="AVCS - OCV Feedback" storageaddress="20CF0" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F6C4. Evidence: 0xFDF34: Exhaust Right AVCS OCV duty controller (see block comment for output chain). term B map used when FFFEF394 &lt;= 0x1FF with flag. Lookup result stored to: FFFED940." sizex="9" sizey="10">
+      <scaling units="% duty" expression="x*100/32768-100" to_byte="(x+100)*32768/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="20CAA" elements="10" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="20CBE" elements="9" storagetype="int16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2" storageaddress="20CBE" elements="9" storagetype="int16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 4 [D02F6EC]" category="Unidentified - Task 0x15307C" storageaddress="20DA4" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F6EC. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="4">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="20BF2" elements="4" storagetype="int16" endian="big" locked="true">
+    <table type="2D" name="Exhaust Right AVCS OCV Feedback A Gain (vs Cam Error)" category="AVCS - OCV Feedback" storageaddress="20DA4" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F6EC. Evidence: 0xFDF34: Exhaust Right AVCS OCV duty controller (see block comment for output chain). term A weight indexed by the first error input." sizey="4">
+      <scaling units="%" expression="x*100/128" to_byte="x*128/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="20BF2" elements="4" storagetype="int16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02F688]" category="Unidentified - Task 0x15307C" storageaddress="20DA8" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F688, 0x2F70C. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="20BFA" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Exhaust Right AVCS OCV Feedback A Gain (vs FFFF11B6)" category="AVCS - OCV Feedback" storageaddress="20DA8" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F688, 0x2F70C. Evidence: 0xFDF34: Exhaust Right AVCS OCV duty controller (see block comment for output chain). term A weight." sizey="16">
+      <scaling units="%" expression="x*100/128" to_byte="x*128/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="20BFA" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02F694]" category="Unidentified - Task 0x15307C" storageaddress="20DB8" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F694, 0x2F718. Lookup result stored to: FFFED940, FFFED958. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="20C1A" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Exhaust Right AVCS OCV Feedback Gain, Positive Error (vs FFFF11B6)" category="AVCS - OCV Feedback" storageaddress="20DB8" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F694, 0x2F718. Evidence: 0xFDF34: Exhaust Right AVCS OCV duty controller (see block comment for output chain). term B weight, normal operation, err &gt;= 0. Lookup result stored to: FFFED940, FFFED958." sizey="16">
+      <scaling units="%" expression="x*100/128" to_byte="x*128/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="20C1A" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02F6A0]" category="Unidentified - Task 0x15307C" storageaddress="20DC8" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F6A0, 0x2F724. Lookup result stored to: FFFED940, FFFED958. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="20C3A" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Exhaust Right AVCS OCV Feedback Gain, Low Speed, Positive Error (vs FFFF11B6)" category="AVCS - OCV Feedback" storageaddress="20DC8" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F6A0, 0x2F724. Evidence: 0xFDF34: Exhaust Right AVCS OCV duty controller (see block comment for output chain). term B weight when FFFEF394 &lt;= 0x1FF with flag, err &gt;= 0. Lookup result stored to: FFFED940, FFFED958." sizey="16">
+      <scaling units="%" expression="x*100/128" to_byte="x*128/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="20C3A" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02F6AC]" category="Unidentified - Task 0x15307C" storageaddress="20DD8" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F6AC, 0x2F730. Lookup result stored to: FFFED940, FFFED958. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="20C5A" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Exhaust Right AVCS OCV Feedback Gain, Low Speed, Negative Error (vs FFFF11B6)" category="AVCS - OCV Feedback" storageaddress="20DD8" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F6AC, 0x2F730. Evidence: 0xFDF34: Exhaust Right AVCS OCV duty controller (see block comment for output chain). term B weight when FFFEF394 &lt;= 0x1FF with flag, err &lt; 0. Lookup result stored to: FFFED940, FFFED958." sizey="16">
+      <scaling units="%" expression="x*100/128" to_byte="x*128/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="20C5A" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02F6B8]" category="Unidentified - Task 0x15307C" storageaddress="20DE8" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F6B8, 0x2F73C. Lookup result stored to: FFFED940, FFFED958. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="20C7A" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Exhaust Right AVCS OCV Feedback Gain, Negative Error (vs FFFF11B6)" category="AVCS - OCV Feedback" storageaddress="20DE8" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F6B8, 0x2F73C. Evidence: 0xFDF34: Exhaust Right AVCS OCV duty controller (see block comment for output chain). term B weight, normal operation, err &lt; 0. Lookup result stored to: FFFED940, FFFED958." sizey="16">
+      <scaling units="%" expression="x*100/128" to_byte="x*128/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="20C7A" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 4x4 [D02F77C] (Engine Speed (OBD copy) x ?)" category="Unidentified - Task 0x15307C" storageaddress="20E36" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F77C. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="4" sizey="4">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="20E00" elements="4" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Exhaust Left AVCS OCV Feedback A (RPM x Error 2)" category="AVCS - OCV Feedback" storageaddress="20E36" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F77C. Evidence: 0xFE55C: Exhaust Left AVCS OCV duty controller (see block comment for output chain). term A map (second error input), active when |err2| &gt; 0xB6." sizex="4" sizey="4">
+      <scaling units="% duty" expression="x*100/32768-100" to_byte="(x+100)*32768/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="20E00" elements="4" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="20E08" elements="4" storagetype="int16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2" storageaddress="20E08" elements="4" storagetype="int16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 10x9 [D02F748] (Engine Speed (OBD copy) x ?)" category="Unidentified - Task 0x15307C" storageaddress="20E56" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F748. Lookup result stored to: FFFED958. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="9" sizey="10">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="20E10" elements="10" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Exhaust Left AVCS OCV Feedback, Low Speed (RPM x Cam Error)" category="AVCS - OCV Feedback" storageaddress="20E56" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F748. Evidence: 0xFE55C: Exhaust Left AVCS OCV duty controller (see block comment for output chain). term B map used when FFFEF394 &lt;= 0x1FF with flag. Lookup result stored to: FFFED958." sizex="9" sizey="10">
+      <scaling units="% duty" expression="x*100/32768-100" to_byte="(x+100)*32768/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="20E10" elements="10" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="20E24" elements="9" storagetype="int16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2" storageaddress="20E24" elements="9" storagetype="int16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 4 [D02F770]" category="Unidentified - Task 0x15307C" storageaddress="20F0A" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F770. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="4">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="20DF8" elements="4" storagetype="int16" endian="big" locked="true">
+    <table type="2D" name="Exhaust Left AVCS OCV Feedback A Gain (vs Cam Error)" category="AVCS - OCV Feedback" storageaddress="20F0A" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F770. Evidence: 0xFE55C: Exhaust Left AVCS OCV duty controller (see block comment for output chain). term A weight indexed by the first error input." sizey="4">
+      <scaling units="%" expression="x*100/128" to_byte="x*128/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="20DF8" elements="4" storagetype="int16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>

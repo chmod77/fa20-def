@@ -281,6 +281,33 @@ add(0x2ECF8, 'Throttle Flow Model Blend Weight (Pressure Ratio)', 'Airflow - Thr
 add(0x2ECE0, 'Throttle Flow Correction (vs FFFF05BB)', 'Airflow - Throttle Model', _thr + ' k = 0.75 + T_02ECE0/131072.',
     ('multiplier', '0.75+x/131072', '(x-0.75)*131072', '0.0000'))
 
+# ---------------------------------------------------------------- AVCS OCV feedback controllers (task 0xF6B24)
+# Output chain: exhaust 0xFDF34 -> &FFFF1228 (SSM 0x11A Exhaust OCV Duty Right, %=x/25), 0xFE55C -> &FFFF1230 (SSM 0x11B left);
+# intake 0xFA7B0 -> FFFF11D8 -> 0xFB3D4 -> FFFF11E8 -> 0xB98C0 (x*0x3333>>17) -> SSM 0x3E Intake OCV Duty Right; 0xFADC0 -> FFFF11E0 ->
+# 0xFB7AC -> FFFF11F6 -> SSM 0x3F (left).  Each controller: term A = (-100 + T4x4(rpm, err2)*100/32768) * Wp4/128 * Werr/128 (when |err2| > 0xB6);
+# term B = (-100 + T9x9(rpm, err1)*100/32768) * W(sign of err1)/128 (when |err1| > 0xB6), separate map set at low vehicle speed;
+# duty contribution = (A + B)*25 (OCV duty units %=x/25).  err inputs and FFFF11B6 (weight input) are not anchored.
+AV = 'AVCS - OCV Feedback'
+PCTD = ('% duty', 'x*100/32768-100', '(x+100)*32768/100', '0.00')
+W128 = ('%', 'x*100/128', 'x*128/100', '0.0')
+CTRL = {
+ 'Intake Right': ('0xFA7B0', dict(c4=0x2F46C, wp4=0x2F3FC, werr=0x2F460, lsn=0x2F420, lsp=0x2F414, ls=0x2F438, nn=0x2F42C, np=0x2F408, n=0x2F44C), 'vehicle speed FFFEF0DA*9/160 < 4 km/h with flag'),
+ 'Intake Left': ('0xFADC0', dict(c4=0x2F4F0, wp4=0x2F480, werr=0x2F4E4, lsn=0x2F4A4, lsp=0x2F498, ls=0x2F4BC, nn=0x2F4B0, np=0x2F48C, n=0x2F4D0), 'vehicle speed FFFEF0DA*9/160 < 4 km/h with flag'),
+ 'Exhaust Right': ('0xFDF34', dict(c4=0x2F6F8, wp4=0x2F688, werr=0x2F6EC, nn=0x2F6B8, np=0x2F694, n=0x2F6D8, lsn=0x2F6AC, lsp=0x2F6A0, ls=0x2F6C4), 'FFFEF394 <= 0x1FF with flag'),
+ 'Exhaust Left': ('0xFE55C', dict(c4=0x2F77C, wp4=0x2F70C, werr=0x2F770, nn=0x2F73C, np=0x2F718, n=0x2F75C, lsn=0x2F730, lsp=0x2F724, ls=0x2F748), 'FFFEF394 <= 0x1FF with flag'),
+}
+for cname, (fn, T, lowcond) in CTRL.items():
+    ev = f'{fn}: {cname} AVCS OCV duty controller (see block comment for output chain). '
+    add(T['n'], f'{cname} AVCS OCV Feedback (RPM x Cam Error)', AV, ev + 'term B map, normal operation.', PCTD)
+    add(T['ls'], f'{cname} AVCS OCV Feedback, Low Speed (RPM x Cam Error)', AV, ev + f'term B map used when {lowcond}.', PCTD)
+    add(T['np'], f'{cname} AVCS OCV Feedback Gain, Positive Error (vs FFFF11B6)', AV, ev + 'term B weight, normal operation, err >= 0.', W128)
+    add(T['nn'], f'{cname} AVCS OCV Feedback Gain, Negative Error (vs FFFF11B6)', AV, ev + 'term B weight, normal operation, err < 0.', W128)
+    add(T['lsp'], f'{cname} AVCS OCV Feedback Gain, Low Speed, Positive Error (vs FFFF11B6)', AV, ev + f'term B weight when {lowcond}, err >= 0.', W128)
+    add(T['lsn'], f'{cname} AVCS OCV Feedback Gain, Low Speed, Negative Error (vs FFFF11B6)', AV, ev + f'term B weight when {lowcond}, err < 0.', W128)
+    add(T['c4'], f'{cname} AVCS OCV Feedback A (RPM x Error 2)', AV, ev + 'term A map (second error input), active when |err2| > 0xB6.', PCTD)
+    add(T['wp4'], f'{cname} AVCS OCV Feedback A Gain (vs FFFF11B6)', AV, ev + 'term A weight.', W128)
+    add(T['werr'], f'{cname} AVCS OCV Feedback A Gain (vs Cam Error)', AV, ev + 'term A weight indexed by the first error input.', W128)
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
