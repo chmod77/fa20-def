@@ -426,22 +426,22 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02CCC0] - unresolved: added to FFFEBC5A" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="A180" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CCC0. Lookup result stored to: FFFEBC5A, FFFF0B30. UNRESOLVED (locked): 0x8BB84: added to FFFEBC5A (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="8">
+    <table type="2D" name="Unidentified 8 [D02CCC0] (Air Charge Rate (VE*density*rpm, 0F56)) - unresolved: added to FFFEBC5A" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="A180" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CCC0. Lookup result stored to: FFFEBC5A, FFFF0B30. UNRESOLVED (locked): 0x8BB84: added to FFFEBC5A (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="8">
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0F56)" storageaddress="A170" elements="8" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Air Charge Rate (VE*density*rpm, 0F56)" storageaddress="A170" elements="8" storagetype="uint16" endian="big" locked="true">
+        <scaling units="g/L*rpm" expression="x/5" to_byte="x*5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02CCCC] - unresolved: lookup result not used in a resolvable form" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="A190" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CCCC. Lookup result stored to: FFFEBC58. UNRESOLVED (locked): 0x8BB84: lookup result not used in a resolvable form. Function/output scaling not yet proven from the binary." locked="true" sizey="8">
+    <table type="2D" name="Unidentified 8 [D02CCCC] (Air Charge Rate (VE*density*rpm, 0F56)) - unresolved: lookup result not used in a resolvable form" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="A190" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CCCC. Lookup result stored to: FFFEBC58. UNRESOLVED (locked): 0x8BB84: lookup result not used in a resolvable form. Function/output scaling not yet proven from the binary." locked="true" sizey="8">
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0F56)" storageaddress="A170" elements="8" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Air Charge Rate (VE*density*rpm, 0F56)" storageaddress="A170" elements="8" storagetype="uint16" endian="big" locked="true">
+        <scaling units="g/L*rpm" expression="x/5" to_byte="x*5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02CCD8] - unresolved: lookup result not used in a resolvable form" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="A1A0" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CCD8. Lookup result stored to: FFFEBC58. UNRESOLVED (locked): 0x8BB84: lookup result not used in a resolvable form. Function/output scaling not yet proven from the binary." locked="true" sizey="8">
+    <table type="2D" name="Unidentified 8 [D02CCD8] (Air Charge Rate (VE*density*rpm, 0F56)) - unresolved: lookup result not used in a resolvable form" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="A1A0" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CCD8. Lookup result stored to: FFFEBC58. UNRESOLVED (locked): 0x8BB84: lookup result not used in a resolvable form. Function/output scaling not yet proven from the binary." locked="true" sizey="8">
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0F56)" storageaddress="A170" elements="8" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Air Charge Rate (VE*density*rpm, 0F56)" storageaddress="A170" elements="8" storagetype="uint16" endian="big" locked="true">
+        <scaling units="g/L*rpm" expression="x/5" to_byte="x*5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
     <table type="2D" name="Engine Speed Threshold (Gear) [0x8C790]" category="Fueling - Open Loop &amp; Enrichment" storageaddress="A1E8" storagetype="int16" endian="big" userlevel="1" description="Descriptor(s): 0x2CDD8. Evidence: 0x8C790 (from 0x888C0): flag FFFEBC94 = (T_thr - [T_hys while set]) &lt;= engine speed FFFF2994 (rpm = x*25/128); thresholds by gear (FFFF03AD when FFFEE710.7 set, else min(FFFF0593, FFFF0560)); outputs FFFF0B74/0B76 = selected threshold/hysteresis.  Lookup result stored to: FFFF0B74, FFFF0B76." sizey="6">
@@ -609,16 +609,16 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02CD04] - unresolved: compared with FFFEBC7F" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="AF9A" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2CD04. UNRESOLVED (locked): 0x8BF1C: compared with FFFEBC7F (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="16">
+    <table type="2D" name="Unidentified 16 [D02CD04] (Air Charge Rate (VE*density*rpm, 0F56)) - unresolved: compared with FFFEBC7F" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="AF9A" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2CD04. UNRESOLVED (locked): 0x8BF1C: compared with FFFEBC7F (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="16">
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0F56)" storageaddress="A6DA" elements="16" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Air Charge Rate (VE*density*rpm, 0F56)" storageaddress="A6DA" elements="16" storagetype="uint16" endian="big" locked="true">
+        <scaling units="g/L*rpm" expression="x/5" to_byte="x*5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02CD10] - unresolved: compared with FFFEBC78" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="AFAA" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2CD10. UNRESOLVED (locked): 0x8BF1C: compared with FFFEBC78 (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="16">
+    <table type="2D" name="Unidentified 16 [D02CD10] (Air Charge Rate (VE*density*rpm, 0F56)) - unresolved: compared with FFFEBC78" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="AFAA" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2CD10. UNRESOLVED (locked): 0x8BF1C: compared with FFFEBC78 (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="16">
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0F56)" storageaddress="A6DA" elements="16" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Air Charge Rate (VE*density*rpm, 0F56)" storageaddress="A6DA" elements="16" storagetype="uint16" endian="big" locked="true">
+        <scaling units="g/L*rpm" expression="x/5" to_byte="x*5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
     <table type="2D" name="Transient Fuel (0B38) Multiplier" category="Fueling - Open Loop &amp; Enrichment" storageaddress="AFBA" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CD1C. Evidence: 0x8BF1C (from 0x888C0): FFFF0B38 = T_02CD1C/32768 * (A + B); A is set to T_02CD70|T_02CD84 (FFFF param_8 clear|set) on its trigger and decays toward 0 by T_02CD28|T_02CD34 per execution; B likewise with T_02CD98|T_02CDAC and steps T_02CD40|T_02CD4C. FFFF0B38 is a fuel-quantity fraction term in 0x910D8 (base*(0.5 + ... + 0B38/65536)), so amounts/steps are in 1/65536 of base. x/32768 factor." sizey="16">
@@ -4842,16 +4842,16 @@
         <scaling units="V" expression="x*8/100" to_byte="x*100/8" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02E7F0] - unresolved: stored to output *param_6 of 0xC0BE4" category="Unidentified - Task 0xC0FD0" storageaddress="1DE3A" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2E7F0. Lookup result stored to: 000c0be4:*param_6. UNRESOLVED (locked): 0xC0BE4: stored to output *param_6 of 0xC0BE4 (unit of the receiving variable not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="8">
+    <table type="2D" name="Unidentified 8 [D02E7F0] (Air Charge Rate (VE*density*rpm, 0F56)) - unresolved: stored to output *param_6 of 0xC0BE4" category="Unidentified - Task 0xC0FD0" storageaddress="1DE3A" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2E7F0. Lookup result stored to: 000c0be4:*param_6. UNRESOLVED (locked): 0xC0BE4: stored to output *param_6 of 0xC0BE4 (unit of the receiving variable not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="8">
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0F56)" storageaddress="1DE2A" elements="8" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Air Charge Rate (VE*density*rpm, 0F56)" storageaddress="1DE2A" elements="8" storagetype="uint16" endian="big" locked="true">
+        <scaling units="g/L*rpm" expression="x/5" to_byte="x*5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02E7FC] - unresolved: stored to output *param_8 of 0xC0BE4" category="Unidentified - Task 0xC0FD0" storageaddress="1DE42" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2E7FC. Lookup result stored to: 000c0be4:*param_8. UNRESOLVED (locked): 0xC0BE4: stored to output *param_8 of 0xC0BE4 (unit of the receiving variable not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="8">
+    <table type="2D" name="Unidentified 8 [D02E7FC] (Air Charge Rate (VE*density*rpm, 0F56)) - unresolved: stored to output *param_8 of 0xC0BE4" category="Unidentified - Task 0xC0FD0" storageaddress="1DE42" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2E7FC. Lookup result stored to: 000c0be4:*param_8. UNRESOLVED (locked): 0xC0BE4: stored to output *param_8 of 0xC0BE4 (unit of the receiving variable not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="8">
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0F56)" storageaddress="1DE2A" elements="8" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Air Charge Rate (VE*density*rpm, 0F56)" storageaddress="1DE2A" elements="8" storagetype="uint16" endian="big" locked="true">
+        <scaling units="g/L*rpm" expression="x/5" to_byte="x*5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
     <table type="2D" name="Unidentified 8 [D02E808] - unresolved: stored to output *param_8 of 0xC0BE4" category="Unidentified - Task 0xC0FD0" storageaddress="1DE5A" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2E808. Lookup result stored to: 000c0be4:*param_8. UNRESOLVED (locked): 0xC0BE4: stored to output *param_8 of 0xC0BE4 (unit of the receiving variable not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="8">
@@ -5115,16 +5115,16 @@
         <scaling units="rpm" expression="x*25" to_byte="x/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02EDC4] - unresolved: stored to output *param_2 of 0xD57D4" category="Unidentified - Task 0x15307C" storageaddress="1E95A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2EDC4. Lookup result stored to: FFFF0FBE. UNRESOLVED (locked): 0xD57D4: stored to output *param_2 of 0xD57D4 (unit of the receiving variable not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="8">
+    <table type="2D" name="Unidentified 8 [D02EDC4] (Air Charge Rate (VE*density*rpm, 0F56)) - unresolved: stored to output *param_2 of 0xD57D4" category="Unidentified - Task 0x15307C" storageaddress="1E95A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2EDC4. Lookup result stored to: FFFF0FBE. UNRESOLVED (locked): 0xD57D4: stored to output *param_2 of 0xD57D4 (unit of the receiving variable not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="8">
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0F56)" storageaddress="1E97A" elements="8" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Air Charge Rate (VE*density*rpm, 0F56)" storageaddress="1E97A" elements="8" storagetype="uint16" endian="big" locked="true">
+        <scaling units="g/L*rpm" expression="x/5" to_byte="x*5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02EDD0] - unresolved: stored to output *param_2 of 0xD57F4" category="Unidentified - Task 0x15307C" storageaddress="1E96A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2EDD0. Lookup result stored to: FFFF0FC0. UNRESOLVED (locked): 0xD57F4: stored to output *param_2 of 0xD57F4 (unit of the receiving variable not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="8">
+    <table type="2D" name="Unidentified 8 [D02EDD0] (Air Charge Rate (VE*density*rpm, 0F56)) - unresolved: stored to output *param_2 of 0xD57F4" category="Unidentified - Task 0x15307C" storageaddress="1E96A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2EDD0. Lookup result stored to: FFFF0FC0. UNRESOLVED (locked): 0xD57F4: stored to output *param_2 of 0xD57F4 (unit of the receiving variable not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="8">
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0F56)" storageaddress="1E97A" elements="8" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Air Charge Rate (VE*density*rpm, 0F56)" storageaddress="1E97A" elements="8" storagetype="uint16" endian="big" locked="true">
+        <scaling units="g/L*rpm" expression="x/5" to_byte="x*5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
     <table type="2D" name="Engine Load Threshold (0xD6BFC)" category="Thresholds - Engine Load" storageaddress="1E99A" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2EDE8. Evidence: 0xD6BFC: lookup result compared with Engine Load (FFFF03A0): &quot;((param_11 &amp; 0xff) &lt; (uVar5 &amp; 0xff)&quot;; a comparison requires the same unit, so the output carries that scaling. Lookup result stored to: FFFF066E." sizey="8">
@@ -5198,8 +5198,8 @@
     </table>
     <table type="2D" name="Catalyst Temperature Rate Factor (FFFF0F56)" category="Catalyst Temperature Model" storageaddress="1EEAA" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2EE80. Evidence: 0xD9D40: Catalyst Temperature B1S1 FFFF0FE4 (OBD PID 3C, C=x/64-40) model; target = k*(4*T-40) C, k = T_EEC4*T_EED0/65536. Approach-rate gain = T_EE8C|98 * T_EEA4 * T_EE80 * (T_EE74*26/256) / 2^24 (relative factors). Input FFFF0F56. Lookup result stored to: FFFF0680, FFFF0684." sizey="8">
       <scaling units="factor" expression="x/256" to_byte="x*256" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0F56)" storageaddress="1ED9A" elements="8" storagetype="uint16" endian="big">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Air Charge Rate (VE*density*rpm, 0F56)" storageaddress="1ED9A" elements="8" storagetype="uint16" endian="big">
+        <scaling units="g/L*rpm" expression="x/5" to_byte="x*5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
     <table type="2D" name="Catalyst Temperature Rate Factor (Vehicle Speed)" category="Catalyst Temperature Model" storageaddress="1EEB2" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2EE74. Evidence: 0xD9D40: Catalyst Temperature B1S1 FFFF0FE4 (OBD PID 3C, C=x/64-40) model; target = k*(4*T-40) C, k = T_EEC4*T_EED0/65536. Approach-rate gain = T_EE8C|98 * T_EEA4 * T_EE80 * (T_EE74*26/256) / 2^24 (relative factors). Input FFFEF0DA vehicle speed. Lookup result stored to: FFFF0683." sizey="8">
@@ -7017,16 +7017,16 @@
         <scaling units="rpm" expression="x*25" to_byte="x/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02E43C] - unresolved: stored to FFFEC7C8" category="Unidentified - Task 0x15307C" storageaddress="29826" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E43C. Lookup result stored to: FFFEC7C8. UNRESOLVED (locked): 0xB6FBC: stored to FFFEC7C8 (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="8">
+    <table type="2D" name="Unidentified 8 [D02E43C] (Air Charge Rate (VE*density*rpm, 0F56)) - unresolved: stored to FFFEC7C8" category="Unidentified - Task 0x15307C" storageaddress="29826" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E43C. Lookup result stored to: FFFEC7C8. UNRESOLVED (locked): 0xB6FBC: stored to FFFEC7C8 (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="8">
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0F56)" storageaddress="29816" elements="8" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Air Charge Rate (VE*density*rpm, 0F56)" storageaddress="29816" elements="8" storagetype="uint16" endian="big" locked="true">
+        <scaling units="g/L*rpm" expression="x/5" to_byte="x*5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02E430] - unresolved: stored to FFFEC7C6" category="Unidentified - Task 0x15307C" storageaddress="29836" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E430. Lookup result stored to: FFFEC7C6. UNRESOLVED (locked): 0xB6FBC: stored to FFFEC7C6 (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="8">
+    <table type="2D" name="Unidentified 8 [D02E430] (Air Charge Rate (VE*density*rpm, 0F56)) - unresolved: stored to FFFEC7C6" category="Unidentified - Task 0x15307C" storageaddress="29836" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E430. Lookup result stored to: FFFEC7C6. UNRESOLVED (locked): 0xB6FBC: stored to FFFEC7C6 (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="8">
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0F56)" storageaddress="29816" elements="8" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Air Charge Rate (VE*density*rpm, 0F56)" storageaddress="29816" elements="8" storagetype="uint16" endian="big" locked="true">
+        <scaling units="g/L*rpm" expression="x/5" to_byte="x*5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
     <table type="2D" name="Unidentified 8 [D02E448] - unresolved: compared with FFFF0DF4" category="Unidentified - Task 0x15307C" storageaddress="298B0" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E448. UNRESOLVED (locked): 0xB7C24: compared with FFFF0DF4 (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="8">

@@ -318,3 +318,6 @@ V2.update({
 V2.update({
  0xFFFF1422:('Torque 1422 (monitor)','Nm','(x-16000)/80','x*80+16000','0x123CF0 (code twin of 0x8034C; writer found by emulation, call 0x125B1A): 1422 = min(Torque 0A64, a + c - b) in torque-type arithmetic'+_TQ),
 })
+V2.update({
+ 0xFFFF0F56:('Air Charge Rate (VE*density*rpm, 0F56)','g/L*rpm','x/5','x*5','0xCF6D4: 0F56 = 1698>>8 (0xCFE6C), 1698 = 169C*1280 (0xCFE80), 169C = VE*rho[g/L]*rpm (0xCFEDC); Engine Load % = 169C*77.34/rpm (0x7E3F8) => 169C = 0F56/5'),
+})
