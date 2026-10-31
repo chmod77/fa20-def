@@ -39,7 +39,9 @@ def bases(s):
         if a is None:
             continue
         found.setdefault(v, set()).add(a)
-    return {k: next(iter(v)) for k, v in found.items() if len(v) == 1}
+    # reject pointer locals that are assigned more than once in any form (e.g. later 'p = p + 0x30' or 'p = q + 0xba')
+    nassign = {k: len(re.findall(r'(?<![\w.*])' + re.escape(k) + r'\s*=(?!=)', s)) for k in found}
+    return {k: next(iter(v)) for k, v in found.items() if len(v) == 1 and nassign[k] == 1}
 
 
 def fold(a, B):

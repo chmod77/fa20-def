@@ -2112,9 +2112,9 @@
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02CA14]" category="Unidentified - Ignition Timing - Base &amp; Torque Model" storageaddress="12996" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CA14, 0x2CA90. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="129B6" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Target Throttle Opening (vs max(FFFF09D4, FFFF0B16))" category="Electronic Throttle - Target" storageaddress="12996" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CA14, 0x2CA90. Evidence: 0x86BB4 (called from 0x87478 with param_8 = &amp;FFFF09B4+0x140 = FFFF0AF4): Throttle Opening Angle target FFFF0AF4 (SSM 0x15 / OBD PID4C, %=x/256) = T(max(FFFF09D4, FFFF0B16))*400/689 in normal running (param_1..3 = 0, engine state != 1) =&gt; % = x*400/(689*256); max entry 44096 = 100.0 %. Inputs: FFFF09D4 (written by 0x7FAA0 = T_02C200(min(FFFF0CD8, T_02C1F4(coolant))), range 0..2982) and FFFF0B16; the larger is used. Physical unit of the input unresolved." sizey="16">
+      <scaling units="%" expression="x*400/176384" to_byte="x*176384/400" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="129B6" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>

@@ -502,6 +502,19 @@
    "format": "0.0"
   }
  },
+ "0x2CA14": {
+  "status": "identified",
+  "name": "Target Throttle Opening (vs max(FFFF09D4, FFFF0B16))",
+  "category": "Electronic Throttle - Target",
+  "evidence": "0x86BB4 (called from 0x87478 with param_8 = &FFFF09B4+0x140 = FFFF0AF4): Throttle Opening Angle target FFFF0AF4 (SSM 0x15 / OBD PID4C, %=x/256) = T(max(FFFF09D4, FFFF0B16))*400/689 in normal running (param_1..3 = 0, engine state != 1) => % = x*400/(689*256); max entry 44096 = 100.0 %. Inputs: FFFF09D4 (written by 0x7FAA0 = T_02C200(min(FFFF0CD8, T_02C1F4(coolant))), range 0..2982) and FFFF0B16; the larger is used. Physical unit of the input unresolved.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*400/176384",
+   "to_byte": "x*176384/400",
+   "format": "0.00"
+  }
+ },
  "0x2CE08": {
   "status": "identified",
   "name": "Fuel Enrichment (Coolant >= 100 C)",

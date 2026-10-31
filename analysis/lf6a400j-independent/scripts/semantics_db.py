@@ -211,6 +211,12 @@ add(0x2C7FC, 'Requested Torque Blend Weight 1 (Accelerator x Vehicle Speed)', TQ
 add(0x2C810, 'Requested Torque Blend Weight 2 (Accelerator x Vehicle Speed)', TQ, _bl + ' Weight multiplies FFFF0A4E (param_4; r7).', ('%', 'x*100/255', 'x*255/100', '0.0'))
 add(0x2C824, 'Requested Torque Blend Weight 3 (Accelerator x Vehicle Speed)', TQ, _bl + ' Weight w3 blends FFFF0A4A (param_5, stack) against FFFF0A52 with (255-w3).', ('%', 'x*100/255', 'x*255/100', '0.0'))
 
+# ---------------------------------------------------------------- throttle
+add(0x2CA14, 'Target Throttle Opening (vs max(FFFF09D4, FFFF0B16))', 'Electronic Throttle - Target',
+    '0x86BB4 (called from 0x87478 with param_8 = &FFFF09B4+0x140 = FFFF0AF4): Throttle Opening Angle target FFFF0AF4 (SSM 0x15 / OBD PID4C, %=x/256) '
+    '= T(max(FFFF09D4, FFFF0B16))*400/689 in normal running (param_1..3 = 0, engine state != 1) => % = x*400/(689*256); max entry 44096 = 100.0 %. '
+    'Inputs: FFFF09D4 (written by 0x7FAA0 = T_02C200(min(FFFF0CD8, T_02C1F4(coolant))), range 0..2982) and FFFF0B16; the larger is used. Physical unit of the input unresolved.', ('%', 'x*400/176384', 'x*176384/400', '0.00'))
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

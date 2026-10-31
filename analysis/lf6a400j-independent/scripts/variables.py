@@ -135,3 +135,4 @@ V2.update({
  0xFFFF0A52:('Requested Torque C (pedal)','Nm','(x-16000)/80','x*80+16000','0x8151C out.'+_TQ),
  0xFFFF0A56:('Requested Torque D (pedal)','Nm','(x-16000)/80','x*80+16000','0x815A0 out.'+_TQ),
 })
+
