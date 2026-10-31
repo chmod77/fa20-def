@@ -2468,6 +2468,90 @@
    "format": "0.00"
   }
  },
+ "0x2E954": {
+  "status": "identified",
+  "name": "Torque Limit Upper (RPM) [0xC3FA8]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0xC3FA8 (the torque-type anchor): torque from power (Nm*80+16000) is clamped min(torque, T), so T is in the torque type. Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range). Input FFFF2ADA engine speed. Note: the callers in 0xC5934 pass param_1 = 0 (0xC3FA8 and 0xC4124), so this branch is not executed in this ROM.",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed",
+    "units": "rpm",
+    "expr": "x*25/128",
+    "to_byte": "x*128/25"
+   }
+  }
+ },
+ "0x2E960": {
+  "status": "identified",
+  "name": "Torque Limit Lower (RPM) [0xC3FA8]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0xC3FA8 (the torque-type anchor): torque from power (Nm*80+16000) is clamped max(.., T), so T is in the torque type. Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range). Input FFFF2ADA engine speed. Note: the callers in 0xC5934 pass param_1 = 0 (0xC3FA8 and 0xC4124), so this branch is not executed in this ROM.",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed",
+    "units": "rpm",
+    "expr": "x*25/128",
+    "to_byte": "x*128/25"
+   }
+  }
+ },
+ "0x2E96C": {
+  "status": "identified",
+  "name": "Torque Limit Upper (RPM) [0xC4124]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0xC3FA8 (the torque-type anchor): torque from power (Nm*80+16000) is clamped min(torque, T), so T is in the torque type. Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range). Input FFFF2ADA engine speed. Note: the callers in 0xC5934 pass param_1 = 0 (0xC3FA8 and 0xC4124), so this branch is not executed in this ROM.",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed",
+    "units": "rpm",
+    "expr": "x*25/128",
+    "to_byte": "x*128/25"
+   }
+  }
+ },
+ "0x2E978": {
+  "status": "identified",
+  "name": "Torque Limit Lower (RPM) [0xC4124]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0xC3FA8 (the torque-type anchor): torque from power (Nm*80+16000) is clamped max(.., T), so T is in the torque type. Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range). Input FFFF2ADA engine speed. Note: the callers in 0xC5934 pass param_1 = 0 (0xC3FA8 and 0xC4124), so this branch is not executed in this ROM.",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed",
+    "units": "rpm",
+    "expr": "x*25/128",
+    "to_byte": "x*128/25"
+   }
+  }
+ },
  "0x2EB28": {
   "status": "identified",
   "name": "Accelerator Pedal Angle Threshold (0xCC0D0)",

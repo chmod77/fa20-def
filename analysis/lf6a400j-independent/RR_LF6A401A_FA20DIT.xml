@@ -4755,15 +4755,15 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02E954] (Engine Speed (OBD copy))" category="Unidentified - Task 0x152A40" storageaddress="1DCDA" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E954, 0x2E96C. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="1D922" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Torque Limit Upper (RPM) [0xC3FA8]" category="Driver Demand / Torque Request" storageaddress="1DCDA" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E954, 0x2E96C. Evidence: 0xC3FA8 (the torque-type anchor): torque from power (Nm*80+16000) is clamped min(torque, T), so T is in the torque type. Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW-&gt;Nm via 60000/2pi, stored *80+16000, clamps = u16 range). Input FFFF2ADA engine speed. Note: the callers in 0xC5934 pass param_1 = 0 (0xC3FA8 and 0xC4124), so this branch is not executed in this ROM." sizey="16">
+      <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="1D922" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02E960] (Engine Speed (OBD copy))" category="Unidentified - Task 0x152A40" storageaddress="1DCFA" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E960, 0x2E978. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="1D922" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Torque Limit Lower (RPM) [0xC3FA8]" category="Driver Demand / Torque Request" storageaddress="1DCFA" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E960, 0x2E978. Evidence: 0xC3FA8 (the torque-type anchor): torque from power (Nm*80+16000) is clamped max(.., T), so T is in the torque type. Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW-&gt;Nm via 60000/2pi, stored *80+16000, clamps = u16 range). Input FFFF2ADA engine speed. Note: the callers in 0xC5934 pass param_1 = 0 (0xC3FA8 and 0xC4124), so this branch is not executed in this ROM." sizey="16">
+      <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="1D922" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>

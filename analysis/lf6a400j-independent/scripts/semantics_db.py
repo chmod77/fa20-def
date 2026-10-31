@@ -524,6 +524,14 @@ if os.path.exists(f'{ROOT}/evidence/table-compare.tsv'):
             'a comparison requires the same unit, so the output carries that scaling.',
             (_r['units'], _r['expr'], _tb, '0.00'))
 
+for d, nm, how in ((0x2E954, 'Torque Limit Upper (RPM) [0xC3FA8]', 'min(torque, T)'), (0x2E960, 'Torque Limit Lower (RPM) [0xC3FA8]', 'max(.., T)'),
+                   (0x2E96C, 'Torque Limit Upper (RPM) [0xC4124]', 'min(torque, T)'), (0x2E978, 'Torque Limit Lower (RPM) [0xC4124]', 'max(.., T)')):
+    add(d, nm, 'Driver Demand / Torque Request',
+        f'0xC3FA8 (the torque-type anchor): torque from power (Nm*80+16000) is clamped {how}, so T is in the torque type.' + TQEV +
+        ' Input FFFF2ADA engine speed. Note: the callers in 0xC5934 pass param_1 = 0 (0xC3FA8 and 0xC4124), so this branch is not executed in this ROM.',
+        ('Nm', '(x-16000)/80', 'x*80+16000', '0.0'),
+        axes={'0': dict(name='Engine Speed', units='rpm', expr='x*25/128', to_byte='x*128/25')})
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
