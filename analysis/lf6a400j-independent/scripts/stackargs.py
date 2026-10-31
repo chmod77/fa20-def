@@ -50,8 +50,13 @@ def emit(pend, R, pushes):
     for k, v in enumerate(reversed(pushes)):
         if v is not None: rows.append((tgt, fa, a, k + 5, v))
 
+_starts = sorted(a for a, _ in fns)
+END = {}   # recorded sizes cover only part of large functions: scan up to the next function start (capped at 16 KiB)
+for _k, (_a, _n) in enumerate(sorted(fns)):
+    _nx = _starts[_k + 1] if _k + 1 < len(_starts) else _a + _n + 2
+    END[_a] = max(_a + max(_n, 2) + 2, min(_nx, _a + 0x4000))
 for fa, size in fns:
-    insns = disasm(fa, fa + max(size, 2) + 2)
+    insns = disasm(fa, END[fa])
     tg = set()
     for i in insns:
         if i.mnemonic in ('bt', 'bf', 'bra', 'bt/s', 'bf/s'):

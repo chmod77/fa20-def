@@ -1006,9 +1006,48 @@
  },
  "0x2D2C8": {
   "status": "identified",
-  "name": "Fuel Quantity Multiplier (Fuel Quantity x RPM)",
+  "name": "Fuel Quantity Multiplier, Channel 1 (Fuel Quantity x RPM)",
   "category": "Fuel Injection",
   "evidence": "0x91310 (from 0x8A670, FFFF053D mode 0): FFFF1534 = (T(q FFFF0BA6, rpm FFFF2996) * q) >> 7, so T/128 multiplies the fuel quantity (128 = 1.0); FFFF1534 feeds the base pulse FFFF1544 (0x917EC) -> injection time FFFF1564 (SSM 0x20).",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x/128",
+   "to_byte": "x*128",
+   "format": "0.000"
+  }
+ },
+ "0x2D2DC": {
+  "status": "identified",
+  "name": "Fuel Quantity Multiplier, Channel 2 (Fuel Quantity x RPM)",
+  "category": "Fuel Injection",
+  "evidence": "0x91450 is instruction-for-instruction the twin of 0x91310 (called next to it from 0x8A670, enable FFFF0539 bit 6): FFFF1538 = (T(q FFFF0BA6, rpm FFFF2996) * q) >> 7, so T/128 multiplies the fuel quantity (128 = 1.0).",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x/128",
+   "to_byte": "x*128",
+   "format": "0.000"
+  }
+ },
+ "0x2D2F0": {
+  "status": "identified",
+  "name": "Fuel Quantity Multiplier, Channel 3 (Fuel Quantity x RPM)",
+  "category": "Fuel Injection",
+  "evidence": "0x91590 is instruction-for-instruction the twin of 0x91310 (called next to it from 0x8A670, enable FFFF0539 bit 5): FFFF153C = (T(q FFFF0BA6, rpm FFFF2996) * q) >> 7, so T/128 multiplies the fuel quantity (128 = 1.0).",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x/128",
+   "to_byte": "x*128",
+   "format": "0.000"
+  }
+ },
+ "0x2D304": {
+  "status": "identified",
+  "name": "Fuel Quantity Multiplier, Channel 4 (Fuel Quantity x RPM)",
+  "category": "Fuel Injection",
+  "evidence": "0x916AC is instruction-for-instruction the twin of 0x91310 (called next to it from 0x8A670, enable FFFF0539 bit 4): FFFF1540 = (T(q FFFF0BA6, rpm FFFF2996) * q) >> 7, so T/128 multiplies the fuel quantity (128 = 1.0).",
   "description": "",
   "data": {
    "units": "multiplier",

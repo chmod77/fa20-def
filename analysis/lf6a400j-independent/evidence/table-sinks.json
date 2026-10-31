@@ -955,7 +955,7 @@
 "FFFF04F8"
 ],
 "0x2E18C": [
-"000b2394:*param_3"
+"FFFF0D68"
 ],
 "0x2E1AC": [
 "FFFF04FC"
@@ -1148,7 +1148,7 @@
 "000c0be4:*param_8"
 ],
 "0x2E838": [
-"000c1d74:*param_6"
+"FFFF0E96"
 ],
 "0x2E888": [
 "FFFF0E9E"
@@ -1511,16 +1511,16 @@
 "FFFED958"
 ],
 "0x2F790": [
-"000feb84:*param_13"
+"FFFF1244"
 ],
 "0x2F79C": [
-"000feb84:*param_10"
+"FFFF123E"
 ],
 "0x2F7A8": [
-"000feb84:*param_10"
+"FFFF123E"
 ],
 "0x2F7B4": [
-"000feb84:*param_7"
+"FFFF123A"
 ],
 "0x2F7D8": [
 "000fef5c:*param_13"

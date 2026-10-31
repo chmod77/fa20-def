@@ -31,9 +31,14 @@ def disasm(a, b):
 
 
 rows = collections.defaultdict(set)
+_starts = sorted(a for a, _ in fns)
+END = {}   # recorded sizes cover only part of large functions: scan up to the next function start (capped at 16 KiB)
+for _k, (_a, _n) in enumerate(sorted(fns)):
+    _nx = _starts[_k + 1] if _k + 1 < len(_starts) else _a + _n + 2
+    END[_a] = max(_a + max(_n, 2) + 2, min(_nx, _a + 0x4000))
 for fa, size in fns:
     R = {}
-    for i in disasm(fa, fa + max(size, 2) + 2):
+    for i in disasm(fa, END[fa]):
         m = i.mnemonic; ops = [o.strip() for o in SPLIT.split(i.op_str)] if i.op_str else []
         try:
             if m in ('mov.l', 'mov.w') and len(ops) == 2 and ops[0].startswith('0x') and REG.match(ops[1]):

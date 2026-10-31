@@ -623,7 +623,7 @@
   "units": "C",
   "expr": "x*5/2048-40",
   "to_byte": "(x+40)*2048/5",
-  "function": "04d23a",
+  "function": "04d0a4",
   "context": "(_DAT_fffeeede < 0x8000"
  },
  "0087BA": {

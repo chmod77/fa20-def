@@ -333,7 +333,7 @@
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Fuel Quantity Multiplier (Fuel Quantity x RPM)" category="Fuel Injection" storageaddress="9A22" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D2C8. Evidence: 0x91310 (from 0x8A670, FFFF053D mode 0): FFFF1534 = (T(q FFFF0BA6, rpm FFFF2996) * q) &gt;&gt; 7, so T/128 multiplies the fuel quantity (128 = 1.0); FFFF1534 feeds the base pulse FFFF1544 (0x917EC) -&gt; injection time FFFF1564 (SSM 0x20). Lookup result stored to: FFFEBDB8, FFFEBDBE." sizex="12" sizey="9">
+    <table type="3D" name="Fuel Quantity Multiplier, Channel 1 (Fuel Quantity x RPM)" category="Fuel Injection" storageaddress="9A22" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D2C8. Evidence: 0x91310 (from 0x8A670, FFFF053D mode 0): FFFF1534 = (T(q FFFF0BA6, rpm FFFF2996) * q) &gt;&gt; 7, so T/128 multiplies the fuel quantity (128 = 1.0); FFFF1534 feeds the base pulse FFFF1544 (0x917EC) -&gt; injection time FFFF1564 (SSM 0x20). Lookup result stored to: FFFEBDB8, FFFEBDBE." sizex="12" sizey="9">
       <scaling units="multiplier" expression="x/128" to_byte="x*128" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       <table type="Y Axis" name="Unidentified input 1" storageaddress="9A10" elements="9" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
@@ -342,30 +342,30 @@
         <scaling units="rpm" expression="x*50" to_byte="x/50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 9x12 [D02D2DC] (? x Engine Speed (high byte))" category="Unidentified - Task 0x158ED8" storageaddress="9A8E" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D2DC. Lookup result stored to: FFFEBDC0, FFFEBDC6. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="12" sizey="9">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="9A10" elements="9" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Fuel Quantity Multiplier, Channel 2 (Fuel Quantity x RPM)" category="Fuel Injection" storageaddress="9A8E" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D2DC. Evidence: 0x91450 is instruction-for-instruction the twin of 0x91310 (called next to it from 0x8A670, enable FFFF0539 bit 6): FFFF1538 = (T(q FFFF0BA6, rpm FFFF2996) * q) &gt;&gt; 7, so T/128 multiplies the fuel quantity (128 = 1.0). Lookup result stored to: FFFEBDC0, FFFEBDC6." sizex="12" sizey="9">
+      <scaling units="multiplier" expression="x/128" to_byte="x*128" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="9A10" elements="9" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Speed (high byte)" storageaddress="9A04" elements="12" storagetype="uint8" endian="big" locked="true">
+      <table type="X Axis" name="Engine Speed (high byte)" storageaddress="9A04" elements="12" storagetype="uint8" endian="big">
         <scaling units="rpm" expression="x*50" to_byte="x/50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 9x12 [D02D2F0] (? x Engine Speed (high byte))" category="Unidentified - Task 0x158ED8" storageaddress="9AFA" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D2F0. Lookup result stored to: FFFEBDC8, FFFEBDCE. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="12" sizey="9">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="9A10" elements="9" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Fuel Quantity Multiplier, Channel 3 (Fuel Quantity x RPM)" category="Fuel Injection" storageaddress="9AFA" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D2F0. Evidence: 0x91590 is instruction-for-instruction the twin of 0x91310 (called next to it from 0x8A670, enable FFFF0539 bit 5): FFFF153C = (T(q FFFF0BA6, rpm FFFF2996) * q) &gt;&gt; 7, so T/128 multiplies the fuel quantity (128 = 1.0). Lookup result stored to: FFFEBDC8, FFFEBDCE." sizex="12" sizey="9">
+      <scaling units="multiplier" expression="x/128" to_byte="x*128" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="9A10" elements="9" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Speed (high byte)" storageaddress="9A04" elements="12" storagetype="uint8" endian="big" locked="true">
+      <table type="X Axis" name="Engine Speed (high byte)" storageaddress="9A04" elements="12" storagetype="uint8" endian="big">
         <scaling units="rpm" expression="x*50" to_byte="x/50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 9x12 [D02D304] (? x Engine Speed (high byte))" category="Unidentified - Task 0x158ED8" storageaddress="9B66" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D304. Lookup result stored to: FFFEBDD0, FFFEBDD6. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="12" sizey="9">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="9A10" elements="9" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Fuel Quantity Multiplier, Channel 4 (Fuel Quantity x RPM)" category="Fuel Injection" storageaddress="9B66" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D304. Evidence: 0x916AC is instruction-for-instruction the twin of 0x91310 (called next to it from 0x8A670, enable FFFF0539 bit 4): FFFF1540 = (T(q FFFF0BA6, rpm FFFF2996) * q) &gt;&gt; 7, so T/128 multiplies the fuel quantity (128 = 1.0). Lookup result stored to: FFFEBDD0, FFFEBDD6." sizex="12" sizey="9">
+      <scaling units="multiplier" expression="x/128" to_byte="x*128" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="9A10" elements="9" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Speed (high byte)" storageaddress="9A04" elements="12" storagetype="uint8" endian="big" locked="true">
+      <table type="X Axis" name="Engine Speed (high byte)" storageaddress="9A04" elements="12" storagetype="uint8" endian="big">
         <scaling units="rpm" expression="x*50" to_byte="x/50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
@@ -3327,7 +3327,7 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02E18C]" category="Unidentified - Task 0xB177C" storageaddress="1755C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E18C. Lookup result stored to: 000b2394:*param_3. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
+    <table type="2D" name="Unidentified 16 [D02E18C]" category="Unidentified - Task 0xB177C" storageaddress="1755C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E18C. Lookup result stored to: FFFF0D68. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0D62)" storageaddress="1753C" elements="16" storagetype="uint16" endian="big" locked="true">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
@@ -4143,10 +4143,10 @@
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02D9EC]" category="Unidentified - Ignition Timing - Corrections" storageaddress="1AF16" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2D9EC. Lookup result stored to: FFFEC05C. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
+    <table type="2D" name="Unidentified 16 [D02D9EC] (Engine Speed (byte, 31.25 rpm))" category="Unidentified - Ignition Timing - Corrections" storageaddress="1AF16" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2D9EC. Lookup result stored to: FFFEC05C. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="1E564" elements="16" storagetype="uint8" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Engine Speed (byte, 31.25 rpm)" storageaddress="1E564" elements="16" storagetype="uint8" endian="big" locked="true">
+        <scaling units="rpm" expression="(x+16)*31.25" to_byte="x/31.25-16" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
     <table type="2D" name="Unidentified 16 [D02D970] (Coolant Temperature (OBD copy))" category="Unidentified - Ignition Timing - Corrections" storageaddress="1AF70" storagetype="uint32" endian="big" userlevel="1" description="Descriptor(s): 0x2D970. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
@@ -4817,13 +4817,13 @@
     </table>
     <table type="2D" name="Unidentified 8 [D02EA9C]" category="Unidentified - Task 0x152A40" storageaddress="1DD9A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2EA9C. Lookup result stored to: FFFECBA4. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="1D9AA" elements="8" storagetype="uint8" endian="big" locked="true">
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0580)" storageaddress="1D9AA" elements="8" storagetype="uint8" endian="big" locked="true">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
     <table type="2D" name="Unidentified 8 [D02EAA8]" category="Unidentified - Task 0x152A40" storageaddress="1DDAA" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2EAA8. Lookup result stored to: FFFECBA4. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="8">
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="1D9AA" elements="8" storagetype="uint8" endian="big" locked="true">
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0580)" storageaddress="1D9AA" elements="8" storagetype="uint8" endian="big" locked="true">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
@@ -4833,7 +4833,7 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 8x4 [D02E838] (Coolant Temperature (filtered, word) x Battery Voltage)" category="Unidentified - Task 0xC0FD0" storageaddress="1DDE2" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E838. Lookup result stored to: 000c1d74:*param_6. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="4" sizey="8">
+    <table type="3D" name="Unidentified 8x4 [D02E838] (Coolant Temperature (filtered, word) x Battery Voltage)" category="Unidentified - Task 0xC0FD0" storageaddress="1DDE2" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E838. Lookup result stored to: FFFF0E96. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="4" sizey="8">
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       <table type="Y Axis" name="Coolant Temperature (filtered, word)" storageaddress="1DDCE" elements="8" storagetype="uint16" endian="big" locked="true">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
@@ -5564,7 +5564,7 @@
     </table>
     <table type="2D" name="Unidentified 16 [D02F5AC]" category="Unidentified - AVCS (Cam Timing) Control" storageaddress="201D2" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F5AC, 0x2F5D0, 0x2F838, 0x2F85C. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="20172" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF11B6)" storageaddress="20172" elements="16" storagetype="uint16" endian="big" locked="true">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -5715,15 +5715,15 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Exhaust Right OCV Duty Gain (vs FFFF11B6, FFFF11CC &gt;= 20)" category="AVCS - OCV Feedback" storageaddress="20F94" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F79C, 0x2F7E4. Evidence: 0xFEB84: Exhaust Right OCV duty post-processing (see block comment). factor in duty*T*G*2^-35 (*25): 1.0 at x = 41943. Lookup result stored to: 000feb84:*param_10, 000fef5c:*param_10." sizey="4">
+    <table type="2D" name="Exhaust Right OCV Duty Gain (vs FFFF11B6, FFFF11CC &gt;= 20)" category="AVCS - OCV Feedback" storageaddress="20F94" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F79C, 0x2F7E4. Evidence: 0xFEB84: Exhaust Right OCV duty post-processing (see block comment). factor in duty*T*G*2^-35 (*25): 1.0 at x = 41943. Lookup result stored to: 000fef5c:*param_10, FFFF123E." sizey="4">
       <scaling units="multiplier" expression="x*25/1048576" to_byte="x*1048576/25" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="20F2A" elements="4" storagetype="uint16" endian="big">
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF11B6)" storageaddress="20F2A" elements="4" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Exhaust Right OCV Duty Gain (vs FFFF11B6, FFFF11CC &lt; 20)" category="AVCS - OCV Feedback" storageaddress="20F9C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F7A8, 0x2F7F0. Evidence: 0xFEB84: Exhaust Right OCV duty post-processing (see block comment). factor in duty*T*G*2^-35 (*25): 1.0 at x = 41943. Lookup result stored to: 000feb84:*param_10, 000fef5c:*param_10." sizey="4">
+    <table type="2D" name="Exhaust Right OCV Duty Gain (vs FFFF11B6, FFFF11CC &lt; 20)" category="AVCS - OCV Feedback" storageaddress="20F9C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F7A8, 0x2F7F0. Evidence: 0xFEB84: Exhaust Right OCV duty post-processing (see block comment). factor in duty*T*G*2^-35 (*25): 1.0 at x = 41943. Lookup result stored to: 000fef5c:*param_10, FFFF123E." sizey="4">
       <scaling units="multiplier" expression="x*25/1048576" to_byte="x*1048576/25" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="20F32" elements="4" storagetype="uint16" endian="big">
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF11B6)" storageaddress="20F32" elements="4" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -5739,13 +5739,13 @@
         <scaling units="A" expression="x/26214.4" to_byte="x*26214.4" format="0.00" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Exhaust Right OCV Duty Voltage Compensation" category="AVCS - OCV Feedback" storageaddress="20FD8" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F790, 0x2F7D8. Evidence: 0xFEB84: Exhaust Right OCV duty post-processing (see block comment). multiplier T(FFFEF18E)/32768 on the final duty. Lookup result stored to: 000feb84:*param_13, 000fef5c:*param_13." sizey="7">
+    <table type="2D" name="Exhaust Right OCV Duty Voltage Compensation" category="AVCS - OCV Feedback" storageaddress="20FD8" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F790, 0x2F7D8. Evidence: 0xFEB84: Exhaust Right OCV duty post-processing (see block comment). multiplier T(FFFEF18E)/32768 on the final duty. Lookup result stored to: 000fef5c:*param_13, FFFF1244." sizey="7">
       <scaling units="%" expression="x*100/32768" to_byte="x*32768/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       <table type="Y Axis" name="Control Module Voltage" storageaddress="20F6E" elements="7" storagetype="uint16" endian="big">
         <scaling units="V" expression="x*625/2048000" to_byte="x*2048000/625" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Exhaust Right OCV Target Current (vs Duty)" category="AVCS - OCV Feedback" storageaddress="20FE6" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F7B4, 0x2F7FC. Evidence: 0xFEB84: Exhaust Right OCV duty post-processing (see block comment). expected current compared with measured OCV current*26214.4. Lookup result stored to: 000feb84:*param_7, 000fef5c:*param_7." sizey="12">
+    <table type="2D" name="Exhaust Right OCV Target Current (vs Duty)" category="AVCS - OCV Feedback" storageaddress="20FE6" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F7B4, 0x2F7FC. Evidence: 0xFEB84: Exhaust Right OCV duty post-processing (see block comment). expected current compared with measured OCV current*26214.4. Lookup result stored to: 000fef5c:*param_7, FFFF123A." sizey="12">
       <scaling units="A" expression="x/26214.4" to_byte="x*26214.4" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       <table type="Y Axis" name="OCV Duty" storageaddress="20F7C" elements="12" storagetype="uint16" endian="big">
         <scaling units="%" expression="x/25" to_byte="x*25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
@@ -5759,13 +5759,13 @@
     </table>
     <table type="2D" name="Unidentified 16 [D02F820]" category="Unidentified - AVCS (Cam Timing) Control" storageaddress="21072" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F820, 0x2F844. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="21032" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF11B6)" storageaddress="21032" elements="16" storagetype="uint16" endian="big" locked="true">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
     <table type="2D" name="Unidentified 16 [D02F82C]" category="Unidentified - AVCS (Cam Timing) Control" storageaddress="21092" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2F82C, 0x2F850. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="21052" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF11B6)" storageaddress="21052" elements="16" storagetype="uint16" endian="big" locked="true">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -6042,10 +6042,10 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02FB14]" category="Unidentified - Task 0x100CB4 / Task 0x126050 / Task 0x15307C" storageaddress="22C72" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FB14, 0x2FBC0, 0x30568. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
+    <table type="2D" name="Unidentified 16 [D02FB14] (Engine Speed (byte, 25 rpm))" category="Unidentified - Task 0x100CB4 / Task 0x126050 / Task 0x15307C" storageaddress="22C72" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FB14, 0x2FBC0, 0x30568. Function/output scaling not yet proven from the binary; locked." locked="true" sizey="16">
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="1E45C" elements="16" storagetype="uint8" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Engine Speed (byte, 25 rpm)" storageaddress="1E45C" elements="16" storagetype="uint8" endian="big" locked="true">
+        <scaling units="rpm" expression="x*25" to_byte="x/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
     <table type="3D" name="Unidentified 5x4 [D02FCAC]" category="Unidentified - Task 0x15307C" storageaddress="22CBE" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FCAC. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="4" sizey="5">
@@ -9564,7 +9564,7 @@
     <table type="1D" name="Engine Speed (byte, 25 rpm) Threshold [0x02AA90] (0x3AC84)" category="Scalars - Task 0x3ADE6" storageaddress="02AA90" storagetype="uint8" endian="big" userlevel="1" description="Scalar at 0x02AA90 read by 0x3AC84 and compared with Engine Speed (byte, 25 rpm) (FFFF299C): &quot;(DAT_ffff299c &lt; 0xff&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
       <scaling units="rpm" expression="x*25" to_byte="x/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
     </table>
-    <table type="1D" name="Coolant Temperature (filtered, word) Threshold [0x02AD04] (0x4D23A)" category="Scalars - Task 0x153568 / Task 0x153D52" storageaddress="02AD04" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x02AD04 read by 0x4D23A and compared with Coolant Temperature (filtered, word) (FFFFEEDE): &quot;(_DAT_fffeeede &lt; 0x8000&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
+    <table type="1D" name="Coolant Temperature (filtered, word) Threshold [0x02AD04] (0x4D0A4)" category="Scalars - Task 0x15307C / Task 0x153568 / Task 0x153CE0 / Task 0x153D12 / Task 0x153D52 / Task 0x15B5D2 / Task 0x15B688 / Task 0x15B6F0 / Task 0x2C88 / Task 0x31C2 / Task 0x6E2" storageaddress="02AD04" storagetype="uint16" endian="big" userlevel="1" description="Scalar at 0x02AD04 read by 0x4D0A4 and compared with Coolant Temperature (filtered, word) (FFFFEEDE): &quot;(_DAT_fffeeede &lt; 0x8000&quot; (ROM value folded by the decompiler). Scaling is that of the compared variable.">
       <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
     </table>
   </rom>

@@ -569,9 +569,14 @@ for d, cond in ((0x2E3A4, 'FFFF054A.4 clear'), (0x2E390, 'FFFF054A.4 set')):
         '0xB5E34 -> FFFF0DCA; 0xB5B38: limit = 43194 + 0DCA - 0x8000 (lambda*43194, same as FFFF0DBA) and FFFF0DBA = min(limit, target), '
         'so T is a lambda offset with 32768 = 0. Inputs coolant FFFEEEDE, load FFFF03A0.', ('lambda offset', '(x-32768)/43194', 'x*43194+32768', '0.000'))
 
-add(0x2D2C8, 'Fuel Quantity Multiplier (Fuel Quantity x RPM)', INJ,
+add(0x2D2C8, 'Fuel Quantity Multiplier, Channel 1 (Fuel Quantity x RPM)', INJ,
     '0x91310 (from 0x8A670, FFFF053D mode 0): FFFF1534 = (T(q FFFF0BA6, rpm FFFF2996) * q) >> 7, so T/128 multiplies the fuel quantity '
     '(128 = 1.0); FFFF1534 feeds the base pulse FFFF1544 (0x917EC) -> injection time FFFF1564 (SSM 0x20).', ('multiplier', 'x/128', 'x*128', '0.000'))
+
+for n, (d, fn, out) in enumerate(((0x2D2DC, '0x91450', 'FFFF1538'), (0x2D2F0, '0x91590', 'FFFF153C'), (0x2D304, '0x916AC', 'FFFF1540')), 2):
+    add(d, f'Fuel Quantity Multiplier, Channel {n} (Fuel Quantity x RPM)', INJ,
+        f'{fn} is instruction-for-instruction the twin of 0x91310 (called next to it from 0x8A670, enable FFFF0539 bit {8-n}): '
+        f'{out} = (T(q FFFF0BA6, rpm FFFF2996) * q) >> 7, so T/128 multiplies the fuel quantity (128 = 1.0).', ('multiplier', 'x/128', 'x*128', '0.000'))
 
 
 if __name__ == '__main__':

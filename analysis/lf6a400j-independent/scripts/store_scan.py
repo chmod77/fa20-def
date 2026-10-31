@@ -25,9 +25,19 @@ def u32(x):
 
 
 n = 0
+_starts = sorted(a for a, _ in fns)
+END = {}   # recorded sizes cover only part of large functions: scan up to the next function start (capped at 16 KiB)
+for _k, (_a, _n) in enumerate(sorted(fns)):
+    _nx = _starts[_k + 1] if _k + 1 < len(_starts) else _a + _n + 2
+    END[_a] = max(_a + max(_n, 2) + 2, min(_nx, _a + 0x4000))
 for fa, size in fns:
-    code = rom[fa:fa + max(size, 2) + 2]
-    insns = list(md.disasm(code, fa))
+    insns = []; _a = fa
+    while _a < END[fa]:
+        if struct.unpack('>H', rom[_a:_a + 2])[0] & 0xF00F == 0x3001:
+            _a += 4; continue
+        _g = list(md.disasm(rom[_a:_a + 4], _a, count=1))
+        if _g: insns.append(_g[0]); _a += _g[0].size
+        else: _a += 2
     tg = set()
     for i in insns:
         if i.mnemonic.rstrip('/s') in ('bt', 'bf', 'bra', 'bt/s', 'bf/s') or i.mnemonic in ('bt/s', 'bf/s', 'bra'):
