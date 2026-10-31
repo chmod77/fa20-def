@@ -1532,6 +1532,45 @@
    "format": "0.000"
   }
  },
+ "0x2D104": {
+  "status": "identified",
+  "name": "Fuel Enrichment (0B82) (weight 1-w)",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x902CC (from 0x89E04; load FFFF03A0 x coolant FFFEEEDE): FFFF0B82 = T_02D118*w + T_02D104*(1-w)*T_02D12C/128 (w = FFFF0E90/65536); 0x900C8 adds FFFF0B82 to the FFFF0B80 target (fuel-quantity fraction, x/256 of base). ",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/256",
+   "to_byte": "x*256/100",
+   "format": "0.0"
+  }
+ },
+ "0x2D118": {
+  "status": "identified",
+  "name": "Fuel Enrichment (0B82) (weight w=FFFF0E90)",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x902CC (from 0x89E04; load FFFF03A0 x coolant FFFEEEDE): FFFF0B82 = T_02D118*w + T_02D104*(1-w)*T_02D12C/128 (w = FFFF0E90/65536); 0x900C8 adds FFFF0B82 to the FFFF0B80 target (fuel-quantity fraction, x/256 of base). ",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/256",
+   "to_byte": "x*256/100",
+   "format": "0.0"
+  }
+ },
+ "0x2D12C": {
+  "status": "identified",
+  "name": "Fuel Enrichment (0B82) Multiplier (RPM)",
+  "category": "Fueling - Open Loop & Enrichment",
+  "evidence": "0x902CC (from 0x89E04; load FFFF03A0 x coolant FFFEEEDE): FFFF0B82 = T_02D118*w + T_02D104*(1-w)*T_02D12C/128 (w = FFFF0E90/65536); 0x900C8 adds FFFF0B82 to the FFFF0B80 target (fuel-quantity fraction, x/256 of base). x/128 factor; input FFFF2994.",
+  "description": "",
+  "data": {
+   "units": "multiplier",
+   "expr": "x/128",
+   "to_byte": "x*128",
+   "format": "0.000"
+  }
+ },
  "0x2D138": {
   "status": "identified",
   "name": "Decaying Fuel Enrichment (Coolant)",

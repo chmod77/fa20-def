@@ -912,21 +912,21 @@
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x16 [D02D104] (Engine Load x Coolant Temperature (filtered, word))" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="BAE8" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2D104. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Load" storageaddress="C2A8" elements="16" storagetype="uint8" endian="big" locked="true">
+    <table type="3D" name="Fuel Enrichment (0B82) (weight 1-w)" category="Fueling - Open Loop &amp; Enrichment" storageaddress="BAE8" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2D104. Evidence: 0x902CC (from 0x89E04; load FFFF03A0 x coolant FFFEEEDE): FFFF0B82 = T_02D118*w + T_02D104*(1-w)*T_02D12C/128 (w = FFFF0E90/65536); 0x900C8 adds FFFF0B82 to the FFFF0B80 target (fuel-quantity fraction, x/256 of base). " sizex="16" sizey="16">
+      <scaling units="%" expression="x*100/256" to_byte="x*256/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Load" storageaddress="C2A8" elements="16" storagetype="uint8" endian="big">
         <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Coolant Temperature (filtered, word)" storageaddress="91E4" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Coolant Temperature (filtered, word)" storageaddress="91E4" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x16 [D02D118] (Engine Load x Coolant Temperature (filtered, word))" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="BCE8" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2D118. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Load" storageaddress="C2A8" elements="16" storagetype="uint8" endian="big" locked="true">
+    <table type="3D" name="Fuel Enrichment (0B82) (weight w=FFFF0E90)" category="Fueling - Open Loop &amp; Enrichment" storageaddress="BCE8" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2D118. Evidence: 0x902CC (from 0x89E04; load FFFF03A0 x coolant FFFEEEDE): FFFF0B82 = T_02D118*w + T_02D104*(1-w)*T_02D12C/128 (w = FFFF0E90/65536); 0x900C8 adds FFFF0B82 to the FFFF0B80 target (fuel-quantity fraction, x/256 of base). " sizex="16" sizey="16">
+      <scaling units="%" expression="x*100/256" to_byte="x*256/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Load" storageaddress="C2A8" elements="16" storagetype="uint8" endian="big">
         <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
-      <table type="X Axis" name="Coolant Temperature (filtered, word)" storageaddress="91E4" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Coolant Temperature (filtered, word)" storageaddress="91E4" elements="16" storagetype="uint16" endian="big">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>

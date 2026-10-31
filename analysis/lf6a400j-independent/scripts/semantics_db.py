@@ -774,6 +774,12 @@ add(0x2D004, 'Fuel Enrichment (0B72) Amount (Coolant)', FE, _ev72, ('%', 'x*3200
 add(0x2D010, 'Fuel Enrichment (0B72) Decay Step (Coolant)', FE, _ev72, ('%/step', 'x*200/65536', 'x*65536/200', '0.000'))
 add(0x2D01C, 'Fuel Enrichment (0B72) Hold Count (Coolant)', FE, _ev72 + 'Executions of task 0x152A40 (event-driven).', ('executions', 'x', 'x', '0'))
 
+_ev82 = ('0x902CC (from 0x89E04; load FFFF03A0 x coolant FFFEEEDE): FFFF0B82 = T_02D118*w + T_02D104*(1-w)*T_02D12C/128 (w = FFFF0E90/65536); '
+         '0x900C8 adds FFFF0B82 to the FFFF0B80 target (fuel-quantity fraction, x/256 of base). ')
+add(0x2D118, 'Fuel Enrichment (0B82) (weight w=FFFF0E90)', FE, _ev82, FQ)
+add(0x2D104, 'Fuel Enrichment (0B82) (weight 1-w)', FE, _ev82, FQ)
+add(0x2D12C, 'Fuel Enrichment (0B82) Multiplier (RPM)', FE, _ev82 + 'x/128 factor; input FFFF2994.', ('multiplier', 'x/128', 'x*128', '0.000'))
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
