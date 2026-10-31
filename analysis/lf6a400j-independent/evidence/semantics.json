@@ -1885,6 +1885,32 @@
    "format": "0.000"
   }
  },
+ "0x2D810": {
+  "status": "identified",
+  "name": "Ignition Timing Target, Override Path (weight 1-w, w=FFFF0E90)",
+  "category": "Ignition Timing",
+  "evidence": "0x9AE9C (from 0x9BDF4; rpm FFFF2994 x load FFFF09B4): FFFF0486 = 128 + (T_02D810*(1-w) + T_02D824*w - 128)*FFFF0D5E/256, FFFF0D5E = ratio*256 (0xB1D38, 256 = 1.0). 0x98FAC: (FFFF049F + FFFF0486 - 160) is the total-timing value (0.5 deg, written to the FFFF046C source FFFEBF90) on its override path (param_8; passed as 0 by 0x9CBF8 in this ROM), so T is 0.5 deg with offset 128.",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "(x-128)/2",
+   "to_byte": "x*2+128",
+   "format": "0.0"
+  }
+ },
+ "0x2D824": {
+  "status": "identified",
+  "name": "Ignition Timing Target, Override Path (weight w, w=FFFF0E90)",
+  "category": "Ignition Timing",
+  "evidence": "0x9AE9C (from 0x9BDF4; rpm FFFF2994 x load FFFF09B4): FFFF0486 = 128 + (T_02D810*(1-w) + T_02D824*w - 128)*FFFF0D5E/256, FFFF0D5E = ratio*256 (0xB1D38, 256 = 1.0). 0x98FAC: (FFFF049F + FFFF0486 - 160) is the total-timing value (0.5 deg, written to the FFFF046C source FFFEBF90) on its override path (param_8; passed as 0 by 0x9CBF8 in this ROM), so T is 0.5 deg with offset 128.",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "(x-128)/2",
+   "to_byte": "x*2+128",
+   "format": "0.0"
+  }
+ },
  "0x2D890": {
   "status": "identified",
   "name": "Ignition Timing Reduction (vs ratio FFFF0AA8)",

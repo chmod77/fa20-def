@@ -4095,21 +4095,21 @@
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 22x16 [D02D810] (Engine Speed x Engine Load)" category="Unidentified - Ignition Timing - Corrections" storageaddress="1A8C2" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D810. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="22">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="CB16" elements="22" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Ignition Timing Target, Override Path (weight 1-w, w=FFFF0E90)" category="Ignition Timing" storageaddress="1A8C2" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D810. Evidence: 0x9AE9C (from 0x9BDF4; rpm FFFF2994 x load FFFF09B4): FFFF0486 = 128 + (T_02D810*(1-w) + T_02D824*w - 128)*FFFF0D5E/256, FFFF0D5E = ratio*256 (0xB1D38, 256 = 1.0). 0x98FAC: (FFFF049F + FFFF0486 - 160) is the total-timing value (0.5 deg, written to the FFFF046C source FFFEBF90) on its override path (param_8; passed as 0 by 0x9CBF8 in this ROM), so T is 0.5 deg with offset 128." sizex="16" sizey="22">
+      <scaling units="deg" expression="(x-128)/2" to_byte="x*2+128" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="CB16" elements="22" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Load" storageaddress="CB42" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Engine Load" storageaddress="CB42" elements="16" storagetype="uint16" endian="big">
         <scaling units="%" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 22x16 [D02D824] (Engine Speed x Engine Load)" category="Unidentified - Ignition Timing - Corrections" storageaddress="1AA22" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D824. Function/output scaling not yet proven from the binary; locked." locked="true" sizex="16" sizey="22">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="CB16" elements="22" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Ignition Timing Target, Override Path (weight w, w=FFFF0E90)" category="Ignition Timing" storageaddress="1AA22" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D824. Evidence: 0x9AE9C (from 0x9BDF4; rpm FFFF2994 x load FFFF09B4): FFFF0486 = 128 + (T_02D810*(1-w) + T_02D824*w - 128)*FFFF0D5E/256, FFFF0D5E = ratio*256 (0xB1D38, 256 = 1.0). 0x98FAC: (FFFF049F + FFFF0486 - 160) is the total-timing value (0.5 deg, written to the FFFF046C source FFFEBF90) on its override path (param_8; passed as 0 by 0x9CBF8 in this ROM), so T is 0.5 deg with offset 128." sizex="16" sizey="22">
+      <scaling units="deg" expression="(x-128)/2" to_byte="x*2+128" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="CB16" elements="22" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Engine Load" storageaddress="CB42" elements="16" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Engine Load" storageaddress="CB42" elements="16" storagetype="uint16" endian="big">
         <scaling units="%" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>

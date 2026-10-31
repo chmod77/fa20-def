@@ -644,6 +644,13 @@ for d, md in ((0x2D958, 0), (0x2D94C, 1), (0x2D964, 2)):
         '0x96F3C: FFFF0458 = (049E*128 - max(048D<<7, FFFF0C02) + ...)/128, and 0458 is in total-timing units (deg = x/2, via 03D3 vs 046C), '
         'so T is a retard in 0.5 deg.', DEG2)
 
+for d, wt in ((0x2D810, '1-w'), (0x2D824, 'w')):
+    add(d, f'Ignition Timing Target, Override Path (weight {wt}, w=FFFF0E90)', IGN,
+        '0x9AE9C (from 0x9BDF4; rpm FFFF2994 x load FFFF09B4): FFFF0486 = 128 + (T_02D810*(1-w) + T_02D824*w - 128)*FFFF0D5E/256, '
+        'FFFF0D5E = ratio*256 (0xB1D38, 256 = 1.0). 0x98FAC: (FFFF049F + FFFF0486 - 160) is the total-timing value (0.5 deg, written to the '
+        'FFFF046C source FFFEBF90) on its override path (param_8; passed as 0 by 0x9CBF8 in this ROM), so T is 0.5 deg with offset 128.',
+        ('deg', '(x-128)/2', 'x*2+128', '0.0'))
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
