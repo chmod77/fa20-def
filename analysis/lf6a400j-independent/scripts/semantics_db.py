@@ -611,6 +611,10 @@ add(0x2F28C, 'Time Threshold [0xE6908]', 'Diagnostics - Timers',
     '0xE6908 (from 0xE61E8, called unconditionally by the 40 ms task 0x153248): flag = T <= FFFED365, a counter incremented once per '
     'execution while the condition holds (reset otherwise), so T is time in 40 ms units (task period from OBD PID 0x1F).', ('s', 'x*0.04', 'x/0.04', '0.00'))
 
+add(0x2D318, 'Injector Minimum Pulse Width (Fuel Rail Pressure)', INJ, _inj + '0x922D4: FFFF0BB6 = T(FRP FFFEED18); 0x922F4: FFFF1564 = '
+    'max(FFFF0BB6, computed time) in the same 0.8 us units (and the same for the other cylinders 0x925E4/0x928D4/0x92BC4).',
+    ('us', 'x*0.8', 'x/0.8', '0.0'), axes=FRPAX)
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)

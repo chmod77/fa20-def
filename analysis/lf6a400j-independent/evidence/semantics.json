@@ -1056,6 +1056,27 @@
    "format": "0.000"
   }
  },
+ "0x2D318": {
+  "status": "identified",
+  "name": "Injector Minimum Pulse Width (Fuel Rail Pressure)",
+  "category": "Fuel Injection",
+  "evidence": "0x1569D6: SSM injector PW FFFF2B4E[cyl] = FFFF1564[cyl]>>2 (pointer table 0x168EAC) => FFFF1564 in 0.8 us; 0x922F4 (via 0x89A78): FFFF1564 = 1.25*(FFFF0BC8*0.8 + FFFF1544*FFFF0B44*0.003125) => injection time us = FFFF0BC8*0.8 + q*k*0.003125. 0x922D4: FFFF0BB6 = T(FRP FFFEED18); 0x922F4: FFFF1564 = max(FFFF0BB6, computed time) in the same 0.8 us units (and the same for the other cylinders 0x925E4/0x928D4/0x92BC4).",
+  "description": "",
+  "data": {
+   "units": "us",
+   "expr": "x*0.8",
+   "to_byte": "x/0.8",
+   "format": "0.0"
+  },
+  "axes": {
+   "0": {
+    "name": "Fuel Rail Pressure (filtered)",
+    "units": "kPa",
+    "expr": "x*639630/1048576",
+    "to_byte": "x*1048576/639630"
+   }
+  }
+ },
  "0x2D324": {
   "status": "identified",
   "name": "Injector Latency (Fuel Rail Pressure)",
