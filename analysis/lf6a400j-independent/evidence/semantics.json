@@ -4131,6 +4131,90 @@
    "format": "0.00"
   }
  },
+ "0x2D458": {
+  "status": "identified",
+  "name": "Time Threshold (FFFF299C rpm/25) [0x95DA0]",
+  "category": "Timers",
+  "evidence": "0x95DA0 (from 0x940E8, called unconditionally by 0x153568 = task 19, 80 ms: started every 2nd run of the 40 ms task 10 through prescaler 0x1511FE, and independently 80 ms from the OBD PID 0x31 distance integration). Counters: FEBEF2 = 0 then +1 per execution (saturating) while enabled; FEBEF0 = +1 per execution while FFFF043E != 0. T_02D458 is compared directly with FEBEF2: s = x*0.08.",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.08",
+   "to_byte": "x/0.08",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed (byte, 25 rpm)",
+    "units": "rpm",
+    "expr": "x*25",
+    "to_byte": "x/25"
+   }
+  }
+ },
+ "0x2D464": {
+  "status": "identified",
+  "name": "Time Threshold (FFFF0435.3 clear) [0x95DA0]",
+  "category": "Timers",
+  "evidence": "0x95DA0 (from 0x940E8, called unconditionally by 0x153568 = task 19, 80 ms: started every 2nd run of the 40 ms task 10 through prescaler 0x1511FE, and independently 80 ms from the OBD PID 0x31 distance integration). Counters: FEBEF2 = 0 then +1 per execution (saturating) while enabled; FEBEF0 = +1 per execution while FFFF043E != 0. This table is compared directly with FEBEF0: s = x*0.08.",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.08",
+   "to_byte": "x/0.08",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed (byte, 25 rpm)",
+    "units": "rpm",
+    "expr": "x*25",
+    "to_byte": "x/25"
+   }
+  }
+ },
+ "0x2D470": {
+  "status": "identified",
+  "name": "Time Threshold (FFFF0435.3 set, FFFF389A >= 0x8400) [0x95DA0]",
+  "category": "Timers",
+  "evidence": "0x95DA0 (from 0x940E8, called unconditionally by 0x153568 = task 19, 80 ms: started every 2nd run of the 40 ms task 10 through prescaler 0x1511FE, and independently 80 ms from the OBD PID 0x31 distance integration). Counters: FEBEF2 = 0 then +1 per execution (saturating) while enabled; FEBEF0 = +1 per execution while FFFF043E != 0. This table is compared directly with FEBEF0: s = x*0.08.",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.08",
+   "to_byte": "x/0.08",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed (byte, 25 rpm)",
+    "units": "rpm",
+    "expr": "x*25",
+    "to_byte": "x/25"
+   }
+  }
+ },
+ "0x2D47C": {
+  "status": "identified",
+  "name": "Time Threshold (FFFF0435.3 set, FFFF389A < 0x8400) [0x95DA0]",
+  "category": "Timers",
+  "evidence": "0x95DA0 (from 0x940E8, called unconditionally by 0x153568 = task 19, 80 ms: started every 2nd run of the 40 ms task 10 through prescaler 0x1511FE, and independently 80 ms from the OBD PID 0x31 distance integration). Counters: FEBEF2 = 0 then +1 per execution (saturating) while enabled; FEBEF0 = +1 per execution while FFFF043E != 0. This table is compared directly with FEBEF0: s = x*0.08.",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.08",
+   "to_byte": "x/0.08",
+   "format": "0.00"
+  },
+  "axes": {
+   "0": {
+    "name": "Engine Speed (byte, 25 rpm)",
+    "units": "rpm",
+    "expr": "x*25",
+    "to_byte": "x/25"
+   }
+  }
+ },
  "0x2D488": {
   "status": "identified",
   "name": "Ignition Timing Retard (vs FFFF058A, not selected)",

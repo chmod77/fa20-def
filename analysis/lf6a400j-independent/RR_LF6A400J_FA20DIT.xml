@@ -4947,27 +4947,27 @@
         <scaling units="kPa" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02D458] (Engine Speed (byte, 25 rpm)) - unresolved: compared with local uVar15" category="Unidentified - Fuel Injection" storageaddress="1E07C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2D458. UNRESOLVED (locked): 0x95DA0: compared with local uVar15 (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed (byte, 25 rpm)" storageaddress="1E05B" elements="8" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Time Threshold (FFFF299C rpm/25) [0x95DA0]" category="Timers" storageaddress="1E07C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2D458. Evidence: 0x95DA0 (from 0x940E8, called unconditionally by 0x153568 = task 19, 80 ms: started every 2nd run of the 40 ms task 10 through prescaler 0x1511FE, and independently 80 ms from the OBD PID 0x31 distance integration). Counters: FEBEF2 = 0 then +1 per execution (saturating) while enabled; FEBEF0 = +1 per execution while FFFF043E != 0. T_02D458 is compared directly with FEBEF2: s = x*0.08." sizey="8">
+      <scaling units="s" expression="x*0.08" to_byte="x/0.08" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed (byte, 25 rpm)" storageaddress="1E05B" elements="8" storagetype="uint8" endian="big">
         <scaling units="rpm" expression="x*25" to_byte="x/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02D464] (Engine Speed (byte, 25 rpm)) - unresolved: compared with local uVar14" category="Unidentified - Fuel Injection" storageaddress="1E08C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2D464. UNRESOLVED (locked): 0x95DA0: compared with local uVar14 (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed (byte, 25 rpm)" storageaddress="1E063" elements="8" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Time Threshold (FFFF0435.3 clear) [0x95DA0]" category="Timers" storageaddress="1E08C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2D464. Evidence: 0x95DA0 (from 0x940E8, called unconditionally by 0x153568 = task 19, 80 ms: started every 2nd run of the 40 ms task 10 through prescaler 0x1511FE, and independently 80 ms from the OBD PID 0x31 distance integration). Counters: FEBEF2 = 0 then +1 per execution (saturating) while enabled; FEBEF0 = +1 per execution while FFFF043E != 0. This table is compared directly with FEBEF0: s = x*0.08." sizey="8">
+      <scaling units="s" expression="x*0.08" to_byte="x/0.08" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed (byte, 25 rpm)" storageaddress="1E063" elements="8" storagetype="uint8" endian="big">
         <scaling units="rpm" expression="x*25" to_byte="x/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02D470] (Engine Speed (byte, 25 rpm)) - unresolved: compared with local uVar14" category="Unidentified - Fuel Injection" storageaddress="1E09C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2D470. UNRESOLVED (locked): 0x95DA0: compared with local uVar14 (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed (byte, 25 rpm)" storageaddress="1E06B" elements="8" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Time Threshold (FFFF0435.3 set, FFFF389A &gt;= 0x8400) [0x95DA0]" category="Timers" storageaddress="1E09C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2D470. Evidence: 0x95DA0 (from 0x940E8, called unconditionally by 0x153568 = task 19, 80 ms: started every 2nd run of the 40 ms task 10 through prescaler 0x1511FE, and independently 80 ms from the OBD PID 0x31 distance integration). Counters: FEBEF2 = 0 then +1 per execution (saturating) while enabled; FEBEF0 = +1 per execution while FFFF043E != 0. This table is compared directly with FEBEF0: s = x*0.08." sizey="8">
+      <scaling units="s" expression="x*0.08" to_byte="x/0.08" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed (byte, 25 rpm)" storageaddress="1E06B" elements="8" storagetype="uint8" endian="big">
         <scaling units="rpm" expression="x*25" to_byte="x/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02D47C] (Engine Speed (byte, 25 rpm)) - unresolved: compared with local uVar14" category="Unidentified - Fuel Injection" storageaddress="1E0AC" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2D47C. UNRESOLVED (locked): 0x95DA0: compared with local uVar14 (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed (byte, 25 rpm)" storageaddress="1E073" elements="8" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Time Threshold (FFFF0435.3 set, FFFF389A &lt; 0x8400) [0x95DA0]" category="Timers" storageaddress="1E0AC" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2D47C. Evidence: 0x95DA0 (from 0x940E8, called unconditionally by 0x153568 = task 19, 80 ms: started every 2nd run of the 40 ms task 10 through prescaler 0x1511FE, and independently 80 ms from the OBD PID 0x31 distance integration). Counters: FEBEF2 = 0 then +1 per execution (saturating) while enabled; FEBEF0 = +1 per execution while FFFF043E != 0. This table is compared directly with FEBEF0: s = x*0.08." sizey="8">
+      <scaling units="s" expression="x*0.08" to_byte="x/0.08" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed (byte, 25 rpm)" storageaddress="1E073" elements="8" storagetype="uint8" endian="big">
         <scaling units="rpm" expression="x*25" to_byte="x/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>

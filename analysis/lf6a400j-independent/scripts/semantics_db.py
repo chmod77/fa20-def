@@ -528,7 +528,9 @@ _PEREV = {'0015307c': 'task 0x15307C = 20 ms (' + _OSEV + ')', '00153248': 'task
           '00123600': 'every 4th run of 0x49E70 (FFFEF5A4 == 0) in the 10 ms task = 40 ms (' + _OSEV + ')',
           '0012560c': 'every 4th run of 0x49E70 (FFFEF5A4 == 0) in the 10 ms task = 40 ms (' + _OSEV + ')',
           '0012367c': 'every 4th run of 0x49E70 (FFFEF5A4 == 0) in the 10 ms task = 40 ms (' + _OSEV + ')',
-          '0009bdd0': 'every 100th run of 0x49E70 in the 10 ms task = 1 s (' + _OSEV + ')'}
+          '0009bdd0': 'every 100th run of 0x49E70 in the 10 ms task = 1 s (' + _OSEV + ')',
+          '00153ce0': 'task 28 (application mode 1, alarm 15 cycle 10) = 10 ms (' + _OSEV + ')',
+          '00153800': 'task 11 = 160 ms: started by task 10 (40 ms) through prescaler 0x1511FE entry 4 (period 4); the same prescaler entry 3 (period 2) starts task 19 -> 0x153568, independently proven 80 ms (OBD PID 0x31)'}
 if os.path.exists(f'{ROOT}/evidence/timer-tables.tsv'):
     import csv as _csv2
     for _r in _csv2.DictReader(open(f'{ROOT}/evidence/timer-tables.tsv'), delimiter='\t'):
@@ -1296,6 +1298,15 @@ for _d, _c in ((0x2E1F8, 'FFFEE710.5 set'), (0x2E204, 'FFFEE710.5 clear')):
     add(_d, f'A/F Correction #1 Offset (Coolant, {_c})', 'Fueling - Closed Loop', _afc + 'This table is the additive offset (mode 10).',
         ('%', 'x*100/32768', 'x*32768/100', '0.00'),
         axes={'0': dict(name='Coolant Temperature (filtered, word)', units='C', expr='x*5/2048-40', to_byte='(x+40)*2048/5')})
+
+_95da = ('0x95DA0 (from 0x940E8, called unconditionally by 0x153568 = task 19, 80 ms: started every 2nd run of the 40 ms task 10 through prescaler '
+         '0x1511FE, and independently 80 ms from the OBD PID 0x31 distance integration). Counters: FEBEF2 = 0 then +1 per execution (saturating) '
+         'while enabled; FEBEF0 = +1 per execution while FFFF043E != 0. ')
+add(0x2D458, 'Time Threshold (FFFF299C rpm/25) [0x95DA0]', 'Timers', _95da + 'T_02D458 is compared directly with FEBEF2: s = x*0.08.',
+    ('s', 'x*0.08', 'x/0.08', '0.00'), axes={'0': dict(name='Engine Speed (byte, 25 rpm)', units='rpm', expr='x*25', to_byte='x/25')})
+for _d, _c in ((0x2D464, 'FFFF0435.3 clear'), (0x2D47C, 'FFFF0435.3 set, FFFF389A < 0x8400'), (0x2D470, 'FFFF0435.3 set, FFFF389A >= 0x8400')):
+    add(_d, f'Time Threshold ({_c}) [0x95DA0]', 'Timers', _95da + 'This table is compared directly with FEBEF0: s = x*0.08.',
+        ('s', 'x*0.08', 'x/0.08', '0.00'), axes={'0': dict(name='Engine Speed (byte, 25 rpm)', units='rpm', expr='x*25', to_byte='x/25')})
 
 
 if __name__ == '__main__':

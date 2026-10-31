@@ -224,6 +224,11 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
   variable 81, multiplied with another table/variable 73, added to an unproven variable 32, enters a larger expression 32, passed to
   a function 17, no decompiled reference 19, use not resolved 128) and the builder puts "- unresolved: <reason>" in the name and
   "UNRESOLVED (locked): <reason>" in the description. All such tables stay locked (CLAUDE.md rule). Coverage 639 proven of 1284.
+- Task 19 (0x151860 -> 0x153568) is started by task 10 (40 ms) via prescaler 0x1511FE entry 3 (period 2) = 80 ms, matching the
+  independent OBD PID 0x31 proof; this confirms the prescaler is a modulo and gives task 11 (0x153800) = 160 ms, task 12 = 320 ms.
+  0x95DA0 (80 ms) timer thresholds T_02D458/464/470/47C added. Torque-monitor tables indexed by FFFF0554 depend on CAN signals
+  (0554 = state code from CAN flags FEF081; 12C2 from CAN value FEF31C): scaling not in this ROM (recorded as unresolved reason).
+  FFFF0F56 = 5 x VE*rho*rpm (airflow model). Copy prover follows trivial copy helpers (81 derived variables). Coverage 643 of 1284.
 - Dead ends this session (documented so they are not repeated):
   * FFFF12C2 (axis of the pedal-limit T1 tables, compared with 12BE in the torque monitor): only a read literal (0xC50D0); writer not
     found by literal, GBR (+70 from 127C) or r0-offset searches.
