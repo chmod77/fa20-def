@@ -4635,7 +4635,7 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 4 [D02EAB4] (Intake Air Temperature (control, word)) - unresolved: multiplied with local puVar8" category="Unidentified - Task 0x152A40" storageaddress="1CE88" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2EAB4. Lookup result stored to: FFFF0F1A. UNRESOLVED (locked): 0xCAA88: multiplied with local puVar8 (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="4">
+    <table type="2D" name="Unidentified 4 [D02EAB4] (Intake Air Temperature (control, word)) - unresolved: multiplied with local puVar8" category="Unidentified - Task 0x152A40" storageaddress="1CE88" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2EAB4. Lookup result stored to: FFFF0F1A (Torque 0F1A (0.1 Nm)). UNRESOLVED (locked): 0xCAA88: multiplied with local puVar8 (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="4">
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       <table type="Y Axis" name="Intake Air Temperature (control, word)" storageaddress="1CE80" elements="4" storagetype="uint16" endian="big" locked="true">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />

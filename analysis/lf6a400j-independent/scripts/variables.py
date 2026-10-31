@@ -321,3 +321,7 @@ V2.update({
 V2.update({
  0xFFFF0F56:('Air Charge Rate (VE*density*rpm, 0F56)','g/L*rpm','x/5','x*5','0xCF6D4: 0F56 = 1698>>8 (0xCFE6C), 1698 = 169C*1280 (0xCFE80), 169C = VE*rho[g/L]*rpm (0xCFEDC); Engine Load % = 169C*77.34/rpm (0x7E3F8) => 169C = 0F56/5'),
 })
+V2.update({
+ 0xFFFF0F1A:('Torque 0F1A (0.1 Nm)','Nm','(x-10000)/10','x*10+10000','0x820A0 / 0x124E28: limit = 0F1A*8 - 64000 compared with Torque 0A44 / 1438 (torque type, Nm = (y-16000)/80) => Nm = (8x-80000)/80 = (x-10000)/10'),
+ 0xFFFF0F0E:('Torque 0F0E (0.1 Nm)','Nm','(x-10000)/10','x*10+10000','0xAA4C0 (idle, call 0xA9C56): ratio = (0F0E*8 - 64000 - 16000)*32768/(Torque 0ADC - 16000), same 8x-64000 torque encoding as 0F1A in 0x820A0'),
+})
