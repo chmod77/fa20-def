@@ -1,0 +1,100 @@
+
+void FUN_00115ac0(void)
+
+{
+  uint uVar1;
+  
+  DAT_ffff08cc = 0;
+  DAT_ffff08da = 0;
+  DAT_ffff0906 = 0;
+  DAT_ffff08e3 = 0;
+  DAT_ffff08eb = 0;
+  DAT_ffff08fd = 0;
+  DAT_ffff0900 = 0;
+  DAT_ffff08e6 = 0;
+  DAT_ffff08ea = 0;
+  DAT_ffff08fc = 0;
+  DAT_ffff0902 = 0;
+  DAT_ffff0913 = 0;
+  DAT_ffff0917 = 0;
+  DAT_ffff08c8 = 0;
+  DAT_ffff08f8 = 0;
+  DAT_ffff0903 = 0;
+  DAT_ffff0909 = 0;
+  DAT_ffff090f = 0;
+  DAT_ffff0919 = 0;
+  DAT_ffff091a = 0;
+  DAT_ffff08c6 = 0;
+  DAT_ffff08ca = 0;
+  DAT_ffff08e2 = 0;
+  DAT_ffff0915 = 0;
+  DAT_ffff08ef = 0;
+  DAT_ffff08de = 0;
+  DAT_ffff08c4 = 0;
+  DAT_ffff08c5 = 0;
+  DAT_ffff08c7 = 0;
+  DAT_ffff08c9 = 0;
+  DAT_ffff08cb = 0;
+  DAT_ffff08cd = 0;
+  DAT_ffff08ce = 0;
+  DAT_ffff08cf = 0;
+  DAT_ffff08d0 = 0;
+  DAT_ffff08d1 = 0;
+  DAT_ffff08d4 = 0;
+  DAT_ffff08d5 = 0;
+  DAT_ffff08d6 = 0;
+  DAT_ffff08d7 = 0;
+  DAT_ffff08d8 = 0;
+  DAT_ffff08d9 = 0;
+  DAT_ffff08db = 0;
+  DAT_ffff08dd = 0;
+  DAT_ffff08df = 0;
+  DAT_ffff08e0 = 0;
+  DAT_ffff08e1 = 0;
+  DAT_ffff08e5 = 0;
+  DAT_ffff08e7 = 0;
+  DAT_ffff08e8 = 0;
+  DAT_ffff08e9 = 0;
+  DAT_ffff08ec = 0;
+  DAT_ffff08ed = 0;
+  DAT_ffff08ee = 0;
+  DAT_ffff08f0 = 0;
+  DAT_ffff08f1 = 0;
+  DAT_ffff08f2 = 0;
+  DAT_ffff08f4 = 0;
+  DAT_ffff08f5 = 0;
+  DAT_ffff08f6 = 0;
+  DAT_ffff08f7 = 0;
+  DAT_ffff08f9 = 0;
+  DAT_ffff08fa = 0;
+  DAT_ffff08fb = 0;
+  DAT_ffff08fe = 0;
+  DAT_ffff08ff = 0;
+  DAT_ffff0901 = 0;
+  DAT_ffff0904 = 0;
+  DAT_ffff0905 = 0;
+  DAT_ffff0907 = 0;
+  DAT_ffff0908 = 0;
+  DAT_ffff090a = 0;
+  DAT_ffff090b = 0;
+  DAT_ffff090c = 0;
+  DAT_ffff090d = 0;
+  DAT_ffff090e = 0;
+  DAT_ffff0910 = 0;
+  DAT_ffff0911 = 0;
+  DAT_ffff0912 = 0;
+  DAT_ffff0914 = 0;
+  DAT_ffff0916 = 0;
+  DAT_ffff0918 = 0;
+  DAT_ffff091b = 0;
+  for (uVar1 = 0; (uVar1 & 0xff) < 0x53; uVar1 = (uVar1 & 0xff) + 1) {
+    *(undefined1 *)((uVar1 & 0xff) - 0xe7d4) = 0;
+  }
+  DAT_ffff08e4 = 0;
+  DAT_ffff08d2 = 0;
+  DAT_ffff08d3 = 0;
+  DAT_ffff08f3 = 0;
+  DAT_ffff08dc = 0;
+  return;
+}
+

@@ -1,0 +1,57 @@
+src	width	ssm_addr	param	name	units	phys_scale	phys_offset	max_abs_err	lin_x_range	converter
+0xffff046c	s1	0x11	P10	Ignition Total Timing	degrees	0.5	0	0	-127..126	0xd0638
+0xffff00b8	u2	0x101	P74	Main Throttle Sensor	V	7.61217949e-05	-0.00435897436	0.01487	320..65216	0xd0600
+0xffff00ba	u2	0x100	P73	Sub Throttle Sensor	V	7.61217949e-05	-0.00435897436	0.01487	320..65216	0xd061c
+0xfffeeeb6	u2	0x44	P56	A/F Sensor #1 Resistance	ohm	0.00779709073	0.00197238659	0.499	128..32576	0xd065c
+0xfffee6aa	u2	0x23	P24	Atmospheric Pressure	kPa	0.00389470443	0.00295566502	0.7478	256..65216	0xd0680
+0xffff008e	u2	0xfb	P72	Throttle Motor Voltage	V	0.100104712	-0.020104712	0.0134	1..192	0xd06cc
+0xfffeeece	u2	0x24	P25	Manifold Relative Pressure	kPa	0.00389332966	-100.996692	0.7475	256..58304	0xd06e8
+0xffff043b	u1	0x32	P38	CPC Valve Duty Ratio	%	0.396862745	-0.00470588235	0.2918	1..251	0xd0754
+0xffff10d6	u2	0x3a	P46	Alternator Duty	%	0.0600961538	-0.846153846	0.7692	64..4224	0xd0784
+0xffff0fdc	u2	0x3b	P47	Fuel Pump Duty	%	0.099789916	-0.112044818	0.2241	64..960	0xd07b0
+0xffff0e5e	u2	0x30	P36	Primary Wastegate Duty Cycle	%	0.00389508819	-0.106414425	0.3557	128..25600	0xd07dc
+0xffff1230	u2	0x11b	P86	Exhaust OCV Duty Left	%	0.0399896801	-0.206398349	0.227	64..2496	0xd0834
+0xffff1228	u2	0x11a	P85	Exhaust OCV Duty Right	%	0.0399896801	-0.206398349	0.227	64..2496	0xd0860
+0xfffeeeb4	u2	0x39	P45	Number of Exh. Gas Recirc. Steps	steps	0.5	0	0	64..448	0xd088c
+0xfffef2ba	s2	0x119	P84	Exhaust VVT Advance Angle Left	degrees	0.00273038903	-0.420918367	0.9222	-17792..32384	0xd08cc
+0xfffef2b8	s2	0x118	P83	Exhaust VVT Advance Angle Right	degrees	0.00273038903	-0.420918367	0.9222	-17792..32384	0xd08f8
+0xfffef282	u2	0x11d	P88	Exhaust OCV Current Left	mA	0.0376984127	-1.77777778	29.46	896..65408	0xd0924
+0xfffef280	u2	0x11c	P87	Exhaust OCV Current Right	mA	0.0376984127	-1.77777778	29.46	896..65408	0xd093c
+0xfffef0ca	u2	0x271	P183	Battery Current	A	0.00779517738	-99.9977827	0.4989	128..28992	0xd09b8
+0xffff0128	s2	0xfa	P71	Throttle Motor Duty	%	0.0996907552	-0.390625	0.5208	-960..960	0xd09f0
+0xffff3691	u1	0xa	P4	A/F Learning #1	%	0.389068725	-49.9968875	0.3891	2..253	0xd0a3c
+0xfffef006	s2	0x42	P54	A/F Sensor #1 Current	mA	0.00099424673	-0.0306841046	0.1396	-15936..15872	0xd0a5c
+0xfffeef2a	u1	0x2b	P32	Front O2 Heater Current #1	A	0.027390873	-0.015562996	0.02303	2..254	0xd0b0c
+0xffff0d92	u2	0x9	P3	A/F Correction #1	%	0.00304273784	-99.9976909	0.5842	256..65216	0xd0b28
+0xffff0d80	u2	0xd1	P66	A/F Learning #3	%	0.00230684055	-100.104577	0.6521	384..65408	0xd0b8c
+0xffff0dc2	s2	0xd0	P65	A/F Correction #3 (16-bit ECU)	%	0.0228768808	446.898148	0.6019	-23872..-15232	0xd0b44
+0xffff0dc2	s2	0xd0	P89	A/F Correction #3 (32-bit ECU)	%	0.00228768808	49.6898148	0.06019	-23872..-15232	0xd0b44
+0xfffee6fe	u1	0x7	P1	Engine Load (Relative)	%	0.392156863	0	1.421e-14	1..254	0xd0be4
+0xffff2994	u2	0xe	P8	Engine Speed	rpm	0.1953125	0	0.05469	64..65472	0xd0c38
+0xfffee6de	u1	0x18	P15	Rear O2 Sensor	V	0.00249003984	1.99203187e-05	0.00249	2..253	0xd0c68
+0xfffef26e	u2	0x41	P53	Intake OCV Current Left	mA	0.0376984127	-1.77777778	29.46	896..65408	0xd0cd8
+0xfffef26c	u2	0x40	P52	Intake OCV Current Right	mA	0.0376984127	-1.77777778	29.46	896..65408	0xd0cf0
+0xfffef200	u2	0x104	P77	Brake Booster Pressure	kPa	0.00389470443	0.00295566502	0.7478	256..65216	0xd0d2c
+0xfffeeece	u2	0xd	P7	Manifold Absolute Pressure	kPa	0.00389470443	0.00295566502	0.7478	256..65216	0xd0d1c
+0xffff04bb	s1	0x199	P91	Fine Learning Knock Correction	degrees	0.351388889	-0.125	0.1361	-90..90	0xd0d50
+0xfffeeee4	u2	0x13	P12	Mass Airflow	g/s	0.00457757461	-0.00296477495	0.006781	64..65472	0xd0da0
+0xffff00c2	u2	0x103	P76	Main Accelerator Sensor	V	7.61217949e-05	-0.00435897436	0.01487	320..65216	0xd0db8
+0xffff00c4	u2	0x102	P75	Sub Accelerator Sensor	V	7.61217949e-05	-0.00435897436	0.01487	320..65216	0xd0dd4
+0xffff0d44	u2	0x2f	P92	Radiator Fan Control	%	0.0015125998	-0.0648702595	0.8723	704..64832	0xd0e40
+0xfffee6d0	u1	0x2c	P33	Rear O2 Heater Current	A	0.027390873	-0.015562996	0.02303	2..254	0xd0e58
+0xfffeef96	u2	0x46	P58	A/F Sensor #1	Lambda	0.000122070312	0	0	64..16256	0xd0edc
+0xffff2b23	u1	0x12	P11	Intake Air Temperature	C	1	-50	0	11..254	0xd0f28
+0xfffef0d2	u1	0x273	P184	Battery Temperature	C	1	-50	0	11..254	0xd0f40
+0xfffeed6c	u2	0x34	P40	Tumble Valve Position Sensor Left	V	0.005	5.55111512e-17	8.882e-16	64..960	0xd0f80
+0xfffeed6e	u2	0x33	P39	Tumble Valve Position Sensor Right	V	0.005	5.55111512e-17	8.882e-16	64..960	0xd0fb0
+0xffff04a4	u1	0x28	P29	Learned Ignition Timing	degrees	0.351123596	-0.202247191	0.3202	2..180	0xd0ff8
+0xffff0af4	u2	0x15	P13	Throttle Opening Angle	%	0.00389508819	-0.106414425	0.3557	128..25600	0xd1040
+0xffff29a5	u1	0x8	P2	Coolant Temperature	C	1	-50	0	11..254	0xd1090
+0xfffeeeb2	u2	0x1d	P18	Mass Airflow Sensor Voltage	V	7.78940887e-05	5.91133005e-05	0.01496	256..65216	0xd10a8
+0xffffab41	u1	0x1c	P17	Battery Voltage	V	0.08	0	3.553e-15	1..254	0xd10b8
+0xffff65a1	u1	0x10	P9	Vehicle Speed	km/h	1	0	0	1..254	0xd10bc
+0xffff0ede	u2	0x10d	P119	Fuel Level Sensor Resistance	ohm	0.25	0	0	64..1984	0xd05a8
+0xffff102e	u2	0xce	P63	Roughness Monitor Cylinder #1	misfire count	1	0	0	1..192	0xd267c
+0xffff1030	u2	0xcf	P64	Roughness Monitor Cylinder #2	misfire count	1	0	0	1..192	0xd2690
+0xffff1032	u2	0xd8	P69	Roughness Monitor Cylinder #3	misfire count	1	0	0	1..192	0xd26a4
+0xffff1034	u2	0xd9	P70	Roughness Monitor Cylinder #4	misfire count	1	0	0	1..192	0xd26b8

@@ -1,0 +1,415 @@
+ssm_addr	param	name	len	conv	shadow	formatter	converter	source	known
+0x4	P1	Engine Load (Calculated)	1	[('%', 'x*100/255', '')]	0x2b894				
+0x5	P2	Coolant Temperature	1	[('F', '32+9*(x-40)/5', '')]	0x2b895				
+0x6	P3	Fuel Trim #1 - Short Term	1	[('%', '(x-128)*100/128', '')]	0xdac4				
+0x7	P1	Engine Load (Relative)	1	[('%', 'x*100/255', '')]	0xffff05fb	0xd1d54	0xd0be4	b:FFFEE6FE	Engine Load (Relative)
+0x7	P4	Fuel Trim #1 - Long Term	1	[('%', '(x-128)*100/128', '')]	0xffff05fb	0xd1d54	0xd0be4	b:FFFEE6FE	Engine Load (Relative)
+0x8	P2	Coolant Temperature	1	[('C', 'x-40', '')]	0xffff0623	0xd2102	0xd1090	b:FFFF29A5	Coolant Temperature
+0x8	P5	Fuel Trim #2 - Short Term	1	[('%', '(x-128)*100/128', '')]	0xffff0623	0xd2102	0xd1090	b:FFFF29A5	Coolant Temperature
+0x9	P3	A/F Correction #1	1	[('%', '(x-128)*100/128', '')]	0xffff05f8	0xd1d28	0xd0b28	w:FFFF0D92	A/F Correction #1
+0x9	P6	Fuel Trim #2 - Long Term	1	[('%', '(x-128)*100/128', '')]	0xffff05f8	0xd1d28	0xd0b28	w:FFFF0D92	A/F Correction #1
+0xa	P4	A/F Learning #1	1	[('%', '(x-128)*100/128', '')]	0xffff05f2	0xd1ce4	0xd0a3c	b:FFFF3691	
+0xa	P78	Fuel Pressure	1	[('psi', 'x*3*37/255', '')]	0xffff05f2	0xd1ce4	0xd0a3c	b:FFFF3691	
+0xb	P5	A/F Correction #2	1	[('%', '(x-128)*100/128', '')]	0xdac4				
+0xb	P7	Intake Manifold Pressure	1	[('psi', 'x*37/255', '')]	0xdac4				
+0xc	P6	A/F Learning #2	1	[('%', '(x-128)*100/128', '')]	0xdac4				
+0xc	P8	Engine Speed	1	[]	0xdac4				
+0xd	P7	Manifold Absolute Pressure	1	[('kPa', 'x', '')]	0xffff0606	0xd1dfe	0xd0d1c	w:FFFEEECE	Manifold Absolute Pressure
+0xd	P9	Vehicle Speed	1	[('mph', 'x*0.621371192', '')]	0xffff0606	0xd1dfe	0xd0d1c	w:FFFEEECE	Manifold Absolute Pressure
+0xe	P8	Engine Speed	2	[('rpm', 'x/4', '')]	0xffff0f66	0xd1d8a	0xd0c38	w:FFFF2994	Engine Speed
+0xe	P10	Timing Advance	1	[('degrees', 'x/2-64', '')]	0xffff0f66	0xd1d8a	0xd0c38	w:FFFF2994	Engine Speed
+0xf	P11	Intake Air Temperature	1	[('F', '32+9*(x-40)/5', '')]	0xffff0f67				
+0x10	P9	Vehicle Speed	1	[('km/h', 'x', '')]	0xffff0626	0xd2120	0xd10bc	b:FFFF65A1	Vehicle Speed (byte)
+0x10	P12	Mass Airflow	1	[]	0xffff0626	0xd2120	0xd10bc	b:FFFF65A1	Vehicle Speed (byte)
+0x11	P10	Ignition Total Timing	1	[('degrees', '(x-128)/2', '')]	0xffff05d0	0xd1982	0xd0638	b:FFFF046C	Ignition Total Timing
+0x11	P13	Throttle Position	1	[('%', 'x*100/255', '')]	0xffff05d0	0xd1982	0xd0638	b:FFFF046C	Ignition Total Timing
+0x12	P11	Intake Air Temperature	1	[('C', 'x-40', '')]	0xffff0618	0xd2080	0xd0f28	b:FFFF2B23	Intake Air Temperature
+0x13	P12	Mass Airflow	2	[('g/s', 'x/100', '')]	0xffff0f6a	0xd1e20	0xd0da0	w:FFFEEEE4	Mass Airflow
+0x15	P13	Throttle Opening Angle	1	[('%', 'x*100/255', '')]	0xffff0621	0xd20ee	0xd1040	w:FFFF0AF4	Throttle Opening Angle (target/commanded)
+0x16	P14	Front O2 Sensor #1	2	[('V', 'x/200', '')]	0xdac4				
+0x18	P15	Rear O2 Sensor	2	[('V', 'x/200', '')]	0xffff0600	0xd1da0	0xd0c68	b:FFFEE6DE	
+0x1a	P16	Front O2 Sensor #2	2	[('V', 'x/200', '')]	0xdac4				
+0x1c	P17	Battery Voltage	1	[('V', 'x*8/100', '')]	0xffff0625	0xd2116	0xd10b8	b:FFFFAB41	
+0x1d	P18	Mass Airflow Sensor Voltage	1	[('V', 'x/50', '')]	0xffff0624	0xd210c	0xd10a8	w:FFFEEEB2	Mass Airflow Sensor Voltage
+0x1e	P19	Throttle Sensor Voltage	1	[('V', 'x/50', '')]	0xdac5				
+0x1f	P20	Differential Pressure Sensor Voltage	1	[('V', 'x/50', '')]	0xdac5				
+0x20	P21	Fuel Injector #1 Pulse Width	1	[('ms', 'x*256/1000', '')]	0xffff061f	0xd20d6	0xd0fcc	['const', 4294912846]	
+0x21	P22	Fuel Injector #2 Pulse Width	1	[('ms', 'x*256/1000', '')]	0xdac4				
+0x22	P23	Knock Correction Advance	1	[('degrees', '(x-128)/2', '')]	0xdac5				
+0x23	P24	Atmospheric Pressure	1	[('kPa', 'x', '')]	0xffff05d3	0xd19b4	0xd0680	w:FFFEE6AA	Atmospheric Pressure
+0x24	P25	Manifold Relative Pressure	1	[('kPa', 'x-128', '')]	0xffff05d8				
+0x25	P26	Pressure Differential Sensor	1	[('kPa', 'x-128', '')]	0xdac5				
+0x26	P27	Fuel Tank Pressure	1	[('kPa', '(x-128)/40', '')]	0xdac5				
+0x27	P28	CO Adjustment	1	[('V', 'x/50', '')]	0xdac5				
+0x28	P29	Learned Ignition Timing	1	[('degrees', '(x-128)/2', '')]	0xffff0620				
+0x29	P30	Accelerator Pedal Angle	1	[('%', 'x*100/255', '')]	0xfffeeef8				
+0x2a	P31	Fuel Temperature	1	[('C', 'x-40', '')]	0xdac5				
+0x2b	P32	Front O2 Heater Current #1	1	[('A', 'x*1004/25600', '')]	0xffff05f7	0xd1d1c	0xd0b0c	b:FFFEEF2A	
+0x2c	P33	Rear O2 Heater Current	1	[('A', 'x*1004/25600', '')]	0xffff0612	0xd1e86	0xd0e58	b:FFFEE6D0	
+0x2d	P34	Front O2 Heater Current #2	1	[('A', 'x*1004/25600', '')]	0xdac5				
+0x2e	P35	Fuel Level	1	[('V', 'x/50', '')]	0xdac5				
+0x2f	P92	Radiator Fan Control	1	[('%', 'x', '')]	0xffff0611	0xd1e7c	0xd0e40	w:FFFF0D44	
+0x2f	P35	Fuel Level	1	[('%', 'x*100/255', '')]	0xffff0611	0xd1e7c	0xd0e40	w:FFFF0D44	
+0x30	P36	Primary Wastegate Duty Cycle	1	[('%', 'x*100/255', '')]	0xffff05de	0xd1a42	0xd07dc	w:FFFF0E5E	Primary Wastegate Duty
+0x31	P37	Secondary Wastegate Duty Cycle	1	[('%', 'x*100/255', '')]	0xdac5				
+0x32	P38	CPC Valve Duty Ratio	1	[('%', 'x*100/255', '')]	0xffff05db	0xd1a24	0xd0754	b:FFFF043B	CPC Valve Duty Ratio
+0x33	P39	Tumble Valve Position Sensor Right	1	[('V', 'x/50', '')]	0xffff061e	0xd20cc	0xd0fb0	w:FFFEED6E	
+0x33	P24	Atmospheric Pressure	1	[('psi', 'x*37/255', '')]	0xffff061e	0xd20cc	0xd0fb0	w:FFFEED6E	
+0x34	P40	Tumble Valve Position Sensor Left	1	[('V', 'x/50', '')]	0xffff061c	0xd20b0	0xd0f80	w:FFFEED6C	
+0x35	P41	Idle Speed Control Valve Duty Ratio	1	[('%', 'x/2', '')]	0xdac5				
+0x36	P42	A/F Lean Correction	1	[('%', 'x*100/255', '')]	0xdac5				
+0x37	P43	A/F Heater Duty	1	[('%', 'x*100/255', '')]	0xdac5				
+0x38	P44	Idle Speed Control Valve Step	1	[('steps', 'x', '')]	0xdac5				
+0x39	P45	Number of Exh. Gas Recirc. Steps	1	[('steps', 'x', '')]	0xffff05e3	0xd1a7a	0xd088c	w:FFFEEEB4	
+0x3a	P46	Alternator Duty	1	[('%', 'x', '')]	0xffff05dc	0xd1a2e	0xd0784	w:FFFF10D6	Alternator Duty
+0x3b	P47	Fuel Pump Duty	1	[('%', 'x*100/255', '')]	0xffff05dd	0xd1a38	0xd07b0	w:FFFF0FDC	Fuel Pump Duty
+0x3c	P48	Intake VVT Advance Angle Right	1	[('degrees', 'x-50', '')]	0xffff0614	0xd1e9a	0xd0ea8	['const', 4294905340]	
+0x3d	P49	Intake VVT Advance Angle Left	1	[('degrees', 'x-50', '')]	0xffff0613	0xd1e90	0xd0e74	['const', 4294905340]	
+0x3e	P50	Intake OCV Duty Right	1	[('%', 'x*100/255', '')]	0xffff0602	0xd1db4	0xd0ca4	['const', 4294905350]	
+0x3f	P51	Intake OCV Duty Left	1	[('%', 'x*100/255', '')]	0xffff0601	0xd1daa	0xd0c70	['const', 4294905350]	
+0x40	P52	Intake OCV Current Right	1	[('mA', 'x*32', '')]	0xffff0604	0xd1dca	0xd0cf0	w:FFFEF26C	
+0x41	P53	Intake OCV Current Left	1	[('mA', 'x*32', '')]	0xffff0603	0xd1dc0	0xd0cd8	w:FFFEF26E	
+0x42	P54	A/F Sensor #1 Current	1	[('mA', '(x-128)/8', '')]	0xffff05f4	0xd1cfc	0xd0a5c	w:FFFEF006	
+0x42	P17	Battery Voltage	1	[]	0xffff05f4	0xd1cfc	0xd0a5c	w:FFFEF006	
+0x43	P55	A/F Sensor #2 Current	1	[('mA', '(x-128)/8', '')]	0xdac4				
+0x44	P56	A/F Sensor #1 Resistance	1	[('ohm', 'x', '')]	0xffff05d2	0xd19a0	0xd065c	w:FFFEEEB6	
+0x45	P57	A/F Sensor #2 Resistance	1	[('ohm', 'x', '')]	0xdac4				
+0x46	P58	A/F Sensor #1	1	[('Lambda', 'x/128', '')]	0xffff0615	0xd2058	0xd0edc	w:FFFEEF96	A/F Sensor #1
+0x47	P59	A/F Sensor #2	1	[('Lambda', 'x/128', '')]	0xdac4				
+0x48	P93	Front Wheel Speed	1	[('km/h', 'x', '')]	0xdac5				
+0x49	P94	ATF Temperature	1	[('index', 'x', '')]	0xdac5				
+0x4a	P60	Gear Position	1	[('gear', 'x+1', '')]	0xdac5				
+0x4b	P95	Line Pressure Duty Ratio	1	[('%', 'x/2', '')]	0xdac5				
+0x4c	P96	Lock Up Duty Ratio	1	[('%', 'x/2', '')]	0xdac5				
+0x4d	P97	Transfer Duty Ratio	1	[('%', 'x/2', '')]	0xdac5				
+0x4e	P98	Throttle Sensor Voltage	1	[('V', 'x/45', '')]	0xdac5				
+0x4f	P99	Turbine Revolution Speed	1	[('rpm', 'x*32', '')]	0xdac5				
+0x50	P100	Brake Clutch Duty Ratio	1	[('%', 'x/2', '')]	0xdac5				
+0x51	P101	Rear Wheel Speed	1	[('km/h', 'x', '')]	0xdac5				
+0x52	P102	Manifold Pressure Sensor Voltage	1	[('V', 'x/50', '')]	0xdac5				
+0x53	P61	A/F Sensor #1 Heater Current	1	[('A', 'x/10', '')]	0xdac5				
+0x54	P62	A/F Sensor #2 Heater Current	1	[('A', 'x/10', '')]	0xdac5				
+0x55	P103	Lateral G Sensor Voltage	1	[('V', 'x/50', '')]	0xdac5				
+0x56	P104	ATF Temperature	1	[('C', 'x-50', '')]	0xdac5				
+0x57	P105	Low Clutch Duty	1	[('%', 'x/2', '')]	0xdac5				
+0x58	P106	High Clutch Duty	1	[('%', 'x/2', '')]	0xdac5				
+0x59	P107	Load and Reverse Brake (L and RB) Duty	1	[('%', 'x/2', '')]	0xdac5				
+0x5a	P108	ATF Temperature 2	1	[('C', 'x-50', '')]	0xdac5				
+0x5a	P30	Accelerator Pedal Angle	1	[('%', 'x*100/255', '')]	0xdac5				
+0x5b	P109	Voltage Center Differential Switch	1	[('V', 'x/51', '')]	0xdac5				
+0x5c	P110	AT Turbine Speed 1	1	[('rpm', 'x*32', '')]	0xdac5				
+0x5d	P111	AT Turbine Speed 2	1	[('rpm', 'x*32', '')]	0xdac5				
+0x5e	P112	Center Differential Real Current	1	[('A', 'x/32', '')]	0xdac5				
+0x5f	P113	Center Differential Indicate Current	1	[('A', 'x/32', '')]	0xdac5				
+0x6f	P239	Global Timing User Adjustment Value	1	[('degrees', '0-x', '')]	0xdac5				
+0x70	P240	Engine Idle Speed User Adjustment (A/C off)	1	[('rpm', 'x*25-3200', '')]	0xffff312e				
+0x71	P241	Engine Idle Speed User Adjustment (A/C on)	1	[('rpm', 'x*25-3200', '')]	0xffff312f				
+0x8d	P148	Steering Angle Sensor	1	[]	0xdac5				
+0xce	P63	Roughness Monitor Cylinder #1	1	[('misfire count', 'x', '')]	0xffff063e	0xd21ac	0xd267c	w:FFFF102E	
+0xcf	P64	Roughness Monitor Cylinder #2	1	[('misfire count', 'x', '')]	0xffff063f	0xd21b8	0xd2690	w:FFFF1030	
+0xd0	P65	A/F Correction #3 (16-bit ECU)	1	[('%', '(x-128)*100/128', '')]	0xffff05f9	0xd1d3c	0xd0b44	w:FFFF0DC2	
+0xd0	P89	A/F Correction #3 (32-bit ECU)	1	[('%', '(x*.078125)-5', '')]	0xffff05f9	0xd1d3c	0xd0b44	w:FFFF0DC2	
+0xd1	P66	A/F Learning #3	1	[('%', '(x-128)*100/128', '')]	0xffff05fa	0xd1d32	0xd0b8c	w:FFFF0D80	
+0xd2	P67	Rear O2 Heater Voltage	1	[('V', 'x/50', '')]	0xdac5				
+0xd3	P68	A/F Adjustment Voltage	1	[('V', 'x/50', '')]	0xdac5				
+0xd8	P69	Roughness Monitor Cylinder #3	1	[('misfire count', 'x', '')]	0xffff0640	0xd21c4	0xd26a4	w:FFFF1032	
+0xd9	P70	Roughness Monitor Cylinder #4	1	[('misfire count', 'x', '')]	0xffff0641	0xd21d0	0xd26b8	w:FFFF1034	
+0xef	P151	Roughness Monitor Cylinder #5	1	[('misfire count', 'x', '')]	0xdac4				
+0xf8	P152	Roughness Monitor Cylinder #6	1	[('misfire count', 'x', '')]	0xdac4				
+0xf9	P90	IAM	1	[('multiplier', 'x/16', '')]	0xffff3669				
+0xf9	P153	Learned Ignition Timing Correction	1	[('degrees', 'x/16', '')]	0xffff3669				
+0xfa	P71	Throttle Motor Duty	1	[('%', '(x-128)*100/128', '')]	0xffff05f0	0xd1cd2	0xd09f0	w:FFFF0128	Throttle Motor Duty
+0xfb	P72	Throttle Motor Voltage	1	[('V', 'x*8/100', '')]	0xffff05d7	0xd19ec	0xd06cc	w:FFFF008E	
+0x100	P73	Sub Throttle Sensor	1	[('V', 'x/50', '')]	0xffff05cf	0xd1998	0xd061c	w:FFFF00BA	Sub Throttle Sensor
+0x101	P74	Main Throttle Sensor	1	[('V', 'x/50', '')]	0xffff05ce	0xd198c	0xd0600	w:FFFF00B8	Main Throttle Sensor
+0x102	P75	Sub Accelerator Sensor	1	[('V', 'x/50', '')]	0xffff060c	0xd1e38	0xd0dd4	w:FFFF00C4	Sub Accelerator Sensor
+0x103	P76	Main Accelerator Sensor	1	[('V', 'x/50', '')]	0xffff060b	0xd1e2c	0xd0db8	w:FFFF00C2	Main Accelerator Sensor
+0x104	P77	Brake Booster Pressure	1	[('kPa', 'x', '')]	0xffff0607	0xd1de4	0xd0d2c	w:FFFEF200	Brake Booster Pressure
+0x105	P78	Fuel Pressure (High)	1	[('kPa', 'x/25*1000', '')]	0xdac5				
+0x106	P79	Exhaust Gas Temperature	1	[('C', '(x+40)*5', '')]	0xdac5				
+0x107	P116	Exhaust Gas Temperature 2	1	[('C', 'x*5+200', '')]	0xdac5				
+0x108	P80	Cold Start Injector (Air Pump)	1	[('ms', 'x*256/1000', '')]	0xdac4				
+0x108	P244	Secondary Air Piping Pressure	1	[('kPa', 'x', '')]	0xdac4				
+0x109	P81	SCV Step	1	[('steps', 'x', '')]	0xdac5				
+0x10a	P82	Memorised Cruise Speed	1	[('km/h', 'x', '')]	0xffff07ac				
+0x10b	P117	Air/Fuel Correction #4	1	[('%', '(x-64)/128*10', '')]	0xdac4				
+0x10c	P118	Air/Fuel Learning #4	1	[('%', '(x-128)/128*100', '')]	0xdac4				
+0x10d	P119	Fuel Level Sensor Resistance	1	[('ohm', 'x*4/2', '')]	0xffff05ca	0xd212a	0xd05a8	w:FFFF0EDE	
+0x10e	P120	Estimated odometer	2	[('km', 'x*2', '')]	0xffff3918				
+0x113	P122	Oil Temperature	1	[('C', 'x-40', '')]	0xdac4				
+0x114	P123	Oil Switching Solenoid Valve (OSV) Duty (Right)	1	[('%', 'x/255*100', '')]	0xdac4				
+0x115	P124	Oil Switching Solenoid Valve (OSV) Duty (Left)	1	[('%', 'x/255*100', '')]	0xdac4				
+0x116	P125	Oil Switching Solenoid Valve (OSV) Current (Right)	1	[('mA', 'x*32', '')]	0xdac4				
+0x117	P126	Oil Switching Solenoid Valve (OSV) Current (Left)	1	[('mA', 'x*32', '')]	0xdac4				
+0x118	P83	Exhaust VVT Advance Angle Right	1	[('degrees', 'x-50', '')]	0xffff05e7	0xd1aae	0xd08f8	w:FFFEF2B8	
+0x119	P84	Exhaust VVT Advance Angle Left	1	[('degrees', 'x-50', '')]	0xffff05e6	0xd1aa4	0xd08cc	w:FFFEF2BA	
+0x11a	P85	Exhaust OCV Duty Right	1	[('%', 'x*100/255', '')]	0xffff05e2	0xd1a6e	0xd0860	w:FFFF1228	Exhaust OCV Duty Right
+0x11b	P86	Exhaust OCV Duty Left	1	[('%', 'x*100/255', '')]	0xffff05e1	0xd1a64	0xd0834	w:FFFF1230	Exhaust OCV Duty Left
+0x11c	P87	Exhaust OCV Current Right	1	[('mA', 'x*32', '')]	0xffff05e9	0xd1ac6	0xd093c	w:FFFEF280	
+0x11d	P88	Exhaust OCV Current Left	1	[('mA', 'x*32', '')]	0xffff05e8	0xd1aba	0xd0924	w:FFFEF282	
+0x11e	P127	VVL Lift Mode	1	[('raw ecu value', 'x', '')]	0xdac4				
+0x13c	P144	Wheel Speed Front Right	1	[('km/h', 'x', '')]	0xdac5				
+0x13d	P145	Wheel Speed Front Left	1	[('km/h', 'x', '')]	0xdac5				
+0x13e	P146	Wheel Speed Rear Right	1	[('km/h', 'x', '')]	0xdac5				
+0x13f	P147	Wheel Speed Rear Left	1	[('km/h', 'x', '')]	0xdac5				
+0x140	P128	H and LR/C Solenoid Valve Current	1	[('A', 'x/255', '')]	0xdac5				
+0x141	P129	D/C Solenoid Valve Current	1	[('A', 'x/255', '')]	0xdac5				
+0x142	P130	F/B Solenoid Valve Current	1	[('A', 'x/255', '')]	0xdac5				
+0x143	P131	I/C Solenoid Valve Current	1	[('A', 'x/255', '')]	0xdac5				
+0x144	P132	P/L Solenoid Valve Current	1	[('A', 'x/255', '')]	0xdac5				
+0x145	P133	L/U Solenoid Valve Current	1	[('A', 'x/255', '')]	0xdac5				
+0x146	P134	AWD Solenoid Valve Current	1	[('A', 'x/255', '')]	0xdac5				
+0x147	P135	Yaw Rate Sensor Voltage	1	[('V', 'x/51', '')]	0xdac5				
+0x148	P136	H and LR/C Solenoid Valve Pressure	1	[('kPa', 'x*10', '')]	0xdac5				
+0x149	P137	D/C Solenoid Valve Pressure	1	[('kPa', 'x*10', '')]	0xdac5				
+0x14a	P138	F/B Solenoid Valve Pressure	1	[('kPa', 'x*10', '')]	0xdac5				
+0x14b	P139	I/C Solenoid Valve Pressure	1	[('kPa', 'x*10', '')]	0xdac5				
+0x14c	P140	P/L Solenoid Valve Pressure	1	[('kPa', 'x*10', '')]	0xdac5				
+0x14d	P141	L/U Solenoid Valve Pressure	1	[('kPa', 'x*10', '')]	0xdac5				
+0x14e	P142	AWD Solenoid Valve Pressure	1	[('kPa', 'x*10', '')]	0xdac5				
+0x14f	P143	Yaw Rate and  G Sensor Reference Voltage	1	[('V', 'x/51', '')]	0xdac5				
+0x16a	P114	SI-Drive Mode	1	[('index', 'x', '')]	0xffff0586				
+0x16b	P115	Throttle Sensor Closed Voltage	1	[('V', 'x/50', '')]	0xdac5				
+0x172	P121	Fuel Tank Air Pressure	2	[('MPa', 'x/100', '')]	0xdac5				
+0x182	P245	Secondary Air Flow	2	[('g/s', 'x/100', '')]	0xdac4				
+0x185	P149	Fwd/B Solenoid Valve Current	1	[('A', 'x/255', '')]	0xdac5				
+0x186	P150	Fwd/B Solenoid Valve Target Pressure	1	[('kPa', 'x*10', '')]	0xdac5				
+0x199	P91	Fine Learning Knock Correction	1	[('degrees', '(x*0.25)-32', '')]	0xffff0609	0xd1e08	0xd0d50	b:FFFF04BB	
+0x19a	P154	Fuel Tank Pressure	1	[('kPa', '(x-128)/20', '')]	0xdac4				
+0x1e1	P155	Main Injection Period	1	[('°CA', 'x/5-15', '')]	0xdac5				
+0x1e2	P156	Final Injection Amount	2	[('mm³/st', 'x/256', '')]	0xdac5				
+0x1e4	P157	Number of Times Injected	1	[('count', 'x', '')]	0xdac5				
+0x1e5	P158	Target Intake Manifold Pressure	1	[('kPa', 'x', '')]	0xdac5				
+0x1e6	P159	Target Intake Air Amount	1	[('mg/cyl', 'x*10', '')]	0xdac5				
+0x1e7	P160	Air Mass	1	[('mg/cyl', 'x*10', '')]	0xdac5				
+0x1e8	P161	Exhaust Gas Recirculation (EGR) Target Valve Opening Angle	1	[('degrees', 'x-50', '')]	0xdac5				
+0x1e9	P162	Exhaust Gas Recirculation (EGR) Valve Opening Angle	1	[('degrees', 'x-50', '')]	0xdac5				
+0x1ea	P163	Exhaust Gas Recirculation (EGR) Duty	1	[('%', 'x', '')]	0xdac5				
+0x1eb	P164	Common Rail Target Pressure	1	[('MPa', 'x', '')]	0xdac5				
+0x1ec	P165	Common Rail Pressure	1	[('MPa', 'x', '')]	0xdac5				
+0x1ed	P166	Intake Air Temperature (combined)	1	[('C', 'x-40', '')]	0xdac5				
+0x1ee	P167	Target Engine Speed	2	[('rpm', 'x/4', '')]	0xdac5				
+0x1f0	P168	Boost Pressure Feedback	1	[('%', 'x-128', '')]	0xdac5				
+0x1f1	P171	Yaw Rate	1	[]	0xdac5				
+0x1f2	P172	Lateral G	1	[]	0xdac5				
+0x1f3	P173	Drivers Control Center Differential (DCCD) Torque Allocation	1	[('raw ecu value', 'x', '')]	0xdac5				
+0x1f4	P174	Drivers Control Center Differential (DCCD) Mode	1	[('raw ecu value', 'x', '')]	0xdac5				
+0x1f5	P169	Electric Power Steering Current	1	[('A', 'x', '')]	0xdac5				
+0x1f6	P170	Fuel Pump Suction Control Valve Current (Target)	2	[('mA', 'x', '')]	0xdac5				
+0x1f8	P175	Fuel Pump Suction Control Valve Current (Actual)	2	[('mA', 'x', '')]	0xdac5				
+0x1fa	P176	Mileage after Injector Learning	2	[('km', 'x*5', '')]	0xdac5				
+0x204	P177	Mileage after Injector Replacement	2	[('km', 'x*5', '')]	0xdac5				
+0x21f	P204	Actual Common Rail Pressure (Time Synchronized)	1	[('MPa', 'x', '')]	0xdac5				
+0x22f	P234	Pre-Injection Amount	2	[('mm³/st', 'x/256-30', '')]	0xdac5				
+0x231	P235	Pre-Injection Interval	1	[('°CA', 'x/50', '')]	0xdac5				
+0x232	P238	Final Initial Torque	2	[('Nm', 'x-50', '')]	0xdac5				
+0x238	P228	Individual Pump Difference Learning Value	2	[('mA', 'x-1000', '')]	0xdac5				
+0x23d	P208	Micro-Quantity-Injection Final Learning Value 1-1	1	[('µs', '(x-128)*5', '')]	0xdac5				
+0x23e	P209	Micro-Quantity-Injection Final Learning Value 1-2	1	[('µs', '(x-128)*5', '')]	0xdac5				
+0x23f	P210	Micro-Quantity-Injection Final Learning Value 1-3	1	[('µs', '(x-128)*5', '')]	0xdac5				
+0x240	P211	Micro-Quantity-Injection Final Learning Value 1-4	1	[('µs', '(x-128)*5', '')]	0xdac5				
+0x241	P212	Micro-Quantity-Injection Final Learning Value 2-1	1	[('µs', '(x-128)*5', '')]	0xdac5				
+0x242	P213	Micro-Quantity-Injection Final Learning Value 2-2	1	[('µs', '(x-128)*5', '')]	0xdac5				
+0x243	P214	Micro-Quantity-Injection Final Learning Value 2-3	1	[('µs', '(x-128)*5', '')]	0xdac5				
+0x244	P215	Micro-Quantity-Injection Final Learning Value 2-4	1	[('µs', '(x-128)*5', '')]	0xdac5				
+0x245	P216	Micro-Quantity-Injection Final Learning Value 3-1	1	[('µs', '(x-128)*5', '')]	0xdac5				
+0x246	P217	Micro-Quantity-Injection Final Learning Value 3-2	1	[('µs', '(x-128)*5', '')]	0xdac5				
+0x247	P218	Micro-Quantity-Injection Final Learning Value 3-3	1	[('µs', '(x-128)*5', '')]	0xdac5				
+0x248	P219	Micro-Quantity-Injection Final Learning Value 3-4	1	[('µs', '(x-128)*5', '')]	0xdac5				
+0x249	P220	Micro-Quantity-Injection Final Learning Value 4-1	1	[('µs', '(x-128)*5', '')]	0xdac5				
+0x24a	P221	Micro-Quantity-Injection Final Learning Value 4-2	1	[('µs', '(x-128)*5', '')]	0xdac5				
+0x24b	P222	Micro-Quantity-Injection Final Learning Value 4-3	1	[('µs', '(x-128)*5', '')]	0xdac5				
+0x24c	P223	Micro-Quantity-Injection Final Learning Value 4-4	1	[('µs', '(x-128)*5', '')]	0xdac5				
+0x24d	P224	Micro-Quantity-Injection Final Learning Value 5-1	1	[('µs', '(x-128)*5', '')]	0xdac5				
+0x24e	P225	Micro-Quantity-Injection Final Learning Value 5-2	1	[('µs', '(x-128)*5', '')]	0xdac5				
+0x24f	P226	Micro-Quantity-Injection Final Learning Value 5-3	1	[('µs', '(x-128)*5', '')]	0xdac5				
+0x250	P227	Micro-Quantity-Injection Final Learning Value 5-4	1	[('µs', '(x-128)*5', '')]	0xdac5				
+0x255	P233	Pre-Injection Final Period	2	[('µs', 'x', '')]	0xdac5				
+0x257	P229	Final Main Injection Period	2	[('µs', 'x', '')]	0xdac5				
+0x25d	P179	Quantity Correction Cylinder #1	1	[('µs', '(x-100)*10', '')]	0xdac5				
+0x25e	P180	Quantity Correction Cylinder #2	1	[('µs', '(x-100)*10', '')]	0xdac5				
+0x25f	P181	Quantity Correction Cylinder #3	1	[('µs', '(x-100)*10', '')]	0xdac5				
+0x260	P182	Quantity Correction Cylinder #4	1	[('µs', '(x-100)*10', '')]	0xdac5				
+0x270	P178	Interior Heater	1	[('steps', 'x', '')]	0xdac5				
+0x271	P183	Battery Current	1	[('A', 'x-128', '')]	0xffff05ee	0xd1cb8	0xd09b8	w:FFFEF0CA	Battery Current
+0x272	P185	Alternator Control Mode	1	[('index', 'x', '')]	0xffff06d8				
+0x273	P184	Battery Temperature	1	[('C', 'x-40', '')]	0xffff0619	0xd208a	0xd0f40	b:FFFEF0D2	Battery Temperature
+0x275	P186	Cumulative Ash Ratio	1	[('%', 'x', '')]	0xdac5				
+0x276	P187	Pressure Difference between Diesel Particulate Filter (DPF) Inlet and Outlet	1	[('kPa', 'x', '')]	0xdac5				
+0x277	P188	Exhaust Gas Temperature at Catalyst Inlet	1	[('C', 'x*5-40', '')]	0xdac5				
+0x278	P189	Exhaust Gas Temperature at Diesel Particulate Filter (DPF) Inlet	1	[('C', 'x*5-40', '')]	0xdac5				
+0x279	P190	Estimated Catalyst Temperature	1	[('C', 'x*5-40', '')]	0xdac5				
+0x27a	P191	Estimated Temperature of the Diesel Particulate Filter (DPF)	1	[('C', 'x*5-40', '')]	0xdac5				
+0x27b	P192	Soot Accumulation Ratio	1	[('%', 'x', '')]	0xdac5				
+0x27c	P193	Oil Dilution Ratio	1	[('%', 'x', '')]	0xdac5				
+0x293	P194	Front-Rear Wheel Rotation Ratio	1	[('%', 'x/128', '')]	0xdac5				
+0x294	P195	ABS/VDC Front Wheel Mean Wheel Speed	1	[('km/h', 'x*230/255', '')]	0xdac5				
+0x295	P196	ABS/VDC Rear Wheel Mean Wheel Speed	1	[('km/h', 'x*230/255', '')]	0xdac5				
+0x296	P197	Automatic Transmission Fluid (ATF) Deterioration Degree	2	[('%', 'x*40/13107', '')]	0xdac5				
+0x298	P198	Accumulated Count of Overspeed Instances (Very High RPM)	1	[('Time', 'x', '')]	0xdac5				
+0x299	P199	Accumulated Count of Overspeed Instances (High RPM)	1	[('Time', 'x', '')]	0xdac5				
+0x29a	P205	Estimated Distance to Oil Change	1	[('km', 'x*100', '')]	0xdac5				
+0x29b	P206	Running Distance since last Diesel Particulate Filter (DPF) Regeneration	2	[('km', 'x', '')]	0xdac5				
+0x29d	P207	Diesel Particulate Filter (DPF) Regeneration Count	2	[('Times', 'x', '')]	0xdac5				
+0x2a2	P236	Cumulative oil diesel entry	1	[('g', 'x*5', '')]	0xdac5				
+0x221101	P2	Coolant temperature	1	[('C', 'x-50', '')]					
+0x221101	P24	Atmospheric Pressure**	1	[('psi', '101.325*37/255', '')]					
+0x221102	P4354	Vehicle Speed	1	[('km/h', 'x*2', '')]					
+0x221103	P17	Battery Voltage	1	[('V', 'x*0.08', '')]					
+0x221104	P31	Fuel Temperature	1	[('C', 'x-50', '')]					
+0x221105	P4357	EGR Temperature	1	[('V', 'x*0.02', '')]					
+0x221106	P11	Intake Air Temperature	1	[('C', 'x-50', '')]					
+0x221107	P4359	Ignition Timing	1	[('°', 'x', '')]					
+0x221108	P4360	Ignition Timing	1	[('°', 'x', '')]					
+0x221109	P4361	Ignition Timing	1	[('°', 'x', '')]					
+0x22110a	P10	Ignition Timing	1	[('°', '60-x', '')]					
+0x22110b	P4363	IACV-AAC	1	[('raw value', 'x', '')]					
+0x22110c	P4364	IACV-AAC	1	[('raw value', 'x', '')]					
+0x22110d	P4365	Idle Set	1	[('RPM', 'x*12.5', '')]					
+0x22110e	P4366	Boost	1	[('raw value', 'x*.04', '')]					
+0x22110f	P4367	Purge Volume	1	[('raw value', 'x', '')]					
+0x221110	P4368	Purge Canister Solenoid Duty	1	[('%', 'x*0.5', '')]					
+0x221111	P31	Fuel Tank Temperature	1	[('C', 'x-50', '')]					
+0x221112	P4370	EGR Volume	1	[('raw value', 'x', '')]					
+0x221113	P4371	Fuel Pump Control Module Volts	1	[('V', 'x*0.04', '')]					
+0x221114	P35	Fuel Level	1	[('raw value', 'x', '')]					
+0x221115	P4373	Evap Pressure Sensor Voltage	1	[('V', 'x*(5/64)', '')]					
+0x221116	P4374	Atmospheric Pressure Sensor Voltage	1	[('V', 'x*(5/64)', '')]					
+0x221117	P1	Calculated Load	1	[('%', 'x*100/255', '')]					
+0x221118	P14	O2 Narrowband Bank 1 Sensor 1	1	[('V', 'x*0.01', '')]					
+0x221119	P16	O2 Narrowband Bank 2 Sensor 1	1	[('V', 'x*0.01', '')]					
+0x22111a	P4378	O2 Narrowband Bank 1 Sensor 2	1	[('V', 'x*0.01', '')]					
+0x22111b	P4379	O2 Narrowband Bank 2 Sensor 2	1	[('V', 'x*0.01', '')]					
+0x22111c	P4380	Throttle Position Sensor 1	1	[('V', 'x*0.02', '')]					
+0x22111d	P4381	Throttle Position Sensor 2	1	[('V', 'x*0.02', '')]					
+0x22111e	P4382	Absolute Throttle Position	1	[('°', 'x*0.35', '')]					
+0x22111f	P122	Engine Oil Temperature	1	[('C', 'x-50', '')]					
+0x221121	P188	Exhaust Gas Temperature B1	1	[('V', 'x*0.02', '')]					
+0x221122	P4386	Exhaust Gas Temperature B2	1	[('V', 'x*0.02', '')]					
+0x221123	P4387	Short Term Fuel Trim B1	1	[('%', 'x/256', '')]					
+0x221124	P4388	Short Term Fuel Trim B2	1	[('%', 'x/256', '')]					
+0x221125	P4389	Learned Fuel Trim B1	1	[('%', 'x/256', '')]					
+0x221126	P4390	Learned Fuel Trim B2	1	[('%', 'x/256', '')]					
+0x221127	P4391	Int V B1	1	[('raw value', 'x', '')]					
+0x221128	P4392	Int V B2	1	[('raw value', 'x', '')]					
+0x221129	P4393	Atomospheric Sensor	1	[('V', 'x*(5/64)', '')]					
+0x22112a	P102	MAP Sensor	1	[('V', 'x*(5/64)', '')]					
+0x22112b	P4395	Evapo leak diagnosis monitor	1	[('raw value', 'x', '')]					
+0x22112d	P4397	Cor Tim	1	[('°', 'x', '')]					
+0x22112e	P4398	Cor Idle Rpm	1	[('RPM', 'x*12.5', '')]					
+0x22112f	P4399	Position	1	[('raw value', 'x', '')]					
+0x221130	P4400	Pres Reg	1	[('%', 'x*0.5', '')]					
+0x221131	P4401	Inj Start Tim	1	[('°', 'x', '')]					
+0x221132	P4402	Inj Start Tim	1	[('°', 'x', '')]					
+0x221133	P4403	Inj Start Tim	1	[('°', 'x', '')]					
+0x221134	P4404	Target AFR	1	[('lambda', 'x/16384', '')]					
+0x221135	P48	Int Tim B1	1	[('°CA', 'x*0.5-64', '')]					
+0x221136	P4406	Int Tim B1	1	[('°CA', 'x-128', '')]					
+0x221137	P4407	Int Tim B2	1	[('°CA', 'x-128', '')]					
+0x221138	P50	Int Sol B1	1	[('%', 'x*0.390625', '')]					
+0x221139	P51	Int Sol B2	1	[('%', 'x*0.390625', '')]					
+0x22113a	P4410	VTC target operation angle	1	[('°CA', 'x*0.5-64', '')]					
+0x22113b	P4411	VTC target angle (for the P-gain)	1	[('°CA', 'x-128', '')]					
+0x22113c	P4412	Timing	1	[('raw value', 'x', '')]					
+0x22113d	P4413	Inj Timing	1	[('raw value', 'x*-1+112', '')]					
+0x22113e	P4414	VRO2 maximum value	1	[('V', 'x*0.01', '')]					
+0x221141	P4417	VRO2 minimum value	1	[('V', 'x*0.01', '')]					
+0x221143	P4419	EGR Temperature	1	[('C', '*x-50', '')]					
+0x221144	P4420	Evapo leak diagnosis monitor	1	[('raw value', 'x', '')]					
+0x221145	P4421	Evapo leak diagnosis monitor	1	[('raw value', 'x', '')]					
+0x221146	P4422	Mode 8 response code (DDL2)	1	[('raw value', 'x', '')]					
+0x221147	P4423	MALPRVL (fuel correction lower limit)	1	[('%', 'x', '')]					
+0x221148	P4424	MALPRVU (fuel correction upper limit)	1	[('%', 'x', '')]					
+0x221149	P4425	Reference line pressure	1	[('V', 'x*(5/64)', '')]					
+0x22114a	P4426	Final FAN speed	1	[('RPM', 'x*12.5', '')]					
+0x22114b	P4427	Radiator	1	[('raw value', 'x', '')]					
+0x22114c	P4428	HO2 B1S3	1	[('raw value', 'x', '')]					
+0x22114d	P4429	HO2 B2S3	1	[('raw value', 'x*.01', '')]					
+0x22114e	P43	A/F HB1S1	1	[('%', 'x*0.4', '')]					
+0x22114f	P4431	A/F HB2S1	1	[('%', 'x*0.4', '')]					
+0x221150	P4432	HO2 Heater	1	[('%', 'x*10', '')]					
+0x221151	P4433	Battery State	1	[('raw value', 'x', '')]					
+0x221152	P4434	Eng Fuel	1	[('raw value', 'x', '')]					
+0x221153	P4435	Cyl Fuel	1	[('raw value', 'x', '')]					
+0x221154	P4436	Engine Fuel	1	[('raw value', 'x', '')]					
+0x221155	P4437	Cyl Fuel	1	[('raw value', 'x*.02', '')]					
+0x221156	P4438	Cyl Atmo	1	[('raw value', 'x-50', '')]					
+0x221159	P4441	The rest O2/H voltage value	1	[('V', 'x*0.02', '')]					
+0x22115b	P4443	Timing	1	[('raw value', 'x-144*.75', '')]					
+0x22115c	P4444	Idle LFT	1	[('raw value', 'x*4-512', '')]					
+0x22115f	P4447	SFT	1	[('raw value', 'x', '')]					
+0x221161	P4449	LFT	1	[('raw value', 'x*.78125', '')]					
+0x221162	P4450	Timing reference angle??	1	[('°', 'x', '')]					
+0x221163	P49	Int Tim B2	1	[('°CA', 'x*0.5-64', '')]					
+0x221164	P83	Exh Tim B1	1	[('°CA', 'x*0.5-64', '')]					
+0x221165	P84	Exh Tim B2	1	[('°CA', 'x*0.5-64', '')]					
+0x221166	P4454	VTC target angle (exhaust)	1	[('°CA', 'x*0.5-64', '')]					
+0x221167	P4455	Coolant	1	[('raw value', 'x', '')]					
+0x221168	P4456	VSS	1	[('raw value', 'x', '')]					
+0x221169	P4457	Battery	1	[('raw value', 'x', '')]					
+0x22116a	P4458	Intake	1	[('raw value', 'x', '')]					
+0x22116b	P4459	IACV-AAC/V	1	[('raw value', 'x', '')]					
+0x22116c	P4460	Idle Set Rpm	1	[('RPM', 'x*10', '')]					
+0x22116d	P4461	Purg Vol C/V	1	[('raw value', 'x', '')]					
+0x22116e	P4462	HO2B1S1	1	[('raw value', 'x', '')]					
+0x22116f	P4463	HO2B1S2	1	[('raw value', 'x', '')]					
+0x221170	P4464	Absolute TPS	1	[('raw value', 'x', '')]					
+0x221171	P4465	A/F SE B1	1	[('raw value', 'x', '')]					
+0x221172	P4466	B/Fuel	1	[('raw value', 'x*.05', '')]					
+0x221173	P4467	TPS	1	[('raw value', 'x', '')]					
+0x221174	P4468	CO Adj	1	[]					
+0x221175	P4469	Slow Inj	1	[('raw value', 'x', '')]					
+0x221176	P4470	Main Inj	1	[('raw value', '*.390625', '')]					
+0x221177	P4471	Ethanol M/R	1	[('raw value', 'x', '')]					
+0x221178	P4472	Fan Duty	1	[('raw value', 'x', '')]					
+0x221179	P4473	A/C Evap	1	[('raw value', 'x', '')]					
+0x22117a	P4474	A/C Evap Targ	1	[('raw value', 'x', '')]					
+0x22117b	P4475	ALT Duty	1	[('raw value', 'x', '')]					
+0x221201	P8	Engine Speed	1	[]					
+0x221202	P4610	Crank Position	1	[]					
+0x221203	P4611	Travel MIL	1	[]					
+0x221204	P18	MAF B1 Voltage	1	[]					
+0x221205	P4613	MAF B2 Voltage	1	[]					
+0x221206	P21	Fuel Injector Bank #1 Pulse Width	1	[]					
+0x221207	P22	Fuel Injector Bank #2 Pulse Width	1	[]					
+0x221208	P4616	Base Fuel	1	[]					
+0x221209	P12	Mass Airflow	1	[]					
+0x22120a	P4618	FPCM F/P	1	[]					
+0x22120c	P4620	Fuel Pressure	1	[]					
+0x22120d	P4621	Accelerator Pedal Sensor #1 Voltage	1	[]					
+0x22120e	P4622	Accelerator Pedal Sensor #2 Voltage	1	[]					
+0x22120f	P19	Throttle Position Sensor #1 Voltage	1	[]					
+0x221210	P4624	Throttle Position Sensor #2 Voltage	1	[]					
+0x221211	P4625	Inj B1	1	[]					
+0x221212	P4626	Inj B2	1	[]					
+0x221213	P4627	Inj EG Start	1	[]					
+0x221214	P4628	Vac S1	1	[]					
+0x221215	P4629	Vac S2	1	[]					
+0x221216	P4630	SWL C/V B1	1	[]					
+0x221217	P4631	SWL C/V B1	1	[]					
+0x221218	P4632	ETC Comp	1	[]					
+0x221219	P4633	I/P Pulley	1	[]					
+0x22121a	P9	Vehicle Speed (High Precision)	1	[]					
+0x22121b	P4635	TPRVL (fuel correction lower limit)	1	[]					
+0x22121c	P4636	TPRVU (fuel correction upper limit)	1	[]					
+0x22121d	P4637	PFRVL	1	[]					
+0x22121e	P4638	PFRVU	1	[]					
+0x221221	P4641	USRVL (minimum MAF idle voltage)	1	[]					
+0x221222	P4642	USRVU (maximum MAF idle voltage)	1	[]					
+0x221223	P4643	A/C Pres	1	[]					
+0x221224	P4644	Fan Current	1	[]					
+0x221225	P58	A/F sensor output voltage Bank #1	1	[]					
+0x221226	P59	A/F sensor output voltage Bank #2	1	[]					
+0x221227	P4647	SWL/C Pos 1	1	[]					
+0x221228	P4648	MOTOR B TRQ	1	[]					
+0x221229	P4649	Torque	1	[]					
+0x22122a	P4650	Vehicle Speed (Ultra High Precision)	1	[]					
+0x22122b	P82	Cruise Control set speed	1	[]					
+0x22122d	P4653	VTC Int B1	1	[]					
+0x22122e	P4654	VTC Int B2	1	[]					
+0x22122f	P4655	VTC Exh B1	1	[]					
+0x221230	P4656	VTC Exh B2	1	[]					
+0x221231	P4657	Engine Speed	1	[]					
+0x221232	P4658	Inj B1	1	[]					
+0x221233	P4659	Mass Airflow Sensor	1	[]					
+0x221246	P4678	Battery	1	[]					
