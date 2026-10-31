@@ -1638,6 +1638,32 @@
    "format": "0.0"
   }
  },
+ "0x2DA80": {
+  "status": "identified",
+  "name": "Knock Correction Advance Max (weight 1-w, w=FFFF0E90)",
+  "category": "Ignition Timing - Knock Control",
+  "evidence": "0xA2F20 (task 0xA031C): FFFF04BA = T_02DA80*(1-w) + T_02DA94*w (w = FFFF0E90/65536); 0x9EEE0: FFFF04A4 = IAM*04BA/16, added to timing via 0x96F3C (x*90/128 in 0.5 deg); deg = x*45/128 from SSM 0x199 converter 0xD0D50. Map A.",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "x*45/128",
+   "to_byte": "x*128/45",
+   "format": "0.00"
+  }
+ },
+ "0x2DA94": {
+  "status": "identified",
+  "name": "Knock Correction Advance Max (weight w=FFFF0E90)",
+  "category": "Ignition Timing - Knock Control",
+  "evidence": "0xA2F20 (task 0xA031C): FFFF04BA = T_02DA80*(1-w) + T_02DA94*w (w = FFFF0E90/65536); 0x9EEE0: FFFF04A4 = IAM*04BA/16, added to timing via 0x96F3C (x*90/128 in 0.5 deg); deg = x*45/128 from SSM 0x199 converter 0xD0D50. Map B.",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "x*45/128",
+   "to_byte": "x*128/45",
+   "format": "0.00"
+  }
+ },
  "0x2E588": {
   "status": "identified",
   "name": "Wastegate Duty Initial",

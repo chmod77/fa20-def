@@ -434,6 +434,20 @@ add(0x2EE8C, 'Catalyst Temperature Rate Factor (FFFEEF14), FFFF03D8.1 clear', CA
 add(0x2EE98, 'Catalyst Temperature Rate Factor (FFFEEF14), FFFF03D8.1 set', CAT, evr, ('factor', 'x/256', 'x*256', '0.000'))
 
 
+# ---------------------------------------------------------------- knock control (task 0xA031C)
+# Unit: SSM 0x199 Fine Learning Knock Correction = converter 0xD0D50(FFFF04BB): byte = 04BB*45/32 + 128, public deg = byte/4 - 32
+#   -> deg = 04BB*45/128 (0.3515625 deg/count).  0x96F3C (-> FFFF0458, 0.5 deg units, used by 0x87478 base timing) adds
+#   04A4*90/128 + 04BB*90/128 (same unit), and 0x98FAC adds knock retard 04AD*180/256 (same unit).
+# 0xA2F20: FFFF04BA = T_02DA80(rpm FFFF2994, load FFFF09B4)*(1-w) + T_02DA94*w, w = FFFF0E90/65536 (stack-arg 0xA03BA);
+# 0x9EEE0: FFFF04A4 = IAM FFFF3669 (SSM 0xF9, x/16) * 04BA / 16.  0x9F368: knock retard FFFF04AD steps -4 / +1, floor -0x22 (constants).
+KN = 'Ignition Timing - Knock Control'
+DEGK = ('deg', 'x*45/128', 'x*128/45', '0.00')
+evk = ('0xA2F20 (task 0xA031C): FFFF04BA = T_02DA80*(1-w) + T_02DA94*w (w = FFFF0E90/65536); 0x9EEE0: FFFF04A4 = IAM*04BA/16, added to timing '
+       'via 0x96F3C (x*90/128 in 0.5 deg); deg = x*45/128 from SSM 0x199 converter 0xD0D50. ')
+add(0x2DA80, 'Knock Correction Advance Max (weight 1-w, w=FFFF0E90)', KN, evk + 'Map A.', DEGK)
+add(0x2DA94, 'Knock Correction Advance Max (weight w=FFFF0E90)', KN, evk + 'Map B.', DEGK)
+
+
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
     print(len(S), 'entries')

@@ -64,6 +64,22 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
 - **Boost.** Wastegate duty `FFFF0E5E` (SSM 0x30, % = x/256) = min(initial × compensation + PI feedback, max). The target boost encoding, kPa = x/256 + 13.3, is proven from A/D channel 0x12.
 - **Open-loop fuel.** OBD PID 44 formatter `0x10C32C`: λ = 256/(256 + `0B84` + `0401` + `0B42`). The fuel tables use the expression λ = 256/(256+x).
 
+## Session 3
+- Coverage: 182 of 1182 tables identified (both ROMs PASS RomRaider validation).
+- `scripts/stackargs.py` is an instruction-level call-site resolver that writes `evidence/stack-args.tsv`. It records constant r4..r7
+  and pushed stack arguments, tracks stack slots and handles the delay slot. Ghidra drops many stack arguments, so this recovered
+  output pointers that were missing: AVCS 0xF8EE0 -> 11B8..11BE, knock 0x9F368 -> 04AD, 0xA2F20 -> 04BA. Table sinks went from 403 to 461.
+- `scripts/leads2.py`: 2-hop leads, from a table's sink variable to a reader function to a proven variable (init functions excluded).
+- `subsystems.py`: labelled functions are now treated as roots, so the orphan dispatchers (0x15307C…) no longer hide their labels.
+- AVCS targets (intake 0xF8EE0, exhaust 0xFC52C): T = Tbase*Tect/128 + TA*(1-w) + TB*w, deg = x*180/65536. The intake target
+  goes through 0xF92CC (deg float, ±90 clamp) to 11C0/11C4 and is compared with cam angles EF2AC/EF2AE. The exhaust target is
+  compared with SSM 0x118/0x119.
+- Knock: FLKC unit deg = x*45/128 (SSM 0x199 converter 0xD0D50). 04A4 = IAM*04BA/16. 04BA = blend of the Knock Correction Advance Max
+  maps T_02DA80/T_02DA94 (w = FFFF0E90). Knock retard 04AD uses constant steps (-4 per knock, +1 recovery, floor -0x22) in 0x9F368.
+- Ignition term 047B (0x9A05C): 127.5 deg × product of five x/255 factors, chosen per gear (FFFEF51A) and by the oscillation counter FFFF0481.
+- Catalyst temperature model (OBD PID 3C, 0xD9D40): steady-state and initial maps (C = 4x-40) and rate factors.
+- Ignition final-sum inputs: IAT adder T_02D614, restore step tables, post-event limit T_02D5F0, retard hold count T_02D494.
+
 ## Unresolved anchors / next steps
 1. Torque domain (16000 = 0). `FFFF0A62` and the 0x82FA0 / 0x87478 / 0x12560C task trees (about 200 tables) have no OBD/SSM torque anchor. The opendbc Subaru DBCs only give factor 1, no units. Name these by role and keep them partial.
 2. Unlabelled task roots by table count: 0xF6B24 (59), 0xB42AC (36), 0x89E04 (34, fuel), 0x1011EC (33), 0xC5934 (30), 0xAEBE8 (29, probably fan), 0xDCE34 (25), 0xBE0E8 (23, uses fuel rail pressure), 0x11F134 (20) and others.
