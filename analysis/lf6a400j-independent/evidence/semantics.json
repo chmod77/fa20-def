@@ -2101,6 +2101,19 @@
    "format": "0.0"
   }
  },
+ "0x2D9B4": {
+  "status": "identified",
+  "name": "Ignition Timing Adder (Coolant) [0x9DBF8]",
+  "category": "Ignition Timing",
+  "evidence": "0x9DBF8 (from 0x9BDF4): FFFF049D = T_02D9C0*T_02D9CC/128 + T (when FFFF03A0 load >= 0x3C/0x32 hysteresis); 0x9DE28 sums FFFF045C + FFFF049D + FFFF049B - 32 with 045C (046C = 045C - 32, 0.5 deg) and 049B (added to base timing 03D1, 0.5 deg), so T is 0.5 deg. Input coolant FFFEEEDE.",
+  "description": "",
+  "data": {
+   "units": "deg",
+   "expr": "x/2",
+   "to_byte": "x*2",
+   "format": "0.0"
+  }
+ },
  "0x2D9D8": {
   "status": "identified",
   "name": "Ignition Timing Adjustment during Enrichment (Load x RPM)",
