@@ -1623,6 +1623,19 @@
    "format": "0.0"
   }
  },
+ "0x2D1AC": {
+  "status": "identified",
+  "name": "Injection Angle B, Flag Mode (RPM x Load) [-> 0B8A]",
+  "category": "Fuel Injection",
+  "evidence": "0x907CC (from 0x888C0): FFFF0B8A = T_02D1D4(rpm FFFF2994, load FFFF03A0) + T_02D1C0(rpm, load)*T_02D1FC(FFFEEF33, IAT FFFEE6A5)/255; 0x8DEA0 handles the injection angles together (compared with 720/1080 and divided by 360 deg), and 0B8E is proven 1 deg CA (0x44EAC), so 0B8A is a crank angle in 1 deg units. Replaces the 0B8A value directly when param_10 is set.",
+  "description": "",
+  "data": {
+   "units": "deg CA",
+   "expr": "x",
+   "to_byte": "x",
+   "format": "0"
+  }
+ },
  "0x2D1C0": {
   "status": "identified",
   "name": "Injection Angle B Adder (RPM x Load) [-> 0B8A]",
@@ -1641,6 +1654,19 @@
   "name": "Injection Angle B Base (RPM x Load) [-> 0B8A]",
   "category": "Fuel Injection",
   "evidence": "0x907CC (from 0x888C0): FFFF0B8A = T_02D1D4(rpm FFFF2994, load FFFF03A0) + T_02D1C0(rpm, load)*T_02D1FC(FFFEEF33, IAT FFFEE6A5)/255; 0x8DEA0 handles the injection angles together (compared with 720/1080 and divided by 360 deg), and 0B8E is proven 1 deg CA (0x44EAC), so 0B8A is a crank angle in 1 deg units. ",
+  "description": "",
+  "data": {
+   "units": "deg CA",
+   "expr": "x",
+   "to_byte": "x",
+   "format": "0"
+  }
+ },
+ "0x2D1E8": {
+  "status": "identified",
+  "name": "Injection Angle B, Start/Alternate Mode (RPM x Coolant) [-> 0B8A]",
+  "category": "Fuel Injection",
+  "evidence": "0x907CC (from 0x888C0): FFFF0B8A = T_02D1D4(rpm FFFF2994, load FFFF03A0) + T_02D1C0(rpm, load)*T_02D1FC(FFFEEF33, IAT FFFEE6A5)/255; 0x8DEA0 handles the injection angles together (compared with 720/1080 and divided by 360 deg), and 0B8E is proven 1 deg CA (0x44EAC), so 0B8A is a crank angle in 1 deg units. Replaces the 0B8A value directly in the engine-state branch of 0x907CC.",
   "description": "",
   "data": {
    "units": "deg CA",

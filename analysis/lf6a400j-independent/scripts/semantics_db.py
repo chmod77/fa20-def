@@ -795,6 +795,9 @@ add(0x2D1D4, 'Injection Angle B Base (RPM x Load) [-> 0B8A]', INJ, _ev8a, CA)
 add(0x2D1C0, 'Injection Angle B Adder (RPM x Load) [-> 0B8A]', INJ, _ev8a, CA)
 add(0x2D1FC, 'Injection Angle B Adder Factor [-> 0B8A]', INJ, _ev8a + 'x/255 factor.', ('factor', 'x/255', 'x*255', '0.000'))
 
+add(0x2D1E8, 'Injection Angle B, Start/Alternate Mode (RPM x Coolant) [-> 0B8A]', INJ, _ev8a + 'Replaces the 0B8A value directly in the engine-state branch of 0x907CC.', CA)
+add(0x2D1AC, 'Injection Angle B, Flag Mode (RPM x Load) [-> 0B8A]', INJ, _ev8a + 'Replaces the 0B8A value directly when param_10 is set.', CA)
+
 
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
