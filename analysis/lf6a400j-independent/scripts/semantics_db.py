@@ -1704,6 +1704,20 @@ for _d, _n, _e in ((0x2C200, 'Throttle Flow Request 09D4 (vs min(0CD8, T_02C1F4)
     add(_d, _n, 'Airflow - Throttle Model', _e + '  ' + _EREQ, _RQ)
 
 
+# Torque-tree throttle path (0x12367C / 0x12560C) mirrors the 0x87478 one: T_030008 = request -> throttle (same data relation to
+# T_02C1A0 as T_02CA14: axis = C1A0 data/2, data = C1A0 axis*64; same code form *400/0x2B1 + pedal*100/256 as 0x86BB4).
+S.pop(0x30008, None); AUTO.discard(0x30008)
+add(0x30008, 'Target Throttle Opening (vs request FFFF1456) [0x1232C0]', 'Throttle',
+    '0x1232C0: target = T(FFFF1456)*400/0x2B1 (+ pedal FFFEECB4*100/256 in state 1), the same form as 0x86BB4 -> FFFF0AF4 (SSM 0x15 '
+    'Throttle Opening Angle, % = x/256); T data = T_02C1A0 axis*64 and T axis = T_02C1A0 data/2 (exact inverse, like T_02CA14).  ' + _EREQ,
+    ('%', 'x*400/176384', 'x*176384/400', '0.00'))
+for _d, _n, _e in ((0x30488, 'Throttle Flow Request Adder 1456 (vs 1470)', '0x124E60: FFFF1456 = T(FFFF1470) + FFFF1420; T data = T_02CA14 axis exactly.'),
+                   (0x30074, 'Throttle Flow Request 1420 (vs min(0CD8, T_030068))', '0x123CB4: FFFF1420 = T(min(FFFF0CD8, T_030068(coolant))); 1420 is an additive term of the request 1456.'),
+                   (0x2DCE0, 'Idle Throttle Flow Request 0C3A (RPM x Idle Torque Ratio) [0xAA4C0]', '0xAA4C0: candidate 0CD8 = T_02DCF4(T(param_6, torque ratio)); T_02DCF4 is the exact inverse of T_02C200 (axis/data swapped), and 09D4 = T_02C200(min(0CD8, ...)), so T is the requested flow.')):
+    S.pop(_d, None); AUTO.discard(_d)
+    add(_d, _n, 'Airflow - Throttle Model', _e + '  ' + _EREQ, _RQ)
+
+
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
     print(len(S), 'entries')

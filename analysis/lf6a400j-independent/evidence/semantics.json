@@ -5962,6 +5962,19 @@
    "format": "0.0000"
   }
  },
+ "0x2DCE0": {
+  "status": "identified",
+  "name": "Idle Throttle Flow Request 0C3A (RPM x Idle Torque Ratio) [0xAA4C0]",
+  "category": "Airflow - Throttle Model",
+  "evidence": "0xAA4C0: candidate 0CD8 = T_02DCF4(T(param_6, torque ratio)); T_02DCF4 is the exact inverse of T_02C200 (axis/data swapped), and 09D4 = T_02C200(min(0CD8, ...)), so T is the requested flow.  Request unit: T_02CA14 (request -> target throttle, FFFF0AF4) is the exact inverse of T_02C1A0 (throttle %TPS -> flow capacity FFFF09C2, g/L*rpm = x*1.035944 via the manifold filling model 0xCF8C8): CA14 axis = C1A0 data / 2 and CA14 data = C1A0 axis * 64 at all 16 points.  So request = flow capacity / 2: g/L*rpm = x*2.071888.  ",
+  "description": "",
+  "data": {
+   "units": "g/L*rpm",
+   "expr": "x*2.071888",
+   "to_byte": "x/2.071888",
+   "format": "0"
+  }
+ },
  "0x2DD00": {
   "status": "identified",
   "name": "Idle Phase End Time (FFFF0423 x Coolant) [0xAAB08]",
@@ -10742,6 +10755,32 @@
    "format": "0.0"
   }
  },
+ "0x30008": {
+  "status": "identified",
+  "name": "Target Throttle Opening (vs request FFFF1456) [0x1232C0]",
+  "category": "Throttle",
+  "evidence": "0x1232C0: target = T(FFFF1456)*400/0x2B1 (+ pedal FFFEECB4*100/256 in state 1), the same form as 0x86BB4 -> FFFF0AF4 (SSM 0x15 Throttle Opening Angle, % = x/256); T data = T_02C1A0 axis*64 and T axis = T_02C1A0 data/2 (exact inverse, like T_02CA14).  Request unit: T_02CA14 (request -> target throttle, FFFF0AF4) is the exact inverse of T_02C1A0 (throttle %TPS -> flow capacity FFFF09C2, g/L*rpm = x*1.035944 via the manifold filling model 0xCF8C8): CA14 axis = C1A0 data / 2 and CA14 data = C1A0 axis * 64 at all 16 points.  So request = flow capacity / 2: g/L*rpm = x*2.071888.  ",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*400/176384",
+   "to_byte": "x*176384/400",
+   "format": "0.00"
+  }
+ },
+ "0x30074": {
+  "status": "identified",
+  "name": "Throttle Flow Request 1420 (vs min(0CD8, T_030068))",
+  "category": "Airflow - Throttle Model",
+  "evidence": "0x123CB4: FFFF1420 = T(min(FFFF0CD8, T_030068(coolant))); 1420 is an additive term of the request 1456.  Request unit: T_02CA14 (request -> target throttle, FFFF0AF4) is the exact inverse of T_02C1A0 (throttle %TPS -> flow capacity FFFF09C2, g/L*rpm = x*1.035944 via the manifold filling model 0xCF8C8): CA14 axis = C1A0 data / 2 and CA14 data = C1A0 axis * 64 at all 16 points.  So request = flow capacity / 2: g/L*rpm = x*2.071888.  ",
+  "description": "",
+  "data": {
+   "units": "g/L*rpm",
+   "expr": "x*2.071888",
+   "to_byte": "x/2.071888",
+   "format": "0"
+  }
+ },
  "0x30080": {
   "status": "identified",
   "name": "Torque 1422 (monitor) Threshold (0x123E10)",
@@ -11182,6 +11221,19 @@
    "expr": "(x-16000)/80",
    "to_byte": "x*80+16000",
    "format": "0.0"
+  }
+ },
+ "0x30488": {
+  "status": "identified",
+  "name": "Throttle Flow Request Adder 1456 (vs 1470)",
+  "category": "Airflow - Throttle Model",
+  "evidence": "0x124E60: FFFF1456 = T(FFFF1470) + FFFF1420; T data = T_02CA14 axis exactly.  Request unit: T_02CA14 (request -> target throttle, FFFF0AF4) is the exact inverse of T_02C1A0 (throttle %TPS -> flow capacity FFFF09C2, g/L*rpm = x*1.035944 via the manifold filling model 0xCF8C8): CA14 axis = C1A0 data / 2 and CA14 data = C1A0 axis * 64 at all 16 points.  So request = flow capacity / 2: g/L*rpm = x*2.071888.  ",
+  "description": "",
+  "data": {
+   "units": "g/L*rpm",
+   "expr": "x*2.071888",
+   "to_byte": "x/2.071888",
+   "format": "0"
   }
  },
  "0x304A8": {

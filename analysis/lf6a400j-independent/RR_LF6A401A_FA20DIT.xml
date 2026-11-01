@@ -2118,7 +2118,7 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Throttle Flow Request 0B16 (RPM x 0B0C)" category="Airflow - Throttle Model" storageaddress="12A06" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CA7C, 0x2DCE0. Evidence: 0x87F78: FFFF0B16 = T(Engine Speed, FFFF0B0C), or FFFF0A6E in engine state 2.  Request unit: T_02CA14 (request -&gt; target throttle, FFFF0AF4) is the exact inverse of T_02C1A0 (throttle %TPS -&gt; flow capacity FFFF09C2, g/L*rpm = x*1.035944 via the manifold filling model 0xCF8C8): CA14 axis = C1A0 data / 2 and CA14 data = C1A0 axis * 64 at all 16 points.  So request = flow capacity / 2: g/L*rpm = x*2.071888.   Lookup result stored to: 00087f78:*param_5, FFFF0C3A, FFFF0CD8, FFFF0CDA." sizex="24" sizey="24">
+    <table type="3D" name="Throttle Flow Request 0B16 (RPM x 0B0C)" category="Airflow - Throttle Model" storageaddress="12A06" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CA7C, 0x2DCE0. Evidence: 0x87F78: FFFF0B16 = T(Engine Speed, FFFF0B0C), or FFFF0A6E in engine state 2.  Request unit: T_02CA14 (request -&gt; target throttle, FFFF0AF4) is the exact inverse of T_02C1A0 (throttle %TPS -&gt; flow capacity FFFF09C2, g/L*rpm = x*1.035944 via the manifold filling model 0xCF8C8): CA14 axis = C1A0 data / 2 and CA14 data = C1A0 axis * 64 at all 16 points.  So request = flow capacity / 2: g/L*rpm = x*2.071888.   Lookup result stored to: 00087f78:*param_5, FFFF0C3A (Idle Throttle Flow Request (0C3A)), FFFF0CD8, FFFF0CDA." sizex="24" sizey="24">
       <scaling units="g/L*rpm" expression="x*2.071888" to_byte="x/2.071888" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       <table type="Y Axis" name="Engine Speed" storageaddress="12454" elements="24" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
@@ -6657,9 +6657,9 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D030488] - unresolved: added to FFFF1420" category="Unidentified - Task 0x12560C" storageaddress="25684" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x30488. UNRESOLVED (locked): 0x124E60: added to FFFF1420 (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF1470)" storageaddress="256A4" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Throttle Flow Request Adder 1456 (vs 1470)" category="Airflow - Throttle Model" storageaddress="25684" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x30488. Evidence: 0x124E60: FFFF1456 = T(FFFF1470) + FFFF1420; T data = T_02CA14 axis exactly.  Request unit: T_02CA14 (request -&gt; target throttle, FFFF0AF4) is the exact inverse of T_02C1A0 (throttle %TPS -&gt; flow capacity FFFF09C2, g/L*rpm = x*1.035944 via the manifold filling model 0xCF8C8): CA14 axis = C1A0 data / 2 and CA14 data = C1A0 axis * 64 at all 16 points.  So request = flow capacity / 2: g/L*rpm = x*2.071888.  " sizey="16">
+      <scaling units="g/L*rpm" expression="x*2.071888" to_byte="x/2.071888" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF1470)" storageaddress="256A4" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -6687,9 +6687,9 @@
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D030074] - unresolved: stored to output *param_4 of 0x123CB4" category="Unidentified - Task 0x12560C" storageaddress="25D94" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x30074. Lookup result stored to: FFFF1420. UNRESOLVED (locked): 0x123CB4: stored to output *param_4 of 0x123CB4 (unit of the receiving variable not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="25D74" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Throttle Flow Request 1420 (vs min(0CD8, T_030068))" category="Airflow - Throttle Model" storageaddress="25D94" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x30074. Evidence: 0x123CB4: FFFF1420 = T(min(FFFF0CD8, T_030068(coolant))); 1420 is an additive term of the request 1456.  Request unit: T_02CA14 (request -&gt; target throttle, FFFF0AF4) is the exact inverse of T_02C1A0 (throttle %TPS -&gt; flow capacity FFFF09C2, g/L*rpm = x*1.035944 via the manifold filling model 0xCF8C8): CA14 axis = C1A0 data / 2 and CA14 data = C1A0 axis * 64 at all 16 points.  So request = flow capacity / 2: g/L*rpm = x*2.071888.   Lookup result stored to: FFFF1420 (Throttle Flow Request (1420))." sizey="16">
+      <scaling units="g/L*rpm" expression="x*2.071888" to_byte="x/2.071888" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="25D74" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -6765,13 +6765,13 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 24x24 [D030494] (Engine Speed x ?) - unresolved: multiplied with FFFF1402" category="Unidentified - Task 0x12560C" storageaddress="27244" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x30494. UNRESOLVED (locked): 0x124F08: multiplied with FFFF1402 (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizex="24" sizey="24">
+    <table type="3D" name="Unidentified 24x24 [D030494] (Engine Speed x Throttle Flow Request (1456)) - unresolved: multiplied with FFFF1402" category="Unidentified - Task 0x12560C" storageaddress="27244" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x30494. UNRESOLVED (locked): 0x124F08: multiplied with FFFF1402 (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizex="24" sizey="24">
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       <table type="Y Axis" name="Engine Speed" storageaddress="276C4" elements="24" storagetype="uint16" endian="big" locked="true">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2 (RAM 0xFFFF1456)" storageaddress="276F4" elements="24" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="X Axis" name="Throttle Flow Request (1456)" storageaddress="276F4" elements="24" storagetype="uint16" endian="big" locked="true">
+        <scaling units="g/L*rpm" expression="x*2.071888" to_byte="x/2.071888" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
     <table type="3D" name="Unidentified 16x24 [D030534] (Engine Speed x ?) - unresolved: stored to output *param_16 of 0x125C08" category="Unidentified - Task 0x12560C" storageaddress="2779C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x30534. Lookup result stored to: FFFF1464, FFFF1472. UNRESOLVED (locked): 0x125C08: stored to output *param_16 of 0x125C08 (unit of the receiving variable not proven). Function/output scaling not yet proven from the binary." locked="true" sizex="24" sizey="16">
@@ -6810,9 +6810,9 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D030008] - unresolved: enters an expression (puVar2 = (undefined *)__udiv32_r1_by_r0((uVar1 &amp;" category="Unidentified - Task 0x12367C" storageaddress="2840E" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x30008, 0x30020. UNRESOLVED (locked): 0x1232C0: enters an expression (puVar2 = (undefined *)__udiv32_r1_by_r0((uVar1 &amp; 0xffff) * 4) whose result is lookup result not used in a resolvable form. Function/output scaling not yet proven from the binary." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="2842E" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Target Throttle Opening (vs request FFFF1456) [0x1232C0]" category="Throttle" storageaddress="2840E" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x30008, 0x30020. Evidence: 0x1232C0: target = T(FFFF1456)*400/0x2B1 (+ pedal FFFEECB4*100/256 in state 1), the same form as 0x86BB4 -&gt; FFFF0AF4 (SSM 0x15 Throttle Opening Angle, % = x/256); T data = T_02C1A0 axis*64 and T axis = T_02C1A0 data/2 (exact inverse, like T_02CA14).  Request unit: T_02CA14 (request -&gt; target throttle, FFFF0AF4) is the exact inverse of T_02C1A0 (throttle %TPS -&gt; flow capacity FFFF09C2, g/L*rpm = x*1.035944 via the manifold filling model 0xCF8C8): CA14 axis = C1A0 data / 2 and CA14 data = C1A0 axis * 64 at all 16 points.  So request = flow capacity / 2: g/L*rpm = x*2.071888.  " sizey="16">
+      <scaling units="%" expression="x*400/176384" to_byte="x*176384/400" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="2842E" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>

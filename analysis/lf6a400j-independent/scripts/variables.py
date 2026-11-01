@@ -433,3 +433,10 @@ V2.update({
  0xFFFF0B16:('Throttle Flow Request (0B16)','g/L*rpm','x*2.071888','x/2.071888','0x87F78: = T_02CA7C(rpm, 0B0C) or 0A6E.'+_REQ),
  0xFFFF0A6E:('Throttle Flow Request (0A6E)','g/L*rpm','x*2.071888','x/2.071888','0x8223C: = T_02C7C8(0A9A) + 09D4; assigned to 0B16 in state 2.'+_REQ),
 })
+V2.update({
+ 0xFFFF1456:('Throttle Flow Request (1456)','g/L*rpm','x*2.071888','x/2.071888','0x1232C0: target throttle = T_030008(1456)*400/0x2B1 (+pedal), T_030008 = same request->throttle data as T_02CA14.'+_REQ),
+ 0xFFFF1420:('Throttle Flow Request (1420)','g/L*rpm','x*2.071888','x/2.071888','0x124E60: 1456 = T_030488(1470) + 1420 (additive request term).'+_REQ),
+})
+V2.update({
+ 0xFFFF0C3A:('Idle Throttle Flow Request (0C3A)','g/L*rpm','x*2.071888','x/2.071888','0xAA4C0 (call 0xA9C56, stack arg 10): = T_02DCE0(rpm, idle torque ratio); T_02DCF4(0C3A) -> 0CDA, T_02DCF4 = exact inverse of T_02C200.'+_REQ),
+})
