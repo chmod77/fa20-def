@@ -1678,6 +1678,19 @@ add(0x2ECEC, 'Throttle Flow Function psi(Pressure Ratio)', 'Airflow - Throttle M
     'So psi = x/5793418909 (dimensionless).', ('psi', 'x/5793418909', 'x*5793418909', '0.0000'), axes=_ax)
 
 
+# Throttle area table: 0x7EF78 FFFF09C2 = T_02C1A0(FFFF29B4, throttle %TPS 0.1 %); 0xCFC88 (call from 0xCF6D4, stack arg 4 = &FFFF1694):
+# 1694 = (P/101325)*psi_raw*09C2*2.980232e-15*k*dir*60000, psi_raw = psi*5793418909 (T_02ECEC), k = 0.75 + T_02ECE0/131072;
+# 0xCF8C8 manifold filling: P += 0F4E*287*(1694 - 169C)*167C*2.6e-7 with 169C = airflow VE*rho*rpm (g/L*rpm, see FFFF0F56), so 1694
+# is in the same unit and 09C2 = 1694 / (1.035944*(P/101325)*psi*k).
+S.pop(0x2C1A0, None); AUTO.discard(0x2C1A0)
+add(0x2C1A0, 'Throttle Flow Capacity (vs Throttle Opening %TPS) [0x7EF78]', 'Airflow - Throttle Model',
+    '0x7EF78: FFFF09C2 = T(FFFF29B4, throttle opening %TPS*10).  0xCFC88: throttle flow FFFF1694 = (P/101325)*psi_raw*09C2*2.980232e-15*'
+    'k*60000 with psi_raw = psi*5793418909 (T_02ECEC, psi = isentropic flow function, gamma 1.4) and k = 0.75 + T_02ECE0/131072; '
+    '0xCF8C8 integrates the manifold pressure with (FFFF1694 - FFFF169C), FFFF169C = cylinder airflow VE*rho*rpm (g/L*rpm, 0xCFEDC, '
+    'Engine Load anchor), so 1694 is g/L*rpm and T = flow at P = 101325 Pa, psi = 1, k = 1: g/L*rpm = x*1.035944.',
+    ('g/L*rpm', 'x*1.035944', 'x/1.035944', '0.0'))
+
+
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
     print(len(S), 'entries')

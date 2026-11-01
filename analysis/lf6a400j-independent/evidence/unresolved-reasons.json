@@ -295,7 +295,6 @@
  "0x2F370": "0xF8864: compared with FFFF11B6 (unit not proven)",
  "0x2F2C8": "0xEB5E8: multiplied with table T_02F2BC (unit not proven)",
  "0x2F2BC": "0xEB5E8: multiplied with table T_02F2C8 (unit not proven)",
- "0x2C1A0": "0x7EF78: stored to output *param_2 of 0x7EF78 (unit of the receiving variable not proven)",
  "0x2DA2C": "0x9EF18: lookup result not used in a resolvable form",
  "0x2E478": "0xB8750: stored to output *param_2 of 0xB8750 (unit of the receiving variable not proven)",
  "0x2E484": "0xB8750: lookup result not used in a resolvable form",

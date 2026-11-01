@@ -645,6 +645,19 @@
    "110.0"
   ]
  },
+ "0x2C1A0": {
+  "status": "identified",
+  "name": "Throttle Flow Capacity (vs Throttle Opening %TPS) [0x7EF78]",
+  "category": "Airflow - Throttle Model",
+  "evidence": "0x7EF78: FFFF09C2 = T(FFFF29B4, throttle opening %TPS*10).  0xCFC88: throttle flow FFFF1694 = (P/101325)*psi_raw*09C2*2.980232e-15*k*60000 with psi_raw = psi*5793418909 (T_02ECEC, psi = isentropic flow function, gamma 1.4) and k = 0.75 + T_02ECE0/131072; 0xCF8C8 integrates the manifold pressure with (FFFF1694 - FFFF169C), FFFF169C = cylinder airflow VE*rho*rpm (g/L*rpm, 0xCFEDC, Engine Load anchor), so 1694 is g/L*rpm and T = flow at P = 101325 Pa, psi = 1, k = 1: g/L*rpm = x*1.035944.",
+  "description": "",
+  "data": {
+   "units": "g/L*rpm",
+   "expr": "x*1.035944",
+   "to_byte": "x/1.035944",
+   "format": "0.0"
+  }
+ },
  "0x2C1AC": {
   "status": "identified",
   "name": "Filter Gain FFFF19A2 [0x7EFC0]",

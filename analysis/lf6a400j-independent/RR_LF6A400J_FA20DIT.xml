@@ -4449,9 +4449,9 @@
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02C1A0] (Throttle Opening (0.1 %)) - unresolved: stored to output *param_2 of 0x7EF78" category="Unidentified - Task 0x7F1CC" storageaddress="1BE30" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C1A0. Lookup result stored to: FFFF09C2. UNRESOLVED (locked): 0x7EF78: stored to output *param_2 of 0x7EF78 (unit of the receiving variable not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Throttle Opening (0.1 %)" storageaddress="1BE50" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Throttle Flow Capacity (vs Throttle Opening %TPS) [0x7EF78]" category="Airflow - Throttle Model" storageaddress="1BE30" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C1A0. Evidence: 0x7EF78: FFFF09C2 = T(FFFF29B4, throttle opening %TPS*10).  0xCFC88: throttle flow FFFF1694 = (P/101325)*psi_raw*09C2*2.980232e-15*k*60000 with psi_raw = psi*5793418909 (T_02ECEC, psi = isentropic flow function, gamma 1.4) and k = 0.75 + T_02ECE0/131072; 0xCF8C8 integrates the manifold pressure with (FFFF1694 - FFFF169C), FFFF169C = cylinder airflow VE*rho*rpm (g/L*rpm, 0xCFEDC, Engine Load anchor), so 1694 is g/L*rpm and T = flow at P = 101325 Pa, psi = 1, k = 1: g/L*rpm = x*1.035944. Lookup result stored to: FFFF09C2." sizey="16">
+      <scaling units="g/L*rpm" expression="x*1.035944" to_byte="x/1.035944" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Throttle Opening (0.1 %)" storageaddress="1BE50" elements="16" storagetype="uint16" endian="big">
         <scaling units="%TPS" expression="x/10" to_byte="x*10" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
