@@ -1528,6 +1528,39 @@ add(0x2ED74, 'Target Lambda Offset (vs FFFF064F) [0xD43AC]', 'Fueling',
     'So T is a target-lambda offset, lambda = x/43194.', ('lambda', 'x/43194', 'x*43194', '0.0000'))
 
 
+# Cruise control speed tables (0x1011EC / 0x101A90 trees).  Index FFFF0554 = state code from CAN flags (raw axis).  Unit proof:
+# 0x106990 (stack args 5 = 12C2, 9 = 127C, 11 = FFFF07AC, 15 = 12BE, 22 = 127E, 24 = &12C6) assigns the cruise target 12C6 either from
+# 12C2 or from Memorised Cruise Speed FFFF07AC (SSM 0x10A, km/h) * 10 * 64/5 = km/h*128, clamps it with 12BE, steps it by 127C, and
+# compares 127E*5/64 with the cruise speed in 0.1 km/h.  12B8/12BA/12BC/12C0 are compared with 12C2 (0x10A048, 0x108260, 0x109ADC,
+# 0x109C08, 0x107E7C, 0x126704); 1298 is compared with |12C2 - 12AA| and |12C2 - 12C6| (0x1091C8).  => km/h = x/128.
+_ECR = ('Cruise speed unit proof: 0x106990 assigns the cruise target FFFF12C6 either from FFFF12C2 or from Memorised Cruise Speed FFFF07AC '
+        '(SSM 0x10A, km/h) * 10 * 64/5 (= km/h*128), clamps it with FFFF12BE, steps it by FFFF127C and compares FFFF127E*5/64 with the '
+        'cruise speed *10.  12B8/12BA/12BC/12C0 are compared with 12C2 (0x10A048, 0x108260, 0x109ADC, 0x109C08, 0x107E7C); 1298 with '
+        '|12C2 - 12AA| / |12C2 - 12C6| (0x1091C8).  Axis FFFF0554 is a raw state code built from CAN flags FFFEF081.4-7 (0xC3364).  ')
+_SPD = ('km/h', 'x/128', 'x*128', '0.0')
+_CRT = [((0x2F9AC, 0x2F9A0, 0x2F994), 'FFFF127C', 'Cruise Speed Step', '0x103BB4'),
+        ((0x2F9D0, 0x2F9C4, 0x2F9B8), 'FFFF127E', 'Cruise Speed Band', '0x103C00'),
+        ((0x2FAD8, 0x2FACC, 0x2FAC0), 'FFFF1298', 'Cruise Speed Deviation Threshold', '0x104698'),
+        ((0x2FBCC, 0x2FBE4, 0x2FBD8), 'FFFF12B8', 'Cruise Speed Threshold 12B8', '0x1066E8'),
+        ((0x2FBF0, 0x2FC08, 0x2FBFC, 0x2FC14), 'FFFF12BA', 'Cruise Speed Threshold 12BA', '0x106738'),
+        ((0x2FC20, 0x2FC38, 0x2FC2C, 0x2FC44), 'FFFF12BC', 'Cruise Speed Threshold 12BC', '0x1067B4'),
+        ((0x2FC50, 0x2FC68, 0x2FC5C), 'FFFF12BE', 'Cruise Speed Upper Limit 12BE', '0x106830'),
+        ((0x2FC74, 0x2FC8C, 0x2FC80), 'FFFF12C0', 'Cruise Speed Threshold 12C0', '0x106880')]
+for _ds, _out, _n, _f in _CRT:
+    for _i, _d in enumerate(_ds):
+        S.pop(_d, None); AUTO.discard(_d)
+        add(_d, f'{_n} (vs CAN state 0554, variant {_i + 1}) [{_f}]', 'Cruise Control',
+            _ECR + f'{_f} stores T(FFFF0554) to {_out} (variant chosen by FFFF056F.4 / FFFF0789.2 / FFFEF085.1).', _SPD)
+for _d in (0x2FC98, 0x2FCAC):
+    S.pop(_d, None); AUTO.discard(_d)
+add(0x2FC98, 'Vehicle Speed from CAN Signal FFFF0F42 (vs CAN state 0554) [0x1068D0]', 'Cruise Control',
+    _ECR + '0x1068D0: FFFF12C2 = first-order filter (0x16B4D8, gain T_02FCAC) of T(FFFF0554, FFFF0F42); FFFF0F42 = copy (0xCBA28) of the '
+    'CAN value FFFEF31C (raw).', _SPD)
+add(0x2FCAC, 'Vehicle Speed (CAN) Filter Gain [0x1068D0]', 'Cruise Control',
+    '0x1068D0: FUN_0016B4D8(&FFFF19E4, T_02FC98(...), T) = first-order filter y += (x - y)*T/65536 producing FFFF12C2.',
+    ('ratio', 'x/65536', 'x*65536', '0.0000'))
+
+
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
     print(len(S), 'entries')

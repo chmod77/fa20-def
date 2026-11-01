@@ -382,3 +382,14 @@ V2.update({
  0xFFFF0DF2:('Target Lambda (alternative, 0DF2)','lambda','x/43194','x*43194','0xB5D28: A/F Correction #3 0DC2 = 0DF2 (param_4 via @(8,0DEA)) when FFFF06CE.3 and calibration byte 0xD698 are set, else 0DBA + 0DEA'),
  0xFFFF0DF4:('Target Lambda (alternative, unclamped, 0DF4)','lambda','x/43194','x*43194','0xB7C24: 0DF2 = min(max(0DF4, T_02E448), T_02E454)'),
 })
+_CRU = (' 0x106990 (from 0x101A90; stack args 5 = 12C2, 9 = 127C, 11 = FFFF07AC, 15 = 12BE, 22 = 127E, 24 = &12C6): a = Memorised Cruise '
+        'Speed FFFF07AC (SSM 0x10A, km/h) * 10; 12C6 is assigned either 12C2 or a*64/5 (= km/h*128), clamped by 12BE, stepped by +/-127C; '
+        'b = 127E*5/64 is compared with a.  => km/h = x/128.')
+V2.update({
+ 0xFFFF07AC:('Memorised Cruise Speed','km/h','x','x','SSM 0x10A reads FFFF07AC directly (km/h = x)'),
+ 0xFFFF12C6:('Cruise Target Speed (12C6)','km/h','x/128','x*128','0x106990 output.'+_CRU),
+ 0xFFFF12C2:('Vehicle Speed (cruise, filtered CAN, 12C2)','km/h','x/128','x*128','0x1068D0: = filter(T_02FC98(0554, CAN value 0F42)); assigned into 12C6 in 0x106990.'+_CRU),
+ 0xFFFF12BE:('Cruise Speed Limit (12BE)','km/h','x/128','x*128','0x106990 clamps 12C6 with 12BE (param_15).'+_CRU),
+ 0xFFFF127C:('Cruise Speed Step (127C)','km/h','x/128','x*128','0x106990: 12C6 = EDAC6 +/- 127C (param_9).'+_CRU),
+ 0xFFFF127E:('Cruise Speed Band (127E)','km/h','x/128','x*128','0x106990: b = 127E*5/64 compared with cruise speed*10 (0.1 km/h).'+_CRU),
+})
