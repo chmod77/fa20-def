@@ -1579,6 +1579,40 @@ for _d, _n in ((0x2F9DC, 'A (FFFF056F.4 and FFFF0789.2 set)'), (0x2F9E8, 'B (FFF
         'T_02F9F4 with p2 clear; p1 = FFFF0789.2, p2 = FFFF056F.4), else 0.  Values other than 1 disable.', ('flag', 'x', 'x', '0'))
 
 
+# 0xA6A3C (only caller 0xA8230: 10 ms task, 20 ms in application mode 2): FFFEC3FA = 0 while param_6 is clear, else +1 per execution
+# saturating 0xFFFF (only writer); bVar1 = FFFEC3FA < T_02DBE4(param_4 = FFFF0552) selects T_02DBD8 as the floor of FFFEC3F0.
+S.pop(0x2DBE4, None); AUTO.discard(0x2DBE4)
+add(0x2DBE4, 'Idle Phase Duration (vs FFFF0552) [0xA6A3C]', 'Timers',
+    '0xA6A3C: uVar7 = FFFEC3FA, bVar1 = uVar7 < T(FFFF0552); FFFEC3FA = 0 while param_6 is clear, else +1 per execution saturating at '
+    '0xFFFF (only writer).  While bVar1 holds, T_02DBD8 is the floor of FFFEC3F0.  ' + _PEREV['00152a40'] +
+    ' [application mode 2 runs 0xA8230 every 20 ms via 0x153B4E, doubling the time].', ('s', 'x*0.01', 'x/0.01', '0.00'))
+
+
+# Torque limit tree under 0x12560C (40 ms), proven from Torque Limit 1436 (0x123FE0) through min/max/selection chains, see variables
+# FFFF144C..1448 (_TQC).  Blend 0x124F74: out = w*(X-16000)/255 + (255-w)*(Y-16000)/255 + 16000 (0xC80/0x33 = 16000/255), so w = x/255.
+_ETQ = ('Chain from the proven Torque Limit 1436 (0x123FE0: FFFF1452 - T + 16000, 1452 = copy of Torque 0A5E): 0x124E10 1450 = max(1436, '
+        '144C); 0x124430 144C = min(144E, uStack_5c path), uStack_60 compared with 144E; 0x124DB8 144E = min(1434, T_030474, T_030460); '
+        '0x123F08 1434 = min(143A, T_0300A4); 0x124268 143A = 146C/147C; 0x124F74 146C = 16000-offset blend of 1444/1440/143C (and 1448 '
+        'assigned in state 4); 0x124280/0x1242D4/0x124358/0x1243DC store their tables (or the min of two) to 143C/1440/1444/1448.  ')
+_TQL = [(0x301A0, '143C (set B)', '0x124280'), (0x301B4, '143C (set A: FFFEEF76.7 clear, FFFF0557 < 4)', '0x124280'),
+        (0x301C8, '1440 Gear Cap', '0x1242D4'), (0x301DC, '1440 (set B)', '0x1242D4'), (0x301F0, '1440 (set A)', '0x1242D4'),
+        (0x30204, '1444 Gear Cap', '0x124358'), (0x30218, '1444 (set B)', '0x124358'), (0x3022C, '1444 (set A)', '0x124358'),
+        (0x30240, '1448 (set B)', '0x1243DC'), (0x30254, '1448 (set A)', '0x1243DC'),
+        (0x30474, '144E Cap (rpm x 2nd input)', '0x124DB8'), (0x30460, '144E Cap (2D)', '0x124DB8'), (0x300A4, '1434 Cap (vs Gear)', '0x123F08'),
+        (0x303FC, '144C Fallback (mode 2)', '0x124430'), (0x30410, '144C Fallback (mode 3)', '0x124430'),
+        (0x30424, '144C Fallback (modes 2-4)', '0x124430'), (0x3044C, '144C Fallback (mode 4)', '0x124430'),
+        (0x303C0, '144E Threshold (mode 2)', '0x124430'), (0x303D4, '144E Threshold (mode 3)', '0x124430'),
+        (0x303E8, '144E Threshold (modes 2-4)', '0x124430'), (0x30438, '144E Threshold (mode 4)', '0x124430')]
+for _d, _n, _f in _TQL:
+    S.pop(_d, None); AUTO.discard(_d)
+    add(_d, f'Torque Limit {_n} [{_f}]', 'Driver Demand / Torque Request', _ETQ + TQEV, RAWTQ)
+for _d, _n in ((0x304D0, '1444 vs 1440'), (0x304BC, '1440 vs 1444'), (0x304A8, '143C vs 1444')):
+    S.pop(_d, None); AUTO.discard(_d)
+    add(_d, f'Torque Limit Blend Weight ({_n}) [0x124F74]', 'Driver Demand / Torque Request',
+        '0x124F74: blended = w*(X - 16000)/255 + (255 - w)*(Y - 16000)/255 + 16000 (0xC80/0x33 = 16000/255 removes the torque offset; the '
+        'complement 0xFF - w weights the other input), so w is a fraction with 255 = 1.0.  ' + _ETQ, ('ratio', 'x/255', 'x*255', '0.000'))
+
+
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
     print(len(S), 'entries')

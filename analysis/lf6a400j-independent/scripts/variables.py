@@ -396,3 +396,18 @@ V2.update({
 V2.update({
  0xFFFF12AA:('Cruise Speed 12AA','km/h','x/128','x*128','0x105678 (stack arg 24): = 12C2 (param_18) +/- T_02FAxx or 12C6 (param_16), clamped by 12BA and 0x6746 (206.5 km/h)'),
 })
+_TQC = (' Chain from proven Torque Limit 1436 (0x123FE0, FFFF1452 - T + 16000 with 1452 = copy of Torque 0A5E): 0x124E10 1450 = max(1436, 144C) '
+        '=> 144C; 0x124430 end: 144C = min(144E, puVar14) => 144E; 0x124DB8: 144E = min(1434, T_030474, T_030460); 0x123F08: 1434 = '
+        'min(143A, T_0300A4 / CAN default 16000 + x*160); 0x124268: 143A = 146C or 147C; 0x124F74: 146C = 16000-offset blend of '
+        '1444/1440/143C/1448.')
+V2.update({
+ 0xFFFF144C:('Torque Limit 144C','Nm','(x-16000)/80','x*80+16000','0x124E10: compared with proven 1436 (max).'+_TQC),
+ 0xFFFF144E:('Torque Limit 144E','Nm','(x-16000)/80','x*80+16000','0x124430: 144C = min(144E, ...).'+_TQC),
+ 0xFFFF1434:('Torque Limit 1434','Nm','(x-16000)/80','x*80+16000','0x124DB8: 144E = min(1434, T, T).'+_TQC),
+ 0xFFFF143A:('Torque Limit 143A','Nm','(x-16000)/80','x*80+16000','0x123F08: 1434 = min(143A, ...).'+_TQC),
+ 0xFFFF146C:('Torque Limit 146C (blend)','Nm','(x-16000)/80','x*80+16000','0x124268: 143A = 146C or 147C.'+_TQC),
+ 0xFFFF143C:('Torque Limit Input 143C','Nm','(x-16000)/80','x*80+16000','0x124F74 blend input (param_5).'+_TQC),
+ 0xFFFF1440:('Torque Limit Input 1440','Nm','(x-16000)/80','x*80+16000','0x124F74 blend input (param_4).'+_TQC),
+ 0xFFFF1444:('Torque Limit Input 1444','Nm','(x-16000)/80','x*80+16000','0x124F74 blend input (param_3).'+_TQC),
+ 0xFFFF1448:('Torque Limit Input 1448','Nm','(x-16000)/80','x*80+16000','0x124F74: assigned to the output in state 4 (param_12).'+_TQC),
+})
