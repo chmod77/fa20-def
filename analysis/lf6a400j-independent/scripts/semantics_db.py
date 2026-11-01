@@ -1476,7 +1476,7 @@ for _d, _n, _e in ((0x2EC50, 'Throttle Closing Threshold (3-sample change, vs MA
                    (0x2EC5C, 'Throttle Opening Threshold (3-sample change, vs MAP, FFFF05BA.7 = 0)', 'Opening change bVar12 = uVar17 (when >= 0) is compared with T (bVar12 < T).'),
                    (0x2EBE4, 'Throttle Opening Threshold (3-sample change, FFFF05BA.7 = 1)', 'Opening change bVar12 = uVar17 (when >= 0) is compared with T (bVar12 < T); axis param_5 = FFFF0F4C.')):
     S.pop(_d, None); AUTO.discard(_d)
-    add(_d, _n + ' [0xCEF4C]', 'Throttle', _ECEF + _e, ('%', 'x*0.4', 'x/0.4', '0.0'))
+    add(_d, _n + ' [0xCEF4C]', 'Throttle', _ECEF + _e, ('%TPS', 'x*0.4', 'x/0.4', '0.0'))
 
 
 # 0x7F96C (only caller 0x7F8B8; 10 ms task): p1 = FFFF29B4 (throttle 0.1 %), uVar3 = p1 >> 2 (0.4 %); threshold = T_02C1DC(rpm FFFF2994)
@@ -1486,7 +1486,7 @@ _E7F9 = ('0x7F96C: threshold = T_02C1DC(Engine Speed) + T_02C1E8(Atmospheric Pre
          'above it the timer FFFEBA8A runs against T_02C1D0.  Both summands are in the threshold unit.')
 for _d, _n in ((0x2C1DC, 'Throttle Opening Threshold Base (vs RPM)'), (0x2C1E8, 'Throttle Opening Threshold Adder (vs Atmospheric Pressure)')):
     S.pop(_d, None); AUTO.discard(_d)
-    add(_d, _n + ' [0x7F96C]', 'Throttle', _E7F9, ('%', 'x*0.4', 'x/0.4', '0.0'))
+    add(_d, _n + ' [0x7F96C]', 'Throttle', _E7F9, ('%TPS', 'x*0.4', 'x/0.4', '0.0'))
 
 
 # 0xBEEA8 (10 ms, see T_02E758): FFFEC924 = 0 unless param_11 == 3, then +1 per execution saturating 0xFFFF (only writer).
@@ -1631,17 +1631,23 @@ for (_u, _l), _n, _f, _c in _DEVT:
 
 
 # Throttle opening FFFEEED4 (0x4CAA6: (002A - 1000)*16384*23/390625, % = x*39062500/(376832*65535)).
-_THE = ('FFFEEED4 = (FFFF002A - 1000)*16384*23/390625 (0x4CAA6; 0x16C6F0 remainder + 0x16C588 quotient, exact); FFFF002A = throttle '
+_THE = ('Unit %TPS = absolute throttle position scale of OBD PID 11 (Main Throttle Sensor FFFF00B8, % = x*100/65535), not the SSM 0x15 opening angle %.  FFFEEED4 = (FFFF002A - 1000)*16384*23/390625 (0x4CAA6; 0x16C6F0 remainder + 0x16C588 quotient, exact); FFFF002A = throttle '
         'opening above the learned closed position + 1000 in Main Throttle Sensor units (OBD PID 11, % = x*100/65535).  ')
 _THU = '39062500/(376832*65535)'
 for _d in (0x2FF60, 0x163AD8):
     S.pop(_d, None); AUTO.discard(_d)
 add(0x2FF60, 'Throttle Opening Threshold (vs RPM) [0x120E2C]', 'Throttle',
-    '0x120E2C: FFFEE1BE = T(Engine Speed FFFF2ADA) <= FFFEEED4 (param_3).  ' + _THE, ('%', 'x*' + _THU, 'x/(' + _THU + ')', '0.0'))
+    '0x120E2C: FFFEE1BE = T(Engine Speed FFFF2ADA) <= FFFEEED4 (param_3).  ' + _THE, ('%TPS', 'x*' + _THU, 'x/(' + _THU + ')', '0.0'))
 add(0x163AD8, 'Throttle Opening Threshold (vs request FFFF0B16) [0x50992]', 'Throttle',
     '0x50992: FFFEF5A0 = sat16(T(FFFF0B16)*0x62B/0x640); 0x5092A compares FFFEF5A0 with FFFEEED4 (FFFEF5A0 < FFFEEED4 -> excess '
     'FFFEF5A2 = EED4 - EF5A0).  So T*1579/1600 is throttle opening.  ' + _THE,
-    ('%', 'x*1579/1600*' + _THU, 'x*1600/1579/(' + _THU + ')', '0.0'))
+    ('%TPS', 'x*1579/1600*' + _THU, 'x*1600/1579/(' + _THU + ')', '0.0'))
+
+
+S.pop(0x2CA90, None); AUTO.discard(0x2CA90)
+add(0x2CA90, 'Throttle Opening Target (vs request FFFF09D4) [0x88000]', 'Throttle',
+    '0x88000: FFFF0B18 = T(FFFF09D4)*0x62B/0x640 (raw T also to FFFF0ACA); 0x4CD26 compares 0B18 + 0x1FD <= FFFEEED4 and FFFEEED4 < 0B18 + '
+    '0x23D, so T*1579/1600 is throttle opening.  The same data block is T_02CA14 (0x86BB4 -> FFFF0AF4, SSM 0x15 opening angle % = T*400/689/256): both relations hold, so SSM opening-angle % = 1.4527 x %TPS for this calibration path.  ' + _THE, ('%TPS', 'x*1579/1600*' + _THU, 'x*1600/1579/(' + _THU + ')', '0.0'))
 
 
 if __name__ == '__main__':

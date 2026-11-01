@@ -351,21 +351,21 @@ V2.update({
  0xFFFF00D6:('Main Throttle Sensor (slew-limited)','%','x*100/65535','x*65535/100','0x646E6: step-limited copy (10000 per call) of Main Throttle Sensor FFFF00B8'),
  0xFFFF00CA:('Main Throttle Sensor (validated)','%','x*100/65535','x*65535/100','0x64792: = FFFF00D6 (0xFC17 on fault)'),
  0xFFFF34C0:('Throttle Closed Position (learned)','%','x*100/65535','x*65535/100','learned from averages of FFFF34DE = 00CA (0x64E88/0x65A5E -> FFFF00EE -> 34C0)'),
- 0xFFFF00E8:('Throttle Opening above Closed (main, +1000)','%','(x-1000)*100/65535','x*65535/100+1000','0x66A7C: 00CA - 34C0 + 1000.'+_THR),
- 0xFFFF002A:('Throttle Opening above Closed (selected, +1000)','%','(x-1000)*100/65535','x*65535/100+1000','0x66FB8: selected from 00E8/00EA/00EC.'+_THR),
- 0xFFFF00B4:('Throttle Opening (10-bit, +10)','%','(x-10)*6400/65535','x*65535/6400+10','0x67142: x = ((FFFF002A - 1000) >> 6) + 10, clamped 10..0x3F2.'+_THR),
- 0xFFFF29B4:('Throttle Opening (0.1 %)','%','x/10','x*10','0x69F44: x = FFFF02C4 - 10, 0x676CC: FFFF02C4 = (FFFF00B4*64000 + 0xFFFF) >> 16 => % = ((x+10)*1.024 - 10)*6400/65535 = 0.100003*x + 0.02 (offset below one count).'+_THR),
- 0xFFFF29B7:('Throttle Opening (0.4 %)','%','x*0.4','x/0.4','0x3B712: x = sat8(FFFF29B4 >> 2); FFFF29B8..29BC are the previous samples (shift register)'),
- 0xFFFF29B6:('Throttle Opening (0.4 %, 29B6)','%','x*0.4','x/0.4','0x3B712: x = sat8(FFFF29B4 >> 2)'),
- 0xFFFF2A26:('Throttle Opening (0.4 %, 2A26)','%','x*0.4','x/0.4','0x3B712: x = FFFF29B6'),
+ 0xFFFF00E8:('Throttle Opening above Closed (main, +1000)','%TPS','(x-1000)*100/65535','x*65535/100+1000','0x66A7C: 00CA - 34C0 + 1000.'+_THR),
+ 0xFFFF002A:('Throttle Opening above Closed (selected, +1000)','%TPS','(x-1000)*100/65535','x*65535/100+1000','0x66FB8: selected from 00E8/00EA/00EC.'+_THR),
+ 0xFFFF00B4:('Throttle Opening (10-bit, +10)','%TPS','(x-10)*6400/65535','x*65535/6400+10','0x67142: x = ((FFFF002A - 1000) >> 6) + 10, clamped 10..0x3F2.'+_THR),
+ 0xFFFF29B4:('Throttle Opening (0.1 %)','%TPS','x/10','x*10','0x69F44: x = FFFF02C4 - 10, 0x676CC: FFFF02C4 = (FFFF00B4*64000 + 0xFFFF) >> 16 => % = ((x+10)*1.024 - 10)*6400/65535 = 0.100003*x + 0.02 (offset below one count).'+_THR),
+ 0xFFFF29B7:('Throttle Opening (0.4 %)','%TPS','x*0.4','x/0.4','0x3B712: x = sat8(FFFF29B4 >> 2); FFFF29B8..29BC are the previous samples (shift register)'),
+ 0xFFFF29B6:('Throttle Opening (0.4 %, 29B6)','%TPS','x*0.4','x/0.4','0x3B712: x = sat8(FFFF29B4 >> 2)'),
+ 0xFFFF2A26:('Throttle Opening (0.4 %, 2A26)','%TPS','x*0.4','x/0.4','0x3B712: x = FFFF29B6'),
 })
 for _i in range(1, 6):
-    V2[0xFFFF29B7 + _i] = (f'Throttle Opening (0.4 %, {_i} samples ago)', '%', 'x*0.4', 'x/0.4', '0x3B712: shift register FFFF29B8..29BC <- FFFF29B7')
+    V2[0xFFFF29B7 + _i] = (f'Throttle Opening (0.4 %, {_i} samples ago)', '%TPS', 'x*0.4', 'x/0.4', '0x3B712: shift register FFFF29B8..29BC <- FFFF29B7')
 V2.update({
- 0xFFFF29C2:('Throttle Opening Change (2 samples, +128)','%','(x-128)*0.4','x/0.4+128','0x3B712: clamp0..255(FFFF29B7 + 0x80 - FFFF29B9) (0x16B5A4), 29B7 = throttle 0.4 %'),
- 0xFFFF29C3:('Throttle Opening Change (4 samples, +128)','%','(x-128)*0.4','x/0.4+128','0x3B712: clamp0..255(FFFF29B7 + 0x80 - FFFF29BB)'),
- 0xFFFF29C8:('Throttle Opening Change (5 samples, +128)','%','(x-128)*0.4','x/0.4+128','0x3B712: clamp0..255(FFFF29B7 - FFFF29BC + 0x80)'),
- 0xFFFF29C4:('Throttle Opening Change (4 samples, +128, word)','%','(x-32768)*0.4/256','x*256/0.4+32768','0x3B712: FFFF29C3 << 8'),
+ 0xFFFF29C2:('Throttle Opening Change (2 samples, +128)','%TPS','(x-128)*0.4','x/0.4+128','0x3B712: clamp0..255(FFFF29B7 + 0x80 - FFFF29B9) (0x16B5A4), 29B7 = throttle 0.4 %'),
+ 0xFFFF29C3:('Throttle Opening Change (4 samples, +128)','%TPS','(x-128)*0.4','x/0.4+128','0x3B712: clamp0..255(FFFF29B7 + 0x80 - FFFF29BB)'),
+ 0xFFFF29C8:('Throttle Opening Change (5 samples, +128)','%TPS','(x-128)*0.4','x/0.4+128','0x3B712: clamp0..255(FFFF29B7 - FFFF29BC + 0x80)'),
+ 0xFFFF29C4:('Throttle Opening Change (4 samples, +128, word)','%TPS','(x-32768)*0.4/256','x*256/0.4+32768','0x3B712: FFFF29C3 << 8'),
 })
 V2.update({
  0xFFFF0D80:('A/F Learning #3 (target lambda)','lambda','x/43194','x*43194','SSM 0xD1 via 0xD0B8C: byte = ((x<<15)/0xA8BA - 0x8000)>>8 - 0x80, i.e. x/43194 = 1.0 at 0x80 offset; 0xB3260: 0D80 = 0DBA + 38F8 (lambda*43194)'),
@@ -419,6 +419,9 @@ V2.update({0xFFFEF474 + 2*_i: (f'Crank Segment Time (slot {_i})', 'ms', 'x*0.003
 V2.update({0xFFFEF626 + 2*_i: (f'Crank Segment Time Difference Mean (slot {_i+1})', 'ms', 'x*0.0032', 'x/0.0032', '0x61F6A.' + _SEG) for _i in range(5)})
 V2.update({0xFFFEF630 + 2*_i: (f'Crank Segment Time Deviation (slot {_i+1})', 'ms', 'x*0.0032', 'x/0.0032', '0x6235C.' + _SEG) for _i in range(4)})
 V2.update({
- 0xFFFEEED4:('Throttle Opening (EED4)','%','x*39062500/(376832*65535)','x*376832*65535/39062500','0x4CAA6: x = (FFFF002A - 1000)*16384*23/390625 (0x16C6F0 = remainder, 0x16C588 = quotient; exact), 002A = throttle opening above closed +1000, % = (x-1000)*100/65535'),
- 0xFFFEF5A0:('Throttle Opening Threshold (EF5A0)','%','x*39062500/(376832*65535)','x*376832*65535/39062500','0x5092A: compared with Throttle Opening FFFEEED4 (EF5A0 < EED4 -> EF5A2 = EED4 - EF5A0)'),
+ 0xFFFEEED4:('Throttle Opening (EED4)','%TPS','x*39062500/(376832*65535)','x*376832*65535/39062500','0x4CAA6: x = (FFFF002A - 1000)*16384*23/390625 (0x16C6F0 = remainder, 0x16C588 = quotient; exact), 002A = throttle opening above closed +1000, % = (x-1000)*100/65535'),
+ 0xFFFEF5A0:('Throttle Opening Threshold (EF5A0)','%TPS','x*39062500/(376832*65535)','x*376832*65535/39062500','0x5092A: compared with Throttle Opening FFFEEED4 (EF5A0 < EED4 -> EF5A2 = EED4 - EF5A0)'),
+})
+V2.update({
+ 0xFFFF0B18:('Throttle Opening Target (0B18)','%TPS','x*39062500/(376832*65535)','x*376832*65535/39062500','0x4CD26: 0B18 + 0x1FD <= FFFEEED4 and FFFEEED4 < 0B18 + 0x23D (direct comparison with Throttle Opening EEED4); 0x88000: = T_02CA90(09D4)*0x62B/0x640'),
 })

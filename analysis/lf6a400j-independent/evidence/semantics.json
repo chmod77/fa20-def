@@ -699,7 +699,7 @@
   "evidence": "0x7F96C: threshold = T_02C1DC(Engine Speed) + T_02C1E8(Atmospheric Pressure) (- 4 when FFFEBA8D is set) is compared with FFFF29B4 >> 2 (throttle opening, FFFF29B4 in 0.1 % derived from Main Throttle Sensor FFFF00B8 / OBD PID 11, so 0.4 % per bit); above it the timer FFFEBA8A runs against T_02C1D0.  Both summands are in the threshold unit.",
   "description": "",
   "data": {
-   "units": "%",
+   "units": "%TPS",
    "expr": "x*0.4",
    "to_byte": "x/0.4",
    "format": "0.0"
@@ -712,7 +712,7 @@
   "evidence": "0x7F96C: threshold = T_02C1DC(Engine Speed) + T_02C1E8(Atmospheric Pressure) (- 4 when FFFEBA8D is set) is compared with FFFF29B4 >> 2 (throttle opening, FFFF29B4 in 0.1 % derived from Main Throttle Sensor FFFF00B8 / OBD PID 11, so 0.4 % per bit); above it the timer FFFEBA8A runs against T_02C1D0.  Both summands are in the threshold unit.",
   "description": "",
   "data": {
-   "units": "%",
+   "units": "%TPS",
    "expr": "x*0.4",
    "to_byte": "x/0.4",
    "format": "0.0"
@@ -2843,6 +2843,19 @@
     "expr": "x*25/128",
     "to_byte": "x*128/25"
    }
+  }
+ },
+ "0x2CA90": {
+  "status": "identified",
+  "name": "Throttle Opening Target (vs request FFFF09D4) [0x88000]",
+  "category": "Throttle",
+  "evidence": "0x88000: FFFF0B18 = T(FFFF09D4)*0x62B/0x640 (raw T also to FFFF0ACA); 0x4CD26 compares 0B18 + 0x1FD <= FFFEEED4 and FFFEEED4 < 0B18 + 0x23D, so T*1579/1600 is throttle opening.  The same data block is T_02CA14 (0x86BB4 -> FFFF0AF4, SSM 0x15 opening angle % = T*400/689/256): both relations hold, so SSM opening-angle % = 1.4527 x %TPS for this calibration path.  Unit %TPS = absolute throttle position scale of OBD PID 11 (Main Throttle Sensor FFFF00B8, % = x*100/65535), not the SSM 0x15 opening angle %.  FFFEEED4 = (FFFF002A - 1000)*16384*23/390625 (0x4CAA6; 0x16C6F0 remainder + 0x16C588 quotient, exact); FFFF002A = throttle opening above the learned closed position + 1000 in Main Throttle Sensor units (OBD PID 11, % = x*100/65535).  ",
+  "description": "",
+  "data": {
+   "units": "%TPS",
+   "expr": "x*1579/1600*39062500/(376832*65535)",
+   "to_byte": "x*1600/1579/(39062500/(376832*65535))",
+   "format": "0.0"
   }
  },
  "0x2CA9C": {
@@ -7430,7 +7443,7 @@
   "evidence": "0xCEF4C: uVar17 = FFFF29B7 - FFFF29BA (throttle opening change over 3 samples of the 0x3B712 shift register, 0.4 % per bit; FFFF29B7 = sat8(FFFF29B4 >> 2), FFFF29B4 = throttle opening above the learned closed position in 0.1 % derived from the Main Throttle Sensor FFFF00B8, OBD PID 11).  Opening change bVar12 = uVar17 (when >= 0) is compared with T (bVar12 < T); axis param_5 = FFFF0F4C.",
   "description": "",
   "data": {
-   "units": "%",
+   "units": "%TPS",
    "expr": "x*0.4",
    "to_byte": "x/0.4",
    "format": "0.0"
@@ -7611,7 +7624,7 @@
   "evidence": "0xCEF4C: uVar17 = FFFF29B7 - FFFF29BA (throttle opening change over 3 samples of the 0x3B712 shift register, 0.4 % per bit; FFFF29B7 = sat8(FFFF29B4 >> 2), FFFF29B4 = throttle opening above the learned closed position in 0.1 % derived from the Main Throttle Sensor FFFF00B8, OBD PID 11).  Closing magnitude uVar11 = -uVar17 is compared with (byte)T: (uVar11 < T) is part of the end condition; T also goes to *param_14.",
   "description": "",
   "data": {
-   "units": "%",
+   "units": "%TPS",
    "expr": "x*0.4",
    "to_byte": "x/0.4",
    "format": "0.0"
@@ -7624,7 +7637,7 @@
   "evidence": "0xCEF4C: uVar17 = FFFF29B7 - FFFF29BA (throttle opening change over 3 samples of the 0x3B712 shift register, 0.4 % per bit; FFFF29B7 = sat8(FFFF29B4 >> 2), FFFF29B4 = throttle opening above the learned closed position in 0.1 % derived from the Main Throttle Sensor FFFF00B8, OBD PID 11).  Opening change bVar12 = uVar17 (when >= 0) is compared with T (bVar12 < T).",
   "description": "",
   "data": {
-   "units": "%",
+   "units": "%TPS",
    "expr": "x*0.4",
    "to_byte": "x/0.4",
    "format": "0.0"
@@ -10616,10 +10629,10 @@
   "status": "identified",
   "name": "Throttle Opening Threshold (vs RPM) [0x120E2C]",
   "category": "Throttle",
-  "evidence": "0x120E2C: FFFEE1BE = T(Engine Speed FFFF2ADA) <= FFFEEED4 (param_3).  FFFEEED4 = (FFFF002A - 1000)*16384*23/390625 (0x4CAA6; 0x16C6F0 remainder + 0x16C588 quotient, exact); FFFF002A = throttle opening above the learned closed position + 1000 in Main Throttle Sensor units (OBD PID 11, % = x*100/65535).  ",
+  "evidence": "0x120E2C: FFFEE1BE = T(Engine Speed FFFF2ADA) <= FFFEEED4 (param_3).  Unit %TPS = absolute throttle position scale of OBD PID 11 (Main Throttle Sensor FFFF00B8, % = x*100/65535), not the SSM 0x15 opening angle %.  FFFEEED4 = (FFFF002A - 1000)*16384*23/390625 (0x4CAA6; 0x16C6F0 remainder + 0x16C588 quotient, exact); FFFF002A = throttle opening above the learned closed position + 1000 in Main Throttle Sensor units (OBD PID 11, % = x*100/65535).  ",
   "description": "",
   "data": {
-   "units": "%",
+   "units": "%TPS",
    "expr": "x*39062500/(376832*65535)",
    "to_byte": "x/(39062500/(376832*65535))",
    "format": "0.0"
@@ -11585,10 +11598,10 @@
   "status": "identified",
   "name": "Throttle Opening Threshold (vs request FFFF0B16) [0x50992]",
   "category": "Throttle",
-  "evidence": "0x50992: FFFEF5A0 = sat16(T(FFFF0B16)*0x62B/0x640); 0x5092A compares FFFEF5A0 with FFFEEED4 (FFFEF5A0 < FFFEEED4 -> excess FFFEF5A2 = EED4 - EF5A0).  So T*1579/1600 is throttle opening.  FFFEEED4 = (FFFF002A - 1000)*16384*23/390625 (0x4CAA6; 0x16C6F0 remainder + 0x16C588 quotient, exact); FFFF002A = throttle opening above the learned closed position + 1000 in Main Throttle Sensor units (OBD PID 11, % = x*100/65535).  ",
+  "evidence": "0x50992: FFFEF5A0 = sat16(T(FFFF0B16)*0x62B/0x640); 0x5092A compares FFFEF5A0 with FFFEEED4 (FFFEF5A0 < FFFEEED4 -> excess FFFEF5A2 = EED4 - EF5A0).  So T*1579/1600 is throttle opening.  Unit %TPS = absolute throttle position scale of OBD PID 11 (Main Throttle Sensor FFFF00B8, % = x*100/65535), not the SSM 0x15 opening angle %.  FFFEEED4 = (FFFF002A - 1000)*16384*23/390625 (0x4CAA6; 0x16C6F0 remainder + 0x16C588 quotient, exact); FFFF002A = throttle opening above the learned closed position + 1000 in Main Throttle Sensor units (OBD PID 11, % = x*100/65535).  ",
   "description": "",
   "data": {
-   "units": "%",
+   "units": "%TPS",
    "expr": "x*1579/1600*39062500/(376832*65535)",
    "to_byte": "x*1600/1579/(39062500/(376832*65535))",
    "format": "0.0"
