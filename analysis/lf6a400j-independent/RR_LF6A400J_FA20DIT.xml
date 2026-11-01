@@ -7986,8 +7986,8 @@
         <data>61440</data>
       </table>
     </table>
-    <table type="2D" name="Unidentified secondary 16 @0x013FF8 [H013FF8] - unresolved: compared with FFFEC410" category="Unidentified - Idle Speed Control" storageaddress="13FF8" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x13FF8); call sites: 000a7024. UNRESOLVED (locked): 0xA7024: compared with FFFEC410 (unit not proven). Function/output scaling not yet proven from the binary." locked="true">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+    <table type="2D" name="Idle Condition Delay (vs Coolant) [0xA7024]" category="Timers" storageaddress="13FF8" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC68 (structure/array at 0x13FF8); call sites: 000a7024. Evidence: 0xA7024: uVar8 = T(Coolant Temperature FFFEEEDE) and bVar2 = uVar8 &lt;= FFFEC410, where FFFEC410 = 0 while FFFEEF76.6 is set and otherwise +1 per execution saturating at 0xFFFF (only writer).  task 0x152A40 = 10 ms (OS: TCB 0x169768 + 16*id; startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 4 -&gt; task 8 (0x1517A4 -&gt; 0x152A40) cycle 10, alarm 6 -&gt; task 9 (0x1517D2 -&gt; 0x15307C) cycle 20, alarm 7 -&gt; task 10 (0x1517FA -&gt; 0x153248) cycle 40, alarm 2 -&gt; task 4 (-&gt; 0x1528A2) cycle 4, alarm 1 -&gt; task 3 (-&gt; 0x152882) cycle 2; 0x153248 = 40 ms (OBD PID 0x1F/0x4E) -&gt; 1 ms tick; 0x49E70 called unconditionally at 0x152BC6) [application mode 2 runs 0xA8230 every 20 ms via 0x153B4E, doubling the time].">
+      <scaling units="s" expression="x*0.01" to_byte="x/0.01" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       <table type="Static Y Axis" name="Input (implicit breakpoints, raw)" sizey="16">
         <data>0</data>
         <data>4096</data>
@@ -9156,9 +9156,9 @@
         <scaling units="V" expression="x*8/100" to_byte="x*100/8" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified secondary 16 @0x02ABC6 [H16388C] - unresolved: compared with FFFF2AD6" category="Unidentified - Task 0x3AEA8" storageaddress="2ABC6" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BAE4 (structure/array at 0x16388C); call sites: 0003aea8. UNRESOLVED (locked): 0x3AEA8: compared with FFFF2AD6 (unit not proven). Function/output scaling not yet proven from the binary." locked="true">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="160F70" elements="16" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="FFFEE710.2 Enable Delay after FFFF66B0 = 3 (vs Start Coolant) [0x3AEA8]" category="Timers" storageaddress="2ABC6" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BAE4 (structure/array at 0x16388C); call sites: 0003aea8. Evidence: 0x3AEA8: FFFEED32 = T(FFFF29A8, sampled coolant byte); FFFEE710.2 is set once FFFF2AD6 &gt;= FFFEED32 (and FFFF66B0 == 3, FFFF0000.5), FFFF2AD6 = time since FFFF66B0 became 3 (sat16 +1 per execution, 0 otherwise; only writer).  task 0x152A40 = 10 ms (OS: TCB 0x169768 + 16*id; startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 4 -&gt; task 8 (0x1517A4 -&gt; 0x152A40) cycle 10, alarm 6 -&gt; task 9 (0x1517D2 -&gt; 0x15307C) cycle 20, alarm 7 -&gt; task 10 (0x1517FA -&gt; 0x153248) cycle 40, alarm 2 -&gt; task 4 (-&gt; 0x1528A2) cycle 4, alarm 1 -&gt; task 3 (-&gt; 0x152882) cycle 2; 0x153248 = 40 ms (OBD PID 0x1F/0x4E) -&gt; 1 ms tick; 0x49E70 called unconditionally at 0x152BC6); application mode 1 also 10 ms (0x153CE0); [application mode 2 runs it every 20 ms via 0x13B89C, doubling the time].">
+      <scaling units="s" expression="x*0.01" to_byte="x/0.01" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="160F70" elements="16" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
@@ -9399,9 +9399,9 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified secondary 16 @0x02BC42 [H163964] - unresolved: lookup result not used in a resolvable form" category="Unidentified - Task 0x3E9A0" storageaddress="2BC42" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC08 (structure/array at 0x163964); call sites: 0003e9a0. UNRESOLVED (locked): 0x3E9A0: lookup result not used in a resolvable form. Function/output scaling not yet proven from the binary." locked="true">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="1E674" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="After-Start Stage 1 End Time (FFFEF00B.7 = 0) (vs Coolant) [0x3E9A0]" category="Timers" storageaddress="2BC42" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC08 (structure/array at 0x163964); call sites: 0003e9a0. Evidence: 0x3E9A0: FFFEF578 (multiplier for FFFF2A4F = FFFEF579*FFFEF578/128) steps to the next stage once the threshold &lt; FFFEF568, where FFFEF568 = time since FFFF66B0 became 3 (sat16 +1 per execution, 0 otherwise; only writer).  0x3E9A0 is called only from task 11 (0x153800) = 160 ms: task 11 = 160 ms: started by task 10 (40 ms) through prescaler 0x1511FE entry 4 (period 4); the same prescaler entry 3 (period 2) starts task 19 -&gt; 0x153568, independently proven 80 ms (OBD PID 0x31).">
+      <scaling units="s" expression="x*0.16" to_byte="x/0.16" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="1E674" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -9411,9 +9411,9 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified secondary 16 @0x02BC72 [H16397C] - unresolved: lookup result not used in a resolvable form" category="Unidentified - Task 0x3E9A0" storageaddress="2BC72" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC08 (structure/array at 0x16397C); call sites: 0003e9a0. UNRESOLVED (locked): 0x3E9A0: lookup result not used in a resolvable form. Function/output scaling not yet proven from the binary." locked="true">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="1E674" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="After-Start Stage 2 End Time (FFFEF00B.7 = 0) (vs Coolant) [0x3E9A0]" category="Timers" storageaddress="2BC72" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC08 (structure/array at 0x16397C); call sites: 0003e9a0. Evidence: 0x3E9A0: FFFEF578 (multiplier for FFFF2A4F = FFFEF579*FFFEF578/128) steps to the next stage once the threshold &lt; FFFEF568, where FFFEF568 = time since FFFF66B0 became 3 (sat16 +1 per execution, 0 otherwise; only writer).  0x3E9A0 is called only from task 11 (0x153800) = 160 ms: task 11 = 160 ms: started by task 10 (40 ms) through prescaler 0x1511FE entry 4 (period 4); the same prescaler entry 3 (period 2) starts task 19 -&gt; 0x153568, independently proven 80 ms (OBD PID 0x31).">
+      <scaling units="s" expression="x*0.16" to_byte="x/0.16" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="1E674" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -9423,9 +9423,9 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified secondary 16 @0x02BCA2 [H163994] - unresolved: enters an expression (bVar7 = DAT_fffef572, uVar1 = _DAT_fffef574,&#10;   " category="Unidentified - Task 0x3E9A0" storageaddress="2BCA2" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC08 (structure/array at 0x163994); call sites: 0003e9a0. UNRESOLVED (locked): 0x3E9A0: enters an expression (bVar7 = DAT_fffef572, uVar1 = _DAT_fffef574,&#10;        bVar2 =) whose result is lookup result not used in a resolvable form. Function/output scaling not yet proven from the binary." locked="true">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="1E674" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="After-Start Stage 3 End Time (FFFEF00B.7 = 0) (vs Coolant) [0x3E9A0]" category="Timers" storageaddress="2BCA2" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC08 (structure/array at 0x163994); call sites: 0003e9a0. Evidence: 0x3E9A0: FFFEF578 (multiplier for FFFF2A4F = FFFEF579*FFFEF578/128) steps to the next stage once the threshold &lt; FFFEF568, where FFFEF568 = time since FFFF66B0 became 3 (sat16 +1 per execution, 0 otherwise; only writer).  0x3E9A0 is called only from task 11 (0x153800) = 160 ms: task 11 = 160 ms: started by task 10 (40 ms) through prescaler 0x1511FE entry 4 (period 4); the same prescaler entry 3 (period 2) starts task 19 -&gt; 0x153568, independently proven 80 ms (OBD PID 0x31).">
+      <scaling units="s" expression="x*0.16" to_byte="x/0.16" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="1E674" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -9435,9 +9435,9 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified secondary 16 @0x02BCD2 [H1639AC] - unresolved: compared with FFFEF568" category="Unidentified - Task 0x3E9A0" storageaddress="2BCD2" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC08 (structure/array at 0x1639AC); call sites: 0003e9a0. UNRESOLVED (locked): 0x3E9A0: compared with FFFEF568 (unit not proven). Function/output scaling not yet proven from the binary." locked="true">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="1E674" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="After-Start Stage 1 End Time (FFFEF00B.7 = 1) (vs Coolant) [0x3E9A0]" category="Timers" storageaddress="2BCD2" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC08 (structure/array at 0x1639AC); call sites: 0003e9a0. Evidence: 0x3E9A0: FFFEF578 (multiplier for FFFF2A4F = FFFEF579*FFFEF578/128) steps to the next stage once the threshold &lt; FFFEF568, where FFFEF568 = time since FFFF66B0 became 3 (sat16 +1 per execution, 0 otherwise; only writer).  0x3E9A0 is called only from task 11 (0x153800) = 160 ms: task 11 = 160 ms: started by task 10 (40 ms) through prescaler 0x1511FE entry 4 (period 4); the same prescaler entry 3 (period 2) starts task 19 -&gt; 0x153568, independently proven 80 ms (OBD PID 0x31).">
+      <scaling units="s" expression="x*0.16" to_byte="x/0.16" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="1E674" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -9447,9 +9447,9 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified secondary 16 @0x02BD02 [H1639D4] - unresolved: lookup result not used in a resolvable form" category="Unidentified - Task 0x3E9A0" storageaddress="2BD02" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC08 (structure/array at 0x1639D4); call sites: 0003e9a0. UNRESOLVED (locked): 0x3E9A0: lookup result not used in a resolvable form. Function/output scaling not yet proven from the binary." locked="true">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="1E674" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="After-Start Stage 2 End Time (FFFEF00B.7 = 1) (vs Coolant) [0x3E9A0]" category="Timers" storageaddress="2BD02" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC08 (structure/array at 0x1639D4); call sites: 0003e9a0. Evidence: 0x3E9A0: FFFEF578 (multiplier for FFFF2A4F = FFFEF579*FFFEF578/128) steps to the next stage once the threshold &lt; FFFEF568, where FFFEF568 = time since FFFF66B0 became 3 (sat16 +1 per execution, 0 otherwise; only writer).  0x3E9A0 is called only from task 11 (0x153800) = 160 ms: task 11 = 160 ms: started by task 10 (40 ms) through prescaler 0x1511FE entry 4 (period 4); the same prescaler entry 3 (period 2) starts task 19 -&gt; 0x153568, independently proven 80 ms (OBD PID 0x31).">
+      <scaling units="s" expression="x*0.16" to_byte="x/0.16" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="1E674" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>

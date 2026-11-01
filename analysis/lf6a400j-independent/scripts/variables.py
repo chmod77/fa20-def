@@ -337,3 +337,6 @@ V2.update({
 V2.update({
  0xFFFF29A6:('Coolant Temperature (byte, 0.624 C)','C','x*256/410-40','(x+40)*410/256','0x3C578: x = (min(max(FFFF29A5 - 10, 0), 0x9F)*0x19A + 0x80) >> 8, FFFF29A5 = SSM coolant (C = x-50) => x = (C+40)*410/256'),
 })
+V2.update({
+ 0xFFFF29A8:('Coolant Temperature (sampled, byte, 0.624 C)','C','x*256/410-40','(x+40)*410/256','0x3C578: x = (min(max(FFFF29A7 - 10, 0), 0x9F)*0x19A + 0x80) >> 8, FFFF29A7 = sampled coolant (C = x-50) => x = (C+40)*410/256'),
+})

@@ -1413,6 +1413,38 @@ add(0x168B98, 'Delay after Run Counter 65A2 >= 350 (vs Coolant) [0x13BD70]', 'Ti
     + _OSEV + ').', ('s', 'x*0.02', 'x/0.02', '0.00'))
 
 
+# 0x3E9A0 (referenced only from the literal pool of task 11 body 0x153800 = 160 ms).  FFFEF568 = sat16(FFFEF568 + 1) per execution
+# while FFFF66B0 == 3, else 0 (only writer, 0x3ECB4).  Stage times (vs coolant FFFEEEE0): output factor FFFEF578 steps
+# 56E -> 572 -> 576 -> 577 as FFFEF568 passes T(56C), T(570), T(574).
+_E3E = ('0x3E9A0: FFFEF578 (multiplier for FFFF2A4F = FFFEF579*FFFEF578/128) steps to the next stage once the threshold < FFFEF568, '
+        'where FFFEF568 = time since FFFF66B0 became 3 (sat16 +1 per execution, 0 otherwise; only writer).  0x3E9A0 is called only from '
+        'task 11 (0x153800) = 160 ms: ' + _PEREV['00153800'] + '.')
+for _d, _n in ((0x163964, 'Stage 1 End Time (FFFEF00B.7 = 0)'), (0x16397C, 'Stage 2 End Time (FFFEF00B.7 = 0)'),
+               (0x163994, 'Stage 3 End Time (FFFEF00B.7 = 0)'), (0x1639AC, 'Stage 1 End Time (FFFEF00B.7 = 1)'),
+               (0x1639D4, 'Stage 2 End Time (FFFEF00B.7 = 1)')):
+    S.pop(_d, None); AUTO.discard(_d)
+    add(_d, 'After-Start ' + _n + ' (vs Coolant) [0x3E9A0]', 'Timers', _E3E, ('s', 'x*0.16', 'x/0.16', '0.00'))
+
+
+# 0xA7024 (only caller 0xA8230: 10 ms task 0x152A40; application mode 2 also via 0x153B4E every 20 ms).  Stack args (evidence/stack-args.tsv):
+# p6 = coolant FFFEEEDE.  FFFEC410 = 0 while FFFEEF76.6 (p2) is set, else +1 per execution saturating at 0xFFFF (only writer 0xA7024).
+S.pop(0x13FF8, None); AUTO.discard(0x13FF8)
+add(0x13FF8, 'Idle Condition Delay (vs Coolant) [0xA7024]', 'Timers',
+    '0xA7024: uVar8 = T(Coolant Temperature FFFEEEDE) and bVar2 = uVar8 <= FFFEC410, where FFFEC410 = 0 while FFFEEF76.6 is set and '
+    'otherwise +1 per execution saturating at 0xFFFF (only writer).  ' + _PEREV['00152a40'] +
+    ' [application mode 2 runs 0xA8230 every 20 ms via 0x153B4E, doubling the time].', ('s', 'x*0.01', 'x/0.01', '0.00'))
+
+
+# 0x3AEA8: callers 0x49E70 (10 ms task 0x152A40), 0x153CE0 (application mode 1, 10 ms), 0x13B89C (application mode 2, 20 ms) and the
+# one-time initialisation 0x4A23A.  FFFF2AD6 = sat16(+1) per execution while FFFF66B0 == 3, else 0 (only writer).
+S.pop(0x16388C, None); AUTO.discard(0x16388C)
+add(0x16388C, 'FFFEE710.2 Enable Delay after FFFF66B0 = 3 (vs Start Coolant) [0x3AEA8]', 'Timers',
+    '0x3AEA8: FFFEED32 = T(FFFF29A8, sampled coolant byte); FFFEE710.2 is set once FFFF2AD6 >= FFFEED32 (and FFFF66B0 == 3, FFFF0000.5), '
+    'FFFF2AD6 = time since FFFF66B0 became 3 (sat16 +1 per execution, 0 otherwise; only writer).  ' + _PEREV['00152a40'] +
+    '; application mode 1 also 10 ms (0x153CE0); [application mode 2 runs it every 20 ms via 0x13B89C, doubling the time].',
+    ('s', 'x*0.01', 'x/0.01', '0.00'))
+
+
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
     print(len(S), 'entries')
