@@ -40,6 +40,7 @@ descriptor	function	var	var_name	units	expr	context
 02FF40	00120d40	FFFF13B2	Time While FFFF0935.5 Set	s	x*0.01	((uVar1 & 0xffff) <= (param_2 & 0xffff)
 02FF2C	00120d40	FFFF13B2	Time While FFFF0935.5 Set	s	x*0.01	((uVar2 & 0xffff) <= (param_2 & 0xffff)
 02FF54	00120e2c	FFFEF406	Accelerator Pedal Angle (unlimited)	%	x*100/65280	(uVar1 & 0xffff) <= (param_1 & 0xffff)
+02FF60	00120e2c	FFFEEED4	Throttle Opening (EED4)	%	x*39062500/(376832*65535)	(uVar2 & 0xffff) <= (param_3 & 0xffff)
 030080	00123e10	FFFF1422	Torque 1422 (monitor)	Nm	(x-16000)/80	((uint)param_2 < (uVar1 & 0xffff)
 03018C	00123fe0	FFFF144C	Torque Limit 144C	Nm	(x-16000)/80	((uint)param_4 < (uVar2 & 0xffff)
 030474	00124db8	FFFF1434	Torque Limit 1434	Nm	(x-16000)/80	((ushort)uVar1 <= param_1)

@@ -10612,6 +10612,19 @@
    "format": "0.00"
   }
  },
+ "0x2FF60": {
+  "status": "identified",
+  "name": "Throttle Opening Threshold (vs RPM) [0x120E2C]",
+  "category": "Throttle",
+  "evidence": "0x120E2C: FFFEE1BE = T(Engine Speed FFFF2ADA) <= FFFEEED4 (param_3).  FFFEEED4 = (FFFF002A - 1000)*16384*23/390625 (0x4CAA6; 0x16C6F0 remainder + 0x16C588 quotient, exact); FFFF002A = throttle opening above the learned closed position + 1000 in Main Throttle Sensor units (OBD PID 11, % = x*100/65535).  ",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*39062500/(376832*65535)",
+   "to_byte": "x/(39062500/(376832*65535))",
+   "format": "0.0"
+  }
+ },
  "0x30080": {
   "status": "identified",
   "name": "Torque 1422 (monitor) Threshold (0x123E10)",
@@ -11566,6 +11579,19 @@
     "expr": "x-50",
     "to_byte": "x+50"
    }
+  }
+ },
+ "0x163AD8": {
+  "status": "identified",
+  "name": "Throttle Opening Threshold (vs request FFFF0B16) [0x50992]",
+  "category": "Throttle",
+  "evidence": "0x50992: FFFEF5A0 = sat16(T(FFFF0B16)*0x62B/0x640); 0x5092A compares FFFEF5A0 with FFFEEED4 (FFFEF5A0 < FFFEEED4 -> excess FFFEF5A2 = EED4 - EF5A0).  So T*1579/1600 is throttle opening.  FFFEEED4 = (FFFF002A - 1000)*16384*23/390625 (0x4CAA6; 0x16C6F0 remainder + 0x16C588 quotient, exact); FFFF002A = throttle opening above the learned closed position + 1000 in Main Throttle Sensor units (OBD PID 11, % = x*100/65535).  ",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*1579/1600*39062500/(376832*65535)",
+   "to_byte": "x*1600/1579/(39062500/(376832*65535))",
+   "format": "0.0"
   }
  },
  "0x168B20": {

@@ -3015,10 +3015,10 @@
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 8x10 [D02E698] (? x Coolant Temperature (filtered, word)) - unresolved: multiplied with table T_02E6AC" category="Unidentified - Task 0xBE0E8" storageaddress="16032" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2E698. UNRESOLVED (locked): 0xBDD60: multiplied with table T_02E6AC (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizex="10" sizey="8">
+    <table type="3D" name="Unidentified 8x10 [D02E698] (Throttle Opening (EED4) x Coolant Temperature (filtered, word)) - unresolved: multiplied with table T_02E6AC" category="Unidentified - Task 0xBE0E8" storageaddress="16032" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2E698. UNRESOLVED (locked): 0xBDD60: multiplied with table T_02E6AC (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizex="10" sizey="8">
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFEEED4)" storageaddress="1600E" elements="8" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Throttle Opening (EED4)" storageaddress="1600E" elements="8" storagetype="uint16" endian="big" locked="true">
+        <scaling units="%" expression="x*39062500/(376832*65535)" to_byte="x*376832*65535/39062500" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
       <table type="X Axis" name="Coolant Temperature (filtered, word)" storageaddress="1601E" elements="10" storagetype="uint16" endian="big" locked="true">
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
@@ -4086,10 +4086,10 @@
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 10x10 [D02D7E8] (? x Engine Speed (OBD copy)) - unresolved: stored to output *param_4 of 0x9ACD4" category="Unidentified - Ignition Timing - Corrections" storageaddress="1A7FA" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2D7E8. Lookup result stored to: FFFEBFEA, FFFF0C18. UNRESOLVED (locked): 0x9ACD4: stored to output *param_4 of 0x9ACD4 (unit of the receiving variable not proven). Function/output scaling not yet proven from the binary." locked="true" sizex="10" sizey="10">
+    <table type="3D" name="Unidentified 10x10 [D02D7E8] (Throttle Opening (EED4) x Engine Speed (OBD copy)) - unresolved: stored to output *param_4 of 0x9ACD4" category="Unidentified - Ignition Timing - Corrections" storageaddress="1A7FA" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2D7E8. Lookup result stored to: FFFEBFEA, FFFF0C18. UNRESOLVED (locked): 0x9ACD4: stored to output *param_4 of 0x9ACD4 (unit of the receiving variable not proven). Function/output scaling not yet proven from the binary." locked="true" sizex="10" sizey="10">
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFEEED4)" storageaddress="1A7D2" elements="10" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Throttle Opening (EED4)" storageaddress="1A7D2" elements="10" storagetype="uint16" endian="big" locked="true">
+        <scaling units="%" expression="x*39062500/(376832*65535)" to_byte="x*376832*65535/39062500" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
       <table type="X Axis" name="Engine Speed (OBD copy)" storageaddress="1A7E6" elements="10" storagetype="uint16" endian="big" locked="true">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
@@ -6624,9 +6624,9 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 5 [D02FF60] (Engine Speed (OBD copy)) - unresolved: compared with FFFEEED4" category="Unidentified - Task 0x152A40" storageaddress="25596" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FF60. UNRESOLVED (locked): 0x120E2C: compared with FFFEEED4 (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="5">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="25586" elements="5" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Throttle Opening Threshold (vs RPM) [0x120E2C]" category="Throttle" storageaddress="25596" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FF60. Evidence: 0x120E2C: FFFEE1BE = T(Engine Speed FFFF2ADA) &lt;= FFFEEED4 (param_3).  FFFEEED4 = (FFFF002A - 1000)*16384*23/390625 (0x4CAA6; 0x16C6F0 remainder + 0x16C588 quotient, exact); FFFF002A = throttle opening above the learned closed position + 1000 in Main Throttle Sensor units (OBD PID 11, % = x*100/65535).  " sizey="5">
+      <scaling units="%" expression="x*39062500/(376832*65535)" to_byte="x/(39062500/(376832*65535))" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed (OBD copy)" storageaddress="25586" elements="5" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -7497,9 +7497,9 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified secondary 16 @0x012996 [H163AD8] - unresolved: enters an expression (iVar2 = __udiv32_r1_by_r0((uVar1 &amp; 0xffff) * 0x6" category="Unidentified - Task 0x152A40 / Task 0x153CE0" storageaddress="12996" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC08 (structure/array at 0x163AD8); call sites: 00050992. UNRESOLVED (locked): 0x50992: enters an expression (iVar2 = __udiv32_r1_by_r0((uVar1 &amp; 0xffff) * 0x62b,0x640);) whose result is passed to 0x1540 (use there not resolved). Function/output scaling not yet proven from the binary." locked="true">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="129B6" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Throttle Opening Threshold (vs request FFFF0B16) [0x50992]" category="Throttle" storageaddress="12996" storagetype="uint16" endian="big" userlevel="1" sizey="16" description="Secondary table read by helper 0x16BC08 (structure/array at 0x163AD8); call sites: 00050992. Evidence: 0x50992: FFFEF5A0 = sat16(T(FFFF0B16)*0x62B/0x640); 0x5092A compares FFFEF5A0 with FFFEEED4 (FFFEF5A0 &lt; FFFEEED4 -&gt; excess FFFEF5A2 = EED4 - EF5A0).  So T*1579/1600 is throttle opening.  FFFEEED4 = (FFFF002A - 1000)*16384*23/390625 (0x4CAA6; 0x16C6F0 remainder + 0x16C588 quotient, exact); FFFF002A = throttle opening above the learned closed position + 1000 in Main Throttle Sensor units (OBD PID 11, % = x*100/65535).  ">
+      <scaling units="%" expression="x*1579/1600*39062500/(376832*65535)" to_byte="x*1600/1579/(39062500/(376832*65535))" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input (see call sites)" storageaddress="129B6" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>

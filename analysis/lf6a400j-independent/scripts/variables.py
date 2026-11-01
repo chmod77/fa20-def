@@ -418,3 +418,7 @@ _SEG = (' Crank segment time: crank code (0x143790) at angle code 10 sets 2B94 =
 V2.update({0xFFFEF474 + 2*_i: (f'Crank Segment Time (slot {_i})', 'ms', 'x*0.0032', 'x/0.0032', '0x15673A copy of 2B70.' + _SEG) for _i in range(4)})
 V2.update({0xFFFEF626 + 2*_i: (f'Crank Segment Time Difference Mean (slot {_i+1})', 'ms', 'x*0.0032', 'x/0.0032', '0x61F6A.' + _SEG) for _i in range(5)})
 V2.update({0xFFFEF630 + 2*_i: (f'Crank Segment Time Deviation (slot {_i+1})', 'ms', 'x*0.0032', 'x/0.0032', '0x6235C.' + _SEG) for _i in range(4)})
+V2.update({
+ 0xFFFEEED4:('Throttle Opening (EED4)','%','x*39062500/(376832*65535)','x*376832*65535/39062500','0x4CAA6: x = (FFFF002A - 1000)*16384*23/390625 (0x16C6F0 = remainder, 0x16C588 = quotient; exact), 002A = throttle opening above closed +1000, % = (x-1000)*100/65535'),
+ 0xFFFEF5A0:('Throttle Opening Threshold (EF5A0)','%','x*39062500/(376832*65535)','x*376832*65535/39062500','0x5092A: compared with Throttle Opening FFFEEED4 (EF5A0 < EED4 -> EF5A2 = EED4 - EF5A0)'),
+})

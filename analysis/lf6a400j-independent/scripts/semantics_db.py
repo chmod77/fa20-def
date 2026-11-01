@@ -1630,6 +1630,20 @@ for (_u, _l), _n, _f, _c in _DEVT:
             f'{_f}: param = FFFEF{0x630 + 2*(_n-1):03X}.  ' + _EDEV, ('ms', 'x*0.0032', 'x/0.0032', '0.0000'))
 
 
+# Throttle opening FFFEEED4 (0x4CAA6: (002A - 1000)*16384*23/390625, % = x*39062500/(376832*65535)).
+_THE = ('FFFEEED4 = (FFFF002A - 1000)*16384*23/390625 (0x4CAA6; 0x16C6F0 remainder + 0x16C588 quotient, exact); FFFF002A = throttle '
+        'opening above the learned closed position + 1000 in Main Throttle Sensor units (OBD PID 11, % = x*100/65535).  ')
+_THU = '39062500/(376832*65535)'
+for _d in (0x2FF60, 0x163AD8):
+    S.pop(_d, None); AUTO.discard(_d)
+add(0x2FF60, 'Throttle Opening Threshold (vs RPM) [0x120E2C]', 'Throttle',
+    '0x120E2C: FFFEE1BE = T(Engine Speed FFFF2ADA) <= FFFEEED4 (param_3).  ' + _THE, ('%', 'x*' + _THU, 'x/(' + _THU + ')', '0.0'))
+add(0x163AD8, 'Throttle Opening Threshold (vs request FFFF0B16) [0x50992]', 'Throttle',
+    '0x50992: FFFEF5A0 = sat16(T(FFFF0B16)*0x62B/0x640); 0x5092A compares FFFEF5A0 with FFFEEED4 (FFFEF5A0 < FFFEEED4 -> excess '
+    'FFFEF5A2 = EED4 - EF5A0).  So T*1579/1600 is throttle opening.  ' + _THE,
+    ('%', 'x*1579/1600*' + _THU, 'x*1600/1579/(' + _THU + ')', '0.0'))
+
+
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
     print(len(S), 'entries')
