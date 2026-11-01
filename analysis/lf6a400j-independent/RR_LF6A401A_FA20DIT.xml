@@ -1088,8 +1088,8 @@
       <table type="Y Axis" name="Engine Speed" storageaddress="D632" elements="24" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2 (RAM 0xFFFF0A6E)" storageaddress="D662" elements="24" storagetype="uint16" endian="big">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="X Axis" name="Throttle Flow Request (0A6E)" storageaddress="D662" elements="24" storagetype="uint16" endian="big">
+        <scaling units="g/L*rpm" expression="x*2.071888" to_byte="x/2.071888" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
     <table type="3D" name="Intake Left AVCS OCV Feedback (RPM x Cam Error)" category="AVCS - OCV Feedback" storageaddress="D74A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2E4EC, 0x2F4D0. Evidence: 0xFADC0: Intake Left AVCS OCV duty controller (see block comment for output chain). term B map, normal operation." sizex="9" sizey="9">
@@ -1134,9 +1134,9 @@
         <scaling units="rpm" expression="x*50" to_byte="x/50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02C200] - unresolved: stored to output *param_3 of 0x7FAA0" category="Unidentified - Driver Demand / Torque Request" storageaddress="DB50" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C200. Lookup result stored to: FFFF09D4. UNRESOLVED (locked): 0x7FAA0: stored to output *param_3 of 0x7FAA0 (unit of the receiving variable not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="DB30" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Throttle Flow Request 09D4 (vs min(0CD8, T_02C1F4))" category="Airflow - Throttle Model" storageaddress="DB50" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C200. Evidence: 0x7FAA0: FFFF09D4 = T(min(FFFF0CD8, T_02C1F4(coolant))).  Request unit: T_02CA14 (request -&gt; target throttle, FFFF0AF4) is the exact inverse of T_02C1A0 (throttle %TPS -&gt; flow capacity FFFF09C2, g/L*rpm = x*1.035944 via the manifold filling model 0xCF8C8): CA14 axis = C1A0 data / 2 and CA14 data = C1A0 axis * 64 at all 16 points.  So request = flow capacity / 2: g/L*rpm = x*2.071888.   Lookup result stored to: FFFF09D4 (Throttle Flow Request (09D4))." sizey="16">
+      <scaling units="g/L*rpm" expression="x*2.071888" to_byte="x/2.071888" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="DB30" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -1146,9 +1146,9 @@
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02C7C8] - unresolved: added to FFFF09D4" category="Unidentified - Driver Demand / Torque Request" storageaddress="DB90" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C7C8. UNRESOLVED (locked): 0x8223C: added to FFFF09D4 (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0A9A)" storageaddress="DBB0" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Throttle Flow Request Adder 0A6E (vs 0A9A)" category="Airflow - Throttle Model" storageaddress="DB90" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C7C8. Evidence: 0x8223C: FFFF0A6E = T(FFFF0A9A) + FFFF09D4 (additive request term).  Request unit: T_02CA14 (request -&gt; target throttle, FFFF0AF4) is the exact inverse of T_02C1A0 (throttle %TPS -&gt; flow capacity FFFF09C2, g/L*rpm = x*1.035944 via the manifold filling model 0xCF8C8): CA14 axis = C1A0 data / 2 and CA14 data = C1A0 axis * 64 at all 16 points.  So request = flow capacity / 2: g/L*rpm = x*2.071888.  " sizey="16">
+      <scaling units="g/L*rpm" expression="x*2.071888" to_byte="x/2.071888" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0A9A)" storageaddress="DBB0" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -2118,12 +2118,12 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 24x24 [D02CA7C] (Engine Speed x ?) - unresolved: stored to output *param_5 of 0x87F78" category="Unidentified - Idle Speed Control / Ignition Timing - Base &amp; Torque Model" storageaddress="12A06" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CA7C, 0x2DCE0. Lookup result stored to: 00087f78:*param_5, FFFF0C3A, FFFF0CD8, FFFF0CDA. UNRESOLVED (locked): 0x87F78: stored to output *param_5 of 0x87F78 (unit of the receiving variable not proven). Function/output scaling not yet proven from the binary." locked="true" sizex="24" sizey="24">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="12454" elements="24" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Throttle Flow Request 0B16 (RPM x 0B0C)" category="Airflow - Throttle Model" storageaddress="12A06" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2CA7C, 0x2DCE0. Evidence: 0x87F78: FFFF0B16 = T(Engine Speed, FFFF0B0C), or FFFF0A6E in engine state 2.  Request unit: T_02CA14 (request -&gt; target throttle, FFFF0AF4) is the exact inverse of T_02C1A0 (throttle %TPS -&gt; flow capacity FFFF09C2, g/L*rpm = x*1.035944 via the manifold filling model 0xCF8C8): CA14 axis = C1A0 data / 2 and CA14 data = C1A0 axis * 64 at all 16 points.  So request = flow capacity / 2: g/L*rpm = x*2.071888.   Lookup result stored to: 00087f78:*param_5, FFFF0C3A, FFFF0CD8, FFFF0CDA." sizex="24" sizey="24">
+      <scaling units="g/L*rpm" expression="x*2.071888" to_byte="x/2.071888" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="12454" elements="24" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2" storageaddress="129D6" elements="24" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2" storageaddress="129D6" elements="24" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>

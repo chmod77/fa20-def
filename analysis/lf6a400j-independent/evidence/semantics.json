@@ -731,6 +731,19 @@
    "format": "0.0"
   }
  },
+ "0x2C200": {
+  "status": "identified",
+  "name": "Throttle Flow Request 09D4 (vs min(0CD8, T_02C1F4))",
+  "category": "Airflow - Throttle Model",
+  "evidence": "0x7FAA0: FFFF09D4 = T(min(FFFF0CD8, T_02C1F4(coolant))).  Request unit: T_02CA14 (request -> target throttle, FFFF0AF4) is the exact inverse of T_02C1A0 (throttle %TPS -> flow capacity FFFF09C2, g/L*rpm = x*1.035944 via the manifold filling model 0xCF8C8): CA14 axis = C1A0 data / 2 and CA14 data = C1A0 axis * 64 at all 16 points.  So request = flow capacity / 2: g/L*rpm = x*2.071888.  ",
+  "description": "",
+  "data": {
+   "units": "g/L*rpm",
+   "expr": "x*2.071888",
+   "to_byte": "x/2.071888",
+   "format": "0"
+  }
+ },
  "0x2C20C": {
   "status": "identified",
   "name": "Staged Timer Threshold vs Vehicle Speed [0x7FB7C]",
@@ -2427,6 +2440,19 @@
    "format": "0.0"
   }
  },
+ "0x2C7C8": {
+  "status": "identified",
+  "name": "Throttle Flow Request Adder 0A6E (vs 0A9A)",
+  "category": "Airflow - Throttle Model",
+  "evidence": "0x8223C: FFFF0A6E = T(FFFF0A9A) + FFFF09D4 (additive request term).  Request unit: T_02CA14 (request -> target throttle, FFFF0AF4) is the exact inverse of T_02C1A0 (throttle %TPS -> flow capacity FFFF09C2, g/L*rpm = x*1.035944 via the manifold filling model 0xCF8C8): CA14 axis = C1A0 data / 2 and CA14 data = C1A0 axis * 64 at all 16 points.  So request = flow capacity / 2: g/L*rpm = x*2.071888.  ",
+  "description": "",
+  "data": {
+   "units": "g/L*rpm",
+   "expr": "x*2.071888",
+   "to_byte": "x/2.071888",
+   "format": "0"
+  }
+ },
  "0x2C7E8": {
   "status": "identified",
   "name": "Torque Offset Multiplier (RPM x FFFF0A6E) [0x826D4]",
@@ -2856,6 +2882,19 @@
     "expr": "x*25/128",
     "to_byte": "x*128/25"
    }
+  }
+ },
+ "0x2CA7C": {
+  "status": "identified",
+  "name": "Throttle Flow Request 0B16 (RPM x 0B0C)",
+  "category": "Airflow - Throttle Model",
+  "evidence": "0x87F78: FFFF0B16 = T(Engine Speed, FFFF0B0C), or FFFF0A6E in engine state 2.  Request unit: T_02CA14 (request -> target throttle, FFFF0AF4) is the exact inverse of T_02C1A0 (throttle %TPS -> flow capacity FFFF09C2, g/L*rpm = x*1.035944 via the manifold filling model 0xCF8C8): CA14 axis = C1A0 data / 2 and CA14 data = C1A0 axis * 64 at all 16 points.  So request = flow capacity / 2: g/L*rpm = x*2.071888.  ",
+  "description": "",
+  "data": {
+   "units": "g/L*rpm",
+   "expr": "x*2.071888",
+   "to_byte": "x/2.071888",
+   "format": "0"
   }
  },
  "0x2CA90": {

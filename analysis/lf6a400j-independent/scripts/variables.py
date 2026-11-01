@@ -425,3 +425,11 @@ V2.update({
 V2.update({
  0xFFFF0B18:('Throttle Opening Target (0B18)','%TPS','x*39062500/(376832*65535)','x*376832*65535/39062500','0x4CD26: 0B18 + 0x1FD <= FFFEEED4 and FFFEEED4 < 0B18 + 0x23D (direct comparison with Throttle Opening EEED4); 0x88000: = T_02CA90(09D4)*0x62B/0x640'),
 })
+_REQ = (' Request unit: T_02CA14 (request max(09D4, 0B16) -> target throttle) is the exact inverse of T_02C1A0 (throttle %TPS*10 -> flow '
+        'capacity 09C2): CA14 axis = C1A0 data / 2 and CA14 data = C1A0 axis * 64 at all 16 points, so request = 09C2/2, '
+        'g/L*rpm = x*2*1.035944 (09C2 proven via the manifold filling model 0xCF8C8).')
+V2.update({
+ 0xFFFF09D4:('Throttle Flow Request (09D4)','g/L*rpm','x*2.071888','x/2.071888','0x7FAA0: = T_02C200(min(0CD8, T_02C1F4)).'+_REQ),
+ 0xFFFF0B16:('Throttle Flow Request (0B16)','g/L*rpm','x*2.071888','x/2.071888','0x87F78: = T_02CA7C(rpm, 0B0C) or 0A6E.'+_REQ),
+ 0xFFFF0A6E:('Throttle Flow Request (0A6E)','g/L*rpm','x*2.071888','x/2.071888','0x8223C: = T_02C7C8(0A9A) + 09D4; assigned to 0B16 in state 2.'+_REQ),
+})

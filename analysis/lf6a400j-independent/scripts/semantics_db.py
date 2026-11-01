@@ -1691,6 +1691,19 @@ add(0x2C1A0, 'Throttle Flow Capacity (vs Throttle Opening %TPS) [0x7EF78]', 'Air
     ('g/L*rpm', 'x*1.035944', 'x/1.035944', '0.0'))
 
 
+# Throttle flow request (see variables FFFF09D4/0B16/0A6E): T_02CA14 is the exact inverse of T_02C1A0 (axis = C1A0 data / 2, data =
+# C1A0 axis * 64 at all 16 points), so the request is a target flow capacity, g/L*rpm = x*2*1.035944.
+_EREQ = ('Request unit: T_02CA14 (request -> target throttle, FFFF0AF4) is the exact inverse of T_02C1A0 (throttle %TPS -> flow capacity '
+         'FFFF09C2, g/L*rpm = x*1.035944 via the manifold filling model 0xCF8C8): CA14 axis = C1A0 data / 2 and CA14 data = C1A0 axis * 64 '
+         'at all 16 points.  So request = flow capacity / 2: g/L*rpm = x*2.071888.  ')
+_RQ = ('g/L*rpm', 'x*2.071888', 'x/2.071888', '0')
+for _d, _n, _e in ((0x2C200, 'Throttle Flow Request 09D4 (vs min(0CD8, T_02C1F4))', '0x7FAA0: FFFF09D4 = T(min(FFFF0CD8, T_02C1F4(coolant))).'),
+                   (0x2CA7C, 'Throttle Flow Request 0B16 (RPM x 0B0C)', '0x87F78: FFFF0B16 = T(Engine Speed, FFFF0B0C), or FFFF0A6E in engine state 2.'),
+                   (0x2C7C8, 'Throttle Flow Request Adder 0A6E (vs 0A9A)', '0x8223C: FFFF0A6E = T(FFFF0A9A) + FFFF09D4 (additive request term).')):
+    S.pop(_d, None); AUTO.discard(_d)
+    add(_d, _n, 'Airflow - Throttle Model', _e + '  ' + _EREQ, _RQ)
+
+
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
     print(len(S), 'entries')
