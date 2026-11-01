@@ -279,6 +279,17 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
     constant does not reduce cleanly, so the 05B4 transient tables (T_02EC90/A4/B8/CC, T_02EBD8) stay locked.
   * The "stored to output *param" group (161) was resolved to caller globals (/tmp/outp.py approach). None is compared with a
     proven variable, so each needs its consumer traced by hand.
+- Session 5, final pass: coverage 682 of 1284.
+  * A/F Correction #3 (SSM 0xD0) FFFF0DC2: 0xB5D28 (call 0xB44E2) writes stack arg 5 = r12+28 = 0x0DA6+0x1C, so
+    0DC2 = clamp(0DBA + 0DEA), or 0DF2 when FFFF06CE.3 and calibration byte 0xD698 are set. The unit is lambda*43194 = AFR*65536/22.
+    SSM 0xD0 is the % deviation from AFR 14.7 (0x5587*2 = 43790), and 0xB7C74 sets 0DF4 = 0xAB0E = 43790.
+    0DEA = 0DE0 + 0DE2 + 38F8 + 0F82 (0xB7248).
+    Unlocked: T_02E430/43C (lambda offset steps, 0xB6FBC), T_02ED74 (lambda offset to 0F82, 0xD43AC), T_02E448/454 (0DF2 clamps).
+  * T_02E74C: 0xBEEA8 state-3 time limit (counter FEC924). Several unresolved reasons are misattributed because the decompiler
+    reuses variables (uVar2/uVar7), so check the code before trusting "compared with table T_x".
+  * Dead ends: 0xB53D4 (A/F #1 PI), where the integrator step = shaped error T_02E29C.. * T_02E300 * T_02E2D8 / 2^20 (3-table product);
+    0xAE9B4 (injection offset gain = p6*T034*T010*TFF8 / 2^27).
+  * SSM: every SSM-readable RAM source is now a proven variable (EGR steps EEEB4, A/F #3 0DC2, A/F Learning #3 0D80 added).
 - Next: scan for other counter forms (sat8 helper 0x152C, `cVarN = -1; if (G != 0xff)`) in non-unique-period functions by checking
   each root's period. Also trace 0x96DA0 (root 0x158F04), whose period is unknown.
 
