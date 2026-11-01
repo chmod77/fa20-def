@@ -334,3 +334,6 @@ V2.update({
  0xFFFEF14A:('Accelerator Pedal Angle Change (per sample)','%','x*100/65280','x*65280/100','0x68B96: clamp16(Accelerator Pedal Angle FFFEEEF8 - previous sample FFFEF14E); 0x6825A: FFFEF14E = FFFEEEF8'),
  0xFFFEF146:('Accelerator Pedal Angle Change (2 samples)','%','x*100/65280','x*65280/100','0x68B96: clamp16(Accelerator Pedal Angle FFFEEEF8 - FFFEF150), FFFEF150 = previous FFFEF14E (0x6825A)'),
 })
+V2.update({
+ 0xFFFF29A6:('Coolant Temperature (byte, 0.624 C)','C','x*256/410-40','(x+40)*410/256','0x3C578: x = (min(max(FFFF29A5 - 10, 0), 0x9F)*0x19A + 0x80) >> 8, FFFF29A5 = SSM coolant (C = x-50) => x = (C+40)*410/256'),
+})

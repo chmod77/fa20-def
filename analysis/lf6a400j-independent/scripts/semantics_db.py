@@ -1387,6 +1387,32 @@ for _d, _n, _e in ((0x2CD04, 'State FFFEBC75 Delay [0x8BF1C]', '0x8BF1C: FFFEBC7
     add(_d, _n, 'Timers', _e + _E8BF, ('s', 'x*0.01', 'x/0.01', '0.00'))
 
 
+# 0x493EC (every reaching root is the 40 ms task 0x153248): FFFEFA26 = sat16(FFFEFA26 + 1) while FFFF66B0 == 3, else 0 (only writer);
+# FFFEFA1E = T_163A14(sampled coolant FFFF29A7) and the check runs when FFFEFA1E <= FFFEFA26.
+S.pop(0x163A14, None); AUTO.discard(0x163A14)
+add(0x163A14, 'Check Enable Delay after FFFF66B0 = 3 (vs Coolant) [0x493EC]', 'Timers',
+    '0x493EC: FFFEFA1E = T(Coolant Temperature sampled FFFF29A7, C = x-50); the FFFEE6D0 window check (bounds T_163A20/T_163A2C vs FFFFAB41) '
+    'runs only when FFFEFA1E <= FFFEFA26, where FFFEFA26 = sat16(FFFEFA26 + 1) per execution while FFFF66B0 == 3 and 0 otherwise (only '
+    'writer).  ' + _PEREV['00153248'] + ' (0x493EC reached only from it).', ('s', 'x*0.04', 'x/0.04', '0.00'))
+
+
+# 0xA5974 (only caller 0xA8230; roots: 10 ms task 0x152A40, and in application mode 2 task 55 -> 0x153B4E every 20 ms).
+S.pop(0x148F0, None); AUTO.discard(0x148F0)
+add(0x148F0, 'Idle Overspeed Duration Threshold (vs Coolant) [0xA5974]', 'Timers',
+    '0xA5974: uVar3 = T(Coolant Temperature FFFEEEDE) compared with FFFEC388 (bVar1 = uVar3 <= FFFEC388); FFFEC388 = 0 when FFFF03D8.7 is '
+    'clear or engine speed FFFF2ADA <= target idle speed FFFF0D06 + 0x133, else +1 per execution saturating at 0xFFFF (only writer).  '
+    + _PEREV['00152a40'] + ' [application mode 2 runs 0xA8230 every 20 ms via 0x153B4E, doubling the time].', ('s', 'x*0.01', 'x/0.01', '0.00'))
+
+
+# 0x13BD70 (only caller 0x13B89C, referenced only from the literal pool of 0x153B4E = application mode 2 task 55, alarm 27 cycle 20).
+S.pop(0x168B98, None); AUTO.discard(0x168B98)
+add(0x168B98, 'Delay after Run Counter 65A2 >= 350 (vs Coolant) [0x13BD70]', 'Timers',
+    '0x13BD70: FFFEEF40 = T(FFFF29A6 coolant byte) (10 when battery FFFFAB41 < 0x8B or coolant FFFF29A5 outside 1..0x6D); FFFEEF3E = 0 '
+    'while FFFF65A2 < 0x15E, else sat16(FFFEEF3E + 1) per execution (only non-zero writer); the flag sets when FFFEEF40 <= FFFEEF3E.  '
+    '0x13BD70 runs only in application mode 2: task 55 (alarm 27, cycle 20 ticks of 1 ms) -> 0x151C8C -> 0x153B4E -> 0x13B89C = 20 ms ('
+    + _OSEV + ').', ('s', 'x*0.02', 'x/0.02', '0.00'))
+
+
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
     print(len(S), 'entries')

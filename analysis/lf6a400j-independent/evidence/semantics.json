@@ -272,6 +272,19 @@
    "110"
   ]
  },
+ "0x148F0": {
+  "status": "identified",
+  "name": "Idle Overspeed Duration Threshold (vs Coolant) [0xA5974]",
+  "category": "Timers",
+  "evidence": "0xA5974: uVar3 = T(Coolant Temperature FFFEEEDE) compared with FFFEC388 (bVar1 = uVar3 <= FFFEC388); FFFEC388 = 0 when FFFF03D8.7 is clear or engine speed FFFF2ADA <= target idle speed FFFF0D06 + 0x133, else +1 per execution saturating at 0xFFFF (only writer).  task 0x152A40 = 10 ms (OS: TCB 0x169768 + 16*id; startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 4 -> task 8 (0x1517A4 -> 0x152A40) cycle 10, alarm 6 -> task 9 (0x1517D2 -> 0x15307C) cycle 20, alarm 7 -> task 10 (0x1517FA -> 0x153248) cycle 40, alarm 2 -> task 4 (-> 0x1528A2) cycle 4, alarm 1 -> task 3 (-> 0x152882) cycle 2; 0x153248 = 40 ms (OBD PID 0x1F/0x4E) -> 1 ms tick; 0x49E70 called unconditionally at 0x152BC6) [application mode 2 runs 0xA8230 every 20 ms via 0x153B4E, doubling the time].",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.01",
+   "to_byte": "x/0.01",
+   "format": "0.00"
+  }
+ },
  "0x14B7C": {
   "status": "identified",
   "name": "MAF Sensor Scaling",
@@ -10081,6 +10094,19 @@
    }
   }
  },
+ "0x163A14": {
+  "status": "identified",
+  "name": "Check Enable Delay after FFFF66B0 = 3 (vs Coolant) [0x493EC]",
+  "category": "Timers",
+  "evidence": "0x493EC: FFFEFA1E = T(Coolant Temperature sampled FFFF29A7, C = x-50); the FFFEE6D0 window check (bounds T_163A20/T_163A2C vs FFFFAB41) runs only when FFFEFA1E <= FFFEFA26, where FFFEFA26 = sat16(FFFEFA26 + 1) per execution while FFFF66B0 == 3 and 0 otherwise (only writer).  task 0x153248 = 40 ms (OBD PID 0x1F/0x4E prescalers) (0x493EC reached only from it).",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.04",
+   "to_byte": "x/0.04",
+   "format": "0.00"
+  }
+ },
  "0x163A20": {
   "status": "identified",
   "name": "Rear O2 Heater Current Low Limit vs Battery Voltage",
@@ -10295,6 +10321,19 @@
     "expr": "x",
     "to_byte": "x"
    }
+  }
+ },
+ "0x168B98": {
+  "status": "identified",
+  "name": "Delay after Run Counter 65A2 >= 350 (vs Coolant) [0x13BD70]",
+  "category": "Timers",
+  "evidence": "0x13BD70: FFFEEF40 = T(FFFF29A6 coolant byte) (10 when battery FFFFAB41 < 0x8B or coolant FFFF29A5 outside 1..0x6D); FFFEEF3E = 0 while FFFF65A2 < 0x15E, else sat16(FFFEEF3E + 1) per execution (only non-zero writer); the flag sets when FFFEEF40 <= FFFEEF3E.  0x13BD70 runs only in application mode 2: task 55 (alarm 27, cycle 20 ticks of 1 ms) -> 0x151C8C -> 0x153B4E -> 0x13B89C = 20 ms (OS: TCB 0x169768 + 16*id; startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 4 -> task 8 (0x1517A4 -> 0x152A40) cycle 10, alarm 6 -> task 9 (0x1517D2 -> 0x15307C) cycle 20, alarm 7 -> task 10 (0x1517FA -> 0x153248) cycle 40, alarm 2 -> task 4 (-> 0x1528A2) cycle 4, alarm 1 -> task 3 (-> 0x152882) cycle 2; 0x153248 = 40 ms (OBD PID 0x1F/0x4E) -> 1 ms tick).",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.02",
+   "to_byte": "x/0.02",
+   "format": "0.00"
   }
  },
  "0x168BA4": {

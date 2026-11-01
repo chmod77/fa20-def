@@ -246,6 +246,29 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
 - Open threads: FFFF0498 (0x9D688, from base timing) divides T_02C918; FFFF0F0E feeds the idle torque ratio (0xAA4C0); 0A18/0A1A and
   0B92/0B94 are read only through unresolved pointers; 0x152A40 is event-driven (no time base); 0x815F0/0x105ACC are long torque functions.
 
+## Session 5 (2026-11-01)
+- Coverage: 657 of 1284 tables unlocked (was 644).
+- Counters and countdowns kept in locals (missed by timers.py) proven by hand:
+  * 0xCEF4C: T_02EC68/7C reload countdown FFFECD3A; 10 ms.
+  * 0xC3654: T_02E93C pedal-rise hold time (10 ms), and T_02E930, a threshold on pedal change FFFEF14A (new variable).
+  * 0xE25A8/0xE2674: T_02F0EC/F8 release delay vs set duration; data and axis are both 20 ms counters.
+  * 0x8BF1C: T_02CD04/10/58/64, delays and active windows; 10 ms.
+  * 0x493EC: T_163A14, enable delay after FFFF66B0 = 3; 40 ms.
+  * 0xA5974: T_148F0, idle overspeed duration (10 ms; 20 ms in application mode 2).
+  * 0x13BD70: T_168B98, mode 2 only (20 ms); new variable FFFF29A6, a coolant byte with C = x*256/410 - 40.
+- 0x123FE0: r = FFFF1452 - T + 16000, where FFFF1452 is a copy of Torque 0A5E. Its 12 descriptors share data with the identified
+  0x8117C torque ramp tables and agree with them (cross-check only; nothing new unlocked).
+- Dead ends this session:
+  * Idle bounds: 0CCA = T(0x1387A, coolant), which is all 0xFFFD, so the bound is constant. 0CCC = max(0x500, 0CB2/2), where 0CB2 is
+    a ramp built from T_02DCC0*256 in 0xA7CE8 with no anchor. 0CD4 = clamp((0CD6*2 + 0C70 + p7)*k/64). 0CD8 is still unproven.
+  * 29B4/29B7 throttle history (0x3B712) comes from 02C4 = 00B4*64000/65536, with 00B4 = ((002A - 1000) >> 6) + 10. 002A is
+    selected among ETC internals 00E8/00EA/00EC; no anchor.
+  * FFFF1434 (0x123F08): the default is 16000 + CAN byte FFFEF2F2*160 (0A3E is always 0), so it is CAN-dependent like the
+    torque monitor.
+  * 0x124430 (26 descriptors): the torque result is a product of 3 tables / 65025, so per-table scales are not separable.
+- Next: scan for other counter forms (sat8 helper 0x152C, `cVarN = -1; if (G != 0xff)`) in non-unique-period functions by checking
+  each root's period. Also trace 0x96DA0 (root 0x158F04), whose period is unknown.
+
 ## Next steps (session 3)
 - A/F Learning #3 FFFF0D80 (SSM 0xD1, multiplier 1.0 = 43194) = clamp(FFFF0DBA + FFFF38F8) (0xB3260, task 0xB42AC): trace 0DBA/38F8 to the tables.
 - Idle: 0xAAB08 (11 tables) and the ISC feedback that uses the final target FFFF0CFE.
