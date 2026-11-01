@@ -301,6 +301,14 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
   * Tools: /tmp/ugraph.py (unit-equivalence graph from param comparisons, pointer copies and global assignments; 201 propagated
     units, but no remaining locked table connects to a proven component) and /tmp/partner.py (comparison partners through call
     args). Move these into scripts/ if reused.
+- Crank segment time deviation (726 of 1284):
+  * FFFEF630..636 are per-slot deviations of crank segment time, in ms = x*0.0032. Chain:
+    crank code at 0x143790 (angle code 10): 2B94 = capture difference, 1A3E = 2B94 >> 5 -> 2B70[cyl];
+    2B6C = 1A3E + 1A40 = proven Crank Period 2986;
+    0x15673A copies 2B70.. to EF474..; 0x62032 differences, 0x61F6A 10-sample mean, 0x6235C minus the 4-slot mean.
+  * The knock (0x972FC..0x98460) and fuel (0x8CCF8..0x8D97C) band tables compare it directly. 16 descriptors over 2 data blocks.
+  * Next: 0xAA684 (19 idle helper tables). Its stack args need EmuCallArgs (r11 at 0xA8B6C).
+    0x8B5B4/0x8B178 blends are anchored only to outputs 0B24/040A/0B28/040C, whose units are still unproven.
 - Next: scan for other counter forms (sat8 helper 0x152C, `cVarN = -1; if (G != 0xff)`) in non-unique-period functions by checking
   each root's period. Also trace 0x96DA0 (root 0x158F04), whose period is unknown.
 
