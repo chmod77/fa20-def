@@ -6018,27 +6018,27 @@
         <scaling units="km/h" expression="x/128" to_byte="x*128" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02FAFC] - unresolved: lookup result not used in a resolvable form" category="Unidentified - Task 0x15307C" storageaddress="22C2E" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FAFC. Lookup result stored to: FFFEDA6C. UNRESOLVED (locked): 0x105678: lookup result not used in a resolvable form. Function/output scaling not yet proven from the binary." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="22BEE" elements="8" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Cruise Speed Offset Up B (vs Vehicle Speed) [0x105678]" category="Cruise Control" storageaddress="22C2E" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FAFC. Evidence: 0x105678: result = FFFF12C2 (param_18) or FFFEDA6E +/- T(12C2), clamped by FFFF12BA (param_20) and 0x6746, stored to FFFF12AA.  Cruise speed unit proof: 0x106990 assigns the cruise target FFFF12C6 either from FFFF12C2 or from Memorised Cruise Speed FFFF07AC (SSM 0x10A, km/h) * 10 * 64/5 (= km/h*128), clamps it with FFFF12BE, steps it by FFFF127C and compares FFFF127E*5/64 with the cruise speed *10.  12B8/12BA/12BC/12C0 are compared with 12C2 (0x10A048, 0x108260, 0x109ADC, 0x109C08, 0x107E7C); 1298 with |12C2 - 12AA| / |12C2 - 12C6| (0x1091C8).  Axis FFFF0554 is a raw state code built from CAN flags FFFEF081.4-7 (0xC3364).   Lookup result stored to: FFFEDA6C." sizey="8">
+      <scaling units="km/h" expression="x/128" to_byte="x*128" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="22BEE" elements="8" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02FB08] - unresolved: lookup result not used in a resolvable form" category="Unidentified - Task 0x15307C" storageaddress="22C3E" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FB08. UNRESOLVED (locked): 0x105678: lookup result not used in a resolvable form. Function/output scaling not yet proven from the binary." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="22BFE" elements="8" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Cruise Speed Offset Up A (vs Vehicle Speed) [0x105678]" category="Cruise Control" storageaddress="22C3E" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FB08. Evidence: 0x105678: result = FFFF12C2 (param_18) or FFFEDA6E +/- T(12C2), clamped by FFFF12BA (param_20) and 0x6746, stored to FFFF12AA.  Cruise speed unit proof: 0x106990 assigns the cruise target FFFF12C6 either from FFFF12C2 or from Memorised Cruise Speed FFFF07AC (SSM 0x10A, km/h) * 10 * 64/5 (= km/h*128), clamps it with FFFF12BE, steps it by FFFF127C and compares FFFF127E*5/64 with the cruise speed *10.  12B8/12BA/12BC/12C0 are compared with 12C2 (0x10A048, 0x108260, 0x109ADC, 0x109C08, 0x107E7C); 1298 with |12C2 - 12AA| / |12C2 - 12C6| (0x1091C8).  Axis FFFF0554 is a raw state code built from CAN flags FFFEF081.4-7 (0xC3364).  " sizey="8">
+      <scaling units="km/h" expression="x/128" to_byte="x*128" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="22BFE" elements="8" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02FAE4] - unresolved: enters an expression (uVar2 = param_18 - (int)(uVar1 &amp; 0xffff);) whose" category="Unidentified - Task 0x15307C" storageaddress="22C4E" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FAE4. UNRESOLVED (locked): 0x105678: enters an expression (uVar2 = param_18 - (int)(uVar1 &amp; 0xffff);) whose result is compared with table T_02FAFC (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="22C0E" elements="8" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Cruise Speed Offset Down B (vs Vehicle Speed) [0x105678]" category="Cruise Control" storageaddress="22C4E" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FAE4. Evidence: 0x105678: result = FFFF12C2 (param_18) or FFFEDA6E +/- T(12C2), clamped by FFFF12BA (param_20) and 0x6746, stored to FFFF12AA.  Cruise speed unit proof: 0x106990 assigns the cruise target FFFF12C6 either from FFFF12C2 or from Memorised Cruise Speed FFFF07AC (SSM 0x10A, km/h) * 10 * 64/5 (= km/h*128), clamps it with FFFF12BE, steps it by FFFF127C and compares FFFF127E*5/64 with the cruise speed *10.  12B8/12BA/12BC/12C0 are compared with 12C2 (0x10A048, 0x108260, 0x109ADC, 0x109C08, 0x107E7C); 1298 with |12C2 - 12AA| / |12C2 - 12C6| (0x1091C8).  Axis FFFF0554 is a raw state code built from CAN flags FFFEF081.4-7 (0xC3364).  " sizey="8">
+      <scaling units="km/h" expression="x/128" to_byte="x*128" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="22C0E" elements="8" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02FAF0] - unresolved: compared with FFFEDA6E" category="Unidentified - Task 0x15307C" storageaddress="22C5E" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FAF0. UNRESOLVED (locked): 0x105678: compared with FFFEDA6E (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="22C1E" elements="8" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Cruise Speed Offset Down A (vs Vehicle Speed) [0x105678]" category="Cruise Control" storageaddress="22C5E" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FAF0. Evidence: 0x105678: result = FFFF12C2 (param_18) or FFFEDA6E +/- T(12C2), clamped by FFFF12BA (param_20) and 0x6746, stored to FFFF12AA.  Cruise speed unit proof: 0x106990 assigns the cruise target FFFF12C6 either from FFFF12C2 or from Memorised Cruise Speed FFFF07AC (SSM 0x10A, km/h) * 10 * 64/5 (= km/h*128), clamps it with FFFF12BE, steps it by FFFF127C and compares FFFF127E*5/64 with the cruise speed *10.  12B8/12BA/12BC/12C0 are compared with 12C2 (0x10A048, 0x108260, 0x109ADC, 0x109C08, 0x107E7C); 1298 with |12C2 - 12AA| / |12C2 - 12C6| (0x1091C8).  Axis FFFF0554 is a raw state code built from CAN flags FFFEF081.4-7 (0xC3364).  " sizey="8">
+      <scaling units="km/h" expression="x/128" to_byte="x*128" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="22C1E" elements="8" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -6132,21 +6132,21 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02F9DC] - unresolved: enters an expression (param_2 == '\0' || (param_1 != '\0')))))) &amp;&amp;&#10;   " category="Unidentified - Task 0x15307C" storageaddress="235A0" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F9DC. UNRESOLVED (locked): 0x103C74: enters an expression (param_2 == '\0' || (param_1 != '\0')))))) &amp;&amp;&#10;     (((uVar1 &amp;) whose result is lookup result not used in a resolvable form. Function/output scaling not yet proven from the binary." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0554)" storageaddress="23530" elements="16" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Cruise Enable Flag per CAN State 0554, set A (FFFF056F.4 and FFFF0789.2 set) [0x103C74]" category="Cruise Control" storageaddress="235A0" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F9DC. Evidence: 0x103C74: output flag = 1 when the selected lookup T(FFFF0554) == 1 (T_02F9DC with p1 and p2 set, T_02F9E8 with p2 set and p1 clear, T_02F9F4 with p2 clear; p1 = FFFF0789.2, p2 = FFFF056F.4), else 0.  Values other than 1 disable." sizey="16">
+      <scaling units="flag" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0554)" storageaddress="23530" elements="16" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02F9E8] - unresolved: lookup result not used in a resolvable form" category="Unidentified - Task 0x15307C" storageaddress="235B0" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F9E8. UNRESOLVED (locked): 0x103C74: lookup result not used in a resolvable form. Function/output scaling not yet proven from the binary." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0554)" storageaddress="23530" elements="16" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Cruise Enable Flag per CAN State 0554, set B (FFFF056F.4 set, FFFF0789.2 clear) [0x103C74]" category="Cruise Control" storageaddress="235B0" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F9E8. Evidence: 0x103C74: output flag = 1 when the selected lookup T(FFFF0554) == 1 (T_02F9DC with p1 and p2 set, T_02F9E8 with p2 set and p1 clear, T_02F9F4 with p2 clear; p1 = FFFF0789.2, p2 = FFFF056F.4), else 0.  Values other than 1 disable." sizey="16">
+      <scaling units="flag" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0554)" storageaddress="23530" elements="16" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02F9F4] - unresolved: lookup result not used in a resolvable form" category="Unidentified - Task 0x15307C" storageaddress="235C0" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F9F4. UNRESOLVED (locked): 0x103C74: lookup result not used in a resolvable form. Function/output scaling not yet proven from the binary." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0554)" storageaddress="23530" elements="16" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Cruise Enable Flag per CAN State 0554, set C (FFFF056F.4 clear) [0x103C74]" category="Cruise Control" storageaddress="235C0" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2F9F4. Evidence: 0x103C74: output flag = 1 when the selected lookup T(FFFF0554) == 1 (T_02F9DC with p1 and p2 set, T_02F9E8 with p2 set and p1 clear, T_02F9F4 with p2 clear; p1 = FFFF0789.2, p2 = FFFF056F.4), else 0.  Values other than 1 disable." sizey="16">
+      <scaling units="flag" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0554)" storageaddress="23530" elements="16" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>

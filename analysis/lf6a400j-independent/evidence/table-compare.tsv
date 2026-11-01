@@ -41,4 +41,3 @@ descriptor	function	var	var_name	units	expr	context
 02FF2C	00120d40	FFFF13B2	Time While FFFF0935.5 Set	s	x*0.01	((uVar2 & 0xffff) <= (param_2 & 0xffff)
 02FF54	00120e2c	FFFEF406	Accelerator Pedal Angle (unlimited)	%	x*100/65280	(uVar1 & 0xffff) <= (param_1 & 0xffff)
 030080	00123e10	FFFF1422	Torque 1422 (monitor)	Nm	(x-16000)/80	((uint)param_2 < (uVar1 & 0xffff)
-02FAE4	00105678	FFFF12C2	Vehicle Speed (cruise, filtered CAN, 12C2) (delta)	km/h	x*0.0078125	param_18 - (int)(uVar1 & 0xffff)

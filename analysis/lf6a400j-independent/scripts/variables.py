@@ -393,3 +393,6 @@ V2.update({
  0xFFFF127C:('Cruise Speed Step (127C)','km/h','x/128','x*128','0x106990: 12C6 = EDAC6 +/- 127C (param_9).'+_CRU),
  0xFFFF127E:('Cruise Speed Band (127E)','km/h','x/128','x*128','0x106990: b = 127E*5/64 compared with cruise speed*10 (0.1 km/h).'+_CRU),
 })
+V2.update({
+ 0xFFFF12AA:('Cruise Speed 12AA','km/h','x/128','x*128','0x105678 (stack arg 24): = 12C2 (param_18) +/- T_02FAxx or 12C6 (param_16), clamped by 12BA and 0x6746 (206.5 km/h)'),
+})

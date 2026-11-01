@@ -1561,6 +1561,24 @@ add(0x2FCAC, 'Vehicle Speed (CAN) Filter Gain [0x1068D0]', 'Cruise Control',
     ('ratio', 'x/65536', 'x*65536', '0.0000'))
 
 
+# 0x105678 (from 0x101A90; stack args 16 = 12C6, 18 = 12C2, 20 = 12BA, 24 = &12AA): tables indexed by vehicle speed 12C2 are added to /
+# subtracted from 12C2 or FFFEDA6E (-> 12AA) -> speed offsets in km/h*128.
+for _d, _n in ((0x2FB08, 'Cruise Speed Offset Up A'), (0x2FAFC, 'Cruise Speed Offset Up B'), (0x2FAF0, 'Cruise Speed Offset Down A'),
+               (0x2FAE4, 'Cruise Speed Offset Down B')):
+    S.pop(_d, None); AUTO.discard(_d)
+    add(_d, _n + ' (vs Vehicle Speed) [0x105678]', 'Cruise Control',
+        '0x105678: result = FFFF12C2 (param_18) or FFFEDA6E +/- T(12C2), clamped by FFFF12BA (param_20) and 0x6746, stored to FFFF12AA.  '
+        + _ECR, _SPD)
+
+
+# 0x103C74 (from 0x1011EC; param_3 = FFFF0554 CAN state code): the three lookups are only tested for == 1 to set the output flag.
+for _d, _n in ((0x2F9DC, 'A (FFFF056F.4 and FFFF0789.2 set)'), (0x2F9E8, 'B (FFFF056F.4 set, FFFF0789.2 clear)'), (0x2F9F4, 'C (FFFF056F.4 clear)')):
+    S.pop(_d, None); AUTO.discard(_d)
+    add(_d, f'Cruise Enable Flag per CAN State 0554, set {_n} [0x103C74]', 'Cruise Control',
+        '0x103C74: output flag = 1 when the selected lookup T(FFFF0554) == 1 (T_02F9DC with p1 and p2 set, T_02F9E8 with p2 set and p1 clear, '
+        'T_02F9F4 with p2 clear; p1 = FFFF0789.2, p2 = FFFF056F.4), else 0.  Values other than 1 disable.', ('flag', 'x', 'x', '0'))
+
+
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
     print(len(S), 'entries')

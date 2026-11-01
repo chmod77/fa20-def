@@ -9621,6 +9621,45 @@
    "format": "0.0"
   }
  },
+ "0x2F9DC": {
+  "status": "identified",
+  "name": "Cruise Enable Flag per CAN State 0554, set A (FFFF056F.4 and FFFF0789.2 set) [0x103C74]",
+  "category": "Cruise Control",
+  "evidence": "0x103C74: output flag = 1 when the selected lookup T(FFFF0554) == 1 (T_02F9DC with p1 and p2 set, T_02F9E8 with p2 set and p1 clear, T_02F9F4 with p2 clear; p1 = FFFF0789.2, p2 = FFFF056F.4), else 0.  Values other than 1 disable.",
+  "description": "",
+  "data": {
+   "units": "flag",
+   "expr": "x",
+   "to_byte": "x",
+   "format": "0"
+  }
+ },
+ "0x2F9E8": {
+  "status": "identified",
+  "name": "Cruise Enable Flag per CAN State 0554, set B (FFFF056F.4 set, FFFF0789.2 clear) [0x103C74]",
+  "category": "Cruise Control",
+  "evidence": "0x103C74: output flag = 1 when the selected lookup T(FFFF0554) == 1 (T_02F9DC with p1 and p2 set, T_02F9E8 with p2 set and p1 clear, T_02F9F4 with p2 clear; p1 = FFFF0789.2, p2 = FFFF056F.4), else 0.  Values other than 1 disable.",
+  "description": "",
+  "data": {
+   "units": "flag",
+   "expr": "x",
+   "to_byte": "x",
+   "format": "0"
+  }
+ },
+ "0x2F9F4": {
+  "status": "identified",
+  "name": "Cruise Enable Flag per CAN State 0554, set C (FFFF056F.4 clear) [0x103C74]",
+  "category": "Cruise Control",
+  "evidence": "0x103C74: output flag = 1 when the selected lookup T(FFFF0554) == 1 (T_02F9DC with p1 and p2 set, T_02F9E8 with p2 set and p1 clear, T_02F9F4 with p2 clear; p1 = FFFF0789.2, p2 = FFFF056F.4), else 0.  Values other than 1 disable.",
+  "description": "",
+  "data": {
+   "units": "flag",
+   "expr": "x",
+   "to_byte": "x",
+   "format": "0"
+  }
+ },
  "0x2FA00": {
   "status": "identified",
   "name": "Accelerator Pedal Angle Limit (Torque x RPM, mode other, B=0)",
@@ -9808,6 +9847,58 @@
   "name": "Cruise Speed Deviation Threshold (vs CAN state 0554, variant 1) [0x104698]",
   "category": "Cruise Control",
   "evidence": "Cruise speed unit proof: 0x106990 assigns the cruise target FFFF12C6 either from FFFF12C2 or from Memorised Cruise Speed FFFF07AC (SSM 0x10A, km/h) * 10 * 64/5 (= km/h*128), clamps it with FFFF12BE, steps it by FFFF127C and compares FFFF127E*5/64 with the cruise speed *10.  12B8/12BA/12BC/12C0 are compared with 12C2 (0x10A048, 0x108260, 0x109ADC, 0x109C08, 0x107E7C); 1298 with |12C2 - 12AA| / |12C2 - 12C6| (0x1091C8).  Axis FFFF0554 is a raw state code built from CAN flags FFFEF081.4-7 (0xC3364).  0x104698 stores T(FFFF0554) to FFFF1298 (variant chosen by FFFF056F.4 / FFFF0789.2 / FFFEF085.1).",
+  "description": "",
+  "data": {
+   "units": "km/h",
+   "expr": "x/128",
+   "to_byte": "x*128",
+   "format": "0.0"
+  }
+ },
+ "0x2FAE4": {
+  "status": "identified",
+  "name": "Cruise Speed Offset Down B (vs Vehicle Speed) [0x105678]",
+  "category": "Cruise Control",
+  "evidence": "0x105678: result = FFFF12C2 (param_18) or FFFEDA6E +/- T(12C2), clamped by FFFF12BA (param_20) and 0x6746, stored to FFFF12AA.  Cruise speed unit proof: 0x106990 assigns the cruise target FFFF12C6 either from FFFF12C2 or from Memorised Cruise Speed FFFF07AC (SSM 0x10A, km/h) * 10 * 64/5 (= km/h*128), clamps it with FFFF12BE, steps it by FFFF127C and compares FFFF127E*5/64 with the cruise speed *10.  12B8/12BA/12BC/12C0 are compared with 12C2 (0x10A048, 0x108260, 0x109ADC, 0x109C08, 0x107E7C); 1298 with |12C2 - 12AA| / |12C2 - 12C6| (0x1091C8).  Axis FFFF0554 is a raw state code built from CAN flags FFFEF081.4-7 (0xC3364).  ",
+  "description": "",
+  "data": {
+   "units": "km/h",
+   "expr": "x/128",
+   "to_byte": "x*128",
+   "format": "0.0"
+  }
+ },
+ "0x2FAF0": {
+  "status": "identified",
+  "name": "Cruise Speed Offset Down A (vs Vehicle Speed) [0x105678]",
+  "category": "Cruise Control",
+  "evidence": "0x105678: result = FFFF12C2 (param_18) or FFFEDA6E +/- T(12C2), clamped by FFFF12BA (param_20) and 0x6746, stored to FFFF12AA.  Cruise speed unit proof: 0x106990 assigns the cruise target FFFF12C6 either from FFFF12C2 or from Memorised Cruise Speed FFFF07AC (SSM 0x10A, km/h) * 10 * 64/5 (= km/h*128), clamps it with FFFF12BE, steps it by FFFF127C and compares FFFF127E*5/64 with the cruise speed *10.  12B8/12BA/12BC/12C0 are compared with 12C2 (0x10A048, 0x108260, 0x109ADC, 0x109C08, 0x107E7C); 1298 with |12C2 - 12AA| / |12C2 - 12C6| (0x1091C8).  Axis FFFF0554 is a raw state code built from CAN flags FFFEF081.4-7 (0xC3364).  ",
+  "description": "",
+  "data": {
+   "units": "km/h",
+   "expr": "x/128",
+   "to_byte": "x*128",
+   "format": "0.0"
+  }
+ },
+ "0x2FAFC": {
+  "status": "identified",
+  "name": "Cruise Speed Offset Up B (vs Vehicle Speed) [0x105678]",
+  "category": "Cruise Control",
+  "evidence": "0x105678: result = FFFF12C2 (param_18) or FFFEDA6E +/- T(12C2), clamped by FFFF12BA (param_20) and 0x6746, stored to FFFF12AA.  Cruise speed unit proof: 0x106990 assigns the cruise target FFFF12C6 either from FFFF12C2 or from Memorised Cruise Speed FFFF07AC (SSM 0x10A, km/h) * 10 * 64/5 (= km/h*128), clamps it with FFFF12BE, steps it by FFFF127C and compares FFFF127E*5/64 with the cruise speed *10.  12B8/12BA/12BC/12C0 are compared with 12C2 (0x10A048, 0x108260, 0x109ADC, 0x109C08, 0x107E7C); 1298 with |12C2 - 12AA| / |12C2 - 12C6| (0x1091C8).  Axis FFFF0554 is a raw state code built from CAN flags FFFEF081.4-7 (0xC3364).  ",
+  "description": "",
+  "data": {
+   "units": "km/h",
+   "expr": "x/128",
+   "to_byte": "x*128",
+   "format": "0.0"
+  }
+ },
+ "0x2FB08": {
+  "status": "identified",
+  "name": "Cruise Speed Offset Up A (vs Vehicle Speed) [0x105678]",
+  "category": "Cruise Control",
+  "evidence": "0x105678: result = FFFF12C2 (param_18) or FFFEDA6E +/- T(12C2), clamped by FFFF12BA (param_20) and 0x6746, stored to FFFF12AA.  Cruise speed unit proof: 0x106990 assigns the cruise target FFFF12C6 either from FFFF12C2 or from Memorised Cruise Speed FFFF07AC (SSM 0x10A, km/h) * 10 * 64/5 (= km/h*128), clamps it with FFFF12BE, steps it by FFFF127C and compares FFFF127E*5/64 with the cruise speed *10.  12B8/12BA/12BC/12C0 are compared with 12C2 (0x10A048, 0x108260, 0x109ADC, 0x109C08, 0x107E7C); 1298 with |12C2 - 12AA| / |12C2 - 12C6| (0x1091C8).  Axis FFFF0554 is a raw state code built from CAN flags FFFEF081.4-7 (0xC3364).  ",
   "description": "",
   "data": {
    "units": "km/h",
