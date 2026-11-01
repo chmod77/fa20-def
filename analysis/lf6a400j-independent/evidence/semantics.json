@@ -3371,6 +3371,110 @@
    "format": "0.000"
   }
  },
+ "0x2CE30": {
+  "status": "identified",
+  "name": "Crank Segment Time Deviation Upper Band, Slot 1 (vs RPM) [0x8CCF8]",
+  "category": "Fueling",
+  "evidence": "0x8CCF8: param = FFFEF630.  Deviation FFFEF630+2*(n-1) = mean of 10 samples of (crank segment time difference) for slot n minus the 4-slot mean (0x62032, 0x61F6A, 0x62318, 0x6235C); segment times are 10 MHz capture differences >> 5 that sum to the proven Crank Period 2986 (0x1438A0: 2B6C = 1A3E + 1A40), so ms = x*0.0032.  The table is compared directly with the deviation: above the upper band (T_upper <= dev) or below the lower band (0 < dev < T_lower, and the negated bands for negative deviations).  ",
+  "description": "",
+  "data": {
+   "units": "ms",
+   "expr": "x*0.0032",
+   "to_byte": "x/0.0032",
+   "format": "0.0000"
+  }
+ },
+ "0x2CE3C": {
+  "status": "identified",
+  "name": "Crank Segment Time Deviation Lower Band, Slot 1 (vs RPM) [0x8CCF8]",
+  "category": "Fueling",
+  "evidence": "0x8CCF8: param = FFFEF630.  Deviation FFFEF630+2*(n-1) = mean of 10 samples of (crank segment time difference) for slot n minus the 4-slot mean (0x62032, 0x61F6A, 0x62318, 0x6235C); segment times are 10 MHz capture differences >> 5 that sum to the proven Crank Period 2986 (0x1438A0: 2B6C = 1A3E + 1A40), so ms = x*0.0032.  The table is compared directly with the deviation: above the upper band (T_upper <= dev) or below the lower band (0 < dev < T_lower, and the negated bands for negative deviations).  ",
+  "description": "",
+  "data": {
+   "units": "ms",
+   "expr": "x*0.0032",
+   "to_byte": "x/0.0032",
+   "format": "0.0000"
+  }
+ },
+ "0x2CE48": {
+  "status": "identified",
+  "name": "Crank Segment Time Deviation Upper Band, Slot 2 (vs RPM) [0x8D124]",
+  "category": "Fueling",
+  "evidence": "0x8D124: param = FFFEF632.  Deviation FFFEF630+2*(n-1) = mean of 10 samples of (crank segment time difference) for slot n minus the 4-slot mean (0x62032, 0x61F6A, 0x62318, 0x6235C); segment times are 10 MHz capture differences >> 5 that sum to the proven Crank Period 2986 (0x1438A0: 2B6C = 1A3E + 1A40), so ms = x*0.0032.  The table is compared directly with the deviation: above the upper band (T_upper <= dev) or below the lower band (0 < dev < T_lower, and the negated bands for negative deviations).  ",
+  "description": "",
+  "data": {
+   "units": "ms",
+   "expr": "x*0.0032",
+   "to_byte": "x/0.0032",
+   "format": "0.0000"
+  }
+ },
+ "0x2CE54": {
+  "status": "identified",
+  "name": "Crank Segment Time Deviation Lower Band, Slot 2 (vs RPM) [0x8D124]",
+  "category": "Fueling",
+  "evidence": "0x8D124: param = FFFEF632.  Deviation FFFEF630+2*(n-1) = mean of 10 samples of (crank segment time difference) for slot n minus the 4-slot mean (0x62032, 0x61F6A, 0x62318, 0x6235C); segment times are 10 MHz capture differences >> 5 that sum to the proven Crank Period 2986 (0x1438A0: 2B6C = 1A3E + 1A40), so ms = x*0.0032.  The table is compared directly with the deviation: above the upper band (T_upper <= dev) or below the lower band (0 < dev < T_lower, and the negated bands for negative deviations).  ",
+  "description": "",
+  "data": {
+   "units": "ms",
+   "expr": "x*0.0032",
+   "to_byte": "x/0.0032",
+   "format": "0.0000"
+  }
+ },
+ "0x2CE60": {
+  "status": "identified",
+  "name": "Crank Segment Time Deviation Upper Band, Slot 3 (vs RPM) [0x8D550]",
+  "category": "Fueling",
+  "evidence": "0x8D550: param = FFFEF634.  Deviation FFFEF630+2*(n-1) = mean of 10 samples of (crank segment time difference) for slot n minus the 4-slot mean (0x62032, 0x61F6A, 0x62318, 0x6235C); segment times are 10 MHz capture differences >> 5 that sum to the proven Crank Period 2986 (0x1438A0: 2B6C = 1A3E + 1A40), so ms = x*0.0032.  The table is compared directly with the deviation: above the upper band (T_upper <= dev) or below the lower band (0 < dev < T_lower, and the negated bands for negative deviations).  ",
+  "description": "",
+  "data": {
+   "units": "ms",
+   "expr": "x*0.0032",
+   "to_byte": "x/0.0032",
+   "format": "0.0000"
+  }
+ },
+ "0x2CE6C": {
+  "status": "identified",
+  "name": "Crank Segment Time Deviation Lower Band, Slot 3 (vs RPM) [0x8D550]",
+  "category": "Fueling",
+  "evidence": "0x8D550: param = FFFEF634.  Deviation FFFEF630+2*(n-1) = mean of 10 samples of (crank segment time difference) for slot n minus the 4-slot mean (0x62032, 0x61F6A, 0x62318, 0x6235C); segment times are 10 MHz capture differences >> 5 that sum to the proven Crank Period 2986 (0x1438A0: 2B6C = 1A3E + 1A40), so ms = x*0.0032.  The table is compared directly with the deviation: above the upper band (T_upper <= dev) or below the lower band (0 < dev < T_lower, and the negated bands for negative deviations).  ",
+  "description": "",
+  "data": {
+   "units": "ms",
+   "expr": "x*0.0032",
+   "to_byte": "x/0.0032",
+   "format": "0.0000"
+  }
+ },
+ "0x2CE78": {
+  "status": "identified",
+  "name": "Crank Segment Time Deviation Upper Band, Slot 4 (vs RPM) [0x8D97C]",
+  "category": "Fueling",
+  "evidence": "0x8D97C: param = FFFEF636.  Deviation FFFEF630+2*(n-1) = mean of 10 samples of (crank segment time difference) for slot n minus the 4-slot mean (0x62032, 0x61F6A, 0x62318, 0x6235C); segment times are 10 MHz capture differences >> 5 that sum to the proven Crank Period 2986 (0x1438A0: 2B6C = 1A3E + 1A40), so ms = x*0.0032.  The table is compared directly with the deviation: above the upper band (T_upper <= dev) or below the lower band (0 < dev < T_lower, and the negated bands for negative deviations).  ",
+  "description": "",
+  "data": {
+   "units": "ms",
+   "expr": "x*0.0032",
+   "to_byte": "x/0.0032",
+   "format": "0.0000"
+  }
+ },
+ "0x2CE84": {
+  "status": "identified",
+  "name": "Crank Segment Time Deviation Lower Band, Slot 4 (vs RPM) [0x8D97C]",
+  "category": "Fueling",
+  "evidence": "0x8D97C: param = FFFEF636.  Deviation FFFEF630+2*(n-1) = mean of 10 samples of (crank segment time difference) for slot n minus the 4-slot mean (0x62032, 0x61F6A, 0x62318, 0x6235C); segment times are 10 MHz capture differences >> 5 that sum to the proven Crank Period 2986 (0x1438A0: 2B6C = 1A3E + 1A40), so ms = x*0.0032.  The table is compared directly with the deviation: above the upper band (T_upper <= dev) or below the lower band (0 < dev < T_lower, and the negated bands for negative deviations).  ",
+  "description": "",
+  "data": {
+   "units": "ms",
+   "expr": "x*0.0032",
+   "to_byte": "x/0.0032",
+   "format": "0.0000"
+  }
+ },
  "0x2CE90": {
   "status": "identified",
   "name": "Injector Pulse Multiplier (Fuel Rail Pressure)",
@@ -4432,6 +4536,110 @@
     "expr": "x*25",
     "to_byte": "x/25"
    }
+  }
+ },
+ "0x2D4EC": {
+  "status": "identified",
+  "name": "Crank Segment Time Deviation Upper Band, Slot 1 (vs RPM) [0x972FC]",
+  "category": "Knock",
+  "evidence": "0x972FC: param = FFFEF630.  Deviation FFFEF630+2*(n-1) = mean of 10 samples of (crank segment time difference) for slot n minus the 4-slot mean (0x62032, 0x61F6A, 0x62318, 0x6235C); segment times are 10 MHz capture differences >> 5 that sum to the proven Crank Period 2986 (0x1438A0: 2B6C = 1A3E + 1A40), so ms = x*0.0032.  The table is compared directly with the deviation: above the upper band (T_upper <= dev) or below the lower band (0 < dev < T_lower, and the negated bands for negative deviations).  ",
+  "description": "",
+  "data": {
+   "units": "ms",
+   "expr": "x*0.0032",
+   "to_byte": "x/0.0032",
+   "format": "0.0000"
+  }
+ },
+ "0x2D4F8": {
+  "status": "identified",
+  "name": "Crank Segment Time Deviation Lower Band, Slot 1 (vs RPM) [0x972FC]",
+  "category": "Knock",
+  "evidence": "0x972FC: param = FFFEF630.  Deviation FFFEF630+2*(n-1) = mean of 10 samples of (crank segment time difference) for slot n minus the 4-slot mean (0x62032, 0x61F6A, 0x62318, 0x6235C); segment times are 10 MHz capture differences >> 5 that sum to the proven Crank Period 2986 (0x1438A0: 2B6C = 1A3E + 1A40), so ms = x*0.0032.  The table is compared directly with the deviation: above the upper band (T_upper <= dev) or below the lower band (0 < dev < T_lower, and the negated bands for negative deviations).  ",
+  "description": "",
+  "data": {
+   "units": "ms",
+   "expr": "x*0.0032",
+   "to_byte": "x/0.0032",
+   "format": "0.0000"
+  }
+ },
+ "0x2D50C": {
+  "status": "identified",
+  "name": "Crank Segment Time Deviation Upper Band, Slot 2 (vs RPM) [0x978C8]",
+  "category": "Knock",
+  "evidence": "0x978C8: param = FFFEF632.  Deviation FFFEF630+2*(n-1) = mean of 10 samples of (crank segment time difference) for slot n minus the 4-slot mean (0x62032, 0x61F6A, 0x62318, 0x6235C); segment times are 10 MHz capture differences >> 5 that sum to the proven Crank Period 2986 (0x1438A0: 2B6C = 1A3E + 1A40), so ms = x*0.0032.  The table is compared directly with the deviation: above the upper band (T_upper <= dev) or below the lower band (0 < dev < T_lower, and the negated bands for negative deviations).  ",
+  "description": "",
+  "data": {
+   "units": "ms",
+   "expr": "x*0.0032",
+   "to_byte": "x/0.0032",
+   "format": "0.0000"
+  }
+ },
+ "0x2D518": {
+  "status": "identified",
+  "name": "Crank Segment Time Deviation Lower Band, Slot 2 (vs RPM) [0x978C8]",
+  "category": "Knock",
+  "evidence": "0x978C8: param = FFFEF632.  Deviation FFFEF630+2*(n-1) = mean of 10 samples of (crank segment time difference) for slot n minus the 4-slot mean (0x62032, 0x61F6A, 0x62318, 0x6235C); segment times are 10 MHz capture differences >> 5 that sum to the proven Crank Period 2986 (0x1438A0: 2B6C = 1A3E + 1A40), so ms = x*0.0032.  The table is compared directly with the deviation: above the upper band (T_upper <= dev) or below the lower band (0 < dev < T_lower, and the negated bands for negative deviations).  ",
+  "description": "",
+  "data": {
+   "units": "ms",
+   "expr": "x*0.0032",
+   "to_byte": "x/0.0032",
+   "format": "0.0000"
+  }
+ },
+ "0x2D52C": {
+  "status": "identified",
+  "name": "Crank Segment Time Deviation Upper Band, Slot 3 (vs RPM) [0x97E94]",
+  "category": "Knock",
+  "evidence": "0x97E94: param = FFFEF634.  Deviation FFFEF630+2*(n-1) = mean of 10 samples of (crank segment time difference) for slot n minus the 4-slot mean (0x62032, 0x61F6A, 0x62318, 0x6235C); segment times are 10 MHz capture differences >> 5 that sum to the proven Crank Period 2986 (0x1438A0: 2B6C = 1A3E + 1A40), so ms = x*0.0032.  The table is compared directly with the deviation: above the upper band (T_upper <= dev) or below the lower band (0 < dev < T_lower, and the negated bands for negative deviations).  ",
+  "description": "",
+  "data": {
+   "units": "ms",
+   "expr": "x*0.0032",
+   "to_byte": "x/0.0032",
+   "format": "0.0000"
+  }
+ },
+ "0x2D538": {
+  "status": "identified",
+  "name": "Crank Segment Time Deviation Lower Band, Slot 3 (vs RPM) [0x97E94]",
+  "category": "Knock",
+  "evidence": "0x97E94: param = FFFEF634.  Deviation FFFEF630+2*(n-1) = mean of 10 samples of (crank segment time difference) for slot n minus the 4-slot mean (0x62032, 0x61F6A, 0x62318, 0x6235C); segment times are 10 MHz capture differences >> 5 that sum to the proven Crank Period 2986 (0x1438A0: 2B6C = 1A3E + 1A40), so ms = x*0.0032.  The table is compared directly with the deviation: above the upper band (T_upper <= dev) or below the lower band (0 < dev < T_lower, and the negated bands for negative deviations).  ",
+  "description": "",
+  "data": {
+   "units": "ms",
+   "expr": "x*0.0032",
+   "to_byte": "x/0.0032",
+   "format": "0.0000"
+  }
+ },
+ "0x2D54C": {
+  "status": "identified",
+  "name": "Crank Segment Time Deviation Upper Band, Slot 4 (vs RPM) [0x98460]",
+  "category": "Knock",
+  "evidence": "0x98460: param = FFFEF636.  Deviation FFFEF630+2*(n-1) = mean of 10 samples of (crank segment time difference) for slot n minus the 4-slot mean (0x62032, 0x61F6A, 0x62318, 0x6235C); segment times are 10 MHz capture differences >> 5 that sum to the proven Crank Period 2986 (0x1438A0: 2B6C = 1A3E + 1A40), so ms = x*0.0032.  The table is compared directly with the deviation: above the upper band (T_upper <= dev) or below the lower band (0 < dev < T_lower, and the negated bands for negative deviations).  ",
+  "description": "",
+  "data": {
+   "units": "ms",
+   "expr": "x*0.0032",
+   "to_byte": "x/0.0032",
+   "format": "0.0000"
+  }
+ },
+ "0x2D558": {
+  "status": "identified",
+  "name": "Crank Segment Time Deviation Lower Band, Slot 4 (vs RPM) [0x98460]",
+  "category": "Knock",
+  "evidence": "0x98460: param = FFFEF636.  Deviation FFFEF630+2*(n-1) = mean of 10 samples of (crank segment time difference) for slot n minus the 4-slot mean (0x62032, 0x61F6A, 0x62318, 0x6235C); segment times are 10 MHz capture differences >> 5 that sum to the proven Crank Period 2986 (0x1438A0: 2B6C = 1A3E + 1A40), so ms = x*0.0032.  The table is compared directly with the deviation: above the upper band (T_upper <= dev) or below the lower band (0 < dev < T_lower, and the negated bands for negative deviations).  ",
+  "description": "",
+  "data": {
+   "units": "ms",
+   "expr": "x*0.0032",
+   "to_byte": "x/0.0032",
+   "format": "0.0000"
   }
  },
  "0x2D56C": {

@@ -1613,6 +1613,23 @@ for _d, _n in ((0x304D0, '1444 vs 1440'), (0x304BC, '1440 vs 1444'), (0x304A8, '
         'complement 0xFF - w weights the other input), so w is a fraction with 255 = 1.0.  ' + _ETQ, ('ratio', 'x/255', 'x*255', '0.000'))
 
 
+# Per-cylinder crank segment time deviation FFFEF630..636 (ms = x*0.0032, see variables): knock tree 0x972FC/0x978C8/0x97E94/0x98460
+# and fuel tree 0x8CCF8/0x8D124/0x8D550/0x8D97C compare it directly with an upper and a lower band table (axis Engine Speed 2ADA).
+_EDEV = ('Deviation FFFEF630+2*(n-1) = mean of 10 samples of (crank segment time difference) for slot n minus the 4-slot mean (0x62032, '
+         '0x61F6A, 0x62318, 0x6235C); segment times are 10 MHz capture differences >> 5 that sum to the proven Crank Period 2986 '
+         '(0x1438A0: 2B6C = 1A3E + 1A40), so ms = x*0.0032.  The table is compared directly with the deviation: above the upper '
+         'band (T_upper <= dev) or below the lower band (0 < dev < T_lower, and the negated bands for negative deviations).  ')
+_DEVT = [((0x2D4EC, 0x2D4F8), 1, '0x972FC', 'Knock'), ((0x2D50C, 0x2D518), 2, '0x978C8', 'Knock'),
+         ((0x2D52C, 0x2D538), 3, '0x97E94', 'Knock'), ((0x2D54C, 0x2D558), 4, '0x98460', 'Knock'),
+         ((0x2CE30, 0x2CE3C), 1, '0x8CCF8', 'Fueling'), ((0x2CE48, 0x2CE54), 2, '0x8D124', 'Fueling'),
+         ((0x2CE60, 0x2CE6C), 3, '0x8D550', 'Fueling'), ((0x2CE78, 0x2CE84), 4, '0x8D97C', 'Fueling')]
+for (_u, _l), _n, _f, _c in _DEVT:
+    for _d, _w in ((_u, 'Upper'), (_l, 'Lower')):
+        S.pop(_d, None); AUTO.discard(_d)
+        add(_d, f'Crank Segment Time Deviation {_w} Band, Slot {_n} (vs RPM) [{_f}]', _c,
+            f'{_f}: param = FFFEF{0x630 + 2*(_n-1):03X}.  ' + _EDEV, ('ms', 'x*0.0032', 'x/0.0032', '0.0000'))
+
+
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
     print(len(S), 'entries')

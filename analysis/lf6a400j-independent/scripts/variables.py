@@ -411,3 +411,10 @@ V2.update({
  0xFFFF1444:('Torque Limit Input 1444','Nm','(x-16000)/80','x*80+16000','0x124F74 blend input (param_3).'+_TQC),
  0xFFFF1448:('Torque Limit Input 1448','Nm','(x-16000)/80','x*80+16000','0x124F74: assigned to the output in state 4 (param_12).'+_TQC),
 })
+_SEG = (' Crank segment time: crank code (0x143790) at angle code 10 sets 2B94 = 2B84 - 2B88 (timer captures), 1A3E = sat16(2B94 >> 5) '
+        '-> 2B70[cyl] (0x1438F4); 2B6C = 1A3E + 1A40 and 2B90 = 2B94 + 2B98 (0x1438A0..0x1438E4), 2B6C = proven Crank Period 2986 '
+        '(ms = x*0.0032) => same unit.  0x15673A EF474..47A = 2B70..2B76; 0x62032 samples = EF476 - EF474 (cylinder 29D3 == 1); 0x61F6A '
+        'EF626.. = mean of 10 samples; 0x62318 EF62E = mean of EF626..62C; 0x6235C EF630..636 = EF626..62C - EF62E.')
+V2.update({0xFFFEF474 + 2*_i: (f'Crank Segment Time (slot {_i})', 'ms', 'x*0.0032', 'x/0.0032', '0x15673A copy of 2B70.' + _SEG) for _i in range(4)})
+V2.update({0xFFFEF626 + 2*_i: (f'Crank Segment Time Difference Mean (slot {_i+1})', 'ms', 'x*0.0032', 'x/0.0032', '0x61F6A.' + _SEG) for _i in range(5)})
+V2.update({0xFFFEF630 + 2*_i: (f'Crank Segment Time Deviation (slot {_i+1})', 'ms', 'x*0.0032', 'x/0.0032', '0x6235C.' + _SEG) for _i in range(4)})
