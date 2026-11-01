@@ -495,9 +495,9 @@
         <scaling units="%" expression="x" to_byte="x" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Primary Open Loop Fueling Offset vs FFFF049B (not selected) [output units unresolved]" category="Fueling - Open Loop" storageaddress="A4F9" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D064. Evidence: 0x8F8C0: added only on the param_3!=0 path (caller passes 0), so not applied in this ROM. Input FFFF049B (signed byte). UNRESOLVED (locked): 0x8F8C0: lookup result not used in a resolvable form. Function/output scaling not yet proven from the binary." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF049B)" storageaddress="A219" elements="16" storagetype="int8" endian="big" locked="true">
+    <table type="2D" name="Primary Open Loop Fueling Offset vs FFFF049B (not selected in this build) [0x8F8C0]" category="Fueling" storageaddress="A4F9" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D064. Evidence: 0x8F8C0: T(FFFF049B) is added to T_02D03C / T_02D028 (Primary Open Loop Fueling, lambda = 256/(256+x), i.e. extra fuel = x/256) before the result is stored to FFFF0400; an additive term of x has the same unit, so extra fuel % = x*100/256.  The sum is only selected when param_3 != 0, and the only caller (0x888C0) passes the constant 0." sizey="16">
+      <scaling units="% fuel" expression="x*100/256" to_byte="x*256/100" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF049B)" storageaddress="A219" elements="16" storagetype="int8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int8" endian="big" />
       </table>
     </table>
@@ -3135,9 +3135,9 @@
         <scaling units="rpm" expression="(x+16)*31.25" to_byte="x/31.25-16" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Throttle Flow Function (Pressure Ratio) [output units unresolved]" category="Airflow - Throttle Model" storageaddress="166B4" storagetype="uint32" endian="big" userlevel="1" description="Descriptor(s): 0x2ECEC. Evidence: 0xCFC88: pressure ratio r = min(FFFF1688/FFFF168C, ...) clamped below at 0.53 (critical ratio of air) and above at 1.0; flow = (FFFF168C/101325) * T_02ECEC(r) * FFFF09C2 * 2.98e-15 * k(T_02ECE0) * 60000, then blended with the previous value by w = T_02ECF8(r)/65536. Axis input u32 = r*2^32 - 2^31. UNRESOLVED (locked): 0xCFC88: lookup result not used in a resolvable form. Function/output scaling not yet proven from the binary." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint32" endian="big" />
-      <table type="Y Axis" name="Pressure Ratio (downstream/upstream)" storageaddress="16674" elements="16" storagetype="uint32" endian="big" locked="true">
+    <table type="2D" name="Throttle Flow Function psi(Pressure Ratio)" category="Airflow - Throttle Model" storageaddress="166B4" storagetype="uint32" endian="big" userlevel="1" description="Descriptor(s): 0x2ECEC. Evidence: 0xCFC88: pressure ratio r = min(FFFF1688/FFFF168C, ...) clamped below at 0.53 (critical ratio of air) and above at 1.0; flow = (FFFF168C/101325) * T_02ECEC(r) * FFFF09C2 * 2.98e-15 * k(T_02ECE0) * 60000, then blended with the previous value by w = T_02ECF8(r)/65536. Axis input u32 = r*2^32 - 2^31.  Data check: every point equals psi(r)*5793418909 with psi(r) = sqrt(2g/(g-1)*(r^(2/g) - r^((g+1)/g))), g = 1.4 (ratio of specific heats of air), relative residual &lt; 1e-7; r = 1 gives 0 and the code clamps r at 0.53 = critical pressure ratio for g = 1.4.  So psi = x/5793418909 (dimensionless)." sizey="16">
+      <scaling units="psi" expression="x/5793418909" to_byte="x*5793418909" format="0.0000" fineincrement="1" coarseincrement="1" storagetype="uint32" endian="big" />
+      <table type="Y Axis" name="Pressure Ratio (downstream/upstream)" storageaddress="16674" elements="16" storagetype="uint32" endian="big">
         <scaling units="ratio" expression="(x+2147483648)/4294967296" to_byte="x*4294967296-2147483648" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint32" endian="big" />
       </table>
     </table>

@@ -3809,16 +3809,16 @@
   }
  },
  "0x2D064": {
-  "status": "partial",
-  "name": "Primary Open Loop Fueling Offset vs FFFF049B (not selected)",
-  "category": "Fueling - Open Loop",
-  "evidence": "0x8F8C0: added only on the param_3!=0 path (caller passes 0), so not applied in this ROM. Input FFFF049B (signed byte).",
+  "status": "identified",
+  "name": "Primary Open Loop Fueling Offset vs FFFF049B (not selected in this build) [0x8F8C0]",
+  "category": "Fueling",
+  "evidence": "0x8F8C0: T(FFFF049B) is added to T_02D03C / T_02D028 (Primary Open Loop Fueling, lambda = 256/(256+x), i.e. extra fuel = x/256) before the result is stored to FFFF0400; an additive term of x has the same unit, so extra fuel % = x*100/256.  The sum is only selected when param_3 != 0, and the only caller (0x888C0) passes the constant 0.",
   "description": "",
   "data": {
-   "units": "raw",
-   "expr": "x",
-   "to_byte": "x",
-   "format": "0"
+   "units": "% fuel",
+   "expr": "x*100/256",
+   "to_byte": "x*256/100",
+   "format": "0.0"
   }
  },
  "0x2D070": {
@@ -7735,16 +7735,16 @@
   }
  },
  "0x2ECEC": {
-  "status": "partial",
-  "name": "Throttle Flow Function (Pressure Ratio)",
+  "status": "identified",
+  "name": "Throttle Flow Function psi(Pressure Ratio)",
   "category": "Airflow - Throttle Model",
-  "evidence": "0xCFC88: pressure ratio r = min(FFFF1688/FFFF168C, ...) clamped below at 0.53 (critical ratio of air) and above at 1.0; flow = (FFFF168C/101325) * T_02ECEC(r) * FFFF09C2 * 2.98e-15 * k(T_02ECE0) * 60000, then blended with the previous value by w = T_02ECF8(r)/65536. Axis input u32 = r*2^32 - 2^31.",
+  "evidence": "0xCFC88: pressure ratio r = min(FFFF1688/FFFF168C, ...) clamped below at 0.53 (critical ratio of air) and above at 1.0; flow = (FFFF168C/101325) * T_02ECEC(r) * FFFF09C2 * 2.98e-15 * k(T_02ECE0) * 60000, then blended with the previous value by w = T_02ECF8(r)/65536. Axis input u32 = r*2^32 - 2^31.  Data check: every point equals psi(r)*5793418909 with psi(r) = sqrt(2g/(g-1)*(r^(2/g) - r^((g+1)/g))), g = 1.4 (ratio of specific heats of air), relative residual < 1e-7; r = 1 gives 0 and the code clamps r at 0.53 = critical pressure ratio for g = 1.4.  So psi = x/5793418909 (dimensionless).",
   "description": "",
   "data": {
-   "units": "raw",
-   "expr": "x",
-   "to_byte": "x",
-   "format": "0"
+   "units": "psi",
+   "expr": "x/5793418909",
+   "to_byte": "x*5793418909",
+   "format": "0.0000"
   },
   "axes": {
    "0": {

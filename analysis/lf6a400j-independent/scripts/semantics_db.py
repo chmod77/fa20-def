@@ -1661,6 +1661,23 @@ for _d, _n, _o in ((0x2EA54, 'A', '0EE8'), (0x2EA60, 'B (FFFF0587 == 2)', '0EE8'
         ('rpm', 'x*25/128', 'x*128/25', '0'))
 
 
+S.pop(0x2D064, None); AUTO.discard(0x2D064)
+add(0x2D064, 'Primary Open Loop Fueling Offset vs FFFF049B (not selected in this build) [0x8F8C0]', 'Fueling',
+    '0x8F8C0: T(FFFF049B) is added to T_02D03C / T_02D028 (Primary Open Loop Fueling, lambda = 256/(256+x), i.e. extra fuel = x/256) '
+    'before the result is stored to FFFF0400; an additive term of x has the same unit, so extra fuel % = x*100/256.  The sum is only '
+    'selected when param_3 != 0, and the only caller (0x888C0) passes the constant 0.', ('% fuel', 'x*100/256', 'x*256/100', '0.0'))
+
+
+# T_02ECEC data = psi(r) * 5793418909 exactly (gamma = 1.4, relative residual < 1e-7 at all 15 interior points), psi = compressible
+# isentropic flow function sqrt(2g/(g-1)*(r^(2/g) - r^((g+1)/g))); the code clamps r at 0.53 (critical ratio for g = 1.4).
+_ev = S[0x2ECEC]['evidence']; _ax = S[0x2ECEC].get('axes')
+S.pop(0x2ECEC, None)
+add(0x2ECEC, 'Throttle Flow Function psi(Pressure Ratio)', 'Airflow - Throttle Model',
+    _ev + '  Data check: every point equals psi(r)*5793418909 with psi(r) = sqrt(2g/(g-1)*(r^(2/g) - r^((g+1)/g))), g = 1.4 (ratio of '
+    'specific heats of air), relative residual < 1e-7; r = 1 gives 0 and the code clamps r at 0.53 = critical pressure ratio for g = 1.4.  '
+    'So psi = x/5793418909 (dimensionless).', ('psi', 'x/5793418909', 'x*5793418909', '0.0000'), axes=_ax)
+
+
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
     print(len(S), 'entries')

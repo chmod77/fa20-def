@@ -88,3 +88,18 @@ for k,v in R.items():
     if m:
         t=int(m.group(3),16)
         if E.get(t): print(k,m.group(2),hex(t),[hex(x[0]) for x in E[t]][:5])
+print('=== static -> output param candidates')
+for k,v in R.items():
+    if S.get(k,{}).get('status')=='identified': continue
+    m=re.match(r'0x([0-9A-F]+): stored to (FFF[EF][0-9A-F]{4})',str(v))
+    if not m: continue
+    fn=m.group(1).lower().zfill(8); st=m.group(2).lower()
+    s=src.get(fn,'')
+    for c in re.finditer(r'\*param_(\d+)\s*=\s*(?:\(\w+\)\s*)?_?DAT_'+st+r'\s*;',s):
+        n=int(c.group(1))
+        for cr,args in CA.get(fn,[]):
+            if cr==fn: continue
+            am=argmap(fn,cr,args)
+            if n in am and am[n][0]=='p':
+                t=am[n][1]
+                print(k,fn,st,'->',hex(t),(unit[t][0],unit[t][2]) if t in unit else '-', ('known' if t in known else ('via '+hex(why[t][0])+' '+why[t][1]) if t in why else ''))
