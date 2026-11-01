@@ -1497,6 +1497,37 @@ add(0x2E74C, 'State 3 Time Limit (vs param_24) [0xBEEA8]', 'Timers',
     ('s', 'x*0.01', 'x/0.01', '0.00'))
 
 
+# 0xB7C24 (from 0xB7370): FFFF0DF2 = min(max(FFFF0DF4, T_02E448(0DEC)), T_02E454(0DEC)); 0DF2 is the alternative A/F Correction #3 target.
+for _d, _n in ((0x2E448, 'Target Lambda (alternative) Lower Limit'), (0x2E454, 'Target Lambda (alternative) Upper Limit')):
+    S.pop(_d, None); AUTO.discard(_d)
+    add(_d, _n + ' [0xB7C24]', 'Fueling',
+        '0xB7C24: FFFF0DF2 = min(max(FFFF0DF4, T_02E448), T_02E454) (axis FFFF0DEC). 0xB5D28 (call 0xB44E2 from 0xB42AC, stack arg 5 = r12+28 = '
+        '0x0DA6+0x1C) writes A/F Correction #3 FFFF0DC2 = 0DF2 when FFFF06CE.3 and the calibration byte at 0xD698 are set, otherwise '
+        'clamp(0DBA + 0DEA) with 0DBA = target lambda*43194 (= AFR*65536/22, 0xB5B38).  SSM 0xD0 (0xD0B44) reports 0DC2 as % from '
+        'AFR 14.7 (zero at 0x5587*2 = 43790 = 14.7*65536/22), confirming the unit.', ('lambda', 'x/43194', 'x*43194', '0.000'))
+
+
+# 0xB6FBC (from 0xB7370): FFFF0DE2 (param_4) = bias + FFFEC7CA; FFFEC7CA = FFFEC7CE + T_02E43C (step up, after counter FFFEC7CC > 99) or
+# - T_02E430 (step down, after FFFEC7D0 > 99).  0DE2 is a term of 0DEA = 0DE0 + 0DE2 + 38F8 + 0F82 (0xB7248), a target lambda offset
+# (x/43194) added to target lambda 0DBA to form A/F Correction #3 0DC2 (0xB5D28).  Cross-check: 0xB7C74 sets 0DF4 = 0xAB0E = 43790 =
+# AFR 14.7 in the same AFR*65536/22 unit.
+for _d, _n in ((0x2E43C, 'Target Lambda Offset Step Up'), (0x2E430, 'Target Lambda Offset Step Down')):
+    S.pop(_d, None); AUTO.discard(_d)
+    add(_d, _n + ' [0xB6FBC]', 'Fueling',
+        '0xB6FBC: FFFEC7D8 = FFFEC7CE + T_02E43C or FFFEC7CE - T_02E430; FFFF0DE2 = bias (-0x37E / +0x12A) + FFFEC7CA (= FFFEC7D8). '
+        '0xB7248: FFFF0DEA = 0DE0 + 0DE2 + 38F8 + 0F82; 0xB5D28: A/F Correction #3 FFFF0DC2 = target lambda 0DBA (lambda*43194, 0xB5B38) '
+        '+ 0DEA, SSM 0xD0.  So the steps are target-lambda offsets, lambda = x/43194.', ('lambda', 'x/43194', 'x*43194', '0.0000'))
+
+
+# 0xD43AC (from 0xD4220): sVar4 = T_02ED74(FFFF064F) (0 when FFFFAB40.5 is set or param_4 == 0) -> FFFECE48 (held, only values <= 0)
+# -> FFFF0F82 (param_9, ramped back by +0x3C per execution); 0F82 is a term of 0DEA = 0DE0 + 0DE2 + 38F8 + 0F82 (0xB7248).
+S.pop(0x2ED74, None); AUTO.discard(0x2ED74)
+add(0x2ED74, 'Target Lambda Offset (vs FFFF064F) [0xD43AC]', 'Fueling',
+    '0xD43AC: T(FFFF064F) -> FFFECE48 (kept only when <= 0) -> FFFF0F82 (param_9; recovers by 0x3C per execution).  0xB7248: FFFF0DEA = '
+    '0DE0 + 0DE2 + 38F8 + 0F82; 0xB5D28: A/F Correction #3 FFFF0DC2 = target lambda 0DBA (lambda*43194) + 0DEA (SSM 0xD0).  '
+    'So T is a target-lambda offset, lambda = x/43194.', ('lambda', 'x/43194', 'x*43194', '0.0000'))
+
+
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
     print(len(S), 'entries')

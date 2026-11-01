@@ -6505,6 +6505,58 @@
    "format": "0.00"
   }
  },
+ "0x2E430": {
+  "status": "identified",
+  "name": "Target Lambda Offset Step Down [0xB6FBC]",
+  "category": "Fueling",
+  "evidence": "0xB6FBC: FFFEC7D8 = FFFEC7CE + T_02E43C or FFFEC7CE - T_02E430; FFFF0DE2 = bias (-0x37E / +0x12A) + FFFEC7CA (= FFFEC7D8). 0xB7248: FFFF0DEA = 0DE0 + 0DE2 + 38F8 + 0F82; 0xB5D28: A/F Correction #3 FFFF0DC2 = target lambda 0DBA (lambda*43194, 0xB5B38) + 0DEA, SSM 0xD0.  So the steps are target-lambda offsets, lambda = x/43194.",
+  "description": "",
+  "data": {
+   "units": "lambda",
+   "expr": "x/43194",
+   "to_byte": "x*43194",
+   "format": "0.0000"
+  }
+ },
+ "0x2E43C": {
+  "status": "identified",
+  "name": "Target Lambda Offset Step Up [0xB6FBC]",
+  "category": "Fueling",
+  "evidence": "0xB6FBC: FFFEC7D8 = FFFEC7CE + T_02E43C or FFFEC7CE - T_02E430; FFFF0DE2 = bias (-0x37E / +0x12A) + FFFEC7CA (= FFFEC7D8). 0xB7248: FFFF0DEA = 0DE0 + 0DE2 + 38F8 + 0F82; 0xB5D28: A/F Correction #3 FFFF0DC2 = target lambda 0DBA (lambda*43194, 0xB5B38) + 0DEA, SSM 0xD0.  So the steps are target-lambda offsets, lambda = x/43194.",
+  "description": "",
+  "data": {
+   "units": "lambda",
+   "expr": "x/43194",
+   "to_byte": "x*43194",
+   "format": "0.0000"
+  }
+ },
+ "0x2E448": {
+  "status": "identified",
+  "name": "Target Lambda (alternative) Lower Limit [0xB7C24]",
+  "category": "Fueling",
+  "evidence": "0xB7C24: FFFF0DF2 = min(max(FFFF0DF4, T_02E448), T_02E454) (axis FFFF0DEC). 0xB5D28 (call 0xB44E2 from 0xB42AC, stack arg 5 = r12+28 = 0x0DA6+0x1C) writes A/F Correction #3 FFFF0DC2 = 0DF2 when FFFF06CE.3 and the calibration byte at 0xD698 are set, otherwise clamp(0DBA + 0DEA) with 0DBA = target lambda*43194 (= AFR*65536/22, 0xB5B38).  SSM 0xD0 (0xD0B44) reports 0DC2 as % from AFR 14.7 (zero at 0x5587*2 = 43790 = 14.7*65536/22), confirming the unit.",
+  "description": "",
+  "data": {
+   "units": "lambda",
+   "expr": "x/43194",
+   "to_byte": "x*43194",
+   "format": "0.000"
+  }
+ },
+ "0x2E454": {
+  "status": "identified",
+  "name": "Target Lambda (alternative) Upper Limit [0xB7C24]",
+  "category": "Fueling",
+  "evidence": "0xB7C24: FFFF0DF2 = min(max(FFFF0DF4, T_02E448), T_02E454) (axis FFFF0DEC). 0xB5D28 (call 0xB44E2 from 0xB42AC, stack arg 5 = r12+28 = 0x0DA6+0x1C) writes A/F Correction #3 FFFF0DC2 = 0DF2 when FFFF06CE.3 and the calibration byte at 0xD698 are set, otherwise clamp(0DBA + 0DEA) with 0DBA = target lambda*43194 (= AFR*65536/22, 0xB5B38).  SSM 0xD0 (0xD0B44) reports 0DC2 as % from AFR 14.7 (zero at 0x5587*2 = 43790 = 14.7*65536/22), confirming the unit.",
+  "description": "",
+  "data": {
+   "units": "lambda",
+   "expr": "x/43194",
+   "to_byte": "x*43194",
+   "format": "0.000"
+  }
+ },
  "0x2E588": {
   "status": "identified",
   "name": "Wastegate Duty Initial",
@@ -7501,6 +7553,19 @@
    "expr": "x*100/65280",
    "to_byte": "x*65280/100",
    "format": "0.00"
+  }
+ },
+ "0x2ED74": {
+  "status": "identified",
+  "name": "Target Lambda Offset (vs FFFF064F) [0xD43AC]",
+  "category": "Fueling",
+  "evidence": "0xD43AC: T(FFFF064F) -> FFFECE48 (kept only when <= 0) -> FFFF0F82 (param_9; recovers by 0x3C per execution).  0xB7248: FFFF0DEA = 0DE0 + 0DE2 + 38F8 + 0F82; 0xB5D28: A/F Correction #3 FFFF0DC2 = target lambda 0DBA (lambda*43194) + 0DEA (SSM 0xD0).  So T is a target-lambda offset, lambda = x/43194.",
+  "description": "",
+  "data": {
+   "units": "lambda",
+   "expr": "x/43194",
+   "to_byte": "x*43194",
+   "format": "0.0000"
   }
  },
  "0x2EDE8": {

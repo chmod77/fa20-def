@@ -367,3 +367,18 @@ V2.update({
  0xFFFF29C8:('Throttle Opening Change (5 samples, +128)','%','(x-128)*0.4','x/0.4+128','0x3B712: clamp0..255(FFFF29B7 - FFFF29BC + 0x80)'),
  0xFFFF29C4:('Throttle Opening Change (4 samples, +128, word)','%','(x-32768)*0.4/256','x*256/0.4+32768','0x3B712: FFFF29C3 << 8'),
 })
+V2.update({
+ 0xFFFF0D80:('A/F Learning #3 (target lambda)','lambda','x/43194','x*43194','SSM 0xD1 via 0xD0B8C: byte = ((x<<15)/0xA8BA - 0x8000)>>8 - 0x80, i.e. x/43194 = 1.0 at 0x80 offset; 0xB3260: 0D80 = 0DBA + 38F8 (lambda*43194)'),
+ 0xFFFF0DC2:('A/F Correction #3 (target lambda incl. offset)','lambda','x/43194','x*43194','0xB44E2: 0xB5D28 writes r12+28 = 0x0DA6+0x1C = 0DC2 = clamp(0DBA + 0DEA) (0DBA = lambda*43194 = AFR*65536/22); SSM 0xD0 via 0xD0B44 byte = ((x>>1)-0x5587)*0x3BDD>>18 + 0x40 is % deviation from AFR 14.7 (0x5587*2 = 43790 = 14.7*65536/22)'),
+ 0xFFFEEEB4:('EGR Steps','steps','x','x','SSM 0x39 via 0xD088C (steps = x)'),
+})
+V2.update({
+ 0xFFFF0DEA:('Target Lambda Offset (0DEA)','lambda offset','x/43194','x*43194','0xB5D28 (call 0xB44E2): A/F Correction #3 0DC2 = 0DBA + (signed) 0DEA, 0DBA = lambda*43194'),
+})
+V2.update({
+ 0xFFFF0DE0:('Target Lambda Offset Term 0DE0','lambda offset','x/43194','x*43194','0xB7248: 0DEA = 0DE0 + 0DE2 + 38F8 + 0F82 (sum with the proven offset 38F8)'),
+ 0xFFFF0DE2:('Target Lambda Offset Term 0DE2','lambda offset','x/43194','x*43194','0xB7248: 0DEA = 0DE0 + 0DE2 + 38F8 + 0F82'),
+ 0xFFFF0F82:('Target Lambda Offset Term 0F82','lambda offset','x/43194','x*43194','0xB7248: 0DEA = 0DE0 + 0DE2 + 38F8 + 0F82'),
+ 0xFFFF0DF2:('Target Lambda (alternative, 0DF2)','lambda','x/43194','x*43194','0xB5D28: A/F Correction #3 0DC2 = 0DF2 (param_4 via @(8,0DEA)) when FFFF06CE.3 and calibration byte 0xD698 are set, else 0DBA + 0DEA'),
+ 0xFFFF0DF4:('Target Lambda (alternative, unclamped, 0DF4)','lambda','x/43194','x*43194','0xB7C24: 0DF2 = min(max(0DF4, T_02E448), T_02E454)'),
+})

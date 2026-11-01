@@ -10,6 +10,8 @@ descriptor	function	var	var_name	units	expr	context
 02DF30	000ac870	FFFEEEDE	Coolant Temperature (filtered, word)	C	x*5/2048-40	(uVar6 & 0xffff) <= (param_3 & 0xffff)
 02E400	000b6078	FFFEEF10	Time Since FFFEEEC1.0 Cleared	s	x*0.01	((uVar1 & 0xffff) <= (param_4 & 0xffff)
 02E418	000b6258	FFFF03A0	Engine Load	%	x	((uVar4 & 0xff) <= (param_11 & 0xff)
+02E448	000b7c24	FFFF0DF4	Target Lambda (alternative, unclamped, 0DF4)	lambda	x/43194	((param_2 & 0xffff) <= (uVar1 & 0xffff)
+02E454	000b7c24	FFFF0DF4	Target Lambda (alternative, unclamped, 0DF4)	lambda	x/43194	((param_2 & 0xffff) < (uVar2 & 0xffff)
 02E734	000beea8	FFFF03D7	Required Torque Efficiency	ratio	x/256	((param_8 & 0xff) < (uVar7 & 0xff)
 02E7BC	000c0150	FFFEED16	Fuel Rail Pressure (gauge)	kPa	x*639630/1048576	(param_3 & 0xffff) < (uVar3 & 0xffff)
 02E924	000c34cc	FFFEEEF8	Accelerator Pedal Angle	%	x*100/65280	((param_3 & 0xffff) < (uVar1 & 0xffff)
