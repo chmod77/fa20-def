@@ -1489,6 +1489,14 @@ for _d, _n in ((0x2C1DC, 'Throttle Opening Threshold Base (vs RPM)'), (0x2C1E8, 
     add(_d, _n + ' [0x7F96C]', 'Throttle', _E7F9, ('%', 'x*0.4', 'x/0.4', '0.0'))
 
 
+# 0xBEEA8 (10 ms, see T_02E758): FFFEC924 = 0 unless param_11 == 3, then +1 per execution saturating 0xFFFF (only writer).
+S.pop(0x2E74C, None); AUTO.discard(0x2E74C)
+add(0x2E74C, 'State 3 Time Limit (vs param_24) [0xBEEA8]', 'Timers',
+    '0xBEEA8: in state param_11 == 3 the counter FFFEC924 (+1 per execution saturating at 0xFFFF, cleared in every other state; only '
+    'writer) is compared with T (FFFEC924 < T keeps state 3, else state 4).  ' + _PEREV['00152a40'] + ' (0xBEEA8 period as for T_02E758).',
+    ('s', 'x*0.01', 'x/0.01', '0.00'))
+
+
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
     print(len(S), 'entries')

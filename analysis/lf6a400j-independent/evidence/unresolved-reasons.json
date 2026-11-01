@@ -123,7 +123,6 @@
  "0x2E71C": "0xBEEA8: compared with table T_02E758 (unit not proven)",
  "0x2E728": "0xBEEA8: compared with local param_34 (unit not proven)",
  "0x2E740": "0xBEEA8: compared with table T_02E71C (unit not proven)",
- "0x2E74C": "0xBEEA8: compared with table T_02E71C (unit not proven)",
  "0xCC2E": "0xA33A4: lookup result not used in a resolvable form",
  "0x2E780": "0xBF8F8: stored to FFFEC938 (unit not proven)",
  "0x2E76C": "0xBF8F8: stored to FFFEC938 (unit not proven)",

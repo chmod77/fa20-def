@@ -6776,6 +6776,19 @@
    "format": "0.00"
   }
  },
+ "0x2E74C": {
+  "status": "identified",
+  "name": "State 3 Time Limit (vs param_24) [0xBEEA8]",
+  "category": "Timers",
+  "evidence": "0xBEEA8: in state param_11 == 3 the counter FFFEC924 (+1 per execution saturating at 0xFFFF, cleared in every other state; only writer) is compared with T (FFFEC924 < T keeps state 3, else state 4).  task 0x152A40 = 10 ms (OS: TCB 0x169768 + 16*id; startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 4 -> task 8 (0x1517A4 -> 0x152A40) cycle 10, alarm 6 -> task 9 (0x1517D2 -> 0x15307C) cycle 20, alarm 7 -> task 10 (0x1517FA -> 0x153248) cycle 40, alarm 2 -> task 4 (-> 0x1528A2) cycle 4, alarm 1 -> task 3 (-> 0x152882) cycle 2; 0x153248 = 40 ms (OBD PID 0x1F/0x4E) -> 1 ms tick; 0x49E70 called unconditionally at 0x152BC6) (0xBEEA8 period as for T_02E758).",
+  "description": "",
+  "data": {
+   "units": "s",
+   "expr": "x*0.01",
+   "to_byte": "x/0.01",
+   "format": "0.00"
+  }
+ },
  "0x2E758": {
   "status": "identified",
   "name": "Time Threshold [0xBEEA8]",
