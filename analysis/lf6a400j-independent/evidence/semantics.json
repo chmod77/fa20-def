@@ -692,6 +692,32 @@
    }
   }
  },
+ "0x2C1DC": {
+  "status": "identified",
+  "name": "Throttle Opening Threshold Base (vs RPM) [0x7F96C]",
+  "category": "Throttle",
+  "evidence": "0x7F96C: threshold = T_02C1DC(Engine Speed) + T_02C1E8(Atmospheric Pressure) (- 4 when FFFEBA8D is set) is compared with FFFF29B4 >> 2 (throttle opening, FFFF29B4 in 0.1 % derived from Main Throttle Sensor FFFF00B8 / OBD PID 11, so 0.4 % per bit); above it the timer FFFEBA8A runs against T_02C1D0.  Both summands are in the threshold unit.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*0.4",
+   "to_byte": "x/0.4",
+   "format": "0.0"
+  }
+ },
+ "0x2C1E8": {
+  "status": "identified",
+  "name": "Throttle Opening Threshold Adder (vs Atmospheric Pressure) [0x7F96C]",
+  "category": "Throttle",
+  "evidence": "0x7F96C: threshold = T_02C1DC(Engine Speed) + T_02C1E8(Atmospheric Pressure) (- 4 when FFFEBA8D is set) is compared with FFFF29B4 >> 2 (throttle opening, FFFF29B4 in 0.1 % derived from Main Throttle Sensor FFFF00B8 / OBD PID 11, so 0.4 % per bit); above it the timer FFFEBA8A runs against T_02C1D0.  Both summands are in the threshold unit.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*0.4",
+   "to_byte": "x/0.4",
+   "format": "0.0"
+  }
+ },
  "0x2C20C": {
   "status": "identified",
   "name": "Staged Timer Threshold vs Vehicle Speed [0x7FB7C]",
@@ -7124,6 +7150,19 @@
    "format": "0.00"
   }
  },
+ "0x2EBE4": {
+  "status": "identified",
+  "name": "Throttle Opening Threshold (3-sample change, FFFF05BA.7 = 1) [0xCEF4C]",
+  "category": "Throttle",
+  "evidence": "0xCEF4C: uVar17 = FFFF29B7 - FFFF29BA (throttle opening change over 3 samples of the 0x3B712 shift register, 0.4 % per bit; FFFF29B7 = sat8(FFFF29B4 >> 2), FFFF29B4 = throttle opening above the learned closed position in 0.1 % derived from the Main Throttle Sensor FFFF00B8, OBD PID 11).  Opening change bVar12 = uVar17 (when >= 0) is compared with T (bVar12 < T); axis param_5 = FFFF0F4C.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*0.4",
+   "to_byte": "x/0.4",
+   "format": "0.0"
+  }
+ },
  "0x2EBF0": {
   "status": "identified",
   "name": "MAP Transient Rise Hysteresis (A: FFFEEF76.6=0)",
@@ -7290,6 +7329,32 @@
     "expr": "x/256",
     "to_byte": "x*256"
    }
+  }
+ },
+ "0x2EC50": {
+  "status": "identified",
+  "name": "Throttle Closing Threshold (3-sample change, vs MAP) [0xCEF4C]",
+  "category": "Throttle",
+  "evidence": "0xCEF4C: uVar17 = FFFF29B7 - FFFF29BA (throttle opening change over 3 samples of the 0x3B712 shift register, 0.4 % per bit; FFFF29B7 = sat8(FFFF29B4 >> 2), FFFF29B4 = throttle opening above the learned closed position in 0.1 % derived from the Main Throttle Sensor FFFF00B8, OBD PID 11).  Closing magnitude uVar11 = -uVar17 is compared with (byte)T: (uVar11 < T) is part of the end condition; T also goes to *param_14.",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*0.4",
+   "to_byte": "x/0.4",
+   "format": "0.0"
+  }
+ },
+ "0x2EC5C": {
+  "status": "identified",
+  "name": "Throttle Opening Threshold (3-sample change, vs MAP, FFFF05BA.7 = 0) [0xCEF4C]",
+  "category": "Throttle",
+  "evidence": "0xCEF4C: uVar17 = FFFF29B7 - FFFF29BA (throttle opening change over 3 samples of the 0x3B712 shift register, 0.4 % per bit; FFFF29B7 = sat8(FFFF29B4 >> 2), FFFF29B4 = throttle opening above the learned closed position in 0.1 % derived from the Main Throttle Sensor FFFF00B8, OBD PID 11).  Opening change bVar12 = uVar17 (when >= 0) is compared with T (bVar12 < T).",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*0.4",
+   "to_byte": "x/0.4",
+   "format": "0.0"
   }
  },
  "0x2EC68": {
@@ -9647,6 +9712,97 @@
    "units": "s",
    "expr": "x*0.02",
    "to_byte": "x/0.02",
+   "format": "0.00"
+  }
+ },
+ "0x2FE64": {
+  "status": "identified",
+  "name": "Pedal Ramp-Up Step per 10 ms (mode 0) [0x11FF90]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x11FF90: FFFEE160 = rate-limited pedal angle (set to Accelerator Pedal Angle FFFEF406 when FFFEF406 <= the limited value or no mode is active; only writer).  Modes: FFFF0935.7 with FFFF0933 = 0 (step T_02FE64, capped by a computed rate), = 1 (step T_02FE94, upper limit T_02FEA0), = 2..4 (step T_02FE88); FFFF0934.0 (ramp down by T_02FE70, lower limit T_02FE7C, max 0x6666).  One step per execution: task 0x152A40 = 10 ms (OS: TCB 0x169768 + 16*id; startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 4 -> task 8 (0x1517A4 -> 0x152A40) cycle 10, alarm 6 -> task 9 (0x1517D2 -> 0x15307C) cycle 20, alarm 7 -> task 10 (0x1517FA -> 0x153248) cycle 40, alarm 2 -> task 4 (-> 0x1528A2) cycle 4, alarm 1 -> task 3 (-> 0x152882) cycle 2; 0x153248 = 40 ms (OBD PID 0x1F/0x4E) -> 1 ms tick; 0x49E70 called unconditionally at 0x152BC6) (0x11FF90 reached only from it, via 0x11F134).",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/65280",
+   "to_byte": "x*65280/100",
+   "format": "0.00"
+  }
+ },
+ "0x2FE70": {
+  "status": "identified",
+  "name": "Pedal Ramp-Down Step per 10 ms [0x11FF90]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x11FF90: FFFEE160 = rate-limited pedal angle (set to Accelerator Pedal Angle FFFEF406 when FFFEF406 <= the limited value or no mode is active; only writer).  Modes: FFFF0935.7 with FFFF0933 = 0 (step T_02FE64, capped by a computed rate), = 1 (step T_02FE94, upper limit T_02FEA0), = 2..4 (step T_02FE88); FFFF0934.0 (ramp down by T_02FE70, lower limit T_02FE7C, max 0x6666).  One step per execution: task 0x152A40 = 10 ms (OS: TCB 0x169768 + 16*id; startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 4 -> task 8 (0x1517A4 -> 0x152A40) cycle 10, alarm 6 -> task 9 (0x1517D2 -> 0x15307C) cycle 20, alarm 7 -> task 10 (0x1517FA -> 0x153248) cycle 40, alarm 2 -> task 4 (-> 0x1528A2) cycle 4, alarm 1 -> task 3 (-> 0x152882) cycle 2; 0x153248 = 40 ms (OBD PID 0x1F/0x4E) -> 1 ms tick; 0x49E70 called unconditionally at 0x152BC6) (0x11FF90 reached only from it, via 0x11F134).",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/65280",
+   "to_byte": "x*65280/100",
+   "format": "0.00"
+  }
+ },
+ "0x2FE7C": {
+  "status": "identified",
+  "name": "Pedal Ramp-Down Lower Limit [0x11FF90]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x11FF90: FFFEE160 = rate-limited pedal angle (set to Accelerator Pedal Angle FFFEF406 when FFFEF406 <= the limited value or no mode is active; only writer).  Modes: FFFF0935.7 with FFFF0933 = 0 (step T_02FE64, capped by a computed rate), = 1 (step T_02FE94, upper limit T_02FEA0), = 2..4 (step T_02FE88); FFFF0934.0 (ramp down by T_02FE70, lower limit T_02FE7C, max 0x6666).  One step per execution: task 0x152A40 = 10 ms (OS: TCB 0x169768 + 16*id; startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 4 -> task 8 (0x1517A4 -> 0x152A40) cycle 10, alarm 6 -> task 9 (0x1517D2 -> 0x15307C) cycle 20, alarm 7 -> task 10 (0x1517FA -> 0x153248) cycle 40, alarm 2 -> task 4 (-> 0x1528A2) cycle 4, alarm 1 -> task 3 (-> 0x152882) cycle 2; 0x153248 = 40 ms (OBD PID 0x1F/0x4E) -> 1 ms tick; 0x49E70 called unconditionally at 0x152BC6) (0x11FF90 reached only from it, via 0x11F134).",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/65280",
+   "to_byte": "x*65280/100",
+   "format": "0.00"
+  }
+ },
+ "0x2FE88": {
+  "status": "identified",
+  "name": "Pedal Ramp-Up Step per 10 ms (modes 2-4) [0x11FF90]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x11FF90: FFFEE160 = rate-limited pedal angle (set to Accelerator Pedal Angle FFFEF406 when FFFEF406 <= the limited value or no mode is active; only writer).  Modes: FFFF0935.7 with FFFF0933 = 0 (step T_02FE64, capped by a computed rate), = 1 (step T_02FE94, upper limit T_02FEA0), = 2..4 (step T_02FE88); FFFF0934.0 (ramp down by T_02FE70, lower limit T_02FE7C, max 0x6666).  One step per execution: task 0x152A40 = 10 ms (OS: TCB 0x169768 + 16*id; startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 4 -> task 8 (0x1517A4 -> 0x152A40) cycle 10, alarm 6 -> task 9 (0x1517D2 -> 0x15307C) cycle 20, alarm 7 -> task 10 (0x1517FA -> 0x153248) cycle 40, alarm 2 -> task 4 (-> 0x1528A2) cycle 4, alarm 1 -> task 3 (-> 0x152882) cycle 2; 0x153248 = 40 ms (OBD PID 0x1F/0x4E) -> 1 ms tick; 0x49E70 called unconditionally at 0x152BC6) (0x11FF90 reached only from it, via 0x11F134).",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/65280",
+   "to_byte": "x*65280/100",
+   "format": "0.00"
+  }
+ },
+ "0x2FE94": {
+  "status": "identified",
+  "name": "Pedal Ramp-Up Step per 10 ms (mode 1) [0x11FF90]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x11FF90: FFFEE160 = rate-limited pedal angle (set to Accelerator Pedal Angle FFFEF406 when FFFEF406 <= the limited value or no mode is active; only writer).  Modes: FFFF0935.7 with FFFF0933 = 0 (step T_02FE64, capped by a computed rate), = 1 (step T_02FE94, upper limit T_02FEA0), = 2..4 (step T_02FE88); FFFF0934.0 (ramp down by T_02FE70, lower limit T_02FE7C, max 0x6666).  One step per execution: task 0x152A40 = 10 ms (OS: TCB 0x169768 + 16*id; startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 4 -> task 8 (0x1517A4 -> 0x152A40) cycle 10, alarm 6 -> task 9 (0x1517D2 -> 0x15307C) cycle 20, alarm 7 -> task 10 (0x1517FA -> 0x153248) cycle 40, alarm 2 -> task 4 (-> 0x1528A2) cycle 4, alarm 1 -> task 3 (-> 0x152882) cycle 2; 0x153248 = 40 ms (OBD PID 0x1F/0x4E) -> 1 ms tick; 0x49E70 called unconditionally at 0x152BC6) (0x11FF90 reached only from it, via 0x11F134).",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/65280",
+   "to_byte": "x*65280/100",
+   "format": "0.00"
+  }
+ },
+ "0x2FEA0": {
+  "status": "identified",
+  "name": "Pedal Ramp-Up Upper Limit (mode 1) [0x11FF90]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x11FF90: FFFEE160 = rate-limited pedal angle (set to Accelerator Pedal Angle FFFEF406 when FFFEF406 <= the limited value or no mode is active; only writer).  Modes: FFFF0935.7 with FFFF0933 = 0 (step T_02FE64, capped by a computed rate), = 1 (step T_02FE94, upper limit T_02FEA0), = 2..4 (step T_02FE88); FFFF0934.0 (ramp down by T_02FE70, lower limit T_02FE7C, max 0x6666).  One step per execution: task 0x152A40 = 10 ms (OS: TCB 0x169768 + 16*id; startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 4 -> task 8 (0x1517A4 -> 0x152A40) cycle 10, alarm 6 -> task 9 (0x1517D2 -> 0x15307C) cycle 20, alarm 7 -> task 10 (0x1517FA -> 0x153248) cycle 40, alarm 2 -> task 4 (-> 0x1528A2) cycle 4, alarm 1 -> task 3 (-> 0x152882) cycle 2; 0x153248 = 40 ms (OBD PID 0x1F/0x4E) -> 1 ms tick; 0x49E70 called unconditionally at 0x152BC6) (0x11FF90 reached only from it, via 0x11F134).",
+  "description": "",
+  "data": {
+   "units": "%",
+   "expr": "x*100/65280",
+   "to_byte": "x*65280/100",
+   "format": "0.00"
+  }
+ },
+ "0x2FEAC": {
+  "status": "identified",
+  "name": "Manifold Vacuum Upper Threshold (vs Atmospheric Pressure) [0x1201D8]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x1201D8: uVar6 = Atmospheric FFFEE6AA - MAP FFFEEECE (kPa x/256); bVar1 (filter FFFF19F2 of the vacuum active) needs FFFEE16A < uVar6 and FFFEE16A < T(Atmospheric Pressure).  FFFEE16A is compared with the vacuum, so it and T are kPa = x/256.",
+  "description": "",
+  "data": {
+   "units": "kPa",
+   "expr": "x/256",
+   "to_byte": "x*256",
    "format": "0.00"
   }
  },

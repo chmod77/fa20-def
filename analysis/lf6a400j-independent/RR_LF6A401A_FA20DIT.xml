@@ -9,9 +9,9 @@
       <make>Subaru</make>
       <model>Forester SJ (FA20 DIT)</model>
     </romid>
-    <table type="2D" name="Unidentified 16 [D02C1DC] (Engine Speed) - unresolved: lookup result not used in a resolvable form" category="Unidentified - Task 0x7F8B8" storageaddress="80EC" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2C1DC. UNRESOLVED (locked): 0x7F96C: lookup result not used in a resolvable form. Function/output scaling not yet proven from the binary." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="80CC" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Throttle Opening Threshold Base (vs RPM) [0x7F96C]" category="Throttle" storageaddress="80EC" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2C1DC. Evidence: 0x7F96C: threshold = T_02C1DC(Engine Speed) + T_02C1E8(Atmospheric Pressure) (- 4 when FFFEBA8D is set) is compared with FFFF29B4 &gt;&gt; 2 (throttle opening, FFFF29B4 in 0.1 % derived from Main Throttle Sensor FFFF00B8 / OBD PID 11, so 0.4 % per bit); above it the timer FFFEBA8A runs against T_02C1D0.  Both summands are in the threshold unit." sizey="16">
+      <scaling units="%" expression="x*0.4" to_byte="x/0.4" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="80CC" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -515,8 +515,8 @@
     </table>
     <table type="2D" name="Open Loop Fueling Enrichment (input FFFF29B4)" category="Fueling - Open Loop" storageaddress="A57C" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2D094. Evidence: OBD PID44 (0x10C32C) commanded lambda = 256/(256 + FFFF0B84 + FFFF0401 + FFFF0B42); 0x8F9C0: candidate in max() for FFFF0401 when FFFF0B30 &gt;= FFFF0B40; input FFFF29B4 = FFFF02C4-10 (0x69F44), physical meaning unresolved. Lookup result stored to: FFFF03F3." sizey="16">
       <scaling units="lambda" expression="256/(256+x)" to_byte="256/x-256" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF29B4)" storageaddress="A52C" elements="16" storagetype="uint16" endian="big">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Throttle Opening (0.1 %)" storageaddress="A52C" elements="16" storagetype="uint16" endian="big">
+        <scaling units="%" expression="x/10" to_byte="x*10" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
     <table type="2D" name="Unidentified 16 [D02D348] (Engine Speed) - unresolved: lookup result not used in a resolvable form" category="Unidentified - Fueling - Open Loop &amp; Enrichment" storageaddress="A5D6" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2D348. UNRESOLVED (locked): 0x93218: lookup result not used in a resolvable form. Function/output scaling not yet proven from the binary." locked="true" sizey="16">
@@ -2736,9 +2736,9 @@
         <scaling units="C" expression="x-50" to_byte="x+50" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02C1E8] (Atmospheric Pressure) - unresolved: added to table T_02C1DC" category="Unidentified - Task 0x7F8B8" storageaddress="14A58" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2C1E8. UNRESOLVED (locked): 0x7F96C: added to table T_02C1DC (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Atmospheric Pressure" storageaddress="122B4" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Throttle Opening Threshold Adder (vs Atmospheric Pressure) [0x7F96C]" category="Throttle" storageaddress="14A58" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2C1E8. Evidence: 0x7F96C: threshold = T_02C1DC(Engine Speed) + T_02C1E8(Atmospheric Pressure) (- 4 when FFFEBA8D is set) is compared with FFFF29B4 &gt;&gt; 2 (throttle opening, FFFF29B4 in 0.1 % derived from Main Throttle Sensor FFFF00B8 / OBD PID 11, so 0.4 % per bit); above it the timer FFFEBA8A runs against T_02C1D0.  Both summands are in the threshold unit." sizey="16">
+      <scaling units="%" expression="x*0.4" to_byte="x/0.4" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Atmospheric Pressure" storageaddress="122B4" elements="16" storagetype="uint16" endian="big">
         <scaling units="kPa" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -3189,21 +3189,21 @@
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02EBE4] - unresolved: added to local sVar9" category="Unidentified - Airflow Model (Speed Density)" storageaddress="16E10" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2EBE4. UNRESOLVED (locked): 0xCEF4C: added to local sVar9 (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0F4C)" storageaddress="16DF0" elements="16" storagetype="int16" endian="big" locked="true">
+    <table type="2D" name="Throttle Opening Threshold (3-sample change, FFFF05BA.7 = 1) [0xCEF4C]" category="Throttle" storageaddress="16E10" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2EBE4. Evidence: 0xCEF4C: uVar17 = FFFF29B7 - FFFF29BA (throttle opening change over 3 samples of the 0x3B712 shift register, 0.4 % per bit; FFFF29B7 = sat8(FFFF29B4 &gt;&gt; 2), FFFF29B4 = throttle opening above the learned closed position in 0.1 % derived from the Main Throttle Sensor FFFF00B8, OBD PID 11).  Opening change bVar12 = uVar17 (when &gt;= 0) is compared with T (bVar12 &lt; T); axis param_5 = FFFF0F4C." sizey="16">
+      <scaling units="%" expression="x*0.4" to_byte="x/0.4" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF0F4C)" storageaddress="16DF0" elements="16" storagetype="int16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02EC5C] - unresolved: added to local sVar9" category="Unidentified - Airflow Model (Speed Density)" storageaddress="16E40" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2EC5C. UNRESOLVED (locked): 0xCEF4C: added to local sVar9 (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="16E20" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Throttle Opening Threshold (3-sample change, vs MAP, FFFF05BA.7 = 0) [0xCEF4C]" category="Throttle" storageaddress="16E40" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2EC5C. Evidence: 0xCEF4C: uVar17 = FFFF29B7 - FFFF29BA (throttle opening change over 3 samples of the 0x3B712 shift register, 0.4 % per bit; FFFF29B7 = sat8(FFFF29B4 &gt;&gt; 2), FFFF29B4 = throttle opening above the learned closed position in 0.1 % derived from the Main Throttle Sensor FFFF00B8, OBD PID 11).  Opening change bVar12 = uVar17 (when &gt;= 0) is compared with T (bVar12 &lt; T)." sizey="16">
+      <scaling units="%" expression="x*0.4" to_byte="x/0.4" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="16E20" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02EC50] - unresolved: stored to output *param_14 of 0xCEF4C" category="Unidentified - Airflow Model (Speed Density)" storageaddress="16E70" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2EC50. Lookup result stored to: FFFF05B8. UNRESOLVED (locked): 0xCEF4C: stored to output *param_14 of 0xCEF4C (unit of the receiving variable not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="16E50" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Throttle Closing Threshold (3-sample change, vs MAP) [0xCEF4C]" category="Throttle" storageaddress="16E70" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2EC50. Evidence: 0xCEF4C: uVar17 = FFFF29B7 - FFFF29BA (throttle opening change over 3 samples of the 0x3B712 shift register, 0.4 % per bit; FFFF29B7 = sat8(FFFF29B4 &gt;&gt; 2), FFFF29B4 = throttle opening above the learned closed position in 0.1 % derived from the Main Throttle Sensor FFFF00B8, OBD PID 11).  Closing magnitude uVar11 = -uVar17 is compared with (byte)T: (uVar11 &lt; T) is part of the end condition; T also goes to *param_14. Lookup result stored to: FFFF05B8." sizey="16">
+      <scaling units="%" expression="x*0.4" to_byte="x/0.4" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="16E50" elements="16" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -3333,22 +3333,22 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x16 [D02E158] (Engine Speed x ?) - unresolved: stored to output *param_6 of 0xB20C0" category="Unidentified - Task 0xB177C" storageaddress="175BC" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2E158. Lookup result stored to: FFFF04F8. UNRESOLVED (locked): 0xB20C0: stored to output *param_6 of 0xB20C0 (unit of the receiving variable not proven). Function/output scaling not yet proven from the binary." locked="true" sizex="16" sizey="16">
+    <table type="3D" name="Unidentified 16x16 [D02E158] (Engine Speed x Throttle Opening (0.4 %)) - unresolved: stored to output *param_6 of 0xB20C0" category="Unidentified - Task 0xB177C" storageaddress="175BC" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2E158. Lookup result stored to: FFFF04F8. UNRESOLVED (locked): 0xB20C0: stored to output *param_6 of 0xB20C0 (unit of the receiving variable not proven). Function/output scaling not yet proven from the binary." locked="true" sizex="16" sizey="16">
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       <table type="Y Axis" name="Engine Speed" storageaddress="1757C" elements="16" storagetype="uint16" endian="big" locked="true">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2 (RAM 0xFFFF29B7)" storageaddress="175AC" elements="16" storagetype="uint8" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="X Axis" name="Throttle Opening (0.4 %)" storageaddress="175AC" elements="16" storagetype="uint8" endian="big" locked="true">
+        <scaling units="%" expression="x*0.4" to_byte="x/0.4" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 16x16 [D02E16C] (Engine Speed x ?) - unresolved: stored to output *param_6 of 0xB20C0" category="Unidentified - Task 0xB177C" storageaddress="176BC" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2E16C. Lookup result stored to: FFFF04F8. UNRESOLVED (locked): 0xB20C0: stored to output *param_6 of 0xB20C0 (unit of the receiving variable not proven). Function/output scaling not yet proven from the binary." locked="true" sizex="16" sizey="16">
+    <table type="3D" name="Unidentified 16x16 [D02E16C] (Engine Speed x Throttle Opening (0.4 %)) - unresolved: stored to output *param_6 of 0xB20C0" category="Unidentified - Task 0xB177C" storageaddress="176BC" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2E16C. Lookup result stored to: FFFF04F8. UNRESOLVED (locked): 0xB20C0: stored to output *param_6 of 0xB20C0 (unit of the receiving variable not proven). Function/output scaling not yet proven from the binary." locked="true" sizex="16" sizey="16">
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       <table type="Y Axis" name="Engine Speed" storageaddress="1757C" elements="16" storagetype="uint16" endian="big" locked="true">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2 (RAM 0xFFFF29B7)" storageaddress="175AC" elements="16" storagetype="uint8" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="X Axis" name="Throttle Opening (0.4 %)" storageaddress="175AC" elements="16" storagetype="uint8" endian="big" locked="true">
+        <scaling units="%" expression="x*0.4" to_byte="x/0.4" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
     <table type="3D" name="Unidentified 16x16 [D02E130] (Engine Speed x Engine Load) - unresolved: stored to output *param_6 of 0xB20C0" category="Unidentified - Task 0xB177C" storageaddress="177BC" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2E130. Lookup result stored to: FFFF04F8. UNRESOLVED (locked): 0xB20C0: stored to output *param_6 of 0xB20C0 (unit of the receiving variable not proven). Function/output scaling not yet proven from the binary." locked="true" sizex="16" sizey="16">
@@ -4247,8 +4247,8 @@
     </table>
     <table type="2D" name="Start Injection Multiplier vs FFFF29C2 [0xAE058 -&gt; 0D2E]" category="Fuel Injection" storageaddress="1BB2E" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2DF8C. Evidence: 0x92410/0x92700/0x929F0/0x92CE0 (from 0x89A78, p12 = FFFF0D2E): with mode FFFF0541 == 4, injection time FFFF1568.. = 1.25*(0D2E*FFFF0B44*0.0125 + latency FFFF0BC8*0.8) in 0.8 us units, i.e. us = 0D2E*3.2*(0B44/256) + 0BC8*0.8 (0B44/256 = Injector Pulse Multiplier), so 0D2E is a base pulse in 3.2 us units. 0xAE058 (from 0xAEBE8; active when FFFF66B0 == 3, rpm FFFF299C &lt; 0x50 (2000 rpm) and 0541 == 4): 0D2E = min(0xFFFF, min(0xFFFF, min(0xFFFF, b*T_coolant &gt;&gt; 6)*T_rpm &gt;&gt; 7)*T_29C2 &gt;&gt; 7) with b from FFFF2986 (crank period = 2B6C, see PROGRESS.md) and FFFF09CA. Each factor is applied with its own shift and saturated in the 0D2E container, and the neutral values present in the data (T_02DF8C all 128, coolant tables max 64) are 1.0, so the tables are multipliers. Input FFFF29C2 unresolved. Lookup result stored to: FFFEC588." sizey="16">
       <scaling units="multiplier" expression="x/128" to_byte="x*128" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF29C2)" storageaddress="1BAEE" elements="16" storagetype="uint8" endian="big">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
+      <table type="Y Axis" name="Throttle Opening Change (2 samples, +128)" storageaddress="1BAEE" elements="16" storagetype="uint8" endian="big">
+        <scaling units="%" expression="(x-128)*0.4" to_byte="x/0.4+128" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
     <table type="2D" name="Unidentified 4 [D02DFC8] - unresolved: stored to output *param_3 of 0xAE480" category="Unidentified - Task 0xAEBE8" storageaddress="1BB42" storagetype="uint8" endian="big" userlevel="1" description="Descriptor(s): 0x2DFC8. Lookup result stored to: FFFF04E5. UNRESOLVED (locked): 0xAE480: stored to output *param_3 of 0xAE480 (unit of the receiving variable not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="4">
@@ -4449,10 +4449,10 @@
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D02C1A0] - unresolved: stored to output *param_2 of 0x7EF78" category="Unidentified - Task 0x7F1CC" storageaddress="1BE30" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C1A0. Lookup result stored to: FFFF09C2. UNRESOLVED (locked): 0x7EF78: stored to output *param_2 of 0x7EF78 (unit of the receiving variable not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="16">
+    <table type="2D" name="Unidentified 16 [D02C1A0] (Throttle Opening (0.1 %)) - unresolved: stored to output *param_2 of 0x7EF78" category="Unidentified - Task 0x7F1CC" storageaddress="1BE30" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C1A0. Lookup result stored to: FFFF09C2. UNRESOLVED (locked): 0x7EF78: stored to output *param_2 of 0x7EF78 (unit of the receiving variable not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="16">
       <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF29B4)" storageaddress="1BE50" elements="16" storagetype="uint16" endian="big" locked="true">
-        <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Throttle Opening (0.1 %)" storageaddress="1BE50" elements="16" storagetype="uint16" endian="big" locked="true">
+        <scaling units="%" expression="x/10" to_byte="x*10" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
     <table type="2D" name="Unidentified 32 [D02C1C4] - unresolved: enters an expression (uVar3 = (param_2 &amp; 0xffff) * (uVar4 &amp; 0xffff);) " category="Unidentified - Task 0x7F1CC" storageaddress="1BE70" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2C1C4. UNRESOLVED (locked): 0x7F288: enters an expression (uVar3 = (param_2 &amp; 0xffff) * (uVar4 &amp; 0xffff);) whose result is enters an expression (uVar2 = (undefined2)(uVar3 &gt;&gt; 0xf);) whose result is lookup result not used in a resolvable form. Function/output scaling not yet proven from the binary." locked="true" sizey="32">
@@ -6510,45 +6510,45 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="int16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 4 [D02FE64] - unresolved: added to FFFEE160" category="Unidentified - Task 0x152A40" storageaddress="253C0" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FE64. UNRESOLVED (locked): 0x11FF90: added to FFFEE160 (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="4">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF093A)" storageaddress="253A8" elements="4" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Pedal Ramp-Up Step per 10 ms (mode 0) [0x11FF90]" category="Driver Demand / Torque Request" storageaddress="253C0" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FE64. Evidence: 0x11FF90: FFFEE160 = rate-limited pedal angle (set to Accelerator Pedal Angle FFFEF406 when FFFEF406 &lt;= the limited value or no mode is active; only writer).  Modes: FFFF0935.7 with FFFF0933 = 0 (step T_02FE64, capped by a computed rate), = 1 (step T_02FE94, upper limit T_02FEA0), = 2..4 (step T_02FE88); FFFF0934.0 (ramp down by T_02FE70, lower limit T_02FE7C, max 0x6666).  One step per execution: task 0x152A40 = 10 ms (OS: TCB 0x169768 + 16*id; startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 4 -&gt; task 8 (0x1517A4 -&gt; 0x152A40) cycle 10, alarm 6 -&gt; task 9 (0x1517D2 -&gt; 0x15307C) cycle 20, alarm 7 -&gt; task 10 (0x1517FA -&gt; 0x153248) cycle 40, alarm 2 -&gt; task 4 (-&gt; 0x1528A2) cycle 4, alarm 1 -&gt; task 3 (-&gt; 0x152882) cycle 2; 0x153248 = 40 ms (OBD PID 0x1F/0x4E) -&gt; 1 ms tick; 0x49E70 called unconditionally at 0x152BC6) (0x11FF90 reached only from it, via 0x11F134)." sizey="4">
+      <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF093A)" storageaddress="253A8" elements="4" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 4 [D02FE70] - unresolved: compared with FFFEE160" category="Unidentified - Task 0x152A40" storageaddress="253C8" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FE70. UNRESOLVED (locked): 0x11FF90: compared with FFFEE160 (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="4">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF093A)" storageaddress="253AC" elements="4" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Pedal Ramp-Down Step per 10 ms [0x11FF90]" category="Driver Demand / Torque Request" storageaddress="253C8" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FE70. Evidence: 0x11FF90: FFFEE160 = rate-limited pedal angle (set to Accelerator Pedal Angle FFFEF406 when FFFEF406 &lt;= the limited value or no mode is active; only writer).  Modes: FFFF0935.7 with FFFF0933 = 0 (step T_02FE64, capped by a computed rate), = 1 (step T_02FE94, upper limit T_02FEA0), = 2..4 (step T_02FE88); FFFF0934.0 (ramp down by T_02FE70, lower limit T_02FE7C, max 0x6666).  One step per execution: task 0x152A40 = 10 ms (OS: TCB 0x169768 + 16*id; startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 4 -&gt; task 8 (0x1517A4 -&gt; 0x152A40) cycle 10, alarm 6 -&gt; task 9 (0x1517D2 -&gt; 0x15307C) cycle 20, alarm 7 -&gt; task 10 (0x1517FA -&gt; 0x153248) cycle 40, alarm 2 -&gt; task 4 (-&gt; 0x1528A2) cycle 4, alarm 1 -&gt; task 3 (-&gt; 0x152882) cycle 2; 0x153248 = 40 ms (OBD PID 0x1F/0x4E) -&gt; 1 ms tick; 0x49E70 called unconditionally at 0x152BC6) (0x11FF90 reached only from it, via 0x11F134)." sizey="4">
+      <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF093A)" storageaddress="253AC" elements="4" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 4 [D02FE7C] - unresolved: enters an expression (p1 = (undefined *)(uVar4 &amp; 0xffff);) whose resul" category="Unidentified - Task 0x152A40" storageaddress="253D0" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FE7C. UNRESOLVED (locked): 0x11FF90: enters an expression (p1 = (undefined *)(uVar4 &amp; 0xffff);) whose result is lookup result not used in a resolvable form. Function/output scaling not yet proven from the binary." locked="true" sizey="4">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF093A)" storageaddress="253B0" elements="4" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Pedal Ramp-Down Lower Limit [0x11FF90]" category="Driver Demand / Torque Request" storageaddress="253D0" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FE7C. Evidence: 0x11FF90: FFFEE160 = rate-limited pedal angle (set to Accelerator Pedal Angle FFFEF406 when FFFEF406 &lt;= the limited value or no mode is active; only writer).  Modes: FFFF0935.7 with FFFF0933 = 0 (step T_02FE64, capped by a computed rate), = 1 (step T_02FE94, upper limit T_02FEA0), = 2..4 (step T_02FE88); FFFF0934.0 (ramp down by T_02FE70, lower limit T_02FE7C, max 0x6666).  One step per execution: task 0x152A40 = 10 ms (OS: TCB 0x169768 + 16*id; startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 4 -&gt; task 8 (0x1517A4 -&gt; 0x152A40) cycle 10, alarm 6 -&gt; task 9 (0x1517D2 -&gt; 0x15307C) cycle 20, alarm 7 -&gt; task 10 (0x1517FA -&gt; 0x153248) cycle 40, alarm 2 -&gt; task 4 (-&gt; 0x1528A2) cycle 4, alarm 1 -&gt; task 3 (-&gt; 0x152882) cycle 2; 0x153248 = 40 ms (OBD PID 0x1F/0x4E) -&gt; 1 ms tick; 0x49E70 called unconditionally at 0x152BC6) (0x11FF90 reached only from it, via 0x11F134)." sizey="4">
+      <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF093A)" storageaddress="253B0" elements="4" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 4 [D02FE88] - unresolved: added to FFFEE160" category="Unidentified - Task 0x152A40" storageaddress="253D8" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FE88. UNRESOLVED (locked): 0x11FF90: added to FFFEE160 (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="4">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF093A)" storageaddress="253B4" elements="4" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Pedal Ramp-Up Step per 10 ms (modes 2-4) [0x11FF90]" category="Driver Demand / Torque Request" storageaddress="253D8" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FE88. Evidence: 0x11FF90: FFFEE160 = rate-limited pedal angle (set to Accelerator Pedal Angle FFFEF406 when FFFEF406 &lt;= the limited value or no mode is active; only writer).  Modes: FFFF0935.7 with FFFF0933 = 0 (step T_02FE64, capped by a computed rate), = 1 (step T_02FE94, upper limit T_02FEA0), = 2..4 (step T_02FE88); FFFF0934.0 (ramp down by T_02FE70, lower limit T_02FE7C, max 0x6666).  One step per execution: task 0x152A40 = 10 ms (OS: TCB 0x169768 + 16*id; startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 4 -&gt; task 8 (0x1517A4 -&gt; 0x152A40) cycle 10, alarm 6 -&gt; task 9 (0x1517D2 -&gt; 0x15307C) cycle 20, alarm 7 -&gt; task 10 (0x1517FA -&gt; 0x153248) cycle 40, alarm 2 -&gt; task 4 (-&gt; 0x1528A2) cycle 4, alarm 1 -&gt; task 3 (-&gt; 0x152882) cycle 2; 0x153248 = 40 ms (OBD PID 0x1F/0x4E) -&gt; 1 ms tick; 0x49E70 called unconditionally at 0x152BC6) (0x11FF90 reached only from it, via 0x11F134)." sizey="4">
+      <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFF093A)" storageaddress="253B4" elements="4" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 4 [D02FE94] - unresolved: added to FFFEE160" category="Unidentified - Task 0x152A40" storageaddress="253E0" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FE94. UNRESOLVED (locked): 0x11FF90: added to FFFEE160 (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="4">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="253B8" elements="4" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Pedal Ramp-Up Step per 10 ms (mode 1) [0x11FF90]" category="Driver Demand / Torque Request" storageaddress="253E0" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FE94. Evidence: 0x11FF90: FFFEE160 = rate-limited pedal angle (set to Accelerator Pedal Angle FFFEF406 when FFFEF406 &lt;= the limited value or no mode is active; only writer).  Modes: FFFF0935.7 with FFFF0933 = 0 (step T_02FE64, capped by a computed rate), = 1 (step T_02FE94, upper limit T_02FEA0), = 2..4 (step T_02FE88); FFFF0934.0 (ramp down by T_02FE70, lower limit T_02FE7C, max 0x6666).  One step per execution: task 0x152A40 = 10 ms (OS: TCB 0x169768 + 16*id; startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 4 -&gt; task 8 (0x1517A4 -&gt; 0x152A40) cycle 10, alarm 6 -&gt; task 9 (0x1517D2 -&gt; 0x15307C) cycle 20, alarm 7 -&gt; task 10 (0x1517FA -&gt; 0x153248) cycle 40, alarm 2 -&gt; task 4 (-&gt; 0x1528A2) cycle 4, alarm 1 -&gt; task 3 (-&gt; 0x152882) cycle 2; 0x153248 = 40 ms (OBD PID 0x1F/0x4E) -&gt; 1 ms tick; 0x49E70 called unconditionally at 0x152BC6) (0x11FF90 reached only from it, via 0x11F134)." sizey="4">
+      <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="253B8" elements="4" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 4 [D02FEA0] - unresolved: compared with local puVar7" category="Unidentified - Task 0x152A40" storageaddress="253E8" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FEA0. UNRESOLVED (locked): 0x11FF90: compared with local puVar7 (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="4">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1" storageaddress="253BC" elements="4" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Pedal Ramp-Up Upper Limit (mode 1) [0x11FF90]" category="Driver Demand / Torque Request" storageaddress="253E8" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FEA0. Evidence: 0x11FF90: FFFEE160 = rate-limited pedal angle (set to Accelerator Pedal Angle FFFEF406 when FFFEF406 &lt;= the limited value or no mode is active; only writer).  Modes: FFFF0935.7 with FFFF0933 = 0 (step T_02FE64, capped by a computed rate), = 1 (step T_02FE94, upper limit T_02FEA0), = 2..4 (step T_02FE88); FFFF0934.0 (ramp down by T_02FE70, lower limit T_02FE7C, max 0x6666).  One step per execution: task 0x152A40 = 10 ms (OS: TCB 0x169768 + 16*id; startup 0x1513BC SetRelAlarm(alarm, offset, cycle): alarm 4 -&gt; task 8 (0x1517A4 -&gt; 0x152A40) cycle 10, alarm 6 -&gt; task 9 (0x1517D2 -&gt; 0x15307C) cycle 20, alarm 7 -&gt; task 10 (0x1517FA -&gt; 0x153248) cycle 40, alarm 2 -&gt; task 4 (-&gt; 0x1528A2) cycle 4, alarm 1 -&gt; task 3 (-&gt; 0x152882) cycle 2; 0x153248 = 40 ms (OBD PID 0x1F/0x4E) -&gt; 1 ms tick; 0x49E70 called unconditionally at 0x152BC6) (0x11FF90 reached only from it, via 0x11F134)." sizey="4">
+      <scaling units="%" expression="x*100/65280" to_byte="x*65280/100" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1" storageaddress="253BC" elements="4" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 5 [D02FEAC] (Atmospheric Pressure) - unresolved: compared with local uVar5" category="Unidentified - Task 0x152A40" storageaddress="25402" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FEAC. UNRESOLVED (locked): 0x1201D8: compared with local uVar5 (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="5">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Atmospheric Pressure" storageaddress="253F8" elements="5" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Manifold Vacuum Upper Threshold (vs Atmospheric Pressure) [0x1201D8]" category="Driver Demand / Torque Request" storageaddress="25402" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FEAC. Evidence: 0x1201D8: uVar6 = Atmospheric FFFEE6AA - MAP FFFEEECE (kPa x/256); bVar1 (filter FFFF19F2 of the vacuum active) needs FFFEE16A &lt; uVar6 and FFFEE16A &lt; T(Atmospheric Pressure).  FFFEE16A is compared with the vacuum, so it and T are kPa = x/256." sizey="5">
+      <scaling units="kPa" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Atmospheric Pressure" storageaddress="253F8" elements="5" storagetype="uint16" endian="big">
         <scaling units="kPa" expression="x/256" to_byte="x*256" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>

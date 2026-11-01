@@ -1445,6 +1445,50 @@ add(0x16388C, 'FFFEE710.2 Enable Delay after FFFF66B0 = 3 (vs Start Coolant) [0x
     ('s', 'x*0.01', 'x/0.01', '0.00'))
 
 
+# 0x11FF90 (only caller 0x11F134; every reaching root is the 10 ms task 0x152A40).  param_6 = Accelerator Pedal Angle (unlimited)
+# FFFEF406 (% = x*100/65280).  FFFEE160 (only writer, 0x12018C) = the rate-limited value p1, or the pedal angle itself when the pedal
+# is <= p1 or no mode is active -> FFFEE160 is in pedal-angle units; table outputs added to / subtracted from / bounding it share them.
+_E11F = ('0x11FF90: FFFEE160 = rate-limited pedal angle (set to Accelerator Pedal Angle FFFEF406 when FFFEF406 <= the limited value or '
+         'no mode is active; only writer).  Modes: FFFF0935.7 with FFFF0933 = 0 (step T_02FE64, capped by a computed rate), = 1 '
+         '(step T_02FE94, upper limit T_02FEA0), = 2..4 (step T_02FE88); FFFF0934.0 (ramp down by T_02FE70, lower limit T_02FE7C, '
+         'max 0x6666).  One step per execution: ' + _PEREV['00152a40'] + ' (0x11FF90 reached only from it, via 0x11F134).')
+_PED = ('%', 'x*100/65280', 'x*65280/100', '0.00')
+for _d, _n in ((0x2FE64, 'Pedal Ramp-Up Step per 10 ms (mode 0)'), (0x2FE94, 'Pedal Ramp-Up Step per 10 ms (mode 1)'),
+               (0x2FE88, 'Pedal Ramp-Up Step per 10 ms (modes 2-4)'), (0x2FE70, 'Pedal Ramp-Down Step per 10 ms'),
+               (0x2FE7C, 'Pedal Ramp-Down Lower Limit'), (0x2FEA0, 'Pedal Ramp-Up Upper Limit (mode 1)')):
+    S.pop(_d, None); AUTO.discard(_d)
+    add(_d, _n + ' [0x11FF90]', 'Driver Demand / Torque Request', _E11F, _PED)
+
+
+# 0x1201D8 (only caller 0x11F134, 10 ms): p3 = Atmospheric Pressure FFFEE6AA, p4 = MAP FFFEEECE (both kPa = x/256).
+S.pop(0x2FEAC, None); AUTO.discard(0x2FEAC)
+add(0x2FEAC, 'Manifold Vacuum Upper Threshold (vs Atmospheric Pressure) [0x1201D8]', 'Driver Demand / Torque Request',
+    '0x1201D8: uVar6 = Atmospheric FFFEE6AA - MAP FFFEEECE (kPa x/256); bVar1 (filter FFFF19F2 of the vacuum active) needs '
+    'FFFEE16A < uVar6 and FFFEE16A < T(Atmospheric Pressure).  FFFEE16A is compared with the vacuum, so it and T are kPa = x/256.',
+    ('kPa', 'x/256', 'x*256', '0.00'))
+
+
+# 0xCEF4C: p1 = FFFF29B7, p2 = FFFF29BA (throttle opening 0.4 %/bit, now and 3 samples earlier; see variables FFFF29B4/29B7).
+_ECEF = ('0xCEF4C: uVar17 = FFFF29B7 - FFFF29BA (throttle opening change over 3 samples of the 0x3B712 shift register, 0.4 % per bit; '
+         'FFFF29B7 = sat8(FFFF29B4 >> 2), FFFF29B4 = throttle opening above the learned closed position in 0.1 % derived from the Main '
+         'Throttle Sensor FFFF00B8, OBD PID 11).  ')
+for _d, _n, _e in ((0x2EC50, 'Throttle Closing Threshold (3-sample change, vs MAP)', 'Closing magnitude uVar11 = -uVar17 is compared with (byte)T: (uVar11 < T) is part of the end condition; T also goes to *param_14.'),
+                   (0x2EC5C, 'Throttle Opening Threshold (3-sample change, vs MAP, FFFF05BA.7 = 0)', 'Opening change bVar12 = uVar17 (when >= 0) is compared with T (bVar12 < T).'),
+                   (0x2EBE4, 'Throttle Opening Threshold (3-sample change, FFFF05BA.7 = 1)', 'Opening change bVar12 = uVar17 (when >= 0) is compared with T (bVar12 < T); axis param_5 = FFFF0F4C.')):
+    S.pop(_d, None); AUTO.discard(_d)
+    add(_d, _n + ' [0xCEF4C]', 'Throttle', _ECEF + _e, ('%', 'x*0.4', 'x/0.4', '0.0'))
+
+
+# 0x7F96C (only caller 0x7F8B8; 10 ms task): p1 = FFFF29B4 (throttle 0.1 %), uVar3 = p1 >> 2 (0.4 %); threshold = T_02C1DC(rpm FFFF2994)
+# + T_02C1E8(atmospheric FFFEE6AA) (bytes, minus 4 hysteresis when FFFEBA8D set) compared with uVar3 -> each term is in 0.4 % throttle units.
+_E7F9 = ('0x7F96C: threshold = T_02C1DC(Engine Speed) + T_02C1E8(Atmospheric Pressure) (- 4 when FFFEBA8D is set) is compared with '
+         'FFFF29B4 >> 2 (throttle opening, FFFF29B4 in 0.1 % derived from Main Throttle Sensor FFFF00B8 / OBD PID 11, so 0.4 % per bit); '
+         'above it the timer FFFEBA8A runs against T_02C1D0.  Both summands are in the threshold unit.')
+for _d, _n in ((0x2C1DC, 'Throttle Opening Threshold Base (vs RPM)'), (0x2C1E8, 'Throttle Opening Threshold Adder (vs Atmospheric Pressure)')):
+    S.pop(_d, None); AUTO.discard(_d)
+    add(_d, _n + ' [0x7F96C]', 'Throttle', _E7F9, ('%', 'x*0.4', 'x/0.4', '0.0'))
+
+
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
     print(len(S), 'entries')

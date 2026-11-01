@@ -31,6 +31,7 @@ descriptor	function	var	var_name	units	expr	context
 02F17C	000e3af0	FFFEEF18	Control Module Voltage	V	x*625/2048000	(param_3 & 0xffff) < (uVar3 & 0xffff)
 02F1C0	000e4cc4	FFFF03A0	Engine Load	%	x	(param_3 <= (uVar4 & 0xff)
 02F888	000ff638	FFFEEF10	Time Since FFFEEEC1.0 Cleared	s	x*0.01	((param_2 & 0xffff) < (uVar5 & 0xffff)
+02FE70	0011ff90	FFFEE160	Accelerator Pedal Angle (rate-limited, E160)	%	x*100/65280	((uint)_DAT_fffee160 < (uVar4 & 0xffff)
 02FF04	0012098c	FFFF13AC	Time While FFFF0935.6 Set	s	x*0.01	((uVar1 & 0xffff) <= (param_2 & 0xffff)
 02FEF0	0012098c	FFFF13AC	Time While FFFF0935.6 Set	s	x*0.01	((uVar2 & 0xffff) <= (param_2 & 0xffff)
 02FEE4	0012098c	FFFEF406	Accelerator Pedal Angle (unlimited)	%	x*100/65280	(uVar1 & 0xffff) <= param_3)

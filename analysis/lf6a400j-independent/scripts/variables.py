@@ -340,3 +340,30 @@ V2.update({
 V2.update({
  0xFFFF29A8:('Coolant Temperature (sampled, byte, 0.624 C)','C','x*256/410-40','(x+40)*410/256','0x3C578: x = (min(max(FFFF29A7 - 10, 0), 0x9F)*0x19A + 0x80) >> 8, FFFF29A7 = sampled coolant (C = x-50) => x = (C+40)*410/256'),
 })
+V2.update({
+ 0xFFFEE160:('Accelerator Pedal Angle (rate-limited, E160)','%','x*100/65280','x*65280/100','0x11FF90: only writer; = Accelerator Pedal Angle FFFEF406 (param_6) when it is <= the limited value, else the ramped value'),
+})
+_THR = (' Chain: 0x646E6 FFFF00D6 = slew-limited Main Throttle Sensor FFFF00B8 (OBD PID 11, % = x*100/65535); 0x64792 FFFF00CA = 00D6; '
+        '0x64D5C/0x65644 FFFF34DE = 00CA, averaged into FFFF00EE (0x64E88/0x65A5E) = learned closed position FFFF34C0 (0x64A76/0x65E74); '
+        '0x66A7C FFFF00E8 = 00CA - 34C0 + 1000 (sub sensor 00EA likewise, 00EC = gain-matched third channel); 0x66FB8 FFFF002A = one of '
+        '00E8/00EA/00EC (single runtime store 0x6712C).')
+V2.update({
+ 0xFFFF00D6:('Main Throttle Sensor (slew-limited)','%','x*100/65535','x*65535/100','0x646E6: step-limited copy (10000 per call) of Main Throttle Sensor FFFF00B8'),
+ 0xFFFF00CA:('Main Throttle Sensor (validated)','%','x*100/65535','x*65535/100','0x64792: = FFFF00D6 (0xFC17 on fault)'),
+ 0xFFFF34C0:('Throttle Closed Position (learned)','%','x*100/65535','x*65535/100','learned from averages of FFFF34DE = 00CA (0x64E88/0x65A5E -> FFFF00EE -> 34C0)'),
+ 0xFFFF00E8:('Throttle Opening above Closed (main, +1000)','%','(x-1000)*100/65535','x*65535/100+1000','0x66A7C: 00CA - 34C0 + 1000.'+_THR),
+ 0xFFFF002A:('Throttle Opening above Closed (selected, +1000)','%','(x-1000)*100/65535','x*65535/100+1000','0x66FB8: selected from 00E8/00EA/00EC.'+_THR),
+ 0xFFFF00B4:('Throttle Opening (10-bit, +10)','%','(x-10)*6400/65535','x*65535/6400+10','0x67142: x = ((FFFF002A - 1000) >> 6) + 10, clamped 10..0x3F2.'+_THR),
+ 0xFFFF29B4:('Throttle Opening (0.1 %)','%','x/10','x*10','0x69F44: x = FFFF02C4 - 10, 0x676CC: FFFF02C4 = (FFFF00B4*64000 + 0xFFFF) >> 16 => % = ((x+10)*1.024 - 10)*6400/65535 = 0.100003*x + 0.02 (offset below one count).'+_THR),
+ 0xFFFF29B7:('Throttle Opening (0.4 %)','%','x*0.4','x/0.4','0x3B712: x = sat8(FFFF29B4 >> 2); FFFF29B8..29BC are the previous samples (shift register)'),
+ 0xFFFF29B6:('Throttle Opening (0.4 %, 29B6)','%','x*0.4','x/0.4','0x3B712: x = sat8(FFFF29B4 >> 2)'),
+ 0xFFFF2A26:('Throttle Opening (0.4 %, 2A26)','%','x*0.4','x/0.4','0x3B712: x = FFFF29B6'),
+})
+for _i in range(1, 6):
+    V2[0xFFFF29B7 + _i] = (f'Throttle Opening (0.4 %, {_i} samples ago)', '%', 'x*0.4', 'x/0.4', '0x3B712: shift register FFFF29B8..29BC <- FFFF29B7')
+V2.update({
+ 0xFFFF29C2:('Throttle Opening Change (2 samples, +128)','%','(x-128)*0.4','x/0.4+128','0x3B712: clamp0..255(FFFF29B7 + 0x80 - FFFF29B9) (0x16B5A4), 29B7 = throttle 0.4 %'),
+ 0xFFFF29C3:('Throttle Opening Change (4 samples, +128)','%','(x-128)*0.4','x/0.4+128','0x3B712: clamp0..255(FFFF29B7 + 0x80 - FFFF29BB)'),
+ 0xFFFF29C8:('Throttle Opening Change (5 samples, +128)','%','(x-128)*0.4','x/0.4+128','0x3B712: clamp0..255(FFFF29B7 - FFFF29BC + 0x80)'),
+ 0xFFFF29C4:('Throttle Opening Change (4 samples, +128, word)','%','(x-32768)*0.4/256','x*256/0.4+32768','0x3B712: FFFF29C3 << 8'),
+})
