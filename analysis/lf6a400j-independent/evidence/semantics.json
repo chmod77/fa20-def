@@ -7384,6 +7384,58 @@
    }
   }
  },
+ "0x2EA54": {
+  "status": "identified",
+  "name": "Engine Speed Threshold 0EE8 A (vs FFFEF5B4) [0xC8724]",
+  "category": "Engine Speed Thresholds",
+  "evidence": "0xC8724/0xC8770: FFFF0EE8 = T(FFFEF5B4) when calibration bit 0x2B667.7 is set (clear in this ROM: the path is disabled and the initial value is used).  0xC3EB0 (call 0xC6BF2 from 0xC5934; stack args 8 = FFFF0EEC, 9 = FFFF0EE8, param_3 = Engine Speed FFFF2ADA) compares param_3 with param_8 / param_9, so T is engine speed (OBD copy unit, rpm = x*25/128).",
+  "description": "",
+  "data": {
+   "units": "rpm",
+   "expr": "x*25/128",
+   "to_byte": "x*128/25",
+   "format": "0"
+  }
+ },
+ "0x2EA60": {
+  "status": "identified",
+  "name": "Engine Speed Threshold 0EE8 B (FFFF0587 == 2) (vs FFFEF5B4) [0xC8724]",
+  "category": "Engine Speed Thresholds",
+  "evidence": "0xC8724/0xC8770: FFFF0EE8 = T(FFFEF5B4) when calibration bit 0x2B667.7 is set (clear in this ROM: the path is disabled and the initial value is used).  0xC3EB0 (call 0xC6BF2 from 0xC5934; stack args 8 = FFFF0EEC, 9 = FFFF0EE8, param_3 = Engine Speed FFFF2ADA) compares param_3 with param_8 / param_9, so T is engine speed (OBD copy unit, rpm = x*25/128).",
+  "description": "",
+  "data": {
+   "units": "rpm",
+   "expr": "x*25/128",
+   "to_byte": "x*128/25",
+   "format": "0"
+  }
+ },
+ "0x2EA6C": {
+  "status": "identified",
+  "name": "Engine Speed Threshold 0EEC A (vs FFFEF5B4) [0xC8770]",
+  "category": "Engine Speed Thresholds",
+  "evidence": "0xC8724/0xC8770: FFFF0EEC = T(FFFEF5B4) when calibration bit 0x2B667.7 is set (clear in this ROM: the path is disabled and the initial value is used).  0xC3EB0 (call 0xC6BF2 from 0xC5934; stack args 8 = FFFF0EEC, 9 = FFFF0EE8, param_3 = Engine Speed FFFF2ADA) compares param_3 with param_8 / param_9, so T is engine speed (OBD copy unit, rpm = x*25/128).",
+  "description": "",
+  "data": {
+   "units": "rpm",
+   "expr": "x*25/128",
+   "to_byte": "x*128/25",
+   "format": "0"
+  }
+ },
+ "0x2EA78": {
+  "status": "identified",
+  "name": "Engine Speed Threshold 0EEC B (FFFF0587 == 2) (vs FFFEF5B4) [0xC8770]",
+  "category": "Engine Speed Thresholds",
+  "evidence": "0xC8724/0xC8770: FFFF0EEC = T(FFFEF5B4) when calibration bit 0x2B667.7 is set (clear in this ROM: the path is disabled and the initial value is used).  0xC3EB0 (call 0xC6BF2 from 0xC5934; stack args 8 = FFFF0EEC, 9 = FFFF0EE8, param_3 = Engine Speed FFFF2ADA) compares param_3 with param_8 / param_9, so T is engine speed (OBD copy unit, rpm = x*25/128).",
+  "description": "",
+  "data": {
+   "units": "rpm",
+   "expr": "x*25/128",
+   "to_byte": "x*128/25",
+   "format": "0"
+  }
+ },
  "0x2EB28": {
   "status": "identified",
   "name": "Accelerator Pedal Angle Threshold (0xCC0D0)",

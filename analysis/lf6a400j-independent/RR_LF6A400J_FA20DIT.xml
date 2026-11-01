@@ -4779,27 +4779,27 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02EA54] - unresolved: stored to FFFECB04" category="Unidentified - Task 0x152A40" storageaddress="1DD3A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2EA54. Lookup result stored to: FFFECB04. UNRESOLVED (locked): 0xC8724: stored to FFFECB04 (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFEF5B4)" storageaddress="1D99A" elements="8" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Engine Speed Threshold 0EE8 A (vs FFFEF5B4) [0xC8724]" category="Engine Speed Thresholds" storageaddress="1DD3A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2EA54. Evidence: 0xC8724/0xC8770: FFFF0EE8 = T(FFFEF5B4) when calibration bit 0x2B667.7 is set (clear in this ROM: the path is disabled and the initial value is used).  0xC3EB0 (call 0xC6BF2 from 0xC5934; stack args 8 = FFFF0EEC, 9 = FFFF0EE8, param_3 = Engine Speed FFFF2ADA) compares param_3 with param_8 / param_9, so T is engine speed (OBD copy unit, rpm = x*25/128). Lookup result stored to: FFFECB04." sizey="8">
+      <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFEF5B4)" storageaddress="1D99A" elements="8" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02EA60] - unresolved: stored to FFFECB04" category="Unidentified - Task 0x152A40" storageaddress="1DD4A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2EA60. Lookup result stored to: FFFECB04. UNRESOLVED (locked): 0xC8724: stored to FFFECB04 (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFEF5B4)" storageaddress="1D99A" elements="8" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Engine Speed Threshold 0EE8 B (FFFF0587 == 2) (vs FFFEF5B4) [0xC8724]" category="Engine Speed Thresholds" storageaddress="1DD4A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2EA60. Evidence: 0xC8724/0xC8770: FFFF0EE8 = T(FFFEF5B4) when calibration bit 0x2B667.7 is set (clear in this ROM: the path is disabled and the initial value is used).  0xC3EB0 (call 0xC6BF2 from 0xC5934; stack args 8 = FFFF0EEC, 9 = FFFF0EE8, param_3 = Engine Speed FFFF2ADA) compares param_3 with param_8 / param_9, so T is engine speed (OBD copy unit, rpm = x*25/128). Lookup result stored to: FFFECB04." sizey="8">
+      <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFEF5B4)" storageaddress="1D99A" elements="8" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02EA6C] - unresolved: stored to FFFECB08" category="Unidentified - Task 0x152A40" storageaddress="1DD5A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2EA6C. Lookup result stored to: FFFECB08. UNRESOLVED (locked): 0xC8770: stored to FFFECB08 (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFEF5B4)" storageaddress="1D99A" elements="8" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Engine Speed Threshold 0EEC A (vs FFFEF5B4) [0xC8770]" category="Engine Speed Thresholds" storageaddress="1DD5A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2EA6C. Evidence: 0xC8724/0xC8770: FFFF0EEC = T(FFFEF5B4) when calibration bit 0x2B667.7 is set (clear in this ROM: the path is disabled and the initial value is used).  0xC3EB0 (call 0xC6BF2 from 0xC5934; stack args 8 = FFFF0EEC, 9 = FFFF0EE8, param_3 = Engine Speed FFFF2ADA) compares param_3 with param_8 / param_9, so T is engine speed (OBD copy unit, rpm = x*25/128). Lookup result stored to: FFFECB08." sizey="8">
+      <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFEF5B4)" storageaddress="1D99A" elements="8" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 8 [D02EA78] - unresolved: stored to FFFECB08" category="Unidentified - Task 0x152A40" storageaddress="1DD6A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2EA78. Lookup result stored to: FFFECB08. UNRESOLVED (locked): 0xC8770: stored to FFFECB08 (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="8">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFEF5B4)" storageaddress="1D99A" elements="8" storagetype="uint8" endian="big" locked="true">
+    <table type="2D" name="Engine Speed Threshold 0EEC B (FFFF0587 == 2) (vs FFFEF5B4) [0xC8770]" category="Engine Speed Thresholds" storageaddress="1DD6A" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2EA78. Evidence: 0xC8724/0xC8770: FFFF0EEC = T(FFFEF5B4) when calibration bit 0x2B667.7 is set (clear in this ROM: the path is disabled and the initial value is used).  0xC3EB0 (call 0xC6BF2 from 0xC5934; stack args 8 = FFFF0EEC, 9 = FFFF0EE8, param_3 = Engine Speed FFFF2ADA) compares param_3 with param_8 / param_9, so T is engine speed (OBD copy unit, rpm = x*25/128). Lookup result stored to: FFFECB08." sizey="8">
+      <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Unidentified input 1 (RAM 0xFFFEF5B4)" storageaddress="1D99A" elements="8" storagetype="uint8" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>

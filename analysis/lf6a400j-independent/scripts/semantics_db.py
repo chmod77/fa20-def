@@ -1650,6 +1650,17 @@ add(0x2CA90, 'Throttle Opening Target (vs request FFFF09D4) [0x88000]', 'Throttl
     '0x23D, so T*1579/1600 is throttle opening.  The same data block is T_02CA14 (0x86BB4 -> FFFF0AF4, SSM 0x15 opening angle % = T*400/689/256): both relations hold, so SSM opening-angle % = 1.4527 x %TPS for this calibration path.  ' + _THE, ('%TPS', 'x*1579/1600*' + _THU, 'x*1600/1579/(' + _THU + ')', '0.0'))
 
 
+# 0xC8724 / 0xC8770 (from 0xC5934; enable r4 = calibration byte 0x2B667 bit 7, clear in this ROM (0x11) so the stored init value is used):
+# outputs FFFF0EE8 / FFFF0EEC are stack args 9 / 8 of 0xC3EB0 (call 0xC6BF2), compared there with Engine Speed FFFF2ADA (param_3).
+for _d, _n, _o in ((0x2EA54, 'A', '0EE8'), (0x2EA60, 'B (FFFF0587 == 2)', '0EE8'), (0x2EA6C, 'A', '0EEC'), (0x2EA78, 'B (FFFF0587 == 2)', '0EEC')):
+    S.pop(_d, None); AUTO.discard(_d)
+    add(_d, f'Engine Speed Threshold {_o} {_n} (vs FFFEF5B4) [{"0xC8724" if _o == "0EE8" else "0xC8770"}]', 'Engine Speed Thresholds',
+        f'0xC8724/0xC8770: FFFF{_o} = T(FFFEF5B4) when calibration bit 0x2B667.7 is set (clear in this ROM: the path is disabled and the '
+        'initial value is used).  0xC3EB0 (call 0xC6BF2 from 0xC5934; stack args 8 = FFFF0EEC, 9 = FFFF0EE8, param_3 = Engine Speed '
+        'FFFF2ADA) compares param_3 with param_8 / param_9, so T is engine speed (OBD copy unit, rpm = x*25/128).',
+        ('rpm', 'x*25/128', 'x*128/25', '0'))
+
+
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
     print(len(S), 'entries')
