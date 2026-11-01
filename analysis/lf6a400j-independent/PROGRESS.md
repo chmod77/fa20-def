@@ -266,6 +266,19 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
   * FFFF1434 (0x123F08): the default is 16000 + CAN byte FFFEF2F2*160 (0A3E is always 0), so it is CAN-dependent like the
     torque monitor.
   * 0x124430 (26 descriptors): the torque result is a product of 3 tables / 65025, so per-table scales are not separable.
+- Later in session 5, coverage went to 676 of 1284:
+  * Throttle opening chain proven from the Main Throttle Sensor FFFF00B8 (OBD PID 11):
+    00B8 -> 00D6 (slew-limited) -> 00CA -> 00E8 = 00CA - learned closed position 34C0 + 1000 -> 002A (selected) -> 00B4 -> 02C4 -> 29B4.
+    29B4 is 0.1 % (0.100003 per bit, 0.02 % offset); 29B7..29BC are 0.4 %; 29C2/29C3/29C8 are changes + 128.
+    Unlocked: T_02EC50/02EC5C/02EBE4 (0xCEF4C) and T_02C1DC/02C1E8 (0x7F96C).
+  * Pedal ramp in 0x11FF90: FFFEE160 is the rate-limited pedal angle. T_02FE64/70/88/94 are steps per 10 ms; T_02FE7C/02FEA0 are limits.
+  * T_02FEAC (0x1201D8): a vacuum threshold in kPa. FFFEE16A is compared with atmospheric - MAP.
+  * After-start stage times T_163964/97C/994/9AC/9D4 (0x3E9A0, 160 ms task 11). T_13FF8 (0xA7024) and T_16388C (0x3AEA8) are
+    10 ms counters (20 ms in mode 2). New variable FFFF29A8: sampled coolant byte, C = x*256/410 - 40.
+  * Dead end: FFFF0F4E (0xCED18) = (IAT2 + 273 K) * FFFF05B4 * T_02EBCC * constant. It is used with R = 287 in 0xCF8C8, but the
+    constant does not reduce cleanly, so the 05B4 transient tables (T_02EC90/A4/B8/CC, T_02EBD8) stay locked.
+  * The "stored to output *param" group (161) was resolved to caller globals (/tmp/outp.py approach). None is compared with a
+    proven variable, so each needs its consumer traced by hand.
 - Next: scan for other counter forms (sat8 helper 0x152C, `cVarN = -1; if (G != 0xff)`) in non-unique-period functions by checking
   each root's period. Also trace 0x96DA0 (root 0x158F04), whose period is unknown.
 
