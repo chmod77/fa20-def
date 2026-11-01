@@ -290,6 +290,17 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
   * Dead ends: 0xB53D4 (A/F #1 PI), where the integrator step = shaped error T_02E29C.. * T_02E300 * T_02E2D8 / 2^20 (3-table product);
     0xAE9B4 (injection offset gain = p6*T034*T010*TFF8 / 2^27).
   * SSM: every SSM-readable RAM source is now a proven variable (EGR steps EEEB4, A/F #3 0DC2, A/F Learning #3 0D80 added).
+- Session 5, continued: coverage 724 of 1284.
+  * The so-called CAN torque-monitor group (27 tables) is cruise control. 0x106990 assigns the cruise target 12C6 either from 12C2 or
+    from Memorised Cruise Speed FFFF07AC (SSM 0x10A, km/h) * 10 * 64/5, so all of 12C2/12C6/12BE/127C/127E/1298/12B8..12C0 are
+    km/h*128. Values are plausible: min about 40 km/h, steps 5 km/h / 8 km/h (5 mph), band 1.0 / 1.6.
+    Also unlocked: 0x105678 speed offsets (T_02FAE4/AF0/AFC/B08) and 0x103C74 per-state enable flags (== 1).
+  * Torque limit tree under 0x12560C, proven from Torque Limit 1436 by min/max/selection chains: 1450 = max(1436, 144C);
+    144C = min(144E, ...); 144E = min(1434, T_030474, T_030460); 1434 = min(143A, T_0300A4); 143A = 146C/147C;
+    146C = 16000-offset blend (weights T_0304D0/BC/A8 = x/255) of 143C/1440/1444/1448 (tables T_0301A0..T_030254).
+  * Tools: /tmp/ugraph.py (unit-equivalence graph from param comparisons, pointer copies and global assignments; 201 propagated
+    units, but no remaining locked table connects to a proven component) and /tmp/partner.py (comparison partners through call
+    args). Move these into scripts/ if reused.
 - Next: scan for other counter forms (sat8 helper 0x152C, `cVarN = -1; if (G != 0xff)`) in non-unique-period functions by checking
   each root's period. Also trace 0x96DA0 (root 0x158F04), whose period is unknown.
 
