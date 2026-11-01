@@ -6681,9 +6681,9 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint8" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 16 [D03055C] (Engine Speed) - unresolved: lookup result not used in a resolvable form" category="Unidentified - Task 0x12560C" storageaddress="25D54" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x3055C. Lookup result stored to: FFFF0956, FFFF142E. UNRESOLVED (locked): 0x125C08: lookup result not used in a resolvable form. Function/output scaling not yet proven from the binary." locked="true" sizey="16">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="25D34" elements="16" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Reference (Maximum) Torque vs RPM [monitor, 0x125C08]" category="Driver Demand / Torque Request" storageaddress="25D54" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x3055C. Evidence: 0x125C08: ratio = (FFFF1454 - 16000)*255/(T(rpm) - 16000) (0x3E4180 = 16000*255), the same form as 0x84484 with identical data to T_02C838 (Reference Maximum Torque, torque type). Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW-&gt;Nm via 60000/2pi, stored *80+16000, clamps = u16 range). Lookup result stored to: FFFF0956, FFFF142E." sizey="16">
+      <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="25D34" elements="16" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -6765,12 +6765,12 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 24x24 [D030494] (Engine Speed x Throttle Flow Request (1456)) - unresolved: multiplied with FFFF1402" category="Unidentified - Task 0x12560C" storageaddress="27244" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x30494. UNRESOLVED (locked): 0x124F08: multiplied with FFFF1402 (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizex="24" sizey="24">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="276C4" elements="24" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Torque Scaling Ratio (RPM x 1456) [0x124F08]" category="Driver Demand / Torque Request" storageaddress="27244" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x30494. Evidence: 0x124F08: FFFF145E = (FFFF1402*T &gt;&gt; 15) - (T*32000 &gt;&gt; 16) + 16000 = T*(1402 - 16000)/32768 + 16000, with 1402 torque type (monitor copy of 0ADC), so T is a torque ratio with 32768 = 1.0." sizex="24" sizey="24">
+      <scaling units="ratio" expression="x/32768" to_byte="x*32768" format="0.000" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="276C4" elements="24" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Throttle Flow Request (1456)" storageaddress="276F4" elements="24" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Throttle Flow Request (1456)" storageaddress="276F4" elements="24" storagetype="uint16" endian="big">
         <scaling units="g/L*rpm" expression="x*2.071888" to_byte="x/2.071888" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -6816,12 +6816,12 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 24x24 [D02FFF4] (Engine Speed x ?) - unresolved: stored to output *param_12 of 0x1232C0" category="Unidentified - Task 0x12367C" storageaddress="2847E" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FFF4. Lookup result stored to: FFFF141A. UNRESOLVED (locked): 0x1232C0: stored to output *param_12 of 0x1232C0 (unit of the receiving variable not proven). Function/output scaling not yet proven from the binary." locked="true" sizex="24" sizey="24">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="28E6C" elements="24" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Throttle Flow Request (RPM x FFFF1416, state != 2) [0x1232C0]" category="Airflow - Throttle Model" storageaddress="2847E" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FFF4. Evidence: 0x1232C0 (from 0x12367C): unless param_7 == 2 the request param_9 (FFFF1456) is replaced by T(Engine Speed, FFFF1416); it is copied to FFFF141A and, after max with FFFF1420 (request), indexes T_030008 (request -&gt; target throttle).  Request unit: T_02CA14 (request -&gt; target throttle, FFFF0AF4) is the exact inverse of T_02C1A0 (throttle %TPS -&gt; flow capacity FFFF09C2, g/L*rpm = x*1.035944 via the manifold filling model 0xCF8C8): CA14 axis = C1A0 data / 2 and CA14 data = C1A0 axis * 64 at all 16 points.  So request = flow capacity / 2: g/L*rpm = x*2.071888.   Lookup result stored to: FFFF141A." sizex="24" sizey="24">
+      <scaling units="g/L*rpm" expression="x*2.071888" to_byte="x/2.071888" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="28E6C" elements="24" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2 (RAM 0xFFFF1416)" storageaddress="2844E" elements="24" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2 (RAM 0xFFFF1416)" storageaddress="2844E" elements="24" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
@@ -6840,15 +6840,15 @@
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 24 [D02FFC8] (Engine Speed) - unresolved: multiplied with FFFF13FC" category="Unidentified - Task 0x123600" storageaddress="28E0C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FFC8. UNRESOLVED (locked): 0x123108: multiplied with FFFF13FC (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="24">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="28E6C" elements="24" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Torque Offset Density-Scaled (RPM) [monitor, -&gt; 1402]" category="Driver Demand / Torque Request" storageaddress="28E0C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FFC8. Evidence: 0x123108 (from 0x123600): FFFF1402 = (13FC*(T_02FFC8 - 16000) &gt;&gt; 15) + T_02FFD4, clamped &gt;= 16001 - the same code form as 0x868AC (-&gt; Torque 0ADC) and the table data is identical to T_02C9F4 (identified torque type). Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW-&gt;Nm via 60000/2pi, stored *80+16000, clamps = u16 range)." sizey="24">
+      <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="28E6C" elements="24" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="2D" name="Unidentified 24 [D02FFD4] (Engine Speed) - unresolved: added to local puVar5" category="Unidentified - Task 0x123600" storageaddress="28E3C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FFD4. UNRESOLVED (locked): 0x123108: added to local puVar5 (unit not proven). Function/output scaling not yet proven from the binary." locked="true" sizey="24">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="28E6C" elements="24" storagetype="uint16" endian="big" locked="true">
+    <table type="2D" name="Torque Offset Base (RPM) [monitor, -&gt; 1402]" category="Driver Demand / Torque Request" storageaddress="28E3C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FFD4. Evidence: 0x123108 (from 0x123600): FFFF1402 = (13FC*(T_02FFC8 - 16000) &gt;&gt; 15) + T_02FFD4, clamped &gt;= 16001 - the same code form as 0x868AC (-&gt; Torque 0ADC) and the table data is identical to T_02C9E8 (identified torque type). Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW-&gt;Nm via 60000/2pi, stored *80+16000, clamps = u16 range)." sizey="24">
+      <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="28E6C" elements="24" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>

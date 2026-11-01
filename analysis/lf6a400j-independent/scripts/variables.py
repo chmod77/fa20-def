@@ -440,3 +440,10 @@ V2.update({
 V2.update({
  0xFFFF0C3A:('Idle Throttle Flow Request (0C3A)','g/L*rpm','x*2.071888','x/2.071888','0xAA4C0 (call 0xA9C56, stack arg 10): = T_02DCE0(rpm, idle torque ratio); T_02DCF4(0C3A) -> 0CDA, T_02DCF4 = exact inverse of T_02C200.'+_REQ),
 })
+V2.update({
+ 0xFFFF1402:('Torque Offset 1402 (monitor copy of 0ADC)','Nm','(x-16000)/80','x*80+16000','0x123108: 1402 = (13FC*(T_02FFC8-16000)>>15) + T_02FFD4 (clamped >= 16001), identical code form and identical table data to 0x868AC -> Torque 0ADC (T_02C9F4/T_02C9E8)'),
+})
+V2.update({
+ 0xFFFF13F6:('Torque 13F6','Nm','(x-16000)/80','x*80+16000','0x123438: ratio = (13F6 - 16000)*8192/(1402 - 16000), the torque-ratio form of 0x86F74 (0AAE/0ADC) with 1402 torque type'),
+ 0xFFFF145E:('Torque 145E','Nm','(x-16000)/80','x*80+16000','0x124F08: = T*(1402 - 16000)/32768 + 16000, 1402 torque type'),
+})

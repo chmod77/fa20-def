@@ -10755,6 +10755,45 @@
    "format": "0.0"
   }
  },
+ "0x2FFC8": {
+  "status": "identified",
+  "name": "Torque Offset Density-Scaled (RPM) [monitor, -> 1402]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x123108 (from 0x123600): FFFF1402 = (13FC*(T_02FFC8 - 16000) >> 15) + T_02FFD4, clamped >= 16001 - the same code form as 0x868AC (-> Torque 0ADC) and the table data is identical to T_02C9F4 (identified torque type). Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range).",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
+  }
+ },
+ "0x2FFD4": {
+  "status": "identified",
+  "name": "Torque Offset Base (RPM) [monitor, -> 1402]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x123108 (from 0x123600): FFFF1402 = (13FC*(T_02FFC8 - 16000) >> 15) + T_02FFD4, clamped >= 16001 - the same code form as 0x868AC (-> Torque 0ADC) and the table data is identical to T_02C9E8 (identified torque type). Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range).",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
+  }
+ },
+ "0x2FFF4": {
+  "status": "identified",
+  "name": "Throttle Flow Request (RPM x FFFF1416, state != 2) [0x1232C0]",
+  "category": "Airflow - Throttle Model",
+  "evidence": "0x1232C0 (from 0x12367C): unless param_7 == 2 the request param_9 (FFFF1456) is replaced by T(Engine Speed, FFFF1416); it is copied to FFFF141A and, after max with FFFF1420 (request), indexes T_030008 (request -> target throttle).  Request unit: T_02CA14 (request -> target throttle, FFFF0AF4) is the exact inverse of T_02C1A0 (throttle %TPS -> flow capacity FFFF09C2, g/L*rpm = x*1.035944 via the manifold filling model 0xCF8C8): CA14 axis = C1A0 data / 2 and CA14 data = C1A0 axis * 64 at all 16 points.  So request = flow capacity / 2: g/L*rpm = x*2.071888.  ",
+  "description": "",
+  "data": {
+   "units": "g/L*rpm",
+   "expr": "x*2.071888",
+   "to_byte": "x/2.071888",
+   "format": "0"
+  }
+ },
  "0x30008": {
   "status": "identified",
   "name": "Target Throttle Opening (vs request FFFF1456) [0x1232C0]",
@@ -11236,6 +11275,19 @@
    "format": "0"
   }
  },
+ "0x30494": {
+  "status": "identified",
+  "name": "Torque Scaling Ratio (RPM x 1456) [0x124F08]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x124F08: FFFF145E = (FFFF1402*T >> 15) - (T*32000 >> 16) + 16000 = T*(1402 - 16000)/32768 + 16000, with 1402 torque type (monitor copy of 0ADC), so T is a torque ratio with 32768 = 1.0.",
+  "description": "",
+  "data": {
+   "units": "ratio",
+   "expr": "x/32768",
+   "to_byte": "x*32768",
+   "format": "0.000"
+  }
+ },
  "0x304A8": {
   "status": "identified",
   "name": "Torque Limit Blend Weight (143C vs 1444) [0x124F74]",
@@ -11273,6 +11325,19 @@
    "expr": "x/255",
    "to_byte": "x*255",
    "format": "0.000"
+  }
+ },
+ "0x3055C": {
+  "status": "identified",
+  "name": "Reference (Maximum) Torque vs RPM [monitor, 0x125C08]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x125C08: ratio = (FFFF1454 - 16000)*255/(T(rpm) - 16000) (0x3E4180 = 16000*255), the same form as 0x84484 with identical data to T_02C838 (Reference Maximum Torque, torque type). Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range).",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
   }
  },
  "0x30568": {

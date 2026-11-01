@@ -1718,6 +1718,29 @@ for _d, _n, _e in ((0x30488, 'Throttle Flow Request Adder 1456 (vs 1470)', '0x12
     add(_d, _n, 'Airflow - Throttle Model', _e + '  ' + _EREQ, _RQ)
 
 
+# Torque monitor duplicates of the 0ADC loss-torque calculation (identical code form and identical table data).
+for _d, _src, _n in ((0x2FFC8, '0x2C9F4', 'Torque Offset Density-Scaled (RPM) [monitor, -> 1402]'),
+                     (0x2FFD4, '0x2C9E8', 'Torque Offset Base (RPM) [monitor, -> 1402]')):
+    S.pop(_d, None); AUTO.discard(_d)
+    add(_d, _n, 'Driver Demand / Torque Request',
+        f'0x123108 (from 0x123600): FFFF1402 = (13FC*(T_02FFC8 - 16000) >> 15) + T_02FFD4, clamped >= 16001 - the same code form as 0x868AC '
+        f'(-> Torque 0ADC) and the table data is identical to T_{_src[2:].zfill(6)} (identified torque type).' + TQEV, RAWTQ)
+S.pop(0x3055C, None); AUTO.discard(0x3055C)
+add(0x3055C, 'Reference (Maximum) Torque vs RPM [monitor, 0x125C08]', 'Driver Demand / Torque Request',
+    '0x125C08: ratio = (FFFF1454 - 16000)*255/(T(rpm) - 16000) (0x3E4180 = 16000*255), the same form as 0x84484 with identical data to '
+    'T_02C838 (Reference Maximum Torque, torque type).' + TQEV, RAWTQ)
+S.pop(0x30494, None); AUTO.discard(0x30494)
+add(0x30494, 'Torque Scaling Ratio (RPM x 1456) [0x124F08]', 'Driver Demand / Torque Request',
+    '0x124F08: FFFF145E = (FFFF1402*T >> 15) - (T*32000 >> 16) + 16000 = T*(1402 - 16000)/32768 + 16000, with 1402 torque type (monitor '
+    'copy of 0ADC), so T is a torque ratio with 32768 = 1.0.', ('ratio', 'x/32768', 'x*32768', '0.000'))
+
+
+S.pop(0x2FFF4, None); AUTO.discard(0x2FFF4)
+add(0x2FFF4, 'Throttle Flow Request (RPM x FFFF1416, state != 2) [0x1232C0]', 'Airflow - Throttle Model',
+    '0x1232C0 (from 0x12367C): unless param_7 == 2 the request param_9 (FFFF1456) is replaced by T(Engine Speed, '
+    'FFFF1416); it is copied to FFFF141A and, after max with FFFF1420 (request), indexes T_030008 (request -> target throttle).  ' + _EREQ, _RQ)
+
+
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
     print(len(S), 'entries')
