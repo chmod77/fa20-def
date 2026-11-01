@@ -309,6 +309,15 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
   * The knock (0x972FC..0x98460) and fuel (0x8CCF8..0x8D97C) band tables compare it directly. 16 descriptors over 2 data blocks.
   * Next: 0xAA684 (19 idle helper tables). Its stack args need EmuCallArgs (r11 at 0xA8B6C).
     0x8B5B4/0x8B178 blends are anchored only to outputs 0B24/040A/0B28/040C, whose units are still unproven.
+- Throttle units (728 of 1284):
+  * FFFEEED4 = (002A - 1000)*16384*23/390625, exact (0x16C6F0 = remainder, 0x16C588 = quotient).
+    Thresholds unlocked: T_02FF60 (0x120E2C) and T_163AD8 (0x50992 -> EF5A0, compared with EEED4 in 0x5092A).
+    0B18 = T_02CA90(09D4)*1579/1600 is compared with EEED4 (0x4CD26).
+  * IMPORTANT: sensor-based throttle values (00B8 chain, 29B4, 29B7.., EEED4, 0B18) are now labelled %TPS (OBD PID 11
+    absolute-position scale). They are NOT the SSM 0x15 opening-angle % (FFFF0AF4).
+    T_02CA90 and T_02CA14 share one data block, and both relations hold: opening-angle % = 1.4528 * %TPS.
+  * A scaling-conflict check over shared data blocks finds no other disagreement (only label differences: % vs ratio, Nm vs Nm/step).
+  * The idle "request" group 09D4 / 0B16 / 0A6E / 0CD8 is the axis of the throttle tables; its own unit is still unanchored.
 - Next: scan for other counter forms (sat8 helper 0x152C, `cVarN = -1; if (G != 0xff)`) in non-unique-period functions by checking
   each root's period. Also trace 0x96DA0 (root 0x158F04), whose period is unknown.
 
