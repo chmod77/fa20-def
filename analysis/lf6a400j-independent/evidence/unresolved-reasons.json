@@ -193,7 +193,6 @@
  "0x2E838": "0xC1D74: stored to output *param_6 of 0xC1D74 (unit of the receiving variable not proven)",
  "0x163A90": "0x5036C: compared with FFFF166C (unit not proven)",
  "0x163AC0": "0x5036C: compared with FFFF0FFA (unit not proven)",
- "0x2FFE0": "0x123224: stored to output *param_5 of 0x123224 (unit of the receiving variable not proven)",
  "0x2D414": "0x953E0: stored to output *param_10 of 0x953E0 (unit of the receiving variable not proven)",
  "0x2E124": "0xB2078: stored to output *param_3 of 0xB2078 (unit of the receiving variable not proven)",
  "0x2C1C4": "0x7F288: enters an expression (uVar3 = (param_2 & 0xffff) * (uVar4 & 0xffff);) whose result is enters an expression (uVar2 = (undefined2)(uVar3 >> 0xf);) whose result is lookup result not used in a resolvable form",

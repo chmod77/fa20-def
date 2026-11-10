@@ -6831,12 +6831,12 @@
         <scaling units="C" expression="x*5/2048-40" to_byte="(x+40)*2048/5" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>
-    <table type="3D" name="Unidentified 24x24 [D02FFE0] (Engine Speed x ?) - unresolved: stored to output *param_5 of 0x123224" category="Unidentified - Task 0x12367C" storageaddress="2898C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FFE0. Lookup result stored to: FFFF140E. UNRESOLVED (locked): 0x123224: stored to output *param_5 of 0x123224 (unit of the receiving variable not proven). Function/output scaling not yet proven from the binary." locked="true" sizex="24" sizey="24">
-      <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
-      <table type="Y Axis" name="Engine Speed" storageaddress="28E6C" elements="24" storagetype="uint16" endian="big" locked="true">
+    <table type="3D" name="Torque Term (RPM x MAP) [monitor, 0x123224 -&gt; 140E]" category="Driver Demand / Torque Request" storageaddress="2898C" storagetype="uint16" endian="big" userlevel="1" description="Descriptor(s): 0x2FFE0. Evidence: 0x123224 (from 0x12367C): FFFF140E = T(Engine Speed FFFF2994, first-order filtered MAP FFFF09BA), the same inputs as 0x86A50 (FFFF0AE8 = T_02CA00(rpm, filtered 09BA)), and the 24x24 table data is byte-identical to T_02CA00 (Torque Term 0AE8, torque type). Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW-&gt;Nm via 60000/2pi, stored *80+16000, clamps = u16 range). Lookup result stored to: FFFF140E (Torque Term 140E (monitor copy of 0AE8))." sizex="24" sizey="24">
+      <scaling units="Nm" expression="(x-16000)/80" to_byte="x*80+16000" format="0.0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
+      <table type="Y Axis" name="Engine Speed" storageaddress="28E6C" elements="24" storagetype="uint16" endian="big">
         <scaling units="rpm" expression="x*25/128" to_byte="x*128/25" format="0.00" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
-      <table type="X Axis" name="Unidentified input 2 (RAM 0xFFFF19F6)" storageaddress="2895C" elements="24" storagetype="uint16" endian="big" locked="true">
+      <table type="X Axis" name="Unidentified input 2 (RAM 0xFFFF19F6)" storageaddress="2895C" elements="24" storagetype="uint16" endian="big">
         <scaling units="raw" expression="x" to_byte="x" format="0" fineincrement="1" coarseincrement="1" storagetype="uint16" endian="big" />
       </table>
     </table>

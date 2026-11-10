@@ -1741,6 +1741,13 @@ add(0x2FFF4, 'Throttle Flow Request (RPM x FFFF1416, state != 2) [0x1232C0]', 'A
     'FFFF1416); it is copied to FFFF141A and, after max with FFFF1420 (request), indexes T_030008 (request -> target throttle).  ' + _EREQ, _RQ)
 
 
+S.pop(0x2FFE0, None); AUTO.discard(0x2FFE0)
+add(0x2FFE0, 'Torque Term (RPM x MAP) [monitor, 0x123224 -> 140E]', 'Driver Demand / Torque Request',
+    '0x123224 (from 0x12367C): FFFF140E = T(Engine Speed FFFF2994, first-order filtered MAP FFFF09BA), the same inputs as 0x86A50 '
+    '(FFFF0AE8 = T_02CA00(rpm, filtered 09BA)), and the 24x24 table data is byte-identical to T_02CA00 (Torque Term 0AE8, torque type).'
+    + TQEV, RAWTQ)
+
+
 if __name__ == '__main__':
     json.dump({f'0x{k:X}': v for k, v in sorted(S.items())}, open(f'{ROOT}/evidence/semantics.json', 'w'), indent=1)
     print(len(S), 'entries')

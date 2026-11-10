@@ -10781,6 +10781,19 @@
    "format": "0.0"
   }
  },
+ "0x2FFE0": {
+  "status": "identified",
+  "name": "Torque Term (RPM x MAP) [monitor, 0x123224 -> 140E]",
+  "category": "Driver Demand / Torque Request",
+  "evidence": "0x123224 (from 0x12367C): FFFF140E = T(Engine Speed FFFF2994, first-order filtered MAP FFFF09BA), the same inputs as 0x86A50 (FFFF0AE8 = T_02CA00(rpm, filtered 09BA)), and the 24x24 table data is byte-identical to T_02CA00 (Torque Term 0AE8, torque type). Torque type: Nm = (x-16000)/80, anchored at 0xC3FA8 (kW->Nm via 60000/2pi, stored *80+16000, clamps = u16 range).",
+  "description": "",
+  "data": {
+   "units": "Nm",
+   "expr": "(x-16000)/80",
+   "to_byte": "x*80+16000",
+   "format": "0.0"
+  }
+ },
  "0x2FFF4": {
   "status": "identified",
   "name": "Throttle Flow Request (RPM x FFFF1416, state != 2) [0x1232C0]",

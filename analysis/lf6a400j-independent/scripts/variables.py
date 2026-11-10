@@ -447,3 +447,6 @@ V2.update({
  0xFFFF13F6:('Torque 13F6','Nm','(x-16000)/80','x*80+16000','0x123438: ratio = (13F6 - 16000)*8192/(1402 - 16000), the torque-ratio form of 0x86F74 (0AAE/0ADC) with 1402 torque type'),
  0xFFFF145E:('Torque 145E','Nm','(x-16000)/80','x*80+16000','0x124F08: = T*(1402 - 16000)/32768 + 16000, 1402 torque type'),
 })
+V2.update({
+ 0xFFFF140E:('Torque Term 140E (monitor copy of 0AE8)','Nm','(x-16000)/80','x*80+16000','0x123224: = T_02FFE0(rpm, filtered MAP 09BA); identical inputs and identical table data to 0x86A50 -> Torque Term 0AE8 (T_02CA00)'),
+})
