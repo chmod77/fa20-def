@@ -318,6 +318,20 @@ Target ROM: `roms/LF6A401A_T893ESJ92045C7207-20261024-072556.bin` (the car). Cod
     T_02CA90 and T_02CA14 share one data block, and both relations hold: opening-angle % = 1.4528 * %TPS.
   * A scaling-conflict check over shared data blocks finds no other disagreement (only label differences: % vs ratio, Nm vs Nm/step).
   * The idle "request" group 09D4 / 0B16 / 0A6E / 0CD8 is the axis of the throttle tables; its own unit is still unanchored.
+- Data-identity proofs (747 of 1284):
+  * T_02ECEC = psi(r)*5793418909 exactly (isentropic flow function, gamma 1.4, critical ratio 0.53 in code).
+  * T_02C1A0 (throttle -> flow capacity): the manifold filling model 0xCF8C8 subtracts 1694 - 169C (airflow, g/L*rpm),
+    giving g/L*rpm = x*1.035944.
+  * T_02CA14 and T_030008 are exact inverses of T_02C1A0 (axis = data/2, data = axis*64), so the throttle flow request
+    (09D4/0B16/0A6E/1456/1420/0C3A) is g/L*rpm = x*2.071888. Unlocked T_02C200, T_02CA7C, T_02C7C8, T_030488, T_030074,
+    T_02DCE0 and T_02FFF4. T_02DCF4 is the exact inverse of T_02C200, so 0CD8 is a linearised coordinate with no physical anchor.
+  * Torque monitor copies, with identical code and identical data: T_02FFC8/FFD4 (= 0ADC loss terms -> 1402),
+    T_03055C (= reference max torque), T_02FFE0 (= torque term 0AE8). Also T_030494 (ratio x/32768) and variables 13F6/145E/140E.
+  * Throttle units: SSM opening % = %TPS*100/68.9 (68.9 %TPS = T_02C1A0 axis maximum). This explains the 1.4528 factor.
+  * Engine-speed thresholds T_02EA54/60/6C/78 (0EE8/0EEC vs 2ADA in 0xC3EB0). They are calibration-gated by 0x2B667.7, which is
+    clear in this ROM.
+  * Dead ends: 0B92/0B94 (clamp 0x438..0x59F looks like injection angle; readers not found);
+    0xDB3DC (0697*06C7*0693 product); 0xADE98 (T1*(T2 + 0x300)).
 - Next: scan for other counter forms (sat8 helper 0x152C, `cVarN = -1; if (G != 0xff)`) in non-unique-period functions by checking
   each root's period. Also trace 0x96DA0 (root 0x158F04), whose period is unknown.
 
